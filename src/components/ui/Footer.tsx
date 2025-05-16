@@ -55,7 +55,6 @@ const Footer = () => {
     },
   }
 
-
   return (
     <div className="px-4 xl:px-0">
       <footer
@@ -106,10 +105,10 @@ const Footer = () => {
         </div>
         <svg
           className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300"
-        // style={{
-        //   maskImage:
-        //     "linear-gradient(transparent, white 10rem, white calc(100% - 10rem), transparent)",
-        // }}
+          // style={{
+          //   maskImage:
+          //     "linear-gradient(transparent, white 10rem, white calc(100% - 10rem), transparent)",
+          // }}
         >
           <defs>
             <pattern

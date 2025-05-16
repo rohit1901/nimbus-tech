@@ -14,7 +14,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className="mx-auto w-full"
           >
-            <div className="inline-flex max-w-full items-center gap-3 rounded-full bg-white/5 px-2.5 py-0.5 pr-3 pl-0.5 font-medium text-gray-900 ring-1 shadow-lg shadow-orange-400/20 ring-black/10 filter backdrop-blur-[1px] transition-colors hover:bg-orange-500/[2.5%] focus:outline-hidden sm:text-sm">
+            <div className="inline-flex max-w-full items-center gap-3 rounded-full bg-white/5 px-2.5 py-0.5 pr-3 pl-0.5 font-medium text-gray-900 shadow-lg ring-1 shadow-orange-400/20 ring-black/10 filter backdrop-blur-[1px] transition-colors hover:bg-orange-500/[2.5%] focus:outline-hidden sm:text-sm">
               <span className="shrink-0 truncate rounded-full border bg-gray-50 px-2.5 py-1 text-sm text-gray-600 sm:text-xs">
                 News
               </span>
@@ -31,11 +31,14 @@ export function Hero() {
         <h1 className="mt-8 text-center text-5xl font-semibold tracking-tighter text-gray-900 sm:text-8xl sm:leading-[5.5rem]">
           <FadeSpan>Nimbus Tech</FadeSpan>
           <br />
-          <FadeSpan className="text-orange-500">Expert Software & Cloud Solutions</FadeSpan>
+          <FadeSpan className="text-orange-500">
+            Expert Software & Cloud Solutions
+          </FadeSpan>
         </h1>
         <p className="mt-5 max-w-xl text-center text-base text-balance text-gray-700 sm:mt-8 sm:text-xl">
           <FadeSpan>
-            Custom software development, cloud architecture, and scalable solutions for modern enterprises.
+            Custom software development, cloud architecture, and scalable
+            solutions for modern enterprises.
           </FadeSpan>
         </p>
         <FadeDiv>

@@ -14,7 +14,8 @@ export function CallToAction() {
             Ready to get started?
           </h2>
           <p className="mt-3 mb-8 text-lg text-gray-600">
-            Let’s build scalable software solutions tailored to your business goals.
+            Let’s build scalable software solutions tailored to your business
+            goals.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button asChild className="text-md">

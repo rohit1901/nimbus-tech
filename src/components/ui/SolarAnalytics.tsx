@@ -2,7 +2,7 @@ import {
   RiCloudFill,
   RiCodeBoxFill,
   RiServerFill,
-  RiShieldCheckFill
+  RiShieldCheckFill,
 } from "@remixicon/react"
 import { Divider } from "../Divider"
 import AnalyticsIllustration from "./AnalyticsIllustration"
@@ -23,7 +23,8 @@ export function SolarAnalytics() {
           <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-blue-600" />
         </h2>
         <p className="mt-2 max-w-lg text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
-          Transform your data into actionable insights with real-time software and cloud analytics
+          Transform your data into actionable insights with real-time software
+          and cloud analytics
         </p>
       </div>
       <div className="*:pointer-events-none">
