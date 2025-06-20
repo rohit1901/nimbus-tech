@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/Carousel";
+import Image from "next/image";
 
 const certifications = [
   {
@@ -54,7 +55,7 @@ export function SolarAnalytics() {
             <CarouselContent>
               {certifications.map((certification) => (
                 <CarouselItem key={certification.id}>
-                  <img src={certification.image} alt={certification.title} className="w-full h-auto" />
+                  <Image src={certification.image} alt={certification.title} className="w-full h-auto" />
                   <h3 className="text-xl font-semibold mt-4">{certification.title}</h3>
                   <p className="text-gray-600">{certification.description}</p>
                 </CarouselItem>

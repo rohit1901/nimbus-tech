@@ -101,7 +101,6 @@ type AnalyticsIllustrationProps = {
   className?: string
   children?: React.ReactNode
   style?: React.CSSProperties
-  [key: string]: any
 };
 
 export default function AnalyticsIllustration({

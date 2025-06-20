@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "motion/react"
+import { motion, Variants } from "motion/react"
 import { SolarMark } from "../../../public/SolarMark"
 
 const ChipViz = () => {
@@ -10,7 +10,7 @@ const ChipViz = () => {
   }: {
     scale: number
     delay: number
-  }) => ({
+  }): Variants => ({
     initial: { scale: 1 },
     animate: {
       scale: [1, scale, 1],
