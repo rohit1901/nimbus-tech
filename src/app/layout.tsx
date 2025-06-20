@@ -7,17 +7,17 @@ import { NavBar } from "@/components/ui/Navbar"
 import { siteConfig } from "./siteConfig"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yoururl.com"),
+  metadataBase: new URL("https://nimbus-tech.de"),
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ["Marketing", "Database", "Software"],
+  keywords: ["Consulting", "Software Development", "Nimbus Tech", "Tech Solutions", "Cloud Development", "DevOps", "Automation", "Software Architecture Consulting", "Technology Assessment", "Documentation", "Support", "Maintenance"],
   authors: [
     {
-      name: "yourname",
-      url: "",
+      name: "Rohit Khanduri",
+      url: "https://www.rohit.khanduri.de",
     },
   ],
-  creator: "yourname",
+  creator: "Rohit Khanduri",
   openGraph: {
     type: "website",
     locale: "en_US",

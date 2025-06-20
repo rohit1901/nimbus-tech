@@ -1,60 +1,75 @@
 import {
   RiGithubFill,
-  RiSlackFill,
+  RiLinkedinBoxFill,
   RiTwitterXFill,
   RiYoutubeFill,
-} from "@remixicon/react"
-import Link from "next/link"
-import { SolarLogo } from "../../../public/SolarLogo"
+} from "@remixicon/react";
+import Link from "next/link";
+import { SolarLogo } from "../../../public/SolarLogo";
+export type FooterSectionItem = {
+  label: string
+  href: string
+  external?: boolean
+}
+
+// Type for a single footer section (e.g., Services, Company)
+export type FooterSection = {
+  title: string
+  items: FooterSectionItem[]
+}
+
+// Type for the overall sections object
+export type FooterSections = {
+  [key: string]: FooterSection
+}
 const CURRENT_YEAR = new Date().getFullYear()
+const sections: FooterSections = {
+  services: {
+    title: "Services",
+    items: [
+      { label: "Software Development", href: "#" },
+      { label: "Cloud Architecture", href: "#" },
+      { label: "DevOps & Automation", href: "#" },
+      { label: "Software Architecture", href: "#" },
+      { label: "Technology Assessment", href: "#" },
+      // "Support & Maintenance" can stay if you plan to offer it from the start
+    ],
+  },
+  company: {
+    title: "Company",
+    items: [
+      { label: "About Nimbus Tech", href: "#" },
+      { label: "Blog", href: "#" },
+      // Careers removed (add later when hiring)
+      // Case Studies removed (add after first projects)
+      { label: "Our Values", href: "#" },
+      { label: "News & Updates", href: "#" }, // Optional: Announce launch progress
+    ],
+  },
+  resources: {
+    title: "Resources",
+    items: [
+      { label: "Contact", href: "#" },
+      { label: "Support", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "#" },
+      // "Report an Issue" can stay if you want to be open to feedback from day one
+    ],
+  },
+  technologies: {
+    title: "Technologies",
+    items: [
+      { label: "AWS", href: "#", external: true },
+      { label: "Java & J2EE", href: "#", external: true },
+      { label: "JavaScript & TypeScript", href: "#", external: true },
+      { label: "React, Angular, Vue", href: "#", external: true },
+      { label: "DevOps Tools", href: "#", external: true },
+    ],
+  },
+}
+
 
 const Footer = () => {
-  const sections = {
-    services: {
-      title: "Services",
-      items: [
-        { label: "Software Development", href: "#" },
-        { label: "Cloud Development", href: "#" },
-        { label: "Architecture Consulting", href: "#" },
-        { label: "DevOps & Automation", href: "#" },
-        { label: "Technology Assessment", href: "#" },
-        { label: "Documentation", href: "#" },
-        { label: "Support & Maintenance", href: "#" },
-      ],
-    },
-    company: {
-      title: "Company",
-      items: [
-        { label: "About Us", href: "#" },
-        { label: "Blog", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "Case Studies", href: "#" },
-        { label: "Our Values", href: "#" },
-      ],
-    },
-    resources: {
-      title: "Resources",
-      items: [
-        { label: "Insights", href: "#" },
-        { label: "Community", href: "#", external: true },
-        { label: "Contact", href: "#" },
-        { label: "Support", href: "#" },
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms of Service", href: "#" },
-        { label: "Report an Issue", href: "#" },
-      ],
-    },
-    partners: {
-      title: "Partners",
-      items: [
-        { label: "Technology Partners", href: "#", external: true },
-        { label: "Cloud Providers", href: "#", external: true },
-        { label: "Integration Partners", href: "#", external: true },
-        { label: "Partner Program", href: "#" },
-      ],
-    },
-  }
-
   return (
     <div className="px-4 xl:px-0">
       <footer
@@ -82,7 +97,6 @@ const Footer = () => {
               />
             </svg>
           </div>
-
           {/* Right */}
           <div
             className="absolute inset-y-0 right-0 my-[-5rem] w-px"
@@ -105,10 +119,6 @@ const Footer = () => {
         </div>
         <svg
           className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300"
-          // style={{
-          //   maskImage:
-          //     "linear-gradient(transparent, white 10rem, white calc(100% - 10rem), transparent)",
-          // }}
         >
           <defs>
             <pattern
@@ -142,19 +152,19 @@ const Footer = () => {
             href="/"
             className="flex items-center font-medium text-gray-700 select-none sm:text-sm"
           >
-            <SolarLogo className="ml-2 w-20" />
-
+            <SolarLogo className="ml-0 w-50" />
             <span className="sr-only">Solar Logo (go home)</span>
           </Link>
 
           <div>
-            <div className="mt-4 flex items-center">
+            <div className="mt-4 ml-1 flex items-center">
               {/* Social Icons */}
               <Link
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
+                aria-label="Nimbus Tech on Twitter"
               >
                 <RiTwitterXFill className="size-5" />
               </Link>
@@ -163,6 +173,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
+                aria-label="Nimbus Tech on YouTube"
               >
                 <RiYoutubeFill className="size-5" />
               </Link>
@@ -171,6 +182,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
+                aria-label="Nimbus Tech on GitHub"
               >
                 <RiGithubFill className="size-5" />
               </Link>
@@ -179,12 +191,13 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
+                aria-label="Nimbus Tech on LinkedIn"
               >
-                <RiSlackFill className="size-5" />
+                <RiLinkedinBoxFill className="size-5" />
               </Link>
             </div>
-            <div className="ml-2 hidden text-sm text-gray-700 lg:inline">
-              &copy; {CURRENT_YEAR} Nimbus Tech GmbH.
+            <div className="ml-3 hidden text-sm text-gray-700 lg:inline">
+              &copy; {CURRENT_YEAR} Nimbus Tech GmbH &mdash; Leipzig, Germany
             </div>
           </div>
         </div>
@@ -201,6 +214,8 @@ const Footer = () => {
                   <Link
                     href={item.href}
                     className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
                     {item.label}
                   </Link>

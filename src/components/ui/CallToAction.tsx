@@ -19,10 +19,10 @@ export function CallToAction() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Button asChild className="text-md">
-              <Link href="#">Start now</Link>
+              <Link href="mailto:r.khanduri@nimbus-tech.de">Start now</Link>
             </Button>
             <Button asChild className="text-md" variant="secondary">
-              <Link href="#">Schedule a discovery call</Link>
+              <Link href="mailto:r.khanduri@nimbus-tech.de">Schedule a discovery call</Link>
             </Button>
           </div>
         </div>

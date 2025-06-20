@@ -1,3 +1,4 @@
+import { RiTimeLine } from "@remixicon/react"
 import Image from "next/image"
 
 export default function Testimonial() {
@@ -21,37 +22,37 @@ export default function Testimonial() {
         />
       </div>
       <div className="relative z-20 mb-20 p-8 sm:p-14 lg:p-24">
-        <div className="">
-          <blockquote className="relative max-w-2xl text-xl leading-relaxed tracking-tight text-gray-900 md:text-2xl lg:text-3xl">
-            <p className="before:absolute before:top-0 before:right-full before:content-['“'] after:text-gray-900/70 after:content-['”']">
-              <strong className="font-semibold">
-                Nimbus Tech transformed our legacy system into a modern,
-                scalable cloud solution.
-              </strong>{" "}
-              <span className="text-gray-900/70">
-                Their expertise in cloud technologies made the transition
-                seamless. The team was responsive, knowledgeable, and truly
-                understood our needs.
-              </span>
-            </p>
-          </blockquote>
+        <div>
+          <div className="relative max-w-2xl text-xl leading-relaxed tracking-tight text-gray-900 md:text-2xl lg:text-3xl">
+            <span className="block font-semibold text-gray-900">
+              Client Success Stories
+            </span>
+            <span className="inline-flex items-center gap-1 mt-2 rounded-full bg-orange-50 border border-orange-200 px-3 py-1 text-sm font-semibold text-orange-700 uppercase tracking-wide shadow-sm">
+              <RiTimeLine className="w-4 h-4 text-orange-500" />
+              Coming Soon
+            </span>
+          </div>
+          <span className="mt-4 block text-base text-gray-900/70">
+            As Nimbus Tech launches, we look forward to partnering with innovative organizations and delivering exceptional software and cloud solutions. Your feedback could be featured here!
+          </span>
         </div>
+
         <div className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <div className="relative shrink-0 rounded-full bg-white/15 p-0.5 ring-1 ring-white/20">
             <Image
-              alt="Dr. Sarah Miller"
-              src="/images/smiller.jpeg"
-              width={56}
-              height={56}
-              className="rounded-full border object-contain"
+              alt="Nimbus Tech logo"
+              src="/nimbus.svg"
+              width={36}
+              height={36}
+              className="rounded-full border-none bg-white/10 p-1 shadow-lg shadow-[#366A79]/20 ring-1 ring-white/20 hover:scale-105 transition-transform duration-300 ease-in-out"
             />
           </div>
           <div>
             <div className="text-base font-medium text-gray-900">
-              Dr. Sarah Miller
+              The  Nimbus Tech Team
             </div>
             <div className="text-sm text-[#C33621]/80">
-              Director of Conservation Technologies
+              Software & Cloud Experts, Germany
             </div>
           </div>
         </div>

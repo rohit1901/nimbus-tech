@@ -9,6 +9,14 @@ import React from "react"
 import { SolarLogo } from "../../../public/SolarLogo"
 import { Button } from "../Button"
 
+// navLinks.ts or navLinks.json (can be imported or fetched from CMS/API)
+const navLinks = [
+  { label: "Services", href: "#solutions" },
+  { label: "About Us", href: "#about" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "mailto:r.khanduri@nimbus-tech.de" },
+]
+
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
@@ -25,23 +33,20 @@ export function NavBar() {
       <div className="w-full md:my-auto">
         <div className="relative flex items-center justify-between">
           <Link href={siteConfig.baseLinks.home} aria-label="Home">
-            <span className="sr-only">Solar Tech Logo</span>
+            <span className="sr-only">Nimbus Tech Logo</span>
             <SolarLogo className="w-44" />
           </Link>
           <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
             <div className="flex items-center gap-10 font-medium">
-              <Link className="px-2 py-1 text-gray-900" href="#solutions">
-                Services
-              </Link>
-              <Link className="px-2 py-1 text-gray-900" href="#farm-management">
-                About Us
-              </Link>
-              <Link className="px-2 py-1 text-gray-900" href="#solar-analytics">
-                Blog
-              </Link>
-              <Link className="px-2 py-1 text-gray-900" href="#solar-analytics">
-                Contact
-              </Link>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  className="px-2 py-1 text-gray-900"
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </nav>
           <Button
@@ -54,7 +59,7 @@ export function NavBar() {
             onClick={() => setOpen(!open)}
             variant="secondary"
             className="p-1.5 sm:hidden"
-            aria-label={open ? "CloseNavigation Menu" : "Open Navigation Menu"}
+            aria-label={open ? "Close Navigation Menu" : "Open Navigation Menu"}
           >
             {!open ? (
               <RiMenuFill
@@ -76,15 +81,11 @@ export function NavBar() {
           )}
         >
           <ul className="space-y-4 font-medium">
-            <li onClick={() => setOpen(false)}>
-              <Link href="#solutions">Solutions</Link>
-            </li>
-            <li onClick={() => setOpen(false)}>
-              <Link href="#farm-management">Farm Management</Link>
-            </li>
-            <li onClick={() => setOpen(false)}>
-              <Link href="#solar-analytics">Analytics</Link>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.label} onClick={() => setOpen(false)}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
           </ul>
           <Button variant="secondary" className="text-lg">
             Get a quote
@@ -94,3 +95,4 @@ export function NavBar() {
     </header>
   )
 }
+
