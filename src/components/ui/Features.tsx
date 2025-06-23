@@ -1,3 +1,6 @@
+import { Icons } from "@/components/Icons"
+import { Orbit } from "@/components/Orbit"
+import ChipViz from "@/components/ui/ChipViz"
 import {
   RiBarChartLine,
   RiCheckLine,
@@ -11,22 +14,37 @@ import {
   RiRocket2Line,
   RiSettings3Line,
   RiStackLine,
-  RiTeamLine
+  RiTeamLine,
 } from "@remixicon/react"
 import { SolarMark } from "../../../public/SolarMark"
-import { Icons } from "../Icons"
-import { Orbit } from "../Orbit"
-import ChipViz from "./ChipViz"
 
 // --- Reusable Components ---
 
 function VerticalLines() {
   const lines = [
     { className: "absolute inset-y-0 my-[-5rem] w-px", style: {}, show: true },
-    { className: "absolute inset-y-0 right-0 my-[-5rem] w-px", style: {}, show: true },
-    { className: "absolute inset-y-0 left-1/2 -z-10 my-[-5rem] w-px", style: {}, show: true },
-    { className: "absolute inset-y-0 left-1/4 -z-10 my-[-5rem] hidden w-px sm:block", style: {}, show: true },
-    { className: "absolute inset-y-0 left-3/4 -z-10 my-[-5rem] hidden w-px sm:block", style: {}, show: true },
+    {
+      className: "absolute inset-y-0 right-0 my-[-5rem] w-px",
+      style: {},
+      show: true,
+    },
+    {
+      className: "absolute inset-y-0 left-1/2 -z-10 my-[-5rem] w-px",
+      style: {},
+      show: true,
+    },
+    {
+      className:
+        "absolute inset-y-0 left-1/4 -z-10 my-[-5rem] hidden w-px sm:block",
+      style: {},
+      show: true,
+    },
+    {
+      className:
+        "absolute inset-y-0 left-3/4 -z-10 my-[-5rem] hidden w-px sm:block",
+      style: {},
+      show: true,
+    },
   ]
   return (
     <div className="pointer-events-none inset-0 select-none">
@@ -57,7 +75,13 @@ function VerticalLines() {
   )
 }
 
-function FeatureTextBlock({ title, children }: { title: string; children: React.ReactNode }) {
+function FeatureTextBlock({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
   return (
     <div className="col-span-2 my-auto px-2">
       <h2 className="relative text-lg font-semibold tracking-tight text-orange-500">
@@ -85,31 +109,43 @@ function OrbitFeatureVisualization() {
                 icon={<RiBarChartLine className="z-10 size-5 text-gray-900" />}
                 label="Planning"
                 labelColor="bg-red-500"
-                iconLabel={<RiStackLine className="size-3 shrink-0 text-white" />}
+                iconLabel={
+                  <RiStackLine className="size-3 shrink-0 text-white" />
+                }
                 pingDelay="1s"
               />,
               <OrbitObject
                 key="obj2"
-                icon={<RiLoaderFill className="z-10 size-5 rotate-90 text-gray-900" />}
+                icon={
+                  <RiLoaderFill className="z-10 size-5 rotate-90 text-gray-900" />
+                }
                 label="Analysis"
                 labelColor="bg-gray-500"
-                iconLabel={<RiSettings3Line className="size-3 shrink-0 text-white" />}
+                iconLabel={
+                  <RiSettings3Line className="size-3 shrink-0 text-white" />
+                }
                 pingDelay="4s"
               />,
               <OrbitObject
                 key="obj3"
                 label="Development"
                 icon={<RiCodeBoxLine className="z-10 size-5 text-gray-900" />}
-                iconLabel={<RiReactjsLine className="size-3 shrink-0 text-white" />}
+                iconLabel={
+                  <RiReactjsLine className="size-3 shrink-0 text-white" />
+                }
                 labelColor="bg-blue-500"
                 pingDelay="2s"
               />,
               <OrbitObject
                 key="obj4"
-                icon={<Icons.QuadCopter className="z-10 size-5 rotate-90 text-gray-900" />}
+                icon={
+                  <Icons.QuadCopter className="z-10 size-5 rotate-90 text-gray-900" />
+                }
                 label="Deployment"
                 labelColor="bg-emerald-500"
-                iconLabel={<RiCheckLine className="size-3 shrink-0 text-white" />}
+                iconLabel={
+                  <RiCheckLine className="size-3 shrink-0 text-white" />
+                }
                 pingDelay="6s"
               />,
               <OrbitObject
@@ -118,7 +154,9 @@ function OrbitFeatureVisualization() {
                 icon={<RiRocket2Line className="z-10 size-5 text-gray-900" />}
                 pingDelay="3s"
                 labelColor="bg-purple-500"
-                iconLabel={<RiTeamLine className="size-3 shrink-0 text-white" />}
+                iconLabel={
+                  <RiTeamLine className="size-3 shrink-0 text-white" />
+                }
               />,
             ]}
           >
@@ -133,7 +171,7 @@ function OrbitFeatureVisualization() {
           </Orbit>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
@@ -157,7 +195,9 @@ function OrbitObject({
       {label && (
         <div className="absolute -top-5 left-4">
           <div className="flex gap-1">
-            <div className={`flex items-center justify-center rounded-l-full ${labelColor} p-1 text-xs ring-1 ring-gray-200`}>
+            <div
+              className={`flex items-center justify-center rounded-l-full ${labelColor} p-1 text-xs ring-1 ring-gray-200`}
+            >
               {iconLabel}
             </div>
             <div className="rounded-r-full bg-white/50 py-0.5 pr-1.5 pl-1 text-xs whitespace-nowrap ring-1 ring-gray-200">
@@ -178,9 +218,7 @@ function OrbitObject({
 
 function PatternBackground() {
   return (
-    <svg
-      className="absolute size-full [mask-image:linear-gradient(transparent,white_10rem)]"
-    >
+    <svg className="absolute size-full [mask-image:linear-gradient(transparent,white_10rem)]">
       <defs>
         <pattern
           id="diagonal-feature-pattern"
@@ -201,11 +239,7 @@ function PatternBackground() {
           })}
         </pattern>
       </defs>
-      <rect
-        width="100%"
-        height="100%"
-        fill="url(#diagonal-feature-pattern)"
-      />
+      <rect width="100%" height="100%" fill="url(#diagonal-feature-pattern)" />
     </svg>
   )
 }
@@ -241,11 +275,17 @@ function CloudFeatureVisualization() {
             </div>
           </div>
           {tempData.map((d, i) => (
-            <div key={i} className="absolute" style={{ top: d.top, left: d.left }}>
+            <div
+              key={i}
+              className="absolute"
+              style={{ top: d.top, left: d.left }}
+            >
               <div className="relative">
                 <div className="absolute inset-0 size-12 animate-pulse bg-orange-200 blur-[3px]"></div>
                 <div className="relative flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15">
-                  <span className="text-sm font-medium text-gray-500">{d.value}</span>
+                  <span className="text-sm font-medium text-gray-500">
+                    {d.value}
+                  </span>
                 </div>
               </div>
             </div>
@@ -258,10 +298,37 @@ function CloudFeatureVisualization() {
 
 function ArchitectureFeatureVisualization() {
   const icons = [
-    { top: "top-[6rem]", left: "left-[6rem]", icon: <RiNotification2Line className="size-5 text-gray-900" aria-hidden="true" /> },
-    { top: "top-[6rem]", left: "right-[6rem]", icon: <RiContrast2Line className="size-5 text-gray-900" aria-hidden="true" /> },
-    { top: "right-[6rem]", left: "bottom-[6rem]", icon: <RiCodepenLine className="size-5 text-gray-900" aria-hidden="true" /> },
-    { top: "bottom-[6rem]", left: "left-[6rem]", icon: <RiFullscreenFill className="size-5 text-gray-900" aria-hidden="true" /> },
+    {
+      top: "top-[6rem]",
+      left: "left-[6rem]",
+      icon: (
+        <RiNotification2Line
+          className="size-5 text-gray-900"
+          aria-hidden="true"
+        />
+      ),
+    },
+    {
+      top: "top-[6rem]",
+      left: "right-[6rem]",
+      icon: (
+        <RiContrast2Line className="size-5 text-gray-900" aria-hidden="true" />
+      ),
+    },
+    {
+      top: "right-[6rem]",
+      left: "bottom-[6rem]",
+      icon: (
+        <RiCodepenLine className="size-5 text-gray-900" aria-hidden="true" />
+      ),
+    },
+    {
+      top: "bottom-[6rem]",
+      left: "left-[6rem]",
+      icon: (
+        <RiFullscreenFill className="size-5 text-gray-900" aria-hidden="true" />
+      ),
+    },
   ]
   return (
     <div className="relative col-span-2 flex items-center justify-center overflow-hidden">
@@ -311,15 +378,19 @@ function ArchitectureFeatureVisualization() {
 export default function Features() {
   return (
     <section
-      aria-label="Nimbus Tech Features for Farms"
+      aria-label="Solutions"
       id="solutions"
       className="relative mx-auto max-w-6xl scroll-my-24"
     >
       <VerticalLines />
       <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0">
         <FeatureTextBlock title="Software development">
-          <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
-            Custom applications tailored to your business needs, from web to mobile.
+          <p
+            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+            id="software-development"
+          >
+            Custom applications tailored to your business needs, from web to
+            mobile.
           </p>
           <p className="mt-4 text-balance text-gray-700">
             Our team specializes in creating custom software solutions that
@@ -332,7 +403,10 @@ export default function Features() {
         <OrbitFeatureVisualization />
 
         <FeatureTextBlock title="Cloud Development">
-          <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
+          <p
+            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+            id="cloud-architecture"
+          >
             Seamless cloud migration and scalable solutions leveraging AWS,
             Azure, or GCP
           </p>
@@ -347,7 +421,10 @@ export default function Features() {
         <CloudFeatureVisualization />
 
         <FeatureTextBlock title="Architecture & Consulting">
-          <p className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl">
+          <p
+            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+            id="software-architecture"
+          >
             Robust system design and technical consulting for future-proof
             infrastructure.
           </p>

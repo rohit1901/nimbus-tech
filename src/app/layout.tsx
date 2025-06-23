@@ -10,7 +10,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://nimbus-tech.de"),
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ["Consulting", "Software Development", "Nimbus Tech", "Tech Solutions", "Cloud Development", "DevOps", "Automation", "Software Architecture Consulting", "Technology Assessment", "Documentation", "Support", "Maintenance"],
+  keywords: [
+    "Consulting",
+    "Software Development",
+    "Nimbus Tech",
+    "Tech Solutions",
+    "Cloud Development",
+    "DevOps",
+    "Automation",
+    "Software Architecture Consulting",
+    "Technology Assessment",
+    "Documentation",
+    "Support",
+    "Maintenance",
+  ],
   authors: [
     {
       name: "Rohit Khanduri",

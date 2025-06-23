@@ -1,6 +1,7 @@
 "use client"
 
 import { siteConfig } from "@/app/siteConfig"
+import { NavigationSectionItem } from "@/components/ui/Footer"
 import useScroll from "@/lib/useScroll"
 import { cx } from "@/lib/utils"
 import { RiCloseFill, RiMenuFill } from "@remixicon/react"
@@ -10,11 +11,14 @@ import { SolarLogo } from "../../../public/SolarLogo"
 import { Button } from "../Button"
 
 // navLinks.ts or navLinks.json (can be imported or fetched from CMS/API)
-const navLinks = [
+const navLinks: NavigationSectionItem[] = [
   { label: "Services", href: "#solutions" },
-  { label: "About Us", href: "#about" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "mailto:r.khanduri@nimbus-tech.de" },
+  { label: "About Us", href: "#about-us" },
+  { label: "Blog", href: "https://rohitkhanduri.substack.com", external: true }, // TODO: Link to Substack for now
+  {
+    label: "Contact",
+    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+  },
 ]
 
 export function NavBar() {
@@ -43,6 +47,8 @@ export function NavBar() {
                   key={link.label}
                   className="px-2 py-1 text-gray-900"
                   href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
                 >
                   {link.label}
                 </Link>
@@ -53,7 +59,9 @@ export function NavBar() {
             variant="secondary"
             className="hidden h-10 font-semibold sm:block"
           >
-            Get a quote
+            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
+              Get started
+            </Link>
           </Button>
           <Button
             onClick={() => setOpen(!open)}
@@ -88,11 +96,12 @@ export function NavBar() {
             ))}
           </ul>
           <Button variant="secondary" className="text-lg">
-            Get a quote
+            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
+              Get started
+            </Link>
           </Button>
         </nav>
       </div>
     </header>
   )
 }
-

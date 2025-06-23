@@ -1,3 +1,4 @@
+import { Badge } from "@/components/Badge"
 import { RiTimeLine } from "@remixicon/react"
 import Image from "next/image"
 
@@ -27,13 +28,15 @@ export default function Testimonial() {
             <span className="block font-semibold text-gray-900">
               Client Success Stories
             </span>
-            <span className="inline-flex items-center gap-1 mt-2 rounded-full bg-orange-50 border border-orange-200 px-3 py-1 text-sm font-semibold text-orange-700 uppercase tracking-wide shadow-sm">
-              <RiTimeLine className="w-4 h-4 text-orange-500" />
+            <Badge className="mt-2">
+              <RiTimeLine className="h-4 w-4 text-orange-500" />
               Coming Soon
-            </span>
+            </Badge>
           </div>
           <span className="mt-4 block text-base text-gray-900/70">
-            As Nimbus Tech launches, we look forward to partnering with innovative organizations and delivering exceptional software and cloud solutions. Your feedback could be featured here!
+            As Nimbus Tech launches, we look forward to partnering with
+            innovative organizations and delivering exceptional software and
+            cloud solutions. Your feedback could be featured here!
           </span>
         </div>
 
@@ -44,12 +47,12 @@ export default function Testimonial() {
               src="/nimbus.svg"
               width={36}
               height={36}
-              className="rounded-full border-none bg-white/10 p-1 shadow-lg shadow-[#366A79]/20 ring-1 ring-white/20 hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="rounded-full border-none bg-orange-50 p-1 shadow-lg ring-1 shadow-[#366A79]/20 ring-white/20 transition-transform duration-300 ease-in-out hover:scale-105"
             />
           </div>
           <div>
             <div className="text-base font-medium text-gray-900">
-              The  Nimbus Tech Team
+              The Nimbus Tech Team
             </div>
             <div className="text-sm text-[#C33621]/80">
               Software & Cloud Experts, Germany

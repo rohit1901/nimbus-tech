@@ -1,4 +1,3 @@
-import { LineChartIllustration } from "../../../public/images/LineChartIllustration";
 import {
   Table,
   TableBody,
@@ -7,7 +6,8 @@ import {
   TableHeaderCell,
   TableRoot,
   TableRow,
-} from "../Table";
+} from "@/components/Table"
+import { LineChartIllustration } from "../../../public/images/LineChartIllustration"
 // Type for a single project summary row
 export type AnalyticsSummaryItem = {
   name: string
@@ -37,15 +37,15 @@ export type AnalyticsData = {
   summary: AnalyticsSummaryItem[]
 }
 
-
 const analyticsData: AnalyticsData = {
   heading: "Project Performance Overview",
-  subheading: "Expert insights into deployments, uptime, and client satisfaction across key Nimbus Tech projects.",
+  subheading:
+    "Expert insights into deployments, uptime, and client satisfaction across key Nimbus Tech projects.",
   stats: {
     totalDeployments: "305",
     deploymentChange: "+25 deployments",
     deploymentChangePercent: "8.9",
-    changePeriod: "Last quarter"
+    changePeriod: "Last quarter",
   },
   tableHeadings: [
     "Project",
@@ -53,7 +53,7 @@ const analyticsData: AnalyticsData = {
     "Uptime",
     "Client Sat.",
     "Efficiency",
-    "Revenue Growth"
+    "Revenue Growth",
   ],
   summary: [
     {
@@ -86,7 +86,7 @@ const analyticsData: AnalyticsData = {
       bgColor: "bg-yellow-400",
       changeType: "negative",
     },
-  ]
+  ],
 }
 type AnalyticsIllustrationProps = {
   summary?: AnalyticsSummaryItem[]
@@ -101,7 +101,7 @@ type AnalyticsIllustrationProps = {
   className?: string
   children?: React.ReactNode
   style?: React.CSSProperties
-};
+}
 
 export default function AnalyticsIllustration({
   summary = analyticsData.summary,
@@ -122,7 +122,9 @@ export default function AnalyticsIllustration({
           </p>
         )}
         <p className="mt-1 text-sm font-medium">
-          <span className="text-emerald-700">{deploymentChange} ({deploymentChangePercent}%)</span>{" "}
+          <span className="text-emerald-700">
+            {deploymentChange} ({deploymentChangePercent}%)
+          </span>{" "}
           <span className="font-normal text-gray-500">{changePeriod}</span>
         </p>
         <LineChartIllustration className="mt-8 w-full min-w-200 shrink-0" />
@@ -154,7 +156,9 @@ export default function AnalyticsIllustration({
                       <span>{item.name}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-right">{item.deployments}</TableCell>
+                  <TableCell className="text-right">
+                    {item.deployments}
+                  </TableCell>
                   <TableCell className="text-right">{item.uptime}</TableCell>
                   <TableCell className="text-right">
                     <span

@@ -1,3 +1,4 @@
+import { SVGMap } from "@/components/ui/Map/SVGMap"
 import {
   RemixiconComponentType,
   RiBarChart2Line,
@@ -5,9 +6,8 @@ import {
   RiCodeBoxLine,
   RiReactjsLine,
   RiStackLine,
-  RiTeamLine
+  RiTeamLine,
 } from "@remixicon/react"
-import { SVGMap } from "./SVGMap"
 
 type MapBorderProps = { position?: "left" | "right" }
 type MapFeaturePinProps = {
@@ -50,11 +50,7 @@ const MapBorder = ({ position = "left" }: MapBorderProps) => (
           })}
         </pattern>
       </defs>
-      <rect
-        width="100%"
-        height="100%"
-        fill="url(#diagonal-border-pattern)"
-      />
+      <rect width="100%" height="100%" fill="url(#diagonal-border-pattern)" />
     </svg>
   </div>
 )
@@ -73,7 +69,9 @@ const MapFeaturePin = ({
     <div className="relative flex items-center justify-center">
       <div className="absolute size-10 rounded-full bg-gray-950 ring-1 ring-white/15"></div>
       {label && (
-        <div className={`absolute -top-4 flex w-fit items-center justify-center rounded-full bg-gray-950 px-2 py-0.5 text-xs whitespace-nowrap text-white ring-1 ring-white/15 ${labelClass}`}>
+        <div
+          className={`absolute -top-4 flex w-fit items-center justify-center rounded-full bg-gray-950 px-2 py-0.5 text-xs whitespace-nowrap text-white ring-1 ring-white/15 ${labelClass}`}
+        >
           {label}
         </div>
       )}
@@ -108,7 +106,9 @@ export const Map = () => {
         Expert Software & Cloud Consulting, Wherever You Are
       </h2>
       <p className="mt-4 max-w-2xl text-center text-base text-balance text-gray-400 sm:mt-8 sm:text-xl">
-        Our team operates from Germany, collaborating with enterprises and startups worldwide to architect, build, and optimize custom software and cloud systems.
+        Our team operates from Germany, collaborating with enterprises and
+        startups worldwide to architect, build, and optimize custom software and
+        cloud systems.
       </p>
 
       <div className="relative mt-20 mb-10 ml-[17rem] scale-90 sm:mb-16 md:mt-24 md:ml-0 md:scale-100">

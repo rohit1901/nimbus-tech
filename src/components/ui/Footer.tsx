@@ -3,10 +3,10 @@ import {
   RiLinkedinBoxFill,
   RiTwitterXFill,
   RiYoutubeFill,
-} from "@remixicon/react";
-import Link from "next/link";
-import { SolarLogo } from "../../../public/SolarLogo";
-export type FooterSectionItem = {
+} from "@remixicon/react"
+import Link from "next/link"
+import { SolarLogo } from "../../../public/SolarLogo"
+export type NavigationSectionItem = {
   label: string
   href: string
   external?: boolean
@@ -15,7 +15,7 @@ export type FooterSectionItem = {
 // Type for a single footer section (e.g., Services, Company)
 export type FooterSection = {
   title: string
-  items: FooterSectionItem[]
+  items: NavigationSectionItem[]
 }
 
 // Type for the overall sections object
@@ -27,47 +27,50 @@ const sections: FooterSections = {
   services: {
     title: "Services",
     items: [
-      { label: "Software Development", href: "#" },
-      { label: "Cloud Architecture", href: "#" },
-      { label: "DevOps & Automation", href: "#" },
-      { label: "Software Architecture", href: "#" },
-      { label: "Technology Assessment", href: "#" },
-      // "Support & Maintenance" can stay if you plan to offer it from the start
+      { label: "Software Development", href: "#solutions" },
+      { label: "Cloud Architecture", href: "#solutions" },
+      { label: "DevOps & Automation", href: "#solutions" },
+      { label: "Software Architecture", href: "#solutions" },
+      { label: "Technology Assessment", href: "#solutions" },
     ],
   },
   company: {
     title: "Company",
     items: [
-      { label: "About Nimbus Tech", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "About Nimbus Tech", href: "#about-us" },
+      {
+        label: "Blog",
+        href: "https://rohitkhanduri.substack.com",
+        external: true,
+      }, //TODO:  Link to Substack for now
       // Careers removed (add later when hiring)
       // Case Studies removed (add after first projects)
-      { label: "Our Values", href: "#" },
-      { label: "News & Updates", href: "#" }, // Optional: Announce launch progress
+      { label: "Our Values", href: "#our-values" },
+      {
+        label: "News & Updates",
+        href: "https://rohitkhanduri.substack.com",
+        external: true,
+      }, //TODO:  Link to Substack for now
     ],
   },
   resources: {
     title: "Resources",
     items: [
-      { label: "Contact", href: "#" },
-      { label: "Support", href: "#" },
+      // TODO: Add links to documentation, guides, or other resources when available
+      {
+        label: "Contact",
+        href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+      },
+      {
+        label: "Support",
+        href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+      },
       { label: "Privacy Policy", href: "#" },
       { label: "Terms of Service", href: "#" },
       // "Report an Issue" can stay if you want to be open to feedback from day one
     ],
   },
-  technologies: {
-    title: "Technologies",
-    items: [
-      { label: "AWS", href: "#", external: true },
-      { label: "Java & J2EE", href: "#", external: true },
-      { label: "JavaScript & TypeScript", href: "#", external: true },
-      { label: "React, Angular, Vue", href: "#", external: true },
-      { label: "DevOps Tools", href: "#", external: true },
-    ],
-  },
 }
-
 
 const Footer = () => {
   return (
@@ -117,9 +120,7 @@ const Footer = () => {
             </svg>
           </div>
         </div>
-        <svg
-          className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300"
-        >
+        <svg className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300">
           <defs>
             <pattern
               id="diagonal-footer-pattern"

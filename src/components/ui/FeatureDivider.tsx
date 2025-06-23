@@ -1,4 +1,4 @@
-import { Divider } from "../Divider"
+import { Divider } from "@/components/Divider"
 
 export default function FeatureDivider({ className }: { className?: string }) {
   return (

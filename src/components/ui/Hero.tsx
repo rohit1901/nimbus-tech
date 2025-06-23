@@ -1,10 +1,12 @@
+import { Button } from "@/components/Button"
+import { FadeContainer, FadeDiv, FadeSpan } from "@/components/Fade"
+import GameOfLife from "@/components/ui/HeroBackground"
 import { RiArrowRightUpLine } from "@remixicon/react"
-import { FadeContainer, FadeDiv, FadeSpan } from "../Fade"
-import GameOfLife from "./HeroBackground"
+import Link from "next/link"
 
-export function Hero() {
+export default function Hero() {
   return (
-    <section aria-label="hero">
+    <section aria-label="hero" id="hero-section">
       <FadeContainer className="relative flex flex-col items-center justify-center">
         <FadeDiv className="mx-auto">
           <a
@@ -41,12 +43,11 @@ export function Hero() {
           </FadeSpan>
         </p>
         <FadeDiv>
-          <a
-            className="mt-6 inline-flex cursor-pointer flex-row items-center justify-center gap-1 rounded-md border-b-[1.5px] border-orange-700 bg-linear-to-b from-orange-400 to-orange-500 px-5 py-3 leading-4 font-medium tracking-wide whitespace-nowrap text-white shadow-[0_0_0_2px_rgba(0,0,0,0.04),0_0_14px_0_rgba(255,255,255,0.19)] transition-all duration-200 ease-in-out hover:shadow-orange-300"
-            href="mailto:r.khanduri@nimbus-tech.de"
-          >
-            Contact Us
-          </a>
+          <Button asChild className="text-md">
+            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
+              Contact Us
+            </Link>
+          </Button>
         </FadeDiv>
         <div className="absolute inset-0 -z-10 flex items-center justify-center">
           <GameOfLife />
@@ -55,4 +56,3 @@ export function Hero() {
     </section>
   )
 }
-
