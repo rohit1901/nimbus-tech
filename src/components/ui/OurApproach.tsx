@@ -1,5 +1,5 @@
+import { OurApproachContent } from "@/app/types"
 import Heading from "@/components/Heading"
-import { OurApproachContent } from "@/components/ui/AboutUs"
 import { cx } from "@/lib/utils"
 import { RiCheckLine } from "@remixicon/react"
 

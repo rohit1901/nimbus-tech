@@ -1,98 +1,13 @@
-import { CompositePageContentWithExtras, FooterSections, Language } from "@/app/types";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/Select";
+import { CURRENT_YEAR, footerPageContent } from "@/app/data"
+import Link from "next/link"
+import { SolarLogo } from "../../../public/SolarLogo"
 import {
-  RiGithubFill,
-  RiLinkedinBoxFill,
-  RiXingFill
-} from "@remixicon/react";
-import Link from "next/link";
-import { SolarLogo } from "../../../public/SolarLogo";
-
-const CURRENT_YEAR = new Date().getFullYear()
-const footerPageContent: CompositePageContentWithExtras<{ sections: FooterSections, languages: Language[] }> = {
-  title: "Footer",
-  sections: {
-    services: {
-      title: "Services",
-      items: [
-        { label: "Software Development", href: "#features" },
-        { label: "Cloud Architecture", href: "#features" },
-        { label: "DevOps & Automation", href: "#features" },
-        { label: "Software Architecture", href: "#features" },
-        { label: "Technology Assessment", href: "#features" },
-      ],
-    },
-    company: {
-      title: "Company",
-      items: [
-        { label: "About Nimbus Tech", href: "#about-us" },
-        {
-          label: "Blog",
-          href: "https://rohitkhanduri.substack.com",
-          external: true,
-        }, //TODO:  Link to Substack for now
-        // Careers removed (add later when hiring)
-        // Case Studies removed (add after first projects)
-        { label: "Our Values", href: "#our-values" },
-        {
-          label: "News & Updates",
-          href: "https://rohitkhanduri.substack.com",
-          external: true,
-        }, //TODO:  Link to Substack for now
-      ],
-    },
-    resources: {
-      title: "Resources",
-      items: [
-        // TODO: Add links to documentation, guides, or other resources when available
-        {
-          label: "Contact",
-          href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-        },
-        {
-          label: "Support",
-          href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-        },
-        { label: "Privacy Policy", href: "#" },
-        { label: "Terms of Service", href: "#" },
-        // "Report an Issue" can stay if you want to be open to feedback from day one
-      ],
-    },
-    social: {
-      title: "Follow Us",
-      items: [
-        {
-          label: "GitHub",
-          href: "https://rohit1901.github.com",
-          external: true,
-          icon: RiGithubFill
-        },
-        {
-          label: "LinkedIn",
-          href: "#",
-          external: true,
-          icon: RiLinkedinBoxFill
-        },
-        {
-          label: "Xing",
-          href: "#",
-          external: true,
-          icon: RiXingFill
-        },
-      ]
-    },
-  },
-  languages: [
-    {
-      label: "English",
-      value: "en-US"
-    },
-    {
-      label: "German",
-      value: "de-DE"
-    }
-  ]
-}
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../Select"
 
 const Copyright = () => {
   return (
@@ -101,7 +16,7 @@ const Copyright = () => {
     </div>
   )
 }
-const Footer = () => {
+export default function Footer() {
   return (
     <div className="px-4 xl:px-0">
       <footer
@@ -177,16 +92,15 @@ const Footer = () => {
             fill="url(#diagonal-footer-pattern)"
           />
         </svg>
-        <div className="mr-auto flex w-full justify-between lg:w-fit lg:flex-col">
+        <div className="mr-auto flex w-full flex-col justify-between lg:w-fit">
           <Link
             href="/"
             className="flex items-center font-medium text-gray-700 select-none sm:text-sm"
           >
-            <SolarLogo className="ml-0 w-50" />
+            <SolarLogo className="w-50" />
             <span className="sr-only">Nimbus Tech Logo (go home)</span>
           </Link>
-
-          <div className="lg:block flex items-center">
+          <div className="flex items-center lg:block">
             <div className="ml-1 flex items-center">
               {/* Social Icons */}
               {footerPageContent.sections.social.items.map((item) => (
@@ -197,17 +111,13 @@ const Footer = () => {
                   rel={item.external ? "noopener noreferrer" : undefined}
                   className="ml-3 text-gray-600 transition-colors duration-200 hover:text-gray-900"
                 >
-                  {item.icon ? (
-                    <item.icon className="h-6 w-6" />
-                  ) : (
-                    item.label
-                  )}
+                  {item.icon ? <item.icon className="h-6 w-6" /> : item.label}
                 </Link>
               ))}
             </div>
             <Copyright />
           </div>
-          <div className="w-[250px] ml-4">
+          <div className="m-4 max-w-[250px]">
             <Select defaultValue="de-DE">
               <SelectTrigger id="languages" className="mt-2">
                 <SelectValue placeholder="Choose language" />
@@ -219,14 +129,12 @@ const Footer = () => {
                   </SelectItem>
                 ))}
               </SelectContent>
-
             </Select>
           </div>
         </div>
-
         {/* Footer Sections */}
         {Object.entries(footerPageContent.sections).map(([key, section]) => (
-          <div key={key} className="mt-10 min-w-44 pl-2 lg:mt-0 lg:pl-0">
+          <div key={key} className="mt-6 min-w-44 pl-2 lg:mt-0 lg:pl-0">
             <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
               {section.title}
             </h3>
@@ -250,5 +158,3 @@ const Footer = () => {
     </div>
   )
 }
-
-export default Footer

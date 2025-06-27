@@ -1,34 +1,6 @@
-import { Benefit, CompositePageContent } from "@/app/types"
-import {
-  RiAwardFill,
-  RiFlashlightFill,
-  RiMoneyEuroBoxFill
-} from "@remixicon/react"
-import { StickerCard } from "./StickerCard"
+import { benefitsContent } from "@/app/data"
+import { StickerCard } from "@/components/ui/StickerCard"
 
-
-const benefitsContent: CompositePageContent<'benefits', Benefit[]> = {
-  title: "Your Benefits with Nimbus Tech",
-  benefits: [
-    {
-      icon: RiAwardFill,
-      title: "Certified Experts",
-      description: "We are experienced and certified AWS cloud specialists.",
-    },
-    {
-      icon: RiMoneyEuroBoxFill,
-      title: "Full Cost Control",
-      description:
-        "We ensure transparent and predictable costs for your cloud project.",
-    },
-    {
-      icon: RiFlashlightFill,
-      title: "Fast Implementation",
-      description:
-        "We implement your individual cloud project efficiently and quickly.",
-    },
-  ],
-}
 export default function WhyNimbusTech() {
   return (
     <section className="bg-gray-50" id="benefits">

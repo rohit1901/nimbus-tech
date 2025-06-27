@@ -1,4 +1,4 @@
-import { PageContentWithSubHeading } from "@/app/types"
+import { mapPageContent } from "@/app/data"
 import { SVGMap } from "@/components/ui/Map/SVGMap"
 import {
   RemixiconComponentType,
@@ -11,9 +11,7 @@ import {
 } from "@remixicon/react"
 
 type MapBorderProps = {
-  position?:
-  | "left"
-  | "right"
+  position?: "left" | "right"
 }
 type MapFeaturePinProps = {
   className?: string
@@ -23,12 +21,6 @@ type MapFeaturePinProps = {
   iconClass?: string
   pingColor?: string
   animationDelay?: string
-}
-
-const mapPageContent: PageContentWithSubHeading = {
-  title: "Global Reach, Local Expertise",
-  subheading: "Expert Software & Cloud Consulting, Wherever You Are",
-  description: "Our team operates from Germany, collaborating with enterprises and startups worldwide to architect, build, and optimize custom software and cloud systems."
 }
 
 // Reusable border component

@@ -1,4 +1,5 @@
-import { CompositePageContentWithExtras, FeatureVisualization } from "@/app/types"
+import { featuresContent } from "@/app/data"
+import { FeatureVisualization } from "@/app/types"
 import { Icons } from "@/components/Icons"
 import { Orbit } from "@/components/Orbit"
 import ChipViz from "@/components/ui/ChipViz"
@@ -376,51 +377,20 @@ const ArchitectureFeatureVisualization = () => {
 }
 
 // --- Main Features Component ---
-
-const featuresContent: CompositePageContentWithExtras<{
-  id: string
-  longDescription: string
+const Visualization = ({
+  visualization,
+}: {
   visualization: FeatureVisualization
-}>[] = [
-    {
-      id: "software-development",
-      title: "Software development",
-      description:
-        "Custom applications tailored to your business needs, from web to mobile.",
-      longDescription:
-        "Our team specializes in creating custom software solutions that streamline your operations, enhance productivity, and drive growth. Whether you need a web application, mobile app, or cloud-based solution, we have the expertise to deliver results that exceed your expectations.",
-      visualization: "OrbitFeatureVisualization",
-    },
-    {
-      id: "cloud-development",
-      title: "Cloud Development",
-      description:
-        "Seamless cloud migration and scalable solutions leveraging AWS, Azure, or GCP",
-      longDescription:
-        "Our cloud development services help you migrate to the cloud effortlessly, ensuring your applications are optimized for performance, security, and scalability. We specialize in AWS, Azure, and GCP, providing tailored solutions that meet your unique requirements.",
-      visualization: "CloudFeatureVisualization",
-    },
-    {
-      id: "architecture-consulting",
-      title: "Architecture & Consulting",
-      description:
-        "Robust system design and technical consulting for future-proof infrastructure.",
-      longDescription:
-        "Our architecture and consulting services ensure your systems are designed for scalability, reliability, and performance. We work closely with you to understand your business goals and provide tailored solutions that align with your vision .",
-      visualization: "ArchitectureFeatureVisualization",
-    },
-  ]
-
-const Visualization = ({ visualization }: { visualization: FeatureVisualization }) => {
+}) => {
   switch (visualization) {
     case "OrbitFeatureVisualization":
-      return <OrbitFeatureVisualization />;
+      return <OrbitFeatureVisualization />
     case "CloudFeatureVisualization":
-      return <CloudFeatureVisualization />;
+      return <CloudFeatureVisualization />
     case "ArchitectureFeatureVisualization":
-      return <ArchitectureFeatureVisualization />;
+      return <ArchitectureFeatureVisualization />
     default:
-      return null;
+      return null
   }
 }
 
@@ -433,22 +403,25 @@ export default function Features() {
     >
       <VerticalLines />
 
-      {featuresContent.map((feature) => (<div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0" key={feature.title}>
-        <FeatureTextBlock title={feature.title}>
-          <p
-            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
-            id={feature.id}
-          >
-            {feature.description}
-          </p>
-          <p className="mt-4 text-balance text-gray-700">
-            {feature.longDescription}
-          </p>
-        </FeatureTextBlock>
-        <Visualization visualization={feature.visualization} />
-      </div>
+      {featuresContent.map((feature) => (
+        <div
+          className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0"
+          key={feature.title}
+        >
+          <FeatureTextBlock title={feature.title}>
+            <p
+              className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+              id={feature.id}
+            >
+              {feature.description}
+            </p>
+            <p className="mt-4 text-balance text-gray-700">
+              {feature.longDescription}
+            </p>
+          </FeatureTextBlock>
+          <Visualization visualization={feature.visualization} />
+        </div>
       ))}
-
     </section>
   )
 }

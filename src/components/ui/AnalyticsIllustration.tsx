@@ -1,3 +1,5 @@
+import { analyticsData } from "@/app/data"
+import { AnalyticsStats, AnalyticsSummaryItem } from "@/app/types"
 import {
   Table,
   TableBody,
@@ -8,86 +10,7 @@ import {
   TableRow,
 } from "@/components/Table"
 import { LineChartIllustration } from "../../../public/images/LineChartIllustration"
-// Type for a single project summary row
-export type AnalyticsSummaryItem = {
-  name: string
-  deployments: string
-  uptime: string
-  clientSatisfaction: string
-  efficiency: string
-  revenueGrowth: string
-  bgColor: string
-  changeType: "positive" | "negative"
-}
 
-// Type for the stats section above the table
-export type AnalyticsStats = {
-  totalDeployments: string
-  deploymentChange: string
-  deploymentChangePercent: string
-  changePeriod: string
-}
-
-// Type for the overall analytics data object
-export type AnalyticsData = {
-  heading: string
-  subheading: string
-  stats: AnalyticsStats
-  tableHeadings: string[]
-  summary: AnalyticsSummaryItem[]
-}
-
-const analyticsData: AnalyticsData = {
-  heading: "Project Performance Overview",
-  subheading:
-    "Expert insights into deployments, uptime, and client satisfaction across key Nimbus Tech projects.",
-  stats: {
-    totalDeployments: "305",
-    deploymentChange: "+25 deployments",
-    deploymentChangePercent: "8.9",
-    changePeriod: "Last quarter",
-  },
-  tableHeadings: [
-    "Project",
-    "Deployments",
-    "Uptime",
-    "Client Sat.",
-    "Efficiency",
-    "Revenue Growth",
-  ],
-  summary: [
-    {
-      name: "Project Nimbus",
-      deployments: "120",
-      uptime: "99.9%",
-      clientSatisfaction: "+4.8",
-      efficiency: "+7.2%",
-      revenueGrowth: "+12.5%",
-      bgColor: "bg-blue-500",
-      changeType: "positive",
-    },
-    {
-      name: "Cloud Migration",
-      deployments: "85",
-      uptime: "99.7%",
-      clientSatisfaction: "+3.9",
-      efficiency: "+5.4%",
-      revenueGrowth: "+8.3%",
-      bgColor: "bg-green-500",
-      changeType: "positive",
-    },
-    {
-      name: "Enterprise App",
-      deployments: "60",
-      uptime: "98.5%",
-      clientSatisfaction: "-1.2",
-      efficiency: "-2.5%",
-      revenueGrowth: "-3.8%",
-      bgColor: "bg-yellow-400",
-      changeType: "negative",
-    },
-  ],
-}
 type AnalyticsIllustrationProps = {
   summary?: AnalyticsSummaryItem[]
   totalDeployments?: string

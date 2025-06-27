@@ -1,7 +1,7 @@
 "use client"
 
+import { navigationPageContent, navLinks } from "@/app/data"
 import { siteConfig } from "@/app/siteConfig"
-import { NavigationSectionItem, PageContent } from "@/app/types"
 import { Button } from "@/components/Button"
 import useScroll from "@/lib/useScroll"
 import { cx } from "@/lib/utils"
@@ -9,30 +9,6 @@ import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
 import { SolarLogo } from "../../../public/SolarLogo"
-
-const navigationPageContent: PageContent = {
-  title: "Nimbus Tech",
-  description:
-    "Nimbus Tech is a software development and consulting company specializing in cloud architecture, DevOps, and automation solutions. We help businesses build scalable, efficient, and secure software systems.",
-  image:
-    "https://nimbus-tech.de/images/nimbus-tech-hero-image.jpg", // Example image URL, replace with actual image path
-  imageAlt: "Nimbus Tech Hero Image",
-  cta: {
-    label: "Get started",
-    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-  },
-}
-
-// navLinks.ts or navLinks.json (can be imported or fetched from CMS/API)
-const navLinks: NavigationSectionItem[] = [
-  { label: "Services", href: "#features" },
-  { label: "About Us", href: "#about-us" },
-  { label: "Blog", href: "https://rohitkhanduri.substack.com", external: true }, // TODO: Link to Substack for now
-  {
-    label: "Contact",
-    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-  },
-]
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)

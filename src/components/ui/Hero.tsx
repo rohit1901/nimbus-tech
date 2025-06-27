@@ -1,31 +1,8 @@
-import { CompositePageContent, HeroType } from "@/app/types"
+import { heroPageContent } from "@/app/data"
 import { Button } from "@/components/Button"
 import { FadeContainer, FadeDiv, FadeSpan } from "@/components/Fade"
 import GameOfLife from "@/components/ui/HeroBackground"
-import { RiArrowRightUpLine } from "@remixicon/react"
 import Link from "next/link"
-
-const heroPageContent: CompositePageContent<'hero', HeroType> = {
-  title: "Nimbus Tech",
-  description: "Custom software development, cloud architecture, and scalable solutions for modern enterprises.",
-  hero: {
-    subHeading: "Expert Software & Cloud Solutions",
-    banner: {
-      label: "News",
-      href: "https://rohitkhanduri.substack.com", // TODO: Substack for now, change later
-      external: true,
-      additional: {
-        icon: RiArrowRightUpLine,
-        text: "Nimbus Tech is launching soon!"
-      }
-    }
-  },
-  cta: {
-    label: "Contact Us",
-    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de", // TODO: Substack for now, change later
-    external: true
-  }
-}
 
 export default function Hero() {
   return (
@@ -36,7 +13,11 @@ export default function Hero() {
             aria-label={`Learn more about ${heroPageContent.title}`}
             href={heroPageContent.hero.banner.href}
             target={heroPageContent.hero.banner.external ? "_blank" : undefined}
-            rel={heroPageContent.hero.banner.external ? "noopener noreferrer" : undefined}
+            rel={
+              heroPageContent.hero.banner.external
+                ? "noopener noreferrer"
+                : undefined
+            }
             className="mx-auto w-full"
           >
             <div className="inline-flex max-w-full items-center gap-3 rounded-full bg-white/5 px-2.5 py-0.5 pr-3 pl-0.5 font-medium text-gray-900 shadow-lg ring-1 shadow-orange-400/20 ring-black/10 filter backdrop-blur-[1px] transition-colors hover:bg-orange-500/[2.5%] focus:outline-hidden sm:text-sm">
@@ -62,16 +43,18 @@ export default function Hero() {
           </FadeSpan>
         </h1>
         <p className="mt-5 max-w-xl text-center text-base text-balance text-gray-700 sm:mt-8 sm:text-xl">
-          <FadeSpan>
-            {heroPageContent.description}
-          </FadeSpan>
+          <FadeSpan>{heroPageContent.description}</FadeSpan>
         </p>
         <FadeDiv>
           <Button asChild className="text-md my-10">
             <Link
               href={heroPageContent.cta?.href ?? "#"}
               target={heroPageContent.cta?.external ? "_blank" : undefined}
-              rel={heroPageContent.cta?.external ? "noopener noreferrer" : undefined}
+              rel={
+                heroPageContent.cta?.external
+                  ? "noopener noreferrer"
+                  : undefined
+              }
             >
               {heroPageContent.cta?.label}
             </Link>
