@@ -1,5 +1,6 @@
 "use client"
 
+import { Certification, CompositePageContent } from "@/app/types"
 import { Button } from "@/components/Button"
 import {
   Carousel,
@@ -11,15 +12,6 @@ import {
 import Heading from "@/components/Heading"
 import Image from "next/image"
 import Link from "next/link"
-type Certification = {
-  id: number
-  title: string
-  description: string
-  image: string
-  link?: string // Optional link for certifications that have a URL
-  width: number
-  height: number
-}
 
 const certifications: Certification[] = [
   {
@@ -88,19 +80,28 @@ const certifications: Certification[] = [
   },
 ]
 
-export function OurCertifications() {
+const ourCertificationsPageContent: CompositePageContent<'certifications', Certification[]> = {
+  title: "Our Certifications",
+  description: "Nimbus Tech is certified in various technologies and methodologies, ensuring the highest quality standards in our projects.",
+  certifications,
+  cta: {
+    label: "Let’s Talk",
+    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de"
+  }
+}
+
+export default function OurCertifications() {
   return (
     <section id="our-certifications" className="bg-gray-50">
       <div className="mx-auto max-w-4xl text-center">
-        <Heading title="Our Certifications" />
+        <Heading title={ourCertificationsPageContent.title} />
         <p className="my-10 text-gray-700">
-          Nimbus Tech is certified in various technologies and methodologies,
-          ensuring the highest quality standards in our projects.
+          {ourCertificationsPageContent.description}
         </p>
         <div className="flex justify-center">
           <Carousel className="w-full max-w-md">
             <CarouselContent>
-              {certifications.map((certification) => (
+              {ourCertificationsPageContent.certifications.map((certification) => (
                 <CarouselItem
                   key={certification.id}
                   className="flex flex-col items-center p-4"
@@ -132,8 +133,8 @@ export function OurCertifications() {
         </div>
         <div className="mt-10">
           <Button asChild className="text-md">
-            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
-              Let’s Talk
+            <Link href={ourCertificationsPageContent.cta?.href ?? "#"}>
+              {ourCertificationsPageContent.cta?.label ?? ""}
             </Link>
           </Button>
         </div>

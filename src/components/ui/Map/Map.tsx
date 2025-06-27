@@ -1,3 +1,4 @@
+import { PageContentWithSubHeading } from "@/app/types"
 import { SVGMap } from "@/components/ui/Map/SVGMap"
 import {
   RemixiconComponentType,
@@ -9,7 +10,11 @@ import {
   RiTeamLine,
 } from "@remixicon/react"
 
-type MapBorderProps = { position?: "left" | "right" }
+type MapBorderProps = {
+  position?:
+  | "left"
+  | "right"
+}
 type MapFeaturePinProps = {
   className?: string
   icon: RemixiconComponentType
@@ -18,6 +23,12 @@ type MapFeaturePinProps = {
   iconClass?: string
   pingColor?: string
   animationDelay?: string
+}
+
+const mapPageContent: PageContentWithSubHeading = {
+  title: "Global Reach, Local Expertise",
+  subheading: "Expert Software & Cloud Consulting, Wherever You Are",
+  description: "Our team operates from Germany, collaborating with enterprises and startups worldwide to architect, build, and optimize custom software and cloud systems."
 }
 
 // Reusable border component
@@ -86,7 +97,7 @@ const MapFeaturePin = ({
   </div>
 )
 
-export const Map = () => {
+export default function Map() {
   return (
     <section
       id="location"
@@ -97,18 +108,16 @@ export const Map = () => {
       <MapBorder position="right" />
 
       <div className="pt-12 text-base font-semibold tracking-tight text-orange-400 sm:pt-20 sm:text-lg">
-        Global Reach, Local Expertise
+        {mapPageContent.title}
       </div>
       <h2
         id="location-title"
         className="mt-6 max-w-[700px] text-center text-2xl font-semibold tracking-tight text-balance text-white md:text-5xl"
       >
-        Expert Software & Cloud Consulting, Wherever You Are
+        {mapPageContent.subheading}
       </h2>
       <p className="mt-4 max-w-2xl text-center text-base text-balance text-gray-400 sm:mt-8 sm:text-xl">
-        Our team operates from Germany, collaborating with enterprises and
-        startups worldwide to architect, build, and optimize custom software and
-        cloud systems.
+        {mapPageContent.description ?? ""}
       </p>
 
       <div className="relative mt-20 mb-10 ml-[17rem] scale-90 sm:mb-16 md:mt-24 md:ml-0 md:scale-100">

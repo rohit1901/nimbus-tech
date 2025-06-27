@@ -1,6 +1,6 @@
+import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import Link from "next/link"
-import { siteConfig } from "./siteConfig"
 
 import { SolarLogo } from "../../public/SolarLogo"
 

@@ -1,3 +1,4 @@
+import { CompositePageContentWithExtras, FeatureVisualization } from "@/app/types"
 import { Icons } from "@/components/Icons"
 import { Orbit } from "@/components/Orbit"
 import ChipViz from "@/components/ui/ChipViz"
@@ -16,11 +17,12 @@ import {
   RiStackLine,
   RiTeamLine,
 } from "@remixicon/react"
+import { PropsWithChildren } from "react"
 import { SolarMark } from "../../../public/SolarMark"
 
 // --- Reusable Components ---
 
-function VerticalLines() {
+const VerticalLines = () => {
   const lines = [
     { className: "absolute inset-y-0 my-[-5rem] w-px", style: {}, show: true },
     {
@@ -75,13 +77,13 @@ function VerticalLines() {
   )
 }
 
-function FeatureTextBlock({
+const FeatureTextBlock = ({
   title,
   children,
-}: {
+}: PropsWithChildren<{
   title: string
   children: React.ReactNode
-}) {
+}>) => {
   return (
     <div className="col-span-2 my-auto px-2">
       <h2 className="relative text-lg font-semibold tracking-tight text-orange-500">
@@ -93,7 +95,7 @@ function FeatureTextBlock({
   )
 }
 
-function OrbitFeatureVisualization() {
+const OrbitFeatureVisualization = () => {
   return (
     <div className="relative col-span-2 flex items-center justify-center overflow-hidden">
       <PatternBackground />
@@ -175,7 +177,7 @@ function OrbitFeatureVisualization() {
   )
 }
 
-function OrbitObject({
+const OrbitObject = ({
   icon,
   label,
   labelColor,
@@ -187,7 +189,7 @@ function OrbitObject({
   labelColor?: string
   iconLabel?: React.ReactNode
   pingDelay?: string
-}) {
+}) => {
   return (
     <div className="relative flex items-center justify-center">
       {icon}
@@ -216,7 +218,7 @@ function OrbitObject({
   )
 }
 
-function PatternBackground() {
+const PatternBackground = () => {
   return (
     <svg className="absolute size-full [mask-image:linear-gradient(transparent,white_10rem)]">
       <defs>
@@ -244,7 +246,7 @@ function PatternBackground() {
   )
 }
 
-function CloudFeatureVisualization() {
+const CloudFeatureVisualization = () => {
   const tempData = [
     { top: 144, left: 48, value: "14°C" },
     { top: 48, left: 144, value: "18°C" },
@@ -296,7 +298,7 @@ function CloudFeatureVisualization() {
   )
 }
 
-function ArchitectureFeatureVisualization() {
+const ArchitectureFeatureVisualization = () => {
   const icons = [
     {
       top: "top-[6rem]",
@@ -375,68 +377,78 @@ function ArchitectureFeatureVisualization() {
 
 // --- Main Features Component ---
 
+const featuresContent: CompositePageContentWithExtras<{
+  id: string
+  longDescription: string
+  visualization: FeatureVisualization
+}>[] = [
+    {
+      id: "software-development",
+      title: "Software development",
+      description:
+        "Custom applications tailored to your business needs, from web to mobile.",
+      longDescription:
+        "Our team specializes in creating custom software solutions that streamline your operations, enhance productivity, and drive growth. Whether you need a web application, mobile app, or cloud-based solution, we have the expertise to deliver results that exceed your expectations.",
+      visualization: "OrbitFeatureVisualization",
+    },
+    {
+      id: "cloud-development",
+      title: "Cloud Development",
+      description:
+        "Seamless cloud migration and scalable solutions leveraging AWS, Azure, or GCP",
+      longDescription:
+        "Our cloud development services help you migrate to the cloud effortlessly, ensuring your applications are optimized for performance, security, and scalability. We specialize in AWS, Azure, and GCP, providing tailored solutions that meet your unique requirements.",
+      visualization: "CloudFeatureVisualization",
+    },
+    {
+      id: "architecture-consulting",
+      title: "Architecture & Consulting",
+      description:
+        "Robust system design and technical consulting for future-proof infrastructure.",
+      longDescription:
+        "Our architecture and consulting services ensure your systems are designed for scalability, reliability, and performance. We work closely with you to understand your business goals and provide tailored solutions that align with your vision .",
+      visualization: "ArchitectureFeatureVisualization",
+    },
+  ]
+
+const Visualization = ({ visualization }: { visualization: FeatureVisualization }) => {
+  switch (visualization) {
+    case "OrbitFeatureVisualization":
+      return <OrbitFeatureVisualization />;
+    case "CloudFeatureVisualization":
+      return <CloudFeatureVisualization />;
+    case "ArchitectureFeatureVisualization":
+      return <ArchitectureFeatureVisualization />;
+    default:
+      return null;
+  }
+}
+
 export default function Features() {
   return (
     <section
-      aria-label="Solutions"
-      id="solutions"
+      aria-label="Features"
+      id="features"
       className="relative mx-auto max-w-6xl scroll-my-24"
     >
       <VerticalLines />
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0">
-        <FeatureTextBlock title="Software development">
-          <p
-            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
-            id="software-development"
-          >
-            Custom applications tailored to your business needs, from web to
-            mobile.
-          </p>
-          <p className="mt-4 text-balance text-gray-700">
-            Our team specializes in creating custom software solutions that
-            streamline your operations, enhance productivity, and drive growth.
-            Whether you need a web application, mobile app, or cloud-based
-            solution, we have the expertise to deliver results that exceed your
-            expectations.
-          </p>
-        </FeatureTextBlock>
-        <OrbitFeatureVisualization />
 
-        <FeatureTextBlock title="Cloud Development">
+      {featuresContent.map((feature) => (<div className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0" key={feature.title}>
+        <FeatureTextBlock title={feature.title}>
           <p
             className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
-            id="cloud-architecture"
+            id={feature.id}
           >
-            Seamless cloud migration and scalable solutions leveraging AWS,
-            Azure, or GCP
+            {feature.description}
           </p>
           <p className="mt-4 text-balance text-gray-700">
-            Our cloud development services help you migrate to the cloud
-            effortlessly, ensuring your applications are optimized for
-            performance, security, and scalability. We specialize in AWS, Azure,
-            and GCP, providing tailored solutions that meet your unique
-            requirements.
+            {feature.longDescription}
           </p>
         </FeatureTextBlock>
-        <CloudFeatureVisualization />
-
-        <FeatureTextBlock title="Architecture & Consulting">
-          <p
-            className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
-            id="software-architecture"
-          >
-            Robust system design and technical consulting for future-proof
-            infrastructure.
-          </p>
-          <p className="mt-4 text-balance text-gray-700">
-            Our architecture and consulting services ensure your systems are
-            designed for scalability, reliability, and performance. We work
-            closely with you to understand your business goals and provide
-            tailored solutions that align with your vision.
-          </p>
-        </FeatureTextBlock>
-        <ArchitectureFeatureVisualization />
+        <Visualization visualization={feature.visualization} />
       </div>
+      ))}
+
     </section>
   )
 }

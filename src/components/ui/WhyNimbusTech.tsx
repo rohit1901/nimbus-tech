@@ -1,11 +1,13 @@
+import { Benefit, CompositePageContent } from "@/app/types"
 import {
   RiAwardFill,
   RiFlashlightFill,
-  RiMoneyEuroBoxFill,
+  RiMoneyEuroBoxFill
 } from "@remixicon/react"
 import { StickerCard } from "./StickerCard"
 
-const benefitsContent = {
+
+const benefitsContent: CompositePageContent<'benefits', Benefit[]> = {
   title: "Your Benefits with Nimbus Tech",
   benefits: [
     {

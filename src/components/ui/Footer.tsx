@@ -1,77 +1,106 @@
+import { CompositePageContentWithExtras, FooterSections, Language } from "@/app/types";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/Select";
 import {
   RiGithubFill,
   RiLinkedinBoxFill,
-  RiTwitterXFill,
-  RiYoutubeFill,
-} from "@remixicon/react"
-import Link from "next/link"
-import { SolarLogo } from "../../../public/SolarLogo"
-export type NavigationSectionItem = {
-  label: string
-  href: string
-  external?: boolean
-}
+  RiXingFill
+} from "@remixicon/react";
+import Link from "next/link";
+import { SolarLogo } from "../../../public/SolarLogo";
 
-// Type for a single footer section (e.g., Services, Company)
-export type FooterSection = {
-  title: string
-  items: NavigationSectionItem[]
-}
-
-// Type for the overall sections object
-export type FooterSections = {
-  [key: string]: FooterSection
-}
 const CURRENT_YEAR = new Date().getFullYear()
-const sections: FooterSections = {
-  services: {
-    title: "Services",
-    items: [
-      { label: "Software Development", href: "#solutions" },
-      { label: "Cloud Architecture", href: "#solutions" },
-      { label: "DevOps & Automation", href: "#solutions" },
-      { label: "Software Architecture", href: "#solutions" },
-      { label: "Technology Assessment", href: "#solutions" },
-    ],
+const footerPageContent: CompositePageContentWithExtras<{ sections: FooterSections, languages: Language[] }> = {
+  title: "Footer",
+  sections: {
+    services: {
+      title: "Services",
+      items: [
+        { label: "Software Development", href: "#features" },
+        { label: "Cloud Architecture", href: "#features" },
+        { label: "DevOps & Automation", href: "#features" },
+        { label: "Software Architecture", href: "#features" },
+        { label: "Technology Assessment", href: "#features" },
+      ],
+    },
+    company: {
+      title: "Company",
+      items: [
+        { label: "About Nimbus Tech", href: "#about-us" },
+        {
+          label: "Blog",
+          href: "https://rohitkhanduri.substack.com",
+          external: true,
+        }, //TODO:  Link to Substack for now
+        // Careers removed (add later when hiring)
+        // Case Studies removed (add after first projects)
+        { label: "Our Values", href: "#our-values" },
+        {
+          label: "News & Updates",
+          href: "https://rohitkhanduri.substack.com",
+          external: true,
+        }, //TODO:  Link to Substack for now
+      ],
+    },
+    resources: {
+      title: "Resources",
+      items: [
+        // TODO: Add links to documentation, guides, or other resources when available
+        {
+          label: "Contact",
+          href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+        },
+        {
+          label: "Support",
+          href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+        },
+        { label: "Privacy Policy", href: "#" },
+        { label: "Terms of Service", href: "#" },
+        // "Report an Issue" can stay if you want to be open to feedback from day one
+      ],
+    },
+    social: {
+      title: "Follow Us",
+      items: [
+        {
+          label: "GitHub",
+          href: "https://rohit1901.github.com",
+          external: true,
+          icon: RiGithubFill
+        },
+        {
+          label: "LinkedIn",
+          href: "#",
+          external: true,
+          icon: RiLinkedinBoxFill
+        },
+        {
+          label: "Xing",
+          href: "#",
+          external: true,
+          icon: RiXingFill
+        },
+      ]
+    },
   },
-  company: {
-    title: "Company",
-    items: [
-      { label: "About Nimbus Tech", href: "#about-us" },
-      {
-        label: "Blog",
-        href: "https://rohitkhanduri.substack.com",
-        external: true,
-      }, //TODO:  Link to Substack for now
-      // Careers removed (add later when hiring)
-      // Case Studies removed (add after first projects)
-      { label: "Our Values", href: "#our-values" },
-      {
-        label: "News & Updates",
-        href: "https://rohitkhanduri.substack.com",
-        external: true,
-      }, //TODO:  Link to Substack for now
-    ],
-  },
-  resources: {
-    title: "Resources",
-    items: [
-      // TODO: Add links to documentation, guides, or other resources when available
-      {
-        label: "Contact",
-        href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-      },
-      {
-        label: "Support",
-        href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-      },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      // "Report an Issue" can stay if you want to be open to feedback from day one
-    ],
-  },
+  languages: [
+    {
+      label: "English",
+      value: "en-US"
+    },
+    {
+      label: "German",
+      value: "de-DE"
+    }
+  ]
 }
 
+const Copyright = () => {
+  return (
+    <div className="ml-3 hidden text-sm text-gray-700 lg:inline">
+      &copy; {CURRENT_YEAR} Nimbus Tech GmbH &mdash; Leipzig, Germany
+    </div>
+  )
+}
 const Footer = () => {
   return (
     <div className="px-4 xl:px-0">
@@ -154,57 +183,49 @@ const Footer = () => {
             className="flex items-center font-medium text-gray-700 select-none sm:text-sm"
           >
             <SolarLogo className="ml-0 w-50" />
-            <span className="sr-only">Solar Logo (go home)</span>
+            <span className="sr-only">Nimbus Tech Logo (go home)</span>
           </Link>
 
-          <div>
-            <div className="mt-4 ml-1 flex items-center">
+          <div className="lg:block flex items-center">
+            <div className="ml-1 flex items-center">
               {/* Social Icons */}
-              <Link
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
-                aria-label="Nimbus Tech on Twitter"
-              >
-                <RiTwitterXFill className="size-5" />
-              </Link>
-              <Link
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
-                aria-label="Nimbus Tech on YouTube"
-              >
-                <RiYoutubeFill className="size-5" />
-              </Link>
-              <Link
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
-                aria-label="Nimbus Tech on GitHub"
-              >
-                <RiGithubFill className="size-5" />
-              </Link>
-              <Link
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm p-2 text-gray-700 transition-colors duration-200 hover:bg-gray-200 hover:text-gray-900"
-                aria-label="Nimbus Tech on LinkedIn"
-              >
-                <RiLinkedinBoxFill className="size-5" />
-              </Link>
+              {footerPageContent.sections.social.items.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                  className="ml-3 text-gray-600 transition-colors duration-200 hover:text-gray-900"
+                >
+                  {item.icon ? (
+                    <item.icon className="h-6 w-6" />
+                  ) : (
+                    item.label
+                  )}
+                </Link>
+              ))}
             </div>
-            <div className="ml-3 hidden text-sm text-gray-700 lg:inline">
-              &copy; {CURRENT_YEAR} Nimbus Tech GmbH &mdash; Leipzig, Germany
-            </div>
+            <Copyright />
+          </div>
+          <div className="w-[250px] ml-4">
+            <Select defaultValue="de-DE">
+              <SelectTrigger id="languages" className="mt-2">
+                <SelectValue placeholder="Choose language" />
+              </SelectTrigger>
+              <SelectContent>
+                {footerPageContent.languages.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    {item.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+
+            </Select>
           </div>
         </div>
 
         {/* Footer Sections */}
-        {Object.entries(sections).map(([key, section]) => (
+        {Object.entries(footerPageContent.sections).map(([key, section]) => (
           <div key={key} className="mt-10 min-w-44 pl-2 lg:mt-0 lg:pl-0">
             <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
               {section.title}

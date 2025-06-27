@@ -1,12 +1,12 @@
 import AboutUs from "@/components/ui/AboutUs"
-import { CallToAction } from "@/components/ui/CallToAction"
+import CallToAction from "@/components/ui/CallToAction"
 import FaqSection from "@/components/ui/FAQ"
 import FeatureDivider from "@/components/ui/FeatureDivider"
 import Features from "@/components/ui/Features"
 import Hero from "@/components/ui/Hero"
-import { Map } from "@/components/ui/Map/Map"
-import { OurCertifications } from "@/components/ui/OurCertifications"
-import Testimonial from "@/components/ui/Testimonial"
+import Map from "@/components/ui/Map/Map"
+import OurCertifications from "@/components/ui/OurCertifications"
+import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <Features />
       </div>
       <div className="mt-32 px-4 xl:px-0">
-        <Testimonial />
+        <Testimonials />
       </div>
       <FeatureDivider className="my-16 max-w-6xl" />
       <div className="px-4 xl:px-0">

@@ -1,18 +1,31 @@
 "use client"
 
 import { siteConfig } from "@/app/siteConfig"
-import { NavigationSectionItem } from "@/components/ui/Footer"
+import { NavigationSectionItem, PageContent } from "@/app/types"
+import { Button } from "@/components/Button"
 import useScroll from "@/lib/useScroll"
 import { cx } from "@/lib/utils"
 import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
 import { SolarLogo } from "../../../public/SolarLogo"
-import { Button } from "../Button"
+
+const navigationPageContent: PageContent = {
+  title: "Nimbus Tech",
+  description:
+    "Nimbus Tech is a software development and consulting company specializing in cloud architecture, DevOps, and automation solutions. We help businesses build scalable, efficient, and secure software systems.",
+  image:
+    "https://nimbus-tech.de/images/nimbus-tech-hero-image.jpg", // Example image URL, replace with actual image path
+  imageAlt: "Nimbus Tech Hero Image",
+  cta: {
+    label: "Get started",
+    href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+  },
+}
 
 // navLinks.ts or navLinks.json (can be imported or fetched from CMS/API)
 const navLinks: NavigationSectionItem[] = [
-  { label: "Services", href: "#solutions" },
+  { label: "Services", href: "#features" },
   { label: "About Us", href: "#about-us" },
   { label: "Blog", href: "https://rohitkhanduri.substack.com", external: true }, // TODO: Link to Substack for now
   {
@@ -37,7 +50,7 @@ export function NavBar() {
       <div className="w-full md:my-auto">
         <div className="relative flex items-center justify-between">
           <Link href={siteConfig.baseLinks.home} aria-label="Home">
-            <span className="sr-only">Nimbus Tech Logo</span>
+            <span className="sr-only">{navigationPageContent.imageAlt}</span>
             <SolarLogo className="w-44" />
           </Link>
           <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
@@ -59,8 +72,8 @@ export function NavBar() {
             variant="secondary"
             className="hidden h-10 font-semibold sm:block"
           >
-            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
-              Get started
+            <Link href={navigationPageContent.cta?.href ?? "#"}>
+              {navigationPageContent.cta?.label ?? "Get started"}
             </Link>
           </Button>
           <Button
@@ -96,8 +109,8 @@ export function NavBar() {
             ))}
           </ul>
           <Button variant="secondary" className="text-lg">
-            <Link href="mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de">
-              Get started
+            <Link href={navigationPageContent.cta?.href ?? "#"}>
+              {navigationPageContent.cta?.label ?? "Get started"}
             </Link>
           </Button>
         </nav>
