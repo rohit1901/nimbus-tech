@@ -4,7 +4,7 @@
          <img src="public/nimbus.svg" alt="Nimbus Tech Logo" width="50"/>
       </td>
       <td valign="middle">
-         <h1 style="margin:0; padding-left:10px;">Nimbus Tech Website</h1>
+         <h1 style="margin:0; padding-left:10px;">Nimbus Tech GmbH Website</h1>
       </td>
    </tr>
 </table>
