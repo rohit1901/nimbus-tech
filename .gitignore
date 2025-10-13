@@ -134,3 +134,4 @@ dist
 .idea/
 .vscode/
 .zed/
+.DS_Store
