@@ -7,16 +7,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{ts,tsx}\""
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "icons:generate": "tsx scripts/generateIcons.ts",
+    "icons:watch": "tsx watch scripts/generateIcons.ts",
+    "graphql:generate": "npx graphql-codegen --config graphql.codegen.yml"
   },
   "dependencies": {
+    "@apollo/client": "^4.0.9",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-slot": "^1.2.2",
     "@remixicon/react": "^4.6.0",
+    "apollo-server-micro": "^3.13.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "geist": "^1.4.2",
+    "graphql-tag": "^2.12.6",
     "motion": "12.12.1",
     "next": "^15.3.2",
     "react": "^19.0.0",
@@ -25,17 +31,22 @@
     "tailwind-variants": "^1.0.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typescript": "^5.0.6",
+    "@graphql-codegen/typescript-resolvers": "^5.1.4",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.19.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
+    "graphql": "^16.12.0",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.7",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3"
   }
 }

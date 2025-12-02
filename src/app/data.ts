@@ -34,18 +34,18 @@ export const benefitsContent: CompositePageContent<"benefits", Benefit[]> = {
   title: "Your Benefits with Nimbus Tech",
   benefits: [
     {
-      icon: RiAwardFill,
+      icon: "RiAwardFill",
       title: "Certified Experts",
       description: "We are experienced and certified AWS cloud specialists.",
     },
     {
-      icon: RiMoneyEuroBoxFill,
+      icon: "RiMoneyEuroBoxFill",
       title: "Full Cost Control",
       description:
         "We ensure transparent and predictable costs for your cloud project.",
     },
     {
-      icon: RiFlashlightFill,
+      icon: "RiFlashlightFill",
       title: "Fast Implementation",
       description:
         "We implement your individual cloud project efficiently and quickly.",
@@ -86,7 +86,7 @@ export const testimonialPageContent: CompositePageContentWithExtras<{
   ],
   fallback: {
     badge: {
-      icon: RiTimeLine,
+      icon: "RiTimeLine",
       label: "Coming Soon",
     },
     name: "The Nimbus Tech Team",
@@ -220,7 +220,7 @@ export const heroPageContent: CompositePageContent<"hero", HeroType> = {
       href: "https://rohitkhanduri.substack.com", // TODO: Substack for now, change later
       external: true,
       additional: {
-        icon: RiArrowRightUpLine,
+        icon: "RiArrowRightUpLine",
         text: "Nimbus Tech is launching soon!",
       },
     },
@@ -292,19 +292,19 @@ export const footerPageContent: CompositePageContentWithExtras<{
           label: "GitHub",
           href: "https://rohit1901.github.com",
           external: true,
-          icon: RiGithubFill,
+          icon: "RiGithubFill",
         },
         {
           label: "LinkedIn",
           href: "#",
           external: true,
-          icon: RiLinkedinBoxFill,
+          icon: "RiLinkedinBoxFill",
         },
         {
           label: "Xing",
           href: "#",
           external: true,
-          icon: RiXingFill,
+          icon: "RiXingFill",
         },
       ],
     },

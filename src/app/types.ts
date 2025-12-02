@@ -1,4 +1,4 @@
-import { RemixiconComponentType } from "@remixicon/react"
+import { remixIconMap } from "@/icons/remixicon-map"
 import { ImageProps } from "next/image"
 
 export type PageContent = {
@@ -37,9 +37,9 @@ export type Certification = {
 
 export type HeroType = {
   banner: {
-    icon?: RemixiconComponentType
+    icon?: keyof typeof remixIconMap
     additional?: {
-      icon: RemixiconComponentType
+      icon: keyof typeof remixIconMap
       text: string
     }
   } & CTA
@@ -52,7 +52,7 @@ export type FeatureVisualization =
   | "ArchitectureFeatureVisualization"
 
 export type Benefit = {
-  icon: RemixiconComponentType
+  icon: keyof typeof remixIconMap
   title: string
   description: string
 }
@@ -60,7 +60,7 @@ export type Benefit = {
 export type Testimonial = {
   rating?: number
   badge?: {
-    icon: RemixiconComponentType
+    icon: keyof typeof remixIconMap
     label: string
   }
   name: string
@@ -71,7 +71,7 @@ export type Testimonial = {
 }
 
 export type NavigationSectionItem = {
-  icon?: RemixiconComponentType
+  icon?: keyof typeof remixIconMap
 } & CTA
 
 // Type for a single footer section (e.g., Services, Company)
@@ -142,9 +142,9 @@ export type CompositePageContent<
 }
 
 // Usage:
-/* 
+/*
 type PageWithBenefits = CompositePageContent<'benefits', Benefit[]>;
-type PageWithFaq = CompositePageContent<'faq', FaqItem[]>; 
+type PageWithFaq = CompositePageContent<'faq', FaqItem[]>;
 */
 
 // --- Generic Composite Helper (multiple extra sections) ---
@@ -153,11 +153,11 @@ export type CompositePageContentWithExtras<
 > = PageContent & Extras
 
 // Usage:
-/* 
+/*
 type PageWithBenefitsAndFaq = CompositePageContentWithExtras<{
   benefits: Benefit[];
   faq: FaqItem[];
-}>; 
+}>;
 */
 
 // --- Helper with Lowercase Key ---
@@ -195,7 +195,7 @@ type PageWithFaqMapped = CompositePageContentWithMap<FaqItem[], 'FaqItem'>;
 
 // --- Example Usage ---
 
-/* 
+/*
 const example: PageWithBenefitsAndFaq = {
   title: "Welcome",
   benefits: [
@@ -204,5 +204,5 @@ const example: PageWithBenefitsAndFaq = {
   faq: [
     { question: "How?", answer: "Like this." }
   ]
-}; 
+};
 */
