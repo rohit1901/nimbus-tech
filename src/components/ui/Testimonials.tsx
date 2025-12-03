@@ -1,11 +1,13 @@
 import { testimonialPageContent } from "@/app/data"
-import { Testimonial } from "@/app/types"
+import { Maybe, Testimonial, TestimonialItem } from "@/app/graphql/types"
 import { Badge } from "@/components/Badge"
 import Image from "next/image"
+import { RemixIconComponent } from "@/components/RemixIconComponent"
+import { SafeImage } from "../SafeImage"
 const TestimonialOrFallback = ({
   testimonial,
 }: {
-  testimonial: Testimonial
+  testimonial: TestimonialItem
 }) => {
   return (
     <div className="mb-16" key={testimonial.name}>
@@ -16,7 +18,7 @@ const TestimonialOrFallback = ({
       <div className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         {testimonial.image && (
           <div className="relative shrink-0 rounded-full bg-white/15 p-0.5 ring-1 ring-white/20">
-            <Image {...testimonial.image} alt={testimonial.image.alt} />
+            <SafeImage {...testimonial.image} />
           </div>
         )}
         <div>
@@ -36,22 +38,44 @@ const TestimonialOrFallback = ({
 const TestimonialOrFallbackWrapper = ({
   testimonialOrFallback,
 }: {
-  testimonialOrFallback: Testimonial[] | Testimonial
+  testimonialOrFallback?: Maybe<TestimonialItem[]> | Maybe<TestimonialItem>
 }) => {
+  if (!testimonialOrFallback) {
+    return null
+  }
+
   if (Array.isArray(testimonialOrFallback)) {
     return testimonialOrFallback.map((testimonial) => (
-      <TestimonialOrFallback key={testimonial.name} testimonial={testimonial} />
+      <TestimonialOrFallback key={testimonial.id} testimonial={testimonial} />
     ))
   }
   return <TestimonialOrFallback testimonial={testimonialOrFallback} />
 }
 
-export default function Testimonials() {
+export default function Testimonials({
+  testimonial,
+}: {
+  testimonial?: Maybe<Testimonial>
+}) {
+  if (!testimonial) {
+    return null
+  }
+  const { testimonials, fallback } = testimonial
+  const getTestimonials = (
+    testimonials?: Maybe<TestimonialItem[]>,
+    fallback?: Maybe<TestimonialItem>,
+  ) => {
+    if (!testimonials || testimonials.length === 0) {
+      return fallback
+    }
+    return testimonials
+  }
+  const testimonialsToShow = getTestimonials(testimonials, fallback)
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
-      {testimonialPageContent.background.map((bg, index) => (
-        <div key={index} className={bg.outerClassName}>
-          <Image {...bg.imageProps} alt={bg.imageProps.alt} />
+      {testimonial.background?.map((bg, index) => (
+        <div key={index} className={bg.outerClassName ?? ""}>
+          <SafeImage {...bg.image} id={bg.id} />
         </div>
       ))}
       <div className="relative z-20 mb-20 p-8 sm:p-14 lg:p-24">
@@ -61,18 +85,16 @@ export default function Testimonials() {
           </span>
           {testimonialPageContent.fallback?.badge && (
             <Badge className="mt-2">
-              <testimonialPageContent.fallback.badge.icon className="h-4 w-4 text-orange-500" />
+              <RemixIconComponent
+                name={testimonialPageContent.fallback.badge.icon}
+                className="h-4 w-4 text-orange-500"
+              />
               {testimonialPageContent.fallback.badge.label}
             </Badge>
           )}
         </div>
         <TestimonialOrFallbackWrapper
-          testimonialOrFallback={
-            testimonialPageContent.testimonials &&
-            testimonialPageContent.testimonials.length > 0
-              ? testimonialPageContent.testimonials
-              : testimonialPageContent.fallback
-          }
+          testimonialOrFallback={testimonialsToShow}
         />
       </div>
     </section>

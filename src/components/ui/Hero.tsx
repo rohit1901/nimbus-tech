@@ -1,26 +1,16 @@
-"use client"
-import { Hero, PageContent } from "@/app/graphql/types"
+import { Hero as HeroType, Maybe, PageContent } from "@/app/graphql/types"
 import { Button } from "@/components/Button"
 import { FadeContainer, FadeDiv, FadeSpan } from "@/components/Fade"
 import GameOfLife from "@/components/ui/HeroBackground"
-import { remixIconMap } from "@/icons/remixicon-map"
-import { usePageContents } from "@/queries"
 import Link from "next/link"
-import { ComponentProps } from "react"
-type RemixiconProps = ComponentProps<
-  (typeof remixIconMap)[keyof typeof remixIconMap]
->
-
-const getRemixIcon = (iconName: string, props: RemixiconProps) => {
-  const Icon = remixIconMap[iconName]
-  return <Icon {...props} />
-}
+import { RemixIconComponent } from "../RemixIconComponent"
 type HeroProps = {
   pageContent: PageContent & {
-    hero: Hero
+    hero?: Maybe<HeroType>
   }
 }
 export default function Hero({ pageContent }: HeroProps) {
+  if (!pageContent.hero) return null
   return (
     <section aria-label="hero" id="hero-section">
       <FadeContainer className="relative flex flex-col items-center justify-center">
@@ -44,10 +34,10 @@ export default function Hero({ pageContent }: HeroProps) {
                 <span className="w-full truncate">
                   {pageContent.hero?.banner?.additional?.text}
                 </span>
-                {pageContent.hero?.banner?.additional?.icon &&
-                  getRemixIcon(pageContent.hero.banner.additional.icon, {
-                    className: "size-4 shrink-0 text-gray-700",
-                  })}
+                <RemixIconComponent
+                  name={pageContent.hero?.banner?.additional?.icon}
+                  className="size-4 shrink-0 text-gray-700"
+                />
               </span>
             </div>
           </a>

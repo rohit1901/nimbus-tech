@@ -1,4 +1,4 @@
-import { faqs } from "@/app/data"
+import { Faq, Maybe } from "@/app/graphql/types"
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +7,8 @@ import {
 } from "@/components/Accordion"
 import Heading from "@/components/Heading"
 
-export default function FaqSection() {
+export default function FaqSection({ faqs }: { faqs?: Maybe<Faq[]> }) {
+  if (!faqs) return null
   return (
     <Accordion type="single" collapsible className="mx-auto max-w-4xl">
       <Heading title="Frequently Asked Questions" />

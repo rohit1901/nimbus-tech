@@ -1,9 +1,11 @@
 import { ctaPageContent } from "@/app/data"
+import { CtaSection, Maybe } from "@/app/graphql/types"
 import { Button } from "@/components/Button"
-import Image from "next/image"
 import Link from "next/link"
+import { SafeImage } from "@/components/SafeImage"
 
-export default function CallToAction() {
+export default function CallToAction({ cta }: { cta?: Maybe<CtaSection> }) {
+  if (!cta) return null
   return (
     <section aria-labelledby="cta-title" className="mx-auto max-w-6xl">
       <div className="grid items-center gap-8 sm:grid-cols-6">
@@ -20,7 +22,7 @@ export default function CallToAction() {
             </p>
           )}
           <div className="flex flex-wrap gap-4">
-            {ctaPageContent.ctas.map((cta, idx) => (
+            {cta.ctas?.map((cta, idx) => (
               <Button
                 asChild
                 className="text-md"
@@ -28,7 +30,7 @@ export default function CallToAction() {
                 key={cta.label}
               >
                 <Link
-                  href={cta.href}
+                  href={cta.href ?? "#"}
                   target={cta.external ? "_blank" : undefined}
                   rel={cta.external ? "noopener noreferrer" : undefined}
                 >
@@ -39,13 +41,12 @@ export default function CallToAction() {
           </div>
         </div>
         <div className="relative isolate rounded-xl sm:col-span-4 sm:h-full">
-          {ctaPageContent.background.map((bg, idx) => (
-            <Image
-              key={idx}
+          {cta.background?.map((bg, idx) => (
+            <SafeImage
+              {...bg.image}
               aria-hidden={idx === 0}
-              {...bg.imageProps}
-              alt={bg.imageProps.alt}
-              className={bg.imageProps.className}
+              id={`cta-background-${bg.id}`}
+              className={bg.outerClassName}
             />
           ))}
         </div>
