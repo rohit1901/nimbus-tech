@@ -1,5 +1,19 @@
 import { remixIconMap } from "@/icons/remixicon-map"
 import { ImageProps } from "next/image"
+export type SectionType =
+  | "hero"
+  | "benefits"
+  | "features"
+  | "faq"
+  | "testimonials"
+  | "certifications"
+  | "approach"
+  | "about"
+  | "analytics"
+  | "navigation"
+  | "footer"
+  | "cta"
+  | "map"
 
 export type PageContent = {
   title: string

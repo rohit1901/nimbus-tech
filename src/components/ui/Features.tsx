@@ -1,4 +1,3 @@
-import { featuresContent } from "@/app/data"
 import { FeatureVisualization } from "@/app/types"
 import { Icons } from "@/components/Icons"
 import { Orbit } from "@/components/Orbit"

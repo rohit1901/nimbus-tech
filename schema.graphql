@@ -164,10 +164,10 @@ input CtaCreateInput {
 
 type Image {
   id: ID!
-  width: Int
-  height: Int
   src: String
   alt: String
+  width: Int
+  height: Int
   fill: Boolean
   className: String
 }
@@ -181,10 +181,10 @@ input ImageWhereInput {
   OR: [ImageWhereInput!]
   NOT: [ImageWhereInput!]
   id: IDFilter
-  width: IntNullableFilter
-  height: IntNullableFilter
   src: StringFilter
   alt: StringFilter
+  width: IntNullableFilter
+  height: IntNullableFilter
   fill: BooleanFilter
   className: StringFilter
 }
@@ -202,19 +202,19 @@ input IntNullableFilter {
 
 input ImageOrderByInput {
   id: OrderDirection
-  width: OrderDirection
-  height: OrderDirection
   src: OrderDirection
   alt: OrderDirection
+  width: OrderDirection
+  height: OrderDirection
   fill: OrderDirection
   className: OrderDirection
 }
 
 input ImageUpdateInput {
-  width: Int
-  height: Int
   src: String
   alt: String
+  width: Int
+  height: Int
   fill: Boolean
   className: String
 }
@@ -225,10 +225,10 @@ input ImageUpdateArgs {
 }
 
 input ImageCreateInput {
-  width: Int
-  height: Int
   src: String
   alt: String
+  width: Int
+  height: Int
   fill: Boolean
   className: String
 }
@@ -283,6 +283,46 @@ input ImageRelateToOneForCreateInput {
   connect: ImageWhereUniqueInput
 }
 
+type Language {
+  id: ID!
+  label: String
+  value: String
+}
+
+input LanguageWhereUniqueInput {
+  id: ID
+}
+
+input LanguageWhereInput {
+  AND: [LanguageWhereInput!]
+  OR: [LanguageWhereInput!]
+  NOT: [LanguageWhereInput!]
+  id: IDFilter
+  label: StringFilter
+  value: StringFilter
+}
+
+input LanguageOrderByInput {
+  id: OrderDirection
+  label: OrderDirection
+  value: OrderDirection
+}
+
+input LanguageUpdateInput {
+  label: String
+  value: String
+}
+
+input LanguageUpdateArgs {
+  where: LanguageWhereUniqueInput!
+  data: LanguageUpdateInput!
+}
+
+input LanguageCreateInput {
+  label: String
+  value: String
+}
+
 type TestimonialBadge {
   id: ID!
   icon: String
@@ -325,6 +365,7 @@ input TestimonialBadgeCreateInput {
 
 type TestimonialItem {
   id: ID!
+  rating: Float
   badge: TestimonialBadge
   name: String
   role: String
@@ -342,6 +383,7 @@ input TestimonialItemWhereInput {
   OR: [TestimonialItemWhereInput!]
   NOT: [TestimonialItemWhereInput!]
   id: IDFilter
+  rating: FloatNullableFilter
   badge: TestimonialBadgeWhereInput
   name: StringFilter
   role: StringFilter
@@ -350,8 +392,20 @@ input TestimonialItemWhereInput {
   content: StringFilter
 }
 
+input FloatNullableFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: FloatNullableFilter
+}
+
 input TestimonialItemOrderByInput {
   id: OrderDirection
+  rating: OrderDirection
   name: OrderDirection
   role: OrderDirection
   company: OrderDirection
@@ -359,6 +413,7 @@ input TestimonialItemOrderByInput {
 }
 
 input TestimonialItemUpdateInput {
+  rating: Float
   badge: TestimonialBadgeRelateToOneForUpdateInput
   name: String
   role: String
@@ -379,6 +434,7 @@ input TestimonialItemUpdateArgs {
 }
 
 input TestimonialItemCreateInput {
+  rating: Float
   badge: TestimonialBadgeRelateToOneForCreateInput
   name: String
   role: String
@@ -390,6 +446,114 @@ input TestimonialItemCreateInput {
 input TestimonialBadgeRelateToOneForCreateInput {
   create: TestimonialBadgeCreateInput
   connect: TestimonialBadgeWhereUniqueInput
+}
+
+type TestimonialSection {
+  id: ID!
+  title: String
+  background(
+    where: BackgroundWhereInput! = {}
+    orderBy: [BackgroundOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: BackgroundWhereUniqueInput
+  ): [Background!]
+  backgroundCount(where: BackgroundWhereInput! = {}): Int
+  testimonials(
+    where: TestimonialItemWhereInput! = {}
+    orderBy: [TestimonialItemOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: TestimonialItemWhereUniqueInput
+  ): [TestimonialItem!]
+  testimonialsCount(where: TestimonialItemWhereInput! = {}): Int
+  fallback: TestimonialItem
+}
+
+input TestimonialSectionWhereUniqueInput {
+  id: ID
+}
+
+input TestimonialSectionWhereInput {
+  AND: [TestimonialSectionWhereInput!]
+  OR: [TestimonialSectionWhereInput!]
+  NOT: [TestimonialSectionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  background: BackgroundManyRelationFilter
+  testimonials: TestimonialItemManyRelationFilter
+  fallback: TestimonialItemWhereInput
+}
+
+input BackgroundManyRelationFilter {
+  every: BackgroundWhereInput
+  some: BackgroundWhereInput
+  none: BackgroundWhereInput
+}
+
+input TestimonialItemManyRelationFilter {
+  every: TestimonialItemWhereInput
+  some: TestimonialItemWhereInput
+  none: TestimonialItemWhereInput
+}
+
+input TestimonialSectionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+}
+
+input TestimonialSectionUpdateInput {
+  title: String
+  background: BackgroundRelateToManyForUpdateInput
+  testimonials: TestimonialItemRelateToManyForUpdateInput
+  fallback: TestimonialItemRelateToOneForUpdateInput
+}
+
+input BackgroundRelateToManyForUpdateInput {
+  disconnect: [BackgroundWhereUniqueInput!]
+  set: [BackgroundWhereUniqueInput!]
+  create: [BackgroundCreateInput!]
+  connect: [BackgroundWhereUniqueInput!]
+}
+
+input TestimonialItemRelateToManyForUpdateInput {
+  disconnect: [TestimonialItemWhereUniqueInput!]
+  set: [TestimonialItemWhereUniqueInput!]
+  create: [TestimonialItemCreateInput!]
+  connect: [TestimonialItemWhereUniqueInput!]
+}
+
+input TestimonialItemRelateToOneForUpdateInput {
+  create: TestimonialItemCreateInput
+  connect: TestimonialItemWhereUniqueInput
+  disconnect: Boolean
+}
+
+input TestimonialSectionUpdateArgs {
+  where: TestimonialSectionWhereUniqueInput!
+  data: TestimonialSectionUpdateInput!
+}
+
+input TestimonialSectionCreateInput {
+  title: String
+  background: BackgroundRelateToManyForCreateInput
+  testimonials: TestimonialItemRelateToManyForCreateInput
+  fallback: TestimonialItemRelateToOneForCreateInput
+}
+
+input BackgroundRelateToManyForCreateInput {
+  create: [BackgroundCreateInput!]
+  connect: [BackgroundWhereUniqueInput!]
+}
+
+input TestimonialItemRelateToManyForCreateInput {
+  create: [TestimonialItemCreateInput!]
+  connect: [TestimonialItemWhereUniqueInput!]
+}
+
+input TestimonialItemRelateToOneForCreateInput {
+  create: TestimonialItemCreateInput
+  connect: TestimonialItemWhereUniqueInput
 }
 
 type HeroBannerAdditional {
@@ -437,6 +601,7 @@ type HeroBanner {
   label: String
   href: String
   external: Boolean
+  icon: String
   additional: HeroBannerAdditional
 }
 
@@ -452,6 +617,7 @@ input HeroBannerWhereInput {
   label: StringFilter
   href: StringFilter
   external: BooleanFilter
+  icon: StringFilter
   additional: HeroBannerAdditionalWhereInput
 }
 
@@ -460,12 +626,14 @@ input HeroBannerOrderByInput {
   label: OrderDirection
   href: OrderDirection
   external: OrderDirection
+  icon: OrderDirection
 }
 
 input HeroBannerUpdateInput {
   label: String
   href: String
   external: Boolean
+  icon: String
   additional: HeroBannerAdditionalRelateToOneForUpdateInput
 }
 
@@ -484,584 +652,13 @@ input HeroBannerCreateInput {
   label: String
   href: String
   external: Boolean
+  icon: String
   additional: HeroBannerAdditionalRelateToOneForCreateInput
 }
 
 input HeroBannerAdditionalRelateToOneForCreateInput {
   create: HeroBannerAdditionalCreateInput
   connect: HeroBannerAdditionalWhereUniqueInput
-}
-
-type ApproachStep {
-  id: ID!
-  type: String
-  title: String
-  description: String
-  activityTime: String
-  aid: Int
-}
-
-input ApproachStepWhereUniqueInput {
-  id: ID
-}
-
-input ApproachStepWhereInput {
-  AND: [ApproachStepWhereInput!]
-  OR: [ApproachStepWhereInput!]
-  NOT: [ApproachStepWhereInput!]
-  id: IDFilter
-  type: StringNullableFilter
-  title: StringFilter
-  description: StringFilter
-  activityTime: StringFilter
-  aid: IntFilter
-}
-
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: StringNullableFilter
-}
-
-input IntFilter {
-  equals: Int
-  in: [Int!]
-  notIn: [Int!]
-  lt: Int
-  lte: Int
-  gt: Int
-  gte: Int
-  not: IntFilter
-}
-
-input ApproachStepOrderByInput {
-  id: OrderDirection
-  type: OrderDirection
-  title: OrderDirection
-  description: OrderDirection
-  activityTime: OrderDirection
-  aid: OrderDirection
-}
-
-input ApproachStepUpdateInput {
-  type: String
-  title: String
-  description: String
-  activityTime: String
-  aid: Int
-}
-
-input ApproachStepUpdateArgs {
-  where: ApproachStepWhereUniqueInput!
-  data: ApproachStepUpdateInput!
-}
-
-input ApproachStepCreateInput {
-  type: String
-  title: String
-  description: String
-  activityTime: String
-  aid: Int
-}
-
-type Language {
-  id: ID!
-  label: String
-  value: String
-}
-
-input LanguageWhereUniqueInput {
-  id: ID
-}
-
-input LanguageWhereInput {
-  AND: [LanguageWhereInput!]
-  OR: [LanguageWhereInput!]
-  NOT: [LanguageWhereInput!]
-  id: IDFilter
-  label: StringNullableFilter
-  value: StringNullableFilter
-}
-
-input LanguageOrderByInput {
-  id: OrderDirection
-  label: OrderDirection
-  value: OrderDirection
-}
-
-input LanguageUpdateInput {
-  label: String
-  value: String
-}
-
-input LanguageUpdateArgs {
-  where: LanguageWhereUniqueInput!
-  data: LanguageUpdateInput!
-}
-
-input LanguageCreateInput {
-  label: String
-  value: String
-}
-
-type NavigationLink {
-  id: ID!
-  label: String
-  href: String
-  external: Boolean
-  icon: String
-}
-
-input NavigationLinkWhereUniqueInput {
-  id: ID
-}
-
-input NavigationLinkWhereInput {
-  AND: [NavigationLinkWhereInput!]
-  OR: [NavigationLinkWhereInput!]
-  NOT: [NavigationLinkWhereInput!]
-  id: IDFilter
-  label: StringFilter
-  href: StringFilter
-  external: BooleanFilter
-  icon: StringFilter
-}
-
-input NavigationLinkOrderByInput {
-  id: OrderDirection
-  label: OrderDirection
-  href: OrderDirection
-  external: OrderDirection
-  icon: OrderDirection
-}
-
-input NavigationLinkUpdateInput {
-  label: String
-  href: String
-  external: Boolean
-  icon: String
-}
-
-input NavigationLinkUpdateArgs {
-  where: NavigationLinkWhereUniqueInput!
-  data: NavigationLinkUpdateInput!
-}
-
-input NavigationLinkCreateInput {
-  label: String
-  href: String
-  external: Boolean
-  icon: String
-}
-
-type AnalyticsStat {
-  id: ID!
-  totalDeployments: String
-  deploymentChange: String
-  deploymentChangePercent: String
-  changePeriod: String
-}
-
-input AnalyticsStatWhereUniqueInput {
-  id: ID
-}
-
-input AnalyticsStatWhereInput {
-  AND: [AnalyticsStatWhereInput!]
-  OR: [AnalyticsStatWhereInput!]
-  NOT: [AnalyticsStatWhereInput!]
-  id: IDFilter
-  totalDeployments: StringFilter
-  deploymentChange: StringFilter
-  deploymentChangePercent: StringFilter
-  changePeriod: StringFilter
-}
-
-input AnalyticsStatOrderByInput {
-  id: OrderDirection
-  totalDeployments: OrderDirection
-  deploymentChange: OrderDirection
-  deploymentChangePercent: OrderDirection
-  changePeriod: OrderDirection
-}
-
-input AnalyticsStatUpdateInput {
-  totalDeployments: String
-  deploymentChange: String
-  deploymentChangePercent: String
-  changePeriod: String
-}
-
-input AnalyticsStatUpdateArgs {
-  where: AnalyticsStatWhereUniqueInput!
-  data: AnalyticsStatUpdateInput!
-}
-
-input AnalyticsStatCreateInput {
-  totalDeployments: String
-  deploymentChange: String
-  deploymentChangePercent: String
-  changePeriod: String
-}
-
-type AnalyticsSummaryItem {
-  id: ID!
-  name: String
-  deployments: String
-  uptime: String
-  clientSatisfaction: String
-  efficiency: String
-  revenueGrowth: String
-  bgColor: String
-  changeType: String
-}
-
-input AnalyticsSummaryItemWhereUniqueInput {
-  id: ID
-}
-
-input AnalyticsSummaryItemWhereInput {
-  AND: [AnalyticsSummaryItemWhereInput!]
-  OR: [AnalyticsSummaryItemWhereInput!]
-  NOT: [AnalyticsSummaryItemWhereInput!]
-  id: IDFilter
-  name: StringFilter
-  deployments: StringFilter
-  uptime: StringFilter
-  clientSatisfaction: StringFilter
-  efficiency: StringFilter
-  revenueGrowth: StringFilter
-  bgColor: StringFilter
-  changeType: StringNullableFilter
-}
-
-input AnalyticsSummaryItemOrderByInput {
-  id: OrderDirection
-  name: OrderDirection
-  deployments: OrderDirection
-  uptime: OrderDirection
-  clientSatisfaction: OrderDirection
-  efficiency: OrderDirection
-  revenueGrowth: OrderDirection
-  bgColor: OrderDirection
-  changeType: OrderDirection
-}
-
-input AnalyticsSummaryItemUpdateInput {
-  name: String
-  deployments: String
-  uptime: String
-  clientSatisfaction: String
-  efficiency: String
-  revenueGrowth: String
-  bgColor: String
-  changeType: String
-}
-
-input AnalyticsSummaryItemUpdateArgs {
-  where: AnalyticsSummaryItemWhereUniqueInput!
-  data: AnalyticsSummaryItemUpdateInput!
-}
-
-input AnalyticsSummaryItemCreateInput {
-  name: String
-  deployments: String
-  uptime: String
-  clientSatisfaction: String
-  efficiency: String
-  revenueGrowth: String
-  bgColor: String
-  changeType: String
-}
-
-type FooterPart {
-  id: ID!
-  title: String
-  items(
-    where: NavigationLinkWhereInput! = {}
-    orderBy: [NavigationLinkOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationLinkWhereUniqueInput
-  ): [NavigationLink!]
-  itemsCount(where: NavigationLinkWhereInput! = {}): Int
-}
-
-input FooterPartWhereUniqueInput {
-  id: ID
-}
-
-input FooterPartWhereInput {
-  AND: [FooterPartWhereInput!]
-  OR: [FooterPartWhereInput!]
-  NOT: [FooterPartWhereInput!]
-  id: IDFilter
-  title: StringFilter
-  items: NavigationLinkManyRelationFilter
-}
-
-input NavigationLinkManyRelationFilter {
-  every: NavigationLinkWhereInput
-  some: NavigationLinkWhereInput
-  none: NavigationLinkWhereInput
-}
-
-input FooterPartOrderByInput {
-  id: OrderDirection
-  title: OrderDirection
-}
-
-input FooterPartUpdateInput {
-  title: String
-  items: NavigationLinkRelateToManyForUpdateInput
-}
-
-input NavigationLinkRelateToManyForUpdateInput {
-  disconnect: [NavigationLinkWhereUniqueInput!]
-  set: [NavigationLinkWhereUniqueInput!]
-  create: [NavigationLinkCreateInput!]
-  connect: [NavigationLinkWhereUniqueInput!]
-}
-
-input FooterPartUpdateArgs {
-  where: FooterPartWhereUniqueInput!
-  data: FooterPartUpdateInput!
-}
-
-input FooterPartCreateInput {
-  title: String
-  items: NavigationLinkRelateToManyForCreateInput
-}
-
-input NavigationLinkRelateToManyForCreateInput {
-  create: [NavigationLinkCreateInput!]
-  connect: [NavigationLinkWhereUniqueInput!]
-}
-
-type Value {
-  id: ID!
-  label: String
-  description: String
-  icon: String
-}
-
-input ValueWhereUniqueInput {
-  id: ID
-}
-
-input ValueWhereInput {
-  AND: [ValueWhereInput!]
-  OR: [ValueWhereInput!]
-  NOT: [ValueWhereInput!]
-  id: IDFilter
-  label: StringFilter
-  description: StringFilter
-  icon: StringFilter
-}
-
-input ValueOrderByInput {
-  id: OrderDirection
-  label: OrderDirection
-  description: OrderDirection
-  icon: OrderDirection
-}
-
-input ValueUpdateInput {
-  label: String
-  description: String
-  icon: String
-}
-
-input ValueUpdateArgs {
-  where: ValueWhereUniqueInput!
-  data: ValueUpdateInput!
-}
-
-input ValueCreateInput {
-  label: String
-  description: String
-  icon: String
-}
-
-type CtaSection {
-  id: ID!
-  background(
-    where: BackgroundWhereInput! = {}
-    orderBy: [BackgroundOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BackgroundWhereUniqueInput
-  ): [Background!]
-  backgroundCount(where: BackgroundWhereInput! = {}): Int
-  ctas(
-    where: CtaWhereInput! = {}
-    orderBy: [CtaOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaWhereUniqueInput
-  ): [Cta!]
-  ctasCount(where: CtaWhereInput! = {}): Int
-}
-
-input CtaSectionWhereUniqueInput {
-  id: ID
-}
-
-input CtaSectionWhereInput {
-  AND: [CtaSectionWhereInput!]
-  OR: [CtaSectionWhereInput!]
-  NOT: [CtaSectionWhereInput!]
-  id: IDFilter
-  background: BackgroundManyRelationFilter
-  ctas: CtaManyRelationFilter
-}
-
-input BackgroundManyRelationFilter {
-  every: BackgroundWhereInput
-  some: BackgroundWhereInput
-  none: BackgroundWhereInput
-}
-
-input CtaManyRelationFilter {
-  every: CtaWhereInput
-  some: CtaWhereInput
-  none: CtaWhereInput
-}
-
-input CtaSectionOrderByInput {
-  id: OrderDirection
-}
-
-input CtaSectionUpdateInput {
-  background: BackgroundRelateToManyForUpdateInput
-  ctas: CtaRelateToManyForUpdateInput
-}
-
-input BackgroundRelateToManyForUpdateInput {
-  disconnect: [BackgroundWhereUniqueInput!]
-  set: [BackgroundWhereUniqueInput!]
-  create: [BackgroundCreateInput!]
-  connect: [BackgroundWhereUniqueInput!]
-}
-
-input CtaRelateToManyForUpdateInput {
-  disconnect: [CtaWhereUniqueInput!]
-  set: [CtaWhereUniqueInput!]
-  create: [CtaCreateInput!]
-  connect: [CtaWhereUniqueInput!]
-}
-
-input CtaSectionUpdateArgs {
-  where: CtaSectionWhereUniqueInput!
-  data: CtaSectionUpdateInput!
-}
-
-input CtaSectionCreateInput {
-  background: BackgroundRelateToManyForCreateInput
-  ctas: CtaRelateToManyForCreateInput
-}
-
-input BackgroundRelateToManyForCreateInput {
-  create: [BackgroundCreateInput!]
-  connect: [BackgroundWhereUniqueInput!]
-}
-
-input CtaRelateToManyForCreateInput {
-  create: [CtaCreateInput!]
-  connect: [CtaWhereUniqueInput!]
-}
-
-type Testimonial {
-  id: ID!
-  background(
-    where: BackgroundWhereInput! = {}
-    orderBy: [BackgroundOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BackgroundWhereUniqueInput
-  ): [Background!]
-  backgroundCount(where: BackgroundWhereInput! = {}): Int
-  testimonials(
-    where: TestimonialItemWhereInput! = {}
-    orderBy: [TestimonialItemOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialItemWhereUniqueInput
-  ): [TestimonialItem!]
-  testimonialsCount(where: TestimonialItemWhereInput! = {}): Int
-  fallback: TestimonialItem
-}
-
-input TestimonialWhereUniqueInput {
-  id: ID
-}
-
-input TestimonialWhereInput {
-  AND: [TestimonialWhereInput!]
-  OR: [TestimonialWhereInput!]
-  NOT: [TestimonialWhereInput!]
-  id: IDFilter
-  background: BackgroundManyRelationFilter
-  testimonials: TestimonialItemManyRelationFilter
-  fallback: TestimonialItemWhereInput
-}
-
-input TestimonialItemManyRelationFilter {
-  every: TestimonialItemWhereInput
-  some: TestimonialItemWhereInput
-  none: TestimonialItemWhereInput
-}
-
-input TestimonialOrderByInput {
-  id: OrderDirection
-}
-
-input TestimonialUpdateInput {
-  background: BackgroundRelateToManyForUpdateInput
-  testimonials: TestimonialItemRelateToManyForUpdateInput
-  fallback: TestimonialItemRelateToOneForUpdateInput
-}
-
-input TestimonialItemRelateToManyForUpdateInput {
-  disconnect: [TestimonialItemWhereUniqueInput!]
-  set: [TestimonialItemWhereUniqueInput!]
-  create: [TestimonialItemCreateInput!]
-  connect: [TestimonialItemWhereUniqueInput!]
-}
-
-input TestimonialItemRelateToOneForUpdateInput {
-  create: TestimonialItemCreateInput
-  connect: TestimonialItemWhereUniqueInput
-  disconnect: Boolean
-}
-
-input TestimonialUpdateArgs {
-  where: TestimonialWhereUniqueInput!
-  data: TestimonialUpdateInput!
-}
-
-input TestimonialCreateInput {
-  background: BackgroundRelateToManyForCreateInput
-  testimonials: TestimonialItemRelateToManyForCreateInput
-  fallback: TestimonialItemRelateToOneForCreateInput
-}
-
-input TestimonialItemRelateToManyForCreateInput {
-  create: [TestimonialItemCreateInput!]
-  connect: [TestimonialItemWhereUniqueInput!]
-}
-
-input TestimonialItemRelateToOneForCreateInput {
-  create: TestimonialItemCreateInput
-  connect: TestimonialItemWhereUniqueInput
 }
 
 type Hero {
@@ -1159,6 +756,70 @@ input BenefitCreateInput {
   description: String
 }
 
+type BenefitSection {
+  id: ID!
+  title: String
+  benefits(
+    where: BenefitWhereInput! = {}
+    orderBy: [BenefitOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: BenefitWhereUniqueInput
+  ): [Benefit!]
+  benefitsCount(where: BenefitWhereInput! = {}): Int
+}
+
+input BenefitSectionWhereUniqueInput {
+  id: ID
+}
+
+input BenefitSectionWhereInput {
+  AND: [BenefitSectionWhereInput!]
+  OR: [BenefitSectionWhereInput!]
+  NOT: [BenefitSectionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  benefits: BenefitManyRelationFilter
+}
+
+input BenefitManyRelationFilter {
+  every: BenefitWhereInput
+  some: BenefitWhereInput
+  none: BenefitWhereInput
+}
+
+input BenefitSectionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+}
+
+input BenefitSectionUpdateInput {
+  title: String
+  benefits: BenefitRelateToManyForUpdateInput
+}
+
+input BenefitRelateToManyForUpdateInput {
+  disconnect: [BenefitWhereUniqueInput!]
+  set: [BenefitWhereUniqueInput!]
+  create: [BenefitCreateInput!]
+  connect: [BenefitWhereUniqueInput!]
+}
+
+input BenefitSectionUpdateArgs {
+  where: BenefitSectionWhereUniqueInput!
+  data: BenefitSectionUpdateInput!
+}
+
+input BenefitSectionCreateInput {
+  title: String
+  benefits: BenefitRelateToManyForCreateInput
+}
+
+input BenefitRelateToManyForCreateInput {
+  create: [BenefitCreateInput!]
+  connect: [BenefitWhereUniqueInput!]
+}
+
 type Faq {
   id: ID!
   question: String
@@ -1201,6 +862,7 @@ input FaqCreateInput {
 
 type Certification {
   id: ID!
+  certId: Int
   title: String
   description: String
   image: Image
@@ -1216,20 +878,34 @@ input CertificationWhereInput {
   OR: [CertificationWhereInput!]
   NOT: [CertificationWhereInput!]
   id: IDFilter
+  certId: IntFilter
   title: StringFilter
   description: StringFilter
   image: ImageWhereInput
   link: StringFilter
 }
 
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: IntFilter
+}
+
 input CertificationOrderByInput {
   id: OrderDirection
+  certId: OrderDirection
   title: OrderDirection
   description: OrderDirection
   link: OrderDirection
 }
 
 input CertificationUpdateInput {
+  certId: Int
   title: String
   description: String
   image: ImageRelateToOneForUpdateInput
@@ -1242,15 +918,100 @@ input CertificationUpdateArgs {
 }
 
 input CertificationCreateInput {
+  certId: Int
   title: String
   description: String
   image: ImageRelateToOneForCreateInput
   link: String
 }
 
+type CertificationSection {
+  id: ID!
+  title: String
+  description: String
+  cta: Cta
+  certifications(
+    where: CertificationWhereInput! = {}
+    orderBy: [CertificationOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: CertificationWhereUniqueInput
+  ): [Certification!]
+  certificationsCount(where: CertificationWhereInput! = {}): Int
+}
+
+input CertificationSectionWhereUniqueInput {
+  id: ID
+}
+
+input CertificationSectionWhereInput {
+  AND: [CertificationSectionWhereInput!]
+  OR: [CertificationSectionWhereInput!]
+  NOT: [CertificationSectionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+  cta: CtaWhereInput
+  certifications: CertificationManyRelationFilter
+}
+
+input CertificationManyRelationFilter {
+  every: CertificationWhereInput
+  some: CertificationWhereInput
+  none: CertificationWhereInput
+}
+
+input CertificationSectionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+}
+
+input CertificationSectionUpdateInput {
+  title: String
+  description: String
+  cta: CtaRelateToOneForUpdateInput
+  certifications: CertificationRelateToManyForUpdateInput
+}
+
+input CtaRelateToOneForUpdateInput {
+  create: CtaCreateInput
+  connect: CtaWhereUniqueInput
+  disconnect: Boolean
+}
+
+input CertificationRelateToManyForUpdateInput {
+  disconnect: [CertificationWhereUniqueInput!]
+  set: [CertificationWhereUniqueInput!]
+  create: [CertificationCreateInput!]
+  connect: [CertificationWhereUniqueInput!]
+}
+
+input CertificationSectionUpdateArgs {
+  where: CertificationSectionWhereUniqueInput!
+  data: CertificationSectionUpdateInput!
+}
+
+input CertificationSectionCreateInput {
+  title: String
+  description: String
+  cta: CtaRelateToOneForCreateInput
+  certifications: CertificationRelateToManyForCreateInput
+}
+
+input CtaRelateToOneForCreateInput {
+  create: CtaCreateInput
+  connect: CtaWhereUniqueInput
+}
+
+input CertificationRelateToManyForCreateInput {
+  create: [CertificationCreateInput!]
+  connect: [CertificationWhereUniqueInput!]
+}
+
 type Feature {
   id: ID!
-  fid: String
+  featureId: Int
   title: String
   description: String
   longDescription: String
@@ -1266,16 +1027,30 @@ input FeatureWhereInput {
   OR: [FeatureWhereInput!]
   NOT: [FeatureWhereInput!]
   id: IDFilter
-  fid: StringFilter
+  featureId: IntFilter
   title: StringFilter
   description: StringFilter
   longDescription: StringFilter
-  visualization: StringFilter
+  visualization: StringNullableFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: StringNullableFilter
 }
 
 input FeatureOrderByInput {
   id: OrderDirection
-  fid: OrderDirection
+  featureId: OrderDirection
   title: OrderDirection
   description: OrderDirection
   longDescription: OrderDirection
@@ -1283,7 +1058,7 @@ input FeatureOrderByInput {
 }
 
 input FeatureUpdateInput {
-  fid: String
+  featureId: Int
   title: String
   description: String
   longDescription: String
@@ -1296,11 +1071,66 @@ input FeatureUpdateArgs {
 }
 
 input FeatureCreateInput {
-  fid: String
+  featureId: Int
   title: String
   description: String
   longDescription: String
   visualization: String
+}
+
+type ApproachStep {
+  id: ID!
+  stepId: Int
+  type: String
+  title: String
+  description: String
+  activityTime: String
+}
+
+input ApproachStepWhereUniqueInput {
+  id: ID
+}
+
+input ApproachStepWhereInput {
+  AND: [ApproachStepWhereInput!]
+  OR: [ApproachStepWhereInput!]
+  NOT: [ApproachStepWhereInput!]
+  id: IDFilter
+  stepId: IntFilter
+  type: StringFilter
+  title: StringFilter
+  description: StringFilter
+  activityTime: StringFilter
+}
+
+input ApproachStepOrderByInput {
+  id: OrderDirection
+  stepId: OrderDirection
+  type: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+  activityTime: OrderDirection
+}
+
+input ApproachStepUpdateInput {
+  stepId: Int
+  type: String
+  title: String
+  description: String
+  activityTime: String
+}
+
+input ApproachStepUpdateArgs {
+  where: ApproachStepWhereUniqueInput!
+  data: ApproachStepUpdateInput!
+}
+
+input ApproachStepCreateInput {
+  stepId: Int
+  type: String
+  title: String
+  description: String
+  activityTime: String
 }
 
 type Approach {
@@ -1372,6 +1202,56 @@ input ApproachStepRelateToManyForCreateInput {
   connect: [ApproachStepWhereUniqueInput!]
 }
 
+type NavigationLink {
+  id: ID!
+  label: String
+  href: String
+  external: Boolean
+  icon: String
+}
+
+input NavigationLinkWhereUniqueInput {
+  id: ID
+}
+
+input NavigationLinkWhereInput {
+  AND: [NavigationLinkWhereInput!]
+  OR: [NavigationLinkWhereInput!]
+  NOT: [NavigationLinkWhereInput!]
+  id: IDFilter
+  label: StringFilter
+  href: StringFilter
+  external: BooleanFilter
+  icon: StringFilter
+}
+
+input NavigationLinkOrderByInput {
+  id: OrderDirection
+  label: OrderDirection
+  href: OrderDirection
+  external: OrderDirection
+  icon: OrderDirection
+}
+
+input NavigationLinkUpdateInput {
+  label: String
+  href: String
+  external: Boolean
+  icon: String
+}
+
+input NavigationLinkUpdateArgs {
+  where: NavigationLinkWhereUniqueInput!
+  data: NavigationLinkUpdateInput!
+}
+
+input NavigationLinkCreateInput {
+  label: String
+  href: String
+  external: Boolean
+  icon: String
+}
+
 type Navigation {
   id: ID!
   title: String
@@ -1404,6 +1284,12 @@ input NavigationWhereInput {
   items: NavigationLinkManyRelationFilter
 }
 
+input NavigationLinkManyRelationFilter {
+  every: NavigationLinkWhereInput
+  some: NavigationLinkWhereInput
+  none: NavigationLinkWhereInput
+}
+
 input NavigationOrderByInput {
   id: OrderDirection
   title: OrderDirection
@@ -1418,10 +1304,11 @@ input NavigationUpdateInput {
   items: NavigationLinkRelateToManyForUpdateInput
 }
 
-input CtaRelateToOneForUpdateInput {
-  create: CtaCreateInput
-  connect: CtaWhereUniqueInput
-  disconnect: Boolean
+input NavigationLinkRelateToManyForUpdateInput {
+  disconnect: [NavigationLinkWhereUniqueInput!]
+  set: [NavigationLinkWhereUniqueInput!]
+  create: [NavigationLinkCreateInput!]
+  connect: [NavigationLinkWhereUniqueInput!]
 }
 
 input NavigationUpdateArgs {
@@ -1437,21 +1324,68 @@ input NavigationCreateInput {
   items: NavigationLinkRelateToManyForCreateInput
 }
 
-input CtaRelateToOneForCreateInput {
-  create: CtaCreateInput
-  connect: CtaWhereUniqueInput
+input NavigationLinkRelateToManyForCreateInput {
+  create: [NavigationLinkCreateInput!]
+  connect: [NavigationLinkWhereUniqueInput!]
+}
+
+type FooterSection {
+  id: ID!
+  title: String
+  items(
+    where: NavigationLinkWhereInput! = {}
+    orderBy: [NavigationLinkOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: NavigationLinkWhereUniqueInput
+  ): [NavigationLink!]
+  itemsCount(where: NavigationLinkWhereInput! = {}): Int
+}
+
+input FooterSectionWhereUniqueInput {
+  id: ID
+}
+
+input FooterSectionWhereInput {
+  AND: [FooterSectionWhereInput!]
+  OR: [FooterSectionWhereInput!]
+  NOT: [FooterSectionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  items: NavigationLinkManyRelationFilter
+}
+
+input FooterSectionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+}
+
+input FooterSectionUpdateInput {
+  title: String
+  items: NavigationLinkRelateToManyForUpdateInput
+}
+
+input FooterSectionUpdateArgs {
+  where: FooterSectionWhereUniqueInput!
+  data: FooterSectionUpdateInput!
+}
+
+input FooterSectionCreateInput {
+  title: String
+  items: NavigationLinkRelateToManyForCreateInput
 }
 
 type Footer {
   id: ID!
+  title: String
   sections(
-    where: FooterPartWhereInput! = {}
-    orderBy: [FooterPartOrderByInput!]! = []
+    where: FooterSectionWhereInput! = {}
+    orderBy: [FooterSectionOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-    cursor: FooterPartWhereUniqueInput
-  ): [FooterPart!]
-  sectionsCount(where: FooterPartWhereInput! = {}): Int
+    cursor: FooterSectionWhereUniqueInput
+  ): [FooterSection!]
+  sectionsCount(where: FooterSectionWhereInput! = {}): Int
   languages(
     where: LanguageWhereInput! = {}
     orderBy: [LanguageOrderByInput!]! = []
@@ -1471,14 +1405,15 @@ input FooterWhereInput {
   OR: [FooterWhereInput!]
   NOT: [FooterWhereInput!]
   id: IDFilter
-  sections: FooterPartManyRelationFilter
+  title: StringFilter
+  sections: FooterSectionManyRelationFilter
   languages: LanguageManyRelationFilter
 }
 
-input FooterPartManyRelationFilter {
-  every: FooterPartWhereInput
-  some: FooterPartWhereInput
-  none: FooterPartWhereInput
+input FooterSectionManyRelationFilter {
+  every: FooterSectionWhereInput
+  some: FooterSectionWhereInput
+  none: FooterSectionWhereInput
 }
 
 input LanguageManyRelationFilter {
@@ -1489,18 +1424,20 @@ input LanguageManyRelationFilter {
 
 input FooterOrderByInput {
   id: OrderDirection
+  title: OrderDirection
 }
 
 input FooterUpdateInput {
-  sections: FooterPartRelateToManyForUpdateInput
+  title: String
+  sections: FooterSectionRelateToManyForUpdateInput
   languages: LanguageRelateToManyForUpdateInput
 }
 
-input FooterPartRelateToManyForUpdateInput {
-  disconnect: [FooterPartWhereUniqueInput!]
-  set: [FooterPartWhereUniqueInput!]
-  create: [FooterPartCreateInput!]
-  connect: [FooterPartWhereUniqueInput!]
+input FooterSectionRelateToManyForUpdateInput {
+  disconnect: [FooterSectionWhereUniqueInput!]
+  set: [FooterSectionWhereUniqueInput!]
+  create: [FooterSectionCreateInput!]
+  connect: [FooterSectionWhereUniqueInput!]
 }
 
 input LanguageRelateToManyForUpdateInput {
@@ -1516,18 +1453,139 @@ input FooterUpdateArgs {
 }
 
 input FooterCreateInput {
-  sections: FooterPartRelateToManyForCreateInput
+  title: String
+  sections: FooterSectionRelateToManyForCreateInput
   languages: LanguageRelateToManyForCreateInput
 }
 
-input FooterPartRelateToManyForCreateInput {
-  create: [FooterPartCreateInput!]
-  connect: [FooterPartWhereUniqueInput!]
+input FooterSectionRelateToManyForCreateInput {
+  create: [FooterSectionCreateInput!]
+  connect: [FooterSectionWhereUniqueInput!]
 }
 
 input LanguageRelateToManyForCreateInput {
   create: [LanguageCreateInput!]
   connect: [LanguageWhereUniqueInput!]
+}
+
+type AnalyticsStat {
+  id: ID!
+  totalDeployments: String
+  deploymentChange: String
+  deploymentChangePercent: String
+  changePeriod: String
+}
+
+input AnalyticsStatWhereUniqueInput {
+  id: ID
+}
+
+input AnalyticsStatWhereInput {
+  AND: [AnalyticsStatWhereInput!]
+  OR: [AnalyticsStatWhereInput!]
+  NOT: [AnalyticsStatWhereInput!]
+  id: IDFilter
+  totalDeployments: StringFilter
+  deploymentChange: StringFilter
+  deploymentChangePercent: StringFilter
+  changePeriod: StringFilter
+}
+
+input AnalyticsStatOrderByInput {
+  id: OrderDirection
+  totalDeployments: OrderDirection
+  deploymentChange: OrderDirection
+  deploymentChangePercent: OrderDirection
+  changePeriod: OrderDirection
+}
+
+input AnalyticsStatUpdateInput {
+  totalDeployments: String
+  deploymentChange: String
+  deploymentChangePercent: String
+  changePeriod: String
+}
+
+input AnalyticsStatUpdateArgs {
+  where: AnalyticsStatWhereUniqueInput!
+  data: AnalyticsStatUpdateInput!
+}
+
+input AnalyticsStatCreateInput {
+  totalDeployments: String
+  deploymentChange: String
+  deploymentChangePercent: String
+  changePeriod: String
+}
+
+type AnalyticsSummaryItem {
+  id: ID!
+  name: String
+  deployments: String
+  uptime: String
+  clientSatisfaction: String
+  efficiency: String
+  revenueGrowth: String
+  bgColor: String
+  changeType: String
+}
+
+input AnalyticsSummaryItemWhereUniqueInput {
+  id: ID
+}
+
+input AnalyticsSummaryItemWhereInput {
+  AND: [AnalyticsSummaryItemWhereInput!]
+  OR: [AnalyticsSummaryItemWhereInput!]
+  NOT: [AnalyticsSummaryItemWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  deployments: StringFilter
+  uptime: StringFilter
+  clientSatisfaction: StringFilter
+  efficiency: StringFilter
+  revenueGrowth: StringFilter
+  bgColor: StringFilter
+  changeType: StringFilter
+}
+
+input AnalyticsSummaryItemOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  deployments: OrderDirection
+  uptime: OrderDirection
+  clientSatisfaction: OrderDirection
+  efficiency: OrderDirection
+  revenueGrowth: OrderDirection
+  bgColor: OrderDirection
+  changeType: OrderDirection
+}
+
+input AnalyticsSummaryItemUpdateInput {
+  name: String
+  deployments: String
+  uptime: String
+  clientSatisfaction: String
+  efficiency: String
+  revenueGrowth: String
+  bgColor: String
+  changeType: String
+}
+
+input AnalyticsSummaryItemUpdateArgs {
+  where: AnalyticsSummaryItemWhereUniqueInput!
+  data: AnalyticsSummaryItemUpdateInput!
+}
+
+input AnalyticsSummaryItemCreateInput {
+  name: String
+  deployments: String
+  uptime: String
+  clientSatisfaction: String
+  efficiency: String
+  revenueGrowth: String
+  bgColor: String
+  changeType: String
 }
 
 type Analytic {
@@ -1615,6 +1673,51 @@ input AnalyticsStatRelateToOneForCreateInput {
 input AnalyticsSummaryItemRelateToManyForCreateInput {
   create: [AnalyticsSummaryItemCreateInput!]
   connect: [AnalyticsSummaryItemWhereUniqueInput!]
+}
+
+type Value {
+  id: ID!
+  label: String
+  description: String
+  icon: String
+}
+
+input ValueWhereUniqueInput {
+  id: ID
+}
+
+input ValueWhereInput {
+  AND: [ValueWhereInput!]
+  OR: [ValueWhereInput!]
+  NOT: [ValueWhereInput!]
+  id: IDFilter
+  label: StringFilter
+  description: StringFilter
+  icon: StringFilter
+}
+
+input ValueOrderByInput {
+  id: OrderDirection
+  label: OrderDirection
+  description: OrderDirection
+  icon: OrderDirection
+}
+
+input ValueUpdateInput {
+  label: String
+  description: String
+  icon: String
+}
+
+input ValueUpdateArgs {
+  where: ValueWhereUniqueInput!
+  data: ValueUpdateInput!
+}
+
+input ValueCreateInput {
+  label: String
+  description: String
+  icon: String
 }
 
 type About {
@@ -1741,18 +1844,91 @@ input MapCreateInput {
   description: String
 }
 
+type CtaSection {
+  id: ID!
+  title: String
+  description: String
+  ctas(
+    where: CtaWhereInput! = {}
+    orderBy: [CtaOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: CtaWhereUniqueInput
+  ): [Cta!]
+  ctasCount(where: CtaWhereInput! = {}): Int
+  background(
+    where: BackgroundWhereInput! = {}
+    orderBy: [BackgroundOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: BackgroundWhereUniqueInput
+  ): [Background!]
+  backgroundCount(where: BackgroundWhereInput! = {}): Int
+}
+
+input CtaSectionWhereUniqueInput {
+  id: ID
+}
+
+input CtaSectionWhereInput {
+  AND: [CtaSectionWhereInput!]
+  OR: [CtaSectionWhereInput!]
+  NOT: [CtaSectionWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  description: StringFilter
+  ctas: CtaManyRelationFilter
+  background: BackgroundManyRelationFilter
+}
+
+input CtaManyRelationFilter {
+  every: CtaWhereInput
+  some: CtaWhereInput
+  none: CtaWhereInput
+}
+
+input CtaSectionOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  description: OrderDirection
+}
+
+input CtaSectionUpdateInput {
+  title: String
+  description: String
+  ctas: CtaRelateToManyForUpdateInput
+  background: BackgroundRelateToManyForUpdateInput
+}
+
+input CtaRelateToManyForUpdateInput {
+  disconnect: [CtaWhereUniqueInput!]
+  set: [CtaWhereUniqueInput!]
+  create: [CtaCreateInput!]
+  connect: [CtaWhereUniqueInput!]
+}
+
+input CtaSectionUpdateArgs {
+  where: CtaSectionWhereUniqueInput!
+  data: CtaSectionUpdateInput!
+}
+
+input CtaSectionCreateInput {
+  title: String
+  description: String
+  ctas: CtaRelateToManyForCreateInput
+  background: BackgroundRelateToManyForCreateInput
+}
+
+input CtaRelateToManyForCreateInput {
+  create: [CtaCreateInput!]
+  connect: [CtaWhereUniqueInput!]
+}
+
 type Section {
   id: ID!
   type: String
   contentHero: Hero
-  contentBenefits(
-    where: BenefitWhereInput! = {}
-    orderBy: [BenefitOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitWhereUniqueInput
-  ): [Benefit!]
-  contentBenefitsCount(where: BenefitWhereInput! = {}): Int
+  contentBenefits: BenefitSection
   contentFeatures(
     where: FeatureWhereInput! = {}
     orderBy: [FeatureOrderByInput!]! = []
@@ -1769,16 +1945,9 @@ type Section {
     cursor: FaqWhereUniqueInput
   ): [Faq!]
   contentFaqsCount(where: FaqWhereInput! = {}): Int
-  contentTestimonials: Testimonial
-  contentCertifications(
-    where: CertificationWhereInput! = {}
-    orderBy: [CertificationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationWhereUniqueInput
-  ): [Certification!]
-  contentCertificationsCount(where: CertificationWhereInput! = {}): Int
-  contentApproaches: Approach
+  contentTestimonials: TestimonialSection
+  contentCertifications: CertificationSection
+  contentApproach: Approach
   contentAbout: About
   contentAnalytics: Analytic
   contentNavigation: Navigation
@@ -1798,24 +1967,18 @@ input SectionWhereInput {
   id: IDFilter
   type: StringFilter
   contentHero: HeroWhereInput
-  contentBenefits: BenefitManyRelationFilter
+  contentBenefits: BenefitSectionWhereInput
   contentFeatures: FeatureManyRelationFilter
   contentFaqs: FaqManyRelationFilter
-  contentTestimonials: TestimonialWhereInput
-  contentCertifications: CertificationManyRelationFilter
-  contentApproaches: ApproachWhereInput
+  contentTestimonials: TestimonialSectionWhereInput
+  contentCertifications: CertificationSectionWhereInput
+  contentApproach: ApproachWhereInput
   contentAbout: AboutWhereInput
   contentAnalytics: AnalyticWhereInput
   contentNavigation: NavigationWhereInput
   contentFooter: FooterWhereInput
   contentCta: CtaSectionWhereInput
   contentMap: MapWhereInput
-}
-
-input BenefitManyRelationFilter {
-  every: BenefitWhereInput
-  some: BenefitWhereInput
-  none: BenefitWhereInput
 }
 
 input FeatureManyRelationFilter {
@@ -1830,12 +1993,6 @@ input FaqManyRelationFilter {
   none: FaqWhereInput
 }
 
-input CertificationManyRelationFilter {
-  every: CertificationWhereInput
-  some: CertificationWhereInput
-  none: CertificationWhereInput
-}
-
 input SectionOrderByInput {
   id: OrderDirection
   type: OrderDirection
@@ -1844,12 +2001,12 @@ input SectionOrderByInput {
 input SectionUpdateInput {
   type: String
   contentHero: HeroRelateToOneForUpdateInput
-  contentBenefits: BenefitRelateToManyForUpdateInput
+  contentBenefits: BenefitSectionRelateToOneForUpdateInput
   contentFeatures: FeatureRelateToManyForUpdateInput
   contentFaqs: FaqRelateToManyForUpdateInput
-  contentTestimonials: TestimonialRelateToOneForUpdateInput
-  contentCertifications: CertificationRelateToManyForUpdateInput
-  contentApproaches: ApproachRelateToOneForUpdateInput
+  contentTestimonials: TestimonialSectionRelateToOneForUpdateInput
+  contentCertifications: CertificationSectionRelateToOneForUpdateInput
+  contentApproach: ApproachRelateToOneForUpdateInput
   contentAbout: AboutRelateToOneForUpdateInput
   contentAnalytics: AnalyticRelateToOneForUpdateInput
   contentNavigation: NavigationRelateToOneForUpdateInput
@@ -1864,11 +2021,10 @@ input HeroRelateToOneForUpdateInput {
   disconnect: Boolean
 }
 
-input BenefitRelateToManyForUpdateInput {
-  disconnect: [BenefitWhereUniqueInput!]
-  set: [BenefitWhereUniqueInput!]
-  create: [BenefitCreateInput!]
-  connect: [BenefitWhereUniqueInput!]
+input BenefitSectionRelateToOneForUpdateInput {
+  create: BenefitSectionCreateInput
+  connect: BenefitSectionWhereUniqueInput
+  disconnect: Boolean
 }
 
 input FeatureRelateToManyForUpdateInput {
@@ -1885,17 +2041,16 @@ input FaqRelateToManyForUpdateInput {
   connect: [FaqWhereUniqueInput!]
 }
 
-input TestimonialRelateToOneForUpdateInput {
-  create: TestimonialCreateInput
-  connect: TestimonialWhereUniqueInput
+input TestimonialSectionRelateToOneForUpdateInput {
+  create: TestimonialSectionCreateInput
+  connect: TestimonialSectionWhereUniqueInput
   disconnect: Boolean
 }
 
-input CertificationRelateToManyForUpdateInput {
-  disconnect: [CertificationWhereUniqueInput!]
-  set: [CertificationWhereUniqueInput!]
-  create: [CertificationCreateInput!]
-  connect: [CertificationWhereUniqueInput!]
+input CertificationSectionRelateToOneForUpdateInput {
+  create: CertificationSectionCreateInput
+  connect: CertificationSectionWhereUniqueInput
+  disconnect: Boolean
 }
 
 input ApproachRelateToOneForUpdateInput {
@@ -1948,12 +2103,12 @@ input SectionUpdateArgs {
 input SectionCreateInput {
   type: String
   contentHero: HeroRelateToOneForCreateInput
-  contentBenefits: BenefitRelateToManyForCreateInput
+  contentBenefits: BenefitSectionRelateToOneForCreateInput
   contentFeatures: FeatureRelateToManyForCreateInput
   contentFaqs: FaqRelateToManyForCreateInput
-  contentTestimonials: TestimonialRelateToOneForCreateInput
-  contentCertifications: CertificationRelateToManyForCreateInput
-  contentApproaches: ApproachRelateToOneForCreateInput
+  contentTestimonials: TestimonialSectionRelateToOneForCreateInput
+  contentCertifications: CertificationSectionRelateToOneForCreateInput
+  contentApproach: ApproachRelateToOneForCreateInput
   contentAbout: AboutRelateToOneForCreateInput
   contentAnalytics: AnalyticRelateToOneForCreateInput
   contentNavigation: NavigationRelateToOneForCreateInput
@@ -1967,9 +2122,9 @@ input HeroRelateToOneForCreateInput {
   connect: HeroWhereUniqueInput
 }
 
-input BenefitRelateToManyForCreateInput {
-  create: [BenefitCreateInput!]
-  connect: [BenefitWhereUniqueInput!]
+input BenefitSectionRelateToOneForCreateInput {
+  create: BenefitSectionCreateInput
+  connect: BenefitSectionWhereUniqueInput
 }
 
 input FeatureRelateToManyForCreateInput {
@@ -1982,14 +2137,14 @@ input FaqRelateToManyForCreateInput {
   connect: [FaqWhereUniqueInput!]
 }
 
-input TestimonialRelateToOneForCreateInput {
-  create: TestimonialCreateInput
-  connect: TestimonialWhereUniqueInput
+input TestimonialSectionRelateToOneForCreateInput {
+  create: TestimonialSectionCreateInput
+  connect: TestimonialSectionWhereUniqueInput
 }
 
-input CertificationRelateToManyForCreateInput {
-  create: [CertificationCreateInput!]
-  connect: [CertificationWhereUniqueInput!]
+input CertificationSectionRelateToOneForCreateInput {
+  create: CertificationSectionCreateInput
+  connect: CertificationSectionWhereUniqueInput
 }
 
 input ApproachRelateToOneForCreateInput {
@@ -2034,11 +2189,19 @@ type PageContent {
   description: String
   image: Image
   cta: Cta
-  sections: Section
+  sections(
+    where: SectionWhereInput! = {}
+    orderBy: [SectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: SectionWhereUniqueInput
+  ): [Section!]
+  sectionsCount(where: SectionWhereInput! = {}): Int
 }
 
 input PageContentWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 input PageContentWhereInput {
@@ -2051,7 +2214,13 @@ input PageContentWhereInput {
   description: StringFilter
   image: ImageWhereInput
   cta: CtaWhereInput
-  sections: SectionWhereInput
+  sections: SectionManyRelationFilter
+}
+
+input SectionManyRelationFilter {
+  every: SectionWhereInput
+  some: SectionWhereInput
+  none: SectionWhereInput
 }
 
 input PageContentOrderByInput {
@@ -2067,13 +2236,14 @@ input PageContentUpdateInput {
   description: String
   image: ImageRelateToOneForUpdateInput
   cta: CtaRelateToOneForUpdateInput
-  sections: SectionRelateToOneForUpdateInput
+  sections: SectionRelateToManyForUpdateInput
 }
 
-input SectionRelateToOneForUpdateInput {
-  create: SectionCreateInput
-  connect: SectionWhereUniqueInput
-  disconnect: Boolean
+input SectionRelateToManyForUpdateInput {
+  disconnect: [SectionWhereUniqueInput!]
+  set: [SectionWhereUniqueInput!]
+  create: [SectionCreateInput!]
+  connect: [SectionWhereUniqueInput!]
 }
 
 input PageContentUpdateArgs {
@@ -2087,12 +2257,12 @@ input PageContentCreateInput {
   description: String
   image: ImageRelateToOneForCreateInput
   cta: CtaRelateToOneForCreateInput
-  sections: SectionRelateToOneForCreateInput
+  sections: SectionRelateToManyForCreateInput
 }
 
-input SectionRelateToOneForCreateInput {
-  create: SectionCreateInput
-  connect: SectionWhereUniqueInput
+input SectionRelateToManyForCreateInput {
+  create: [SectionCreateInput!]
+  connect: [SectionWhereUniqueInput!]
 }
 
 """
@@ -2131,6 +2301,15 @@ type Mutation {
   updateBackgrounds(data: [BackgroundUpdateArgs!]!): [Background]
   deleteBackground(where: BackgroundWhereUniqueInput!): Background
   deleteBackgrounds(where: [BackgroundWhereUniqueInput!]!): [Background]
+  createLanguage(data: LanguageCreateInput!): Language
+  createLanguages(data: [LanguageCreateInput!]!): [Language]
+  updateLanguage(
+    where: LanguageWhereUniqueInput!
+    data: LanguageUpdateInput!
+  ): Language
+  updateLanguages(data: [LanguageUpdateArgs!]!): [Language]
+  deleteLanguage(where: LanguageWhereUniqueInput!): Language
+  deleteLanguages(where: [LanguageWhereUniqueInput!]!): [Language]
   createTestimonialBadge(data: TestimonialBadgeCreateInput!): TestimonialBadge
   createTestimonialBadges(
     data: [TestimonialBadgeCreateInput!]!
@@ -2163,6 +2342,25 @@ type Mutation {
   deleteTestimonialItems(
     where: [TestimonialItemWhereUniqueInput!]!
   ): [TestimonialItem]
+  createTestimonialSection(
+    data: TestimonialSectionCreateInput!
+  ): TestimonialSection
+  createTestimonialSections(
+    data: [TestimonialSectionCreateInput!]!
+  ): [TestimonialSection]
+  updateTestimonialSection(
+    where: TestimonialSectionWhereUniqueInput!
+    data: TestimonialSectionUpdateInput!
+  ): TestimonialSection
+  updateTestimonialSections(
+    data: [TestimonialSectionUpdateArgs!]!
+  ): [TestimonialSection]
+  deleteTestimonialSection(
+    where: TestimonialSectionWhereUniqueInput!
+  ): TestimonialSection
+  deleteTestimonialSections(
+    where: [TestimonialSectionWhereUniqueInput!]!
+  ): [TestimonialSection]
   createHeroBannerAdditional(
     data: HeroBannerAdditionalCreateInput!
   ): HeroBannerAdditional
@@ -2191,6 +2389,77 @@ type Mutation {
   updateHeroBanners(data: [HeroBannerUpdateArgs!]!): [HeroBanner]
   deleteHeroBanner(where: HeroBannerWhereUniqueInput!): HeroBanner
   deleteHeroBanners(where: [HeroBannerWhereUniqueInput!]!): [HeroBanner]
+  createHero(data: HeroCreateInput!): Hero
+  createHeroes(data: [HeroCreateInput!]!): [Hero]
+  updateHero(where: HeroWhereUniqueInput!, data: HeroUpdateInput!): Hero
+  updateHeroes(data: [HeroUpdateArgs!]!): [Hero]
+  deleteHero(where: HeroWhereUniqueInput!): Hero
+  deleteHeroes(where: [HeroWhereUniqueInput!]!): [Hero]
+  createBenefit(data: BenefitCreateInput!): Benefit
+  createBenefits(data: [BenefitCreateInput!]!): [Benefit]
+  updateBenefit(
+    where: BenefitWhereUniqueInput!
+    data: BenefitUpdateInput!
+  ): Benefit
+  updateBenefits(data: [BenefitUpdateArgs!]!): [Benefit]
+  deleteBenefit(where: BenefitWhereUniqueInput!): Benefit
+  deleteBenefits(where: [BenefitWhereUniqueInput!]!): [Benefit]
+  createBenefitSection(data: BenefitSectionCreateInput!): BenefitSection
+  createBenefitSections(data: [BenefitSectionCreateInput!]!): [BenefitSection]
+  updateBenefitSection(
+    where: BenefitSectionWhereUniqueInput!
+    data: BenefitSectionUpdateInput!
+  ): BenefitSection
+  updateBenefitSections(data: [BenefitSectionUpdateArgs!]!): [BenefitSection]
+  deleteBenefitSection(where: BenefitSectionWhereUniqueInput!): BenefitSection
+  deleteBenefitSections(
+    where: [BenefitSectionWhereUniqueInput!]!
+  ): [BenefitSection]
+  createFaq(data: FaqCreateInput!): Faq
+  createFaqs(data: [FaqCreateInput!]!): [Faq]
+  updateFaq(where: FaqWhereUniqueInput!, data: FaqUpdateInput!): Faq
+  updateFaqs(data: [FaqUpdateArgs!]!): [Faq]
+  deleteFaq(where: FaqWhereUniqueInput!): Faq
+  deleteFaqs(where: [FaqWhereUniqueInput!]!): [Faq]
+  createCertification(data: CertificationCreateInput!): Certification
+  createCertifications(data: [CertificationCreateInput!]!): [Certification]
+  updateCertification(
+    where: CertificationWhereUniqueInput!
+    data: CertificationUpdateInput!
+  ): Certification
+  updateCertifications(data: [CertificationUpdateArgs!]!): [Certification]
+  deleteCertification(where: CertificationWhereUniqueInput!): Certification
+  deleteCertifications(
+    where: [CertificationWhereUniqueInput!]!
+  ): [Certification]
+  createCertificationSection(
+    data: CertificationSectionCreateInput!
+  ): CertificationSection
+  createCertificationSections(
+    data: [CertificationSectionCreateInput!]!
+  ): [CertificationSection]
+  updateCertificationSection(
+    where: CertificationSectionWhereUniqueInput!
+    data: CertificationSectionUpdateInput!
+  ): CertificationSection
+  updateCertificationSections(
+    data: [CertificationSectionUpdateArgs!]!
+  ): [CertificationSection]
+  deleteCertificationSection(
+    where: CertificationSectionWhereUniqueInput!
+  ): CertificationSection
+  deleteCertificationSections(
+    where: [CertificationSectionWhereUniqueInput!]!
+  ): [CertificationSection]
+  createFeature(data: FeatureCreateInput!): Feature
+  createFeatures(data: [FeatureCreateInput!]!): [Feature]
+  updateFeature(
+    where: FeatureWhereUniqueInput!
+    data: FeatureUpdateInput!
+  ): Feature
+  updateFeatures(data: [FeatureUpdateArgs!]!): [Feature]
+  deleteFeature(where: FeatureWhereUniqueInput!): Feature
+  deleteFeatures(where: [FeatureWhereUniqueInput!]!): [Feature]
   createApproachStep(data: ApproachStepCreateInput!): ApproachStep
   createApproachSteps(data: [ApproachStepCreateInput!]!): [ApproachStep]
   updateApproachStep(
@@ -2200,15 +2469,15 @@ type Mutation {
   updateApproachSteps(data: [ApproachStepUpdateArgs!]!): [ApproachStep]
   deleteApproachStep(where: ApproachStepWhereUniqueInput!): ApproachStep
   deleteApproachSteps(where: [ApproachStepWhereUniqueInput!]!): [ApproachStep]
-  createLanguage(data: LanguageCreateInput!): Language
-  createLanguages(data: [LanguageCreateInput!]!): [Language]
-  updateLanguage(
-    where: LanguageWhereUniqueInput!
-    data: LanguageUpdateInput!
-  ): Language
-  updateLanguages(data: [LanguageUpdateArgs!]!): [Language]
-  deleteLanguage(where: LanguageWhereUniqueInput!): Language
-  deleteLanguages(where: [LanguageWhereUniqueInput!]!): [Language]
+  createApproach(data: ApproachCreateInput!): Approach
+  createApproaches(data: [ApproachCreateInput!]!): [Approach]
+  updateApproach(
+    where: ApproachWhereUniqueInput!
+    data: ApproachUpdateInput!
+  ): Approach
+  updateApproaches(data: [ApproachUpdateArgs!]!): [Approach]
+  deleteApproach(where: ApproachWhereUniqueInput!): Approach
+  deleteApproaches(where: [ApproachWhereUniqueInput!]!): [Approach]
   createNavigationLink(data: NavigationLinkCreateInput!): NavigationLink
   createNavigationLinks(data: [NavigationLinkCreateInput!]!): [NavigationLink]
   updateNavigationLink(
@@ -2220,6 +2489,32 @@ type Mutation {
   deleteNavigationLinks(
     where: [NavigationLinkWhereUniqueInput!]!
   ): [NavigationLink]
+  createNavigation(data: NavigationCreateInput!): Navigation
+  createNavigations(data: [NavigationCreateInput!]!): [Navigation]
+  updateNavigation(
+    where: NavigationWhereUniqueInput!
+    data: NavigationUpdateInput!
+  ): Navigation
+  updateNavigations(data: [NavigationUpdateArgs!]!): [Navigation]
+  deleteNavigation(where: NavigationWhereUniqueInput!): Navigation
+  deleteNavigations(where: [NavigationWhereUniqueInput!]!): [Navigation]
+  createFooterSection(data: FooterSectionCreateInput!): FooterSection
+  createFooterSections(data: [FooterSectionCreateInput!]!): [FooterSection]
+  updateFooterSection(
+    where: FooterSectionWhereUniqueInput!
+    data: FooterSectionUpdateInput!
+  ): FooterSection
+  updateFooterSections(data: [FooterSectionUpdateArgs!]!): [FooterSection]
+  deleteFooterSection(where: FooterSectionWhereUniqueInput!): FooterSection
+  deleteFooterSections(
+    where: [FooterSectionWhereUniqueInput!]!
+  ): [FooterSection]
+  createFooter(data: FooterCreateInput!): Footer
+  createFooters(data: [FooterCreateInput!]!): [Footer]
+  updateFooter(where: FooterWhereUniqueInput!, data: FooterUpdateInput!): Footer
+  updateFooters(data: [FooterUpdateArgs!]!): [Footer]
+  deleteFooter(where: FooterWhereUniqueInput!): Footer
+  deleteFooters(where: [FooterWhereUniqueInput!]!): [Footer]
   createAnalyticsStat(data: AnalyticsStatCreateInput!): AnalyticsStat
   createAnalyticsStats(data: [AnalyticsStatCreateInput!]!): [AnalyticsStat]
   updateAnalyticsStat(
@@ -2250,104 +2545,6 @@ type Mutation {
   deleteAnalyticsSummaryItems(
     where: [AnalyticsSummaryItemWhereUniqueInput!]!
   ): [AnalyticsSummaryItem]
-  createFooterPart(data: FooterPartCreateInput!): FooterPart
-  createFooterParts(data: [FooterPartCreateInput!]!): [FooterPart]
-  updateFooterPart(
-    where: FooterPartWhereUniqueInput!
-    data: FooterPartUpdateInput!
-  ): FooterPart
-  updateFooterParts(data: [FooterPartUpdateArgs!]!): [FooterPart]
-  deleteFooterPart(where: FooterPartWhereUniqueInput!): FooterPart
-  deleteFooterParts(where: [FooterPartWhereUniqueInput!]!): [FooterPart]
-  createValue(data: ValueCreateInput!): Value
-  createValues(data: [ValueCreateInput!]!): [Value]
-  updateValue(where: ValueWhereUniqueInput!, data: ValueUpdateInput!): Value
-  updateValues(data: [ValueUpdateArgs!]!): [Value]
-  deleteValue(where: ValueWhereUniqueInput!): Value
-  deleteValues(where: [ValueWhereUniqueInput!]!): [Value]
-  createCtaSection(data: CtaSectionCreateInput!): CtaSection
-  createCtaSections(data: [CtaSectionCreateInput!]!): [CtaSection]
-  updateCtaSection(
-    where: CtaSectionWhereUniqueInput!
-    data: CtaSectionUpdateInput!
-  ): CtaSection
-  updateCtaSections(data: [CtaSectionUpdateArgs!]!): [CtaSection]
-  deleteCtaSection(where: CtaSectionWhereUniqueInput!): CtaSection
-  deleteCtaSections(where: [CtaSectionWhereUniqueInput!]!): [CtaSection]
-  createTestimonial(data: TestimonialCreateInput!): Testimonial
-  createTestimonials(data: [TestimonialCreateInput!]!): [Testimonial]
-  updateTestimonial(
-    where: TestimonialWhereUniqueInput!
-    data: TestimonialUpdateInput!
-  ): Testimonial
-  updateTestimonials(data: [TestimonialUpdateArgs!]!): [Testimonial]
-  deleteTestimonial(where: TestimonialWhereUniqueInput!): Testimonial
-  deleteTestimonials(where: [TestimonialWhereUniqueInput!]!): [Testimonial]
-  createHero(data: HeroCreateInput!): Hero
-  createHeroes(data: [HeroCreateInput!]!): [Hero]
-  updateHero(where: HeroWhereUniqueInput!, data: HeroUpdateInput!): Hero
-  updateHeroes(data: [HeroUpdateArgs!]!): [Hero]
-  deleteHero(where: HeroWhereUniqueInput!): Hero
-  deleteHeroes(where: [HeroWhereUniqueInput!]!): [Hero]
-  createBenefit(data: BenefitCreateInput!): Benefit
-  createBenefits(data: [BenefitCreateInput!]!): [Benefit]
-  updateBenefit(
-    where: BenefitWhereUniqueInput!
-    data: BenefitUpdateInput!
-  ): Benefit
-  updateBenefits(data: [BenefitUpdateArgs!]!): [Benefit]
-  deleteBenefit(where: BenefitWhereUniqueInput!): Benefit
-  deleteBenefits(where: [BenefitWhereUniqueInput!]!): [Benefit]
-  createFaq(data: FaqCreateInput!): Faq
-  createFaqs(data: [FaqCreateInput!]!): [Faq]
-  updateFaq(where: FaqWhereUniqueInput!, data: FaqUpdateInput!): Faq
-  updateFaqs(data: [FaqUpdateArgs!]!): [Faq]
-  deleteFaq(where: FaqWhereUniqueInput!): Faq
-  deleteFaqs(where: [FaqWhereUniqueInput!]!): [Faq]
-  createCertification(data: CertificationCreateInput!): Certification
-  createCertifications(data: [CertificationCreateInput!]!): [Certification]
-  updateCertification(
-    where: CertificationWhereUniqueInput!
-    data: CertificationUpdateInput!
-  ): Certification
-  updateCertifications(data: [CertificationUpdateArgs!]!): [Certification]
-  deleteCertification(where: CertificationWhereUniqueInput!): Certification
-  deleteCertifications(
-    where: [CertificationWhereUniqueInput!]!
-  ): [Certification]
-  createFeature(data: FeatureCreateInput!): Feature
-  createFeatures(data: [FeatureCreateInput!]!): [Feature]
-  updateFeature(
-    where: FeatureWhereUniqueInput!
-    data: FeatureUpdateInput!
-  ): Feature
-  updateFeatures(data: [FeatureUpdateArgs!]!): [Feature]
-  deleteFeature(where: FeatureWhereUniqueInput!): Feature
-  deleteFeatures(where: [FeatureWhereUniqueInput!]!): [Feature]
-  createApproach(data: ApproachCreateInput!): Approach
-  createApproaches(data: [ApproachCreateInput!]!): [Approach]
-  updateApproach(
-    where: ApproachWhereUniqueInput!
-    data: ApproachUpdateInput!
-  ): Approach
-  updateApproaches(data: [ApproachUpdateArgs!]!): [Approach]
-  deleteApproach(where: ApproachWhereUniqueInput!): Approach
-  deleteApproaches(where: [ApproachWhereUniqueInput!]!): [Approach]
-  createNavigation(data: NavigationCreateInput!): Navigation
-  createNavigations(data: [NavigationCreateInput!]!): [Navigation]
-  updateNavigation(
-    where: NavigationWhereUniqueInput!
-    data: NavigationUpdateInput!
-  ): Navigation
-  updateNavigations(data: [NavigationUpdateArgs!]!): [Navigation]
-  deleteNavigation(where: NavigationWhereUniqueInput!): Navigation
-  deleteNavigations(where: [NavigationWhereUniqueInput!]!): [Navigation]
-  createFooter(data: FooterCreateInput!): Footer
-  createFooters(data: [FooterCreateInput!]!): [Footer]
-  updateFooter(where: FooterWhereUniqueInput!, data: FooterUpdateInput!): Footer
-  updateFooters(data: [FooterUpdateArgs!]!): [Footer]
-  deleteFooter(where: FooterWhereUniqueInput!): Footer
-  deleteFooters(where: [FooterWhereUniqueInput!]!): [Footer]
   createAnalytic(data: AnalyticCreateInput!): Analytic
   createAnalytics(data: [AnalyticCreateInput!]!): [Analytic]
   updateAnalytic(
@@ -2357,6 +2554,12 @@ type Mutation {
   updateAnalytics(data: [AnalyticUpdateArgs!]!): [Analytic]
   deleteAnalytic(where: AnalyticWhereUniqueInput!): Analytic
   deleteAnalytics(where: [AnalyticWhereUniqueInput!]!): [Analytic]
+  createValue(data: ValueCreateInput!): Value
+  createValues(data: [ValueCreateInput!]!): [Value]
+  updateValue(where: ValueWhereUniqueInput!, data: ValueUpdateInput!): Value
+  updateValues(data: [ValueUpdateArgs!]!): [Value]
+  deleteValue(where: ValueWhereUniqueInput!): Value
+  deleteValues(where: [ValueWhereUniqueInput!]!): [Value]
   createAbout(data: AboutCreateInput!): About
   createAbouts(data: [AboutCreateInput!]!): [About]
   updateAbout(where: AboutWhereUniqueInput!, data: AboutUpdateInput!): About
@@ -2369,6 +2572,15 @@ type Mutation {
   updateMaps(data: [MapUpdateArgs!]!): [Map]
   deleteMap(where: MapWhereUniqueInput!): Map
   deleteMaps(where: [MapWhereUniqueInput!]!): [Map]
+  createCtaSection(data: CtaSectionCreateInput!): CtaSection
+  createCtaSections(data: [CtaSectionCreateInput!]!): [CtaSection]
+  updateCtaSection(
+    where: CtaSectionWhereUniqueInput!
+    data: CtaSectionUpdateInput!
+  ): CtaSection
+  updateCtaSections(data: [CtaSectionUpdateArgs!]!): [CtaSection]
+  deleteCtaSection(where: CtaSectionWhereUniqueInput!): CtaSection
+  deleteCtaSections(where: [CtaSectionWhereUniqueInput!]!): [CtaSection]
   createSection(data: SectionCreateInput!): Section
   createSections(data: [SectionCreateInput!]!): [Section]
   updateSection(
@@ -2453,6 +2665,15 @@ type Query {
     cursor: BackgroundWhereUniqueInput
   ): [Background!]
   backgroundsCount(where: BackgroundWhereInput! = {}): Int
+  language(where: LanguageWhereUniqueInput!): Language
+  languages(
+    where: LanguageWhereInput! = {}
+    orderBy: [LanguageOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: LanguageWhereUniqueInput
+  ): [Language!]
+  languagesCount(where: LanguageWhereInput! = {}): Int
   testimonialBadge(where: TestimonialBadgeWhereUniqueInput!): TestimonialBadge
   testimonialBadges(
     where: TestimonialBadgeWhereInput! = {}
@@ -2471,6 +2692,17 @@ type Query {
     cursor: TestimonialItemWhereUniqueInput
   ): [TestimonialItem!]
   testimonialItemsCount(where: TestimonialItemWhereInput! = {}): Int
+  testimonialSection(
+    where: TestimonialSectionWhereUniqueInput!
+  ): TestimonialSection
+  testimonialSections(
+    where: TestimonialSectionWhereInput! = {}
+    orderBy: [TestimonialSectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: TestimonialSectionWhereUniqueInput
+  ): [TestimonialSection!]
+  testimonialSectionsCount(where: TestimonialSectionWhereInput! = {}): Int
   heroBannerAdditional(
     where: HeroBannerAdditionalWhereUniqueInput!
   ): HeroBannerAdditional
@@ -2491,6 +2723,71 @@ type Query {
     cursor: HeroBannerWhereUniqueInput
   ): [HeroBanner!]
   heroBannersCount(where: HeroBannerWhereInput! = {}): Int
+  hero(where: HeroWhereUniqueInput!): Hero
+  heroes(
+    where: HeroWhereInput! = {}
+    orderBy: [HeroOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: HeroWhereUniqueInput
+  ): [Hero!]
+  heroesCount(where: HeroWhereInput! = {}): Int
+  benefit(where: BenefitWhereUniqueInput!): Benefit
+  benefits(
+    where: BenefitWhereInput! = {}
+    orderBy: [BenefitOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: BenefitWhereUniqueInput
+  ): [Benefit!]
+  benefitsCount(where: BenefitWhereInput! = {}): Int
+  benefitSection(where: BenefitSectionWhereUniqueInput!): BenefitSection
+  benefitSections(
+    where: BenefitSectionWhereInput! = {}
+    orderBy: [BenefitSectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: BenefitSectionWhereUniqueInput
+  ): [BenefitSection!]
+  benefitSectionsCount(where: BenefitSectionWhereInput! = {}): Int
+  faq(where: FaqWhereUniqueInput!): Faq
+  faqs(
+    where: FaqWhereInput! = {}
+    orderBy: [FaqOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: FaqWhereUniqueInput
+  ): [Faq!]
+  faqsCount(where: FaqWhereInput! = {}): Int
+  certification(where: CertificationWhereUniqueInput!): Certification
+  certifications(
+    where: CertificationWhereInput! = {}
+    orderBy: [CertificationOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: CertificationWhereUniqueInput
+  ): [Certification!]
+  certificationsCount(where: CertificationWhereInput! = {}): Int
+  certificationSection(
+    where: CertificationSectionWhereUniqueInput!
+  ): CertificationSection
+  certificationSections(
+    where: CertificationSectionWhereInput! = {}
+    orderBy: [CertificationSectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: CertificationSectionWhereUniqueInput
+  ): [CertificationSection!]
+  certificationSectionsCount(where: CertificationSectionWhereInput! = {}): Int
+  feature(where: FeatureWhereUniqueInput!): Feature
+  features(
+    where: FeatureWhereInput! = {}
+    orderBy: [FeatureOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: FeatureWhereUniqueInput
+  ): [Feature!]
+  featuresCount(where: FeatureWhereInput! = {}): Int
   approachStep(where: ApproachStepWhereUniqueInput!): ApproachStep
   approachSteps(
     where: ApproachStepWhereInput! = {}
@@ -2500,15 +2797,15 @@ type Query {
     cursor: ApproachStepWhereUniqueInput
   ): [ApproachStep!]
   approachStepsCount(where: ApproachStepWhereInput! = {}): Int
-  language(where: LanguageWhereUniqueInput!): Language
-  languages(
-    where: LanguageWhereInput! = {}
-    orderBy: [LanguageOrderByInput!]! = []
+  approach(where: ApproachWhereUniqueInput!): Approach
+  approaches(
+    where: ApproachWhereInput! = {}
+    orderBy: [ApproachOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-    cursor: LanguageWhereUniqueInput
-  ): [Language!]
-  languagesCount(where: LanguageWhereInput! = {}): Int
+    cursor: ApproachWhereUniqueInput
+  ): [Approach!]
+  approachesCount(where: ApproachWhereInput! = {}): Int
   navigationLink(where: NavigationLinkWhereUniqueInput!): NavigationLink
   navigationLinks(
     where: NavigationLinkWhereInput! = {}
@@ -2518,6 +2815,33 @@ type Query {
     cursor: NavigationLinkWhereUniqueInput
   ): [NavigationLink!]
   navigationLinksCount(where: NavigationLinkWhereInput! = {}): Int
+  navigation(where: NavigationWhereUniqueInput!): Navigation
+  navigations(
+    where: NavigationWhereInput! = {}
+    orderBy: [NavigationOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: NavigationWhereUniqueInput
+  ): [Navigation!]
+  navigationsCount(where: NavigationWhereInput! = {}): Int
+  footerSection(where: FooterSectionWhereUniqueInput!): FooterSection
+  footerSections(
+    where: FooterSectionWhereInput! = {}
+    orderBy: [FooterSectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: FooterSectionWhereUniqueInput
+  ): [FooterSection!]
+  footerSectionsCount(where: FooterSectionWhereInput! = {}): Int
+  footer(where: FooterWhereUniqueInput!): Footer
+  footers(
+    where: FooterWhereInput! = {}
+    orderBy: [FooterOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: FooterWhereUniqueInput
+  ): [Footer!]
+  footersCount(where: FooterWhereInput! = {}): Int
   analyticsStat(where: AnalyticsStatWhereUniqueInput!): AnalyticsStat
   analyticsStats(
     where: AnalyticsStatWhereInput! = {}
@@ -2538,114 +2862,6 @@ type Query {
     cursor: AnalyticsSummaryItemWhereUniqueInput
   ): [AnalyticsSummaryItem!]
   analyticsSummaryItemsCount(where: AnalyticsSummaryItemWhereInput! = {}): Int
-  footerPart(where: FooterPartWhereUniqueInput!): FooterPart
-  footerParts(
-    where: FooterPartWhereInput! = {}
-    orderBy: [FooterPartOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterPartWhereUniqueInput
-  ): [FooterPart!]
-  footerPartsCount(where: FooterPartWhereInput! = {}): Int
-  value(where: ValueWhereUniqueInput!): Value
-  values(
-    where: ValueWhereInput! = {}
-    orderBy: [ValueOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ValueWhereUniqueInput
-  ): [Value!]
-  valuesCount(where: ValueWhereInput! = {}): Int
-  ctaSection(where: CtaSectionWhereUniqueInput!): CtaSection
-  ctaSections(
-    where: CtaSectionWhereInput! = {}
-    orderBy: [CtaSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaSectionWhereUniqueInput
-  ): [CtaSection!]
-  ctaSectionsCount(where: CtaSectionWhereInput! = {}): Int
-  testimonial(where: TestimonialWhereUniqueInput!): Testimonial
-  testimonials(
-    where: TestimonialWhereInput! = {}
-    orderBy: [TestimonialOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialWhereUniqueInput
-  ): [Testimonial!]
-  testimonialsCount(where: TestimonialWhereInput! = {}): Int
-  hero(where: HeroWhereUniqueInput!): Hero
-  heroes(
-    where: HeroWhereInput! = {}
-    orderBy: [HeroOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: HeroWhereUniqueInput
-  ): [Hero!]
-  heroesCount(where: HeroWhereInput! = {}): Int
-  benefit(where: BenefitWhereUniqueInput!): Benefit
-  benefits(
-    where: BenefitWhereInput! = {}
-    orderBy: [BenefitOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitWhereUniqueInput
-  ): [Benefit!]
-  benefitsCount(where: BenefitWhereInput! = {}): Int
-  faq(where: FaqWhereUniqueInput!): Faq
-  faqs(
-    where: FaqWhereInput! = {}
-    orderBy: [FaqOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FaqWhereUniqueInput
-  ): [Faq!]
-  faqsCount(where: FaqWhereInput! = {}): Int
-  certification(where: CertificationWhereUniqueInput!): Certification
-  certifications(
-    where: CertificationWhereInput! = {}
-    orderBy: [CertificationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationWhereUniqueInput
-  ): [Certification!]
-  certificationsCount(where: CertificationWhereInput! = {}): Int
-  feature(where: FeatureWhereUniqueInput!): Feature
-  features(
-    where: FeatureWhereInput! = {}
-    orderBy: [FeatureOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FeatureWhereUniqueInput
-  ): [Feature!]
-  featuresCount(where: FeatureWhereInput! = {}): Int
-  approach(where: ApproachWhereUniqueInput!): Approach
-  approaches(
-    where: ApproachWhereInput! = {}
-    orderBy: [ApproachOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ApproachWhereUniqueInput
-  ): [Approach!]
-  approachesCount(where: ApproachWhereInput! = {}): Int
-  navigation(where: NavigationWhereUniqueInput!): Navigation
-  navigations(
-    where: NavigationWhereInput! = {}
-    orderBy: [NavigationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationWhereUniqueInput
-  ): [Navigation!]
-  navigationsCount(where: NavigationWhereInput! = {}): Int
-  footer(where: FooterWhereUniqueInput!): Footer
-  footers(
-    where: FooterWhereInput! = {}
-    orderBy: [FooterOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterWhereUniqueInput
-  ): [Footer!]
-  footersCount(where: FooterWhereInput! = {}): Int
   analytic(where: AnalyticWhereUniqueInput!): Analytic
   analytics(
     where: AnalyticWhereInput! = {}
@@ -2655,6 +2871,15 @@ type Query {
     cursor: AnalyticWhereUniqueInput
   ): [Analytic!]
   analyticsCount(where: AnalyticWhereInput! = {}): Int
+  value(where: ValueWhereUniqueInput!): Value
+  values(
+    where: ValueWhereInput! = {}
+    orderBy: [ValueOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: ValueWhereUniqueInput
+  ): [Value!]
+  valuesCount(where: ValueWhereInput! = {}): Int
   about(where: AboutWhereUniqueInput!): About
   abouts(
     where: AboutWhereInput! = {}
@@ -2673,6 +2898,15 @@ type Query {
     cursor: MapWhereUniqueInput
   ): [Map!]
   mapsCount(where: MapWhereInput! = {}): Int
+  ctaSection(where: CtaSectionWhereUniqueInput!): CtaSection
+  ctaSections(
+    where: CtaSectionWhereInput! = {}
+    orderBy: [CtaSectionOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+    cursor: CtaSectionWhereUniqueInput
+  ): [CtaSection!]
+  ctaSectionsCount(where: CtaSectionWhereInput! = {}): Int
   section(where: SectionWhereUniqueInput!): Section
   sections(
     where: SectionWhereInput! = {}

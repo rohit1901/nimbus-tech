@@ -5,10 +5,8 @@ import { useQuery } from "@apollo/client/react"
 export const GET_PAGE_CONTENTS = gql`
   query GET_PAGE_CONTENTS {
     pageContents {
-      id
-      slug
       title
-      description
+      slug
       image {
         id
         width
@@ -18,6 +16,8 @@ export const GET_PAGE_CONTENTS = gql`
         fill
         className
       }
+      id
+      description
       cta {
         id
         label
@@ -35,6 +35,7 @@ export const GET_PAGE_CONTENTS = gql`
             label
             href
             external
+            icon
             additional {
               id
               icon
@@ -44,14 +45,18 @@ export const GET_PAGE_CONTENTS = gql`
         }
         contentBenefits {
           id
-          icon
           title
-          description
+          benefits {
+            id
+            icon
+            title
+            description
+          }
+          benefitsCount
         }
-        contentBenefitsCount
         contentFeatures {
           id
-          fid
+          featureId
           title
           description
           longDescription
@@ -66,14 +71,15 @@ export const GET_PAGE_CONTENTS = gql`
         contentFaqsCount
         contentTestimonials {
           id
+          title
           background {
             id
             image {
               id
-              width
-              height
               src
               alt
+              width
+              height
               fill
               className
             }
@@ -82,6 +88,7 @@ export const GET_PAGE_CONTENTS = gql`
           backgroundCount
           testimonials {
             id
+            rating
             badge {
               id
               icon
@@ -90,37 +97,15 @@ export const GET_PAGE_CONTENTS = gql`
             name
             role
             company
-            image {
-              id
-              width
-              height
-              src
-              alt
-              fill
-              className
-            }
             content
           }
           testimonialsCount
           fallback {
             id
-            badge {
-              id
-              icon
-              label
-            }
+            rating
             name
             role
             company
-            image {
-              id
-              width
-              height
-              src
-              alt
-              fill
-              className
-            }
             content
           }
         }
@@ -128,29 +113,41 @@ export const GET_PAGE_CONTENTS = gql`
           id
           title
           description
-          image {
+          cta {
             id
-            width
-            height
-            src
-            alt
-            fill
-            className
+            label
+            href
+            external
           }
-          link
+          certifications {
+            id
+            certId
+            title
+            description
+            image {
+              id
+              src
+              alt
+              width
+              height
+              fill
+              className
+            }
+            link
+          }
+          certificationsCount
         }
-        contentCertificationsCount
-        contentApproaches {
+        contentApproach {
           id
           title
           description
           steps {
             id
+            stepId
             type
             title
             description
             activityTime
-            aid
           }
           stepsCount
         }
@@ -199,10 +196,10 @@ export const GET_PAGE_CONTENTS = gql`
           description
           image {
             id
-            width
-            height
             src
             alt
+            width
+            height
             fill
             className
           }
@@ -223,6 +220,7 @@ export const GET_PAGE_CONTENTS = gql`
         }
         contentFooter {
           id
+          title
           sections {
             id
             title
@@ -245,20 +243,8 @@ export const GET_PAGE_CONTENTS = gql`
         }
         contentCta {
           id
-          background {
-            id
-            image {
-              id
-              width
-              height
-              src
-              alt
-              fill
-              className
-            }
-            outerClassName
-          }
-          backgroundCount
+          title
+          description
           ctas {
             id
             label
@@ -266,6 +252,20 @@ export const GET_PAGE_CONTENTS = gql`
             external
           }
           ctasCount
+          background {
+            id
+            image {
+              id
+              src
+              alt
+              width
+              height
+              fill
+              className
+            }
+            outerClassName
+          }
+          backgroundCount
         }
         contentMap {
           id
@@ -274,9 +274,31 @@ export const GET_PAGE_CONTENTS = gql`
           description
         }
       }
+      sectionsCount
     }
   }
 `
+
+export const GET_BENEFITS_SECTION = gql`
+  query GET_BENEFITS_SECTION {
+    benefitSections {
+      id
+      title
+      benefits {
+        id
+        icon
+        title
+        description
+      }
+      benefitsCount
+    }
+  }
+`
+
 export function usePageContents() {
   return useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
+}
+
+export function useBenefitsSection() {
+  return useQuery<Pick<Query, "benefitSections">>(GET_BENEFITS_SECTION)
 }

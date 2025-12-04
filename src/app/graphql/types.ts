@@ -313,7 +313,7 @@ export type AnalyticsSummaryItemWhereInput = {
   NOT?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>;
   OR?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>;
   bgColor?: InputMaybe<StringFilter>;
-  changeType?: InputMaybe<StringNullableFilter>;
+  changeType?: InputMaybe<StringFilter>;
   clientSatisfaction?: InputMaybe<StringFilter>;
   deployments?: InputMaybe<StringFilter>;
   efficiency?: InputMaybe<StringFilter>;
@@ -376,17 +376,17 @@ export type ApproachRelateToOneForUpdateInput = {
 export type ApproachStep = {
   __typename?: 'ApproachStep';
   activityTime?: Maybe<Scalars['String']['output']>;
-  aid?: Maybe<Scalars['Int']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
+  stepId?: Maybe<Scalars['Int']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
 };
 
 export type ApproachStepCreateInput = {
   activityTime?: InputMaybe<Scalars['String']['input']>;
-  aid?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  stepId?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
@@ -399,9 +399,9 @@ export type ApproachStepManyRelationFilter = {
 
 export type ApproachStepOrderByInput = {
   activityTime?: InputMaybe<OrderDirection>;
-  aid?: InputMaybe<OrderDirection>;
   description?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
+  stepId?: InputMaybe<OrderDirection>;
   title?: InputMaybe<OrderDirection>;
   type?: InputMaybe<OrderDirection>;
 };
@@ -425,8 +425,8 @@ export type ApproachStepUpdateArgs = {
 
 export type ApproachStepUpdateInput = {
   activityTime?: InputMaybe<Scalars['String']['input']>;
-  aid?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
+  stepId?: InputMaybe<Scalars['Int']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
@@ -436,11 +436,11 @@ export type ApproachStepWhereInput = {
   NOT?: InputMaybe<Array<ApproachStepWhereInput>>;
   OR?: InputMaybe<Array<ApproachStepWhereInput>>;
   activityTime?: InputMaybe<StringFilter>;
-  aid?: InputMaybe<IntFilter>;
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
+  stepId?: InputMaybe<IntFilter>;
   title?: InputMaybe<StringFilter>;
-  type?: InputMaybe<StringNullableFilter>;
+  type?: InputMaybe<StringFilter>;
 };
 
 export type ApproachStepWhereUniqueInput = {
@@ -571,6 +571,72 @@ export type BenefitRelateToManyForUpdateInput = {
   set?: InputMaybe<Array<BenefitWhereUniqueInput>>;
 };
 
+export type BenefitSection = {
+  __typename?: 'BenefitSection';
+  benefits?: Maybe<Array<Benefit>>;
+  benefitsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type BenefitSectionBenefitsArgs = {
+  cursor?: InputMaybe<BenefitWhereUniqueInput>;
+  orderBy?: Array<BenefitOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitWhereInput;
+};
+
+
+export type BenefitSectionBenefitsCountArgs = {
+  where?: BenefitWhereInput;
+};
+
+export type BenefitSectionCreateInput = {
+  benefits?: InputMaybe<BenefitRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type BenefitSectionOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
+
+export type BenefitSectionRelateToOneForCreateInput = {
+  connect?: InputMaybe<BenefitSectionWhereUniqueInput>;
+  create?: InputMaybe<BenefitSectionCreateInput>;
+};
+
+export type BenefitSectionRelateToOneForUpdateInput = {
+  connect?: InputMaybe<BenefitSectionWhereUniqueInput>;
+  create?: InputMaybe<BenefitSectionCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type BenefitSectionUpdateArgs = {
+  data: BenefitSectionUpdateInput;
+  where: BenefitSectionWhereUniqueInput;
+};
+
+export type BenefitSectionUpdateInput = {
+  benefits?: InputMaybe<BenefitRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type BenefitSectionWhereInput = {
+  AND?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  NOT?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  OR?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  benefits?: InputMaybe<BenefitManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type BenefitSectionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type BenefitUpdateArgs = {
   data: BenefitUpdateInput;
   where: BenefitWhereUniqueInput;
@@ -603,6 +669,7 @@ export type BooleanFilter = {
 
 export type Certification = {
   __typename?: 'Certification';
+  certId?: Maybe<Scalars['Int']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   image?: Maybe<Image>;
@@ -611,6 +678,7 @@ export type Certification = {
 };
 
 export type CertificationCreateInput = {
+  certId?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForCreateInput>;
   link?: InputMaybe<Scalars['String']['input']>;
@@ -624,6 +692,7 @@ export type CertificationManyRelationFilter = {
 };
 
 export type CertificationOrderByInput = {
+  certId?: InputMaybe<OrderDirection>;
   description?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   link?: InputMaybe<OrderDirection>;
@@ -642,12 +711,88 @@ export type CertificationRelateToManyForUpdateInput = {
   set?: InputMaybe<Array<CertificationWhereUniqueInput>>;
 };
 
+export type CertificationSection = {
+  __typename?: 'CertificationSection';
+  certifications?: Maybe<Array<Certification>>;
+  certificationsCount?: Maybe<Scalars['Int']['output']>;
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type CertificationSectionCertificationsArgs = {
+  cursor?: InputMaybe<CertificationWhereUniqueInput>;
+  orderBy?: Array<CertificationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationWhereInput;
+};
+
+
+export type CertificationSectionCertificationsCountArgs = {
+  where?: CertificationWhereInput;
+};
+
+export type CertificationSectionCreateInput = {
+  certifications?: InputMaybe<CertificationRelateToManyForCreateInput>;
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CertificationSectionOrderByInput = {
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
+
+export type CertificationSectionRelateToOneForCreateInput = {
+  connect?: InputMaybe<CertificationSectionWhereUniqueInput>;
+  create?: InputMaybe<CertificationSectionCreateInput>;
+};
+
+export type CertificationSectionRelateToOneForUpdateInput = {
+  connect?: InputMaybe<CertificationSectionWhereUniqueInput>;
+  create?: InputMaybe<CertificationSectionCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CertificationSectionUpdateArgs = {
+  data: CertificationSectionUpdateInput;
+  where: CertificationSectionWhereUniqueInput;
+};
+
+export type CertificationSectionUpdateInput = {
+  certifications?: InputMaybe<CertificationRelateToManyForUpdateInput>;
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CertificationSectionWhereInput = {
+  AND?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  NOT?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  OR?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  certifications?: InputMaybe<CertificationManyRelationFilter>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type CertificationSectionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type CertificationUpdateArgs = {
   data: CertificationUpdateInput;
   where: CertificationWhereUniqueInput;
 };
 
 export type CertificationUpdateInput = {
+  certId?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForUpdateInput>;
   link?: InputMaybe<Scalars['String']['input']>;
@@ -658,6 +803,7 @@ export type CertificationWhereInput = {
   AND?: InputMaybe<Array<CertificationWhereInput>>;
   NOT?: InputMaybe<Array<CertificationWhereInput>>;
   OR?: InputMaybe<Array<CertificationWhereInput>>;
+  certId?: InputMaybe<IntFilter>;
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   image?: InputMaybe<ImageWhereInput>;
@@ -731,7 +877,9 @@ export type CtaSection = {
   backgroundCount?: Maybe<Scalars['Int']['output']>;
   ctas?: Maybe<Array<Cta>>;
   ctasCount?: Maybe<Scalars['Int']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -765,10 +913,14 @@ export type CtaSectionCtasCountArgs = {
 export type CtaSectionCreateInput = {
   background?: InputMaybe<BackgroundRelateToManyForCreateInput>;
   ctas?: InputMaybe<CtaRelateToManyForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CtaSectionOrderByInput = {
+  description?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
 };
 
 export type CtaSectionRelateToOneForCreateInput = {
@@ -790,6 +942,8 @@ export type CtaSectionUpdateArgs = {
 export type CtaSectionUpdateInput = {
   background?: InputMaybe<BackgroundRelateToManyForUpdateInput>;
   ctas?: InputMaybe<CtaRelateToManyForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CtaSectionWhereInput = {
@@ -798,7 +952,9 @@ export type CtaSectionWhereInput = {
   OR?: InputMaybe<Array<CtaSectionWhereInput>>;
   background?: InputMaybe<BackgroundManyRelationFilter>;
   ctas?: InputMaybe<CtaManyRelationFilter>;
+  description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
+  title?: InputMaybe<StringFilter>;
 };
 
 export type CtaSectionWhereUniqueInput = {
@@ -903,7 +1059,7 @@ export type FaqWhereUniqueInput = {
 export type Feature = {
   __typename?: 'Feature';
   description?: Maybe<Scalars['String']['output']>;
-  fid?: Maybe<Scalars['String']['output']>;
+  featureId?: Maybe<Scalars['Int']['output']>;
   id: Scalars['ID']['output'];
   longDescription?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
@@ -912,7 +1068,7 @@ export type Feature = {
 
 export type FeatureCreateInput = {
   description?: InputMaybe<Scalars['String']['input']>;
-  fid?: InputMaybe<Scalars['String']['input']>;
+  featureId?: InputMaybe<Scalars['Int']['input']>;
   longDescription?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   visualization?: InputMaybe<Scalars['String']['input']>;
@@ -926,7 +1082,7 @@ export type FeatureManyRelationFilter = {
 
 export type FeatureOrderByInput = {
   description?: InputMaybe<OrderDirection>;
-  fid?: InputMaybe<OrderDirection>;
+  featureId?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   longDescription?: InputMaybe<OrderDirection>;
   title?: InputMaybe<OrderDirection>;
@@ -952,7 +1108,7 @@ export type FeatureUpdateArgs = {
 
 export type FeatureUpdateInput = {
   description?: InputMaybe<Scalars['String']['input']>;
-  fid?: InputMaybe<Scalars['String']['input']>;
+  featureId?: InputMaybe<Scalars['Int']['input']>;
   longDescription?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   visualization?: InputMaybe<Scalars['String']['input']>;
@@ -963,15 +1119,26 @@ export type FeatureWhereInput = {
   NOT?: InputMaybe<Array<FeatureWhereInput>>;
   OR?: InputMaybe<Array<FeatureWhereInput>>;
   description?: InputMaybe<StringFilter>;
-  fid?: InputMaybe<StringFilter>;
+  featureId?: InputMaybe<IntFilter>;
   id?: InputMaybe<IdFilter>;
   longDescription?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
-  visualization?: InputMaybe<StringFilter>;
+  visualization?: InputMaybe<StringNullableFilter>;
 };
 
 export type FeatureWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type FloatNullableFilter = {
+  equals?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  not?: InputMaybe<FloatNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
 };
 
 export type Footer = {
@@ -979,8 +1146,9 @@ export type Footer = {
   id: Scalars['ID']['output'];
   languages?: Maybe<Array<Language>>;
   languagesCount?: Maybe<Scalars['Int']['output']>;
-  sections?: Maybe<Array<FooterPart>>;
+  sections?: Maybe<Array<FooterSection>>;
   sectionsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -999,98 +1167,27 @@ export type FooterLanguagesCountArgs = {
 
 
 export type FooterSectionsArgs = {
-  cursor?: InputMaybe<FooterPartWhereUniqueInput>;
-  orderBy?: Array<FooterPartOrderByInput>;
+  cursor?: InputMaybe<FooterSectionWhereUniqueInput>;
+  orderBy?: Array<FooterSectionOrderByInput>;
   skip?: Scalars['Int']['input'];
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: FooterPartWhereInput;
+  where?: FooterSectionWhereInput;
 };
 
 
 export type FooterSectionsCountArgs = {
-  where?: FooterPartWhereInput;
+  where?: FooterSectionWhereInput;
 };
 
 export type FooterCreateInput = {
   languages?: InputMaybe<LanguageRelateToManyForCreateInput>;
-  sections?: InputMaybe<FooterPartRelateToManyForCreateInput>;
+  sections?: InputMaybe<FooterSectionRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type FooterOrderByInput = {
   id?: InputMaybe<OrderDirection>;
-};
-
-export type FooterPart = {
-  __typename?: 'FooterPart';
-  id: Scalars['ID']['output'];
-  items?: Maybe<Array<NavigationLink>>;
-  itemsCount?: Maybe<Scalars['Int']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type FooterPartItemsArgs = {
-  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>;
-  orderBy?: Array<NavigationLinkOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: NavigationLinkWhereInput;
-};
-
-
-export type FooterPartItemsCountArgs = {
-  where?: NavigationLinkWhereInput;
-};
-
-export type FooterPartCreateInput = {
-  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type FooterPartManyRelationFilter = {
-  every?: InputMaybe<FooterPartWhereInput>;
-  none?: InputMaybe<FooterPartWhereInput>;
-  some?: InputMaybe<FooterPartWhereInput>;
-};
-
-export type FooterPartOrderByInput = {
-  id?: InputMaybe<OrderDirection>;
   title?: InputMaybe<OrderDirection>;
-};
-
-export type FooterPartRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FooterPartWhereUniqueInput>>;
-  create?: InputMaybe<Array<FooterPartCreateInput>>;
-};
-
-export type FooterPartRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FooterPartWhereUniqueInput>>;
-  create?: InputMaybe<Array<FooterPartCreateInput>>;
-  disconnect?: InputMaybe<Array<FooterPartWhereUniqueInput>>;
-  set?: InputMaybe<Array<FooterPartWhereUniqueInput>>;
-};
-
-export type FooterPartUpdateArgs = {
-  data: FooterPartUpdateInput;
-  where: FooterPartWhereUniqueInput;
-};
-
-export type FooterPartUpdateInput = {
-  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type FooterPartWhereInput = {
-  AND?: InputMaybe<Array<FooterPartWhereInput>>;
-  NOT?: InputMaybe<Array<FooterPartWhereInput>>;
-  OR?: InputMaybe<Array<FooterPartWhereInput>>;
-  id?: InputMaybe<IdFilter>;
-  items?: InputMaybe<NavigationLinkManyRelationFilter>;
-  title?: InputMaybe<StringFilter>;
-};
-
-export type FooterPartWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type FooterRelateToOneForCreateInput = {
@@ -1104,6 +1201,79 @@ export type FooterRelateToOneForUpdateInput = {
   disconnect?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type FooterSection = {
+  __typename?: 'FooterSection';
+  id: Scalars['ID']['output'];
+  items?: Maybe<Array<NavigationLink>>;
+  itemsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type FooterSectionItemsArgs = {
+  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>;
+  orderBy?: Array<NavigationLinkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationLinkWhereInput;
+};
+
+
+export type FooterSectionItemsCountArgs = {
+  where?: NavigationLinkWhereInput;
+};
+
+export type FooterSectionCreateInput = {
+  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FooterSectionManyRelationFilter = {
+  every?: InputMaybe<FooterSectionWhereInput>;
+  none?: InputMaybe<FooterSectionWhereInput>;
+  some?: InputMaybe<FooterSectionWhereInput>;
+};
+
+export type FooterSectionOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
+
+export type FooterSectionRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterSectionCreateInput>>;
+};
+
+export type FooterSectionRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+};
+
+export type FooterSectionUpdateArgs = {
+  data: FooterSectionUpdateInput;
+  where: FooterSectionWhereUniqueInput;
+};
+
+export type FooterSectionUpdateInput = {
+  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FooterSectionWhereInput = {
+  AND?: InputMaybe<Array<FooterSectionWhereInput>>;
+  NOT?: InputMaybe<Array<FooterSectionWhereInput>>;
+  OR?: InputMaybe<Array<FooterSectionWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  items?: InputMaybe<NavigationLinkManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type FooterSectionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type FooterUpdateArgs = {
   data: FooterUpdateInput;
   where: FooterWhereUniqueInput;
@@ -1111,7 +1281,8 @@ export type FooterUpdateArgs = {
 
 export type FooterUpdateInput = {
   languages?: InputMaybe<LanguageRelateToManyForUpdateInput>;
-  sections?: InputMaybe<FooterPartRelateToManyForUpdateInput>;
+  sections?: InputMaybe<FooterSectionRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type FooterWhereInput = {
@@ -1120,7 +1291,8 @@ export type FooterWhereInput = {
   OR?: InputMaybe<Array<FooterWhereInput>>;
   id?: InputMaybe<IdFilter>;
   languages?: InputMaybe<LanguageManyRelationFilter>;
-  sections?: InputMaybe<FooterPartManyRelationFilter>;
+  sections?: InputMaybe<FooterSectionManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
 };
 
 export type FooterWhereUniqueInput = {
@@ -1139,6 +1311,7 @@ export type HeroBanner = {
   additional?: Maybe<HeroBannerAdditional>;
   external?: Maybe<Scalars['Boolean']['output']>;
   href?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   label?: Maybe<Scalars['String']['output']>;
 };
@@ -1199,12 +1372,14 @@ export type HeroBannerCreateInput = {
   additional?: InputMaybe<HeroBannerAdditionalRelateToOneForCreateInput>;
   external?: InputMaybe<Scalars['Boolean']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HeroBannerOrderByInput = {
   external?: InputMaybe<OrderDirection>;
   href?: InputMaybe<OrderDirection>;
+  icon?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   label?: InputMaybe<OrderDirection>;
 };
@@ -1229,6 +1404,7 @@ export type HeroBannerUpdateInput = {
   additional?: InputMaybe<HeroBannerAdditionalRelateToOneForUpdateInput>;
   external?: InputMaybe<Scalars['Boolean']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1239,6 +1415,7 @@ export type HeroBannerWhereInput = {
   additional?: InputMaybe<HeroBannerAdditionalWhereInput>;
   external?: InputMaybe<BooleanFilter>;
   href?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   label?: InputMaybe<StringFilter>;
 };
@@ -1599,8 +1776,8 @@ export type LanguageWhereInput = {
   NOT?: InputMaybe<Array<LanguageWhereInput>>;
   OR?: InputMaybe<Array<LanguageWhereInput>>;
   id?: InputMaybe<IdFilter>;
-  label?: InputMaybe<StringNullableFilter>;
-  value?: InputMaybe<StringNullableFilter>;
+  label?: InputMaybe<StringFilter>;
+  value?: InputMaybe<StringFilter>;
 };
 
 export type LanguageWhereUniqueInput = {
@@ -1682,8 +1859,12 @@ export type Mutation = {
   createBackground?: Maybe<Background>;
   createBackgrounds?: Maybe<Array<Maybe<Background>>>;
   createBenefit?: Maybe<Benefit>;
+  createBenefitSection?: Maybe<BenefitSection>;
+  createBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
   createBenefits?: Maybe<Array<Maybe<Benefit>>>;
   createCertification?: Maybe<Certification>;
+  createCertificationSection?: Maybe<CertificationSection>;
+  createCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
   createCertifications?: Maybe<Array<Maybe<Certification>>>;
   createCta?: Maybe<Cta>;
   createCtaSection?: Maybe<CtaSection>;
@@ -1694,8 +1875,8 @@ export type Mutation = {
   createFeature?: Maybe<Feature>;
   createFeatures?: Maybe<Array<Maybe<Feature>>>;
   createFooter?: Maybe<Footer>;
-  createFooterPart?: Maybe<FooterPart>;
-  createFooterParts?: Maybe<Array<Maybe<FooterPart>>>;
+  createFooterSection?: Maybe<FooterSection>;
+  createFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
   createFooters?: Maybe<Array<Maybe<Footer>>>;
   createHero?: Maybe<Hero>;
   createHeroBanner?: Maybe<HeroBanner>;
@@ -1718,12 +1899,12 @@ export type Mutation = {
   createPageContents?: Maybe<Array<Maybe<PageContent>>>;
   createSection?: Maybe<Section>;
   createSections?: Maybe<Array<Maybe<Section>>>;
-  createTestimonial?: Maybe<Testimonial>;
   createTestimonialBadge?: Maybe<TestimonialBadge>;
   createTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
   createTestimonialItem?: Maybe<TestimonialItem>;
   createTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
-  createTestimonials?: Maybe<Array<Maybe<Testimonial>>>;
+  createTestimonialSection?: Maybe<TestimonialSection>;
+  createTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
   createUser?: Maybe<User>;
   createUsers?: Maybe<Array<Maybe<User>>>;
   createValue?: Maybe<Value>;
@@ -1743,8 +1924,12 @@ export type Mutation = {
   deleteBackground?: Maybe<Background>;
   deleteBackgrounds?: Maybe<Array<Maybe<Background>>>;
   deleteBenefit?: Maybe<Benefit>;
+  deleteBenefitSection?: Maybe<BenefitSection>;
+  deleteBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
   deleteBenefits?: Maybe<Array<Maybe<Benefit>>>;
   deleteCertification?: Maybe<Certification>;
+  deleteCertificationSection?: Maybe<CertificationSection>;
+  deleteCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
   deleteCertifications?: Maybe<Array<Maybe<Certification>>>;
   deleteCta?: Maybe<Cta>;
   deleteCtaSection?: Maybe<CtaSection>;
@@ -1755,8 +1940,8 @@ export type Mutation = {
   deleteFeature?: Maybe<Feature>;
   deleteFeatures?: Maybe<Array<Maybe<Feature>>>;
   deleteFooter?: Maybe<Footer>;
-  deleteFooterPart?: Maybe<FooterPart>;
-  deleteFooterParts?: Maybe<Array<Maybe<FooterPart>>>;
+  deleteFooterSection?: Maybe<FooterSection>;
+  deleteFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
   deleteFooters?: Maybe<Array<Maybe<Footer>>>;
   deleteHero?: Maybe<Hero>;
   deleteHeroBanner?: Maybe<HeroBanner>;
@@ -1778,12 +1963,12 @@ export type Mutation = {
   deletePageContents?: Maybe<Array<Maybe<PageContent>>>;
   deleteSection?: Maybe<Section>;
   deleteSections?: Maybe<Array<Maybe<Section>>>;
-  deleteTestimonial?: Maybe<Testimonial>;
   deleteTestimonialBadge?: Maybe<TestimonialBadge>;
   deleteTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
   deleteTestimonialItem?: Maybe<TestimonialItem>;
   deleteTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
-  deleteTestimonials?: Maybe<Array<Maybe<Testimonial>>>;
+  deleteTestimonialSection?: Maybe<TestimonialSection>;
+  deleteTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
   deleteUser?: Maybe<User>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
   deleteValue?: Maybe<Value>;
@@ -1804,8 +1989,12 @@ export type Mutation = {
   updateBackground?: Maybe<Background>;
   updateBackgrounds?: Maybe<Array<Maybe<Background>>>;
   updateBenefit?: Maybe<Benefit>;
+  updateBenefitSection?: Maybe<BenefitSection>;
+  updateBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
   updateBenefits?: Maybe<Array<Maybe<Benefit>>>;
   updateCertification?: Maybe<Certification>;
+  updateCertificationSection?: Maybe<CertificationSection>;
+  updateCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
   updateCertifications?: Maybe<Array<Maybe<Certification>>>;
   updateCta?: Maybe<Cta>;
   updateCtaSection?: Maybe<CtaSection>;
@@ -1816,8 +2005,8 @@ export type Mutation = {
   updateFeature?: Maybe<Feature>;
   updateFeatures?: Maybe<Array<Maybe<Feature>>>;
   updateFooter?: Maybe<Footer>;
-  updateFooterPart?: Maybe<FooterPart>;
-  updateFooterParts?: Maybe<Array<Maybe<FooterPart>>>;
+  updateFooterSection?: Maybe<FooterSection>;
+  updateFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
   updateFooters?: Maybe<Array<Maybe<Footer>>>;
   updateHero?: Maybe<Hero>;
   updateHeroBanner?: Maybe<HeroBanner>;
@@ -1839,12 +2028,12 @@ export type Mutation = {
   updatePageContents?: Maybe<Array<Maybe<PageContent>>>;
   updateSection?: Maybe<Section>;
   updateSections?: Maybe<Array<Maybe<Section>>>;
-  updateTestimonial?: Maybe<Testimonial>;
   updateTestimonialBadge?: Maybe<TestimonialBadge>;
   updateTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
   updateTestimonialItem?: Maybe<TestimonialItem>;
   updateTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
-  updateTestimonials?: Maybe<Array<Maybe<Testimonial>>>;
+  updateTestimonialSection?: Maybe<TestimonialSection>;
+  updateTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
   updateUser?: Maybe<User>;
   updateUsers?: Maybe<Array<Maybe<User>>>;
   updateValue?: Maybe<Value>;
@@ -1933,6 +2122,16 @@ export type MutationCreateBenefitArgs = {
 };
 
 
+export type MutationCreateBenefitSectionArgs = {
+  data: BenefitSectionCreateInput;
+};
+
+
+export type MutationCreateBenefitSectionsArgs = {
+  data: Array<BenefitSectionCreateInput>;
+};
+
+
 export type MutationCreateBenefitsArgs = {
   data: Array<BenefitCreateInput>;
 };
@@ -1940,6 +2139,16 @@ export type MutationCreateBenefitsArgs = {
 
 export type MutationCreateCertificationArgs = {
   data: CertificationCreateInput;
+};
+
+
+export type MutationCreateCertificationSectionArgs = {
+  data: CertificationSectionCreateInput;
+};
+
+
+export type MutationCreateCertificationSectionsArgs = {
+  data: Array<CertificationSectionCreateInput>;
 };
 
 
@@ -1993,13 +2202,13 @@ export type MutationCreateFooterArgs = {
 };
 
 
-export type MutationCreateFooterPartArgs = {
-  data: FooterPartCreateInput;
+export type MutationCreateFooterSectionArgs = {
+  data: FooterSectionCreateInput;
 };
 
 
-export type MutationCreateFooterPartsArgs = {
-  data: Array<FooterPartCreateInput>;
+export type MutationCreateFooterSectionsArgs = {
+  data: Array<FooterSectionCreateInput>;
 };
 
 
@@ -2113,11 +2322,6 @@ export type MutationCreateSectionsArgs = {
 };
 
 
-export type MutationCreateTestimonialArgs = {
-  data: TestimonialCreateInput;
-};
-
-
 export type MutationCreateTestimonialBadgeArgs = {
   data: TestimonialBadgeCreateInput;
 };
@@ -2138,8 +2342,13 @@ export type MutationCreateTestimonialItemsArgs = {
 };
 
 
-export type MutationCreateTestimonialsArgs = {
-  data: Array<TestimonialCreateInput>;
+export type MutationCreateTestimonialSectionArgs = {
+  data: TestimonialSectionCreateInput;
+};
+
+
+export type MutationCreateTestimonialSectionsArgs = {
+  data: Array<TestimonialSectionCreateInput>;
 };
 
 
@@ -2238,6 +2447,16 @@ export type MutationDeleteBenefitArgs = {
 };
 
 
+export type MutationDeleteBenefitSectionArgs = {
+  where: BenefitSectionWhereUniqueInput;
+};
+
+
+export type MutationDeleteBenefitSectionsArgs = {
+  where: Array<BenefitSectionWhereUniqueInput>;
+};
+
+
 export type MutationDeleteBenefitsArgs = {
   where: Array<BenefitWhereUniqueInput>;
 };
@@ -2245,6 +2464,16 @@ export type MutationDeleteBenefitsArgs = {
 
 export type MutationDeleteCertificationArgs = {
   where: CertificationWhereUniqueInput;
+};
+
+
+export type MutationDeleteCertificationSectionArgs = {
+  where: CertificationSectionWhereUniqueInput;
+};
+
+
+export type MutationDeleteCertificationSectionsArgs = {
+  where: Array<CertificationSectionWhereUniqueInput>;
 };
 
 
@@ -2298,13 +2527,13 @@ export type MutationDeleteFooterArgs = {
 };
 
 
-export type MutationDeleteFooterPartArgs = {
-  where: FooterPartWhereUniqueInput;
+export type MutationDeleteFooterSectionArgs = {
+  where: FooterSectionWhereUniqueInput;
 };
 
 
-export type MutationDeleteFooterPartsArgs = {
-  where: Array<FooterPartWhereUniqueInput>;
+export type MutationDeleteFooterSectionsArgs = {
+  where: Array<FooterSectionWhereUniqueInput>;
 };
 
 
@@ -2413,11 +2642,6 @@ export type MutationDeleteSectionsArgs = {
 };
 
 
-export type MutationDeleteTestimonialArgs = {
-  where: TestimonialWhereUniqueInput;
-};
-
-
 export type MutationDeleteTestimonialBadgeArgs = {
   where: TestimonialBadgeWhereUniqueInput;
 };
@@ -2438,8 +2662,13 @@ export type MutationDeleteTestimonialItemsArgs = {
 };
 
 
-export type MutationDeleteTestimonialsArgs = {
-  where: Array<TestimonialWhereUniqueInput>;
+export type MutationDeleteTestimonialSectionArgs = {
+  where: TestimonialSectionWhereUniqueInput;
+};
+
+
+export type MutationDeleteTestimonialSectionsArgs = {
+  where: Array<TestimonialSectionWhereUniqueInput>;
 };
 
 
@@ -2546,6 +2775,17 @@ export type MutationUpdateBenefitArgs = {
 };
 
 
+export type MutationUpdateBenefitSectionArgs = {
+  data: BenefitSectionUpdateInput;
+  where: BenefitSectionWhereUniqueInput;
+};
+
+
+export type MutationUpdateBenefitSectionsArgs = {
+  data: Array<BenefitSectionUpdateArgs>;
+};
+
+
 export type MutationUpdateBenefitsArgs = {
   data: Array<BenefitUpdateArgs>;
 };
@@ -2554,6 +2794,17 @@ export type MutationUpdateBenefitsArgs = {
 export type MutationUpdateCertificationArgs = {
   data: CertificationUpdateInput;
   where: CertificationWhereUniqueInput;
+};
+
+
+export type MutationUpdateCertificationSectionArgs = {
+  data: CertificationSectionUpdateInput;
+  where: CertificationSectionWhereUniqueInput;
+};
+
+
+export type MutationUpdateCertificationSectionsArgs = {
+  data: Array<CertificationSectionUpdateArgs>;
 };
 
 
@@ -2612,14 +2863,14 @@ export type MutationUpdateFooterArgs = {
 };
 
 
-export type MutationUpdateFooterPartArgs = {
-  data: FooterPartUpdateInput;
-  where: FooterPartWhereUniqueInput;
+export type MutationUpdateFooterSectionArgs = {
+  data: FooterSectionUpdateInput;
+  where: FooterSectionWhereUniqueInput;
 };
 
 
-export type MutationUpdateFooterPartsArgs = {
-  data: Array<FooterPartUpdateArgs>;
+export type MutationUpdateFooterSectionsArgs = {
+  data: Array<FooterSectionUpdateArgs>;
 };
 
 
@@ -2738,12 +2989,6 @@ export type MutationUpdateSectionsArgs = {
 };
 
 
-export type MutationUpdateTestimonialArgs = {
-  data: TestimonialUpdateInput;
-  where: TestimonialWhereUniqueInput;
-};
-
-
 export type MutationUpdateTestimonialBadgeArgs = {
   data: TestimonialBadgeUpdateInput;
   where: TestimonialBadgeWhereUniqueInput;
@@ -2766,8 +3011,14 @@ export type MutationUpdateTestimonialItemsArgs = {
 };
 
 
-export type MutationUpdateTestimonialsArgs = {
-  data: Array<TestimonialUpdateArgs>;
+export type MutationUpdateTestimonialSectionArgs = {
+  data: TestimonialSectionUpdateInput;
+  where: TestimonialSectionWhereUniqueInput;
+};
+
+
+export type MutationUpdateTestimonialSectionsArgs = {
+  data: Array<TestimonialSectionUpdateArgs>;
 };
 
 
@@ -2965,16 +3216,31 @@ export type PageContent = {
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   image?: Maybe<Image>;
-  sections?: Maybe<Section>;
+  sections?: Maybe<Array<Section>>;
+  sectionsCount?: Maybe<Scalars['Int']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type PageContentSectionsArgs = {
+  cursor?: InputMaybe<SectionWhereUniqueInput>;
+  orderBy?: Array<SectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: SectionWhereInput;
+};
+
+
+export type PageContentSectionsCountArgs = {
+  where?: SectionWhereInput;
 };
 
 export type PageContentCreateInput = {
   cta?: InputMaybe<CtaRelateToOneForCreateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForCreateInput>;
-  sections?: InputMaybe<SectionRelateToOneForCreateInput>;
+  sections?: InputMaybe<SectionRelateToManyForCreateInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -2995,7 +3261,7 @@ export type PageContentUpdateInput = {
   cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForUpdateInput>;
-  sections?: InputMaybe<SectionRelateToOneForUpdateInput>;
+  sections?: InputMaybe<SectionRelateToManyForUpdateInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3008,13 +3274,14 @@ export type PageContentWhereInput = {
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   image?: InputMaybe<ImageWhereInput>;
-  sections?: InputMaybe<SectionWhereInput>;
+  sections?: InputMaybe<SectionManyRelationFilter>;
   slug?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
 };
 
 export type PageContentWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PasswordState = {
@@ -3047,9 +3314,15 @@ export type Query = {
   backgrounds?: Maybe<Array<Background>>;
   backgroundsCount?: Maybe<Scalars['Int']['output']>;
   benefit?: Maybe<Benefit>;
+  benefitSection?: Maybe<BenefitSection>;
+  benefitSections?: Maybe<Array<BenefitSection>>;
+  benefitSectionsCount?: Maybe<Scalars['Int']['output']>;
   benefits?: Maybe<Array<Benefit>>;
   benefitsCount?: Maybe<Scalars['Int']['output']>;
   certification?: Maybe<Certification>;
+  certificationSection?: Maybe<CertificationSection>;
+  certificationSections?: Maybe<Array<CertificationSection>>;
+  certificationSectionsCount?: Maybe<Scalars['Int']['output']>;
   certifications?: Maybe<Array<Certification>>;
   certificationsCount?: Maybe<Scalars['Int']['output']>;
   cta?: Maybe<Cta>;
@@ -3065,9 +3338,9 @@ export type Query = {
   features?: Maybe<Array<Feature>>;
   featuresCount?: Maybe<Scalars['Int']['output']>;
   footer?: Maybe<Footer>;
-  footerPart?: Maybe<FooterPart>;
-  footerParts?: Maybe<Array<FooterPart>>;
-  footerPartsCount?: Maybe<Scalars['Int']['output']>;
+  footerSection?: Maybe<FooterSection>;
+  footerSections?: Maybe<Array<FooterSection>>;
+  footerSectionsCount?: Maybe<Scalars['Int']['output']>;
   footers?: Maybe<Array<Footer>>;
   footersCount?: Maybe<Scalars['Int']['output']>;
   hero?: Maybe<Hero>;
@@ -3101,15 +3374,15 @@ export type Query = {
   section?: Maybe<Section>;
   sections?: Maybe<Array<Section>>;
   sectionsCount?: Maybe<Scalars['Int']['output']>;
-  testimonial?: Maybe<Testimonial>;
   testimonialBadge?: Maybe<TestimonialBadge>;
   testimonialBadges?: Maybe<Array<TestimonialBadge>>;
   testimonialBadgesCount?: Maybe<Scalars['Int']['output']>;
   testimonialItem?: Maybe<TestimonialItem>;
   testimonialItems?: Maybe<Array<TestimonialItem>>;
   testimonialItemsCount?: Maybe<Scalars['Int']['output']>;
-  testimonials?: Maybe<Array<Testimonial>>;
-  testimonialsCount?: Maybe<Scalars['Int']['output']>;
+  testimonialSection?: Maybe<TestimonialSection>;
+  testimonialSections?: Maybe<Array<TestimonialSection>>;
+  testimonialSectionsCount?: Maybe<Scalars['Int']['output']>;
   user?: Maybe<User>;
   users?: Maybe<Array<User>>;
   usersCount?: Maybe<Scalars['Int']['output']>;
@@ -3257,6 +3530,25 @@ export type QueryBenefitArgs = {
 };
 
 
+export type QueryBenefitSectionArgs = {
+  where: BenefitSectionWhereUniqueInput;
+};
+
+
+export type QueryBenefitSectionsArgs = {
+  cursor?: InputMaybe<BenefitSectionWhereUniqueInput>;
+  orderBy?: Array<BenefitSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitSectionWhereInput;
+};
+
+
+export type QueryBenefitSectionsCountArgs = {
+  where?: BenefitSectionWhereInput;
+};
+
+
 export type QueryBenefitsArgs = {
   cursor?: InputMaybe<BenefitWhereUniqueInput>;
   orderBy?: Array<BenefitOrderByInput>;
@@ -3273,6 +3565,25 @@ export type QueryBenefitsCountArgs = {
 
 export type QueryCertificationArgs = {
   where: CertificationWhereUniqueInput;
+};
+
+
+export type QueryCertificationSectionArgs = {
+  where: CertificationSectionWhereUniqueInput;
+};
+
+
+export type QueryCertificationSectionsArgs = {
+  cursor?: InputMaybe<CertificationSectionWhereUniqueInput>;
+  orderBy?: Array<CertificationSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationSectionWhereInput;
+};
+
+
+export type QueryCertificationSectionsCountArgs = {
+  where?: CertificationSectionWhereInput;
 };
 
 
@@ -3371,22 +3682,22 @@ export type QueryFooterArgs = {
 };
 
 
-export type QueryFooterPartArgs = {
-  where: FooterPartWhereUniqueInput;
+export type QueryFooterSectionArgs = {
+  where: FooterSectionWhereUniqueInput;
 };
 
 
-export type QueryFooterPartsArgs = {
-  cursor?: InputMaybe<FooterPartWhereUniqueInput>;
-  orderBy?: Array<FooterPartOrderByInput>;
+export type QueryFooterSectionsArgs = {
+  cursor?: InputMaybe<FooterSectionWhereUniqueInput>;
+  orderBy?: Array<FooterSectionOrderByInput>;
   skip?: Scalars['Int']['input'];
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: FooterPartWhereInput;
+  where?: FooterSectionWhereInput;
 };
 
 
-export type QueryFooterPartsCountArgs = {
-  where?: FooterPartWhereInput;
+export type QueryFooterSectionsCountArgs = {
+  where?: FooterSectionWhereInput;
 };
 
 
@@ -3594,11 +3905,6 @@ export type QuerySectionsCountArgs = {
 };
 
 
-export type QueryTestimonialArgs = {
-  where: TestimonialWhereUniqueInput;
-};
-
-
 export type QueryTestimonialBadgeArgs = {
   where: TestimonialBadgeWhereUniqueInput;
 };
@@ -3637,17 +3943,22 @@ export type QueryTestimonialItemsCountArgs = {
 };
 
 
-export type QueryTestimonialsArgs = {
-  cursor?: InputMaybe<TestimonialWhereUniqueInput>;
-  orderBy?: Array<TestimonialOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: TestimonialWhereInput;
+export type QueryTestimonialSectionArgs = {
+  where: TestimonialSectionWhereUniqueInput;
 };
 
 
-export type QueryTestimonialsCountArgs = {
-  where?: TestimonialWhereInput;
+export type QueryTestimonialSectionsArgs = {
+  cursor?: InputMaybe<TestimonialSectionWhereUniqueInput>;
+  orderBy?: Array<TestimonialSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialSectionWhereInput;
+};
+
+
+export type QueryTestimonialSectionsCountArgs = {
+  where?: TestimonialSectionWhereInput;
 };
 
 
@@ -3697,11 +4008,9 @@ export type Section = {
   __typename?: 'Section';
   contentAbout?: Maybe<About>;
   contentAnalytics?: Maybe<Analytic>;
-  contentApproaches?: Maybe<Approach>;
-  contentBenefits?: Maybe<Array<Benefit>>;
-  contentBenefitsCount?: Maybe<Scalars['Int']['output']>;
-  contentCertifications?: Maybe<Array<Certification>>;
-  contentCertificationsCount?: Maybe<Scalars['Int']['output']>;
+  contentApproach?: Maybe<Approach>;
+  contentBenefits?: Maybe<BenefitSection>;
+  contentCertifications?: Maybe<CertificationSection>;
   contentCta?: Maybe<CtaSection>;
   contentFaqs?: Maybe<Array<Faq>>;
   contentFaqsCount?: Maybe<Scalars['Int']['output']>;
@@ -3711,37 +4020,9 @@ export type Section = {
   contentHero?: Maybe<Hero>;
   contentMap?: Maybe<Map>;
   contentNavigation?: Maybe<Navigation>;
-  contentTestimonials?: Maybe<Testimonial>;
+  contentTestimonials?: Maybe<TestimonialSection>;
   id: Scalars['ID']['output'];
   type?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type SectionContentBenefitsArgs = {
-  cursor?: InputMaybe<BenefitWhereUniqueInput>;
-  orderBy?: Array<BenefitOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: BenefitWhereInput;
-};
-
-
-export type SectionContentBenefitsCountArgs = {
-  where?: BenefitWhereInput;
-};
-
-
-export type SectionContentCertificationsArgs = {
-  cursor?: InputMaybe<CertificationWhereUniqueInput>;
-  orderBy?: Array<CertificationOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: CertificationWhereInput;
-};
-
-
-export type SectionContentCertificationsCountArgs = {
-  where?: CertificationWhereInput;
 };
 
 
@@ -3775,9 +4056,9 @@ export type SectionContentFeaturesCountArgs = {
 export type SectionCreateInput = {
   contentAbout?: InputMaybe<AboutRelateToOneForCreateInput>;
   contentAnalytics?: InputMaybe<AnalyticRelateToOneForCreateInput>;
-  contentApproaches?: InputMaybe<ApproachRelateToOneForCreateInput>;
-  contentBenefits?: InputMaybe<BenefitRelateToManyForCreateInput>;
-  contentCertifications?: InputMaybe<CertificationRelateToManyForCreateInput>;
+  contentApproach?: InputMaybe<ApproachRelateToOneForCreateInput>;
+  contentBenefits?: InputMaybe<BenefitSectionRelateToOneForCreateInput>;
+  contentCertifications?: InputMaybe<CertificationSectionRelateToOneForCreateInput>;
   contentCta?: InputMaybe<CtaSectionRelateToOneForCreateInput>;
   contentFaqs?: InputMaybe<FaqRelateToManyForCreateInput>;
   contentFeatures?: InputMaybe<FeatureRelateToManyForCreateInput>;
@@ -3785,8 +4066,14 @@ export type SectionCreateInput = {
   contentHero?: InputMaybe<HeroRelateToOneForCreateInput>;
   contentMap?: InputMaybe<MapRelateToOneForCreateInput>;
   contentNavigation?: InputMaybe<NavigationRelateToOneForCreateInput>;
-  contentTestimonials?: InputMaybe<TestimonialRelateToOneForCreateInput>;
+  contentTestimonials?: InputMaybe<TestimonialSectionRelateToOneForCreateInput>;
   type?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SectionManyRelationFilter = {
+  every?: InputMaybe<SectionWhereInput>;
+  none?: InputMaybe<SectionWhereInput>;
+  some?: InputMaybe<SectionWhereInput>;
 };
 
 export type SectionOrderByInput = {
@@ -3794,15 +4081,16 @@ export type SectionOrderByInput = {
   type?: InputMaybe<OrderDirection>;
 };
 
-export type SectionRelateToOneForCreateInput = {
-  connect?: InputMaybe<SectionWhereUniqueInput>;
-  create?: InputMaybe<SectionCreateInput>;
+export type SectionRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<SectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<SectionCreateInput>>;
 };
 
-export type SectionRelateToOneForUpdateInput = {
-  connect?: InputMaybe<SectionWhereUniqueInput>;
-  create?: InputMaybe<SectionCreateInput>;
-  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+export type SectionRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<SectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<SectionCreateInput>>;
+  disconnect?: InputMaybe<Array<SectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<SectionWhereUniqueInput>>;
 };
 
 export type SectionUpdateArgs = {
@@ -3813,9 +4101,9 @@ export type SectionUpdateArgs = {
 export type SectionUpdateInput = {
   contentAbout?: InputMaybe<AboutRelateToOneForUpdateInput>;
   contentAnalytics?: InputMaybe<AnalyticRelateToOneForUpdateInput>;
-  contentApproaches?: InputMaybe<ApproachRelateToOneForUpdateInput>;
-  contentBenefits?: InputMaybe<BenefitRelateToManyForUpdateInput>;
-  contentCertifications?: InputMaybe<CertificationRelateToManyForUpdateInput>;
+  contentApproach?: InputMaybe<ApproachRelateToOneForUpdateInput>;
+  contentBenefits?: InputMaybe<BenefitSectionRelateToOneForUpdateInput>;
+  contentCertifications?: InputMaybe<CertificationSectionRelateToOneForUpdateInput>;
   contentCta?: InputMaybe<CtaSectionRelateToOneForUpdateInput>;
   contentFaqs?: InputMaybe<FaqRelateToManyForUpdateInput>;
   contentFeatures?: InputMaybe<FeatureRelateToManyForUpdateInput>;
@@ -3823,7 +4111,7 @@ export type SectionUpdateInput = {
   contentHero?: InputMaybe<HeroRelateToOneForUpdateInput>;
   contentMap?: InputMaybe<MapRelateToOneForUpdateInput>;
   contentNavigation?: InputMaybe<NavigationRelateToOneForUpdateInput>;
-  contentTestimonials?: InputMaybe<TestimonialRelateToOneForUpdateInput>;
+  contentTestimonials?: InputMaybe<TestimonialSectionRelateToOneForUpdateInput>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -3833,9 +4121,9 @@ export type SectionWhereInput = {
   OR?: InputMaybe<Array<SectionWhereInput>>;
   contentAbout?: InputMaybe<AboutWhereInput>;
   contentAnalytics?: InputMaybe<AnalyticWhereInput>;
-  contentApproaches?: InputMaybe<ApproachWhereInput>;
-  contentBenefits?: InputMaybe<BenefitManyRelationFilter>;
-  contentCertifications?: InputMaybe<CertificationManyRelationFilter>;
+  contentApproach?: InputMaybe<ApproachWhereInput>;
+  contentBenefits?: InputMaybe<BenefitSectionWhereInput>;
+  contentCertifications?: InputMaybe<CertificationSectionWhereInput>;
   contentCta?: InputMaybe<CtaSectionWhereInput>;
   contentFaqs?: InputMaybe<FaqManyRelationFilter>;
   contentFeatures?: InputMaybe<FeatureManyRelationFilter>;
@@ -3843,7 +4131,7 @@ export type SectionWhereInput = {
   contentHero?: InputMaybe<HeroWhereInput>;
   contentMap?: InputMaybe<MapWhereInput>;
   contentNavigation?: InputMaybe<NavigationWhereInput>;
-  contentTestimonials?: InputMaybe<TestimonialWhereInput>;
+  contentTestimonials?: InputMaybe<TestimonialSectionWhereInput>;
   id?: InputMaybe<IdFilter>;
   type?: InputMaybe<StringFilter>;
 };
@@ -3878,44 +4166,6 @@ export type StringNullableFilter = {
   not?: InputMaybe<StringNullableFilter>;
   notIn?: InputMaybe<Array<Scalars['String']['input']>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Testimonial = {
-  __typename?: 'Testimonial';
-  background?: Maybe<Array<Background>>;
-  backgroundCount?: Maybe<Scalars['Int']['output']>;
-  fallback?: Maybe<TestimonialItem>;
-  id: Scalars['ID']['output'];
-  testimonials?: Maybe<Array<TestimonialItem>>;
-  testimonialsCount?: Maybe<Scalars['Int']['output']>;
-};
-
-
-export type TestimonialBackgroundArgs = {
-  cursor?: InputMaybe<BackgroundWhereUniqueInput>;
-  orderBy?: Array<BackgroundOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: BackgroundWhereInput;
-};
-
-
-export type TestimonialBackgroundCountArgs = {
-  where?: BackgroundWhereInput;
-};
-
-
-export type TestimonialTestimonialsArgs = {
-  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>;
-  orderBy?: Array<TestimonialItemOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: TestimonialItemWhereInput;
-};
-
-
-export type TestimonialTestimonialsCountArgs = {
-  where?: TestimonialItemWhereInput;
 };
 
 export type TestimonialBadge = {
@@ -3970,12 +4220,6 @@ export type TestimonialBadgeWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type TestimonialCreateInput = {
-  background?: InputMaybe<BackgroundRelateToManyForCreateInput>;
-  fallback?: InputMaybe<TestimonialItemRelateToOneForCreateInput>;
-  testimonials?: InputMaybe<TestimonialItemRelateToManyForCreateInput>;
-};
-
 export type TestimonialItem = {
   __typename?: 'TestimonialItem';
   badge?: Maybe<TestimonialBadge>;
@@ -3984,6 +4228,7 @@ export type TestimonialItem = {
   id: Scalars['ID']['output'];
   image?: Maybe<Image>;
   name?: Maybe<Scalars['String']['output']>;
+  rating?: Maybe<Scalars['Float']['output']>;
   role?: Maybe<Scalars['String']['output']>;
 };
 
@@ -3993,6 +4238,7 @@ export type TestimonialItemCreateInput = {
   content?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForCreateInput>;
   name?: InputMaybe<Scalars['String']['input']>;
+  rating?: InputMaybe<Scalars['Float']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4007,6 +4253,7 @@ export type TestimonialItemOrderByInput = {
   content?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   name?: InputMaybe<OrderDirection>;
+  rating?: InputMaybe<OrderDirection>;
   role?: InputMaybe<OrderDirection>;
 };
 
@@ -4044,6 +4291,7 @@ export type TestimonialItemUpdateInput = {
   content?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForUpdateInput>;
   name?: InputMaybe<Scalars['String']['input']>;
+  rating?: InputMaybe<Scalars['Float']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4057,6 +4305,7 @@ export type TestimonialItemWhereInput = {
   id?: InputMaybe<IdFilter>;
   image?: InputMaybe<ImageWhereInput>;
   name?: InputMaybe<StringFilter>;
+  rating?: InputMaybe<FloatNullableFilter>;
   role?: InputMaybe<StringFilter>;
 };
 
@@ -4064,43 +4313,92 @@ export type TestimonialItemWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 
-export type TestimonialOrderByInput = {
+export type TestimonialSection = {
+  __typename?: 'TestimonialSection';
+  background?: Maybe<Array<Background>>;
+  backgroundCount?: Maybe<Scalars['Int']['output']>;
+  fallback?: Maybe<TestimonialItem>;
+  id: Scalars['ID']['output'];
+  testimonials?: Maybe<Array<TestimonialItem>>;
+  testimonialsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type TestimonialSectionBackgroundArgs = {
+  cursor?: InputMaybe<BackgroundWhereUniqueInput>;
+  orderBy?: Array<BackgroundOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BackgroundWhereInput;
+};
+
+
+export type TestimonialSectionBackgroundCountArgs = {
+  where?: BackgroundWhereInput;
+};
+
+
+export type TestimonialSectionTestimonialsArgs = {
+  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>;
+  orderBy?: Array<TestimonialItemOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialItemWhereInput;
+};
+
+
+export type TestimonialSectionTestimonialsCountArgs = {
+  where?: TestimonialItemWhereInput;
+};
+
+export type TestimonialSectionCreateInput = {
+  background?: InputMaybe<BackgroundRelateToManyForCreateInput>;
+  fallback?: InputMaybe<TestimonialItemRelateToOneForCreateInput>;
+  testimonials?: InputMaybe<TestimonialItemRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type TestimonialSectionOrderByInput = {
   id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
 };
 
-export type TestimonialRelateToOneForCreateInput = {
-  connect?: InputMaybe<TestimonialWhereUniqueInput>;
-  create?: InputMaybe<TestimonialCreateInput>;
+export type TestimonialSectionRelateToOneForCreateInput = {
+  connect?: InputMaybe<TestimonialSectionWhereUniqueInput>;
+  create?: InputMaybe<TestimonialSectionCreateInput>;
 };
 
-export type TestimonialRelateToOneForUpdateInput = {
-  connect?: InputMaybe<TestimonialWhereUniqueInput>;
-  create?: InputMaybe<TestimonialCreateInput>;
+export type TestimonialSectionRelateToOneForUpdateInput = {
+  connect?: InputMaybe<TestimonialSectionWhereUniqueInput>;
+  create?: InputMaybe<TestimonialSectionCreateInput>;
   disconnect?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-export type TestimonialUpdateArgs = {
-  data: TestimonialUpdateInput;
-  where: TestimonialWhereUniqueInput;
+export type TestimonialSectionUpdateArgs = {
+  data: TestimonialSectionUpdateInput;
+  where: TestimonialSectionWhereUniqueInput;
 };
 
-export type TestimonialUpdateInput = {
+export type TestimonialSectionUpdateInput = {
   background?: InputMaybe<BackgroundRelateToManyForUpdateInput>;
   fallback?: InputMaybe<TestimonialItemRelateToOneForUpdateInput>;
   testimonials?: InputMaybe<TestimonialItemRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TestimonialWhereInput = {
-  AND?: InputMaybe<Array<TestimonialWhereInput>>;
-  NOT?: InputMaybe<Array<TestimonialWhereInput>>;
-  OR?: InputMaybe<Array<TestimonialWhereInput>>;
+export type TestimonialSectionWhereInput = {
+  AND?: InputMaybe<Array<TestimonialSectionWhereInput>>;
+  NOT?: InputMaybe<Array<TestimonialSectionWhereInput>>;
+  OR?: InputMaybe<Array<TestimonialSectionWhereInput>>;
   background?: InputMaybe<BackgroundManyRelationFilter>;
   fallback?: InputMaybe<TestimonialItemWhereInput>;
   id?: InputMaybe<IdFilter>;
   testimonials?: InputMaybe<TestimonialItemManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
 };
 
-export type TestimonialWhereUniqueInput = {
+export type TestimonialSectionWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 

@@ -1,18 +1,19 @@
 // TODO: Extend Benefit GraphQL Type in KeystoneJS to include new fields
-import { benefitsContent } from "@/app/data"
-import { Benefit, Maybe } from "@/app/graphql/types"
+import { BenefitSection, Maybe } from "@/app/graphql/types"
 import { StickerCard } from "@/components/ui/StickerCard"
 
 export default function WhyNimbusTech({
-  benefits,
+  benefitSection: benefitsContent,
 }: {
-  benefits?: Maybe<Benefit[]>
+  benefitSection?: Maybe<BenefitSection>
 }) {
+  if (!benefitsContent) return null
+  const benefits = benefitsContent?.benefits
   return (
     <section className="bg-gray-50" id="benefits">
       <div className="mx-auto max-w-4xl px-4">
         <h2 className="mt-2 text-center text-3xl font-semibold tracking-tighter text-gray-900 md:text-4xl">
-          {benefitsContent.title}
+          {benefitsContent?.title}
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {benefits?.map((benefit, index) => (
