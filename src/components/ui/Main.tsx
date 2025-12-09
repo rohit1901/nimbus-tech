@@ -1,4 +1,9 @@
-import { Maybe, PageContent, Section as AllSections } from "@/app/graphql/types"
+import {
+  Maybe,
+  PageContent,
+  Section as AllSections,
+  Section,
+} from "@/app/graphql/types"
 import AboutUs from "@/components/ui/AboutUs"
 import CallToAction from "@/components/ui/CallToAction"
 import FaqSection from "@/components/ui/FAQ"
@@ -70,51 +75,9 @@ export const Main = () => {
 
   // Extract page content
   const pageContent: Maybe<PageContent> = data?.pageContents?.at(0) ?? null
-  const sections: Omit<AllSections, "id"> = pageContent?.sections
-    ? {
-        contentAbout: pageContent.sections.find(
-          (section) => section.type === "about",
-        )?.contentAbout,
-        contentApproach: pageContent.sections.find(
-          (section) => section.type === "approach",
-        )?.contentApproach,
-        contentBenefits: pageContent.sections.find(
-          (section) => section.type === "benefits",
-        )?.contentBenefits,
-        contentCertifications: pageContent.sections.find(
-          (section) => section.type === "certifications",
-        )?.contentCertifications,
-        contentFeatures: pageContent.sections.find(
-          (section) => section.type === "features",
-        )?.contentFeatures,
-        contentFaqs: pageContent.sections.find(
-          (section) => section.type === "faqs",
-        )?.contentFaqs,
-        contentHero: pageContent.sections.find(
-          (section) => section.type === "hero",
-        )?.contentHero,
-        contentMap: pageContent.sections.find(
-          (section) => section.type === "map",
-        )?.contentMap,
-        contentTestimonials: pageContent.sections.find(
-          (section) => section.type === "testimonials",
-        )?.contentTestimonials,
-        contentAnalytics: pageContent.sections.find(
-          (section) => section.type === "analytics",
-        )?.contentAnalytics,
-        contentCta: pageContent.sections.find(
-          (section) => section.type === "cta",
-        )?.contentCta,
-        contentFooter: pageContent.sections.find(
-          (section) => section.type === "footer",
-        )?.contentFooter,
-        contentNavigation: pageContent.sections.find(
-          (section) => section.type === "navigation",
-        )?.contentNavigation,
-        ...pageContent?.sections,
-      }
-    : {}
+  const sections: Maybe<Section> = pageContent?.sections ?? null
 
+  // Handle missing content
   if (!pageContent) {
     return <ErrorState message="Page content not available" />
   }
@@ -141,7 +104,6 @@ export const Main = () => {
 
   return (
     <main className="relative mx-auto flex flex-col">
-      {/* Hero Section */}
       <div className="pt-56">
         <Hero
           pageContent={{
@@ -151,14 +113,12 @@ export const Main = () => {
         />
       </div>
 
-      {/* Features Section */}
       {contentFeatures && (
         <Section className="mt-52">
           <Features features={contentFeatures} />
         </Section>
       )}
 
-      {/* Testimonials Section */}
       {contentTestimonials && (
         <>
           <Section className="mt-32">
@@ -168,7 +128,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* Map Section */}
       {contentMap && (
         <>
           <Section>
@@ -178,7 +137,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* Certifications Section */}
       {contentCertifications && (
         <>
           <Section>
@@ -188,7 +146,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* Benefits Section */}
       {contentBenefits && (
         <>
           <Section>
@@ -198,7 +155,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* FAQ Section */}
       {contentFaqs && (
         <>
           <Section>
@@ -208,7 +164,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* About Us Section */}
       {contentAbout && contentApproach && (
         <>
           <Section>
@@ -218,7 +173,6 @@ export const Main = () => {
         </>
       )}
 
-      {/* Call to Action Section */}
       {contentCta && (
         <Section className="mt-10 mb-40">
           <CallToAction cta={contentCta} />

@@ -34,8 +34,8 @@ export default function OurCertifications({
                   className="flex flex-col items-center p-4"
                 >
                   <SafeImage
-                    {...certification.image}
-                    id={`certification-image-${certification.id}`}
+                    image={certification.image}
+                    key={`certification-image-${certification.id}`}
                   />
                   <Link
                     href={certification.link ?? "#"}

@@ -474,64 +474,6 @@ export type ApproachWhereUniqueInput = {
 
 export type AuthenticatedItem = User;
 
-export type Background = {
-  __typename?: 'Background';
-  id: Scalars['ID']['output'];
-  image?: Maybe<Image>;
-  outerClassName?: Maybe<Scalars['String']['output']>;
-};
-
-export type BackgroundCreateInput = {
-  image?: InputMaybe<ImageRelateToOneForCreateInput>;
-  outerClassName?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type BackgroundManyRelationFilter = {
-  every?: InputMaybe<BackgroundWhereInput>;
-  none?: InputMaybe<BackgroundWhereInput>;
-  some?: InputMaybe<BackgroundWhereInput>;
-};
-
-export type BackgroundOrderByInput = {
-  id?: InputMaybe<OrderDirection>;
-  outerClassName?: InputMaybe<OrderDirection>;
-};
-
-export type BackgroundRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<BackgroundWhereUniqueInput>>;
-  create?: InputMaybe<Array<BackgroundCreateInput>>;
-};
-
-export type BackgroundRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<BackgroundWhereUniqueInput>>;
-  create?: InputMaybe<Array<BackgroundCreateInput>>;
-  disconnect?: InputMaybe<Array<BackgroundWhereUniqueInput>>;
-  set?: InputMaybe<Array<BackgroundWhereUniqueInput>>;
-};
-
-export type BackgroundUpdateArgs = {
-  data: BackgroundUpdateInput;
-  where: BackgroundWhereUniqueInput;
-};
-
-export type BackgroundUpdateInput = {
-  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
-  outerClassName?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type BackgroundWhereInput = {
-  AND?: InputMaybe<Array<BackgroundWhereInput>>;
-  NOT?: InputMaybe<Array<BackgroundWhereInput>>;
-  OR?: InputMaybe<Array<BackgroundWhereInput>>;
-  id?: InputMaybe<IdFilter>;
-  image?: InputMaybe<ImageWhereInput>;
-  outerClassName?: InputMaybe<StringFilter>;
-};
-
-export type BackgroundWhereUniqueInput = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-};
-
 export type Benefit = {
   __typename?: 'Benefit';
   description?: Maybe<Scalars['String']['output']>;
@@ -669,7 +611,6 @@ export type BooleanFilter = {
 
 export type Certification = {
   __typename?: 'Certification';
-  certId?: Maybe<Scalars['Int']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   image?: Maybe<Image>;
@@ -678,7 +619,6 @@ export type Certification = {
 };
 
 export type CertificationCreateInput = {
-  certId?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForCreateInput>;
   link?: InputMaybe<Scalars['String']['input']>;
@@ -692,7 +632,6 @@ export type CertificationManyRelationFilter = {
 };
 
 export type CertificationOrderByInput = {
-  certId?: InputMaybe<OrderDirection>;
   description?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   link?: InputMaybe<OrderDirection>;
@@ -792,7 +731,6 @@ export type CertificationUpdateArgs = {
 };
 
 export type CertificationUpdateInput = {
-  certId?: InputMaybe<Scalars['Int']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForUpdateInput>;
   link?: InputMaybe<Scalars['String']['input']>;
@@ -803,7 +741,6 @@ export type CertificationWhereInput = {
   AND?: InputMaybe<Array<CertificationWhereInput>>;
   NOT?: InputMaybe<Array<CertificationWhereInput>>;
   OR?: InputMaybe<Array<CertificationWhereInput>>;
-  certId?: InputMaybe<IntFilter>;
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   image?: InputMaybe<ImageWhereInput>;
@@ -827,12 +764,14 @@ export type Cta = {
   href?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   label?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Type>;
 };
 
 export type CtaCreateInput = {
   external?: InputMaybe<Scalars['Boolean']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForCreateInput>;
 };
 
 export type CtaManyRelationFilter = {
@@ -873,7 +812,7 @@ export type CtaRelateToOneForUpdateInput = {
 
 export type CtaSection = {
   __typename?: 'CtaSection';
-  background?: Maybe<Array<Background>>;
+  background?: Maybe<Array<Image>>;
   backgroundCount?: Maybe<Scalars['Int']['output']>;
   ctas?: Maybe<Array<Cta>>;
   ctasCount?: Maybe<Scalars['Int']['output']>;
@@ -884,16 +823,16 @@ export type CtaSection = {
 
 
 export type CtaSectionBackgroundArgs = {
-  cursor?: InputMaybe<BackgroundWhereUniqueInput>;
-  orderBy?: Array<BackgroundOrderByInput>;
+  cursor?: InputMaybe<ImageWhereUniqueInput>;
+  orderBy?: Array<ImageOrderByInput>;
   skip?: Scalars['Int']['input'];
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: BackgroundWhereInput;
+  where?: ImageWhereInput;
 };
 
 
 export type CtaSectionBackgroundCountArgs = {
-  where?: BackgroundWhereInput;
+  where?: ImageWhereInput;
 };
 
 
@@ -911,7 +850,7 @@ export type CtaSectionCtasCountArgs = {
 };
 
 export type CtaSectionCreateInput = {
-  background?: InputMaybe<BackgroundRelateToManyForCreateInput>;
+  background?: InputMaybe<ImageRelateToManyForCreateInput>;
   ctas?: InputMaybe<CtaRelateToManyForCreateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -940,7 +879,7 @@ export type CtaSectionUpdateArgs = {
 };
 
 export type CtaSectionUpdateInput = {
-  background?: InputMaybe<BackgroundRelateToManyForUpdateInput>;
+  background?: InputMaybe<ImageRelateToManyForUpdateInput>;
   ctas?: InputMaybe<CtaRelateToManyForUpdateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -950,7 +889,7 @@ export type CtaSectionWhereInput = {
   AND?: InputMaybe<Array<CtaSectionWhereInput>>;
   NOT?: InputMaybe<Array<CtaSectionWhereInput>>;
   OR?: InputMaybe<Array<CtaSectionWhereInput>>;
-  background?: InputMaybe<BackgroundManyRelationFilter>;
+  background?: InputMaybe<ImageManyRelationFilter>;
   ctas?: InputMaybe<CtaManyRelationFilter>;
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
@@ -970,6 +909,7 @@ export type CtaUpdateInput = {
   external?: InputMaybe<Scalars['Boolean']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForUpdateInput>;
 };
 
 export type CtaWhereInput = {
@@ -980,6 +920,7 @@ export type CtaWhereInput = {
   href?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   label?: InputMaybe<StringFilter>;
+  type?: InputMaybe<TypeWhereInput>;
 };
 
 export type CtaWhereUniqueInput = {
@@ -1031,6 +972,77 @@ export type FaqRelateToManyForUpdateInput = {
   create?: InputMaybe<Array<FaqCreateInput>>;
   disconnect?: InputMaybe<Array<FaqWhereUniqueInput>>;
   set?: InputMaybe<Array<FaqWhereUniqueInput>>;
+};
+
+export type FaqSection = {
+  __typename?: 'FaqSection';
+  description?: Maybe<Scalars['String']['output']>;
+  faqs?: Maybe<Array<Faq>>;
+  faqsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type FaqSectionFaqsArgs = {
+  cursor?: InputMaybe<FaqWhereUniqueInput>;
+  orderBy?: Array<FaqOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqWhereInput;
+};
+
+
+export type FaqSectionFaqsCountArgs = {
+  where?: FaqWhereInput;
+};
+
+export type FaqSectionCreateInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  faqs?: InputMaybe<FaqRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FaqSectionOrderByInput = {
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
+
+export type FaqSectionRelateToOneForCreateInput = {
+  connect?: InputMaybe<FaqSectionWhereUniqueInput>;
+  create?: InputMaybe<FaqSectionCreateInput>;
+};
+
+export type FaqSectionRelateToOneForUpdateInput = {
+  connect?: InputMaybe<FaqSectionWhereUniqueInput>;
+  create?: InputMaybe<FaqSectionCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type FaqSectionUpdateArgs = {
+  data: FaqSectionUpdateInput;
+  where: FaqSectionWhereUniqueInput;
+};
+
+export type FaqSectionUpdateInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  faqs?: InputMaybe<FaqRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FaqSectionWhereInput = {
+  AND?: InputMaybe<Array<FaqSectionWhereInput>>;
+  NOT?: InputMaybe<Array<FaqSectionWhereInput>>;
+  OR?: InputMaybe<Array<FaqSectionWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  faqs?: InputMaybe<FaqManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type FaqSectionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type FaqUpdateArgs = {
@@ -1302,8 +1314,11 @@ export type FooterWhereUniqueInput = {
 export type Hero = {
   __typename?: 'Hero';
   banner?: Maybe<HeroBanner>;
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   subHeading?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 export type HeroBanner = {
@@ -1426,12 +1441,17 @@ export type HeroBannerWhereUniqueInput = {
 
 export type HeroCreateInput = {
   banner?: InputMaybe<HeroBannerRelateToOneForCreateInput>;
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
   subHeading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HeroOrderByInput = {
+  description?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   subHeading?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
 };
 
 export type HeroRelateToOneForCreateInput = {
@@ -1452,7 +1472,10 @@ export type HeroUpdateArgs = {
 
 export type HeroUpdateInput = {
   banner?: InputMaybe<HeroBannerRelateToOneForUpdateInput>;
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
   subHeading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HeroWhereInput = {
@@ -1460,8 +1483,11 @@ export type HeroWhereInput = {
   NOT?: InputMaybe<Array<HeroWhereInput>>;
   OR?: InputMaybe<Array<HeroWhereInput>>;
   banner?: InputMaybe<HeroBannerWhereInput>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   subHeading?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
 };
 
 export type HeroWhereUniqueInput = {
@@ -1482,31 +1508,48 @@ export type IdFilter = {
 export type Image = {
   __typename?: 'Image';
   alt?: Maybe<Scalars['String']['output']>;
-  className?: Maybe<Scalars['String']['output']>;
   fill?: Maybe<Scalars['Boolean']['output']>;
   height?: Maybe<Scalars['Int']['output']>;
   id: Scalars['ID']['output'];
   src?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Type>;
   width?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ImageCreateInput = {
   alt?: InputMaybe<Scalars['String']['input']>;
-  className?: InputMaybe<Scalars['String']['input']>;
   fill?: InputMaybe<Scalars['Boolean']['input']>;
   height?: InputMaybe<Scalars['Int']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForCreateInput>;
   width?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ImageManyRelationFilter = {
+  every?: InputMaybe<ImageWhereInput>;
+  none?: InputMaybe<ImageWhereInput>;
+  some?: InputMaybe<ImageWhereInput>;
 };
 
 export type ImageOrderByInput = {
   alt?: InputMaybe<OrderDirection>;
-  className?: InputMaybe<OrderDirection>;
   fill?: InputMaybe<OrderDirection>;
   height?: InputMaybe<OrderDirection>;
   id?: InputMaybe<OrderDirection>;
   src?: InputMaybe<OrderDirection>;
   width?: InputMaybe<OrderDirection>;
+};
+
+export type ImageRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ImageCreateInput>>;
+};
+
+export type ImageRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ImageCreateInput>>;
+  disconnect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  set?: InputMaybe<Array<ImageWhereUniqueInput>>;
 };
 
 export type ImageRelateToOneForCreateInput = {
@@ -1527,10 +1570,10 @@ export type ImageUpdateArgs = {
 
 export type ImageUpdateInput = {
   alt?: InputMaybe<Scalars['String']['input']>;
-  className?: InputMaybe<Scalars['String']['input']>;
   fill?: InputMaybe<Scalars['Boolean']['input']>;
   height?: InputMaybe<Scalars['Int']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForUpdateInput>;
   width?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -1539,11 +1582,11 @@ export type ImageWhereInput = {
   NOT?: InputMaybe<Array<ImageWhereInput>>;
   OR?: InputMaybe<Array<ImageWhereInput>>;
   alt?: InputMaybe<StringFilter>;
-  className?: InputMaybe<StringFilter>;
   fill?: InputMaybe<BooleanFilter>;
   height?: InputMaybe<IntNullableFilter>;
   id?: InputMaybe<IdFilter>;
   src?: InputMaybe<StringFilter>;
+  type?: InputMaybe<TypeWhereInput>;
   width?: InputMaybe<IntNullableFilter>;
 };
 
@@ -1856,8 +1899,6 @@ export type Mutation = {
   createApproachStep?: Maybe<ApproachStep>;
   createApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
   createApproaches?: Maybe<Array<Maybe<Approach>>>;
-  createBackground?: Maybe<Background>;
-  createBackgrounds?: Maybe<Array<Maybe<Background>>>;
   createBenefit?: Maybe<Benefit>;
   createBenefitSection?: Maybe<BenefitSection>;
   createBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
@@ -1871,6 +1912,8 @@ export type Mutation = {
   createCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
   createCtas?: Maybe<Array<Maybe<Cta>>>;
   createFaq?: Maybe<Faq>;
+  createFaqSection?: Maybe<FaqSection>;
+  createFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
   createFaqs?: Maybe<Array<Maybe<Faq>>>;
   createFeature?: Maybe<Feature>;
   createFeatures?: Maybe<Array<Maybe<Feature>>>;
@@ -1905,6 +1948,8 @@ export type Mutation = {
   createTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
   createTestimonialSection?: Maybe<TestimonialSection>;
   createTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  createType?: Maybe<Type>;
+  createTypes?: Maybe<Array<Maybe<Type>>>;
   createUser?: Maybe<User>;
   createUsers?: Maybe<Array<Maybe<User>>>;
   createValue?: Maybe<Value>;
@@ -1921,8 +1966,6 @@ export type Mutation = {
   deleteApproachStep?: Maybe<ApproachStep>;
   deleteApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
   deleteApproaches?: Maybe<Array<Maybe<Approach>>>;
-  deleteBackground?: Maybe<Background>;
-  deleteBackgrounds?: Maybe<Array<Maybe<Background>>>;
   deleteBenefit?: Maybe<Benefit>;
   deleteBenefitSection?: Maybe<BenefitSection>;
   deleteBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
@@ -1936,6 +1979,8 @@ export type Mutation = {
   deleteCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
   deleteCtas?: Maybe<Array<Maybe<Cta>>>;
   deleteFaq?: Maybe<Faq>;
+  deleteFaqSection?: Maybe<FaqSection>;
+  deleteFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
   deleteFaqs?: Maybe<Array<Maybe<Faq>>>;
   deleteFeature?: Maybe<Feature>;
   deleteFeatures?: Maybe<Array<Maybe<Feature>>>;
@@ -1969,6 +2014,8 @@ export type Mutation = {
   deleteTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
   deleteTestimonialSection?: Maybe<TestimonialSection>;
   deleteTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  deleteType?: Maybe<Type>;
+  deleteTypes?: Maybe<Array<Maybe<Type>>>;
   deleteUser?: Maybe<User>;
   deleteUsers?: Maybe<Array<Maybe<User>>>;
   deleteValue?: Maybe<Value>;
@@ -1986,8 +2033,6 @@ export type Mutation = {
   updateApproachStep?: Maybe<ApproachStep>;
   updateApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
   updateApproaches?: Maybe<Array<Maybe<Approach>>>;
-  updateBackground?: Maybe<Background>;
-  updateBackgrounds?: Maybe<Array<Maybe<Background>>>;
   updateBenefit?: Maybe<Benefit>;
   updateBenefitSection?: Maybe<BenefitSection>;
   updateBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
@@ -2001,6 +2046,8 @@ export type Mutation = {
   updateCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
   updateCtas?: Maybe<Array<Maybe<Cta>>>;
   updateFaq?: Maybe<Faq>;
+  updateFaqSection?: Maybe<FaqSection>;
+  updateFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
   updateFaqs?: Maybe<Array<Maybe<Faq>>>;
   updateFeature?: Maybe<Feature>;
   updateFeatures?: Maybe<Array<Maybe<Feature>>>;
@@ -2034,6 +2081,8 @@ export type Mutation = {
   updateTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
   updateTestimonialSection?: Maybe<TestimonialSection>;
   updateTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  updateType?: Maybe<Type>;
+  updateTypes?: Maybe<Array<Maybe<Type>>>;
   updateUser?: Maybe<User>;
   updateUsers?: Maybe<Array<Maybe<User>>>;
   updateValue?: Maybe<Value>;
@@ -2107,16 +2156,6 @@ export type MutationCreateApproachesArgs = {
 };
 
 
-export type MutationCreateBackgroundArgs = {
-  data: BackgroundCreateInput;
-};
-
-
-export type MutationCreateBackgroundsArgs = {
-  data: Array<BackgroundCreateInput>;
-};
-
-
 export type MutationCreateBenefitArgs = {
   data: BenefitCreateInput;
 };
@@ -2179,6 +2218,16 @@ export type MutationCreateCtasArgs = {
 
 export type MutationCreateFaqArgs = {
   data: FaqCreateInput;
+};
+
+
+export type MutationCreateFaqSectionArgs = {
+  data: FaqSectionCreateInput;
+};
+
+
+export type MutationCreateFaqSectionsArgs = {
+  data: Array<FaqSectionCreateInput>;
 };
 
 
@@ -2352,6 +2401,16 @@ export type MutationCreateTestimonialSectionsArgs = {
 };
 
 
+export type MutationCreateTypeArgs = {
+  data: TypeCreateInput;
+};
+
+
+export type MutationCreateTypesArgs = {
+  data: Array<TypeCreateInput>;
+};
+
+
 export type MutationCreateUserArgs = {
   data: UserCreateInput;
 };
@@ -2432,16 +2491,6 @@ export type MutationDeleteApproachesArgs = {
 };
 
 
-export type MutationDeleteBackgroundArgs = {
-  where: BackgroundWhereUniqueInput;
-};
-
-
-export type MutationDeleteBackgroundsArgs = {
-  where: Array<BackgroundWhereUniqueInput>;
-};
-
-
 export type MutationDeleteBenefitArgs = {
   where: BenefitWhereUniqueInput;
 };
@@ -2504,6 +2553,16 @@ export type MutationDeleteCtasArgs = {
 
 export type MutationDeleteFaqArgs = {
   where: FaqWhereUniqueInput;
+};
+
+
+export type MutationDeleteFaqSectionArgs = {
+  where: FaqSectionWhereUniqueInput;
+};
+
+
+export type MutationDeleteFaqSectionsArgs = {
+  where: Array<FaqSectionWhereUniqueInput>;
 };
 
 
@@ -2672,6 +2731,16 @@ export type MutationDeleteTestimonialSectionsArgs = {
 };
 
 
+export type MutationDeleteTypeArgs = {
+  where: TypeWhereUniqueInput;
+};
+
+
+export type MutationDeleteTypesArgs = {
+  where: Array<TypeWhereUniqueInput>;
+};
+
+
 export type MutationDeleteUserArgs = {
   where: UserWhereUniqueInput;
 };
@@ -2758,17 +2827,6 @@ export type MutationUpdateApproachesArgs = {
 };
 
 
-export type MutationUpdateBackgroundArgs = {
-  data: BackgroundUpdateInput;
-  where: BackgroundWhereUniqueInput;
-};
-
-
-export type MutationUpdateBackgroundsArgs = {
-  data: Array<BackgroundUpdateArgs>;
-};
-
-
 export type MutationUpdateBenefitArgs = {
   data: BenefitUpdateInput;
   where: BenefitWhereUniqueInput;
@@ -2838,6 +2896,17 @@ export type MutationUpdateCtasArgs = {
 export type MutationUpdateFaqArgs = {
   data: FaqUpdateInput;
   where: FaqWhereUniqueInput;
+};
+
+
+export type MutationUpdateFaqSectionArgs = {
+  data: FaqSectionUpdateInput;
+  where: FaqSectionWhereUniqueInput;
+};
+
+
+export type MutationUpdateFaqSectionsArgs = {
+  data: Array<FaqSectionUpdateArgs>;
 };
 
 
@@ -3019,6 +3088,17 @@ export type MutationUpdateTestimonialSectionArgs = {
 
 export type MutationUpdateTestimonialSectionsArgs = {
   data: Array<TestimonialSectionUpdateArgs>;
+};
+
+
+export type MutationUpdateTypeArgs = {
+  data: TypeUpdateInput;
+  where: TypeWhereUniqueInput;
+};
+
+
+export type MutationUpdateTypesArgs = {
+  data: Array<TypeUpdateArgs>;
 };
 
 
@@ -3216,31 +3296,16 @@ export type PageContent = {
   description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   image?: Maybe<Image>;
-  sections?: Maybe<Array<Section>>;
-  sectionsCount?: Maybe<Scalars['Int']['output']>;
+  sections?: Maybe<Section>;
   slug?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type PageContentSectionsArgs = {
-  cursor?: InputMaybe<SectionWhereUniqueInput>;
-  orderBy?: Array<SectionOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: SectionWhereInput;
-};
-
-
-export type PageContentSectionsCountArgs = {
-  where?: SectionWhereInput;
 };
 
 export type PageContentCreateInput = {
   cta?: InputMaybe<CtaRelateToOneForCreateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForCreateInput>;
-  sections?: InputMaybe<SectionRelateToManyForCreateInput>;
+  sections?: InputMaybe<SectionRelateToOneForCreateInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3261,7 +3326,7 @@ export type PageContentUpdateInput = {
   cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<ImageRelateToOneForUpdateInput>;
-  sections?: InputMaybe<SectionRelateToManyForUpdateInput>;
+  sections?: InputMaybe<SectionRelateToOneForUpdateInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -3274,7 +3339,7 @@ export type PageContentWhereInput = {
   description?: InputMaybe<StringFilter>;
   id?: InputMaybe<IdFilter>;
   image?: InputMaybe<ImageWhereInput>;
-  sections?: InputMaybe<SectionManyRelationFilter>;
+  sections?: InputMaybe<SectionWhereInput>;
   slug?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
 };
@@ -3310,9 +3375,6 @@ export type Query = {
   approaches?: Maybe<Array<Approach>>;
   approachesCount?: Maybe<Scalars['Int']['output']>;
   authenticatedItem?: Maybe<AuthenticatedItem>;
-  background?: Maybe<Background>;
-  backgrounds?: Maybe<Array<Background>>;
-  backgroundsCount?: Maybe<Scalars['Int']['output']>;
   benefit?: Maybe<Benefit>;
   benefitSection?: Maybe<BenefitSection>;
   benefitSections?: Maybe<Array<BenefitSection>>;
@@ -3332,6 +3394,9 @@ export type Query = {
   ctas?: Maybe<Array<Cta>>;
   ctasCount?: Maybe<Scalars['Int']['output']>;
   faq?: Maybe<Faq>;
+  faqSection?: Maybe<FaqSection>;
+  faqSections?: Maybe<Array<FaqSection>>;
+  faqSectionsCount?: Maybe<Scalars['Int']['output']>;
   faqs?: Maybe<Array<Faq>>;
   faqsCount?: Maybe<Scalars['Int']['output']>;
   feature?: Maybe<Feature>;
@@ -3383,6 +3448,9 @@ export type Query = {
   testimonialSection?: Maybe<TestimonialSection>;
   testimonialSections?: Maybe<Array<TestimonialSection>>;
   testimonialSectionsCount?: Maybe<Scalars['Int']['output']>;
+  type?: Maybe<Type>;
+  types?: Maybe<Array<Type>>;
+  typesCount?: Maybe<Scalars['Int']['output']>;
   user?: Maybe<User>;
   users?: Maybe<Array<User>>;
   usersCount?: Maybe<Scalars['Int']['output']>;
@@ -3506,25 +3574,6 @@ export type QueryApproachesCountArgs = {
 };
 
 
-export type QueryBackgroundArgs = {
-  where: BackgroundWhereUniqueInput;
-};
-
-
-export type QueryBackgroundsArgs = {
-  cursor?: InputMaybe<BackgroundWhereUniqueInput>;
-  orderBy?: Array<BackgroundOrderByInput>;
-  skip?: Scalars['Int']['input'];
-  take?: InputMaybe<Scalars['Int']['input']>;
-  where?: BackgroundWhereInput;
-};
-
-
-export type QueryBackgroundsCountArgs = {
-  where?: BackgroundWhereInput;
-};
-
-
 export type QueryBenefitArgs = {
   where: BenefitWhereUniqueInput;
 };
@@ -3641,6 +3690,25 @@ export type QueryCtasCountArgs = {
 
 export type QueryFaqArgs = {
   where: FaqWhereUniqueInput;
+};
+
+
+export type QueryFaqSectionArgs = {
+  where: FaqSectionWhereUniqueInput;
+};
+
+
+export type QueryFaqSectionsArgs = {
+  cursor?: InputMaybe<FaqSectionWhereUniqueInput>;
+  orderBy?: Array<FaqSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqSectionWhereInput;
+};
+
+
+export type QueryFaqSectionsCountArgs = {
+  where?: FaqSectionWhereInput;
 };
 
 
@@ -3962,6 +4030,25 @@ export type QueryTestimonialSectionsCountArgs = {
 };
 
 
+export type QueryTypeArgs = {
+  where: TypeWhereUniqueInput;
+};
+
+
+export type QueryTypesArgs = {
+  cursor?: InputMaybe<TypeWhereUniqueInput>;
+  orderBy?: Array<TypeOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TypeWhereInput;
+};
+
+
+export type QueryTypesCountArgs = {
+  where?: TypeWhereInput;
+};
+
+
 export type QueryUserArgs = {
   where: UserWhereUniqueInput;
 };
@@ -4012,6 +4099,7 @@ export type Section = {
   contentBenefits?: Maybe<BenefitSection>;
   contentCertifications?: Maybe<CertificationSection>;
   contentCta?: Maybe<CtaSection>;
+  contentFaqSection?: Maybe<FaqSection>;
   contentFaqs?: Maybe<Array<Faq>>;
   contentFaqsCount?: Maybe<Scalars['Int']['output']>;
   contentFeatures?: Maybe<Array<Feature>>;
@@ -4060,6 +4148,7 @@ export type SectionCreateInput = {
   contentBenefits?: InputMaybe<BenefitSectionRelateToOneForCreateInput>;
   contentCertifications?: InputMaybe<CertificationSectionRelateToOneForCreateInput>;
   contentCta?: InputMaybe<CtaSectionRelateToOneForCreateInput>;
+  contentFaqSection?: InputMaybe<FaqSectionRelateToOneForCreateInput>;
   contentFaqs?: InputMaybe<FaqRelateToManyForCreateInput>;
   contentFeatures?: InputMaybe<FeatureRelateToManyForCreateInput>;
   contentFooter?: InputMaybe<FooterRelateToOneForCreateInput>;
@@ -4070,27 +4159,20 @@ export type SectionCreateInput = {
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SectionManyRelationFilter = {
-  every?: InputMaybe<SectionWhereInput>;
-  none?: InputMaybe<SectionWhereInput>;
-  some?: InputMaybe<SectionWhereInput>;
-};
-
 export type SectionOrderByInput = {
   id?: InputMaybe<OrderDirection>;
   type?: InputMaybe<OrderDirection>;
 };
 
-export type SectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<SectionWhereUniqueInput>>;
-  create?: InputMaybe<Array<SectionCreateInput>>;
+export type SectionRelateToOneForCreateInput = {
+  connect?: InputMaybe<SectionWhereUniqueInput>;
+  create?: InputMaybe<SectionCreateInput>;
 };
 
-export type SectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<SectionWhereUniqueInput>>;
-  create?: InputMaybe<Array<SectionCreateInput>>;
-  disconnect?: InputMaybe<Array<SectionWhereUniqueInput>>;
-  set?: InputMaybe<Array<SectionWhereUniqueInput>>;
+export type SectionRelateToOneForUpdateInput = {
+  connect?: InputMaybe<SectionWhereUniqueInput>;
+  create?: InputMaybe<SectionCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type SectionUpdateArgs = {
@@ -4105,6 +4187,7 @@ export type SectionUpdateInput = {
   contentBenefits?: InputMaybe<BenefitSectionRelateToOneForUpdateInput>;
   contentCertifications?: InputMaybe<CertificationSectionRelateToOneForUpdateInput>;
   contentCta?: InputMaybe<CtaSectionRelateToOneForUpdateInput>;
+  contentFaqSection?: InputMaybe<FaqSectionRelateToOneForUpdateInput>;
   contentFaqs?: InputMaybe<FaqRelateToManyForUpdateInput>;
   contentFeatures?: InputMaybe<FeatureRelateToManyForUpdateInput>;
   contentFooter?: InputMaybe<FooterRelateToOneForUpdateInput>;
@@ -4125,6 +4208,7 @@ export type SectionWhereInput = {
   contentBenefits?: InputMaybe<BenefitSectionWhereInput>;
   contentCertifications?: InputMaybe<CertificationSectionWhereInput>;
   contentCta?: InputMaybe<CtaSectionWhereInput>;
+  contentFaqSection?: InputMaybe<FaqSectionWhereInput>;
   contentFaqs?: InputMaybe<FaqManyRelationFilter>;
   contentFeatures?: InputMaybe<FeatureManyRelationFilter>;
   contentFooter?: InputMaybe<FooterWhereInput>;
@@ -4315,7 +4399,7 @@ export type TestimonialItemWhereUniqueInput = {
 
 export type TestimonialSection = {
   __typename?: 'TestimonialSection';
-  background?: Maybe<Array<Background>>;
+  background?: Maybe<Array<Image>>;
   backgroundCount?: Maybe<Scalars['Int']['output']>;
   fallback?: Maybe<TestimonialItem>;
   id: Scalars['ID']['output'];
@@ -4326,16 +4410,16 @@ export type TestimonialSection = {
 
 
 export type TestimonialSectionBackgroundArgs = {
-  cursor?: InputMaybe<BackgroundWhereUniqueInput>;
-  orderBy?: Array<BackgroundOrderByInput>;
+  cursor?: InputMaybe<ImageWhereUniqueInput>;
+  orderBy?: Array<ImageOrderByInput>;
   skip?: Scalars['Int']['input'];
   take?: InputMaybe<Scalars['Int']['input']>;
-  where?: BackgroundWhereInput;
+  where?: ImageWhereInput;
 };
 
 
 export type TestimonialSectionBackgroundCountArgs = {
-  where?: BackgroundWhereInput;
+  where?: ImageWhereInput;
 };
 
 
@@ -4353,7 +4437,7 @@ export type TestimonialSectionTestimonialsCountArgs = {
 };
 
 export type TestimonialSectionCreateInput = {
-  background?: InputMaybe<BackgroundRelateToManyForCreateInput>;
+  background?: InputMaybe<ImageRelateToManyForCreateInput>;
   fallback?: InputMaybe<TestimonialItemRelateToOneForCreateInput>;
   testimonials?: InputMaybe<TestimonialItemRelateToManyForCreateInput>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -4381,7 +4465,7 @@ export type TestimonialSectionUpdateArgs = {
 };
 
 export type TestimonialSectionUpdateInput = {
-  background?: InputMaybe<BackgroundRelateToManyForUpdateInput>;
+  background?: InputMaybe<ImageRelateToManyForUpdateInput>;
   fallback?: InputMaybe<TestimonialItemRelateToOneForUpdateInput>;
   testimonials?: InputMaybe<TestimonialItemRelateToManyForUpdateInput>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -4391,7 +4475,7 @@ export type TestimonialSectionWhereInput = {
   AND?: InputMaybe<Array<TestimonialSectionWhereInput>>;
   NOT?: InputMaybe<Array<TestimonialSectionWhereInput>>;
   OR?: InputMaybe<Array<TestimonialSectionWhereInput>>;
-  background?: InputMaybe<BackgroundManyRelationFilter>;
+  background?: InputMaybe<ImageManyRelationFilter>;
   fallback?: InputMaybe<TestimonialItemWhereInput>;
   id?: InputMaybe<IdFilter>;
   testimonials?: InputMaybe<TestimonialItemManyRelationFilter>;
@@ -4399,6 +4483,53 @@ export type TestimonialSectionWhereInput = {
 };
 
 export type TestimonialSectionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type Type = {
+  __typename?: 'Type';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+};
+
+export type TypeCreateInput = {
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type TypeOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
+
+export type TypeRelateToOneForCreateInput = {
+  connect?: InputMaybe<TypeWhereUniqueInput>;
+  create?: InputMaybe<TypeCreateInput>;
+};
+
+export type TypeRelateToOneForUpdateInput = {
+  connect?: InputMaybe<TypeWhereUniqueInput>;
+  create?: InputMaybe<TypeCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type TypeUpdateArgs = {
+  data: TypeUpdateInput;
+  where: TypeWhereUniqueInput;
+};
+
+export type TypeUpdateInput = {
+  label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type TypeWhereInput = {
+  AND?: InputMaybe<Array<TypeWhereInput>>;
+  NOT?: InputMaybe<Array<TypeWhereInput>>;
+  OR?: InputMaybe<Array<TypeWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringNullableFilter>;
+};
+
+export type TypeWhereUniqueInput = {
   id?: InputMaybe<Scalars['ID']['input']>;
 };
 

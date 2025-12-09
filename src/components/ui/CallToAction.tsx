@@ -43,10 +43,15 @@ export default function CallToAction({ cta }: { cta?: Maybe<CtaSection> }) {
         <div className="relative isolate rounded-xl sm:col-span-4 sm:h-full">
           {cta.background?.map((bg, idx) => (
             <SafeImage
-              {...bg.image}
+              image={bg}
+              props={{
+                className: bg.alt?.includes("blurred")
+                  ? "absolute inset-0 -z-10 rounded-2xl blur-xl"
+                  : "relative z-10 rounded-2xl",
+              }}
+              {...bg}
               aria-hidden={idx === 0}
-              id={`cta-background-${bg.id}`}
-              className={bg.outerClassName}
+              key={`cta-background-${bg.id}`}
             />
           ))}
         </div>

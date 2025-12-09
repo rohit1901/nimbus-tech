@@ -5,30 +5,39 @@ import { useQuery } from "@apollo/client/react"
 export const GET_PAGE_CONTENTS = gql`
   query GET_PAGE_CONTENTS {
     pageContents {
-      title
+      id
       slug
+      title
+      description
       image {
         id
-        width
-        height
         src
         alt
+        width
+        height
         fill
-        className
+        type {
+          id
+          label
+        }
       }
-      id
-      description
       cta {
         id
         label
         href
         external
+        type {
+          id
+          label
+        }
       }
       sections {
         id
         type
         contentHero {
           id
+          title
+          description
           subHeading
           banner {
             id
@@ -40,6 +49,16 @@ export const GET_PAGE_CONTENTS = gql`
               id
               icon
               text
+            }
+          }
+          cta {
+            id
+            label
+            href
+            external
+            type {
+              id
+              label
             }
           }
         }
@@ -69,21 +88,31 @@ export const GET_PAGE_CONTENTS = gql`
           answer
         }
         contentFaqsCount
+        contentFaqSection {
+          id
+          title
+          description
+          faqs {
+            id
+            question
+            answer
+          }
+          faqsCount
+        }
         contentTestimonials {
           id
           title
           background {
             id
-            image {
+            src
+            alt
+            width
+            height
+            fill
+            type {
               id
-              src
-              alt
-              width
-              height
-              fill
-              className
+              label
             }
-            outerClassName
           }
           backgroundCount
           testimonials {
@@ -97,15 +126,44 @@ export const GET_PAGE_CONTENTS = gql`
             name
             role
             company
+            image {
+              id
+              src
+              alt
+              width
+              height
+              fill
+              type {
+                id
+                label
+              }
+            }
             content
           }
           testimonialsCount
           fallback {
             id
             rating
+            badge {
+              id
+              icon
+              label
+            }
             name
             role
             company
+            image {
+              id
+              src
+              alt
+              width
+              height
+              fill
+              type {
+                id
+                label
+              }
+            }
             content
           }
         }
@@ -118,10 +176,13 @@ export const GET_PAGE_CONTENTS = gql`
             label
             href
             external
+            type {
+              id
+              label
+            }
           }
           certifications {
             id
-            certId
             title
             description
             image {
@@ -131,7 +192,10 @@ export const GET_PAGE_CONTENTS = gql`
               width
               height
               fill
-              className
+              type {
+                id
+                label
+              }
             }
             link
           }
@@ -201,13 +265,20 @@ export const GET_PAGE_CONTENTS = gql`
             width
             height
             fill
-            className
+            type {
+              id
+              label
+            }
           }
           cta {
             id
             label
             href
             external
+            type {
+              id
+              label
+            }
           }
           items {
             id
@@ -250,20 +321,23 @@ export const GET_PAGE_CONTENTS = gql`
             label
             href
             external
+            type {
+              id
+              label
+            }
           }
           ctasCount
           background {
             id
-            image {
+            src
+            alt
+            width
+            height
+            fill
+            type {
               id
-              src
-              alt
-              width
-              height
-              fill
-              className
+              label
             }
-            outerClassName
           }
           backgroundCount
         }
@@ -274,7 +348,6 @@ export const GET_PAGE_CONTENTS = gql`
           description
         }
       }
-      sectionsCount
     }
   }
 `

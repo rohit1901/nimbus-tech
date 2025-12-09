@@ -1,7 +1,6 @@
 import { testimonialPageContent } from "@/app/data"
-import { Maybe, Testimonial, TestimonialItem } from "@/app/graphql/types"
+import { Maybe, TestimonialSection, TestimonialItem } from "@/app/graphql/types"
 import { Badge } from "@/components/Badge"
-import Image from "next/image"
 import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { SafeImage } from "../SafeImage"
 const TestimonialOrFallback = ({
@@ -9,6 +8,7 @@ const TestimonialOrFallback = ({
 }: {
   testimonial: TestimonialItem
 }) => {
+  console.log(testimonial.image)
   return (
     <div className="mb-16" key={testimonial.name}>
       <span className="mt-4 block text-base text-gray-900/70">
@@ -55,12 +55,13 @@ const TestimonialOrFallbackWrapper = ({
 export default function Testimonials({
   testimonial,
 }: {
-  testimonial?: Maybe<Testimonial>
+  testimonial?: Maybe<TestimonialSection>
 }) {
   if (!testimonial) {
     return null
   }
-  const { testimonials, fallback } = testimonial
+  const { testimonials, fallback, background } = testimonial
+  console.log(background)
   const getTestimonials = (
     testimonials?: Maybe<TestimonialItem[]>,
     fallback?: Maybe<TestimonialItem>,
@@ -71,11 +72,27 @@ export default function Testimonials({
     return testimonials
   }
   const testimonialsToShow = getTestimonials(testimonials, fallback)
+  console.log(background)
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
-      {testimonial.background?.map((bg, index) => (
-        <div key={index} className={bg.outerClassName ?? ""}>
-          <SafeImage {...bg.image} id={bg.id} />
+      {background?.map((bg, index) => (
+        <div
+          key={index}
+          className={
+            bg.fill
+              ? "absolute inset-0 object-cover"
+              : "absolute top-[19rem] -right-14 w-[19rem] sm:top-[12rem] sm:right-3 sm:w-[23rem] md:top-[12rem] md:right-0 md:w-[25rem] lg:top-[16rem] lg:right-12 lg:w-[34rem]"
+          }
+        >
+          <SafeImage
+            image={bg}
+            key={bg.id}
+            props={{
+              width: !!bg.width ? bg.width : undefined,
+              height: !!bg.height ? bg.height : undefined,
+              className: bg.fill ? "object-cover" : "animate-hover",
+            }}
+          />
         </div>
       ))}
       <div className="relative z-20 mb-20 p-8 sm:p-14 lg:p-24">
