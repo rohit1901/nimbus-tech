@@ -1,4 +1,3 @@
-import { ctaPageContent } from "@/app/data"
 import { CtaSection, Maybe } from "@/app/graphql/types"
 import { Button } from "@/components/Button"
 import Link from "next/link"
@@ -14,12 +13,10 @@ export default function CallToAction({ cta }: { cta?: Maybe<CtaSection> }) {
             id="cta-title"
             className="scroll-my-60 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
           >
-            {ctaPageContent.title}
+            {cta.title}
           </h2>
-          {ctaPageContent.description && (
-            <p className="mt-3 mb-8 text-lg text-gray-600">
-              {ctaPageContent.description}
-            </p>
+          {cta.description && (
+            <p className="mt-3 mb-8 text-lg text-gray-600">{cta.description}</p>
           )}
           <div className="flex flex-wrap gap-4">
             {cta.ctas?.map((cta, idx) => (

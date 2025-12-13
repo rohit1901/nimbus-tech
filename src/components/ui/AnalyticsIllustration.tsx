@@ -10,45 +10,33 @@ import {
   TableRow,
 } from "@/components/Table"
 import { LineChartIllustration } from "../../../public/images/LineChartIllustration"
+import { Analytic } from "@/app/graphql/types"
 
-type AnalyticsIllustrationProps = {
-  summary?: AnalyticsSummaryItem[]
-  totalDeployments?: string
-  deploymentChange?: string
-  deploymentChangePercent?: string
-  changePeriod?: string
-  heading?: string
-  subheading?: string
-  stats?: AnalyticsStats
-  tableHeadings?: string[]
-  className?: string
-  children?: React.ReactNode
-  style?: React.CSSProperties
-}
+type AnalyticsIllustrationProps = Analytic
 
 export default function AnalyticsIllustration({
-  summary = analyticsData.summary,
-  totalDeployments = analyticsData.stats.totalDeployments,
-  deploymentChange = analyticsData.stats.deploymentChange,
-  deploymentChangePercent = analyticsData.stats.deploymentChangePercent,
-  changePeriod = analyticsData.stats.changePeriod,
-  heading = analyticsData.heading,
-  tableHeadings = analyticsData.tableHeadings,
+  heading,
+  tableHeadings,
+  stats,
+  subheading,
+  summary,
 }: AnalyticsIllustrationProps) {
   return (
     <div className="h-150 shrink-0 overflow-hidden [mask-image:radial-gradient(white_30%,transparent_90%)] perspective-[4000px] perspective-origin-center">
       <div className="-translate-y-10 -translate-z-10 rotate-x-10 rotate-y-20 -rotate-z-10 transform-3d">
         <h3 className="text-sm text-gray-500">{heading}</h3>
-        {totalDeployments && (
+        {stats?.totalDeployments && (
           <p className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">
-            {totalDeployments} Deployments
+            {stats.totalDeployments} Deployments
           </p>
         )}
         <p className="mt-1 text-sm font-medium">
           <span className="text-emerald-700">
-            {deploymentChange} ({deploymentChangePercent}%)
+            {stats?.deploymentChange} ({stats?.deploymentChangePercent}%)
           </span>{" "}
-          <span className="font-normal text-gray-500">{changePeriod}</span>
+          <span className="font-normal text-gray-500">
+            {stats?.changePeriod}
+          </span>
         </p>
         <LineChartIllustration className="mt-8 w-full min-w-200 shrink-0" />
 
@@ -57,7 +45,7 @@ export default function AnalyticsIllustration({
             <TableHead>
               <TableRow>
                 <TableHeaderCell>Project</TableHeaderCell>
-                {tableHeadings.map((heading, index) => (
+                {tableHeadings?.map((heading, index) => (
                   <TableHeaderCell
                     key={index}
                     className="text-right font-medium text-gray-900"
@@ -68,7 +56,7 @@ export default function AnalyticsIllustration({
               </TableRow>
             </TableHead>
             <TableBody>
-              {summary.map((item) => (
+              {summary?.map((item) => (
                 <TableRow key={item.name}>
                   <TableCell className="font-medium text-gray-900">
                     <div className="flex space-x-3">

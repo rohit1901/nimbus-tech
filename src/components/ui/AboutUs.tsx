@@ -1,4 +1,3 @@
-import { ourApproachContent } from "@/app/data"
 import { About, Approach, Maybe, Value } from "@/app/graphql/types"
 import Heading from "@/components/Heading"
 import OurApproach from "@/components/ui/OurApproach"

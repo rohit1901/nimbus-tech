@@ -14,9 +14,9 @@ export const SafeImage = ({
   return (
     <Image
       {...image}
-      alt={image.alt ?? ""}
-      className={props?.className ?? undefined}
-      src={image.src ?? undefined}
+      alt={image.alt ?? "Image Alt"}
+      className={props?.className}
+      src={image?.src}
       width={image?.width ?? undefined}
       height={image?.height ?? undefined}
       fill={!!image.fill}

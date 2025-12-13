@@ -29,6 +29,7 @@ import {
   RiXingFill,
 } from "@remixicon/react"
 import { ImageProps } from "next/image"
+import { Analytic } from "./graphql/types"
 
 export const benefitsContent: CompositePageContent<"benefits", Benefit[]> = {
   title: "Your Benefits with Nimbus Tech",
@@ -442,11 +443,12 @@ export const ctaPageContent: CompositePageContentWithExtras<{
   ],
 }
 
-export const analyticsData: AnalyticsData = {
+export const analyticsData: Analytic = {
   heading: "Project Performance Overview",
   subheading:
     "Expert insights into deployments, uptime, and client satisfaction across key Nimbus Tech projects.",
   stats: {
+    id: "analytics-stats",
     totalDeployments: "305",
     deploymentChange: "+25 deployments",
     deploymentChangePercent: "8.9",
@@ -462,6 +464,7 @@ export const analyticsData: AnalyticsData = {
   ],
   summary: [
     {
+      id: "analytics-summary-1",
       name: "Project Nimbus",
       deployments: "120",
       uptime: "99.9%",
@@ -472,6 +475,7 @@ export const analyticsData: AnalyticsData = {
       changeType: "positive",
     },
     {
+      id: "analytics-summary-2",
       name: "Cloud Migration",
       deployments: "85",
       uptime: "99.7%",
@@ -482,6 +486,7 @@ export const analyticsData: AnalyticsData = {
       changeType: "positive",
     },
     {
+      id: "analytics-summary-3",
       name: "Enterprise App",
       deployments: "60",
       uptime: "98.5%",

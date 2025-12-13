@@ -289,29 +289,6 @@ export const GET_PAGE_CONTENTS = gql`
           }
           itemsCount
         }
-        contentFooter {
-          id
-          title
-          sections {
-            id
-            title
-            items {
-              id
-              label
-              href
-              external
-              icon
-            }
-            itemsCount
-          }
-          sectionsCount
-          languages {
-            id
-            label
-            value
-          }
-          languagesCount
-        }
         contentCta {
           id
           title
@@ -352,18 +329,30 @@ export const GET_PAGE_CONTENTS = gql`
   }
 `
 
-export const GET_BENEFITS_SECTION = gql`
-  query GET_BENEFITS_SECTION {
-    benefitSections {
+export const GET_FOOTER = gql`
+  query GET_FOOTER {
+    footers {
       id
       title
-      benefits {
+      sections {
         id
-        icon
         title
-        description
+        items {
+          id
+          label
+          href
+          external
+          icon
+        }
+        itemsCount
       }
-      benefitsCount
+      sectionsCount
+      languages {
+        id
+        label
+        value
+      }
+      languagesCount
     }
   }
 `
@@ -372,6 +361,6 @@ export function usePageContents() {
   return useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
 }
 
-export function useBenefitsSection() {
-  return useQuery<Pick<Query, "benefitSections">>(GET_BENEFITS_SECTION)
+export function useFooterSection() {
+  return useQuery<Pick<Query, "footers">>(GET_FOOTER)
 }

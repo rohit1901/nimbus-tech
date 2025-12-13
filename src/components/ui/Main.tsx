@@ -1,9 +1,4 @@
-import {
-  Maybe,
-  PageContent,
-  Section as AllSections,
-  Section,
-} from "@/app/graphql/types"
+import { Maybe, PageContent, Section as SectionType } from "@/app/graphql/types"
 import AboutUs from "@/components/ui/AboutUs"
 import CallToAction from "@/components/ui/CallToAction"
 import FaqSection from "@/components/ui/FAQ"
@@ -15,20 +10,6 @@ import OurCertifications from "@/components/ui/OurCertifications"
 import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 import { usePageContents } from "@/queries"
-
-type SectionContentMap = Pick<
-  AllSections,
-  | "contentHero"
-  | "contentFeatures"
-  | "contentTestimonials"
-  | "contentMap"
-  | "contentCertifications"
-  | "contentBenefits"
-  | "contentFaqs"
-  | "contentAbout"
-  | "contentApproach"
-  | "contentCta"
->
 
 // Wrapper component for consistent section padding
 const Section = ({
@@ -75,7 +56,7 @@ export const Main = () => {
 
   // Extract page content
   const pageContent: Maybe<PageContent> = data?.pageContents?.at(0) ?? null
-  const sections: Maybe<Section> = pageContent?.sections ?? null
+  const sections: Maybe<SectionType> = pageContent?.sections ?? null
 
   // Handle missing content
   if (!pageContent) {
@@ -100,7 +81,8 @@ export const Main = () => {
     contentAbout,
     contentApproach,
     contentCta,
-  } = sections ?? {}
+    contentAnalytics,
+  } = sections
 
   return (
     <main className="relative mx-auto flex flex-col">

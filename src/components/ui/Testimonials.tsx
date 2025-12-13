@@ -1,14 +1,12 @@
-import { testimonialPageContent } from "@/app/data"
 import { Maybe, TestimonialSection, TestimonialItem } from "@/app/graphql/types"
 import { Badge } from "@/components/Badge"
 import { RemixIconComponent } from "@/components/RemixIconComponent"
-import { SafeImage } from "../SafeImage"
+import { SafeImage } from "@/components/SafeImage"
 const TestimonialOrFallback = ({
   testimonial,
 }: {
   testimonial: TestimonialItem
 }) => {
-  console.log(testimonial.image)
   return (
     <div className="mb-16" key={testimonial.name}>
       <span className="mt-4 block text-base text-gray-900/70">
@@ -17,9 +15,14 @@ const TestimonialOrFallback = ({
 
       <div className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
         {testimonial.image && (
-          <div className="relative shrink-0 rounded-full bg-white/15 p-0.5 ring-1 ring-white/20">
-            <SafeImage {...testimonial.image} />
-          </div>
+          <Badge className="mt-2 rounded-full">
+            <SafeImage
+              image={testimonial.image}
+              props={{
+                className: "w-6 h-8",
+              }}
+            />
+          </Badge>
         )}
         <div>
           <div className="text-base font-medium text-gray-900">
@@ -61,7 +64,6 @@ export default function Testimonials({
     return null
   }
   const { testimonials, fallback, background } = testimonial
-  console.log(background)
   const getTestimonials = (
     testimonials?: Maybe<TestimonialItem[]>,
     fallback?: Maybe<TestimonialItem>,
@@ -72,7 +74,6 @@ export default function Testimonials({
     return testimonials
   }
   const testimonialsToShow = getTestimonials(testimonials, fallback)
-  console.log(background)
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
       {background?.map((bg, index) => (
@@ -98,15 +99,15 @@ export default function Testimonials({
       <div className="relative z-20 mb-20 p-8 sm:p-14 lg:p-24">
         <div className="relative max-w-2xl text-xl leading-relaxed tracking-tight text-gray-900 md:text-2xl lg:text-3xl">
           <span className="block font-semibold text-gray-900">
-            {testimonialPageContent.title}
+            {testimonial.title}
           </span>
-          {testimonialPageContent.fallback?.badge && (
+          {testimonial.fallback?.badge && (
             <Badge className="mt-2">
               <RemixIconComponent
-                name={testimonialPageContent.fallback.badge.icon}
+                name={testimonial.fallback.badge.icon}
                 className="h-4 w-4 text-orange-500"
               />
-              {testimonialPageContent.fallback.badge.label}
+              {testimonial.fallback.badge.label}
             </Badge>
           )}
         </div>
