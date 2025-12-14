@@ -1,22 +1,24 @@
-import { OurApproachContent } from "@/app/types"
+import { Approach, Maybe } from "@/app/graphql/types"
 import Heading from "@/components/Heading"
 import { cx } from "@/lib/utils"
 import { RiCheckLine } from "@remixicon/react"
 
 export default function OurApproach({
-  title,
-  description,
-  steps,
-}: OurApproachContent) {
+  approaches,
+}: {
+  approaches?: Maybe<Approach>
+}) {
+  if (!approaches) return null
+  const { title, description, steps } = approaches
   return (
     <section id="our-approach" className="py-16">
-      <Heading title={title} className="mb-6 text-center" />
+      <Heading title={title ?? ""} className="mb-6 text-center" />
       <p className="mb-8 text-center text-lg text-gray-700">{description}</p>
       <ul
         role="list"
         className="mx-auto mt-6 max-w-lg space-y-6 rounded-lg border border-gray-200 bg-white p-6"
       >
-        {steps.map((step) => (
+        {steps?.map((step) => (
           <li key={step.id} className="relative flex gap-x-3">
             <div className="flex h-6 items-center">
               <span

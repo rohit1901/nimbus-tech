@@ -1,4 +1,3 @@
-import { featuresContent } from "@/app/data"
 import { FeatureVisualization } from "@/app/types"
 import { Icons } from "@/components/Icons"
 import { Orbit } from "@/components/Orbit"
@@ -20,6 +19,7 @@ import {
 } from "@remixicon/react"
 import { PropsWithChildren } from "react"
 import { SolarMark } from "../../../public/SolarMark"
+import { Feature } from "@/app/graphql/types"
 
 // --- Reusable Components ---
 
@@ -394,7 +394,8 @@ const Visualization = ({
   }
 }
 
-export default function Features() {
+export default function Features({ features }: { features?: Feature[] }) {
+  if (!features || features.length === 0) return null
   return (
     <section
       aria-label="Features"
@@ -403,12 +404,12 @@ export default function Features() {
     >
       <VerticalLines />
 
-      {featuresContent.map((feature) => (
+      {features.map((feature) => (
         <div
           className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0"
           key={feature.title}
         >
-          <FeatureTextBlock title={feature.title}>
+          <FeatureTextBlock title={feature.title ?? ""}>
             <p
               className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
               id={feature.id}
@@ -419,7 +420,9 @@ export default function Features() {
               {feature.longDescription}
             </p>
           </FeatureTextBlock>
-          <Visualization visualization={feature.visualization} />
+          <Visualization
+            visualization={feature.visualization as FeatureVisualization}
+          />
         </div>
       ))}
     </section>

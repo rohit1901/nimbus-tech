@@ -1,6 +1,6 @@
 "use client"
-
-import { ourCertificationsPageContent } from "@/app/data"
+// TODO: Extend Certifications Graphql Type in KeystoneJS with additional fields
+import { CertificationSection, Maybe } from "@/app/graphql/types"
 import { Button } from "@/components/Button"
 import {
   Carousel,
@@ -10,47 +10,45 @@ import {
   CarouselPrevious,
 } from "@/components/Carousel"
 import Heading from "@/components/Heading"
-import Image from "next/image"
 import Link from "next/link"
+import { SafeImage } from "@/components/SafeImage"
 
-export default function OurCertifications() {
+export default function OurCertifications({
+  content,
+}: {
+  content?: Maybe<CertificationSection>
+}) {
+  if (!content) return null
+  const certifications = content.certifications
   return (
     <section id="our-certifications" className="bg-gray-50">
       <div className="mx-auto max-w-4xl text-center">
-        <Heading title={ourCertificationsPageContent.title} />
-        <p className="my-10 text-gray-700">
-          {ourCertificationsPageContent.description}
-        </p>
+        <Heading title={content.title ?? ""} />
+        <p className="my-10 text-gray-700">{content.description}</p>
         <div className="flex justify-center">
           <Carousel className="w-full max-w-md">
             <CarouselContent>
-              {ourCertificationsPageContent.certifications.map(
-                (certification) => (
-                  <CarouselItem
-                    key={certification.id}
-                    className="flex flex-col items-center p-4"
+              {certifications?.map((certification) => (
+                <CarouselItem
+                  key={certification.id}
+                  className="flex flex-col items-center p-4"
+                >
+                  <SafeImage
+                    image={certification.image}
+                    key={`certification-image-${certification.id}`}
+                  />
+                  <Link
+                    href={certification.link ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 cursor-pointer text-xl font-semibold text-gray-900 hover:text-orange-500"
                   >
-                    <Image
-                      src={certification.image}
-                      alt={certification.title}
-                      className="h-auto w-40"
-                      width={certification.width}
-                      height={certification.height}
-                      loading="lazy"
-                    />
-                    <Link
-                      href={certification.link ?? "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 cursor-pointer text-xl font-semibold text-gray-900 hover:text-orange-500"
-                    >
-                      {certification.title}
-                    </Link>
+                    {certification.title}
+                  </Link>
 
-                    <p className="text-gray-600">{certification.description}</p>
-                  </CarouselItem>
-                ),
-              )}
+                  <p className="text-gray-600">{certification.description}</p>
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <CarouselPrevious />
             <CarouselNext />
@@ -58,8 +56,8 @@ export default function OurCertifications() {
         </div>
         <div className="mt-10">
           <Button asChild className="text-md">
-            <Link href={ourCertificationsPageContent.cta?.href ?? "#"}>
-              {ourCertificationsPageContent.cta?.label ?? ""}
+            <Link href={content.cta?.href ?? "#"}>
+              {content.cta?.label ?? ""}
             </Link>
           </Button>
         </div>

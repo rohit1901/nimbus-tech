@@ -1,9 +1,10 @@
-import { ctaPageContent } from "@/app/data"
+import { CtaSection, Maybe } from "@/app/graphql/types"
 import { Button } from "@/components/Button"
-import Image from "next/image"
 import Link from "next/link"
+import { SafeImage } from "@/components/SafeImage"
 
-export default function CallToAction() {
+export default function CallToAction({ cta }: { cta?: Maybe<CtaSection> }) {
+  if (!cta) return null
   return (
     <section aria-labelledby="cta-title" className="mx-auto max-w-6xl">
       <div className="grid items-center gap-8 sm:grid-cols-6">
@@ -12,15 +13,13 @@ export default function CallToAction() {
             id="cta-title"
             className="scroll-my-60 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
           >
-            {ctaPageContent.title}
+            {cta.title}
           </h2>
-          {ctaPageContent.description && (
-            <p className="mt-3 mb-8 text-lg text-gray-600">
-              {ctaPageContent.description}
-            </p>
+          {cta.description && (
+            <p className="mt-3 mb-8 text-lg text-gray-600">{cta.description}</p>
           )}
           <div className="flex flex-wrap gap-4">
-            {ctaPageContent.ctas.map((cta, idx) => (
+            {cta.ctas?.map((cta, idx) => (
               <Button
                 asChild
                 className="text-md"
@@ -28,7 +27,7 @@ export default function CallToAction() {
                 key={cta.label}
               >
                 <Link
-                  href={cta.href}
+                  href={cta.href ?? "#"}
                   target={cta.external ? "_blank" : undefined}
                   rel={cta.external ? "noopener noreferrer" : undefined}
                 >
@@ -39,13 +38,17 @@ export default function CallToAction() {
           </div>
         </div>
         <div className="relative isolate rounded-xl sm:col-span-4 sm:h-full">
-          {ctaPageContent.background.map((bg, idx) => (
-            <Image
-              key={idx}
+          {cta.background?.map((bg, idx) => (
+            <SafeImage
+              image={bg}
+              props={{
+                className: bg.alt?.includes("blurred")
+                  ? "absolute inset-0 -z-10 rounded-2xl blur-xl"
+                  : "relative z-10 rounded-2xl",
+              }}
+              {...bg}
               aria-hidden={idx === 0}
-              {...bg.imageProps}
-              alt={bg.imageProps.alt}
-              className={bg.imageProps.className}
+              key={`cta-background-${bg.id}`}
             />
           ))}
         </div>

@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/certification/badges/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.credly.com",
+        port: "",
+        pathname: "/size/**",
+      },
     ],
   },
   reactStrictMode: true,

@@ -1,4 +1,5 @@
-import { mapPageContent } from "@/app/data"
+// TODO: Extend Map GraphQL type in KeystoneJS with additional properties
+import { Map as MapType, Maybe } from "@/app/graphql/types"
 import { SVGMap } from "@/components/ui/Map/SVGMap"
 import {
   RemixiconComponentType,
@@ -89,7 +90,8 @@ const MapFeaturePin = ({
   </div>
 )
 
-export default function Map() {
+export default function Map({ mapContent }: { mapContent?: Maybe<MapType> }) {
+  if (!mapContent) return null
   return (
     <section
       id="location"
@@ -100,16 +102,16 @@ export default function Map() {
       <MapBorder position="right" />
 
       <div className="pt-12 text-base font-semibold tracking-tight text-orange-400 sm:pt-20 sm:text-lg">
-        {mapPageContent.title}
+        {mapContent.title}
       </div>
       <h2
         id="location-title"
         className="mt-6 max-w-[700px] text-center text-2xl font-semibold tracking-tight text-balance text-white md:text-5xl"
       >
-        {mapPageContent.subheading}
+        {mapContent.subheading}
       </h2>
       <p className="mt-4 max-w-2xl text-center text-base text-balance text-gray-400 sm:mt-8 sm:text-xl">
-        {mapPageContent.description ?? ""}
+        {mapContent.description ?? ""}
       </p>
 
       <div className="relative mt-20 mb-10 ml-[17rem] scale-90 sm:mb-16 md:mt-24 md:ml-0 md:scale-100">
