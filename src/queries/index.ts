@@ -1,5 +1,6 @@
 import { MockPageContent } from "@/app/graphql/mockPageContent"
 import { Query } from "@/app/graphql/types"
+import { ErrorLike } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
 
@@ -357,21 +358,31 @@ export const GET_FOOTER = gql`
     }
   }
 `
-
 export function usePageContents() {
-  return process.env.NODE_ENV === "production"
-    ? useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
-    : { data: { pageContents: MockPageContent.data.pageContents } }
+  const { data, loading, error } =
+    useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
+  if (error) {
+    console.error(error)
+    return {
+      data: { pageContents: MockPageContent.data.pageContents },
+      loading: false,
+      error: undefined,
+    }
+  }
+  return { data, loading, error }
 }
 
 export function useFooterSection() {
-  return process.env.NODE_ENV === "production"
-    ? useQuery<Pick<Query, "footers">>(GET_FOOTER)
-    : {
-        data: {
-          footers: [
-            MockPageContent.data.pageContents[0].sections.contentFooter,
-          ],
-        },
-      }
+  const { data, loading, error } = useQuery<Pick<Query, "footers">>(GET_FOOTER)
+  if (error) {
+    console.error(error)
+    return {
+      data: {
+        footers: [MockPageContent.data.pageContents[0].sections.contentFooter],
+      },
+      loading: false,
+      error: undefined,
+    }
+  }
+  return { data, loading, error }
 }

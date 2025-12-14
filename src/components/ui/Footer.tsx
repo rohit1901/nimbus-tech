@@ -81,7 +81,11 @@ export default function Footer() {
           "items-center justify-center text-center",
         )}
       >
-        <ErrorState message={error.message} variant="default" padded={false} />
+        <ErrorState
+          message={error.message ?? "Unknown error"}
+          variant="default"
+          padded={false}
+        />
       </FooterStatusContainer>
     )
   }

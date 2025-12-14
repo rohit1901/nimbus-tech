@@ -31,7 +31,7 @@ export const Main = () => {
 
   // Handle error state
   if (error) {
-    return <ErrorState message={error.message} />
+    return <ErrorState message={error.message ?? undefined} />
   }
 
   // Extract page content
