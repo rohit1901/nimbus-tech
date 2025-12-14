@@ -3,8 +3,6 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 import { siteConfig } from "@/app/siteConfig"
-import Footer from "@/components/ui/Footer"
-import { NavBar } from "@/components/ui/Navbar"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nimbus-tech.de"),

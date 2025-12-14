@@ -1,5 +1,3 @@
-import { analyticsData } from "@/app/data"
-import { AnalyticsStats, AnalyticsSummaryItem } from "@/app/types"
 import {
   Table,
   TableBody,
@@ -18,7 +16,6 @@ export default function AnalyticsIllustration({
   heading,
   tableHeadings,
   stats,
-  subheading,
   summary,
 }: AnalyticsIllustrationProps) {
   return (

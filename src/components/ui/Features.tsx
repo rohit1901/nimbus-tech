@@ -1,4 +1,3 @@
-import { FeatureVisualization } from "@/app/types"
 import { Icons } from "@/components/Icons"
 import { Orbit } from "@/components/Orbit"
 import ChipViz from "@/components/ui/ChipViz"
@@ -20,6 +19,11 @@ import {
 import { PropsWithChildren } from "react"
 import { SolarMark } from "../../../public/SolarMark"
 import { Feature } from "@/app/graphql/types"
+
+type FeatureVisualization =
+  | "OrbitFeatureVisualization"
+  | "CloudFeatureVisualization"
+  | "ArchitectureFeatureVisualization"
 
 // --- Reusable Components ---
 

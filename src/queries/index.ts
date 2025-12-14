@@ -1,6 +1,5 @@
 import { MockPageContent } from "@/app/graphql/mockPageContent"
 import { Query } from "@/app/graphql/types"
-import { ErrorLike } from "@apollo/client"
 import { gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
 

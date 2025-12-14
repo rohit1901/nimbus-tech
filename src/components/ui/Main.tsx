@@ -61,7 +61,6 @@ export const Main = () => {
     contentAbout,
     contentApproach,
     contentCta,
-    contentAnalytics,
   } = sections
 
   return (
