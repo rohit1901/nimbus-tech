@@ -359,23 +359,22 @@ export const GET_FOOTER = gql`
   }
 `
 export function usePageContents() {
-  const { data, loading, error } =
-    useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
-  if (error) {
-    console.error(error)
+  const res = useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
+  if (res.error) {
+    console.error(res.error)
     return {
       data: { pageContents: MockPageContent.data.pageContents },
       loading: false,
       error: undefined,
     }
   }
-  return { data, loading, error }
+  return res
 }
 
 export function useFooterSection() {
-  const { data, loading, error } = useQuery<Pick<Query, "footers">>(GET_FOOTER)
-  if (error) {
-    console.error(error)
+  const res = useQuery<Pick<Query, "footers">>(GET_FOOTER)
+  if (res.error) {
+    console.error(res.error)
     return {
       data: {
         footers: [MockPageContent.data.pageContents[0].sections.contentFooter],
@@ -384,5 +383,5 @@ export function useFooterSection() {
       error: undefined,
     }
   }
-  return { data, loading, error }
+  return res
 }
