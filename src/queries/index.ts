@@ -1,3 +1,4 @@
+import { MockPageContent } from "@/app/graphql/mockPageContent"
 import { Query } from "@/app/graphql/types"
 import { gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
@@ -358,9 +359,19 @@ export const GET_FOOTER = gql`
 `
 
 export function usePageContents() {
-  return useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
+  return process.env.NODE_ENV === "production"
+    ? useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
+    : { data: { pageContents: MockPageContent.data.pageContents } }
 }
 
 export function useFooterSection() {
-  return useQuery<Pick<Query, "footers">>(GET_FOOTER)
+  return process.env.NODE_ENV === "production"
+    ? useQuery<Pick<Query, "footers">>(GET_FOOTER)
+    : {
+        data: {
+          footers: [
+            MockPageContent.data.pageContents[0].sections.contentFooter,
+          ],
+        },
+      }
 }

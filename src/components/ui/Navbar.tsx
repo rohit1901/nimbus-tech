@@ -10,6 +10,7 @@ import React from "react"
 import { SolarLogo } from "../../../public/SolarLogo"
 import { usePageContents } from "@/queries"
 import { Maybe, PageContent, Section as SectionType } from "@/app/graphql/types"
+import { ErrorState, LoadingState } from "@/components/Status"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
@@ -18,12 +19,12 @@ export function NavBar() {
 
   // Handle loading state
   if (loading) {
-    return <div>Loading...</div>
+    return <LoadingState />
   }
 
   // Handle error state
   if (error) {
-    return null
+    return <ErrorState />
   }
 
   // Extract page content
@@ -32,11 +33,11 @@ export function NavBar() {
 
   // Handle missing content
   if (!pageContent) {
-    return <div>Page content not available</div>
+    return <ErrorState />
   }
 
   if (!sections) {
-    return <div>Sections not available</div>
+    return <ErrorState />
   }
 
   const { contentNavigation } = sections

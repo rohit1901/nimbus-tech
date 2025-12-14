@@ -149,7 +149,7 @@ type ErrorStateProps = {
   message?: ReactNode
   className?: string
   retryLabel?: string
-  onRetry?: () => void
+  onRetryAction?: () => void
   actionProps?: ButtonHTMLAttributes<HTMLButtonElement>
   variant?: StatusVariant
   centered?: boolean
@@ -161,7 +161,7 @@ export const ErrorState = ({
   message = "We couldn’t load this content. Please try again later.",
   className,
   retryLabel = "Retry",
-  onRetry,
+  onRetryAction: onRetry,
   actionProps,
   variant = "surface",
   centered = true,

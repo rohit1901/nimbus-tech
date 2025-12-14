@@ -10,6 +10,7 @@ import OurCertifications from "@/components/ui/OurCertifications"
 import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 import { usePageContents } from "@/queries"
+import { ErrorState, LoadingState } from "@/components/Status"
 
 // Wrapper component for consistent section padding
 const Section = ({
@@ -19,27 +20,6 @@ const Section = ({
   children: React.ReactNode
   className?: string
 }) => <div className={`px-4 xl:px-0 ${className}`.trim()}>{children}</div>
-
-// Loading skeleton or spinner component
-const LoadingState = () => (
-  <div className="flex min-h-screen items-center justify-center">
-    <div className="text-center">
-      <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-orange-500" />
-      <p className="mt-4 text-gray-600">Loading content...</p>
-    </div>
-  </div>
-)
-
-// Error state component
-const ErrorState = ({ message }: { message?: string }) => (
-  <div className="flex min-h-screen items-center justify-center">
-    <div className="text-center">
-      <p className="text-red-600">
-        {message || "Failed to load content. Please try again later."}
-      </p>
-    </div>
-  </div>
-)
 
 export const Main = () => {
   const { data, loading, error } = usePageContents()
