@@ -4,7 +4,7 @@ import { gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
 
 export const GET_PAGE_CONTENTS = gql`
-  query GET_PAGE_CONTENTS {
+  query PageContents {
     pageContents {
       id
       slug
@@ -31,6 +31,11 @@ export const GET_PAGE_CONTENTS = gql`
           id
           label
         }
+        language {
+          id
+          label
+          value
+        }
       }
       sections {
         id
@@ -50,6 +55,16 @@ export const GET_PAGE_CONTENTS = gql`
               id
               icon
               text
+              language {
+                id
+                label
+                value
+              }
+            }
+            language {
+              id
+              label
+              value
             }
           }
           cta {
@@ -61,8 +76,19 @@ export const GET_PAGE_CONTENTS = gql`
               id
               label
             }
+            language {
+              id
+              label
+              value
+            }
+          }
+          language {
+            id
+            label
+            value
           }
         }
+        contentHeroCount
         contentBenefits {
           id
           title
@@ -71,9 +97,20 @@ export const GET_PAGE_CONTENTS = gql`
             icon
             title
             description
+            language {
+              id
+              label
+              value
+            }
           }
           benefitsCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentBenefitsCount
         contentFeatures {
           id
           featureId
@@ -81,14 +118,13 @@ export const GET_PAGE_CONTENTS = gql`
           description
           longDescription
           visualization
+          language {
+            id
+            label
+            value
+          }
         }
         contentFeaturesCount
-        contentFaqs {
-          id
-          question
-          answer
-        }
-        contentFaqsCount
         contentFaqSection {
           id
           title
@@ -97,9 +133,20 @@ export const GET_PAGE_CONTENTS = gql`
             id
             question
             answer
+            language {
+              id
+              label
+              value
+            }
           }
           faqsCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentFaqSectionCount
         contentTestimonials {
           id
           title
@@ -123,6 +170,11 @@ export const GET_PAGE_CONTENTS = gql`
               id
               icon
               label
+              language {
+                id
+                label
+                value
+              }
             }
             name
             role
@@ -140,6 +192,11 @@ export const GET_PAGE_CONTENTS = gql`
               }
             }
             content
+            language {
+              id
+              label
+              value
+            }
           }
           testimonialsCount
           fallback {
@@ -149,6 +206,11 @@ export const GET_PAGE_CONTENTS = gql`
               id
               icon
               label
+              language {
+                id
+                label
+                value
+              }
             }
             name
             role
@@ -166,8 +228,19 @@ export const GET_PAGE_CONTENTS = gql`
               }
             }
             content
+            language {
+              id
+              label
+              value
+            }
+          }
+          language {
+            id
+            label
+            value
           }
         }
+        contentTestimonialsCount
         contentCertifications {
           id
           title
@@ -181,6 +254,11 @@ export const GET_PAGE_CONTENTS = gql`
               id
               label
             }
+            language {
+              id
+              label
+              value
+            }
           }
           certifications {
             id
@@ -193,15 +271,22 @@ export const GET_PAGE_CONTENTS = gql`
               width
               height
               fill
-              type {
-                id
-                label
-              }
             }
             link
+            language {
+              id
+              label
+              value
+            }
           }
           certificationsCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentCertificationsCount
         contentApproach {
           id
           title
@@ -213,9 +298,20 @@ export const GET_PAGE_CONTENTS = gql`
             title
             description
             activityTime
+            language {
+              id
+              label
+              value
+            }
           }
           stepsCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentApproachCount
         contentAbout {
           id
           heading
@@ -226,10 +322,21 @@ export const GET_PAGE_CONTENTS = gql`
             label
             description
             icon
+            language {
+              id
+              label
+              value
+            }
           }
           valuesCount
           closing
+          language {
+            id
+            label
+            value
+          }
         }
+        contentAboutCount
         contentAnalytics {
           id
           heading
@@ -240,6 +347,11 @@ export const GET_PAGE_CONTENTS = gql`
             deploymentChange
             deploymentChangePercent
             changePeriod
+            language {
+              id
+              label
+              value
+            }
           }
           tableHeadings
           summary {
@@ -252,9 +364,20 @@ export const GET_PAGE_CONTENTS = gql`
             revenueGrowth
             bgColor
             changeType
+            language {
+              id
+              label
+              value
+            }
           }
           summaryCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentAnalyticsCount
         contentNavigation {
           id
           title
@@ -280,6 +403,11 @@ export const GET_PAGE_CONTENTS = gql`
               id
               label
             }
+            language {
+              id
+              label
+              value
+            }
           }
           items {
             id
@@ -287,9 +415,72 @@ export const GET_PAGE_CONTENTS = gql`
             href
             external
             icon
+            language {
+              id
+              label
+              value
+            }
+            type {
+              id
+              label
+            }
+            sectionKey {
+              id
+              label
+            }
           }
           itemsCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentNavigationCount
+        contentFooter {
+          id
+          title
+          sections {
+            id
+            title {
+              id
+              label
+            }
+            items {
+              id
+              label
+              href
+              external
+              icon
+              type {
+                id
+                label
+              }
+              sectionKey {
+                id
+                label
+              }
+              language {
+                id
+                label
+                value
+              }
+            }
+            itemsCount
+            language {
+              id
+              label
+              value
+            }
+          }
+          sectionsCount
+          language {
+            id
+            label
+            value
+          }
+        }
+        contentFooterCount
         contentCta {
           id
           title
@@ -302,6 +493,11 @@ export const GET_PAGE_CONTENTS = gql`
             type {
               id
               label
+            }
+            language {
+              id
+              label
+              value
             }
           }
           ctasCount
@@ -318,13 +514,30 @@ export const GET_PAGE_CONTENTS = gql`
             }
           }
           backgroundCount
+          language {
+            id
+            label
+            value
+          }
         }
+        contentCtaCount
         contentMap {
           id
           title
           subheading
           description
+          language {
+            id
+            label
+            value
+          }
         }
+        contentMapCount
+      }
+      language {
+        id
+        label
+        value
       }
     }
   }

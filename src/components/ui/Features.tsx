@@ -17,8 +17,8 @@ import {
   RiTeamLine,
 } from "@remixicon/react"
 import { PropsWithChildren } from "react"
-import { SolarMark } from "../../../public/SolarMark"
 import { Feature } from "@/app/graphql/types"
+import Image from "next/image"
 
 type FeatureVisualization =
   | "OrbitFeatureVisualization"
@@ -170,7 +170,13 @@ const OrbitFeatureVisualization = () => {
             <div className="relative flex h-48 w-48 items-center justify-center">
               <div className="rounded-full p-1 ring-1 ring-black/10">
                 <div className="relative z-10 flex size-20 items-center justify-center rounded-full bg-white shadow-[inset_0px_-15px_20px_rgba(0,0,0,0.1),0_7px_10px_0_rgba(0,0,0,0.15)] ring-1 ring-black/20">
-                  <SolarMark className="size-10" />
+                  <Image
+                    className="size-10"
+                    src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg"
+                    alt="Logo"
+                    width={50}
+                    height={50}
+                  />
                 </div>
                 <div className="absolute inset-12 animate-[spin_8s_linear_infinite] rounded-full bg-linear-to-t from-transparent via-orange-400 to-transparent blur-lg" />
               </div>
@@ -278,7 +284,13 @@ const CloudFeatureVisualization = () => {
         <div className="pointer-events-none relative h-full select-none">
           <div className="absolute top-[192px] left-[191.8px]">
             <div className="flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15">
-              <SolarMark className="h-8 w-8" />
+              <Image
+                className="h-8 w-8"
+                src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg"
+                alt="Logo"
+                width={50}
+                height={50}
+              />
             </div>
           </div>
           {tempData.map((d, i) => (

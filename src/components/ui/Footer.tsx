@@ -10,10 +10,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/Select"
-import { useFooterSection } from "@/queries"
-import { Maybe, Footer as FooterType } from "@/app/graphql/types"
 import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { LoadingState, ErrorState } from "@/components/Status"
+import { useSectionContent } from "@/hooks/useSectionContent"
+import { useLanguageContext } from "@/app/providers/LanguageContext"
+import Image from "next/image"
 
 export const CURRENT_YEAR = new Date().getFullYear()
 
@@ -54,7 +55,28 @@ const Copyright = () => (
 )
 
 export default function Footer() {
-  const { data, loading, error } = useFooterSection()
+  const {
+    activeContent,
+    isReady,
+    loading,
+    error,
+    currentLanguage,
+    availableLanguages,
+    setLanguage,
+  } = useLanguageContext()
+
+  const { footer } = useSectionContent(
+    activeContent?.sections,
+    currentLanguage?.value ?? "en-US",
+  )
+
+  if (loading) return <LoadingState />
+  if (error) return <ErrorState message={error.message} />
+  // Guard against missing language data
+  if (!isReady || !activeContent) {
+    console.error("Languages or Content not available")
+    return <ErrorState message="Content not available" />
+  }
 
   if (loading) {
     return (
@@ -82,15 +104,13 @@ export default function Footer() {
         )}
       >
         <ErrorState
-          message={error.message ?? "Unknown error"}
+          message={error ?? "Unknown error"}
           variant="default"
           padded={false}
         />
       </FooterStatusContainer>
     )
   }
-
-  const footer: Maybe<FooterType> = data?.footers?.at(0) ?? null
 
   if (!footer) {
     return (
@@ -108,12 +128,11 @@ export default function Footer() {
       </FooterStatusContainer>
     )
   }
-
   const icons = footer.sections?.find(
-    (section) => section.title === "Follow Us",
+    (section) => section.title?.label === "social",
   )
   const links = footer.sections?.filter(
-    (section) => section.title !== "Follow Us",
+    (section) => section.title?.label !== "social",
   )
 
   return (
@@ -192,14 +211,20 @@ export default function Footer() {
       <div className="mr-auto flex w-full flex-col justify-between lg:w-fit">
         <Link
           href="/"
-          className="flex items-center font-medium text-gray-700 select-none sm:text-sm"
+          className="ml-3 flex items-center font-medium text-gray-700 select-none sm:text-sm"
         >
-          <SolarLogo className="w-50" />
+          <Image
+            className="w-50"
+            src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
+            alt="Logo"
+            width={50}
+            height={50}
+          />
           <span className="sr-only">Nimbus Tech Logo (go home)</span>
         </Link>
 
         <div className="flex items-center lg:block">
-          <div className="ml-1 flex items-center">
+          <div className="flex items-center">
             {/* Social Icons */}
             {icons?.items?.map((item) => (
               <Link
@@ -217,14 +242,17 @@ export default function Footer() {
         </div>
 
         <div className="m-4 max-w-[250px]">
-          <Select defaultValue="de-DE">
+          <Select
+            value={currentLanguage?.value ?? "en-US"}
+            onValueChange={(v) => setLanguage(v)}
+          >
             <SelectTrigger id="languages" className="mt-2">
               <SelectValue placeholder="Choose language" />
             </SelectTrigger>
             <SelectContent>
-              {footer.languages?.map((item) => (
-                <SelectItem key={item.value} value={item.value ?? ""}>
-                  {item.label}
+              {availableLanguages?.map((item) => (
+                <SelectItem key={item?.value} value={item?.value ?? ""}>
+                  {item?.label}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -236,7 +264,7 @@ export default function Footer() {
       {links?.map((section) => (
         <div key={section.id} className="mt-6 min-w-44 pl-2 lg:mt-0 lg:pl-0">
           <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
-            {section.title}
+            {section.title?.label?.toUpperCase() ?? ""}
           </h3>
           <ul className="space-y-4">
             {section.items?.map((item) => (

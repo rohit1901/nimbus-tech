@@ -39,6 +39,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/size/**",
       },
+      {
+        protocol: "https",
+        hostname: "d1ljophloyhryl.cloudfront.net",
+        port: "",
+        pathname: "/assets/**",
+      },
     ],
   },
   reactStrictMode: true,

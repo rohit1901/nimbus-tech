@@ -1,14 +1,19 @@
 import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
+import Image from "next/image"
 import Link from "next/link"
-
-import { SolarLogo } from "../../public/SolarLogo"
 
 export default function NotFound() {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <Link href={siteConfig.baseLinks.home}>
-        <SolarLogo className="mt-6 h-10" />
+        <Image
+          className="mt-6 h-10"
+          src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg"
+          alt="Logo"
+          width={50}
+          height={50}
+        />
       </Link>
       <p className="mt-6 text-4xl font-semibold text-amber-600 sm:text-5xl">
         Error 404

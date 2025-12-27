@@ -1,4 +1,3 @@
-import { Maybe, PageContent, Section as SectionType } from "@/app/graphql/types"
 import AboutUs from "@/components/ui/AboutUs"
 import CallToAction from "@/components/ui/CallToAction"
 import FaqSection from "@/components/ui/FAQ"
@@ -11,6 +10,9 @@ import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 import { usePageContents } from "@/queries"
 import { ErrorState, LoadingState } from "@/components/Status"
+import { useContentLanguage } from "@/hooks/useContentLanguage"
+import { useSectionContent } from "@/hooks/useSectionContent"
+import { useLanguageContext } from "@/app/providers/LanguageContext"
 
 // Wrapper component for consistent section padding
 const Section = ({
@@ -22,121 +24,103 @@ const Section = ({
 }) => <div className={`px-4 xl:px-0 ${className}`.trim()}>{children}</div>
 
 export const Main = () => {
-  const { data, loading, error } = usePageContents()
-
-  // Handle loading state
-  if (loading) {
-    return <LoadingState />
-  }
-
-  // Handle error state
-  if (error) {
-    return <ErrorState message={error.message ?? undefined} />
-  }
-
-  // Extract page content
-  const pageContent: Maybe<PageContent> = data?.pageContents?.at(0) ?? null
-  const sections: Maybe<SectionType> = pageContent?.sections ?? null
-
-  // Handle missing content
-  if (!pageContent) {
-    return <ErrorState message="Page content not available" />
-  }
-
-  // Handle missing content
-  if (!sections?.contentHero) {
-    console.error("Hero content not available")
-    return <ErrorState message="Hero Section not available" />
-  }
-
-  // Destructure sections for cleaner access
   const {
-    contentHero,
-    contentFeatures,
-    contentTestimonials,
-    contentMap,
-    contentCertifications,
-    contentBenefits,
-    contentFaqs,
-    contentAbout,
-    contentApproach,
-    contentCta,
-  } = sections
+    activeContent,
+    isReady,
+    loading,
+    error,
+    currentLanguage,
+    availableLanguages,
+    setLanguage,
+  } = useLanguageContext()
+
+  const content = useSectionContent(
+    activeContent?.sections,
+    currentLanguage?.value ?? "en-US",
+  )
+
+  if (loading) return <LoadingState />
+  if (error) return <ErrorState message={error.message} />
+  // Guard against missing language data
+  if (!isReady || !activeContent) {
+    console.error("Languages or Content not available")
+    return <ErrorState message="Content not available" />
+  }
 
   return (
     <main className="relative mx-auto flex flex-col">
       <div className="pt-56">
         <Hero
           pageContent={{
-            ...pageContent,
-            hero: contentHero,
+            ...activeContent,
+            hero: content.hero,
           }}
         />
       </div>
 
-      {contentFeatures && (
+      {content.features && (
         <Section className="mt-52">
-          <Features features={contentFeatures} />
+          <Features features={content.features} />
         </Section>
       )}
 
-      {contentTestimonials && (
+      {content.testimonials && (
         <>
           <Section className="mt-32">
-            <Testimonials testimonial={contentTestimonials} />
+            <Testimonials testimonial={content.testimonials} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentMap && (
+      {content.map && (
         <>
           <Section>
-            <Map mapContent={contentMap} />
+            <Map mapContent={content.map} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentCertifications && (
+      {content.certifications && (
         <>
           <Section>
-            <OurCertifications content={contentCertifications} />
+            <OurCertifications content={content.certifications} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentBenefits && (
+      {content.benefits && (
         <>
           <Section>
-            <WhyNimbusTech benefitSection={contentBenefits} />
+            <WhyNimbusTech benefitSection={content.benefits} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentFaqs && (
+      {content.faq && (
         <>
           <Section>
-            <FaqSection faqs={contentFaqs} />
+            <FaqSection faqSection={content.faq} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentAbout && contentApproach && (
+      {content.about && content.approach && (
         <>
           <Section>
-            <AboutUs about={contentAbout} approaches={contentApproach} />
+            <AboutUs about={content.about} approaches={content.approach} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
 
-      {contentCta && (
+      {content.cta && (
         <Section className="mt-10 mb-40">
-          <CallToAction cta={contentCta} />
+          <CallToAction cta={content.cta} />
         </Section>
       )}
     </main>

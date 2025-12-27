@@ -9,38 +9,37 @@ import Link from "next/link"
 import React from "react"
 import { SolarLogo } from "../../../public/SolarLogo"
 import { usePageContents } from "@/queries"
-import { Maybe, PageContent, Section as SectionType } from "@/app/graphql/types"
 import { ErrorState, LoadingState } from "@/components/Status"
+import { useContentLanguage } from "@/hooks/useContentLanguage"
+import { useSectionContent } from "@/hooks/useSectionContent"
+import { useLanguageContext } from "@/app/providers/LanguageContext"
+import Image from "next/image"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
-  const { data, loading, error } = usePageContents()
+  const {
+    activeContent,
+    isReady,
+    loading,
+    error,
+    currentLanguage,
+    availableLanguages,
+    setLanguage,
+  } = useLanguageContext()
 
-  // Handle loading state
-  if (loading) {
-    return <LoadingState />
+  const { navigation } = useSectionContent(
+    activeContent?.sections,
+    currentLanguage?.value ?? "en-US",
+  )
+
+  if (loading) return <LoadingState />
+  if (error) return <ErrorState message={error.message} />
+  // Guard against missing language data
+  if (!isReady || !activeContent) {
+    console.error("Languages or Content not available")
+    return <ErrorState message="Content not available" />
   }
-
-  // Handle error state
-  if (error) {
-    return <ErrorState />
-  }
-
-  // Extract page content
-  const pageContent: Maybe<PageContent> = data?.pageContents?.at(0) ?? null
-  const sections: Maybe<SectionType> = pageContent?.sections ?? null
-
-  // Handle missing content
-  if (!pageContent) {
-    return <ErrorState />
-  }
-
-  if (!sections) {
-    return <ErrorState />
-  }
-
-  const { contentNavigation } = sections
 
   return (
     <header
@@ -54,12 +53,18 @@ export function NavBar() {
       <div className="w-full md:my-auto">
         <div className="relative flex items-center justify-between">
           <Link href={siteConfig.baseLinks.home} aria-label="Home">
-            <span className="sr-only">{contentNavigation?.image?.alt}</span>
-            <SolarLogo className="w-44" />
+            <span className="sr-only">{navigation?.image?.alt}</span>
+            <Image
+              className="w-50"
+              src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
+              alt="Logo"
+              width={50}
+              height={50}
+            />
           </Link>
           <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
             <div className="flex items-center gap-10 font-medium">
-              {contentNavigation?.items?.map((link) => (
+              {navigation?.items?.map((link) => (
                 <Link
                   key={link.label}
                   className="px-2 py-1 text-gray-900"
@@ -76,8 +81,8 @@ export function NavBar() {
             variant="secondary"
             className="hidden h-10 font-semibold sm:block"
           >
-            <Link href={contentNavigation?.cta?.href ?? "#"}>
-              {contentNavigation?.cta?.label ?? "Get started"}
+            <Link href={navigation?.cta?.href ?? "#"}>
+              {navigation?.cta?.label ?? "Get started"}
             </Link>
           </Button>
           <Button
@@ -106,15 +111,15 @@ export function NavBar() {
           )}
         >
           <ul className="space-y-4 font-medium">
-            {contentNavigation?.items?.map((link) => (
+            {navigation?.items?.map((link) => (
               <li key={link.label} onClick={() => setOpen(false)}>
                 <Link href={link.href ?? "#"}>{link.label}</Link>
               </li>
             ))}
           </ul>
           <Button variant="secondary" className="text-lg">
-            <Link href={contentNavigation?.cta?.href ?? "#"}>
-              {contentNavigation?.cta?.label ?? "Get started"}
+            <Link href={navigation?.cta?.href ?? "#"}>
+              {navigation?.cta?.label ?? "Get started"}
             </Link>
           </Button>
         </nav>

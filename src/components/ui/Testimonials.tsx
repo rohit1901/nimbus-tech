@@ -76,9 +76,9 @@ export default function Testimonials({
   const testimonialsToShow = getTestimonials(testimonials, fallback)
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
-      {background?.map((bg, index) => (
+      {background?.map((bg) => (
         <div
-          key={index}
+          key={bg.id}
           className={
             bg.fill
               ? "absolute inset-0 object-cover"

@@ -19,7 +19,7 @@ export default function OurApproach({
         className="mx-auto mt-6 max-w-lg space-y-6 rounded-lg border border-gray-200 bg-white p-6"
       >
         {steps?.map((step) => (
-          <li key={step.id} className="relative flex gap-x-3">
+          <li key={step.title} className="relative flex gap-x-3">
             <div className="flex h-6 items-center">
               <span
                 className={cx(

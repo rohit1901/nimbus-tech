@@ -135,3 +135,10 @@ dist
 .vscode/
 .zed/
 .DS_Store
+
+# env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
