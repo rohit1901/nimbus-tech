@@ -13,7 +13,7 @@ export default function FaqSection({
   faqSection?: Maybe<FaqType>
 }) {
   if (!faqSection) return null
-  const { faqs, description, title, language } = faqSection
+  const { faqs, title } = faqSection
   return (
     <Accordion type="single" collapsible className="mx-auto max-w-4xl">
       <Heading title={title ?? "Frequently Asked Questions"} />

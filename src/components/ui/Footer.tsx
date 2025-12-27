@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react"
 import Link from "next/link"
-import { SolarLogo } from "../../../public/SolarLogo"
 import {
   Select,
   SelectContent,
@@ -71,7 +70,7 @@ export default function Footer() {
   )
 
   if (loading) return <LoadingState />
-  if (error) return <ErrorState message={error.message} />
+  if (error) return <ErrorState message={"Error loading Footer."} />
   // Guard against missing language data
   if (!isReady || !activeContent) {
     console.error("Languages or Content not available")
@@ -104,7 +103,7 @@ export default function Footer() {
         )}
       >
         <ErrorState
-          message={error ?? "Unknown error"}
+          message={"Unknown error"}
           variant="default"
           padded={false}
         />

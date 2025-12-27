@@ -8,9 +8,7 @@ import Map from "@/components/ui/Map/Map"
 import OurCertifications from "@/components/ui/OurCertifications"
 import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
-import { usePageContents } from "@/queries"
 import { ErrorState, LoadingState } from "@/components/Status"
-import { useContentLanguage } from "@/hooks/useContentLanguage"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 
@@ -30,8 +28,6 @@ export const Main = () => {
     loading,
     error,
     currentLanguage,
-    availableLanguages,
-    setLanguage,
   } = useLanguageContext()
 
   const content = useSectionContent(
@@ -40,7 +36,7 @@ export const Main = () => {
   )
 
   if (loading) return <LoadingState />
-  if (error) return <ErrorState message={error.message} />
+  if (error) return <ErrorState message={"Error fetching content."} />
   // Guard against missing language data
   if (!isReady || !activeContent) {
     console.error("Languages or Content not available")

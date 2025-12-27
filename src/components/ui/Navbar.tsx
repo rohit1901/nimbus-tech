@@ -7,10 +7,7 @@ import { cx } from "@/lib/utils"
 import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
-import { SolarLogo } from "../../../public/SolarLogo"
-import { usePageContents } from "@/queries"
 import { ErrorState, LoadingState } from "@/components/Status"
-import { useContentLanguage } from "@/hooks/useContentLanguage"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
@@ -24,8 +21,6 @@ export function NavBar() {
     loading,
     error,
     currentLanguage,
-    availableLanguages,
-    setLanguage,
   } = useLanguageContext()
 
   const { navigation } = useSectionContent(
@@ -34,7 +29,7 @@ export function NavBar() {
   )
 
   if (loading) return <LoadingState />
-  if (error) return <ErrorState message={error.message} />
+  if (error) return <ErrorState message={"Error fetching content"} />
   // Guard against missing language data
   if (!isReady || !activeContent) {
     console.error("Languages or Content not available")

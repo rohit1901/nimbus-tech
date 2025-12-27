@@ -19,7 +19,7 @@ interface LanguageContextType {
   setLanguage: (languageValue: string) => void
   isReady: boolean
   loading: boolean
-  error: any
+  error: unknown
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
