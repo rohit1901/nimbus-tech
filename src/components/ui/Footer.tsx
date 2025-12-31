@@ -2,13 +2,13 @@
 
 import type { ReactNode } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
-import Image from "next/image"
-import { Maybe } from "@/app/graphql/types"
+import { Language, Maybe } from "@/app/graphql/types"
 
 export const CURRENT_YEAR = new Date().getFullYear()
 
@@ -39,13 +39,9 @@ export const FooterStatusContainer = ({
 
 const FOOTER_STATUS_CLASSNAME = "min-h-[180px]"
 
-type LanguageOption = {
-  label?: string | null
-  value?: string | null
-}
-
-type LanguageProps = {
-  availableLanguages?: Maybe<LanguageOption>[]
+// FIX: Allow undefined in array items and for the array itself
+type LanguageToggleProps = {
+  availableLanguages?: Array<Maybe<Language> | undefined> | null
   currentValue?: string | null
   onChange: (value: string) => void
 }
@@ -63,9 +59,10 @@ const LanguageToggle = ({
   availableLanguages,
   currentValue,
   onChange,
-}: LanguageProps) => {
+}: LanguageToggleProps) => {
   const options = (availableLanguages ?? [])
     .map((lang) => ({
+      // Optional chaining handles null and undefined safely here
       value: lang?.value ?? "",
       label: lang?.label ?? lang?.value ?? "",
     }))
@@ -105,8 +102,6 @@ const LanguageToggle = ({
   )
 }
 
-
-
 export default function Footer() {
   const {
     activeContent,
@@ -122,14 +117,6 @@ export default function Footer() {
     activeContent?.sections,
     currentLanguage?.value ?? "en-US",
   )
-
-  if (loading) return <LoadingState />
-  if (error) return <ErrorState message={"Error loading Footer."} />
-  // Guard against missing language data
-  if (!isReady || !activeContent) {
-    console.error("Languages or Content not available")
-    return <ErrorState message="Content not available" />
-  }
 
   if (loading) {
     return (
@@ -165,6 +152,11 @@ export default function Footer() {
     )
   }
 
+  if (!isReady || !activeContent) {
+    if (!loading && !error) console.error("Languages or Content not available")
+    return null
+  }
+
   if (!footer) {
     return (
       <FooterStatusContainer
@@ -181,6 +173,7 @@ export default function Footer() {
       </FooterStatusContainer>
     )
   }
+
   const icons = footer.sections?.find(
     (section) => section.title?.label === "social",
   )
@@ -261,7 +254,7 @@ export default function Footer() {
         />
       </svg>
       {/*Content Wrapper*/}
-      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-start sm:gap-12 sm:px-4 lg:gap-16 lg:px-6 sm:[align-items:start]">
+      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-start sm:gap-12 sm:px-4 lg:gap-16 lg:px-6 ">
         <div className="mr-auto flex w-full flex-col items-center gap-6 sm:min-w-[280px] sm:items-start sm:gap-6">
           <Link
             href="/"
@@ -305,8 +298,8 @@ export default function Footer() {
         </div>
 
         {links?.length ? (
-          <div className="flex w-full flex-col items-center gap-8 sm:items-stretch">
-            <div className="grid w-full grid-cols-1 gap-8 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-3 xl:grid-cols-4">
+          <div className="flex w-full flex-col items-end gap-8 sm:items-stretch">
+            <div className="grid w-full grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-3 xl:grid-cols-4">
               {links.map((section) => (
                 <div key={section.id} className="mx-auto w-full max-w-[220px] sm:mx-0 sm:max-w-none">
                   <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
