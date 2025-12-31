@@ -2,13 +2,7 @@
 
 import type { ReactNode } from "react"
 import Link from "next/link"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/Select"
+
 import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
@@ -44,14 +38,73 @@ export const FooterStatusContainer = ({
 
 const FOOTER_STATUS_CLASSNAME = "min-h-[180px]"
 
+type LanguageOption = {
+  label?: string | null
+  value?: string | null
+}
+
+type LanguageProps = {
+  availableLanguages?: LanguageOption[]
+  currentValue?: string | null
+  onChange: (value: string) => void
+}
+
 const COPYRIGHT_ENTITY = "Nimbus Tech GmbH"
 const LOCATION = "Leipzig, Germany"
 
 const Copyright = () => (
-  <div className="ml-3 hidden text-sm text-gray-700 lg:inline">
+  <div className="hidden text-sm text-gray-700 lg:ml-3 lg:inline">
     &copy; {CURRENT_YEAR} {COPYRIGHT_ENTITY} &mdash; {LOCATION}
   </div>
 )
+
+const LanguageToggle = ({
+  availableLanguages,
+  currentValue,
+  onChange,
+}: LanguageProps) => {
+  const options = (availableLanguages ?? [])
+    .map((lang) => ({
+      value: lang?.value ?? "",
+      label: lang?.label ?? lang?.value ?? "",
+    }))
+    .filter((lang) => lang.value)
+
+  if (options.length === 0) {
+    return null
+  }
+
+  return (
+    <div className="flex items-center justify-center gap-2 sm:justify-start">
+      {options.map(({ value, label }) => {
+        const isActive = currentValue === value
+
+        return (
+          <button
+            key={value}
+            type="button"
+            onClick={() => {
+              if (!isActive) {
+                onChange(value)
+              }
+            }}
+            className={joinClassNames(
+              "inline-flex cursor-pointer items-center justify-center rounded-md px-5 py-2 text-sm font-medium",
+              isActive
+                ? "bg-orange-500 text-white"
+                : "border border-gray-200 bg-white text-gray-900",
+            )}
+            aria-pressed={isActive}
+          >
+            {label}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+
 
 export default function Footer() {
   const {
@@ -206,81 +259,78 @@ export default function Footer() {
           fill="url(#diagonal-footer-pattern)"
         />
       </svg>
-
-      <div className="mr-auto flex w-full flex-col justify-between lg:w-fit">
-        <Link
-          href="/"
-          className="ml-3 flex items-center font-medium text-gray-700 select-none sm:text-sm"
-        >
-          <Image
-            className="w-50"
-            src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
-            alt="Logo"
-            width={50}
-            height={50}
-          />
-          <span className="sr-only">Nimbus Tech Logo (go home)</span>
-        </Link>
-
-        <div className="flex items-center lg:block">
-          <div className="flex items-center">
-            {/* Social Icons */}
-            {icons?.items?.map((item) => (
-              <Link
-                key={item.id}
-                href={item.href ?? "#"}
-                target={item.external ? "_blank" : undefined}
-                rel={item.external ? "noopener noreferrer" : undefined}
-                className="ml-3 text-gray-600 transition-colors duration-200 hover:text-gray-900"
-              >
-                <RemixIconComponent className="h-6 w-6" name={item.icon} />
-              </Link>
-            ))}
-          </div>
-          <Copyright />
-        </div>
-
-        <div className="m-4 max-w-[250px]">
-          <Select
-            value={currentLanguage?.value ?? "en-US"}
-            onValueChange={(v) => setLanguage(v)}
+      {/*Content Wrapper*/}
+      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-start sm:gap-12 sm:px-4 lg:gap-16 lg:px-6 sm:[align-items:start]">
+        <div className="mr-auto flex w-full flex-col items-center gap-6 sm:min-w-[280px] sm:items-start sm:gap-6">
+          <Link
+            href="/"
+            className="flex items-center gap-3 select-none font-medium text-gray-700 sm:text-sm"
           >
-            <SelectTrigger id="languages" className="mt-2">
-              <SelectValue placeholder="Choose language" />
-            </SelectTrigger>
-            <SelectContent>
-              {availableLanguages?.map((item) => (
-                <SelectItem key={item?.value} value={item?.value ?? ""}>
-                  {item?.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
+            <Image
+              className="w-50"
+              src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
+              alt="Logo"
+              width={50}
+              height={50}
+            />
+            <span className="sr-only">Nimbus Tech Logo (go home)</span>
+          </Link>
 
-      {/* Footer Sections */}
-      {links?.map((section) => (
-        <div key={section.id} className="mt-6 min-w-44 pl-2 lg:mt-0 lg:pl-0">
-          <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
-            {section.title?.label?.toUpperCase() ?? ""}
-          </h3>
-          <ul className="space-y-4">
-            {section.items?.map((item) => (
-              <li key={item.label} className="text-sm">
+          <div className="flex flex-col items-center gap-3 sm:items-start">
+            <div className="flex items-center justify-center gap-3 sm:justify-start sm:gap-4">
+              {/* Social Icons */}
+              {icons?.items?.map((item) => (
                 <Link
+                  key={item.id}
                   href={item.href ?? "#"}
-                  className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
+                  className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
                 >
-                  {item.label}
+                  <RemixIconComponent className="h-6 w-6" name={item.icon} />
                 </Link>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+            <Copyright />
+          </div>
+
+          <div className="mt-4 flex w-full justify-center sm:mt-6 sm:justify-start">
+            <LanguageToggle
+              availableLanguages={availableLanguages}
+              currentValue={currentLanguage?.value}
+              onChange={(value) => setLanguage(value)}
+            />
+          </div>
         </div>
-      ))}
+
+        {links?.length ? (
+          <div className="flex w-full flex-col items-center gap-8 sm:items-stretch">
+            <div className="grid w-full grid-cols-1 gap-8 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-3 xl:grid-cols-4">
+              {links.map((section) => (
+                <div key={section.id} className="mx-auto w-full max-w-[220px] sm:mx-0 sm:max-w-none">
+                  <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
+                    {section.title?.label?.toUpperCase() ?? ""}
+                  </h3>
+                  <ul className="space-y-4">
+                    {section.items?.map((item) => (
+                      <li key={item.label} className="text-sm">
+                        <Link
+                          href={item.href ?? "#"}
+                          className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+      </div>
     </FooterStatusContainer>
   )
 }

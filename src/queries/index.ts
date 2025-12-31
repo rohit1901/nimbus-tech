@@ -580,6 +580,7 @@ export function usePageContents() {
       error: undefined,
     }
   }
+  console.log(res.data)
   return res
 }
 
