@@ -8,6 +8,7 @@ import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
+import { Maybe } from "@/app/graphql/types"
 
 export const CURRENT_YEAR = new Date().getFullYear()
 
@@ -44,7 +45,7 @@ type LanguageOption = {
 }
 
 type LanguageProps = {
-  availableLanguages?: LanguageOption[]
+  availableLanguages?: Maybe<LanguageOption>[]
   currentValue?: string | null
   onChange: (value: string) => void
 }
