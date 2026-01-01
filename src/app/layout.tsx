@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 import { siteConfig } from "@/app/siteConfig"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nimbus-tech.de"),
@@ -82,8 +83,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="https://cookiechimp.com/widget/yv4tdkM.js"></script>
+        <Script
+          src="https://cookiechimp.com/widget/yv4tdkM.js"
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className={`${GeistSans.className} min-h-screen overflow-x-hidden scroll-auto bg-gray-50 antialiased selection:bg-orange-100 selection:text-orange-600`}
