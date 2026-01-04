@@ -22,13 +22,8 @@ const Section = ({
 }) => <div className={`px-4 xl:px-0 ${className}`.trim()}>{children}</div>
 
 export const Main = () => {
-  const {
-    activeContent,
-    isReady,
-    loading,
-    error,
-    currentLanguage,
-  } = useLanguageContext()
+  const { activeContent, isReady, loading, error, currentLanguage } =
+    useLanguageContext()
 
   const content = useSectionContent(
     activeContent?.sections,

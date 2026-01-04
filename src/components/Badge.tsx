@@ -39,7 +39,8 @@ const badgeVariants = tv({
 })
 
 interface BadgeProps
-  extends React.ComponentPropsWithoutRef<"span">,
+  extends
+    React.ComponentPropsWithoutRef<"span">,
     VariantProps<typeof badgeVariants> {}
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(

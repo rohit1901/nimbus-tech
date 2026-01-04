@@ -15,13 +15,8 @@ import Image from "next/image"
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
-  const {
-    activeContent,
-    isReady,
-    loading,
-    error,
-    currentLanguage,
-  } = useLanguageContext()
+  const { activeContent, isReady, loading, error, currentLanguage } =
+    useLanguageContext()
 
   const { navigation } = useSectionContent(
     activeContent?.sections,

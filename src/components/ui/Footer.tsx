@@ -254,11 +254,11 @@ export default function Footer() {
         />
       </svg>
       {/*Content Wrapper*/}
-      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-start sm:gap-12 sm:px-4 lg:gap-16 lg:px-6 ">
+      <div className="flex w-full flex-col gap-10 sm:grid sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:items-start sm:gap-12 sm:px-4 lg:gap-16 lg:px-6">
         <div className="mr-auto flex w-full flex-col items-center gap-6 sm:min-w-[280px] sm:items-start sm:gap-6">
           <Link
             href="/"
-            className="flex items-center gap-3 select-none font-medium text-gray-700 sm:text-sm"
+            className="flex items-center gap-3 font-medium text-gray-700 select-none sm:text-sm"
           >
             <Image
               className="w-50"
@@ -301,7 +301,10 @@ export default function Footer() {
           <div className="flex w-full flex-col items-end gap-8 sm:items-stretch">
             <div className="grid w-full grid-cols-1 gap-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-3 xl:grid-cols-4">
               {links.map((section) => (
-                <div key={section.id} className="mx-auto w-full max-w-[220px] sm:mx-0 sm:max-w-none">
+                <div
+                  key={section.id}
+                  className="mx-auto w-full max-w-[220px] sm:mx-0 sm:max-w-none"
+                >
                   <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
                     {section.title?.label?.toUpperCase() ?? ""}
                   </h3>
@@ -312,7 +315,9 @@ export default function Footer() {
                           href={item.href ?? "#"}
                           className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
                           target={item.external ? "_blank" : undefined}
-                          rel={item.external ? "noopener noreferrer" : undefined}
+                          rel={
+                            item.external ? "noopener noreferrer" : undefined
+                          }
                         >
                           {item.label}
                         </Link>

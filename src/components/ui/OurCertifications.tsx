@@ -24,10 +24,7 @@ export default function OurCertifications({
   // No need to map to LogoItem anymore, pass certifications directly
   // renderCertificate will handle the strict typing
 
-  const renderCertificate = (
-    certification: Certification,
-    key: React.Key,
-  ) => {
+  const renderCertificate = (certification: Certification, key: React.Key) => {
     return (
       <HoverCard key={key} openDelay={0} closeDelay={100}>
         <HoverCardTrigger asChild>
@@ -35,7 +32,7 @@ export default function OurCertifications({
             <SafeImage
               image={certification.image}
               props={{
-                className: "h-24 w-auto object-contain",
+                className: "h-48 w-auto object-contain",
               }}
             />
           </div>
