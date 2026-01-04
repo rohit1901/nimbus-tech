@@ -26,6 +26,17 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined,
 )
 
+// Helper function to detect browser language
+const detectBrowserLanguage = (): string => {
+  if (typeof window !== "undefined") {
+    const browserLang =
+      navigator.language || navigator.languages?.[0] || "en-US"
+    // Extract just the language code (e.g., "en-US" -> "en", "de-DE" -> "de")
+    return browserLang.split("-")[0].toLowerCase()
+  }
+  return "en"
+}
+
 export const LanguageProvider = ({
   children,
 }: {
@@ -48,16 +59,30 @@ export const LanguageProvider = ({
   // 3. Shared State for selected language
   const [selectedLangValue, setSelectedLangValue] = useState<string>("en-US")
 
-  // 4. Default to en-US or first available when data loads
+  // 4. Detect browser language and set initial language
   useEffect(() => {
     if (availableLanguages.length > 0) {
-      const hasCurrent = availableLanguages.some(
-        (l) => l.value === selectedLangValue,
+      const browserLang = detectBrowserLanguage()
+      let initialLanguage = "en-US" // Default to English
+
+      // Check if browser language matches available languages
+      const browserLangMatch = availableLanguages.find((lang) =>
+        lang.value.startsWith(browserLang),
       )
-      if (!hasCurrent) {
-        const defaultLang = availableLanguages.find((l) => l.value === "en-US")
-        setSelectedLangValue(defaultLang?.value ?? availableLanguages[0].value)
+
+      if (browserLangMatch) {
+        initialLanguage = browserLangMatch.value
       }
+
+      setSelectedLangValue(initialLanguage)
+    }
+  }, [availableLanguages])
+
+  // 5. Fallback logic if browser detection doesn't work
+  useEffect(() => {
+    if (availableLanguages.length > 0 && !selectedLangValue) {
+      const defaultLang = availableLanguages.find((l) => l.value === "en-US")
+      setSelectedLangValue(defaultLang?.value ?? availableLanguages[0].value)
     }
   }, [availableLanguages, selectedLangValue])
 

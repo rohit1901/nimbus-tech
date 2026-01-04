@@ -8,7 +8,7 @@ import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
-import { Language, Maybe } from "@/app/graphql/types"
+import LanguageToggle from "./LanguageToggle"
 
 export const CURRENT_YEAR = new Date().getFullYear()
 
@@ -39,68 +39,14 @@ export const FooterStatusContainer = ({
 
 const FOOTER_STATUS_CLASSNAME = "min-h-[180px]"
 
-// FIX: Allow undefined in array items and for the array itself
-type LanguageToggleProps = {
-  availableLanguages?: Array<Maybe<Language> | undefined> | null
-  currentValue?: string | null
-  onChange: (value: string) => void
-}
-
 const COPYRIGHT_ENTITY = "Nimbus Tech GmbH"
 const LOCATION = "Leipzig, Germany"
 
 const Copyright = () => (
-  <div className="hidden text-sm text-gray-700 lg:ml-3 lg:inline">
+  <div className="ml-1 inline text-sm text-gray-700">
     &copy; {CURRENT_YEAR} {COPYRIGHT_ENTITY} &mdash; {LOCATION}
   </div>
 )
-
-const LanguageToggle = ({
-  availableLanguages,
-  currentValue,
-  onChange,
-}: LanguageToggleProps) => {
-  const options = (availableLanguages ?? [])
-    .map((lang) => ({
-      // Optional chaining handles null and undefined safely here
-      value: lang?.value ?? "",
-      label: lang?.label ?? lang?.value ?? "",
-    }))
-    .filter((lang) => lang.value)
-
-  if (options.length === 0) {
-    return null
-  }
-
-  return (
-    <div className="flex items-center justify-center gap-2 sm:justify-start">
-      {options.map(({ value, label }) => {
-        const isActive = currentValue === value
-
-        return (
-          <button
-            key={value}
-            type="button"
-            onClick={() => {
-              if (!isActive) {
-                onChange(value)
-              }
-            }}
-            className={joinClassNames(
-              "inline-flex cursor-pointer items-center justify-center rounded-md px-5 py-2 text-sm font-medium",
-              isActive
-                ? "bg-orange-500 text-white"
-                : "border border-gray-200 bg-white text-gray-900",
-            )}
-            aria-pressed={isActive}
-          >
-            {label}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
 
 export default function Footer() {
   const {

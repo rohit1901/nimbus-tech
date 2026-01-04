@@ -11,12 +11,20 @@ import { ErrorState, LoadingState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
+import LanguageToggle from "./LanguageToggle"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
-  const { activeContent, isReady, loading, error, currentLanguage } =
-    useLanguageContext()
+  const {
+    activeContent,
+    isReady,
+    loading,
+    error,
+    currentLanguage,
+    availableLanguages,
+    setLanguage,
+  } = useLanguageContext()
 
   const { navigation } = useSectionContent(
     activeContent?.sections,
@@ -67,14 +75,21 @@ export function NavBar() {
               ))}
             </div>
           </nav>
-          <Button
-            variant="secondary"
-            className="hidden h-10 font-semibold sm:block"
-          >
-            <Link href={navigation?.cta?.href ?? "#"}>
-              {navigation?.cta?.label ?? "Get started"}
-            </Link>
-          </Button>
+          <div className="hidden items-center gap-4 sm:flex">
+            <LanguageToggle
+              availableLanguages={availableLanguages}
+              currentValue={currentLanguage?.value}
+              onChange={(value) => setLanguage(value)}
+            />
+            <Button
+              variant="secondary"
+              className="hidden h-10 font-semibold sm:block"
+            >
+              <Link href={navigation?.cta?.href ?? "#"}>
+                {navigation?.cta?.label ?? "Get started"}
+              </Link>
+            </Button>
+          </div>
           <Button
             onClick={() => setOpen(!open)}
             variant="secondary"
