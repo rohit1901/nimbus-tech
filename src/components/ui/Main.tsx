@@ -30,7 +30,7 @@ export const Main = () => {
     currentLanguage?.value ?? "en-US",
   )
 
-  if (loading) return <LoadingState />
+  if (loading) return <LoadingState variant="default" />
   if (error) return <ErrorState message={"Error fetching content."} />
   // Guard against missing language data
   if (!isReady || !activeContent) {

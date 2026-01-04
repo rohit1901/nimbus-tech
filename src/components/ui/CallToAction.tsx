@@ -11,12 +11,14 @@ export default function CallToAction({ cta }: { cta?: Maybe<CtaSection> }) {
         <div className="sm:col-span-2">
           <h2
             id="cta-title"
-            className="scroll-my-60 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+            className="scroll-my-60 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl dark:text-gray-50"
           >
             {cta.title}
           </h2>
           {cta.description && (
-            <p className="mt-3 mb-8 text-lg text-gray-600">{cta.description}</p>
+            <p className="mt-3 mb-8 text-lg text-gray-600 dark:text-gray-100">
+              {cta.description}
+            </p>
           )}
           <div className="flex flex-wrap gap-4">
             {cta.ctas?.map((cta, idx) => (

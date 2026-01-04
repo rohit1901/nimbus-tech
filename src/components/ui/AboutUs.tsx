@@ -40,10 +40,14 @@ export default function AboutUs({
   return (
     <section id="about-us" className="mx-auto max-w-6xl">
       <Heading title={about.heading ?? ""} className="mb-4" />
-      <p className="mb-20 text-center text-lg text-gray-700">{about.intro}</p>
+      <p className="mb-20 text-center text-lg text-gray-700 dark:text-gray-50">
+        {about.intro}
+      </p>
       <OurValues valuesTitle={about.valuesTitle ?? ""} values={about.values} />
       <OurApproach approaches={approaches} />
-      <p className="text-center text-gray-600">{about.closing ?? ""}</p>
+      <p className="text-center text-gray-600 dark:text-gray-50">
+        {about.closing ?? ""}
+      </p>
     </section>
   )
 }

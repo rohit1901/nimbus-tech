@@ -1,10 +1,19 @@
 "use client"
+import { useTheme } from "next-themes"
 import { useEffect, useRef } from "react"
 
 type Grid = { alive: boolean; opacity: number }[][]
 
 const GameOfLife = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { resolvedTheme } = useTheme()
+  // Use a ref to access the current theme inside the requestAnimationFrame loop
+  // without re-triggering the main effect (which would reset the grid).
+  const themeRef = useRef(resolvedTheme)
+
+  useEffect(() => {
+    themeRef.current = resolvedTheme
+  }, [resolvedTheme])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -43,8 +52,13 @@ const GameOfLife = () => {
     }
 
     const draw = () => {
-      ctx.fillStyle = "#F9FAFB"
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      // Clear rect allows the body background (handled by CSS) to show through.
+      // This is better than fillRect because it automatically adapts to dark/light backgrounds.
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      const isDark = themeRef.current === "dark"
+      // White dots in dark mode, Black dots in light mode
+      const colorRGB = isDark ? "255, 255, 255" : "0, 0, 0"
 
       // Update opacities
       for (let i = 0; i < rows; i++) {
@@ -57,7 +71,8 @@ const GameOfLife = () => {
           }
 
           if (cell.opacity > 0) {
-            ctx.fillStyle = `rgba(0, 0, 0, ${cell.opacity})`
+            // Use the dynamic color based on theme
+            ctx.fillStyle = `rgba(${colorRGB}, ${cell.opacity})`
             ctx.beginPath()
             ctx.arc(
               j * cellSize + cellSize / 2,

@@ -71,7 +71,7 @@ const VerticalLines = () => {
               y1="0"
               x2="0"
               y2="100%"
-              className="stroke-gray-300"
+              className="stroke-gray-300 dark:stroke-gray-800"
               strokeWidth="2"
               strokeDasharray="3 3"
             />
@@ -91,9 +91,9 @@ const FeatureTextBlock = ({
 }>) => {
   return (
     <div className="col-span-2 my-auto px-2">
-      <h2 className="relative text-lg font-semibold tracking-tight text-orange-500">
+      <h2 className="relative text-lg font-semibold tracking-tight text-orange-500 dark:text-orange-400">
         {title}
-        <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-orange-500" />
+        <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-orange-500 dark:bg-orange-400" />
       </h2>
       {children}
     </div>
@@ -113,7 +113,9 @@ const OrbitFeatureVisualization = () => {
             orbitingObjects={[
               <OrbitObject
                 key="obj1"
-                icon={<RiBarChartLine className="z-10 size-5 text-gray-900" />}
+                icon={
+                  <RiBarChartLine className="z-10 size-5 text-gray-900 dark:text-gray-900" />
+                }
                 label="Planning"
                 labelColor="bg-red-500"
                 iconLabel={
@@ -124,7 +126,7 @@ const OrbitFeatureVisualization = () => {
               <OrbitObject
                 key="obj2"
                 icon={
-                  <RiLoaderFill className="z-10 size-5 rotate-90 text-gray-900" />
+                  <RiLoaderFill className="z-10 size-5 rotate-90 text-gray-900 dark:text-gray-900" />
                 }
                 label="Analysis"
                 labelColor="bg-gray-500"
@@ -136,7 +138,9 @@ const OrbitFeatureVisualization = () => {
               <OrbitObject
                 key="obj3"
                 label="Development"
-                icon={<RiCodeBoxLine className="z-10 size-5 text-gray-900" />}
+                icon={
+                  <RiCodeBoxLine className="z-10 size-5 text-gray-900 dark:text-gray-900" />
+                }
                 iconLabel={
                   <RiReactjsLine className="size-3 shrink-0 text-white" />
                 }
@@ -146,7 +150,7 @@ const OrbitFeatureVisualization = () => {
               <OrbitObject
                 key="obj4"
                 icon={
-                  <Icons.QuadCopter className="z-10 size-5 rotate-90 text-gray-900" />
+                  <Icons.QuadCopter className="z-10 size-5 rotate-90 text-gray-900 dark:text-gray-900" />
                 }
                 label="Deployment"
                 labelColor="bg-emerald-500"
@@ -158,7 +162,9 @@ const OrbitFeatureVisualization = () => {
               <OrbitObject
                 key="obj5"
                 label="Optimization"
-                icon={<RiRocket2Line className="z-10 size-5 text-gray-900" />}
+                icon={
+                  <RiRocket2Line className="z-10 size-5 text-gray-900 dark:text-gray-900" />
+                }
                 pingDelay="3s"
                 labelColor="bg-purple-500"
                 iconLabel={
@@ -168,8 +174,8 @@ const OrbitFeatureVisualization = () => {
             ]}
           >
             <div className="relative flex h-48 w-48 items-center justify-center">
-              <div className="rounded-full p-1 ring-1 ring-black/10">
-                <div className="relative z-10 flex size-20 items-center justify-center rounded-full bg-white shadow-[inset_0px_-15px_20px_rgba(0,0,0,0.1),0_7px_10px_0_rgba(0,0,0,0.15)] ring-1 ring-black/20">
+              <div className="rounded-full p-1 ring-1 ring-black/10 dark:ring-white/10">
+                <div className="relative z-10 flex size-20 items-center justify-center rounded-full bg-white shadow-[inset_0px_-15px_20px_rgba(0,0,0,0.1),0_7px_10px_0_rgba(0,0,0,0.15)] ring-1 ring-black/20 dark:bg-gray-900 dark:shadow-[inset_0px_-15px_20px_rgba(0,0,0,0.5),0_7px_10px_0_rgba(0,0,0,0.5)] dark:ring-white/20">
                   <Image
                     className="size-10"
                     src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg"
@@ -204,16 +210,16 @@ const OrbitObject = ({
   return (
     <div className="relative flex items-center justify-center">
       {icon}
-      <div className="absolute size-10 rounded-full bg-white/50 shadow-lg ring-1 ring-black/5"></div>
+      <div className="absolute size-10 rounded-full bg-white/50 shadow-lg ring-1 ring-black/5 dark:bg-white/80 dark:ring-white/10"></div>
       {label && (
         <div className="absolute -top-5 left-4">
           <div className="flex gap-1">
             <div
-              className={`flex items-center justify-center rounded-l-full ${labelColor} p-1 text-xs ring-1 ring-gray-200`}
+              className={`flex items-center justify-center rounded-l-full ${labelColor} p-1 text-xs ring-1 ring-gray-200 dark:ring-gray-700`}
             >
               {iconLabel}
             </div>
-            <div className="rounded-r-full bg-white/50 py-0.5 pr-1.5 pl-1 text-xs whitespace-nowrap ring-1 ring-gray-200">
+            <div className="rounded-r-full bg-white/50 py-0.5 pr-1.5 pl-1 text-xs whitespace-nowrap ring-1 ring-gray-200 dark:bg-gray-800/80 dark:text-gray-200 dark:ring-gray-700">
               {label}
             </div>
           </div>
@@ -245,7 +251,7 @@ const PatternBackground = () => {
               <path
                 key={i}
                 d={`M${-106 + offset} 110L${22 + offset} -18`}
-                className="stroke-gray-200/70"
+                className="stroke-gray-200/70 dark:stroke-gray-800/70"
                 strokeWidth="1"
               />
             )
@@ -277,13 +283,13 @@ const CloudFeatureVisualization = () => {
           className="mask absolute size-[432px]"
         >
           <path
-            className="stroke-gray-300"
+            className="stroke-gray-300 dark:stroke-gray-800"
             d="M48 0v432M96 0v432M144 0v432M192 0v432M240 0v432M288 0v432M336 0v432M384 0v432M0 48h432M0 96h432M0 144h432M0 192h432M0 240h432M0 288h432M0 336h432M0 384h432"
           />
         </svg>
         <div className="pointer-events-none relative h-full select-none">
           <div className="absolute top-[192px] left-[191.8px]">
-            <div className="flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15">
+            <div className="flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15 dark:bg-gray-800 dark:ring-white/10">
               <Image
                 className="h-8 w-8"
                 src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg"
@@ -300,9 +306,9 @@ const CloudFeatureVisualization = () => {
               style={{ top: d.top, left: d.left }}
             >
               <div className="relative">
-                <div className="absolute inset-0 size-12 animate-pulse bg-orange-200 blur-[3px]"></div>
-                <div className="relative flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15">
-                  <span className="text-sm font-medium text-gray-500">
+                <div className="absolute inset-0 size-12 animate-pulse bg-orange-200 blur-[3px] dark:bg-orange-900/40"></div>
+                <div className="relative flex h-12 w-12 items-center justify-center bg-white shadow-sm ring-1 ring-black/15 dark:bg-gray-800 dark:ring-white/10">
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     {d.value}
                   </span>
                 </div>
@@ -322,7 +328,7 @@ const ArchitectureFeatureVisualization = () => {
       left: "left-[6rem]",
       icon: (
         <RiNotification2Line
-          className="size-5 text-gray-900"
+          className="size-5 text-gray-900 dark:text-gray-100"
           aria-hidden="true"
         />
       ),
@@ -331,21 +337,30 @@ const ArchitectureFeatureVisualization = () => {
       top: "top-[6rem]",
       left: "right-[6rem]",
       icon: (
-        <RiContrast2Line className="size-5 text-gray-900" aria-hidden="true" />
+        <RiContrast2Line
+          className="size-5 text-gray-900 dark:text-gray-100"
+          aria-hidden="true"
+        />
       ),
     },
     {
       top: "right-[6rem]",
       left: "bottom-[6rem]",
       icon: (
-        <RiCodepenLine className="size-5 text-gray-900" aria-hidden="true" />
+        <RiCodepenLine
+          className="size-5 text-gray-900 dark:text-gray-100"
+          aria-hidden="true"
+        />
       ),
     },
     {
       top: "bottom-[6rem]",
       left: "left-[6rem]",
       icon: (
-        <RiFullscreenFill className="size-5 text-gray-900" aria-hidden="true" />
+        <RiFullscreenFill
+          className="size-5 text-gray-900 dark:text-gray-100"
+          aria-hidden="true"
+        />
       ),
     },
   ]
@@ -356,8 +371,8 @@ const ArchitectureFeatureVisualization = () => {
         <div className="relative">
           {icons.map((item, i) => (
             <div key={i} className={`absolute ${item.top} ${item.left} z-20`}>
-              <div className="relative mx-auto w-fit rounded-full bg-gray-50 p-1 shadow-md ring-1 shadow-black/10 ring-black/10">
-                <div className="w-fit rounded-full bg-linear-to-b from-white to-gray-100 p-3 shadow-[inset_0px_-2px_6px_rgba(0,0,0,0.09),0_3px_5px_0_rgba(0,0,0,0.19)] ring-1 ring-white/50 ring-inset">
+              <div className="relative mx-auto w-fit rounded-full bg-gray-50 p-1 shadow-md ring-1 shadow-black/10 ring-black/10 dark:bg-gray-800 dark:shadow-white/5 dark:ring-white/10">
+                <div className="w-fit rounded-full bg-linear-to-b from-white to-gray-100 p-3 shadow-[inset_0px_-2px_6px_rgba(0,0,0,0.09),0_3px_5px_0_rgba(0,0,0,0.19)] ring-1 ring-white/50 ring-inset dark:from-gray-700 dark:to-gray-800 dark:shadow-none dark:ring-white/10">
                   {item.icon}
                 </div>
               </div>
@@ -372,9 +387,9 @@ const ArchitectureFeatureVisualization = () => {
               style={{ transform: `rotate(${rotation}deg)` }}
             >
               <div className="relative">
-                <div className="h-0.5 w-60 bg-linear-to-r from-gray-300 to-transparent" />
+                <div className="h-0.5 w-60 bg-linear-to-r from-gray-300 to-transparent dark:from-gray-700" />
                 <div
-                  className="absolute top-0 left-0 h-0.5 w-28 bg-linear-to-r from-transparent via-orange-300 to-transparent"
+                  className="absolute top-0 left-0 h-0.5 w-28 bg-linear-to-r from-transparent via-orange-300 to-transparent dark:via-orange-600"
                   style={{
                     animation: `gridMovingLine 5s linear infinite ${index * 1.2}s`,
                     animationFillMode: "backwards",
@@ -427,12 +442,12 @@ export default function Features({ features }: { features?: Feature[] }) {
         >
           <FeatureTextBlock title={feature.title ?? ""}>
             <p
-              className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl"
+              className="mt-2 text-3xl font-semibold tracking-tighter text-balance text-gray-900 md:text-4xl dark:text-gray-50"
               id={feature.id}
             >
               {feature.description}
             </p>
-            <p className="mt-4 text-balance text-gray-700">
+            <p className="mt-4 text-balance text-gray-700 dark:text-gray-400">
               {feature.longDescription}
             </p>
           </FeatureTextBlock>

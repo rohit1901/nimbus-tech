@@ -325,10 +325,12 @@ function LogoLoopInner<T = LogoItem>({
         isVertical
           ? "inline-block h-full overflow-hidden"
           : "overflow-x-hidden",
+        "text-gray-900 dark:text-gray-100", // Default text color for currentColor SVGs
         "[--logoloop-gap:32px]",
         "[--logoloop-logoHeight:28px]",
-        "[--logoloop-fadeColorAuto:#ffffff]",
-        "dark:[--logoloop-fadeColorAuto:#0b0b0b]",
+        // Match bg-gray-50 (#f9fafb) and dark:bg-gray-950 (#030712) for seamless fade
+        "[--logoloop-fadeColorAuto:#f9fafb]",
+        "dark:[--logoloop-fadeColorAuto:#030712]",
         scaleOnHover && "py-[calc(var(--logoloop-logoHeight)*0.1)]",
         className,
       ),

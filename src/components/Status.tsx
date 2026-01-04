@@ -10,8 +10,9 @@ type StatusVariant = "default" | "muted" | "surface"
 
 const statusVariantClasses: Record<StatusVariant, string> = {
   default: "",
-  muted: "bg-gray-50",
-  surface: "rounded-lg border border-gray-200 bg-white shadow-sm",
+  muted: "bg-gray-50 dark:bg-gray-900/50",
+  surface:
+    "rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:shadow-none",
 }
 
 type StatusContainerProps = {
@@ -62,7 +63,7 @@ export const StatusHeading = ({
   children ? (
     <Component
       className={cx(
-        "text-lg font-semibold text-gray-900",
+        "text-lg font-semibold text-gray-900 dark:text-gray-50",
         Component === "p" && "font-medium",
         className,
       )}
@@ -81,7 +82,9 @@ export const StatusDescription = ({
   className,
 }: StatusDescriptionProps) =>
   children ? (
-    <p className={cx("text-sm text-gray-600", className)}>{children}</p>
+    <p className={cx("text-sm text-gray-600 dark:text-gray-400", className)}>
+      {children}
+    </p>
   ) : null
 
 type LoadingSpinnerProps = {
@@ -95,7 +98,7 @@ export const LoadingSpinner = ({
 }: LoadingSpinnerProps) => (
   <div
     className={cx(
-      "animate-spin rounded-full border-4 border-gray-200 border-t-orange-500",
+      "animate-spin rounded-full border-4 border-gray-200 border-t-orange-500 dark:border-gray-800 dark:border-t-orange-500",
       className,
     )}
     style={{ width: size, height: size }}
@@ -176,15 +179,19 @@ export const ErrorState = ({
     padded={padded}
   >
     <div className="space-y-2">
-      <StatusHeading className="text-red-700">{title}</StatusHeading>
-      <StatusDescription className="text-red-600">{message}</StatusDescription>
+      <StatusHeading className="text-red-700 dark:text-red-400">
+        {title}
+      </StatusHeading>
+      <StatusDescription className="text-red-600 dark:text-red-300">
+        {message}
+      </StatusDescription>
     </div>
     {onRetry && (
       <button
         type="button"
         onClick={onRetry}
         className={cx(
-          "inline-flex items-center rounded-md border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none",
+          "inline-flex items-center rounded-md border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none dark:bg-orange-600 dark:hover:bg-orange-500 dark:focus:ring-offset-gray-900",
           actionProps?.className,
         )}
         {...actionProps}

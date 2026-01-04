@@ -43,7 +43,7 @@ const COPYRIGHT_ENTITY = "Nimbus Tech GmbH"
 const LOCATION = "Leipzig, Germany"
 
 const Copyright = () => (
-  <div className="ml-1 inline text-sm text-gray-700">
+  <div className="ml-1 inline text-sm text-gray-700 dark:text-gray-400">
     &copy; {CURRENT_YEAR} {COPYRIGHT_ENTITY} &mdash; {LOCATION}
   </div>
 )
@@ -144,7 +144,7 @@ export default function Footer() {
               y1="0"
               x2="0"
               y2="100%"
-              className="stroke-gray-300"
+              className="stroke-gray-300 dark:stroke-gray-800"
               strokeWidth="2"
               strokeDasharray="3 3"
             />
@@ -163,7 +163,7 @@ export default function Footer() {
               y1="0"
               x2="0"
               y2="100%"
-              className="stroke-gray-300"
+              className="stroke-gray-300 dark:stroke-gray-800"
               strokeWidth="2"
               strokeDasharray="3 3"
             />
@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <svg className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300">
+      <svg className="mb-10 h-20 w-full border-y border-dashed border-gray-300 stroke-gray-300 dark:border-gray-800 dark:stroke-gray-800">
         <defs>
           <pattern
             id="diagonal-footer-pattern"
@@ -204,7 +204,7 @@ export default function Footer() {
         <div className="mr-auto flex w-full flex-col items-center gap-6 sm:min-w-[280px] sm:items-start sm:gap-6">
           <Link
             href="/"
-            className="flex items-center gap-3 font-medium text-gray-700 select-none sm:text-sm"
+            className="flex items-center gap-3 font-medium text-gray-700 select-none sm:text-sm dark:text-gray-200"
           >
             <Image
               className="w-50"
@@ -225,7 +225,7 @@ export default function Footer() {
                   href={item.href ?? "#"}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
-                  className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
+                  className="text-gray-600 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                 >
                   <RemixIconComponent className="h-6 w-6" name={item.icon} />
                 </Link>
@@ -251,7 +251,7 @@ export default function Footer() {
                   key={section.id}
                   className="mx-auto w-full max-w-[220px] sm:mx-0 sm:max-w-none"
                 >
-                  <h3 className="mb-4 font-medium text-gray-900 sm:text-sm">
+                  <h3 className="mb-4 font-medium text-gray-900 sm:text-sm dark:text-gray-50">
                     {section.title?.label?.toUpperCase() ?? ""}
                   </h3>
                   <ul className="space-y-4">
@@ -259,7 +259,7 @@ export default function Footer() {
                       <li key={item.label} className="text-sm">
                         <Link
                           href={item.href ?? "#"}
-                          className="text-gray-600 transition-colors duration-200 hover:text-gray-900"
+                          className="text-gray-600 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                           target={item.external ? "_blank" : undefined}
                           rel={
                             item.external ? "noopener noreferrer" : undefined
