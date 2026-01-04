@@ -11,7 +11,9 @@ import { ErrorState, LoadingState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
+import { useTheme } from "next-themes"
 import LanguageToggle from "./LanguageToggle"
+import { ThemeToggle } from "./ThemeToggle"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
@@ -31,9 +33,11 @@ export function NavBar() {
     currentLanguage?.value ?? "en-US",
   )
 
-  if (loading) return <LoadingState />
+  const { resolvedTheme } = useTheme()
+
+  if (loading) return <LoadingState variant="default" />
   if (error) return <ErrorState message={"Error fetching content"} />
-  // Guard against missing language data
+
   if (!isReady || !activeContent) {
     console.error("Languages or Content not available")
     return <ErrorState message="Content not available" />
@@ -44,8 +48,8 @@ export function NavBar() {
       className={cx(
         "fixed inset-x-4 top-4 z-50 mx-auto flex max-w-6xl justify-center rounded-lg border border-transparent px-3 py-3 transition duration-300",
         scrolled || open
-          ? "border-gray-200/50 bg-white/80 shadow-2xl shadow-black/5 backdrop-blur-sm"
-          : "bg-white/0",
+          ? "border-gray-200/50 bg-white/80 shadow-2xl shadow-black/5 backdrop-blur-sm dark:border-gray-800/50 dark:bg-gray-950/80"
+          : "bg-white/0 dark:bg-gray-950/0",
       )}
     >
       <div className="w-full md:my-auto">
@@ -65,7 +69,7 @@ export function NavBar() {
               {navigation?.items?.map((link) => (
                 <Link
                   key={link.label}
-                  className="px-2 py-1 text-gray-900"
+                  className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500 dark:text-gray-50 dark:hover:text-orange-400"
                   href={link.href ?? "#"}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
@@ -75,14 +79,18 @@ export function NavBar() {
               ))}
             </div>
           </nav>
+
+          {/* Desktop Right Actions */}
           <div className="hidden items-center gap-4 sm:flex">
+            <ThemeToggle />
             <LanguageToggle
               availableLanguages={availableLanguages}
               currentValue={currentLanguage?.value}
               onChange={(value) => setLanguage(value)}
+              variant="icon"
             />
             <Button
-              variant="secondary"
+              variant={resolvedTheme === "dark" ? "primary" : "secondary"}
               className="hidden h-10 font-semibold sm:block"
             >
               <Link href={navigation?.cta?.href ?? "#"}>
@@ -90,28 +98,41 @@ export function NavBar() {
               </Link>
             </Button>
           </div>
-          <Button
-            onClick={() => setOpen(!open)}
-            variant="secondary"
-            className="p-1.5 sm:hidden"
-            aria-label={open ? "Close Navigation Menu" : "Open Navigation Menu"}
-          >
-            {!open ? (
-              <RiMenuFill
-                className="size-6 shrink-0 text-gray-900"
-                aria-hidden
-              />
-            ) : (
-              <RiCloseFill
-                className="size-6 shrink-0 text-gray-900"
-                aria-hidden
-              />
-            )}
-          </Button>
+
+          {/* Mobile Menu Button (Hamburger) */}
+          <div className="flex items-center gap-2 sm:hidden">
+            <ThemeToggle />
+
+            <Button
+              onClick={() => setOpen(!open)}
+              variant={resolvedTheme === "dark" ? "ghost" : "secondary"}
+              // Added dark mode background and border classes
+              className="p-1.5"
+              aria-label={
+                open ? "Close Navigation Menu" : "Open Navigation Menu"
+              }
+            >
+              {!open ? (
+                <RiMenuFill
+                  // Added dark:text-gray-50
+                  className="size-6 shrink-0 text-gray-900 dark:text-gray-50"
+                  aria-hidden
+                />
+              ) : (
+                <RiCloseFill
+                  // Added dark:text-gray-50
+                  className="size-6 shrink-0 text-gray-900 dark:text-gray-50"
+                  aria-hidden
+                />
+              )}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
         <nav
           className={cx(
-            "mt-6 flex flex-col gap-6 text-lg ease-in-out will-change-transform sm:hidden",
+            "mt-6 flex flex-col gap-6 text-lg text-gray-900 ease-in-out will-change-transform sm:hidden dark:text-gray-50",
             open ? "" : "hidden",
           )}
         >
@@ -122,7 +143,15 @@ export function NavBar() {
               </li>
             ))}
           </ul>
-          <Button variant="secondary" className="text-lg">
+
+          {/* Mobile Language Toggle (if not already handled by LanguageToggle's responsive logic) */}
+          {/* Note: Your existing LanguageToggle is hidden on small screens ("hidden ... lg:flex").
+              You might want to create a mobile version or update LanguageToggle to support mobile. */}
+
+          <Button
+            variant={resolvedTheme === "dark" ? "primary" : "secondary"}
+            className="w-full text-lg"
+          >
             <Link href={navigation?.cta?.href ?? "#"}>
               {navigation?.cta?.label ?? "Get started"}
             </Link>

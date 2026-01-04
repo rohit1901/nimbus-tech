@@ -10,9 +10,9 @@ export default function WhyNimbusTech({
   if (!benefitsContent) return null
   const benefits = benefitsContent?.benefits
   return (
-    <section className="bg-gray-50" id="benefits">
+    <section className="bg-gray-50 dark:bg-gray-950" id="benefits">
       <div className="mx-auto max-w-4xl px-4">
-        <h2 className="mt-2 text-center text-3xl font-semibold tracking-tighter text-gray-900 md:text-4xl">
+        <h2 className="mt-2 text-center text-3xl font-semibold tracking-tighter text-gray-900 md:text-4xl dark:text-gray-50">
           {benefitsContent?.title}
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-3">

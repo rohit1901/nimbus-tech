@@ -37,19 +37,19 @@ export default function OurCertifications({
             />
           </div>
         </HoverCardTrigger>
-        <HoverCardContent className="w-[360px]">
+        <HoverCardContent className="w-[360px] dark:border-gray-800 dark:bg-gray-900">
           <div className="flex gap-4">
-            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-gray-100">
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-gray-100 bg-white p-2 dark:border-gray-800 dark:bg-gray-800">
               <SafeImage
                 image={certification.image}
-                props={{ className: "h-full w-full object-contain p-2" }}
+                props={{ className: "h-full w-full object-contain" }}
               />
             </div>
             <div className="flex flex-col gap-1 text-left">
-              <h4 className="font-semibold text-gray-900">
+              <h4 className="font-semibold text-gray-900 dark:text-gray-50">
                 {certification.title}
               </h4>
-              <p className="text-sm leading-snug text-gray-600">
+              <p className="text-sm leading-snug text-gray-600 dark:text-gray-400">
                 {certification.description}
               </p>
               {certification.link && (
@@ -57,7 +57,7 @@ export default function OurCertifications({
                   href={certification.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 text-sm font-medium text-orange-500 hover:underline"
+                  className="mt-1 text-sm font-medium text-orange-500 hover:underline dark:text-orange-400"
                 >
                   Learn more
                 </Link>
@@ -70,10 +70,12 @@ export default function OurCertifications({
   }
 
   return (
-    <section id="our-certifications" className="bg-gray-50">
+    <section id="our-certifications" className="bg-gray-50 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl text-center">
         <Heading title={content.title ?? ""} />
-        <p className="my-10 text-gray-700">{content.description}</p>
+        <p className="my-10 text-gray-700 dark:text-gray-400">
+          {content.description}
+        </p>
 
         <div className="relative w-full py-10">
           <LogoLoop

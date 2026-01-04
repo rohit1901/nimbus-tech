@@ -1,6 +1,7 @@
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 import "./globals.css"
+import { ThemeProvider } from "next-themes"
 
 import { siteConfig } from "@/app/siteConfig"
 import Script from "next/script"
@@ -81,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <Script
           src="https://cookiechimp.com/widget/yv4tdkM.js"
@@ -89,9 +90,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${GeistSans.className} min-h-screen overflow-x-hidden scroll-auto bg-gray-50 antialiased selection:bg-orange-100 selection:text-orange-600`}
+        className={`${GeistSans.className} min-h-screen overflow-x-hidden scroll-auto bg-gray-50 antialiased selection:bg-orange-100 selection:text-orange-600 dark:bg-gray-950 dark:text-gray-50`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
