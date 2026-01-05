@@ -1,4 +1,4 @@
-import { MockPageContent } from "@/app/graphql/mockPageContent"
+import { MockLanguages, MockPageContent } from "@/app/graphql/mockPageContent"
 import { Query } from "@/app/graphql/types"
 import { gql } from "@apollo/client"
 import { useQuery } from "@apollo/client/react"
@@ -570,6 +570,17 @@ export const GET_FOOTER = gql`
     }
   }
 `
+
+export const GET_LANGUAGES = gql`
+    query Languages {
+      languages {
+        id
+        label
+        value
+      }
+    }
+`
+
 export function usePageContents() {
   const res = useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
   if (res.error) {
@@ -591,6 +602,19 @@ export function useFooterSection() {
       data: {
         footers: [MockPageContent.data.pageContents[0].sections.contentFooter],
       },
+      loading: false,
+      error: undefined,
+    }
+  }
+  return res
+}
+
+export function useLanguage() {
+  const res = useQuery<Pick<Query, "languages">>(GET_LANGUAGES)
+  if (res.error) {
+    console.error(res.error)
+    return {
+      data: { languages: MockLanguages.data.languages },
       loading: false,
       error: undefined,
     }

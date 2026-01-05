@@ -97,7 +97,7 @@ export default function Footer() {
       </FooterStatusContainer>
     )
   }
-
+  // TODO: fix this
   if (!isReady || !activeContent) {
     if (!loading && !error) console.error("Languages or Content not available")
     return null
