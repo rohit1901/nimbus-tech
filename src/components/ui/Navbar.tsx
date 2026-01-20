@@ -1,5 +1,28 @@
+/**
+ * @fileoverview NavBar Component - Main navigation bar
+ *
+ * Responsive navigation bar with scroll effects, mobile menu, theme toggle,
+ * and language selection. Uses LanguageContext for content management.
+ *
+ * Features:
+ * - Sticky positioning with scroll-based transparency/blur effect
+ * - Mobile hamburger menu
+ * - Theme toggle (light/dark/system)
+ * - Language selection dropdown
+ * - Dynamic content from GraphQL
+ * - Dark mode support
+ *
+ * @example
+ * ```tsx
+ * // Used in main layout/page
+ * <NavBar />
+ * ```
+ *
+ * @deprecated This is the CSR version. For SSR pages, use the new NavBar wrapper
+ * that accepts props instead of using hooks.
+ */
 "use client"
-
+// TODO: Update the Navbar image in Keystone CMS
 import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import useScroll from "@/lib/useScroll"
@@ -7,26 +30,52 @@ import { cx } from "@/lib/utils"
 import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
-import { ErrorState, LoadingState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
 import { useTheme } from "next-themes"
-import LanguageToggle from "./LanguageToggle"
-import { ThemeToggle } from "./ThemeToggle"
+import LanguageToggle from "@/components/ui/LanguageToggle"
+import { ThemeToggle } from "@/components/ui/ThemeToggle"
 
+/**
+ * NavBar - Main navigation component with responsive design
+ *
+ * Provides site-wide navigation with the following features:
+ * - Logo with home link
+ * - Desktop navigation menu (centered)
+ * - Mobile hamburger menu
+ * - Theme toggle (light/dark/system)
+ * - Language selection
+ * - CTA button
+ * - Scroll-based styling (transparent → solid background)
+ * - Backdrop blur effect on scroll
+ *
+ * State Management:
+ * - Uses LanguageContext for content and language selection
+ * - Uses useScroll hook for scroll detection
+ * - Uses next-themes for theme management
+ * - Local state for mobile menu toggle
+ *
+ * @returns Navigation bar component
+ *
+ * @example
+ * ```tsx
+ * // In layout or page component
+ * export default function Layout({ children }) {
+ *   return (
+ *     <>
+ *       <NavBar />
+ *       {children}
+ *     </>
+ *   )
+ * }
+ * ```
+ */
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
-  const {
-    activeContent,
-    isReady,
-    loading,
-    error,
-    currentLanguage,
-    availableLanguages,
-    setLanguage,
-  } = useLanguageContext()
+  const { activeContent, currentLanguage, availableLanguages, setLanguage } =
+    useLanguageContext()
 
   const { navigation } = useSectionContent(
     activeContent?.sections,
@@ -34,14 +83,6 @@ export function NavBar() {
   )
 
   const { resolvedTheme } = useTheme()
-
-  if (loading) return <LoadingState variant="default" />
-  if (error) return <ErrorState message={"Error fetching content"} />
-
-  if (!isReady || !activeContent) {
-    console.error("Languages or Content not available")
-    return <ErrorState message="Content not available" />
-  }
 
   return (
     <header
@@ -58,8 +99,11 @@ export function NavBar() {
             <span className="sr-only">{navigation?.image?.alt}</span>
             <Image
               className="w-50"
-              src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
-              alt="Logo"
+              src={
+                navigation?.image?.src ??
+                "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
+              }
+              alt={navigation?.image?.alt ?? "Nimbus Tech Logo"}
               width={50}
               height={50}
             />

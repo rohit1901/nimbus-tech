@@ -794,7 +794,7 @@ export const MockPageContent = {
                 "Nimbus Tech is a software development and consulting company specializing in cloud architecture, DevOps, and automation solutions. We help businesses build scalable, efficient, and secure software systems.",
               image: {
                 id: "9",
-                src: "https://nimbus-tech.de/images/nimbus-tech-hero-image.jpg",
+                src: "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg",
                 alt: "Nimbus Tech Hero Image",
                 width: 1600,
                 height: 900,
@@ -2759,18 +2759,18 @@ export const MockPageContent = {
 }
 
 export const MockLanguages = {
-  "data": {
-    "languages": [
+  data: {
+    languages: [
       {
-        "id": "1",
-        "label": "English",
-        "value": "en-US"
+        id: "1",
+        label: "English",
+        value: "en-US",
       },
       {
-        "id": "2",
-        "label": "German",
-        "value": "de-DE"
-      }
-    ]
-  }
+        id: "2",
+        label: "German",
+        value: "de-DE",
+      },
+    ],
+  },
 }

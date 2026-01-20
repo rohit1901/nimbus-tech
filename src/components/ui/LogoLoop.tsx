@@ -1,3 +1,41 @@
+/**
+ * @fileoverview LogoLoop Component - Infinite scrolling logo carousel
+ *
+ * Advanced infinite scrolling component for displaying logos or items in a continuous loop.
+ * Supports both horizontal and vertical scrolling with smooth animations.
+ *
+ * Features:
+ * - Infinite seamless loop
+ * - Configurable speed and direction
+ * - Pause on hover with configurable hover speed
+ * - Responsive sizing
+ * - Image lazy loading
+ * - Optional fade-out edges
+ * - Smooth animations with requestAnimationFrame
+ * - Supports both image URLs and custom React nodes
+ *
+ * @example
+ * ```tsx
+ * // Basic usage with image URLs
+ * <LogoLoop
+ *   logos={[
+ *     { src: '/logo1.png', alt: 'Company 1' },
+ *     { src: '/logo2.png', alt: 'Company 2' }
+ *   ]}
+ *   speed={50}
+ *   direction="left"
+ * />
+ *
+ * // With custom React nodes
+ * <LogoLoop
+ *   logos={[
+ *     { node: <CustomComponent />, ariaLabel: 'Custom' }
+ *   ]}
+ *   pauseOnHover
+ *   hoverSpeed={10}
+ * />
+ * ```
+ */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 export type LogoItem =

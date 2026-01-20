@@ -1,15 +1,13 @@
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
 import "./globals.css"
-import { ThemeProvider } from "next-themes"
-
-import { siteConfig } from "@/app/siteConfig"
 import Script from "next/script"
+import { Providers } from "@/app/providers/Providers"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nimbus-tech.de"),
-  title: siteConfig.name,
-  description: siteConfig.description,
+  metadataBase: new URL("https://www.nimbus-tech.de"),
+  title: "Nimbus Tech",
+  description: "Cloud Solutions & DevOps Consulting",
   keywords: [
     "Consulting",
     "Software Development",
@@ -51,14 +49,14 @@ export const metadata: Metadata = {
       url: "https://www.rohit.khanduri.de",
     },
   ],
-  creator: "Rohit Khanduri",
+  creator: "Nimbus Tech GmbH",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    url: "https://www.nimbus-tech.de",
+    title: "Nimbus Tech",
+    description: "Cloud Solutions & DevOps Consulting",
+    siteName: "Nimbus Tech",
   },
   icons: {
     icon: "/favicon.ico",
@@ -92,9 +90,7 @@ export default function RootLayout({
       <body
         className={`${GeistSans.className} min-h-screen overflow-x-hidden scroll-auto bg-gray-50 antialiased selection:bg-orange-100 selection:text-orange-600 dark:bg-gray-950 dark:text-gray-50`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

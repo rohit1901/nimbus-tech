@@ -572,19 +572,19 @@ export const GET_FOOTER = gql`
 `
 
 export const GET_LANGUAGES = gql`
-    query Languages {
-      languages {
-        id
-        label
-        value
-      }
+  query Languages {
+    languages {
+      id
+      label
+      value
     }
+  }
 `
 
 export function usePageContents() {
   const res = useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
   if (res.error) {
-    console.error(res.error)
+    // console.error(res.error)
     return {
       data: { pageContents: MockPageContent.data.pageContents },
       loading: false,
@@ -597,7 +597,7 @@ export function usePageContents() {
 export function useFooterSection() {
   const res = useQuery<Pick<Query, "footers">>(GET_FOOTER)
   if (res.error) {
-    console.error(res.error)
+    // console.error(res.error)
     return {
       data: {
         footers: [MockPageContent.data.pageContents[0].sections.contentFooter],
@@ -612,7 +612,7 @@ export function useFooterSection() {
 export function useLanguage() {
   const res = useQuery<Pick<Query, "languages">>(GET_LANGUAGES)
   if (res.error) {
-    console.error(res.error)
+    // console.error(res.error)
     return {
       data: { languages: MockLanguages.data.languages },
       loading: false,

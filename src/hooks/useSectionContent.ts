@@ -1,7 +1,5 @@
 import { useMemo } from "react"
-import { Section } from "@/app/graphql/types" // Adjust import path as needed
-
-type Maybe<T> = T | null | undefined
+import { Maybe, Section } from "@/app/graphql/types"
 
 export const useSectionContent = (
   sections?: Maybe<Section>,
