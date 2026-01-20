@@ -9,6 +9,25 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/Select"
+import { SelectPortal } from "@radix-ui/react-select"
+
+const themeOptions = [
+  {
+    value: "light" as const,
+    label: "Light",
+    Icon: RiSunLine,
+  },
+  {
+    value: "dark" as const,
+    label: "Dark",
+    Icon: RiMoonLine,
+  },
+  {
+    value: "system" as const,
+    label: "Auto",
+    Icon: RiComputerLine,
+  },
+]
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -22,47 +41,30 @@ export function ThemeToggle() {
     return <div className="h-9 w-9 p-2 opacity-0" />
   }
 
+  const current = themeOptions.find((opt) => opt.value === theme)
+
   return (
     <Select value={theme} onValueChange={setTheme}>
       <SelectTrigger className="w-fit border-none bg-transparent px-2 shadow-none focus:ring-0 dark:text-gray-50">
-        {theme === "light" && <RiSunLine className="size-5" />}
-        {theme === "dark" && <RiMoonLine className="size-5" />}
-        {theme === "system" && <RiComputerLine className="size-5" />}
+        {current && <current.Icon className="size-5" />}
         <span className="sr-only">Select theme</span>
       </SelectTrigger>
-
-      <SelectContent
-        align="end"
-        className="min-w-[8rem] dark:border-gray-800 dark:bg-gray-950"
-      >
-        <SelectItem
-          value="light"
-          className="dark:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50"
-        >
-          <div className="flex items-center gap-2">
-            <RiSunLine className="size-4" />
-            <span>Light</span>
-          </div>
-        </SelectItem>
-        <SelectItem
-          value="dark"
-          className="dark:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50"
-        >
-          <div className="flex items-center gap-2">
-            <RiMoonLine className="size-4" />
-            <span>Dark</span>
-          </div>
-        </SelectItem>
-        <SelectItem
-          value="system"
-          className="dark:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50"
-        >
-          <div className="flex items-center gap-2">
-            <RiComputerLine className="size-4" />
-            <span>Auto</span>
-          </div>
-        </SelectItem>
-      </SelectContent>
+      <SelectPortal>
+        <SelectContent className="dark:border-gray-800 dark:bg-gray-950">
+          {themeOptions.map(({ value, label, Icon }) => (
+            <SelectItem
+              key={value}
+              value={value}
+              className="dark:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50"
+            >
+              <div className="flex items-center gap-2">
+                <Icon className="size-4" />
+                <span>{label}</span>
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </SelectPortal>
     </Select>
   )
 }
