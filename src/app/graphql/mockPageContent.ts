@@ -2759,18 +2759,18 @@ export const MockPageContent = {
 }
 
 export const MockLanguages = {
-  "data": {
-    "languages": [
+  data: {
+    languages: [
       {
-        "id": "1",
-        "label": "English",
-        "value": "en-US"
+        id: "1",
+        label: "English",
+        value: "en-US",
       },
       {
-        "id": "2",
-        "label": "German",
-        "value": "de-DE"
-      }
-    ]
-  }
+        id: "2",
+        label: "German",
+        value: "de-DE",
+      },
+    ],
+  },
 }

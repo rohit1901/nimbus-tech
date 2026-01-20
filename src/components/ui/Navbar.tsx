@@ -20,8 +20,7 @@ export function NavBar() {
   const scrolled = useScroll(15)
   const {
     activeContent,
-    isReady,
-    loading,
+    isLoading,
     error,
     currentLanguage,
     availableLanguages,
@@ -35,13 +34,9 @@ export function NavBar() {
 
   const { resolvedTheme } = useTheme()
 
-  if (loading) return <LoadingState variant="default" />
-  if (error) return <ErrorState message={"Error fetching content"} />
-
-  if (!isReady || !activeContent) {
-    console.error("Languages or Content not available")
+  if (isLoading) return <LoadingState variant="default" />
+  if (error || !activeContent)
     return <ErrorState message="Content not available" />
-  }
 
   return (
     <header

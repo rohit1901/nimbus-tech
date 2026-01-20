@@ -8,7 +8,7 @@ import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
-import LanguageToggle from "./LanguageToggle"
+import LanguageToggle from "@/components/ui/LanguageToggle"
 
 export const CURRENT_YEAR = new Date().getFullYear()
 
@@ -51,8 +51,7 @@ const Copyright = () => (
 export default function Footer() {
   const {
     activeContent,
-    isReady,
-    loading,
+    isLoading,
     error,
     currentLanguage,
     availableLanguages,
@@ -64,7 +63,7 @@ export default function Footer() {
     currentLanguage?.value ?? "en-US",
   )
 
-  if (loading) {
+  if (isLoading) {
     return (
       <FooterStatusContainer
         footerClassName={joinClassNames(
@@ -81,29 +80,7 @@ export default function Footer() {
     )
   }
 
-  if (error) {
-    return (
-      <FooterStatusContainer
-        footerClassName={joinClassNames(
-          FOOTER_STATUS_CLASSNAME,
-          "items-center justify-center text-center",
-        )}
-      >
-        <ErrorState
-          message={"Unknown error"}
-          variant="default"
-          padded={false}
-        />
-      </FooterStatusContainer>
-    )
-  }
-  // TODO: fix this
-  if (!isReady || !activeContent) {
-    if (!loading && !error) console.error("Languages or Content not available")
-    return null
-  }
-
-  if (!footer) {
+  if (error || !activeContent || !footer) {
     return (
       <FooterStatusContainer
         footerClassName={joinClassNames(

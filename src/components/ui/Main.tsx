@@ -22,7 +22,7 @@ const Section = ({
 }) => <div className={`px-4 xl:px-0 ${className}`.trim()}>{children}</div>
 
 export const Main = () => {
-  const { activeContent, isReady, loading, error, currentLanguage } =
+  const { activeContent, isLoading, error, currentLanguage } =
     useLanguageContext()
 
   const content = useSectionContent(
@@ -30,13 +30,9 @@ export const Main = () => {
     currentLanguage?.value ?? "en-US",
   )
 
-  if (loading) return <LoadingState variant="default" />
-  if (error) return <ErrorState message={"Error fetching content."} />
-  // Guard against missing language data
-  if (!isReady || !activeContent) {
-    console.error("Languages or Content not available")
+  if (isLoading) return <LoadingState variant="default" />
+  if (error || !activeContent)
     return <ErrorState message="Content not available" />
-  }
 
   return (
     <main className="relative mx-auto flex flex-col">
