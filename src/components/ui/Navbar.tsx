@@ -1,3 +1,26 @@
+/**
+ * @fileoverview NavBar Component - Main navigation bar
+ *
+ * Responsive navigation bar with scroll effects, mobile menu, theme toggle,
+ * and language selection. Uses LanguageContext for content management.
+ *
+ * Features:
+ * - Sticky positioning with scroll-based transparency/blur effect
+ * - Mobile hamburger menu
+ * - Theme toggle (light/dark/system)
+ * - Language selection dropdown
+ * - Dynamic content from GraphQL
+ * - Dark mode support
+ *
+ * @example
+ * ```tsx
+ * // Used in main layout/page
+ * <NavBar />
+ * ```
+ *
+ * @deprecated This is the CSR version. For SSR pages, use the new NavBar wrapper
+ * that accepts props instead of using hooks.
+ */
 "use client"
 // TODO: Update the Navbar image in Keystone CMS
 import { siteConfig } from "@/app/siteConfig"
@@ -14,6 +37,40 @@ import { useTheme } from "next-themes"
 import LanguageToggle from "@/components/ui/LanguageToggle"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
 
+/**
+ * NavBar - Main navigation component with responsive design
+ *
+ * Provides site-wide navigation with the following features:
+ * - Logo with home link
+ * - Desktop navigation menu (centered)
+ * - Mobile hamburger menu
+ * - Theme toggle (light/dark/system)
+ * - Language selection
+ * - CTA button
+ * - Scroll-based styling (transparent → solid background)
+ * - Backdrop blur effect on scroll
+ *
+ * State Management:
+ * - Uses LanguageContext for content and language selection
+ * - Uses useScroll hook for scroll detection
+ * - Uses next-themes for theme management
+ * - Local state for mobile menu toggle
+ *
+ * @returns Navigation bar component
+ *
+ * @example
+ * ```tsx
+ * // In layout or page component
+ * export default function Layout({ children }) {
+ *   return (
+ *     <>
+ *       <NavBar />
+ *       {children}
+ *     </>
+ *   )
+ * }
+ * ```
+ */
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)

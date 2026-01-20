@@ -1,3 +1,15 @@
+/**
+ * @fileoverview ThemeToggle Component - Theme selection dropdown
+ *
+ * Provides a dropdown menu for switching between light, dark, and system theme modes.
+ * Uses next-themes for theme management with proper SSR handling.
+ *
+ * @example
+ * ```tsx
+ * // In navbar or settings
+ * <ThemeToggle />
+ * ```
+ */
 "use client"
 
 import { useTheme } from "next-themes"
@@ -11,6 +23,10 @@ import {
 } from "@/components/Select"
 import { SelectPortal } from "@radix-ui/react-select"
 
+/**
+ * Available theme options with icons
+ * @internal
+ */
 const themeOptions = [
   {
     value: "light" as const,
@@ -29,14 +45,41 @@ const themeOptions = [
   },
 ]
 
+/**
+ * ThemeToggle - Theme selection dropdown component
+ *
+ * Allows users to switch between light mode, dark mode, and system preference.
+ * Includes proper hydration handling to avoid SSR mismatches.
+ *
+ * Features:
+ * - Light theme with sun icon
+ * - Dark theme with moon icon
+ * - System/Auto theme with computer icon
+ * - Smooth transitions between themes
+ * - Prevents hydration mismatches with mounted state
+ * - Fully accessible with ARIA labels
+ *
+ * @returns A dropdown select component for theme switching
+ *
+ * @example
+ * ```tsx
+ * // In navigation bar
+ * <div className="flex items-center gap-4">
+ *   <ThemeToggle />
+ *   <LanguageToggle />
+ * </div>
+ * ```
+ */
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
+  // Wait for client-side hydration to prevent SSR mismatch
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Render placeholder during SSR to avoid hydration mismatch
   if (!mounted) {
     return <div className="h-9 w-9 p-2 opacity-0" />
   }

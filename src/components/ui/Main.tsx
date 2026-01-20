@@ -23,12 +23,12 @@ const Section = ({
 export const Main = () => {
   const { activeContent, currentLanguage } = useLanguageContext()
 
-  if (!activeContent) return null
-
   const content = useSectionContent(
     activeContent?.sections,
     currentLanguage?.value ?? "en-US",
   )
+
+  if (!activeContent) return null
 
   return (
     <main className="relative mx-auto flex flex-col">

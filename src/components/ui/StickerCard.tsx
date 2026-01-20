@@ -1,16 +1,85 @@
+/**
+ * @fileoverview StickerCard Component - Animated card with folded corner effect
+ *
+ * A visually distinctive card component with a folded top-right corner "sticker" effect.
+ * Features smooth hover animations and dark mode support.
+ *
+ * @example
+ * ```tsx
+ * <StickerCard
+ *   title="Cloud Infrastructure"
+ *   description="Build scalable cloud solutions"
+ *   iconName="RiCloudLine"
+ * />
+ * ```
+ */
 import { Maybe } from "@/app/graphql/types"
 import { cx } from "@/lib/utils"
 import { RemixIconComponent } from "../RemixIconComponent"
 
+/**
+ * Props for StickerCard component
+ */
+type StickerCardProps = {
+  /** Card title text */
+  title?: Maybe<string>
+  /** Card description/body text */
+  description?: Maybe<string>
+  /** Remix Icon name to display (required for card to render) */
+  iconName?: Maybe<string>
+}
+
+/**
+ * StickerCard - Card component with animated folded corner effect
+ *
+ * Creates a card with a distinctive "sticker" appearance featuring a folded
+ * top-right corner. Returns null if no icon is provided.
+ *
+ * Features:
+ * - Animated folded corner that expands on hover
+ * - Icon with accent color bar
+ * - Smooth transitions
+ * - Dark mode support
+ * - Accessible markup
+ *
+ * Design Details:
+ * - Base card with rounded corners
+ * - Top-right corner "fold" created with pseudo-elements
+ * - Orange accent bar on the left side
+ * - Hover effect enlarges the folded corner
+ *
+ * @param title - Card heading text
+ * @param description - Card body text
+ * @param iconName - RemixIcon name (e.g., "RiCloudLine")
+ * @returns Styled card component or null if no icon provided
+ *
+ * @example
+ * ```tsx
+ * // Basic usage
+ * <StickerCard
+ *   title="DevOps Services"
+ *   description="Streamline your deployment pipeline"
+ *   iconName="RiGitBranchLine"
+ * />
+ *
+ * // In a grid
+ * <div className="grid grid-cols-3 gap-6">
+ *   {features.map((feature) => (
+ *     <StickerCard
+ *       key={feature.id}
+ *       title={feature.title}
+ *       description={feature.description}
+ *       iconName={feature.icon}
+ *     />
+ *   ))}
+ * </div>
+ * ```
+ */
 export const StickerCard = ({
   title,
   description,
   iconName,
-}: {
-  title?: Maybe<string>
-  description?: Maybe<string>
-  iconName?: Maybe<string>
-}) => {
+}: StickerCardProps) => {
   if (!iconName) return null
   return (
     <div className="relative">
