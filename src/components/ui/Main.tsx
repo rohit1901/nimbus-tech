@@ -8,7 +8,6 @@ import Map from "@/components/ui/Map/Map"
 import OurCertifications from "@/components/ui/OurCertifications"
 import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
-import { ErrorState, LoadingState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 
@@ -22,17 +21,14 @@ const Section = ({
 }) => <div className={`px-4 xl:px-0 ${className}`.trim()}>{children}</div>
 
 export const Main = () => {
-  const { activeContent, isLoading, error, currentLanguage } =
-    useLanguageContext()
+  const { activeContent, currentLanguage } = useLanguageContext()
+
+  if (!activeContent) return null
 
   const content = useSectionContent(
     activeContent?.sections,
     currentLanguage?.value ?? "en-US",
   )
-
-  if (isLoading) return <LoadingState variant="default" />
-  if (error || !activeContent)
-    return <ErrorState message="Content not available" />
 
   return (
     <main className="relative mx-auto flex flex-col">

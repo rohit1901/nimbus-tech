@@ -5,7 +5,6 @@ import Link from "next/link"
 import Image from "next/image"
 
 import { RemixIconComponent } from "@/components/RemixIconComponent"
-import { LoadingState, ErrorState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import LanguageToggle from "@/components/ui/LanguageToggle"
@@ -37,8 +36,6 @@ export const FooterStatusContainer = ({
   </div>
 )
 
-const FOOTER_STATUS_CLASSNAME = "min-h-[180px]"
-
 const COPYRIGHT_ENTITY = "Nimbus Tech GmbH"
 const LOCATION = "Leipzig, Germany"
 
@@ -49,58 +46,18 @@ const Copyright = () => (
 )
 
 export default function Footer() {
-  const {
-    activeContent,
-    isLoading,
-    error,
-    currentLanguage,
-    availableLanguages,
-    setLanguage,
-  } = useLanguageContext()
+  const { activeContent, currentLanguage, availableLanguages, setLanguage } =
+    useLanguageContext()
 
   const { footer } = useSectionContent(
     activeContent?.sections,
     currentLanguage?.value ?? "en-US",
   )
 
-  if (isLoading) {
-    return (
-      <FooterStatusContainer
-        footerClassName={joinClassNames(
-          FOOTER_STATUS_CLASSNAME,
-          "items-center justify-center text-center",
-        )}
-      >
-        <LoadingState
-          message="Loading footer..."
-          variant="default"
-          padded={false}
-        />
-      </FooterStatusContainer>
-    )
-  }
-
-  if (error || !activeContent || !footer) {
-    return (
-      <FooterStatusContainer
-        footerClassName={joinClassNames(
-          FOOTER_STATUS_CLASSNAME,
-          "items-center justify-center text-center",
-        )}
-      >
-        <ErrorState
-          message="Footer content not available."
-          variant="default"
-          padded={false}
-        />
-      </FooterStatusContainer>
-    )
-  }
-
-  const icons = footer.sections?.find(
+  const icons = footer?.sections?.find(
     (section) => section.title?.label === "social",
   )
-  const links = footer.sections?.filter(
+  const links = footer?.sections?.filter(
     (section) => section.title?.label !== "social",
   )
 

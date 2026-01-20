@@ -7,25 +7,18 @@ import { cx } from "@/lib/utils"
 import { RiCloseFill, RiMenuFill } from "@remixicon/react"
 import Link from "next/link"
 import React from "react"
-import { ErrorState, LoadingState } from "@/components/Status"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import Image from "next/image"
 import { useTheme } from "next-themes"
-import LanguageToggle from "./LanguageToggle"
-import { ThemeToggle } from "./ThemeToggle"
+import LanguageToggle from "@/components/ui/LanguageToggle"
+import { ThemeToggle } from "@/components/ui/ThemeToggle"
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
   const scrolled = useScroll(15)
-  const {
-    activeContent,
-    isLoading,
-    error,
-    currentLanguage,
-    availableLanguages,
-    setLanguage,
-  } = useLanguageContext()
+  const { activeContent, currentLanguage, availableLanguages, setLanguage } =
+    useLanguageContext()
 
   const { navigation } = useSectionContent(
     activeContent?.sections,
@@ -33,10 +26,6 @@ export function NavBar() {
   )
 
   const { resolvedTheme } = useTheme()
-
-  if (isLoading) return <LoadingState variant="default" />
-  if (error || !activeContent)
-    return <ErrorState message="Content not available" />
 
   return (
     <header
@@ -53,8 +42,11 @@ export function NavBar() {
             <span className="sr-only">{navigation?.image?.alt}</span>
             <Image
               className="w-50"
-              src="https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
-              alt="Logo"
+              src={
+                navigation?.image?.src ??
+                "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg"
+              }
+              alt={navigation?.image?.alt ?? "Nimbus Tech Logo"}
               width={50}
               height={50}
             />
