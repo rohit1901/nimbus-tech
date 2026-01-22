@@ -22,7 +22,6 @@
  * that accepts props instead of using hooks.
  */
 "use client"
-// TODO: Update the Navbar image in Keystone CMS
 import { siteConfig } from "@/app/siteConfig"
 import { Button } from "@/components/Button"
 import useScroll from "@/lib/useScroll"
