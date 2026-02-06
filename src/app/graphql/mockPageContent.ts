@@ -1,16 +1,19 @@
 export const MockPageContent = {
   data: {
     pageContents: [
+      // =====================================================================
+      // ENGLISH HOMEPAGE
+      // =====================================================================
       {
         id: "1",
         slug: "home",
         title: "Nimbus Tech",
         description:
-          "Custom software development, cloud architecture, and scalable solutions for modern enterprises.",
+          "AWS cloud consulting and solutions for SMEs and startups. We design, implement, and optimize your AWS environment so your business can grow securely and cost-effectively.",
         image: null,
         cta: {
           id: "4",
-          label: "Contact Us",
+          label: "Free 15-minute consultation",
           href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
           external: false,
           type: {
@@ -26,13 +29,15 @@ export const MockPageContent = {
         sections: {
           id: "1",
           type: "hero",
+
+          // HERO -------------------------------------------------------------
           contentHero: [
             {
               id: "1",
-              title: "Nimbus Tech",
+              title: "AWS Cloud Consulting for SMEs & Startups",
               description:
-                "Custom software development, cloud architecture, and scalable solutions for modern enterprises.",
-              subHeading: "Expert Software & Cloud Solutions",
+                "Nimbus Tech helps small and medium-sized businesses and startups in the DACH region make the most of AWS. We plan, build, and optimize your cloud setup – transparent, understandable, and focused on your goals.",
+              subHeading: "AWS expertise for your business",
               banner: {
                 id: "1",
                 label: "News",
@@ -57,9 +62,9 @@ export const MockPageContent = {
               },
               cta: {
                 id: "5",
-                label: "News",
-                href: "https://rohitkhanduri.substack.com",
-                external: true,
+                label: "Free 15-minute consultation",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                external: false,
                 type: {
                   id: "4",
                   label: "hero",
@@ -78,17 +83,19 @@ export const MockPageContent = {
             },
           ],
           contentHeroCount: 1,
+
+          // BENEFITS ---------------------------------------------------------
           contentBenefits: [
             {
               id: "1",
-              title: "Your Benefits with Nimbus Tech",
+              title: "Why SMEs and Startups choose Nimbus Tech",
               benefits: [
                 {
                   id: "2",
                   icon: "RiMoneyEuroBoxFill",
-                  title: "Full Cost Control",
+                  title: "Transparent Costs",
                   description:
-                    "We ensure transparent and predictable costs for your cloud project.",
+                    "We design your AWS environment so that costs remain predictable and under control – no hidden surprises.",
                   language: {
                     id: "1",
                     label: "English",
@@ -98,9 +105,9 @@ export const MockPageContent = {
                 {
                   id: "1",
                   icon: "RiAwardFill",
-                  title: "Certified Experts",
+                  title: "AWS-Certified Experts",
                   description:
-                    "We are experienced and certified AWS cloud specialists.",
+                    "You work directly with experienced, AWS-certified architects and engineers – not a rotating team of juniors.",
                   language: {
                     id: "1",
                     label: "English",
@@ -110,9 +117,9 @@ export const MockPageContent = {
                 {
                   id: "3",
                   icon: "RiFlashlightFill",
-                  title: "Fast Implementation",
+                  title: "Fast, Pragmatic Delivery",
                   description:
-                    "We implement your individual cloud project efficiently and quickly.",
+                    "We focus on lean, practical solutions that can go live quickly and evolve with your business.",
                   language: {
                     id: "1",
                     label: "English",
@@ -129,16 +136,18 @@ export const MockPageContent = {
             },
           ],
           contentBenefitsCount: 1,
+
+          // FEATURES / SERVICES ----------------------------------------------
           contentFeatures: [
             {
               id: "1",
               featureId: 1,
-              title: "Software development",
+              title: "AWS Cloud Consulting",
               description:
-                "Custom applications tailored to your business needs, from web to mobile.",
+                "Strategic AWS guidance for SMEs and startups – from first cloud projects to mature environments.",
               longDescription:
-                "Our team specializes in creating custom software solutions that streamline your operations, enhance productivity, and drive growth. Whether you need a web application, mobile app, or cloud-based solution, we have the expertise to deliver results that exceed your expectations.",
-              visualization: "OrbitFeatureVisualization",
+                "We help you define a clear AWS strategy, choose the right services, and design an architecture that fits your business goals. Together, we create a roadmap that balances speed, risk, and budget so you can grow safely in the cloud.",
+              visualization: "ArchitectureFeatureVisualization",
               language: {
                 id: "1",
                 label: "English",
@@ -148,11 +157,11 @@ export const MockPageContent = {
             {
               id: "2",
               featureId: 2,
-              title: "Cloud Development",
+              title: "AWS Migration & Modernization",
               description:
-                "Seamless cloud migration and scalable solutions leveraging AWS, Azure, or GCP",
+                "Securely move existing systems to AWS and modernize step by step without disrupting your business.",
               longDescription:
-                "Our cloud development services help you migrate to the cloud effortlessly, ensuring your applications are optimized for performance, security, and scalability. We specialize in AWS, Azure, and GCP, providing tailored solutions that meet your unique requirements.",
+                "Whether you are lifting and shifting, re-platforming, or re-architecting, we plan and execute your AWS migration with minimal downtime. We modernize where it adds value – using containers, serverless, and managed services to reduce operational effort and costs.",
               visualization: "CloudFeatureVisualization",
               language: {
                 id: "1",
@@ -163,12 +172,12 @@ export const MockPageContent = {
             {
               id: "3",
               featureId: 3,
-              title: "Architecture & Consulting",
+              title: "DevOps & Automation on AWS",
               description:
-                "Robust system design and technical consulting for future-proof infrastructure.",
+                "Reliable CI/CD pipelines, infrastructure as code, and monitoring tailored to your team and stack.",
               longDescription:
-                "Our architecture and consulting services ensure your systems are designed for scalability, reliability, and performance. We work closely with you to understand your business goals and provide tailored solutions that align with your vision.",
-              visualization: "ArchitectureFeatureVisualization",
+                "We set up or improve your deployment pipelines, infrastructure as code (Terraform/CDK), and observability so your team can ship changes safely and frequently. You get an automated AWS foundation that supports your product instead of slowing it down.",
+              visualization: "CloudFeatureVisualization",
               language: {
                 id: "1",
                 label: "English",
@@ -177,18 +186,20 @@ export const MockPageContent = {
             },
           ],
           contentFeaturesCount: 3,
+
+          // FAQ --------------------------------------------------------------
           contentFaqSection: [
             {
               id: "1",
               title: "Frequently Asked Questions",
               description:
-                "Find answers to common questions about our cloud engineering services, development approach, and how we can help your business succeed.",
+                "Find answers to common questions about our AWS cloud consulting, migration projects, and how we work with SMEs and startups.",
               faqs: [
                 {
                   id: "1",
-                  question: "What cloud platforms do you support?",
+                  question: "Who is Nimbus Tech a good fit for?",
                   answer:
-                    "We specialize in AWS but also work with Azure, Google Cloud, and multi-cloud architectures.",
+                    "We primarily work with small and medium-sized businesses and startups that want to use AWS more effectively – for new products, migrations, or to stabilize and optimize existing setups.",
                   language: {
                     id: "1",
                     label: "English",
@@ -197,9 +208,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "2",
-                  question: "How long does a typical project take?",
+                  question: "Do you only work with AWS?",
                   answer:
-                    "Project timelines vary based on complexity, but we typically deliver MVPs within 8-12 weeks.",
+                    "Our clear focus is AWS. We may connect to other platforms or tools if needed, but our consulting, architecture, and operations work is centered on AWS.",
                   language: {
                     id: "1",
                     label: "English",
@@ -208,9 +219,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "3",
-                  question: "Do you provide ongoing support?",
+                  question: "How does a typical engagement start?",
                   answer:
-                    "Yes, we offer maintenance, monitoring, and support packages tailored to your needs.",
+                    "We usually start with a free 15-minute call to understand your situation. After that, we can offer a short assessment or architecture review and then define a concrete project scope with timeline and budget.",
                   language: {
                     id: "1",
                     label: "English",
@@ -219,9 +230,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "4",
-                  question: "What industries do you serve?",
+                  question: "Can you help if we already use AWS?",
                   answer:
-                    "We work with clients across various industries including fintech, healthcare, e-commerce, and SaaS.",
+                    "Yes. Many clients come to us with an existing AWS setup that has grown over time. We review your environment, highlight risks and opportunities, and then help you clean up, secure, and optimize costs.",
                   language: {
                     id: "1",
                     label: "English",
@@ -230,10 +241,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "5",
-                  question:
-                    "Can you help migrate existing applications to the cloud?",
+                  question: "How do you charge for your services?",
                   answer:
-                    "Absolutely! We have extensive experience in cloud migration strategies and implementations.",
+                    "We offer fixed-price packages for assessments and clearly scoped projects, and transparent day rates for ongoing support. Together we choose the model that fits your budget and decision process.",
                   language: {
                     id: "1",
                     label: "English",
@@ -242,31 +252,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "6",
-                  question: "What is your development approach?",
+                  question: "Do you provide ongoing support after a project?",
                   answer:
-                    "We follow agile methodologies with iterative development, continuous feedback, and regular deliverables.",
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
-                  id: "7",
-                  question: "Do you offer consulting services?",
-                  answer:
-                    "Yes, we provide architecture reviews, technology assessments, and strategic consulting services.",
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
-                  id: "8",
-                  question: "How do you ensure code quality?",
-                  answer:
-                    "We implement automated testing, code reviews, CI/CD pipelines, and follow industry best practices.",
+                    "If you wish, we stay on as your AWS partner for monitoring, incident response, and continuous improvements. We can also train your internal team so they become more self-sufficient over time.",
                   language: {
                     id: "1",
                     label: "English",
@@ -274,7 +262,7 @@ export const MockPageContent = {
                   },
                 },
               ],
-              faqsCount: 8,
+              faqsCount: 6,
               language: {
                 id: "1",
                 label: "English",
@@ -283,6 +271,8 @@ export const MockPageContent = {
             },
           ],
           contentFaqSectionCount: 1,
+
+          // TESTIMONIALS -----------------------------------------------------
           contentTestimonials: [
             {
               id: "1",
@@ -300,20 +290,8 @@ export const MockPageContent = {
                     label: "testimonial",
                   },
                 },
-                {
-                  id: "11",
-                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/drone.png",
-                  alt: "clouds background",
-                  width: 1583,
-                  height: 554,
-                  fill: false,
-                  type: {
-                    id: "6",
-                    label: "testimonial",
-                  },
-                },
               ],
-              backgroundCount: 2,
+              backgroundCount: 1,
               testimonials: [],
               testimonialsCount: 0,
               fallback: {
@@ -330,7 +308,7 @@ export const MockPageContent = {
                   },
                 },
                 name: "The Nimbus Tech Team",
-                role: "Software & Cloud Experts, Germany",
+                role: "AWS Cloud & Software Experts, Germany",
                 company: "Nimbus Tech",
                 image: {
                   id: "12",
@@ -345,7 +323,7 @@ export const MockPageContent = {
                   },
                 },
                 content:
-                  "As Nimbus Tech launches, we look forward to partnering with innovative organizations and delivering exceptional software and cloud solutions. Your feedback could be featured here!",
+                  "As Nimbus Tech launches, we look forward to partnering with SMEs and startups to deliver clear, effective AWS cloud solutions. Your feedback could be featured here!",
                 language: {
                   id: "1",
                   label: "English",
@@ -360,16 +338,19 @@ export const MockPageContent = {
             },
           ],
           contentTestimonialsCount: 1,
+
+          // CERTIFICATIONS ---------------------------------------------------
           contentCertifications: [
             {
               id: "1",
               title: "Our Certifications",
               description:
-                "Nimbus Tech is certified in various technologies and methodologies, ensuring the highest quality standards in our projects.",
+                "Nimbus Tech is certified in AWS and software architecture, ensuring high quality and reliable AWS cloud solutions.",
               cta: {
                 id: "3",
-                label: "Let’s Talk",
-                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                label: "Free consultation",
+                href:
+                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "2",
@@ -390,7 +371,8 @@ export const MockPageContent = {
                     "Advanced expertise in software architecture principles and practices.",
                   image: {
                     id: "1",
-                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
+                    src:
+                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
                     alt: "CPSA-A certification badge",
                     width: 200,
                     height: 200,
@@ -411,13 +393,15 @@ export const MockPageContent = {
                     "Fundamental knowledge of software architecture concepts and methodologies.",
                   image: {
                     id: "2",
-                    src: "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
+                    src:
+                      "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png",
                     alt: "CPSA-F certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link: "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
+                  link:
+                    "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0",
                   language: {
                     id: "1",
                     label: "English",
@@ -431,13 +415,15 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "3",
-                    src: "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
+                    src:
+                      "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
                     alt: "Apollo Graph Professional certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link: "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
+                  link:
+                    "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
                   language: {
                     id: "1",
                     label: "English",
@@ -451,13 +437,15 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "4",
-                    src: "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
+                    src:
+                      "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
                     alt: "Apollo Graph Associate certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link: "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
+                  link:
+                    "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
                   language: {
                     id: "1",
                     label: "English",
@@ -471,13 +459,15 @@ export const MockPageContent = {
                     "Expertise in Git version control and collaboration workflows.",
                   image: {
                     id: "5",
-                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
+                    src:
+                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
                     alt: "GitKraken Git certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link: "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230",
+                  link:
+                    "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC",
                   language: {
                     id: "1",
                     label: "English",
@@ -491,7 +481,8 @@ export const MockPageContent = {
                     "Demonstrates proficiency in developing and maintaining applications on AWS.",
                   image: {
                     id: "6",
-                    src: "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
+                    src:
+                      "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
                     alt: "AWS Certified Developer badge",
                     width: 200,
                     height: 200,
@@ -511,8 +502,9 @@ export const MockPageContent = {
                     "Demonstrates proficiency in architecting applications on AWS.",
                   image: {
                     id: "7",
-                    src: "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
-                    alt: "AWS Solutions Architect Professional badge",
+                    src:
+                      "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+                    alt: "AWS Solutions Architect Associate badge",
                     width: 200,
                     height: 200,
                     fill: false,
@@ -534,12 +526,14 @@ export const MockPageContent = {
             },
           ],
           contentCertificationsCount: 1,
+
+          // APPROACH ---------------------------------------------------------
           contentApproach: [
             {
               id: "1",
               title: "Our Approach: From Vision to Value",
               description:
-                "At Nimbus Tech, we follow a structured approach to ensure your project is successful from start to finish. Our process is designed to be flexible, transparent, and focused on delivering real business value.",
+                "We follow a structured yet flexible approach to ensure your AWS projects deliver clear business value – from first conversation to long-term operation.",
               steps: [
                 {
                   id: "1",
@@ -547,7 +541,7 @@ export const MockPageContent = {
                   type: "done",
                   title: "Discovery: Listen & Learn",
                   description:
-                    "We start by understanding your goals, challenges, and vision.",
+                    "We start by understanding your goals, challenges, and current AWS or on-premise setup.",
                   activityTime: "Step 1",
                   language: {
                     id: "1",
@@ -561,8 +555,22 @@ export const MockPageContent = {
                   type: "done",
                   title: "Planning: Architect for Success",
                   description:
-                    "We design a scalable, future-proof solution tailored to your needs.",
+                    "We design a scalable, secure AWS architecture and define a realistic roadmap.",
                   activityTime: "Step 2",
+                  language: {
+                    id: "1",
+                    label: "English",
+                    value: "en-US",
+                  },
+                },
+                {
+                  id: "5",
+                  stepId: 3,
+                  type: "done",
+                  title: "Development: Build with Quality",
+                  description:
+                    "We implement infrastructure, automation, and applications using best practices.",
+                  activityTime: "Step 3",
                   language: {
                     id: "1",
                     label: "English",
@@ -575,7 +583,7 @@ export const MockPageContent = {
                   type: "in progress",
                   title: "Deployment: Launch & Deliver",
                   description:
-                    "We deploy your product securely and ensure a smooth go-live.",
+                    "We deploy your solution securely and coordinate a smooth go-live.",
                   activityTime: "Step 4",
                   language: {
                     id: "1",
@@ -589,22 +597,8 @@ export const MockPageContent = {
                   type: "open",
                   title: "Support: Optimize & Grow",
                   description:
-                    "We provide ongoing support and continuous improvement.",
+                    "We provide ongoing support, optimization, and knowledge transfer for your team.",
                   activityTime: "Step 5",
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
-                  id: "5",
-                  stepId: 3,
-                  type: "done",
-                  title: "Development: Build with Quality",
-                  description:
-                    "We develop your solution using best practices and modern technologies.",
-                  activityTime: "Step 3",
                   language: {
                     id: "1",
                     label: "English",
@@ -621,12 +615,14 @@ export const MockPageContent = {
             },
           ],
           contentApproachCount: 1,
+
+          // ABOUT ------------------------------------------------------------
           contentAbout: [
             {
               id: "1",
               heading: "About Nimbus Tech",
               intro:
-                "With over 14 years of experience in software development, architecture, and cloud, Nimbus Tech is your trusted partner for robust, scalable, and innovative digital solutions. Co-founded in Germany by experienced software architects, we combine deep technical expertise with a passion for solving complex challenges and delivering real business value.",
+                "Nimbus Tech is an AWS-focused cloud consulting and software engineering company based in Germany. With more than 14 years of experience in software development and architecture, we help SMEs and startups in the DACH region design, migrate, and operate reliable systems on AWS – always with clear communication and business value in mind.",
               valuesTitle: "Our Values",
               values: [
                 {
@@ -692,7 +688,7 @@ export const MockPageContent = {
               ],
               valuesCount: 5,
               closing:
-                "At Nimbus Tech, we are passionate about guiding you through every step of your digital transformation journey.",
+                "At Nimbus Tech, we combine deep AWS expertise with a practical, no-nonsense approach so your cloud projects stay understandable, transparent, and aligned with your business goals.",
               language: {
                 id: "1",
                 label: "English",
@@ -701,12 +697,14 @@ export const MockPageContent = {
             },
           ],
           contentAboutCount: 1,
+
+          // ANALYTICS (kept minimal as illustrative "mock" data) -------------
           contentAnalytics: [
             {
               id: "1",
-              heading: "Project Performance Overview",
+              heading: "Typical Project Outcomes",
               subheading:
-                "Expert insights into deployments, uptime, and client satisfaction across key Nimbus Tech projects.",
+                "Examples of how structured AWS consulting can improve reliability, speed, and cost efficiency.",
               stats: {
                 id: "1",
                 totalDeployments: "305",
@@ -729,38 +727,6 @@ export const MockPageContent = {
               ],
               summary: [
                 {
-                  id: "2",
-                  name: "Enterprise App",
-                  deployments: "60",
-                  uptime: "98.5%",
-                  clientSatisfaction: "-1.2",
-                  efficiency: "-2.5%",
-                  revenueGrowth: "-3.8%",
-                  bgColor: "bg-yellow-400",
-                  changeType: "negative",
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
-                  id: "3",
-                  name: "Cloud Migration",
-                  deployments: "85",
-                  uptime: "99.7%",
-                  clientSatisfaction: "+3.9",
-                  efficiency: "+5.4%",
-                  revenueGrowth: "+8.3%",
-                  bgColor: "bg-green-500",
-                  changeType: "positive",
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
                   id: "1",
                   name: "Project Nimbus",
                   deployments: "120",
@@ -776,8 +742,24 @@ export const MockPageContent = {
                     value: "en-US",
                   },
                 },
+                {
+                  id: "2",
+                  name: "Cloud Migration",
+                  deployments: "85",
+                  uptime: "99.7%",
+                  clientSatisfaction: "+3.9",
+                  efficiency: "+5.4%",
+                  revenueGrowth: "+8.3%",
+                  bgColor: "bg-green-500",
+                  changeType: "positive",
+                  language: {
+                    id: "1",
+                    label: "English",
+                    value: "en-US",
+                  },
+                },
               ],
-              summaryCount: 3,
+              summaryCount: 2,
               language: {
                 id: "1",
                 label: "English",
@@ -786,12 +768,14 @@ export const MockPageContent = {
             },
           ],
           contentAnalyticsCount: 1,
+
+          // NAVIGATION --------------------------------------------------------
           contentNavigation: [
             {
               id: "1",
               title: "Nimbus Tech",
               description:
-                "Nimbus Tech is a software development and consulting company specializing in cloud architecture, DevOps, and automation solutions. We help businesses build scalable, efficient, and secure software systems.",
+                "Nimbus Tech is an AWS-focused cloud consulting and software engineering company. We help SMEs and startups design, migrate, and operate scalable, secure systems on AWS without unnecessary complexity.",
               image: {
                 id: "9",
                 src: "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg",
@@ -806,8 +790,9 @@ export const MockPageContent = {
               },
               cta: {
                 id: "6",
-                label: "Get started",
-                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                label: "Contact Us",
+                href:
+                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "5",
@@ -874,7 +859,8 @@ export const MockPageContent = {
                 {
                   id: "4",
                   label: "Contact",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   icon: "",
                   language: {
@@ -898,6 +884,8 @@ export const MockPageContent = {
             },
           ],
           contentNavigationCount: 1,
+
+          // FOOTER -----------------------------------------------------------
           contentFooter: [
             {
               id: "2",
@@ -912,7 +900,7 @@ export const MockPageContent = {
                   items: [
                     {
                       id: "17",
-                      label: "Software Development",
+                      label: "AWS Cloud Consulting",
                       href: "#features",
                       external: false,
                       icon: "",
@@ -932,7 +920,7 @@ export const MockPageContent = {
                     },
                     {
                       id: "18",
-                      label: "Cloud Architecture",
+                      label: "AWS Migration & Modernization",
                       href: "#features",
                       external: false,
                       icon: "",
@@ -952,47 +940,7 @@ export const MockPageContent = {
                     },
                     {
                       id: "19",
-                      label: "DevOps & Automation",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "20",
-                      label: "Software Architecture",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "21",
-                      label: "Technology Assessment",
+                      label: "DevOps & Automation on AWS",
                       href: "#features",
                       external: false,
                       icon: "",
@@ -1011,7 +959,7 @@ export const MockPageContent = {
                       },
                     },
                   ],
-                  itemsCount: 5,
+                  itemsCount: 3,
                   language: {
                     id: "1",
                     label: "English",
@@ -1028,7 +976,8 @@ export const MockPageContent = {
                     {
                       id: "13",
                       label: "Contact",
-                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href:
+                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -1048,7 +997,8 @@ export const MockPageContent = {
                     {
                       id: "14",
                       label: "Support",
-                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href:
+                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -1113,178 +1063,8 @@ export const MockPageContent = {
                     value: "en-US",
                   },
                 },
-                {
-                  id: "4",
-                  title: {
-                    id: "2",
-                    label: "company",
-                  },
-                  items: [
-                    {
-                      id: "9",
-                      label: "About Nimbus Tech",
-                      href: "#about-us",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "10",
-                      label: "Blog",
-                      href: "https://rohitkhanduri.substack.com",
-                      external: true,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "11",
-                      label: "Our Values",
-                      href: "#our-values",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "12",
-                      label: "News & Updates",
-                      href: "https://rohitkhanduri.substack.com",
-                      external: true,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                  ],
-                  itemsCount: 4,
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
-                {
-                  id: "5",
-                  title: {
-                    id: "4",
-                    label: "social",
-                  },
-                  items: [
-                    {
-                      id: "22",
-                      label: "GitHub",
-                      href: "https://rohit1901.github.com",
-                      external: true,
-                      icon: "RiGithubFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "23",
-                      label: "LinkedIn",
-                      href: "#",
-                      external: true,
-                      icon: "RiLinkedinBoxFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                    {
-                      id: "24",
-                      label: "Xing",
-                      href: "#",
-                      external: true,
-                      icon: "RiXingFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
-                      },
-                      language: {
-                        id: "1",
-                        label: "English",
-                        value: "en-US",
-                      },
-                    },
-                  ],
-                  itemsCount: 3,
-                  language: {
-                    id: "1",
-                    label: "English",
-                    value: "en-US",
-                  },
-                },
               ],
-              sectionsCount: 4,
+              sectionsCount: 2,
               language: {
                 id: "1",
                 label: "English",
@@ -1293,17 +1073,20 @@ export const MockPageContent = {
             },
           ],
           contentFooterCount: 1,
+
+          // CTA SECTION ------------------------------------------------------
           contentCta: [
             {
               id: "1",
-              title: "Ready to get started?",
+              title: "Ready to discuss your AWS plans?",
               description:
-                "We help you build digital products that your users will love. Let’s talk about your project.",
+                "Whether you are planning your first migration, stabilizing an existing setup, or preparing for rapid growth – we help you find a clear, realistic path on AWS.",
               ctas: [
                 {
                   id: "1",
-                  label: "Start now",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  label: "Book a free 15-minute consultation",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -1317,8 +1100,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "2",
-                  label: "Schedule a discovery call",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  label: "Request an AWS assessment",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -1335,7 +1119,8 @@ export const MockPageContent = {
               background: [
                 {
                   id: "8",
-                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
+                  src:
+                    "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
                   alt: "Farm with vehicles",
                   width: 1000,
                   height: 1000,
@@ -1355,14 +1140,15 @@ export const MockPageContent = {
             },
           ],
           contentCtaCount: 1,
+
+          // MAP --------------------------------------------------------------
           contentMap: [
             {
               id: "1",
               title: "Global Reach, Local Expertise",
-              subheading:
-                "Expert Software & Cloud Consulting, Wherever You Are",
+              subheading: "Expert AWS Cloud Consulting, wherever you are",
               description:
-                "Our team operates from Germany, collaborating with enterprises and startups worldwide to architect, build, and optimize custom software and cloud systems.",
+                "Our team operates from Germany, collaborating with SMEs and startups worldwide to design, build, and optimize AWS-based systems.",
               language: {
                 id: "1",
                 label: "English",
@@ -1378,16 +1164,20 @@ export const MockPageContent = {
           value: "en-US",
         },
       },
+
+      // =====================================================================
+      // GERMAN HOMEPAGE
+      // =====================================================================
       {
         id: "2",
         slug: "home-de",
         title: "Nimbus Tech",
         description:
-          "Maßgeschneiderte Softwareentwicklung, Cloud-Architektur und skalierbare Lösungen für moderne Unternehmen.",
+          "AWS-Cloud-Beratung und -Lösungen für KMU und Start-ups. Wir planen, implementieren und optimieren Ihre AWS-Umgebung, damit Ihr Unternehmen sicher und kosteneffizient wachsen kann.",
         image: null,
         cta: {
           id: "10",
-          label: "Kontakt",
+          label: "Kostenloses Erstgespräch",
           href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
           external: false,
           type: {
@@ -1403,13 +1193,15 @@ export const MockPageContent = {
         sections: {
           id: "2",
           type: "hero",
+
+          // HERO -------------------------------------------------------------
           contentHero: [
             {
               id: "2",
-              title: "Nimbus Tech",
+              title: "AWS-Cloud-Beratung für KMU & Start-ups",
               description:
-                "Maßgeschneiderte Softwareentwicklung, Cloud-Architektur und skalierbare Lösungen für moderne Unternehmen.",
-              subHeading: "Experten für Software- & Cloud-Lösungen",
+                "Nimbus Tech unterstützt kleine und mittelständische Unternehmen sowie Start-ups in der DACH-Region dabei, AWS optimal zu nutzen. Wir planen, bauen und optimieren Ihre Cloud-Landschaft – verständlich, transparent und fokussiert auf Ihre Geschäftsziele.",
+              subHeading: "AWS-Expertise für Ihr Unternehmen",
               banner: {
                 id: "2",
                 label: "Aktuelles",
@@ -1434,9 +1226,10 @@ export const MockPageContent = {
               },
               cta: {
                 id: "11",
-                label: "Aktuelles",
-                href: "https://rohitkhanduri.substack.com",
-                external: true,
+                label: "Kostenloses Erstgespräch",
+                href:
+                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                external: false,
                 type: {
                   id: "4",
                   label: "hero",
@@ -1455,29 +1248,19 @@ export const MockPageContent = {
             },
           ],
           contentHeroCount: 1,
+
+          // BENEFITS ---------------------------------------------------------
           contentBenefits: [
             {
               id: "2",
-              title: "Ihre Vorteile mit Nimbus Tech",
+              title: "Warum KMU und Start-ups mit Nimbus Tech arbeiten",
               benefits: [
                 {
                   id: "4",
                   icon: "RiMoneyEuroBoxFill",
-                  title: "Volle Kostenkontrolle",
+                  title: "Klare Kosten",
                   description:
-                    "Wir sorgen für transparente und planbare Kosten bei Ihrem Cloud-Projekt.",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "5",
-                  icon: "RiFlashlightFill",
-                  title: "Schnelle Umsetzung",
-                  description:
-                    "Wir setzen Ihr individuelles Cloud-Projekt effizient und schnell um.",
+                    "Wir gestalten Ihre AWS-Umgebung so, dass Kosten planbar bleiben und Sie jederzeit den Überblick behalten.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1487,9 +1270,21 @@ export const MockPageContent = {
                 {
                   id: "6",
                   icon: "RiAwardFill",
-                  title: "Zertifizierte Experten",
+                  title: "Zertifizierte AWS-Experten",
                   description:
-                    "Wir sind erfahrene und zertifizierte AWS-Cloud-Spezialisten.",
+                    "Sie arbeiten direkt mit erfahrenen, AWS-zertifizierten Architekt:innen und Engineer:innen zusammen.",
+                  language: {
+                    id: "2",
+                    label: "German",
+                    value: "de-DE",
+                  },
+                },
+                {
+                  id: "5",
+                  icon: "RiFlashlightFill",
+                  title: "Schnelle, praxisnahe Umsetzung",
+                  description:
+                    "Wir setzen schlanke, praxistaugliche Lösungen um, die schnell live gehen und mit Ihrem Geschäft mitwachsen.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1506,15 +1301,17 @@ export const MockPageContent = {
             },
           ],
           contentBenefitsCount: 1,
+
+          // FEATURES / SERVICES ----------------------------------------------
           contentFeatures: [
             {
               id: "4",
               featureId: 1,
-              title: "Softwareentwicklung",
+              title: "AWS-Cloud-Beratung",
               description:
-                "Maßgeschneiderte Anwendungen für Ihre Geschäftsanforderungen, von Web bis Mobile.",
+                "Strategische AWS-Beratung für KMU und Start-ups – von den ersten Cloud-Schritten bis zu gewachsenen Umgebungen.",
               longDescription:
-                "Unser Team ist darauf spezialisiert, maßgeschneiderte Softwarelösungen zu entwickeln, die Ihre Abläufe optimieren, die Produktivität steigern und das Wachstum vorantreiben. Egal, ob Sie eine Webanwendung, eine mobile App oder eine Cloud-basierte Lösung benötigen – wir verfügen über das Fachwissen, um Ergebnisse zu liefern, die Ihre Erwartungen übertreffen.",
+                "Wir entwickeln gemeinsam mit Ihnen eine klare AWS-Strategie, wählen passende Services aus und entwerfen eine Architektur, die zu Ihren Geschäftsanforderungen passt. So entsteht eine Roadmap, die Geschwindigkeit, Risiko und Budget sinnvoll ausbalanciert.",
               visualization: "OrbitFeatureVisualization",
               language: {
                 id: "2",
@@ -1525,11 +1322,11 @@ export const MockPageContent = {
             {
               id: "5",
               featureId: 2,
-              title: "Cloud-Entwicklung",
+              title: "AWS-Migration & Modernisierung",
               description:
-                "Nahtlose Cloud-Migration und skalierbare Lösungen mit AWS, Azure oder GCP.",
+                "Sichere Migration bestehender Systeme nach AWS und schrittweise Modernisierung ohne Betriebsunterbrechung.",
               longDescription:
-                "Unsere Cloud-Entwicklungsdienste helfen Ihnen, mühelos in die Cloud zu migrieren und stellen sicher, dass Ihre Anwendungen auf Leistung, Sicherheit und Skalierbarkeit optimiert sind. Wir sind auf AWS, Azure und GCP spezialisiert und bieten maßgeschneiderte Lösungen, die Ihren individuellen Anforderungen entsprechen.",
+                "Ob Lift-and-Shift, Re-Platforming oder Re-Architektur – wir planen und begleiten Ihre AWS-Migration mit minimaler Downtime. Wir modernisieren dort, wo es echten Mehrwert bringt, etwa mit Containern, Serverless und Managed Services.",
               visualization: "CloudFeatureVisualization",
               language: {
                 id: "2",
@@ -1540,11 +1337,11 @@ export const MockPageContent = {
             {
               id: "6",
               featureId: 3,
-              title: "Architektur & Beratung",
+              title: "DevOps & Automatisierung auf AWS",
               description:
-                "Robustes Systemdesign und technische Beratung für zukunftssichere Infrastrukturen.",
+                "Zuverlässige CI/CD-Pipelines, Infrastructure as Code und Monitoring, abgestimmt auf Ihr Team.",
               longDescription:
-                "Unsere Architektur- und Beratungsdienste stellen sicher, dass Ihre Systeme auf Skalierbarkeit, Zuverlässigkeit und Leistung ausgelegt sind. Wir arbeiten eng mit Ihnen zusammen, um Ihre Geschäftsziele zu verstehen und maßgeschneiderte Lösungen anzubieten, die Ihrer Vision entsprechen.",
+                "Wir richten Deployment-Pipelines, Infrastructure as Code (z.B. Terraform/CDK) und Observability ein oder verbessern bestehende Lösungen. So kann Ihr Team Änderungen häufiger und sicherer ausrollen.",
               visualization: "ArchitectureFeatureVisualization",
               language: {
                 id: "2",
@@ -1554,18 +1351,20 @@ export const MockPageContent = {
             },
           ],
           contentFeaturesCount: 3,
+
+          // FAQ --------------------------------------------------------------
           contentFaqSection: [
             {
               id: "2",
-              title: "Häufig gestellte Fragen",
+              title: "Häufige Fragen",
               description:
-                "Finden Sie Antworten auf häufig gestellte Fragen zu unseren Cloud-Engineering-Diensten, unserem Entwicklungsansatz und wie wir Ihnen helfen können, Ihr Unternehmen erfolgreich zu gestalten.",
+                "Antworten auf typische Fragen zu unserer AWS-Cloud-Beratung, Migrationsprojekten und der Zusammenarbeit mit KMU und Start-ups.",
               faqs: [
                 {
                   id: "9",
-                  question: "Welche Cloud-Plattformen unterstützen Sie?",
+                  question: "Für welche Unternehmen ist Nimbus Tech geeignet?",
                   answer:
-                    "Wir sind auf AWS spezialisiert, arbeiten aber auch mit Azure, Google Cloud und Multi-Cloud-Architekturen.",
+                    "Wir arbeiten vor allem mit kleinen und mittelständischen Unternehmen sowie Start-ups, die AWS gezielt einsetzen möchten – für neue Produkte, Migrationen oder die Stabilisierung bestehender Umgebungen.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1574,9 +1373,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "10",
-                  question: "Wie lange dauert ein typisches Projekt?",
+                  question: "Arbeiten Sie ausschließlich mit AWS?",
                   answer:
-                    "Die Projektlaufzeiten variieren je nach Komplexität, aber wir liefern MVPs typischerweise innerhalb von 8-12 Wochen.",
+                    "Unser klarer Schwerpunkt ist AWS. Wo nötig binden wir andere Plattformen oder Tools an, aber unsere Beratung, Architektur und der Betrieb sind auf AWS ausgerichtet.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1585,9 +1384,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "11",
-                  question: "Bieten Sie laufenden Support an?",
+                  question: "Wie startet eine Zusammenarbeit typischerweise?",
                   answer:
-                    "Ja, wir bieten auf Ihre Bedürfnisse zugeschnittene Wartungs-, Überwachungs- und Supportpakete an.",
+                    "In der Regel beginnen wir mit einem kostenlosen 15-minütigen Gespräch, um Ihre Situation zu verstehen. Darauf folgt bei Bedarf ein kompaktes Assessment oder Architektur-Review, aus dem wir ein konkretes Projektangebot mit Umfang, Zeitplan und Budget ableiten.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1596,9 +1395,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "12",
-                  question: "Welche Branchen bedienen Sie?",
+                  question: "Unterstützen Sie auch bestehende AWS-Setups?",
                   answer:
-                    "Wir arbeiten mit Kunden aus verschiedenen Branchen, darunter Fintech, Gesundheitswesen, E-Commerce und SaaS.",
+                    "Ja. Viele Kund:innen kommen mit gewachsenen AWS-Umgebungen zu uns. Wir analysieren Ihre Umgebung, zeigen Risiken und Chancen auf und helfen anschließend bei Aufräumen, Absicherung und Kostenoptimierung.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1607,10 +1406,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "13",
-                  question:
-                    "Können Sie bei der Migration bestehender Anwendungen in die Cloud helfen?",
+                  question: "Wie berechnen Sie Ihre Leistungen?",
                   answer:
-                    "Absolut! Wir verfügen über umfangreiche Erfahrung mit Cloud-Migrationsstrategien und deren Umsetzung.",
+                    "Für Assessments und klar umrissene Projekte bieten wir Festpreise an, für laufende Unterstützung transparente Tagessätze. Gemeinsam wählen wir das Modell, das zu Ihrem Budget und Entscheidungsprozess passt.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1619,31 +1417,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "14",
-                  question: "Was ist Ihr Entwicklungsansatz?",
+                  question: "Bieten Sie laufende Betreuung an?",
                   answer:
-                    "Wir folgen agilen Methoden mit iterativer Entwicklung, kontinuierlichem Feedback und regelmäßigen Lieferungen.",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "15",
-                  question: "Bieten Sie Beratungsdienste an?",
-                  answer:
-                    "Ja, wir bieten Architektur-Reviews, Technologie-Bewertungen und strategische Beratungsdienste an.",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "16",
-                  question: "Wie stellen Sie die Codequalität sicher?",
-                  answer:
-                    "Wir setzen auf automatisierte Tests, Code-Reviews, CI/CD-Pipelines und befolgen Best Practices der Branche.",
+                    "Auf Wunsch bleiben wir als AWS-Partner an Ihrer Seite – für Monitoring, Incident-Response und kontinuierliche Verbesserungen. Außerdem können wir Ihr internes Team gezielt weiterbilden.",
                   language: {
                     id: "2",
                     label: "German",
@@ -1651,7 +1427,7 @@ export const MockPageContent = {
                   },
                 },
               ],
-              faqsCount: 8,
+              faqsCount: 6,
               language: {
                 id: "2",
                 label: "German",
@@ -1660,15 +1436,17 @@ export const MockPageContent = {
             },
           ],
           contentFaqSectionCount: 1,
+
+          // TESTIMONIALS -----------------------------------------------------
           contentTestimonials: [
             {
               id: "2",
-              title: "Kunden Erfolge",
+              title: "Kundenerfahrungen",
               background: [
                 {
-                  id: "10",
+                  id: "13",
                   src: "https://d1ljophloyhryl.cloudfront.net/assets/images/field.png",
-                  alt: "clouds background",
+                  alt: "Wolkenhintergrund",
                   width: null,
                   height: null,
                   fill: true,
@@ -1677,20 +1455,8 @@ export const MockPageContent = {
                     label: "testimonial",
                   },
                 },
-                {
-                  id: "11",
-                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/drone.png",
-                  alt: "clouds background",
-                  width: 1583,
-                  height: 554,
-                  fill: false,
-                  type: {
-                    id: "6",
-                    label: "testimonial",
-                  },
-                },
               ],
-              backgroundCount: 2,
+              backgroundCount: 1,
               testimonials: [],
               testimonialsCount: 0,
               fallback: {
@@ -1706,13 +1472,13 @@ export const MockPageContent = {
                     value: "de-DE",
                   },
                 },
-                name: "The Nimbus Tech Team",
-                role: "Software & Cloud Experts, Germany",
+                name: "Das Nimbus Tech Team",
+                role: "AWS-Cloud- & Software-Expert:innen, Deutschland",
                 company: "Nimbus Tech",
                 image: {
-                  id: "12",
+                  id: "14",
                   src: "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.svg",
-                  alt: "Nimbus Tech logo",
+                  alt: "Nimbus Tech Logo",
                   width: 50,
                   height: 50,
                   fill: false,
@@ -1722,7 +1488,7 @@ export const MockPageContent = {
                   },
                 },
                 content:
-                  "Als Nimbus Tech startet, freuen wir uns darauf, innovative Organisationen zu partnern und exzellente Software und Cloud-Lösungen zu liefern. Ihr Feedback könnte hier aufgeführt werden!",
+                  "Zum Start von Nimbus Tech freuen wir uns darauf, gemeinsam mit KMU und Start-ups klare, wirksame AWS-Cloud-Lösungen umzusetzen. Ihr Feedback könnte hier erscheinen!",
                 language: {
                   id: "2",
                   label: "German",
@@ -1737,25 +1503,28 @@ export const MockPageContent = {
             },
           ],
           contentTestimonialsCount: 1,
+
+          // CERTIFICATIONS ---------------------------------------------------
           contentCertifications: [
             {
               id: "2",
               title: "Unsere Zertifizierungen",
               description:
-                "Nimbus Tech ist in verschiedenen Technologien und Methoden zertifiziert, um höchste Qualitätsstandards in unseren Projekten zu gewährleisten.",
+                "Nimbus Tech ist in AWS und Software-Architektur zertifiziert – für hochwertige und verlässliche AWS-Cloud-Lösungen.",
               cta: {
-                id: "3",
-                label: "Let’s Talk",
-                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                id: "9",
+                label: "Kostenloses Erstgespräch",
+                href:
+                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "2",
                   label: "certification",
                 },
                 language: {
-                  id: "1",
-                  label: "English",
-                  value: "en-US",
+                  id: "2",
+                  label: "German",
+                  value: "de-DE",
                 },
               },
               certifications: [
@@ -1764,11 +1533,12 @@ export const MockPageContent = {
                   title:
                     "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)",
                   description:
-                    "Fortgeschrittene Expertise in Softwarearchitektur-Prinzipien und -Praktiken.",
+                    "Vertiefte Expertise in Prinzipien und Praktiken der Software-Architektur.",
                   image: {
-                    id: "1",
-                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
-                    alt: "CPSA-A certification badge",
+                    id: "15",
+                    src:
+                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
+                    alt: "CPSA-A Zertifizierungsabzeichen",
                     width: 200,
                     height: 200,
                     fill: false,
@@ -1783,113 +1553,14 @@ export const MockPageContent = {
                 {
                   id: "9",
                   title:
-                    "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
+                    "AWS Certified Solutions Architect - Associate",
                   description:
-                    "Grundlegendes Wissen über Konzepte und Methoden der Softwarearchitektur.",
+                    "Bestätigte Kompetenz im Entwurf von Anwendungen auf AWS.",
                   image: {
-                    id: "2",
-                    src: "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
-                    alt: "CPSA-F certification badge",
-                    width: 200,
-                    height: 200,
-                    fill: false,
-                  },
-                  link: "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "10",
-                  title: "Apollo Certified Graph Developer - Professional",
-                  description:
-                    "Zertifizierte Fähigkeiten in der GraphQL-Entwicklung und Apollo-Client/Server-Technologien.",
-                  image: {
-                    id: "3",
-                    src: "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
-                    alt: "Apollo Graph Professional certification badge",
-                    width: 200,
-                    height: 200,
-                    fill: false,
-                  },
-                  link: "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "11",
-                  title: "Apollo Certified Graph Developer - Associate",
-                  description:
-                    "Zertifizierte Fähigkeiten in der GraphQL-Entwicklung und Apollo-Client/Server-Technologien.",
-                  image: {
-                    id: "4",
-                    src: "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
-                    alt: "Apollo Graph Associate certification badge",
-                    width: 200,
-                    height: 200,
-                    fill: false,
-                  },
-                  link: "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "12",
-                  title: "Git Certified Specialist by GitKraken",
-                  description:
-                    "Expertise in Git-Versionskontrolle und Kollaborations-Workflows.",
-                  image: {
-                    id: "5",
-                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
-                    alt: "GitKraken Git certification badge",
-                    width: 200,
-                    height: 200,
-                    fill: false,
-                  },
-                  link: "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "13",
-                  title: "AWS Certified Developer - Associate",
-                  description:
-                    "Zeigt Fachwissen in der Entwicklung und Wartung von Anwendungen auf AWS.",
-                  image: {
-                    id: "6",
-                    src: "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
-                    alt: "AWS Certified Developer badge",
-                    width: 200,
-                    height: 200,
-                    fill: false,
-                  },
-                  link: "https://www.aws.training/certification/aws-certified-developer-associate",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "14",
-                  title: "AWS Certified Solutions Architect - Associate",
-                  description:
-                    "Zeigt Fachwissen in der Architektur von Anwendungen auf AWS.",
-                  image: {
-                    id: "7",
-                    src: "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
-                    alt: "AWS Solutions Architect Professional badge",
+                    id: "16",
+                    src:
+                      "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+                    alt: "AWS Solutions Architect Associate Badge",
                     width: 200,
                     height: 200,
                     fill: false,
@@ -1902,7 +1573,7 @@ export const MockPageContent = {
                   },
                 },
               ],
-              certificationsCount: 7,
+              certificationsCount: 2,
               language: {
                 id: "2",
                 label: "German",
@@ -1911,21 +1582,23 @@ export const MockPageContent = {
             },
           ],
           contentCertificationsCount: 1,
+
+          // APPROACH ---------------------------------------------------------
           contentApproach: [
             {
               id: "2",
-              title: "Unser Ansatz: Von der Vision zum Wert",
+              title: "Unser Vorgehen: Von der Idee zum Nutzen",
               description:
-                "Bei Nimbus Tech folgen wir einem strukturierten Ansatz, um den Erfolg Ihres Projekts von Anfang bis Ende sicherzustellen. Unser Prozess ist flexibel, transparent und darauf ausgerichtet, echten geschäftlichen Mehrwert zu liefern.",
+                "Unser strukturierter, aber flexibler Ansatz stellt sicher, dass Ihre AWS-Projekte echten Geschäftsnutzen liefern – vom ersten Gespräch bis zum laufenden Betrieb.",
               steps: [
                 {
                   id: "6",
-                  stepId: 5,
-                  type: "open",
-                  title: "Support: Optimieren & Wachsen",
+                  stepId: 1,
+                  type: "done",
+                  title: "Verstehen: Ziele & Ist-Situation",
                   description:
-                    "Wir bieten laufenden Support und kontinuierliche Verbesserung.",
-                  activityTime: "Schritt 5",
+                    "Wir starten mit Ihren Zielen, Herausforderungen und Ihrer aktuellen AWS- oder On-Premise-Landschaft.",
+                  activityTime: "Schritt 1",
                   language: {
                     id: "2",
                     label: "German",
@@ -1934,25 +1607,11 @@ export const MockPageContent = {
                 },
                 {
                   id: "7",
-                  stepId: 4,
-                  type: "in progress",
-                  title: "Deployment: Start & Lieferung",
-                  description:
-                    "Wir stellen Ihr Produkt sicher bereit und sorgen für einen reibungslosen Go-Live.",
-                  activityTime: "Schritt 4",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "8",
                   stepId: 2,
                   type: "done",
-                  title: "Planung: Architektur für den Erfolg",
+                  title: "Planen: Architektur & Roadmap",
                   description:
-                    "Wir entwerfen eine skalierbare, zukunftssichere Lösung, die auf Ihre Bedürfnisse zugeschnitten ist.",
+                    "Wir entwerfen eine skalierbare, sichere AWS-Architektur und definieren eine realistische Roadmap.",
                   activityTime: "Schritt 2",
                   language: {
                     id: "2",
@@ -1961,12 +1620,12 @@ export const MockPageContent = {
                   },
                 },
                 {
-                  id: "9",
+                  id: "8",
                   stepId: 3,
                   type: "done",
-                  title: "Entwicklung: Bauen mit Qualität",
+                  title: "Umsetzen: Bauen mit Qualität",
                   description:
-                    "Wir entwickeln Ihre Lösung unter Verwendung von Best Practices und modernen Technologien.",
+                    "Wir implementieren Infrastruktur, Automatisierung und Anwendungen nach Best Practices.",
                   activityTime: "Schritt 3",
                   language: {
                     id: "2",
@@ -1975,13 +1634,27 @@ export const MockPageContent = {
                   },
                 },
                 {
-                  id: "10",
-                  stepId: 1,
-                  type: "done",
-                  title: "Discovery: Zuhören & Verstehen",
+                  id: "9",
+                  stepId: 4,
+                  type: "in progress",
+                  title: "Go-Live: Sicher starten",
                   description:
-                    "Wir beginnen damit, Ihre Ziele, Herausforderungen und Visionen zu verstehen.",
-                  activityTime: "Schritt 1",
+                    "Wir koordinieren einen sicheren Go-Live und begleiten die Inbetriebnahme.",
+                  activityTime: "Schritt 4",
+                  language: {
+                    id: "2",
+                    label: "German",
+                    value: "de-DE",
+                  },
+                },
+                {
+                  id: "10",
+                  stepId: 5,
+                  type: "open",
+                  title: "Betreiben: Optimieren & Wachsen",
+                  description:
+                    "Wir unterstützen Sie beim laufenden Betrieb, bei Optimierungen und beim Wissenstransfer in Ihr Team.",
+                  activityTime: "Schritt 5",
                   language: {
                     id: "2",
                     label: "German",
@@ -1998,12 +1671,14 @@ export const MockPageContent = {
             },
           ],
           contentApproachCount: 1,
+
+          // ABOUT ------------------------------------------------------------
           contentAbout: [
             {
               id: "2",
               heading: "Über Nimbus Tech",
               intro:
-                "Mit über 14 Jahren Erfahrung in Softwareentwicklung, Architektur und Cloud ist Nimbus Tech Ihr verlässlicher Partner für robuste, skalierbare und innovative digitale Lösungen. Gegründet in Deutschland von erfahrenen Softwarearchitekt:innen verbinden wir tiefgehende technische Expertise mit der Leidenschaft, komplexe Herausforderungen zu meistern und messbaren Geschäftswert zu schaffen.",
+                "Nimbus Tech ist ein auf AWS spezialisiertes Cloud-Beratungs- und Software-Engineering-Unternehmen mit Sitz in Deutschland. Mit über 14 Jahren Erfahrung in Entwicklung und Architektur unterstützen wir KMU und Start-ups in der DACH-Region dabei, zuverlässige Systeme auf AWS zu planen, zu migrieren und zu betreiben – mit klarer Kommunikation und echtem Geschäftsnutzen.",
               valuesTitle: "Unsere Werte",
               values: [
                 {
@@ -2069,7 +1744,7 @@ export const MockPageContent = {
               ],
               valuesCount: 5,
               closing:
-                "Bei Nimbus Tech begleiten wir Sie engagiert auf Ihrem Weg der digitalen Transformation.",
+                "Bei Nimbus Tech verbinden wir tiefes AWS-Know-how mit einem pragmatischen Ansatz, damit Ihre Cloud-Projekte verständlich, transparent und eng an Ihren Geschäftszielen ausgerichtet bleiben.",
               language: {
                 id: "2",
                 label: "German",
@@ -2078,12 +1753,14 @@ export const MockPageContent = {
             },
           ],
           contentAboutCount: 1,
+
+          // ANALYTICS --------------------------------------------------------
           contentAnalytics: [
             {
               id: "2",
-              heading: "Projekt-Leistungsübersicht",
+              heading: "Typische Projektergebnisse",
               subheading:
-                "Experteneinblicke in Deployments, Betriebszeit und Kundenzufriedenheit bei wichtigen Nimbus Tech-Projekten.",
+                "Beispiele dafür, wie strukturierte AWS-Beratung Zuverlässigkeit, Geschwindigkeit und Kosteneffizienz verbessert.",
               stats: {
                 id: "2",
                 totalDeployments: "305",
@@ -2097,33 +1774,17 @@ export const MockPageContent = {
                 },
               },
               tableHeadings: [
-                "project",
+                "projekt",
                 "deployments",
                 "uptime",
-                "clientSatisfaction",
-                "efficiency",
-                "revenueGrowth",
+                "zufriedenheit",
+                "effizienz",
+                "umsatzwachstum",
               ],
               summary: [
                 {
-                  id: "4",
-                  name: "Unternehmens-App",
-                  deployments: "60",
-                  uptime: "98.5%",
-                  clientSatisfaction: "-1.2",
-                  efficiency: "-2.5%",
-                  revenueGrowth: "-3.8%",
-                  bgColor: "bg-yellow-400",
-                  changeType: "negative",
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "5",
-                  name: "Project Nimbus",
+                  id: "11",
+                  name: "Projekt Nimbus",
                   deployments: "120",
                   uptime: "99.9%",
                   clientSatisfaction: "+4.8",
@@ -2138,7 +1799,7 @@ export const MockPageContent = {
                   },
                 },
                 {
-                  id: "6",
+                  id: "12",
                   name: "Cloud-Migration",
                   deployments: "85",
                   uptime: "99.7%",
@@ -2154,7 +1815,7 @@ export const MockPageContent = {
                   },
                 },
               ],
-              summaryCount: 3,
+              summaryCount: 2,
               language: {
                 id: "2",
                 label: "German",
@@ -2163,15 +1824,18 @@ export const MockPageContent = {
             },
           ],
           contentAnalyticsCount: 1,
+
+          // NAVIGATION --------------------------------------------------------
           contentNavigation: [
             {
               id: "2",
               title: "Nimbus Tech",
               description:
-                "Nimbus Tech ist ein Softwareentwicklungs- und Beratungsunternehmen mit Schwerpunkt auf Cloud-Architektur, DevOps und Automatisierungslösungen. Wir helfen Unternehmen, skalierbare, effiziente und sichere Softwaresysteme aufzubauen.",
+                "Nimbus Tech ist ein auf AWS fokussiertes Cloud-Beratungs- und Software-Engineering-Unternehmen. Wir helfen KMU und Start-ups, skalierbare und sichere Systeme auf AWS zu entwerfen, zu migrieren und zu betreiben – ohne unnötige Komplexität.",
               image: {
                 id: "9",
-                src: "https://nimbus-tech.de/images/nimbus-tech-hero-image.jpg",
+                src:
+                  "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg",
                 alt: "Nimbus Tech Hero Image",
                 width: 1600,
                 height: 900,
@@ -2183,8 +1847,9 @@ export const MockPageContent = {
               },
               cta: {
                 id: "12",
-                label: "Los geht's",
-                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                label: "Erstgespräch",
+                href:
+                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "5",
@@ -2251,7 +1916,8 @@ export const MockPageContent = {
                 {
                   id: "8",
                   label: "Kontakt",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   icon: "",
                   language: {
@@ -2275,22 +1941,24 @@ export const MockPageContent = {
             },
           ],
           contentNavigationCount: 1,
+
+          // FOOTER -----------------------------------------------------------
           contentFooter: [
             {
-              id: "1",
-              title: "Footer - DE",
+              id: "3",
+              title: "Footer",
               sections: [
                 {
                   id: "3",
                   title: {
-                    id: "2",
-                    label: "company",
+                    id: "1",
+                    label: "services",
                   },
                   items: [
                     {
-                      id: "25",
-                      label: "Über Nimbus Tech",
-                      href: "#about-us",
+                      id: "22",
+                      label: "AWS-Cloud-Beratung",
+                      href: "#features",
                       external: false,
                       icon: "",
                       type: {
@@ -2298,8 +1966,8 @@ export const MockPageContent = {
                         label: "footer",
                       },
                       sectionKey: {
-                        id: "2",
-                        label: "company",
+                        id: "1",
+                        label: "services",
                       },
                       language: {
                         id: "2",
@@ -2308,29 +1976,9 @@ export const MockPageContent = {
                       },
                     },
                     {
-                      id: "26",
-                      label: "Blog",
-                      href: "https://rohitkhanduri.substack.com",
-                      external: true,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "27",
-                      label: "Unsere Werte",
-                      href: "#our-values",
+                      id: "23",
+                      label: "AWS-Migration & Modernisierung",
+                      href: "#features",
                       external: false,
                       icon: "",
                       type: {
@@ -2338,8 +1986,8 @@ export const MockPageContent = {
                         label: "footer",
                       },
                       sectionKey: {
-                        id: "2",
-                        label: "company",
+                        id: "1",
+                        label: "services",
                       },
                       language: {
                         id: "2",
@@ -2348,93 +1996,18 @@ export const MockPageContent = {
                       },
                     },
                     {
-                      id: "28",
-                      label: "Neuigkeiten & Updates",
-                      href: "https://rohitkhanduri.substack.com",
-                      external: true,
+                      id: "24",
+                      label: "DevOps & Automatisierung auf AWS",
+                      href: "#features",
+                      external: false,
                       icon: "",
                       type: {
                         id: "7",
                         label: "footer",
                       },
                       sectionKey: {
-                        id: "2",
-                        label: "company",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                  ],
-                  itemsCount: 4,
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "6",
-                  title: {
-                    id: "4",
-                    label: "social",
-                  },
-                  items: [
-                    {
-                      id: "38",
-                      label: "GitHub",
-                      href: "https://rohit1901.github.com",
-                      external: true,
-                      icon: "RiGithubFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "39",
-                      label: "LinkedIn",
-                      href: "#",
-                      external: true,
-                      icon: "RiLinkedinBoxFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "40",
-                      label: "Xing",
-                      href: "#",
-                      external: true,
-                      icon: "RiXingFill",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "4",
-                        label: "social",
+                        id: "1",
+                        label: "services",
                       },
                       language: {
                         id: "2",
@@ -2451,131 +2024,17 @@ export const MockPageContent = {
                   },
                 },
                 {
-                  id: "7",
-                  title: {
-                    id: "1",
-                    label: "services",
-                  },
-                  items: [
-                    {
-                      id: "33",
-                      label: "Softwareentwicklung",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "34",
-                      label: "Cloud-Architektur",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "35",
-                      label: "DevOps & Automatisierung",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "36",
-                      label: "Software-Architektur",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "37",
-                      label: "Technologiebewertung",
-                      href: "#features",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "1",
-                        label: "services",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                  ],
-                  itemsCount: 5,
-                  language: {
-                    id: "2",
-                    label: "German",
-                    value: "de-DE",
-                  },
-                },
-                {
-                  id: "8",
+                  id: "4",
                   title: {
                     id: "3",
                     label: "resources",
                   },
                   items: [
                     {
-                      id: "29",
+                      id: "25",
                       label: "Kontakt",
-                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href:
+                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -2593,28 +2052,8 @@ export const MockPageContent = {
                       },
                     },
                     {
-                      id: "30",
-                      label: "Support",
-                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
-                      external: false,
-                      icon: "",
-                      type: {
-                        id: "7",
-                        label: "footer",
-                      },
-                      sectionKey: {
-                        id: "3",
-                        label: "resources",
-                      },
-                      language: {
-                        id: "2",
-                        label: "German",
-                        value: "de-DE",
-                      },
-                    },
-                    {
-                      id: "31",
-                      label: "Datenschutz",
+                      id: "26",
+                      label: "Datenschutzerklärung",
                       href: "#",
                       external: false,
                       icon: "",
@@ -2633,8 +2072,8 @@ export const MockPageContent = {
                       },
                     },
                     {
-                      id: "32",
-                      label: "Nutzungsbedingungen",
+                      id: "27",
+                      label: "Impressum",
                       href: "#",
                       external: false,
                       icon: "",
@@ -2653,7 +2092,7 @@ export const MockPageContent = {
                       },
                     },
                   ],
-                  itemsCount: 4,
+                  itemsCount: 3,
                   language: {
                     id: "2",
                     label: "German",
@@ -2661,7 +2100,7 @@ export const MockPageContent = {
                   },
                 },
               ],
-              sectionsCount: 4,
+              sectionsCount: 2,
               language: {
                 id: "2",
                 label: "German",
@@ -2670,17 +2109,20 @@ export const MockPageContent = {
             },
           ],
           contentFooterCount: 1,
+
+          // CTA SECTION ------------------------------------------------------
           contentCta: [
             {
               id: "2",
-              title: "Bereit loszulegen?",
+              title: "Bereit für den nächsten Schritt mit AWS?",
               description:
-                "Wir helfen Ihnen, digitale Produkte zu entwickeln, die Ihre Nutzer lieben werden. Lassen Sie uns über Ihr Projekt sprechen.",
+                "Ob erste Migration, Stabilisierung einer bestehenden Umgebung oder Vorbereitung auf schnelles Wachstum – wir unterstützen Sie dabei, einen klaren und realistischen Weg auf AWS zu finden.",
               ctas: [
                 {
                   id: "7",
-                  label: "Jetzt starten",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  label: "Kostenloses Erstgespräch buchen",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -2694,8 +2136,9 @@ export const MockPageContent = {
                 },
                 {
                   id: "8",
-                  label: "Termin vereinbaren",
-                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  label: "AWS-Assessment anfragen",
+                  href:
+                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -2712,8 +2155,9 @@ export const MockPageContent = {
               background: [
                 {
                   id: "8",
-                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
-                  alt: "Farm with vehicles",
+                  src:
+                    "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
+                  alt: "Landschaft mit Fahrzeugen",
                   width: 1000,
                   height: 1000,
                   fill: false,
@@ -2732,13 +2176,16 @@ export const MockPageContent = {
             },
           ],
           contentCtaCount: 1,
+
+          // MAP --------------------------------------------------------------
           contentMap: [
             {
               id: "2",
-              title: "Globale Reach, Lokale Expertise",
-              subheading: "Experte Software & Cloud Consulting, Woandershin",
+              title: "Globale Reichweite, lokale AWS-Expertise",
+              subheading:
+                "AWS-Cloud-Beratung aus Deutschland für KMU & Start-ups",
               description:
-                "Unsere Teamarbeit erfolgt aus Deutschland, wo wir mit Unternehmen und Startups weltweit zusammenarbeiten, um benutzerdefinierte Software und Cloud-Systeme zu architekturieren, zu erstellen und zu optimieren.",
+                "Unser Team arbeitet aus Deutschland und unterstützt Unternehmen und Start-ups weltweit dabei, AWS-basierte Systeme zu entwerfen, aufzubauen und zu optimieren.",
               language: {
                 id: "2",
                 label: "German",
@@ -2756,7 +2203,7 @@ export const MockPageContent = {
       },
     ],
   },
-}
+};
 
 export const MockLanguages = {
   data: {
