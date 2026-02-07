@@ -80,7 +80,7 @@ The website shares our story, highlights customer value, and provides clear path
 
 ## Quick Start
 
-1. Clone the repository: `git clone https://github.com/your-org/nimbus-tech-website.git`
+1. Clone the repository: `git clone https://github.com/rohit1901/nimbus-tech.git`
 2. Change into the project directory: `cd nimbus-tech`
 3. Install dependencies: `npm install`
 4. Prepare environment variables (see [Environment Configuration](#environment-configuration))
