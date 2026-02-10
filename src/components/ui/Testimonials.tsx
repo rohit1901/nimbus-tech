@@ -82,7 +82,7 @@ export default function Testimonials({
           className={
             bg.fill
               ? "absolute inset-0 object-cover"
-              : "absolute top-[19rem] -right-14 w-[19rem] sm:top-[12rem] sm:right-3 sm:w-[23rem] md:top-[12rem] md:right-0 md:w-[25rem] lg:top-[16rem] lg:right-12 lg:w-[34rem]"
+              : "absolute top-76 -right-14 w-76 sm:top-48 sm:right-3 sm:w-92 md:top-48 md:right-0 md:w-100 lg:top-64 lg:right-12 lg:w-136"
           }
         >
           <SafeImage
