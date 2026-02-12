@@ -33,7 +33,9 @@
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.0",
-    "tailwind-variants": "^1.0.0"
+    "tailwind-variants": "^1.0.0",
+    "typescript": "^5.8.3",
+    "graphql": "^16.12.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.1.0",
@@ -47,11 +49,9 @@
     "dotenv": "^17.3.0",
     "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
-    "graphql": "^16.12.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.7",
-    "tsx": "^4.21.0",
-    "typescript": "^5.8.3"
+    "tsx": "^4.21.0"
   }
 }

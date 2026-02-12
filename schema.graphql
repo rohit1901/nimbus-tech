@@ -4,6 +4,7 @@
 type User {
   id: ID!
   authId: String
+  userGroup: String
   name: String
   email: String
   password: PasswordState
@@ -14,8 +15,7 @@ type PasswordState {
   isSet: Boolean!
 }
 
-scalar DateTime
-  @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
+scalar DateTime @specifiedBy(url: "https://datatracker.ietf.org/doc/html/rfc3339#section-5.6")
 
 input UserWhereUniqueInput {
   id: ID
@@ -29,6 +29,7 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   id: IDFilter
   authId: StringFilter
+  userGroup: StringFilter
   name: StringFilter
   email: StringFilter
   createdAt: DateTimeNullableFilter
@@ -93,6 +94,7 @@ input DateTimeNullableFilter {
 input UserOrderByInput {
   id: OrderDirection
   authId: OrderDirection
+  userGroup: OrderDirection
   name: OrderDirection
   email: OrderDirection
   createdAt: OrderDirection
@@ -105,6 +107,7 @@ enum OrderDirection {
 
 input UserUpdateInput {
   authId: String
+  userGroup: String
   name: String
   email: String
   password: String
@@ -118,6 +121,7 @@ input UserUpdateArgs {
 
 input UserCreateInput {
   authId: String
+  userGroup: String
   name: String
   email: String
   password: String
@@ -262,6 +266,7 @@ type Image {
   height: Int
   fill: Boolean
   type: Type
+  preview: String
 }
 
 input ImageWhereUniqueInput {
@@ -332,6 +337,8 @@ type Language {
 
 input LanguageWhereUniqueInput {
   id: ID
+  label: String
+  value: String
 }
 
 input LanguageWhereInput {
@@ -511,21 +518,9 @@ input ImageRelateToOneForCreateInput {
 type TestimonialSection {
   id: ID!
   title: String
-  background(
-    where: ImageWhereInput! = {}
-    orderBy: [ImageOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ImageWhereUniqueInput
-  ): [Image!]
+  background(where: ImageWhereInput! = {}, orderBy: [ImageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ImageWhereUniqueInput): [Image!]
   backgroundCount(where: ImageWhereInput! = {}): Int
-  testimonials(
-    where: TestimonialItemWhereInput! = {}
-    orderBy: [TestimonialItemOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialItemWhereUniqueInput
-  ): [TestimonialItem!]
+  testimonials(where: TestimonialItemWhereInput! = {}, orderBy: [TestimonialItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TestimonialItemWhereUniqueInput): [TestimonialItem!]
   testimonialsCount(where: TestimonialItemWhereInput! = {}): Int
   fallback: TestimonialItem
   language: Language
@@ -864,13 +859,7 @@ input BenefitCreateInput {
 type BenefitSection {
   id: ID!
   title: String
-  benefits(
-    where: BenefitWhereInput! = {}
-    orderBy: [BenefitOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitWhereUniqueInput
-  ): [Benefit!]
+  benefits(where: BenefitWhereInput! = {}, orderBy: [BenefitOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: BenefitWhereUniqueInput): [Benefit!]
   benefitsCount(where: BenefitWhereInput! = {}): Int
   language: Language
 }
@@ -977,13 +966,7 @@ type FaqSection {
   id: ID!
   title: String
   description: String
-  faqs(
-    where: FaqWhereInput! = {}
-    orderBy: [FaqOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FaqWhereUniqueInput
-  ): [Faq!]
+  faqs(where: FaqWhereInput! = {}, orderBy: [FaqOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FaqWhereUniqueInput): [Faq!]
   faqsCount(where: FaqWhereInput! = {}): Int
   language: Language
 }
@@ -1104,13 +1087,7 @@ type CertificationSection {
   title: String
   description: String
   cta: Cta
-  certifications(
-    where: CertificationWhereInput! = {}
-    orderBy: [CertificationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationWhereUniqueInput
-  ): [Certification!]
+  certifications(where: CertificationWhereInput! = {}, orderBy: [CertificationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CertificationWhereUniqueInput): [Certification!]
   certificationsCount(where: CertificationWhereInput! = {}): Int
   language: Language
 }
@@ -1309,13 +1286,7 @@ type Approach {
   id: ID!
   title: String
   description: String
-  steps(
-    where: ApproachStepWhereInput! = {}
-    orderBy: [ApproachStepOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ApproachStepWhereUniqueInput
-  ): [ApproachStep!]
+  steps(where: ApproachStepWhereInput! = {}, orderBy: [ApproachStepOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ApproachStepWhereUniqueInput): [ApproachStep!]
   stepsCount(where: ApproachStepWhereInput! = {}): Int
   language: Language
 }
@@ -1457,13 +1428,7 @@ type Navigation {
   description: String
   image: Image
   cta: Cta
-  items(
-    where: NavigationLinkWhereInput! = {}
-    orderBy: [NavigationLinkOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationLinkWhereUniqueInput
-  ): [NavigationLink!]
+  items(where: NavigationLinkWhereInput! = {}, orderBy: [NavigationLinkOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: NavigationLinkWhereUniqueInput): [NavigationLink!]
   itemsCount(where: NavigationLinkWhereInput! = {}): Int
   language: Language
 }
@@ -1569,14 +1534,9 @@ input FooterSectionKeyCreateInput {
 
 type FooterSection {
   id: ID!
+  displayLabel: String
   title: FooterSectionKey
-  items(
-    where: NavigationLinkWhereInput! = {}
-    orderBy: [NavigationLinkOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationLinkWhereUniqueInput
-  ): [NavigationLink!]
+  items(where: NavigationLinkWhereInput! = {}, orderBy: [NavigationLinkOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: NavigationLinkWhereUniqueInput): [NavigationLink!]
   itemsCount(where: NavigationLinkWhereInput! = {}): Int
   language: Language
 }
@@ -1619,13 +1579,7 @@ input FooterSectionCreateInput {
 type Footer {
   id: ID!
   title: String
-  sections(
-    where: FooterSectionWhereInput! = {}
-    orderBy: [FooterSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterSectionWhereUniqueInput
-  ): [FooterSection!]
+  sections(where: FooterSectionWhereInput! = {}, orderBy: [FooterSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FooterSectionWhereUniqueInput): [FooterSection!]
   sectionsCount(where: FooterSectionWhereInput! = {}): Int
   language: Language
 }
@@ -1818,13 +1772,7 @@ type Analytic {
   subheading: String
   stats: AnalyticsStat
   tableHeadings: [String!]
-  summary(
-    where: AnalyticsSummaryItemWhereInput! = {}
-    orderBy: [AnalyticsSummaryItemOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AnalyticsSummaryItemWhereUniqueInput
-  ): [AnalyticsSummaryItem!]
+  summary(where: AnalyticsSummaryItemWhereInput! = {}, orderBy: [AnalyticsSummaryItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AnalyticsSummaryItemWhereUniqueInput): [AnalyticsSummaryItem!]
   summaryCount(where: AnalyticsSummaryItemWhereInput! = {}): Int
   language: Language
 }
@@ -1957,13 +1905,7 @@ type About {
   heading: String
   intro: String
   valuesTitle: String
-  values(
-    where: ValueWhereInput! = {}
-    orderBy: [ValueOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ValueWhereUniqueInput
-  ): [Value!]
+  values(where: ValueWhereInput! = {}, orderBy: [ValueOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ValueWhereUniqueInput): [Value!]
   valuesCount(where: ValueWhereInput! = {}): Int
   closing: String
   language: Language
@@ -2088,21 +2030,9 @@ type CtaSection {
   id: ID!
   title: String
   description: String
-  ctas(
-    where: CtaWhereInput! = {}
-    orderBy: [CtaOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaWhereUniqueInput
-  ): [Cta!]
+  ctas(where: CtaWhereInput! = {}, orderBy: [CtaOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CtaWhereUniqueInput): [Cta!]
   ctasCount(where: CtaWhereInput! = {}): Int
-  background(
-    where: ImageWhereInput! = {}
-    orderBy: [ImageOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ImageWhereUniqueInput
-  ): [Image!]
+  background(where: ImageWhereInput! = {}, orderBy: [ImageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ImageWhereUniqueInput): [Image!]
   backgroundCount(where: ImageWhereInput! = {}): Int
   language: Language
 }
@@ -2171,109 +2101,31 @@ input CtaRelateToManyForCreateInput {
 type Section {
   id: ID!
   type: String
-  contentHero(
-    where: HeroWhereInput! = {}
-    orderBy: [HeroOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: HeroWhereUniqueInput
-  ): [Hero!]
+  contentHero(where: HeroWhereInput! = {}, orderBy: [HeroOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeroWhereUniqueInput): [Hero!]
   contentHeroCount(where: HeroWhereInput! = {}): Int
-  contentBenefits(
-    where: BenefitSectionWhereInput! = {}
-    orderBy: [BenefitSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitSectionWhereUniqueInput
-  ): [BenefitSection!]
+  contentBenefits(where: BenefitSectionWhereInput! = {}, orderBy: [BenefitSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: BenefitSectionWhereUniqueInput): [BenefitSection!]
   contentBenefitsCount(where: BenefitSectionWhereInput! = {}): Int
-  contentFeatures(
-    where: FeatureWhereInput! = {}
-    orderBy: [FeatureOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FeatureWhereUniqueInput
-  ): [Feature!]
+  contentFeatures(where: FeatureWhereInput! = {}, orderBy: [FeatureOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FeatureWhereUniqueInput): [Feature!]
   contentFeaturesCount(where: FeatureWhereInput! = {}): Int
-  contentFaqSection(
-    where: FaqSectionWhereInput! = {}
-    orderBy: [FaqSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FaqSectionWhereUniqueInput
-  ): [FaqSection!]
+  contentFaqSection(where: FaqSectionWhereInput! = {}, orderBy: [FaqSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FaqSectionWhereUniqueInput): [FaqSection!]
   contentFaqSectionCount(where: FaqSectionWhereInput! = {}): Int
-  contentTestimonials(
-    where: TestimonialSectionWhereInput! = {}
-    orderBy: [TestimonialSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialSectionWhereUniqueInput
-  ): [TestimonialSection!]
+  contentTestimonials(where: TestimonialSectionWhereInput! = {}, orderBy: [TestimonialSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TestimonialSectionWhereUniqueInput): [TestimonialSection!]
   contentTestimonialsCount(where: TestimonialSectionWhereInput! = {}): Int
-  contentCertifications(
-    where: CertificationSectionWhereInput! = {}
-    orderBy: [CertificationSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationSectionWhereUniqueInput
-  ): [CertificationSection!]
+  contentCertifications(where: CertificationSectionWhereInput! = {}, orderBy: [CertificationSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CertificationSectionWhereUniqueInput): [CertificationSection!]
   contentCertificationsCount(where: CertificationSectionWhereInput! = {}): Int
-  contentApproach(
-    where: ApproachWhereInput! = {}
-    orderBy: [ApproachOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ApproachWhereUniqueInput
-  ): [Approach!]
+  contentApproach(where: ApproachWhereInput! = {}, orderBy: [ApproachOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ApproachWhereUniqueInput): [Approach!]
   contentApproachCount(where: ApproachWhereInput! = {}): Int
-  contentAbout(
-    where: AboutWhereInput! = {}
-    orderBy: [AboutOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AboutWhereUniqueInput
-  ): [About!]
+  contentAbout(where: AboutWhereInput! = {}, orderBy: [AboutOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AboutWhereUniqueInput): [About!]
   contentAboutCount(where: AboutWhereInput! = {}): Int
-  contentAnalytics(
-    where: AnalyticWhereInput! = {}
-    orderBy: [AnalyticOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AnalyticWhereUniqueInput
-  ): [Analytic!]
+  contentAnalytics(where: AnalyticWhereInput! = {}, orderBy: [AnalyticOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AnalyticWhereUniqueInput): [Analytic!]
   contentAnalyticsCount(where: AnalyticWhereInput! = {}): Int
-  contentNavigation(
-    where: NavigationWhereInput! = {}
-    orderBy: [NavigationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationWhereUniqueInput
-  ): [Navigation!]
+  contentNavigation(where: NavigationWhereInput! = {}, orderBy: [NavigationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: NavigationWhereUniqueInput): [Navigation!]
   contentNavigationCount(where: NavigationWhereInput! = {}): Int
-  contentFooter(
-    where: FooterWhereInput! = {}
-    orderBy: [FooterOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterWhereUniqueInput
-  ): [Footer!]
+  contentFooter(where: FooterWhereInput! = {}, orderBy: [FooterOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FooterWhereUniqueInput): [Footer!]
   contentFooterCount(where: FooterWhereInput! = {}): Int
-  contentCta(
-    where: CtaSectionWhereInput! = {}
-    orderBy: [CtaSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaSectionWhereUniqueInput
-  ): [CtaSection!]
+  contentCta(where: CtaSectionWhereInput! = {}, orderBy: [CtaSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CtaSectionWhereUniqueInput): [CtaSection!]
   contentCtaCount(where: CtaSectionWhereInput! = {}): Int
-  contentMap(
-    where: MapWhereInput! = {}
-    orderBy: [MapOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: MapWhereUniqueInput
-  ): [Map!]
+  contentMap(where: MapWhereInput! = {}, orderBy: [MapOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MapWhereUniqueInput): [Map!]
   contentMapCount(where: MapWhereInput! = {}): Int
 }
 
@@ -2653,13 +2505,1170 @@ input SectionRelateToOneForCreateInput {
   connect: SectionWhereUniqueInput
 }
 
+type ResumeLocation {
+  id: ID!
+  address: String
+  postalCode: String
+  city: String
+  countryCode: String
+  region: String
+  language: Language
+}
+
+input ResumeLocationWhereUniqueInput {
+  id: ID
+}
+
+input ResumeLocationWhereInput {
+  AND: [ResumeLocationWhereInput!]
+  OR: [ResumeLocationWhereInput!]
+  NOT: [ResumeLocationWhereInput!]
+  id: IDFilter
+  address: StringFilter
+  postalCode: StringFilter
+  city: StringFilter
+  countryCode: StringFilter
+  region: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeLocationOrderByInput {
+  id: OrderDirection
+  address: OrderDirection
+  postalCode: OrderDirection
+  city: OrderDirection
+  countryCode: OrderDirection
+  region: OrderDirection
+}
+
+input ResumeLocationUpdateInput {
+  address: String
+  postalCode: String
+  city: String
+  countryCode: String
+  region: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeLocationUpdateArgs {
+  where: ResumeLocationWhereUniqueInput!
+  data: ResumeLocationUpdateInput!
+}
+
+input ResumeLocationCreateInput {
+  address: String
+  postalCode: String
+  city: String
+  countryCode: String
+  region: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeProfile {
+  id: ID!
+  network: String
+  username: String
+  url: String
+  language: Language
+}
+
+input ResumeProfileWhereUniqueInput {
+  id: ID
+}
+
+input ResumeProfileWhereInput {
+  AND: [ResumeProfileWhereInput!]
+  OR: [ResumeProfileWhereInput!]
+  NOT: [ResumeProfileWhereInput!]
+  id: IDFilter
+  network: StringFilter
+  username: StringFilter
+  url: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeProfileOrderByInput {
+  id: OrderDirection
+  network: OrderDirection
+  username: OrderDirection
+  url: OrderDirection
+}
+
+input ResumeProfileUpdateInput {
+  network: String
+  username: String
+  url: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeProfileUpdateArgs {
+  where: ResumeProfileWhereUniqueInput!
+  data: ResumeProfileUpdateInput!
+}
+
+input ResumeProfileCreateInput {
+  network: String
+  username: String
+  url: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeBasicInformation {
+  id: ID!
+  name: String
+  label: String
+  image: Image
+  email: String
+  phone: String
+  url: String
+  summary: String
+  location: ResumeLocation
+  profiles(where: ResumeProfileWhereInput! = {}, orderBy: [ResumeProfileOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeProfileWhereUniqueInput): [ResumeProfile!]
+  profilesCount(where: ResumeProfileWhereInput! = {}): Int
+  language: Language
+}
+
+input ResumeBasicInformationWhereUniqueInput {
+  id: ID
+}
+
+input ResumeBasicInformationWhereInput {
+  AND: [ResumeBasicInformationWhereInput!]
+  OR: [ResumeBasicInformationWhereInput!]
+  NOT: [ResumeBasicInformationWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  label: StringFilter
+  image: ImageWhereInput
+  email: StringFilter
+  phone: StringFilter
+  url: StringFilter
+  summary: StringFilter
+  location: ResumeLocationWhereInput
+  profiles: ResumeProfileManyRelationFilter
+  language: LanguageWhereInput
+}
+
+input ResumeProfileManyRelationFilter {
+  every: ResumeProfileWhereInput
+  some: ResumeProfileWhereInput
+  none: ResumeProfileWhereInput
+}
+
+input ResumeBasicInformationOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  label: OrderDirection
+  email: OrderDirection
+  phone: OrderDirection
+  url: OrderDirection
+  summary: OrderDirection
+}
+
+input ResumeBasicInformationUpdateInput {
+  name: String
+  label: String
+  image: ImageRelateToOneForUpdateInput
+  email: String
+  phone: String
+  url: String
+  summary: String
+  location: ResumeLocationRelateToOneForUpdateInput
+  profiles: ResumeProfileRelateToManyForUpdateInput
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeLocationRelateToOneForUpdateInput {
+  create: ResumeLocationCreateInput
+  connect: ResumeLocationWhereUniqueInput
+  disconnect: Boolean
+}
+
+input ResumeProfileRelateToManyForUpdateInput {
+  disconnect: [ResumeProfileWhereUniqueInput!]
+  set: [ResumeProfileWhereUniqueInput!]
+  create: [ResumeProfileCreateInput!]
+  connect: [ResumeProfileWhereUniqueInput!]
+}
+
+input ResumeBasicInformationUpdateArgs {
+  where: ResumeBasicInformationWhereUniqueInput!
+  data: ResumeBasicInformationUpdateInput!
+}
+
+input ResumeBasicInformationCreateInput {
+  name: String
+  label: String
+  image: ImageRelateToOneForCreateInput
+  email: String
+  phone: String
+  url: String
+  summary: String
+  location: ResumeLocationRelateToOneForCreateInput
+  profiles: ResumeProfileRelateToManyForCreateInput
+  language: LanguageRelateToOneForCreateInput
+}
+
+input ResumeLocationRelateToOneForCreateInput {
+  create: ResumeLocationCreateInput
+  connect: ResumeLocationWhereUniqueInput
+}
+
+input ResumeProfileRelateToManyForCreateInput {
+  create: [ResumeProfileCreateInput!]
+  connect: [ResumeProfileWhereUniqueInput!]
+}
+
+type ResumeHighlight {
+  id: ID!
+  value: String
+}
+
+input ResumeHighlightWhereUniqueInput {
+  id: ID
+}
+
+input ResumeHighlightWhereInput {
+  AND: [ResumeHighlightWhereInput!]
+  OR: [ResumeHighlightWhereInput!]
+  NOT: [ResumeHighlightWhereInput!]
+  id: IDFilter
+  value: StringFilter
+}
+
+input ResumeHighlightOrderByInput {
+  id: OrderDirection
+  value: OrderDirection
+}
+
+input ResumeHighlightUpdateInput {
+  value: String
+}
+
+input ResumeHighlightUpdateArgs {
+  where: ResumeHighlightWhereUniqueInput!
+  data: ResumeHighlightUpdateInput!
+}
+
+input ResumeHighlightCreateInput {
+  value: String
+}
+
+type ResumeWork {
+  id: ID!
+  name: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights(where: ResumeHighlightWhereInput! = {}, orderBy: [ResumeHighlightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeHighlightWhereUniqueInput): [ResumeHighlight!]
+  highlightsCount(where: ResumeHighlightWhereInput! = {}): Int
+  image: Image
+  language: Language
+}
+
+input ResumeWorkWhereUniqueInput {
+  id: ID
+}
+
+input ResumeWorkWhereInput {
+  AND: [ResumeWorkWhereInput!]
+  OR: [ResumeWorkWhereInput!]
+  NOT: [ResumeWorkWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  position: StringFilter
+  url: StringFilter
+  startDate: DateTimeFilter
+  endDate: DateTimeNullableFilter
+  summary: StringFilter
+  highlights: ResumeHighlightManyRelationFilter
+  image: ImageWhereInput
+  language: LanguageWhereInput
+}
+
+input DateTimeFilter {
+  equals: DateTime
+  in: [DateTime!]
+  notIn: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  gt: DateTime
+  gte: DateTime
+  not: DateTimeFilter
+}
+
+input ResumeHighlightManyRelationFilter {
+  every: ResumeHighlightWhereInput
+  some: ResumeHighlightWhereInput
+  none: ResumeHighlightWhereInput
+}
+
+input ResumeWorkOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  position: OrderDirection
+  url: OrderDirection
+  startDate: OrderDirection
+  endDate: OrderDirection
+  summary: OrderDirection
+}
+
+input ResumeWorkUpdateInput {
+  name: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights: ResumeHighlightRelateToManyForUpdateInput
+  image: ImageRelateToOneForUpdateInput
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeHighlightRelateToManyForUpdateInput {
+  disconnect: [ResumeHighlightWhereUniqueInput!]
+  set: [ResumeHighlightWhereUniqueInput!]
+  create: [ResumeHighlightCreateInput!]
+  connect: [ResumeHighlightWhereUniqueInput!]
+}
+
+input ResumeWorkUpdateArgs {
+  where: ResumeWorkWhereUniqueInput!
+  data: ResumeWorkUpdateInput!
+}
+
+input ResumeWorkCreateInput {
+  name: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights: ResumeHighlightRelateToManyForCreateInput
+  image: ImageRelateToOneForCreateInput
+  language: LanguageRelateToOneForCreateInput
+}
+
+input ResumeHighlightRelateToManyForCreateInput {
+  create: [ResumeHighlightCreateInput!]
+  connect: [ResumeHighlightWhereUniqueInput!]
+}
+
+type ResumeVolunteer {
+  id: ID!
+  organization: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights: String
+  language: Language
+}
+
+input ResumeVolunteerWhereUniqueInput {
+  id: ID
+}
+
+input ResumeVolunteerWhereInput {
+  AND: [ResumeVolunteerWhereInput!]
+  OR: [ResumeVolunteerWhereInput!]
+  NOT: [ResumeVolunteerWhereInput!]
+  id: IDFilter
+  organization: StringFilter
+  position: StringFilter
+  url: StringFilter
+  startDate: DateTimeNullableFilter
+  endDate: DateTimeNullableFilter
+  summary: StringFilter
+  highlights: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeVolunteerOrderByInput {
+  id: OrderDirection
+  organization: OrderDirection
+  position: OrderDirection
+  url: OrderDirection
+  startDate: OrderDirection
+  endDate: OrderDirection
+  summary: OrderDirection
+  highlights: OrderDirection
+}
+
+input ResumeVolunteerUpdateInput {
+  organization: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeVolunteerUpdateArgs {
+  where: ResumeVolunteerWhereUniqueInput!
+  data: ResumeVolunteerUpdateInput!
+}
+
+input ResumeVolunteerCreateInput {
+  organization: String
+  position: String
+  url: String
+  startDate: DateTime
+  endDate: DateTime
+  summary: String
+  highlights: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeEducation {
+  id: ID!
+  institution: String
+  url: String
+  area: String
+  studyType: String
+  startDate: DateTime
+  endDate: DateTime
+  score: String
+  courses: String
+  language: Language
+}
+
+input ResumeEducationWhereUniqueInput {
+  id: ID
+}
+
+input ResumeEducationWhereInput {
+  AND: [ResumeEducationWhereInput!]
+  OR: [ResumeEducationWhereInput!]
+  NOT: [ResumeEducationWhereInput!]
+  id: IDFilter
+  institution: StringFilter
+  url: StringFilter
+  area: StringFilter
+  studyType: StringFilter
+  startDate: DateTimeNullableFilter
+  endDate: DateTimeNullableFilter
+  score: StringFilter
+  courses: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeEducationOrderByInput {
+  id: OrderDirection
+  institution: OrderDirection
+  url: OrderDirection
+  area: OrderDirection
+  studyType: OrderDirection
+  startDate: OrderDirection
+  endDate: OrderDirection
+  score: OrderDirection
+  courses: OrderDirection
+}
+
+input ResumeEducationUpdateInput {
+  institution: String
+  url: String
+  area: String
+  studyType: String
+  startDate: DateTime
+  endDate: DateTime
+  score: String
+  courses: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeEducationUpdateArgs {
+  where: ResumeEducationWhereUniqueInput!
+  data: ResumeEducationUpdateInput!
+}
+
+input ResumeEducationCreateInput {
+  institution: String
+  url: String
+  area: String
+  studyType: String
+  startDate: DateTime
+  endDate: DateTime
+  score: String
+  courses: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeAward {
+  id: ID!
+  title: String
+  date: DateTime
+  awarder: String
+  summary: String
+  url: String
+  language: Language
+}
+
+input ResumeAwardWhereUniqueInput {
+  id: ID
+}
+
+input ResumeAwardWhereInput {
+  AND: [ResumeAwardWhereInput!]
+  OR: [ResumeAwardWhereInput!]
+  NOT: [ResumeAwardWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  date: DateTimeNullableFilter
+  awarder: StringFilter
+  summary: StringFilter
+  url: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeAwardOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  date: OrderDirection
+  awarder: OrderDirection
+  summary: OrderDirection
+  url: OrderDirection
+}
+
+input ResumeAwardUpdateInput {
+  title: String
+  date: DateTime
+  awarder: String
+  summary: String
+  url: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeAwardUpdateArgs {
+  where: ResumeAwardWhereUniqueInput!
+  data: ResumeAwardUpdateInput!
+}
+
+input ResumeAwardCreateInput {
+  title: String
+  date: DateTime
+  awarder: String
+  summary: String
+  url: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumePublication {
+  id: ID!
+  name: String
+  publisher: String
+  releaseDate: DateTime
+  url: String
+  summary: String
+  language: Language
+}
+
+input ResumePublicationWhereUniqueInput {
+  id: ID
+}
+
+input ResumePublicationWhereInput {
+  AND: [ResumePublicationWhereInput!]
+  OR: [ResumePublicationWhereInput!]
+  NOT: [ResumePublicationWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  publisher: StringFilter
+  releaseDate: DateTimeNullableFilter
+  url: StringFilter
+  summary: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumePublicationOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  publisher: OrderDirection
+  releaseDate: OrderDirection
+  url: OrderDirection
+  summary: OrderDirection
+}
+
+input ResumePublicationUpdateInput {
+  name: String
+  publisher: String
+  releaseDate: DateTime
+  url: String
+  summary: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumePublicationUpdateArgs {
+  where: ResumePublicationWhereUniqueInput!
+  data: ResumePublicationUpdateInput!
+}
+
+input ResumePublicationCreateInput {
+  name: String
+  publisher: String
+  releaseDate: DateTime
+  url: String
+  summary: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeSkill {
+  id: ID!
+  name: String
+  level: String
+  keywords: String
+  language: Language
+}
+
+input ResumeSkillWhereUniqueInput {
+  id: ID
+}
+
+input ResumeSkillWhereInput {
+  AND: [ResumeSkillWhereInput!]
+  OR: [ResumeSkillWhereInput!]
+  NOT: [ResumeSkillWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  level: StringNullableFilter
+  keywords: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeSkillOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  level: OrderDirection
+  keywords: OrderDirection
+}
+
+input ResumeSkillUpdateInput {
+  name: String
+  level: String
+  keywords: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeSkillUpdateArgs {
+  where: ResumeSkillWhereUniqueInput!
+  data: ResumeSkillUpdateInput!
+}
+
+input ResumeSkillCreateInput {
+  name: String
+  level: String
+  keywords: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeLanguage {
+  id: ID!
+  language: String
+  fluency: String
+  uiLanguage: Language
+}
+
+input ResumeLanguageWhereUniqueInput {
+  id: ID
+}
+
+input ResumeLanguageWhereInput {
+  AND: [ResumeLanguageWhereInput!]
+  OR: [ResumeLanguageWhereInput!]
+  NOT: [ResumeLanguageWhereInput!]
+  id: IDFilter
+  language: StringFilter
+  fluency: StringNullableFilter
+  uiLanguage: LanguageWhereInput
+}
+
+input ResumeLanguageOrderByInput {
+  id: OrderDirection
+  language: OrderDirection
+  fluency: OrderDirection
+}
+
+input ResumeLanguageUpdateInput {
+  language: String
+  fluency: String
+  uiLanguage: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeLanguageUpdateArgs {
+  where: ResumeLanguageWhereUniqueInput!
+  data: ResumeLanguageUpdateInput!
+}
+
+input ResumeLanguageCreateInput {
+  language: String
+  fluency: String
+  uiLanguage: LanguageRelateToOneForCreateInput
+}
+
+type ResumeInterest {
+  id: ID!
+  name: String
+  keywords: String
+  language: Language
+}
+
+input ResumeInterestWhereUniqueInput {
+  id: ID
+}
+
+input ResumeInterestWhereInput {
+  AND: [ResumeInterestWhereInput!]
+  OR: [ResumeInterestWhereInput!]
+  NOT: [ResumeInterestWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  keywords: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeInterestOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  keywords: OrderDirection
+}
+
+input ResumeInterestUpdateInput {
+  name: String
+  keywords: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeInterestUpdateArgs {
+  where: ResumeInterestWhereUniqueInput!
+  data: ResumeInterestUpdateInput!
+}
+
+input ResumeInterestCreateInput {
+  name: String
+  keywords: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeReference {
+  id: ID!
+  name: String
+  reference: String
+  language: Language
+}
+
+input ResumeReferenceWhereUniqueInput {
+  id: ID
+}
+
+input ResumeReferenceWhereInput {
+  AND: [ResumeReferenceWhereInput!]
+  OR: [ResumeReferenceWhereInput!]
+  NOT: [ResumeReferenceWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  reference: StringFilter
+  language: LanguageWhereInput
+}
+
+input ResumeReferenceOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  reference: OrderDirection
+}
+
+input ResumeReferenceUpdateInput {
+  name: String
+  reference: String
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeReferenceUpdateArgs {
+  where: ResumeReferenceWhereUniqueInput!
+  data: ResumeReferenceUpdateInput!
+}
+
+input ResumeReferenceCreateInput {
+  name: String
+  reference: String
+  language: LanguageRelateToOneForCreateInput
+}
+
+type ResumeProject {
+  id: ID!
+  name: String
+  startDate: DateTime
+  endDate: DateTime
+  description: String
+  highlights: String
+  url: String
+  image: Image
+  language: Language
+}
+
+input ResumeProjectWhereUniqueInput {
+  id: ID
+}
+
+input ResumeProjectWhereInput {
+  AND: [ResumeProjectWhereInput!]
+  OR: [ResumeProjectWhereInput!]
+  NOT: [ResumeProjectWhereInput!]
+  id: IDFilter
+  name: StringFilter
+  startDate: DateTimeNullableFilter
+  endDate: DateTimeNullableFilter
+  description: StringFilter
+  highlights: StringFilter
+  url: StringFilter
+  image: ImageWhereInput
+  language: LanguageWhereInput
+}
+
+input ResumeProjectOrderByInput {
+  id: OrderDirection
+  name: OrderDirection
+  startDate: OrderDirection
+  endDate: OrderDirection
+  description: OrderDirection
+  highlights: OrderDirection
+  url: OrderDirection
+}
+
+input ResumeProjectUpdateInput {
+  name: String
+  startDate: DateTime
+  endDate: DateTime
+  description: String
+  highlights: String
+  url: String
+  image: ImageRelateToOneForUpdateInput
+  language: LanguageRelateToOneForUpdateInput
+}
+
+input ResumeProjectUpdateArgs {
+  where: ResumeProjectWhereUniqueInput!
+  data: ResumeProjectUpdateInput!
+}
+
+input ResumeProjectCreateInput {
+  name: String
+  startDate: DateTime
+  endDate: DateTime
+  description: String
+  highlights: String
+  url: String
+  image: ImageRelateToOneForCreateInput
+  language: LanguageRelateToOneForCreateInput
+}
+
+type Resume {
+  id: ID!
+  title: String
+  basicInformation: ResumeBasicInformation
+  work(where: ResumeWorkWhereInput! = {}, orderBy: [ResumeWorkOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeWorkWhereUniqueInput): [ResumeWork!]
+  workCount(where: ResumeWorkWhereInput! = {}): Int
+  volunteer(where: ResumeVolunteerWhereInput! = {}, orderBy: [ResumeVolunteerOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeVolunteerWhereUniqueInput): [ResumeVolunteer!]
+  volunteerCount(where: ResumeVolunteerWhereInput! = {}): Int
+  education(where: ResumeEducationWhereInput! = {}, orderBy: [ResumeEducationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeEducationWhereUniqueInput): [ResumeEducation!]
+  educationCount(where: ResumeEducationWhereInput! = {}): Int
+  awards(where: ResumeAwardWhereInput! = {}, orderBy: [ResumeAwardOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeAwardWhereUniqueInput): [ResumeAward!]
+  awardsCount(where: ResumeAwardWhereInput! = {}): Int
+  certificates(where: CertificationWhereInput! = {}, orderBy: [CertificationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CertificationWhereUniqueInput): [Certification!]
+  certificatesCount(where: CertificationWhereInput! = {}): Int
+  publications(where: ResumePublicationWhereInput! = {}, orderBy: [ResumePublicationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumePublicationWhereUniqueInput): [ResumePublication!]
+  publicationsCount(where: ResumePublicationWhereInput! = {}): Int
+  skills(where: ResumeSkillWhereInput! = {}, orderBy: [ResumeSkillOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeSkillWhereUniqueInput): [ResumeSkill!]
+  skillsCount(where: ResumeSkillWhereInput! = {}): Int
+  resumeLanguages(where: ResumeLanguageWhereInput! = {}, orderBy: [ResumeLanguageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeLanguageWhereUniqueInput): [ResumeLanguage!]
+  resumeLanguagesCount(where: ResumeLanguageWhereInput! = {}): Int
+  interests(where: ResumeInterestWhereInput! = {}, orderBy: [ResumeInterestOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeInterestWhereUniqueInput): [ResumeInterest!]
+  interestsCount(where: ResumeInterestWhereInput! = {}): Int
+  references(where: ResumeReferenceWhereInput! = {}, orderBy: [ResumeReferenceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeReferenceWhereUniqueInput): [ResumeReference!]
+  referencesCount(where: ResumeReferenceWhereInput! = {}): Int
+  projects(where: ResumeProjectWhereInput! = {}, orderBy: [ResumeProjectOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeProjectWhereUniqueInput): [ResumeProject!]
+  projectsCount(where: ResumeProjectWhereInput! = {}): Int
+  language: Language
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ResumeWhereUniqueInput {
+  id: ID
+}
+
+input ResumeWhereInput {
+  AND: [ResumeWhereInput!]
+  OR: [ResumeWhereInput!]
+  NOT: [ResumeWhereInput!]
+  id: IDFilter
+  title: StringFilter
+  basicInformation: ResumeBasicInformationWhereInput
+  work: ResumeWorkManyRelationFilter
+  volunteer: ResumeVolunteerManyRelationFilter
+  education: ResumeEducationManyRelationFilter
+  awards: ResumeAwardManyRelationFilter
+  certificates: CertificationManyRelationFilter
+  publications: ResumePublicationManyRelationFilter
+  skills: ResumeSkillManyRelationFilter
+  resumeLanguages: ResumeLanguageManyRelationFilter
+  interests: ResumeInterestManyRelationFilter
+  references: ResumeReferenceManyRelationFilter
+  projects: ResumeProjectManyRelationFilter
+  language: LanguageWhereInput
+  createdAt: DateTimeNullableFilter
+  updatedAt: DateTimeNullableFilter
+}
+
+input ResumeWorkManyRelationFilter {
+  every: ResumeWorkWhereInput
+  some: ResumeWorkWhereInput
+  none: ResumeWorkWhereInput
+}
+
+input ResumeVolunteerManyRelationFilter {
+  every: ResumeVolunteerWhereInput
+  some: ResumeVolunteerWhereInput
+  none: ResumeVolunteerWhereInput
+}
+
+input ResumeEducationManyRelationFilter {
+  every: ResumeEducationWhereInput
+  some: ResumeEducationWhereInput
+  none: ResumeEducationWhereInput
+}
+
+input ResumeAwardManyRelationFilter {
+  every: ResumeAwardWhereInput
+  some: ResumeAwardWhereInput
+  none: ResumeAwardWhereInput
+}
+
+input ResumePublicationManyRelationFilter {
+  every: ResumePublicationWhereInput
+  some: ResumePublicationWhereInput
+  none: ResumePublicationWhereInput
+}
+
+input ResumeSkillManyRelationFilter {
+  every: ResumeSkillWhereInput
+  some: ResumeSkillWhereInput
+  none: ResumeSkillWhereInput
+}
+
+input ResumeLanguageManyRelationFilter {
+  every: ResumeLanguageWhereInput
+  some: ResumeLanguageWhereInput
+  none: ResumeLanguageWhereInput
+}
+
+input ResumeInterestManyRelationFilter {
+  every: ResumeInterestWhereInput
+  some: ResumeInterestWhereInput
+  none: ResumeInterestWhereInput
+}
+
+input ResumeReferenceManyRelationFilter {
+  every: ResumeReferenceWhereInput
+  some: ResumeReferenceWhereInput
+  none: ResumeReferenceWhereInput
+}
+
+input ResumeProjectManyRelationFilter {
+  every: ResumeProjectWhereInput
+  some: ResumeProjectWhereInput
+  none: ResumeProjectWhereInput
+}
+
+input ResumeOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  createdAt: OrderDirection
+  updatedAt: OrderDirection
+}
+
+input ResumeUpdateInput {
+  title: String
+  basicInformation: ResumeBasicInformationRelateToOneForUpdateInput
+  work: ResumeWorkRelateToManyForUpdateInput
+  volunteer: ResumeVolunteerRelateToManyForUpdateInput
+  education: ResumeEducationRelateToManyForUpdateInput
+  awards: ResumeAwardRelateToManyForUpdateInput
+  certificates: CertificationRelateToManyForUpdateInput
+  publications: ResumePublicationRelateToManyForUpdateInput
+  skills: ResumeSkillRelateToManyForUpdateInput
+  resumeLanguages: ResumeLanguageRelateToManyForUpdateInput
+  interests: ResumeInterestRelateToManyForUpdateInput
+  references: ResumeReferenceRelateToManyForUpdateInput
+  projects: ResumeProjectRelateToManyForUpdateInput
+  language: LanguageRelateToOneForUpdateInput
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ResumeBasicInformationRelateToOneForUpdateInput {
+  create: ResumeBasicInformationCreateInput
+  connect: ResumeBasicInformationWhereUniqueInput
+  disconnect: Boolean
+}
+
+input ResumeWorkRelateToManyForUpdateInput {
+  disconnect: [ResumeWorkWhereUniqueInput!]
+  set: [ResumeWorkWhereUniqueInput!]
+  create: [ResumeWorkCreateInput!]
+  connect: [ResumeWorkWhereUniqueInput!]
+}
+
+input ResumeVolunteerRelateToManyForUpdateInput {
+  disconnect: [ResumeVolunteerWhereUniqueInput!]
+  set: [ResumeVolunteerWhereUniqueInput!]
+  create: [ResumeVolunteerCreateInput!]
+  connect: [ResumeVolunteerWhereUniqueInput!]
+}
+
+input ResumeEducationRelateToManyForUpdateInput {
+  disconnect: [ResumeEducationWhereUniqueInput!]
+  set: [ResumeEducationWhereUniqueInput!]
+  create: [ResumeEducationCreateInput!]
+  connect: [ResumeEducationWhereUniqueInput!]
+}
+
+input ResumeAwardRelateToManyForUpdateInput {
+  disconnect: [ResumeAwardWhereUniqueInput!]
+  set: [ResumeAwardWhereUniqueInput!]
+  create: [ResumeAwardCreateInput!]
+  connect: [ResumeAwardWhereUniqueInput!]
+}
+
+input ResumePublicationRelateToManyForUpdateInput {
+  disconnect: [ResumePublicationWhereUniqueInput!]
+  set: [ResumePublicationWhereUniqueInput!]
+  create: [ResumePublicationCreateInput!]
+  connect: [ResumePublicationWhereUniqueInput!]
+}
+
+input ResumeSkillRelateToManyForUpdateInput {
+  disconnect: [ResumeSkillWhereUniqueInput!]
+  set: [ResumeSkillWhereUniqueInput!]
+  create: [ResumeSkillCreateInput!]
+  connect: [ResumeSkillWhereUniqueInput!]
+}
+
+input ResumeLanguageRelateToManyForUpdateInput {
+  disconnect: [ResumeLanguageWhereUniqueInput!]
+  set: [ResumeLanguageWhereUniqueInput!]
+  create: [ResumeLanguageCreateInput!]
+  connect: [ResumeLanguageWhereUniqueInput!]
+}
+
+input ResumeInterestRelateToManyForUpdateInput {
+  disconnect: [ResumeInterestWhereUniqueInput!]
+  set: [ResumeInterestWhereUniqueInput!]
+  create: [ResumeInterestCreateInput!]
+  connect: [ResumeInterestWhereUniqueInput!]
+}
+
+input ResumeReferenceRelateToManyForUpdateInput {
+  disconnect: [ResumeReferenceWhereUniqueInput!]
+  set: [ResumeReferenceWhereUniqueInput!]
+  create: [ResumeReferenceCreateInput!]
+  connect: [ResumeReferenceWhereUniqueInput!]
+}
+
+input ResumeProjectRelateToManyForUpdateInput {
+  disconnect: [ResumeProjectWhereUniqueInput!]
+  set: [ResumeProjectWhereUniqueInput!]
+  create: [ResumeProjectCreateInput!]
+  connect: [ResumeProjectWhereUniqueInput!]
+}
+
+input ResumeUpdateArgs {
+  where: ResumeWhereUniqueInput!
+  data: ResumeUpdateInput!
+}
+
+input ResumeCreateInput {
+  title: String
+  basicInformation: ResumeBasicInformationRelateToOneForCreateInput
+  work: ResumeWorkRelateToManyForCreateInput
+  volunteer: ResumeVolunteerRelateToManyForCreateInput
+  education: ResumeEducationRelateToManyForCreateInput
+  awards: ResumeAwardRelateToManyForCreateInput
+  certificates: CertificationRelateToManyForCreateInput
+  publications: ResumePublicationRelateToManyForCreateInput
+  skills: ResumeSkillRelateToManyForCreateInput
+  resumeLanguages: ResumeLanguageRelateToManyForCreateInput
+  interests: ResumeInterestRelateToManyForCreateInput
+  references: ResumeReferenceRelateToManyForCreateInput
+  projects: ResumeProjectRelateToManyForCreateInput
+  language: LanguageRelateToOneForCreateInput
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input ResumeBasicInformationRelateToOneForCreateInput {
+  create: ResumeBasicInformationCreateInput
+  connect: ResumeBasicInformationWhereUniqueInput
+}
+
+input ResumeWorkRelateToManyForCreateInput {
+  create: [ResumeWorkCreateInput!]
+  connect: [ResumeWorkWhereUniqueInput!]
+}
+
+input ResumeVolunteerRelateToManyForCreateInput {
+  create: [ResumeVolunteerCreateInput!]
+  connect: [ResumeVolunteerWhereUniqueInput!]
+}
+
+input ResumeEducationRelateToManyForCreateInput {
+  create: [ResumeEducationCreateInput!]
+  connect: [ResumeEducationWhereUniqueInput!]
+}
+
+input ResumeAwardRelateToManyForCreateInput {
+  create: [ResumeAwardCreateInput!]
+  connect: [ResumeAwardWhereUniqueInput!]
+}
+
+input ResumePublicationRelateToManyForCreateInput {
+  create: [ResumePublicationCreateInput!]
+  connect: [ResumePublicationWhereUniqueInput!]
+}
+
+input ResumeSkillRelateToManyForCreateInput {
+  create: [ResumeSkillCreateInput!]
+  connect: [ResumeSkillWhereUniqueInput!]
+}
+
+input ResumeLanguageRelateToManyForCreateInput {
+  create: [ResumeLanguageCreateInput!]
+  connect: [ResumeLanguageWhereUniqueInput!]
+}
+
+input ResumeInterestRelateToManyForCreateInput {
+  create: [ResumeInterestCreateInput!]
+  connect: [ResumeInterestWhereUniqueInput!]
+}
+
+input ResumeReferenceRelateToManyForCreateInput {
+  create: [ResumeReferenceCreateInput!]
+  connect: [ResumeReferenceWhereUniqueInput!]
+}
+
+input ResumeProjectRelateToManyForCreateInput {
+  create: [ResumeProjectCreateInput!]
+  connect: [ResumeProjectWhereUniqueInput!]
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
-scalar JSON
-  @specifiedBy(
-    url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf"
-  )
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
 
 type Mutation {
   createUser(data: UserCreateInput!): User
@@ -2688,89 +3697,37 @@ type Mutation {
   deleteImages(where: [ImageWhereUniqueInput!]!): [Image]
   createLanguage(data: LanguageCreateInput!): Language
   createLanguages(data: [LanguageCreateInput!]!): [Language]
-  updateLanguage(
-    where: LanguageWhereUniqueInput!
-    data: LanguageUpdateInput!
-  ): Language
+  updateLanguage(where: LanguageWhereUniqueInput!, data: LanguageUpdateInput!): Language
   updateLanguages(data: [LanguageUpdateArgs!]!): [Language]
   deleteLanguage(where: LanguageWhereUniqueInput!): Language
   deleteLanguages(where: [LanguageWhereUniqueInput!]!): [Language]
   createTestimonialBadge(data: TestimonialBadgeCreateInput!): TestimonialBadge
-  createTestimonialBadges(
-    data: [TestimonialBadgeCreateInput!]!
-  ): [TestimonialBadge]
-  updateTestimonialBadge(
-    where: TestimonialBadgeWhereUniqueInput!
-    data: TestimonialBadgeUpdateInput!
-  ): TestimonialBadge
-  updateTestimonialBadges(
-    data: [TestimonialBadgeUpdateArgs!]!
-  ): [TestimonialBadge]
-  deleteTestimonialBadge(
-    where: TestimonialBadgeWhereUniqueInput!
-  ): TestimonialBadge
-  deleteTestimonialBadges(
-    where: [TestimonialBadgeWhereUniqueInput!]!
-  ): [TestimonialBadge]
+  createTestimonialBadges(data: [TestimonialBadgeCreateInput!]!): [TestimonialBadge]
+  updateTestimonialBadge(where: TestimonialBadgeWhereUniqueInput!, data: TestimonialBadgeUpdateInput!): TestimonialBadge
+  updateTestimonialBadges(data: [TestimonialBadgeUpdateArgs!]!): [TestimonialBadge]
+  deleteTestimonialBadge(where: TestimonialBadgeWhereUniqueInput!): TestimonialBadge
+  deleteTestimonialBadges(where: [TestimonialBadgeWhereUniqueInput!]!): [TestimonialBadge]
   createTestimonialItem(data: TestimonialItemCreateInput!): TestimonialItem
-  createTestimonialItems(
-    data: [TestimonialItemCreateInput!]!
-  ): [TestimonialItem]
-  updateTestimonialItem(
-    where: TestimonialItemWhereUniqueInput!
-    data: TestimonialItemUpdateInput!
-  ): TestimonialItem
+  createTestimonialItems(data: [TestimonialItemCreateInput!]!): [TestimonialItem]
+  updateTestimonialItem(where: TestimonialItemWhereUniqueInput!, data: TestimonialItemUpdateInput!): TestimonialItem
   updateTestimonialItems(data: [TestimonialItemUpdateArgs!]!): [TestimonialItem]
-  deleteTestimonialItem(
-    where: TestimonialItemWhereUniqueInput!
-  ): TestimonialItem
-  deleteTestimonialItems(
-    where: [TestimonialItemWhereUniqueInput!]!
-  ): [TestimonialItem]
-  createTestimonialSection(
-    data: TestimonialSectionCreateInput!
-  ): TestimonialSection
-  createTestimonialSections(
-    data: [TestimonialSectionCreateInput!]!
-  ): [TestimonialSection]
-  updateTestimonialSection(
-    where: TestimonialSectionWhereUniqueInput!
-    data: TestimonialSectionUpdateInput!
-  ): TestimonialSection
-  updateTestimonialSections(
-    data: [TestimonialSectionUpdateArgs!]!
-  ): [TestimonialSection]
-  deleteTestimonialSection(
-    where: TestimonialSectionWhereUniqueInput!
-  ): TestimonialSection
-  deleteTestimonialSections(
-    where: [TestimonialSectionWhereUniqueInput!]!
-  ): [TestimonialSection]
-  createHeroBannerAdditional(
-    data: HeroBannerAdditionalCreateInput!
-  ): HeroBannerAdditional
-  createHeroBannerAdditionals(
-    data: [HeroBannerAdditionalCreateInput!]!
-  ): [HeroBannerAdditional]
-  updateHeroBannerAdditional(
-    where: HeroBannerAdditionalWhereUniqueInput!
-    data: HeroBannerAdditionalUpdateInput!
-  ): HeroBannerAdditional
-  updateHeroBannerAdditionals(
-    data: [HeroBannerAdditionalUpdateArgs!]!
-  ): [HeroBannerAdditional]
-  deleteHeroBannerAdditional(
-    where: HeroBannerAdditionalWhereUniqueInput!
-  ): HeroBannerAdditional
-  deleteHeroBannerAdditionals(
-    where: [HeroBannerAdditionalWhereUniqueInput!]!
-  ): [HeroBannerAdditional]
+  deleteTestimonialItem(where: TestimonialItemWhereUniqueInput!): TestimonialItem
+  deleteTestimonialItems(where: [TestimonialItemWhereUniqueInput!]!): [TestimonialItem]
+  createTestimonialSection(data: TestimonialSectionCreateInput!): TestimonialSection
+  createTestimonialSections(data: [TestimonialSectionCreateInput!]!): [TestimonialSection]
+  updateTestimonialSection(where: TestimonialSectionWhereUniqueInput!, data: TestimonialSectionUpdateInput!): TestimonialSection
+  updateTestimonialSections(data: [TestimonialSectionUpdateArgs!]!): [TestimonialSection]
+  deleteTestimonialSection(where: TestimonialSectionWhereUniqueInput!): TestimonialSection
+  deleteTestimonialSections(where: [TestimonialSectionWhereUniqueInput!]!): [TestimonialSection]
+  createHeroBannerAdditional(data: HeroBannerAdditionalCreateInput!): HeroBannerAdditional
+  createHeroBannerAdditionals(data: [HeroBannerAdditionalCreateInput!]!): [HeroBannerAdditional]
+  updateHeroBannerAdditional(where: HeroBannerAdditionalWhereUniqueInput!, data: HeroBannerAdditionalUpdateInput!): HeroBannerAdditional
+  updateHeroBannerAdditionals(data: [HeroBannerAdditionalUpdateArgs!]!): [HeroBannerAdditional]
+  deleteHeroBannerAdditional(where: HeroBannerAdditionalWhereUniqueInput!): HeroBannerAdditional
+  deleteHeroBannerAdditionals(where: [HeroBannerAdditionalWhereUniqueInput!]!): [HeroBannerAdditional]
   createHeroBanner(data: HeroBannerCreateInput!): HeroBanner
   createHeroBanners(data: [HeroBannerCreateInput!]!): [HeroBanner]
-  updateHeroBanner(
-    where: HeroBannerWhereUniqueInput!
-    data: HeroBannerUpdateInput!
-  ): HeroBanner
+  updateHeroBanner(where: HeroBannerWhereUniqueInput!, data: HeroBannerUpdateInput!): HeroBanner
   updateHeroBanners(data: [HeroBannerUpdateArgs!]!): [HeroBanner]
   deleteHeroBanner(where: HeroBannerWhereUniqueInput!): HeroBanner
   deleteHeroBanners(where: [HeroBannerWhereUniqueInput!]!): [HeroBanner]
@@ -2782,24 +3739,16 @@ type Mutation {
   deleteHeroes(where: [HeroWhereUniqueInput!]!): [Hero]
   createBenefit(data: BenefitCreateInput!): Benefit
   createBenefits(data: [BenefitCreateInput!]!): [Benefit]
-  updateBenefit(
-    where: BenefitWhereUniqueInput!
-    data: BenefitUpdateInput!
-  ): Benefit
+  updateBenefit(where: BenefitWhereUniqueInput!, data: BenefitUpdateInput!): Benefit
   updateBenefits(data: [BenefitUpdateArgs!]!): [Benefit]
   deleteBenefit(where: BenefitWhereUniqueInput!): Benefit
   deleteBenefits(where: [BenefitWhereUniqueInput!]!): [Benefit]
   createBenefitSection(data: BenefitSectionCreateInput!): BenefitSection
   createBenefitSections(data: [BenefitSectionCreateInput!]!): [BenefitSection]
-  updateBenefitSection(
-    where: BenefitSectionWhereUniqueInput!
-    data: BenefitSectionUpdateInput!
-  ): BenefitSection
+  updateBenefitSection(where: BenefitSectionWhereUniqueInput!, data: BenefitSectionUpdateInput!): BenefitSection
   updateBenefitSections(data: [BenefitSectionUpdateArgs!]!): [BenefitSection]
   deleteBenefitSection(where: BenefitSectionWhereUniqueInput!): BenefitSection
-  deleteBenefitSections(
-    where: [BenefitSectionWhereUniqueInput!]!
-  ): [BenefitSection]
+  deleteBenefitSections(where: [BenefitSectionWhereUniqueInput!]!): [BenefitSection]
   createFaq(data: FaqCreateInput!): Faq
   createFaqs(data: [FaqCreateInput!]!): [Faq]
   updateFaq(where: FaqWhereUniqueInput!, data: FaqUpdateInput!): Faq
@@ -2808,118 +3757,64 @@ type Mutation {
   deleteFaqs(where: [FaqWhereUniqueInput!]!): [Faq]
   createFaqSection(data: FaqSectionCreateInput!): FaqSection
   createFaqSections(data: [FaqSectionCreateInput!]!): [FaqSection]
-  updateFaqSection(
-    where: FaqSectionWhereUniqueInput!
-    data: FaqSectionUpdateInput!
-  ): FaqSection
+  updateFaqSection(where: FaqSectionWhereUniqueInput!, data: FaqSectionUpdateInput!): FaqSection
   updateFaqSections(data: [FaqSectionUpdateArgs!]!): [FaqSection]
   deleteFaqSection(where: FaqSectionWhereUniqueInput!): FaqSection
   deleteFaqSections(where: [FaqSectionWhereUniqueInput!]!): [FaqSection]
   createCertification(data: CertificationCreateInput!): Certification
   createCertifications(data: [CertificationCreateInput!]!): [Certification]
-  updateCertification(
-    where: CertificationWhereUniqueInput!
-    data: CertificationUpdateInput!
-  ): Certification
+  updateCertification(where: CertificationWhereUniqueInput!, data: CertificationUpdateInput!): Certification
   updateCertifications(data: [CertificationUpdateArgs!]!): [Certification]
   deleteCertification(where: CertificationWhereUniqueInput!): Certification
-  deleteCertifications(
-    where: [CertificationWhereUniqueInput!]!
-  ): [Certification]
-  createCertificationSection(
-    data: CertificationSectionCreateInput!
-  ): CertificationSection
-  createCertificationSections(
-    data: [CertificationSectionCreateInput!]!
-  ): [CertificationSection]
-  updateCertificationSection(
-    where: CertificationSectionWhereUniqueInput!
-    data: CertificationSectionUpdateInput!
-  ): CertificationSection
-  updateCertificationSections(
-    data: [CertificationSectionUpdateArgs!]!
-  ): [CertificationSection]
-  deleteCertificationSection(
-    where: CertificationSectionWhereUniqueInput!
-  ): CertificationSection
-  deleteCertificationSections(
-    where: [CertificationSectionWhereUniqueInput!]!
-  ): [CertificationSection]
+  deleteCertifications(where: [CertificationWhereUniqueInput!]!): [Certification]
+  createCertificationSection(data: CertificationSectionCreateInput!): CertificationSection
+  createCertificationSections(data: [CertificationSectionCreateInput!]!): [CertificationSection]
+  updateCertificationSection(where: CertificationSectionWhereUniqueInput!, data: CertificationSectionUpdateInput!): CertificationSection
+  updateCertificationSections(data: [CertificationSectionUpdateArgs!]!): [CertificationSection]
+  deleteCertificationSection(where: CertificationSectionWhereUniqueInput!): CertificationSection
+  deleteCertificationSections(where: [CertificationSectionWhereUniqueInput!]!): [CertificationSection]
   createFeature(data: FeatureCreateInput!): Feature
   createFeatures(data: [FeatureCreateInput!]!): [Feature]
-  updateFeature(
-    where: FeatureWhereUniqueInput!
-    data: FeatureUpdateInput!
-  ): Feature
+  updateFeature(where: FeatureWhereUniqueInput!, data: FeatureUpdateInput!): Feature
   updateFeatures(data: [FeatureUpdateArgs!]!): [Feature]
   deleteFeature(where: FeatureWhereUniqueInput!): Feature
   deleteFeatures(where: [FeatureWhereUniqueInput!]!): [Feature]
   createApproachStep(data: ApproachStepCreateInput!): ApproachStep
   createApproachSteps(data: [ApproachStepCreateInput!]!): [ApproachStep]
-  updateApproachStep(
-    where: ApproachStepWhereUniqueInput!
-    data: ApproachStepUpdateInput!
-  ): ApproachStep
+  updateApproachStep(where: ApproachStepWhereUniqueInput!, data: ApproachStepUpdateInput!): ApproachStep
   updateApproachSteps(data: [ApproachStepUpdateArgs!]!): [ApproachStep]
   deleteApproachStep(where: ApproachStepWhereUniqueInput!): ApproachStep
   deleteApproachSteps(where: [ApproachStepWhereUniqueInput!]!): [ApproachStep]
   createApproach(data: ApproachCreateInput!): Approach
   createApproaches(data: [ApproachCreateInput!]!): [Approach]
-  updateApproach(
-    where: ApproachWhereUniqueInput!
-    data: ApproachUpdateInput!
-  ): Approach
+  updateApproach(where: ApproachWhereUniqueInput!, data: ApproachUpdateInput!): Approach
   updateApproaches(data: [ApproachUpdateArgs!]!): [Approach]
   deleteApproach(where: ApproachWhereUniqueInput!): Approach
   deleteApproaches(where: [ApproachWhereUniqueInput!]!): [Approach]
   createNavigationLink(data: NavigationLinkCreateInput!): NavigationLink
   createNavigationLinks(data: [NavigationLinkCreateInput!]!): [NavigationLink]
-  updateNavigationLink(
-    where: NavigationLinkWhereUniqueInput!
-    data: NavigationLinkUpdateInput!
-  ): NavigationLink
+  updateNavigationLink(where: NavigationLinkWhereUniqueInput!, data: NavigationLinkUpdateInput!): NavigationLink
   updateNavigationLinks(data: [NavigationLinkUpdateArgs!]!): [NavigationLink]
   deleteNavigationLink(where: NavigationLinkWhereUniqueInput!): NavigationLink
-  deleteNavigationLinks(
-    where: [NavigationLinkWhereUniqueInput!]!
-  ): [NavigationLink]
+  deleteNavigationLinks(where: [NavigationLinkWhereUniqueInput!]!): [NavigationLink]
   createNavigation(data: NavigationCreateInput!): Navigation
   createNavigations(data: [NavigationCreateInput!]!): [Navigation]
-  updateNavigation(
-    where: NavigationWhereUniqueInput!
-    data: NavigationUpdateInput!
-  ): Navigation
+  updateNavigation(where: NavigationWhereUniqueInput!, data: NavigationUpdateInput!): Navigation
   updateNavigations(data: [NavigationUpdateArgs!]!): [Navigation]
   deleteNavigation(where: NavigationWhereUniqueInput!): Navigation
   deleteNavigations(where: [NavigationWhereUniqueInput!]!): [Navigation]
   createFooterSectionKey(data: FooterSectionKeyCreateInput!): FooterSectionKey
-  createFooterSectionKeys(
-    data: [FooterSectionKeyCreateInput!]!
-  ): [FooterSectionKey]
-  updateFooterSectionKey(
-    where: FooterSectionKeyWhereUniqueInput!
-    data: FooterSectionKeyUpdateInput!
-  ): FooterSectionKey
-  updateFooterSectionKeys(
-    data: [FooterSectionKeyUpdateArgs!]!
-  ): [FooterSectionKey]
-  deleteFooterSectionKey(
-    where: FooterSectionKeyWhereUniqueInput!
-  ): FooterSectionKey
-  deleteFooterSectionKeys(
-    where: [FooterSectionKeyWhereUniqueInput!]!
-  ): [FooterSectionKey]
+  createFooterSectionKeys(data: [FooterSectionKeyCreateInput!]!): [FooterSectionKey]
+  updateFooterSectionKey(where: FooterSectionKeyWhereUniqueInput!, data: FooterSectionKeyUpdateInput!): FooterSectionKey
+  updateFooterSectionKeys(data: [FooterSectionKeyUpdateArgs!]!): [FooterSectionKey]
+  deleteFooterSectionKey(where: FooterSectionKeyWhereUniqueInput!): FooterSectionKey
+  deleteFooterSectionKeys(where: [FooterSectionKeyWhereUniqueInput!]!): [FooterSectionKey]
   createFooterSection(data: FooterSectionCreateInput!): FooterSection
   createFooterSections(data: [FooterSectionCreateInput!]!): [FooterSection]
-  updateFooterSection(
-    where: FooterSectionWhereUniqueInput!
-    data: FooterSectionUpdateInput!
-  ): FooterSection
+  updateFooterSection(where: FooterSectionWhereUniqueInput!, data: FooterSectionUpdateInput!): FooterSection
   updateFooterSections(data: [FooterSectionUpdateArgs!]!): [FooterSection]
   deleteFooterSection(where: FooterSectionWhereUniqueInput!): FooterSection
-  deleteFooterSections(
-    where: [FooterSectionWhereUniqueInput!]!
-  ): [FooterSection]
+  deleteFooterSections(where: [FooterSectionWhereUniqueInput!]!): [FooterSection]
   createFooter(data: FooterCreateInput!): Footer
   createFooters(data: [FooterCreateInput!]!): [Footer]
   updateFooter(where: FooterWhereUniqueInput!, data: FooterUpdateInput!): Footer
@@ -2928,40 +3823,19 @@ type Mutation {
   deleteFooters(where: [FooterWhereUniqueInput!]!): [Footer]
   createAnalyticsStat(data: AnalyticsStatCreateInput!): AnalyticsStat
   createAnalyticsStats(data: [AnalyticsStatCreateInput!]!): [AnalyticsStat]
-  updateAnalyticsStat(
-    where: AnalyticsStatWhereUniqueInput!
-    data: AnalyticsStatUpdateInput!
-  ): AnalyticsStat
+  updateAnalyticsStat(where: AnalyticsStatWhereUniqueInput!, data: AnalyticsStatUpdateInput!): AnalyticsStat
   updateAnalyticsStats(data: [AnalyticsStatUpdateArgs!]!): [AnalyticsStat]
   deleteAnalyticsStat(where: AnalyticsStatWhereUniqueInput!): AnalyticsStat
-  deleteAnalyticsStats(
-    where: [AnalyticsStatWhereUniqueInput!]!
-  ): [AnalyticsStat]
-  createAnalyticsSummaryItem(
-    data: AnalyticsSummaryItemCreateInput!
-  ): AnalyticsSummaryItem
-  createAnalyticsSummaryItems(
-    data: [AnalyticsSummaryItemCreateInput!]!
-  ): [AnalyticsSummaryItem]
-  updateAnalyticsSummaryItem(
-    where: AnalyticsSummaryItemWhereUniqueInput!
-    data: AnalyticsSummaryItemUpdateInput!
-  ): AnalyticsSummaryItem
-  updateAnalyticsSummaryItems(
-    data: [AnalyticsSummaryItemUpdateArgs!]!
-  ): [AnalyticsSummaryItem]
-  deleteAnalyticsSummaryItem(
-    where: AnalyticsSummaryItemWhereUniqueInput!
-  ): AnalyticsSummaryItem
-  deleteAnalyticsSummaryItems(
-    where: [AnalyticsSummaryItemWhereUniqueInput!]!
-  ): [AnalyticsSummaryItem]
+  deleteAnalyticsStats(where: [AnalyticsStatWhereUniqueInput!]!): [AnalyticsStat]
+  createAnalyticsSummaryItem(data: AnalyticsSummaryItemCreateInput!): AnalyticsSummaryItem
+  createAnalyticsSummaryItems(data: [AnalyticsSummaryItemCreateInput!]!): [AnalyticsSummaryItem]
+  updateAnalyticsSummaryItem(where: AnalyticsSummaryItemWhereUniqueInput!, data: AnalyticsSummaryItemUpdateInput!): AnalyticsSummaryItem
+  updateAnalyticsSummaryItems(data: [AnalyticsSummaryItemUpdateArgs!]!): [AnalyticsSummaryItem]
+  deleteAnalyticsSummaryItem(where: AnalyticsSummaryItemWhereUniqueInput!): AnalyticsSummaryItem
+  deleteAnalyticsSummaryItems(where: [AnalyticsSummaryItemWhereUniqueInput!]!): [AnalyticsSummaryItem]
   createAnalytic(data: AnalyticCreateInput!): Analytic
   createAnalytics(data: [AnalyticCreateInput!]!): [Analytic]
-  updateAnalytic(
-    where: AnalyticWhereUniqueInput!
-    data: AnalyticUpdateInput!
-  ): Analytic
+  updateAnalytic(where: AnalyticWhereUniqueInput!, data: AnalyticUpdateInput!): Analytic
   updateAnalytics(data: [AnalyticUpdateArgs!]!): [Analytic]
   deleteAnalytic(where: AnalyticWhereUniqueInput!): Analytic
   deleteAnalytics(where: [AnalyticWhereUniqueInput!]!): [Analytic]
@@ -2985,349 +3859,263 @@ type Mutation {
   deleteMaps(where: [MapWhereUniqueInput!]!): [Map]
   createCtaSection(data: CtaSectionCreateInput!): CtaSection
   createCtaSections(data: [CtaSectionCreateInput!]!): [CtaSection]
-  updateCtaSection(
-    where: CtaSectionWhereUniqueInput!
-    data: CtaSectionUpdateInput!
-  ): CtaSection
+  updateCtaSection(where: CtaSectionWhereUniqueInput!, data: CtaSectionUpdateInput!): CtaSection
   updateCtaSections(data: [CtaSectionUpdateArgs!]!): [CtaSection]
   deleteCtaSection(where: CtaSectionWhereUniqueInput!): CtaSection
   deleteCtaSections(where: [CtaSectionWhereUniqueInput!]!): [CtaSection]
   createSection(data: SectionCreateInput!): Section
   createSections(data: [SectionCreateInput!]!): [Section]
-  updateSection(
-    where: SectionWhereUniqueInput!
-    data: SectionUpdateInput!
-  ): Section
+  updateSection(where: SectionWhereUniqueInput!, data: SectionUpdateInput!): Section
   updateSections(data: [SectionUpdateArgs!]!): [Section]
   deleteSection(where: SectionWhereUniqueInput!): Section
   deleteSections(where: [SectionWhereUniqueInput!]!): [Section]
   createPageContent(data: PageContentCreateInput!): PageContent
   createPageContents(data: [PageContentCreateInput!]!): [PageContent]
-  updatePageContent(
-    where: PageContentWhereUniqueInput!
-    data: PageContentUpdateInput!
-  ): PageContent
+  updatePageContent(where: PageContentWhereUniqueInput!, data: PageContentUpdateInput!): PageContent
   updatePageContents(data: [PageContentUpdateArgs!]!): [PageContent]
   deletePageContent(where: PageContentWhereUniqueInput!): PageContent
   deletePageContents(where: [PageContentWhereUniqueInput!]!): [PageContent]
+  createResumeLocation(data: ResumeLocationCreateInput!): ResumeLocation
+  createResumeLocations(data: [ResumeLocationCreateInput!]!): [ResumeLocation]
+  updateResumeLocation(where: ResumeLocationWhereUniqueInput!, data: ResumeLocationUpdateInput!): ResumeLocation
+  updateResumeLocations(data: [ResumeLocationUpdateArgs!]!): [ResumeLocation]
+  deleteResumeLocation(where: ResumeLocationWhereUniqueInput!): ResumeLocation
+  deleteResumeLocations(where: [ResumeLocationWhereUniqueInput!]!): [ResumeLocation]
+  createResumeProfile(data: ResumeProfileCreateInput!): ResumeProfile
+  createResumeProfiles(data: [ResumeProfileCreateInput!]!): [ResumeProfile]
+  updateResumeProfile(where: ResumeProfileWhereUniqueInput!, data: ResumeProfileUpdateInput!): ResumeProfile
+  updateResumeProfiles(data: [ResumeProfileUpdateArgs!]!): [ResumeProfile]
+  deleteResumeProfile(where: ResumeProfileWhereUniqueInput!): ResumeProfile
+  deleteResumeProfiles(where: [ResumeProfileWhereUniqueInput!]!): [ResumeProfile]
+  createResumeBasicInformation(data: ResumeBasicInformationCreateInput!): ResumeBasicInformation
+  createResumeBasicInformations(data: [ResumeBasicInformationCreateInput!]!): [ResumeBasicInformation]
+  updateResumeBasicInformation(where: ResumeBasicInformationWhereUniqueInput!, data: ResumeBasicInformationUpdateInput!): ResumeBasicInformation
+  updateResumeBasicInformations(data: [ResumeBasicInformationUpdateArgs!]!): [ResumeBasicInformation]
+  deleteResumeBasicInformation(where: ResumeBasicInformationWhereUniqueInput!): ResumeBasicInformation
+  deleteResumeBasicInformations(where: [ResumeBasicInformationWhereUniqueInput!]!): [ResumeBasicInformation]
+  createResumeHighlight(data: ResumeHighlightCreateInput!): ResumeHighlight
+  createResumeHighlights(data: [ResumeHighlightCreateInput!]!): [ResumeHighlight]
+  updateResumeHighlight(where: ResumeHighlightWhereUniqueInput!, data: ResumeHighlightUpdateInput!): ResumeHighlight
+  updateResumeHighlights(data: [ResumeHighlightUpdateArgs!]!): [ResumeHighlight]
+  deleteResumeHighlight(where: ResumeHighlightWhereUniqueInput!): ResumeHighlight
+  deleteResumeHighlights(where: [ResumeHighlightWhereUniqueInput!]!): [ResumeHighlight]
+  createResumeWork(data: ResumeWorkCreateInput!): ResumeWork
+  createResumeWorks(data: [ResumeWorkCreateInput!]!): [ResumeWork]
+  updateResumeWork(where: ResumeWorkWhereUniqueInput!, data: ResumeWorkUpdateInput!): ResumeWork
+  updateResumeWorks(data: [ResumeWorkUpdateArgs!]!): [ResumeWork]
+  deleteResumeWork(where: ResumeWorkWhereUniqueInput!): ResumeWork
+  deleteResumeWorks(where: [ResumeWorkWhereUniqueInput!]!): [ResumeWork]
+  createResumeVolunteer(data: ResumeVolunteerCreateInput!): ResumeVolunteer
+  createResumeVolunteers(data: [ResumeVolunteerCreateInput!]!): [ResumeVolunteer]
+  updateResumeVolunteer(where: ResumeVolunteerWhereUniqueInput!, data: ResumeVolunteerUpdateInput!): ResumeVolunteer
+  updateResumeVolunteers(data: [ResumeVolunteerUpdateArgs!]!): [ResumeVolunteer]
+  deleteResumeVolunteer(where: ResumeVolunteerWhereUniqueInput!): ResumeVolunteer
+  deleteResumeVolunteers(where: [ResumeVolunteerWhereUniqueInput!]!): [ResumeVolunteer]
+  createResumeEducation(data: ResumeEducationCreateInput!): ResumeEducation
+  createResumeEducations(data: [ResumeEducationCreateInput!]!): [ResumeEducation]
+  updateResumeEducation(where: ResumeEducationWhereUniqueInput!, data: ResumeEducationUpdateInput!): ResumeEducation
+  updateResumeEducations(data: [ResumeEducationUpdateArgs!]!): [ResumeEducation]
+  deleteResumeEducation(where: ResumeEducationWhereUniqueInput!): ResumeEducation
+  deleteResumeEducations(where: [ResumeEducationWhereUniqueInput!]!): [ResumeEducation]
+  createResumeAward(data: ResumeAwardCreateInput!): ResumeAward
+  createResumeAwards(data: [ResumeAwardCreateInput!]!): [ResumeAward]
+  updateResumeAward(where: ResumeAwardWhereUniqueInput!, data: ResumeAwardUpdateInput!): ResumeAward
+  updateResumeAwards(data: [ResumeAwardUpdateArgs!]!): [ResumeAward]
+  deleteResumeAward(where: ResumeAwardWhereUniqueInput!): ResumeAward
+  deleteResumeAwards(where: [ResumeAwardWhereUniqueInput!]!): [ResumeAward]
+  createResumePublication(data: ResumePublicationCreateInput!): ResumePublication
+  createResumePublications(data: [ResumePublicationCreateInput!]!): [ResumePublication]
+  updateResumePublication(where: ResumePublicationWhereUniqueInput!, data: ResumePublicationUpdateInput!): ResumePublication
+  updateResumePublications(data: [ResumePublicationUpdateArgs!]!): [ResumePublication]
+  deleteResumePublication(where: ResumePublicationWhereUniqueInput!): ResumePublication
+  deleteResumePublications(where: [ResumePublicationWhereUniqueInput!]!): [ResumePublication]
+  createResumeSkill(data: ResumeSkillCreateInput!): ResumeSkill
+  createResumeSkills(data: [ResumeSkillCreateInput!]!): [ResumeSkill]
+  updateResumeSkill(where: ResumeSkillWhereUniqueInput!, data: ResumeSkillUpdateInput!): ResumeSkill
+  updateResumeSkills(data: [ResumeSkillUpdateArgs!]!): [ResumeSkill]
+  deleteResumeSkill(where: ResumeSkillWhereUniqueInput!): ResumeSkill
+  deleteResumeSkills(where: [ResumeSkillWhereUniqueInput!]!): [ResumeSkill]
+  createResumeLanguage(data: ResumeLanguageCreateInput!): ResumeLanguage
+  createResumeLanguages(data: [ResumeLanguageCreateInput!]!): [ResumeLanguage]
+  updateResumeLanguage(where: ResumeLanguageWhereUniqueInput!, data: ResumeLanguageUpdateInput!): ResumeLanguage
+  updateResumeLanguages(data: [ResumeLanguageUpdateArgs!]!): [ResumeLanguage]
+  deleteResumeLanguage(where: ResumeLanguageWhereUniqueInput!): ResumeLanguage
+  deleteResumeLanguages(where: [ResumeLanguageWhereUniqueInput!]!): [ResumeLanguage]
+  createResumeInterest(data: ResumeInterestCreateInput!): ResumeInterest
+  createResumeInterests(data: [ResumeInterestCreateInput!]!): [ResumeInterest]
+  updateResumeInterest(where: ResumeInterestWhereUniqueInput!, data: ResumeInterestUpdateInput!): ResumeInterest
+  updateResumeInterests(data: [ResumeInterestUpdateArgs!]!): [ResumeInterest]
+  deleteResumeInterest(where: ResumeInterestWhereUniqueInput!): ResumeInterest
+  deleteResumeInterests(where: [ResumeInterestWhereUniqueInput!]!): [ResumeInterest]
+  createResumeReference(data: ResumeReferenceCreateInput!): ResumeReference
+  createResumeReferences(data: [ResumeReferenceCreateInput!]!): [ResumeReference]
+  updateResumeReference(where: ResumeReferenceWhereUniqueInput!, data: ResumeReferenceUpdateInput!): ResumeReference
+  updateResumeReferences(data: [ResumeReferenceUpdateArgs!]!): [ResumeReference]
+  deleteResumeReference(where: ResumeReferenceWhereUniqueInput!): ResumeReference
+  deleteResumeReferences(where: [ResumeReferenceWhereUniqueInput!]!): [ResumeReference]
+  createResumeProject(data: ResumeProjectCreateInput!): ResumeProject
+  createResumeProjects(data: [ResumeProjectCreateInput!]!): [ResumeProject]
+  updateResumeProject(where: ResumeProjectWhereUniqueInput!, data: ResumeProjectUpdateInput!): ResumeProject
+  updateResumeProjects(data: [ResumeProjectUpdateArgs!]!): [ResumeProject]
+  deleteResumeProject(where: ResumeProjectWhereUniqueInput!): ResumeProject
+  deleteResumeProjects(where: [ResumeProjectWhereUniqueInput!]!): [ResumeProject]
+  createResume(data: ResumeCreateInput!): Resume
+  createResumes(data: [ResumeCreateInput!]!): [Resume]
+  updateResume(where: ResumeWhereUniqueInput!, data: ResumeUpdateInput!): Resume
+  updateResumes(data: [ResumeUpdateArgs!]!): [Resume]
+  deleteResume(where: ResumeWhereUniqueInput!): Resume
+  deleteResumes(where: [ResumeWhereUniqueInput!]!): [Resume]
   endSession: Boolean!
 }
 
 type Query {
   user(where: UserWhereUniqueInput!): User
-  users(
-    where: UserWhereInput! = {}
-    orderBy: [UserOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: UserWhereUniqueInput
-  ): [User!]
+  users(where: UserWhereInput! = {}, orderBy: [UserOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: UserWhereUniqueInput): [User!]
   usersCount(where: UserWhereInput! = {}): Int
   type(where: TypeWhereUniqueInput!): Type
-  types(
-    where: TypeWhereInput! = {}
-    orderBy: [TypeOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TypeWhereUniqueInput
-  ): [Type!]
+  types(where: TypeWhereInput! = {}, orderBy: [TypeOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TypeWhereUniqueInput): [Type!]
   typesCount(where: TypeWhereInput! = {}): Int
   cta(where: CtaWhereUniqueInput!): Cta
-  ctas(
-    where: CtaWhereInput! = {}
-    orderBy: [CtaOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaWhereUniqueInput
-  ): [Cta!]
+  ctas(where: CtaWhereInput! = {}, orderBy: [CtaOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CtaWhereUniqueInput): [Cta!]
   ctasCount(where: CtaWhereInput! = {}): Int
   image(where: ImageWhereUniqueInput!): Image
-  images(
-    where: ImageWhereInput! = {}
-    orderBy: [ImageOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ImageWhereUniqueInput
-  ): [Image!]
+  images(where: ImageWhereInput! = {}, orderBy: [ImageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ImageWhereUniqueInput): [Image!]
   imagesCount(where: ImageWhereInput! = {}): Int
   language(where: LanguageWhereUniqueInput!): Language
-  languages(
-    where: LanguageWhereInput! = {}
-    orderBy: [LanguageOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: LanguageWhereUniqueInput
-  ): [Language!]
+  languages(where: LanguageWhereInput! = {}, orderBy: [LanguageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: LanguageWhereUniqueInput): [Language!]
   languagesCount(where: LanguageWhereInput! = {}): Int
   testimonialBadge(where: TestimonialBadgeWhereUniqueInput!): TestimonialBadge
-  testimonialBadges(
-    where: TestimonialBadgeWhereInput! = {}
-    orderBy: [TestimonialBadgeOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialBadgeWhereUniqueInput
-  ): [TestimonialBadge!]
+  testimonialBadges(where: TestimonialBadgeWhereInput! = {}, orderBy: [TestimonialBadgeOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TestimonialBadgeWhereUniqueInput): [TestimonialBadge!]
   testimonialBadgesCount(where: TestimonialBadgeWhereInput! = {}): Int
   testimonialItem(where: TestimonialItemWhereUniqueInput!): TestimonialItem
-  testimonialItems(
-    where: TestimonialItemWhereInput! = {}
-    orderBy: [TestimonialItemOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialItemWhereUniqueInput
-  ): [TestimonialItem!]
+  testimonialItems(where: TestimonialItemWhereInput! = {}, orderBy: [TestimonialItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TestimonialItemWhereUniqueInput): [TestimonialItem!]
   testimonialItemsCount(where: TestimonialItemWhereInput! = {}): Int
-  testimonialSection(
-    where: TestimonialSectionWhereUniqueInput!
-  ): TestimonialSection
-  testimonialSections(
-    where: TestimonialSectionWhereInput! = {}
-    orderBy: [TestimonialSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: TestimonialSectionWhereUniqueInput
-  ): [TestimonialSection!]
+  testimonialSection(where: TestimonialSectionWhereUniqueInput!): TestimonialSection
+  testimonialSections(where: TestimonialSectionWhereInput! = {}, orderBy: [TestimonialSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: TestimonialSectionWhereUniqueInput): [TestimonialSection!]
   testimonialSectionsCount(where: TestimonialSectionWhereInput! = {}): Int
-  heroBannerAdditional(
-    where: HeroBannerAdditionalWhereUniqueInput!
-  ): HeroBannerAdditional
-  heroBannerAdditionals(
-    where: HeroBannerAdditionalWhereInput! = {}
-    orderBy: [HeroBannerAdditionalOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: HeroBannerAdditionalWhereUniqueInput
-  ): [HeroBannerAdditional!]
+  heroBannerAdditional(where: HeroBannerAdditionalWhereUniqueInput!): HeroBannerAdditional
+  heroBannerAdditionals(where: HeroBannerAdditionalWhereInput! = {}, orderBy: [HeroBannerAdditionalOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeroBannerAdditionalWhereUniqueInput): [HeroBannerAdditional!]
   heroBannerAdditionalsCount(where: HeroBannerAdditionalWhereInput! = {}): Int
   heroBanner(where: HeroBannerWhereUniqueInput!): HeroBanner
-  heroBanners(
-    where: HeroBannerWhereInput! = {}
-    orderBy: [HeroBannerOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: HeroBannerWhereUniqueInput
-  ): [HeroBanner!]
+  heroBanners(where: HeroBannerWhereInput! = {}, orderBy: [HeroBannerOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeroBannerWhereUniqueInput): [HeroBanner!]
   heroBannersCount(where: HeroBannerWhereInput! = {}): Int
   hero(where: HeroWhereUniqueInput!): Hero
-  heroes(
-    where: HeroWhereInput! = {}
-    orderBy: [HeroOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: HeroWhereUniqueInput
-  ): [Hero!]
+  heroes(where: HeroWhereInput! = {}, orderBy: [HeroOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: HeroWhereUniqueInput): [Hero!]
   heroesCount(where: HeroWhereInput! = {}): Int
   benefit(where: BenefitWhereUniqueInput!): Benefit
-  benefits(
-    where: BenefitWhereInput! = {}
-    orderBy: [BenefitOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitWhereUniqueInput
-  ): [Benefit!]
+  benefits(where: BenefitWhereInput! = {}, orderBy: [BenefitOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: BenefitWhereUniqueInput): [Benefit!]
   benefitsCount(where: BenefitWhereInput! = {}): Int
   benefitSection(where: BenefitSectionWhereUniqueInput!): BenefitSection
-  benefitSections(
-    where: BenefitSectionWhereInput! = {}
-    orderBy: [BenefitSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: BenefitSectionWhereUniqueInput
-  ): [BenefitSection!]
+  benefitSections(where: BenefitSectionWhereInput! = {}, orderBy: [BenefitSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: BenefitSectionWhereUniqueInput): [BenefitSection!]
   benefitSectionsCount(where: BenefitSectionWhereInput! = {}): Int
   faq(where: FaqWhereUniqueInput!): Faq
-  faqs(
-    where: FaqWhereInput! = {}
-    orderBy: [FaqOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FaqWhereUniqueInput
-  ): [Faq!]
+  faqs(where: FaqWhereInput! = {}, orderBy: [FaqOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FaqWhereUniqueInput): [Faq!]
   faqsCount(where: FaqWhereInput! = {}): Int
   faqSection(where: FaqSectionWhereUniqueInput!): FaqSection
-  faqSections(
-    where: FaqSectionWhereInput! = {}
-    orderBy: [FaqSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FaqSectionWhereUniqueInput
-  ): [FaqSection!]
+  faqSections(where: FaqSectionWhereInput! = {}, orderBy: [FaqSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FaqSectionWhereUniqueInput): [FaqSection!]
   faqSectionsCount(where: FaqSectionWhereInput! = {}): Int
   certification(where: CertificationWhereUniqueInput!): Certification
-  certifications(
-    where: CertificationWhereInput! = {}
-    orderBy: [CertificationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationWhereUniqueInput
-  ): [Certification!]
+  certifications(where: CertificationWhereInput! = {}, orderBy: [CertificationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CertificationWhereUniqueInput): [Certification!]
   certificationsCount(where: CertificationWhereInput! = {}): Int
-  certificationSection(
-    where: CertificationSectionWhereUniqueInput!
-  ): CertificationSection
-  certificationSections(
-    where: CertificationSectionWhereInput! = {}
-    orderBy: [CertificationSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CertificationSectionWhereUniqueInput
-  ): [CertificationSection!]
+  certificationSection(where: CertificationSectionWhereUniqueInput!): CertificationSection
+  certificationSections(where: CertificationSectionWhereInput! = {}, orderBy: [CertificationSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CertificationSectionWhereUniqueInput): [CertificationSection!]
   certificationSectionsCount(where: CertificationSectionWhereInput! = {}): Int
   feature(where: FeatureWhereUniqueInput!): Feature
-  features(
-    where: FeatureWhereInput! = {}
-    orderBy: [FeatureOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FeatureWhereUniqueInput
-  ): [Feature!]
+  features(where: FeatureWhereInput! = {}, orderBy: [FeatureOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FeatureWhereUniqueInput): [Feature!]
   featuresCount(where: FeatureWhereInput! = {}): Int
   approachStep(where: ApproachStepWhereUniqueInput!): ApproachStep
-  approachSteps(
-    where: ApproachStepWhereInput! = {}
-    orderBy: [ApproachStepOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ApproachStepWhereUniqueInput
-  ): [ApproachStep!]
+  approachSteps(where: ApproachStepWhereInput! = {}, orderBy: [ApproachStepOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ApproachStepWhereUniqueInput): [ApproachStep!]
   approachStepsCount(where: ApproachStepWhereInput! = {}): Int
   approach(where: ApproachWhereUniqueInput!): Approach
-  approaches(
-    where: ApproachWhereInput! = {}
-    orderBy: [ApproachOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ApproachWhereUniqueInput
-  ): [Approach!]
+  approaches(where: ApproachWhereInput! = {}, orderBy: [ApproachOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ApproachWhereUniqueInput): [Approach!]
   approachesCount(where: ApproachWhereInput! = {}): Int
   navigationLink(where: NavigationLinkWhereUniqueInput!): NavigationLink
-  navigationLinks(
-    where: NavigationLinkWhereInput! = {}
-    orderBy: [NavigationLinkOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationLinkWhereUniqueInput
-  ): [NavigationLink!]
+  navigationLinks(where: NavigationLinkWhereInput! = {}, orderBy: [NavigationLinkOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: NavigationLinkWhereUniqueInput): [NavigationLink!]
   navigationLinksCount(where: NavigationLinkWhereInput! = {}): Int
   navigation(where: NavigationWhereUniqueInput!): Navigation
-  navigations(
-    where: NavigationWhereInput! = {}
-    orderBy: [NavigationOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: NavigationWhereUniqueInput
-  ): [Navigation!]
+  navigations(where: NavigationWhereInput! = {}, orderBy: [NavigationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: NavigationWhereUniqueInput): [Navigation!]
   navigationsCount(where: NavigationWhereInput! = {}): Int
   footerSectionKey(where: FooterSectionKeyWhereUniqueInput!): FooterSectionKey
-  footerSectionKeys(
-    where: FooterSectionKeyWhereInput! = {}
-    orderBy: [FooterSectionKeyOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterSectionKeyWhereUniqueInput
-  ): [FooterSectionKey!]
+  footerSectionKeys(where: FooterSectionKeyWhereInput! = {}, orderBy: [FooterSectionKeyOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FooterSectionKeyWhereUniqueInput): [FooterSectionKey!]
   footerSectionKeysCount(where: FooterSectionKeyWhereInput! = {}): Int
   footerSection(where: FooterSectionWhereUniqueInput!): FooterSection
-  footerSections(
-    where: FooterSectionWhereInput! = {}
-    orderBy: [FooterSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterSectionWhereUniqueInput
-  ): [FooterSection!]
+  footerSections(where: FooterSectionWhereInput! = {}, orderBy: [FooterSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FooterSectionWhereUniqueInput): [FooterSection!]
   footerSectionsCount(where: FooterSectionWhereInput! = {}): Int
   footer(where: FooterWhereUniqueInput!): Footer
-  footers(
-    where: FooterWhereInput! = {}
-    orderBy: [FooterOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: FooterWhereUniqueInput
-  ): [Footer!]
+  footers(where: FooterWhereInput! = {}, orderBy: [FooterOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: FooterWhereUniqueInput): [Footer!]
   footersCount(where: FooterWhereInput! = {}): Int
   analyticsStat(where: AnalyticsStatWhereUniqueInput!): AnalyticsStat
-  analyticsStats(
-    where: AnalyticsStatWhereInput! = {}
-    orderBy: [AnalyticsStatOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AnalyticsStatWhereUniqueInput
-  ): [AnalyticsStat!]
+  analyticsStats(where: AnalyticsStatWhereInput! = {}, orderBy: [AnalyticsStatOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AnalyticsStatWhereUniqueInput): [AnalyticsStat!]
   analyticsStatsCount(where: AnalyticsStatWhereInput! = {}): Int
-  analyticsSummaryItem(
-    where: AnalyticsSummaryItemWhereUniqueInput!
-  ): AnalyticsSummaryItem
-  analyticsSummaryItems(
-    where: AnalyticsSummaryItemWhereInput! = {}
-    orderBy: [AnalyticsSummaryItemOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AnalyticsSummaryItemWhereUniqueInput
-  ): [AnalyticsSummaryItem!]
+  analyticsSummaryItem(where: AnalyticsSummaryItemWhereUniqueInput!): AnalyticsSummaryItem
+  analyticsSummaryItems(where: AnalyticsSummaryItemWhereInput! = {}, orderBy: [AnalyticsSummaryItemOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AnalyticsSummaryItemWhereUniqueInput): [AnalyticsSummaryItem!]
   analyticsSummaryItemsCount(where: AnalyticsSummaryItemWhereInput! = {}): Int
   analytic(where: AnalyticWhereUniqueInput!): Analytic
-  analytics(
-    where: AnalyticWhereInput! = {}
-    orderBy: [AnalyticOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AnalyticWhereUniqueInput
-  ): [Analytic!]
+  analytics(where: AnalyticWhereInput! = {}, orderBy: [AnalyticOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AnalyticWhereUniqueInput): [Analytic!]
   analyticsCount(where: AnalyticWhereInput! = {}): Int
   value(where: ValueWhereUniqueInput!): Value
-  values(
-    where: ValueWhereInput! = {}
-    orderBy: [ValueOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: ValueWhereUniqueInput
-  ): [Value!]
+  values(where: ValueWhereInput! = {}, orderBy: [ValueOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ValueWhereUniqueInput): [Value!]
   valuesCount(where: ValueWhereInput! = {}): Int
   about(where: AboutWhereUniqueInput!): About
-  abouts(
-    where: AboutWhereInput! = {}
-    orderBy: [AboutOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: AboutWhereUniqueInput
-  ): [About!]
+  abouts(where: AboutWhereInput! = {}, orderBy: [AboutOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: AboutWhereUniqueInput): [About!]
   aboutsCount(where: AboutWhereInput! = {}): Int
   map(where: MapWhereUniqueInput!): Map
-  maps(
-    where: MapWhereInput! = {}
-    orderBy: [MapOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: MapWhereUniqueInput
-  ): [Map!]
+  maps(where: MapWhereInput! = {}, orderBy: [MapOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: MapWhereUniqueInput): [Map!]
   mapsCount(where: MapWhereInput! = {}): Int
   ctaSection(where: CtaSectionWhereUniqueInput!): CtaSection
-  ctaSections(
-    where: CtaSectionWhereInput! = {}
-    orderBy: [CtaSectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: CtaSectionWhereUniqueInput
-  ): [CtaSection!]
+  ctaSections(where: CtaSectionWhereInput! = {}, orderBy: [CtaSectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: CtaSectionWhereUniqueInput): [CtaSection!]
   ctaSectionsCount(where: CtaSectionWhereInput! = {}): Int
   section(where: SectionWhereUniqueInput!): Section
-  sections(
-    where: SectionWhereInput! = {}
-    orderBy: [SectionOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: SectionWhereUniqueInput
-  ): [Section!]
+  sections(where: SectionWhereInput! = {}, orderBy: [SectionOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: SectionWhereUniqueInput): [Section!]
   sectionsCount(where: SectionWhereInput! = {}): Int
   pageContent(where: PageContentWhereUniqueInput!): PageContent
-  pageContents(
-    where: PageContentWhereInput! = {}
-    orderBy: [PageContentOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-    cursor: PageContentWhereUniqueInput
-  ): [PageContent!]
+  pageContents(where: PageContentWhereInput! = {}, orderBy: [PageContentOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: PageContentWhereUniqueInput): [PageContent!]
   pageContentsCount(where: PageContentWhereInput! = {}): Int
+  resumeLocation(where: ResumeLocationWhereUniqueInput!): ResumeLocation
+  resumeLocations(where: ResumeLocationWhereInput! = {}, orderBy: [ResumeLocationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeLocationWhereUniqueInput): [ResumeLocation!]
+  resumeLocationsCount(where: ResumeLocationWhereInput! = {}): Int
+  resumeProfile(where: ResumeProfileWhereUniqueInput!): ResumeProfile
+  resumeProfiles(where: ResumeProfileWhereInput! = {}, orderBy: [ResumeProfileOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeProfileWhereUniqueInput): [ResumeProfile!]
+  resumeProfilesCount(where: ResumeProfileWhereInput! = {}): Int
+  resumeBasicInformation(where: ResumeBasicInformationWhereUniqueInput!): ResumeBasicInformation
+  resumeBasicInformations(where: ResumeBasicInformationWhereInput! = {}, orderBy: [ResumeBasicInformationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeBasicInformationWhereUniqueInput): [ResumeBasicInformation!]
+  resumeBasicInformationsCount(where: ResumeBasicInformationWhereInput! = {}): Int
+  resumeHighlight(where: ResumeHighlightWhereUniqueInput!): ResumeHighlight
+  resumeHighlights(where: ResumeHighlightWhereInput! = {}, orderBy: [ResumeHighlightOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeHighlightWhereUniqueInput): [ResumeHighlight!]
+  resumeHighlightsCount(where: ResumeHighlightWhereInput! = {}): Int
+  resumeWork(where: ResumeWorkWhereUniqueInput!): ResumeWork
+  resumeWorks(where: ResumeWorkWhereInput! = {}, orderBy: [ResumeWorkOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeWorkWhereUniqueInput): [ResumeWork!]
+  resumeWorksCount(where: ResumeWorkWhereInput! = {}): Int
+  resumeVolunteer(where: ResumeVolunteerWhereUniqueInput!): ResumeVolunteer
+  resumeVolunteers(where: ResumeVolunteerWhereInput! = {}, orderBy: [ResumeVolunteerOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeVolunteerWhereUniqueInput): [ResumeVolunteer!]
+  resumeVolunteersCount(where: ResumeVolunteerWhereInput! = {}): Int
+  resumeEducation(where: ResumeEducationWhereUniqueInput!): ResumeEducation
+  resumeEducations(where: ResumeEducationWhereInput! = {}, orderBy: [ResumeEducationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeEducationWhereUniqueInput): [ResumeEducation!]
+  resumeEducationsCount(where: ResumeEducationWhereInput! = {}): Int
+  resumeAward(where: ResumeAwardWhereUniqueInput!): ResumeAward
+  resumeAwards(where: ResumeAwardWhereInput! = {}, orderBy: [ResumeAwardOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeAwardWhereUniqueInput): [ResumeAward!]
+  resumeAwardsCount(where: ResumeAwardWhereInput! = {}): Int
+  resumePublication(where: ResumePublicationWhereUniqueInput!): ResumePublication
+  resumePublications(where: ResumePublicationWhereInput! = {}, orderBy: [ResumePublicationOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumePublicationWhereUniqueInput): [ResumePublication!]
+  resumePublicationsCount(where: ResumePublicationWhereInput! = {}): Int
+  resumeSkill(where: ResumeSkillWhereUniqueInput!): ResumeSkill
+  resumeSkills(where: ResumeSkillWhereInput! = {}, orderBy: [ResumeSkillOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeSkillWhereUniqueInput): [ResumeSkill!]
+  resumeSkillsCount(where: ResumeSkillWhereInput! = {}): Int
+  resumeLanguage(where: ResumeLanguageWhereUniqueInput!): ResumeLanguage
+  resumeLanguages(where: ResumeLanguageWhereInput! = {}, orderBy: [ResumeLanguageOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeLanguageWhereUniqueInput): [ResumeLanguage!]
+  resumeLanguagesCount(where: ResumeLanguageWhereInput! = {}): Int
+  resumeInterest(where: ResumeInterestWhereUniqueInput!): ResumeInterest
+  resumeInterests(where: ResumeInterestWhereInput! = {}, orderBy: [ResumeInterestOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeInterestWhereUniqueInput): [ResumeInterest!]
+  resumeInterestsCount(where: ResumeInterestWhereInput! = {}): Int
+  resumeReference(where: ResumeReferenceWhereUniqueInput!): ResumeReference
+  resumeReferences(where: ResumeReferenceWhereInput! = {}, orderBy: [ResumeReferenceOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeReferenceWhereUniqueInput): [ResumeReference!]
+  resumeReferencesCount(where: ResumeReferenceWhereInput! = {}): Int
+  resumeProject(where: ResumeProjectWhereUniqueInput!): ResumeProject
+  resumeProjects(where: ResumeProjectWhereInput! = {}, orderBy: [ResumeProjectOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeProjectWhereUniqueInput): [ResumeProject!]
+  resumeProjectsCount(where: ResumeProjectWhereInput! = {}): Int
+  resume(where: ResumeWhereUniqueInput!): Resume
+  resumes(where: ResumeWhereInput! = {}, orderBy: [ResumeOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ResumeWhereUniqueInput): [Resume!]
+  resumesCount(where: ResumeWhereInput! = {}): Int
   keystone: KeystoneMeta!
 }
 

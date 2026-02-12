@@ -1,4731 +1,7329 @@
-export type Maybe<T> = T | null
-export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K]
-}
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>
-}
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>
-}
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = { [_ in K]?: never }
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never
-    }
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string }
-  String: { input: string; output: string }
-  Boolean: { input: boolean; output: boolean }
-  Int: { input: number; output: number }
-  Float: { input: number; output: number }
-  DateTime: { input: any; output: any }
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  DateTime: { input: any; output: any; }
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: { input: any; output: any }
-}
+  JSON: { input: any; output: any; }
+};
 
 export type About = {
-  __typename?: "About"
-  closing?: Maybe<Scalars["String"]["output"]>
-  heading?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  intro?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-  values?: Maybe<Array<Value>>
-  valuesCount?: Maybe<Scalars["Int"]["output"]>
-  valuesTitle?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'About';
+  closing?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  intro?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  values?: Maybe<Array<Value>>;
+  valuesCount?: Maybe<Scalars['Int']['output']>;
+  valuesTitle?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type AboutValuesArgs = {
-  cursor?: InputMaybe<ValueWhereUniqueInput>
-  orderBy?: Array<ValueOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ValueWhereInput
-}
+  cursor?: InputMaybe<ValueWhereUniqueInput>;
+  orderBy?: Array<ValueOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ValueWhereInput;
+};
+
 
 export type AboutValuesCountArgs = {
-  where?: ValueWhereInput
-}
+  where?: ValueWhereInput;
+};
 
 export type AboutCreateInput = {
-  closing?: InputMaybe<Scalars["String"]["input"]>
-  heading?: InputMaybe<Scalars["String"]["input"]>
-  intro?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  values?: InputMaybe<ValueRelateToManyForCreateInput>
-  valuesTitle?: InputMaybe<Scalars["String"]["input"]>
-}
+  closing?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  values?: InputMaybe<ValueRelateToManyForCreateInput>;
+  valuesTitle?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AboutManyRelationFilter = {
-  every?: InputMaybe<AboutWhereInput>
-  none?: InputMaybe<AboutWhereInput>
-  some?: InputMaybe<AboutWhereInput>
-}
+  every?: InputMaybe<AboutWhereInput>;
+  none?: InputMaybe<AboutWhereInput>;
+  some?: InputMaybe<AboutWhereInput>;
+};
 
 export type AboutOrderByInput = {
-  closing?: InputMaybe<OrderDirection>
-  heading?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  intro?: InputMaybe<OrderDirection>
-  valuesTitle?: InputMaybe<OrderDirection>
-}
+  closing?: InputMaybe<OrderDirection>;
+  heading?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  intro?: InputMaybe<OrderDirection>;
+  valuesTitle?: InputMaybe<OrderDirection>;
+};
 
 export type AboutRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<AboutWhereUniqueInput>>
-  create?: InputMaybe<Array<AboutCreateInput>>
-}
+  connect?: InputMaybe<Array<AboutWhereUniqueInput>>;
+  create?: InputMaybe<Array<AboutCreateInput>>;
+};
 
 export type AboutRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<AboutWhereUniqueInput>>
-  create?: InputMaybe<Array<AboutCreateInput>>
-  disconnect?: InputMaybe<Array<AboutWhereUniqueInput>>
-  set?: InputMaybe<Array<AboutWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<AboutWhereUniqueInput>>;
+  create?: InputMaybe<Array<AboutCreateInput>>;
+  disconnect?: InputMaybe<Array<AboutWhereUniqueInput>>;
+  set?: InputMaybe<Array<AboutWhereUniqueInput>>;
+};
 
 export type AboutUpdateArgs = {
-  data: AboutUpdateInput
-  where: AboutWhereUniqueInput
-}
+  data: AboutUpdateInput;
+  where: AboutWhereUniqueInput;
+};
 
 export type AboutUpdateInput = {
-  closing?: InputMaybe<Scalars["String"]["input"]>
-  heading?: InputMaybe<Scalars["String"]["input"]>
-  intro?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  values?: InputMaybe<ValueRelateToManyForUpdateInput>
-  valuesTitle?: InputMaybe<Scalars["String"]["input"]>
-}
+  closing?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  intro?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  values?: InputMaybe<ValueRelateToManyForUpdateInput>;
+  valuesTitle?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AboutWhereInput = {
-  AND?: InputMaybe<Array<AboutWhereInput>>
-  NOT?: InputMaybe<Array<AboutWhereInput>>
-  OR?: InputMaybe<Array<AboutWhereInput>>
-  closing?: InputMaybe<StringFilter>
-  heading?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  intro?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  values?: InputMaybe<ValueManyRelationFilter>
-  valuesTitle?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<AboutWhereInput>>;
+  NOT?: InputMaybe<Array<AboutWhereInput>>;
+  OR?: InputMaybe<Array<AboutWhereInput>>;
+  closing?: InputMaybe<StringFilter>;
+  heading?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  intro?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  values?: InputMaybe<ValueManyRelationFilter>;
+  valuesTitle?: InputMaybe<StringFilter>;
+};
 
 export type AboutWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Analytic = {
-  __typename?: "Analytic"
-  heading?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  stats?: Maybe<AnalyticsStat>
-  subheading?: Maybe<Scalars["String"]["output"]>
-  summary?: Maybe<Array<AnalyticsSummaryItem>>
-  summaryCount?: Maybe<Scalars["Int"]["output"]>
-  tableHeadings?: Maybe<Array<Scalars["String"]["output"]>>
-}
+  __typename?: 'Analytic';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  stats?: Maybe<AnalyticsStat>;
+  subheading?: Maybe<Scalars['String']['output']>;
+  summary?: Maybe<Array<AnalyticsSummaryItem>>;
+  summaryCount?: Maybe<Scalars['Int']['output']>;
+  tableHeadings?: Maybe<Array<Scalars['String']['output']>>;
+};
+
 
 export type AnalyticSummaryArgs = {
-  cursor?: InputMaybe<AnalyticsSummaryItemWhereUniqueInput>
-  orderBy?: Array<AnalyticsSummaryItemOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AnalyticsSummaryItemWhereInput
-}
+  cursor?: InputMaybe<AnalyticsSummaryItemWhereUniqueInput>;
+  orderBy?: Array<AnalyticsSummaryItemOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AnalyticsSummaryItemWhereInput;
+};
+
 
 export type AnalyticSummaryCountArgs = {
-  where?: AnalyticsSummaryItemWhereInput
-}
+  where?: AnalyticsSummaryItemWhereInput;
+};
 
 export type AnalyticCreateInput = {
-  heading?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  stats?: InputMaybe<AnalyticsStatRelateToOneForCreateInput>
-  subheading?: InputMaybe<Scalars["String"]["input"]>
-  summary?: InputMaybe<AnalyticsSummaryItemRelateToManyForCreateInput>
-  tableHeadings?: InputMaybe<Array<Scalars["String"]["input"]>>
-}
+  heading?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  stats?: InputMaybe<AnalyticsStatRelateToOneForCreateInput>;
+  subheading?: InputMaybe<Scalars['String']['input']>;
+  summary?: InputMaybe<AnalyticsSummaryItemRelateToManyForCreateInput>;
+  tableHeadings?: InputMaybe<Array<Scalars['String']['input']>>;
+};
 
 export type AnalyticManyRelationFilter = {
-  every?: InputMaybe<AnalyticWhereInput>
-  none?: InputMaybe<AnalyticWhereInput>
-  some?: InputMaybe<AnalyticWhereInput>
-}
+  every?: InputMaybe<AnalyticWhereInput>;
+  none?: InputMaybe<AnalyticWhereInput>;
+  some?: InputMaybe<AnalyticWhereInput>;
+};
 
 export type AnalyticOrderByInput = {
-  heading?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  subheading?: InputMaybe<OrderDirection>
-}
+  heading?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  subheading?: InputMaybe<OrderDirection>;
+};
 
 export type AnalyticRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<AnalyticWhereUniqueInput>>
-  create?: InputMaybe<Array<AnalyticCreateInput>>
-}
+  connect?: InputMaybe<Array<AnalyticWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnalyticCreateInput>>;
+};
 
 export type AnalyticRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<AnalyticWhereUniqueInput>>
-  create?: InputMaybe<Array<AnalyticCreateInput>>
-  disconnect?: InputMaybe<Array<AnalyticWhereUniqueInput>>
-  set?: InputMaybe<Array<AnalyticWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<AnalyticWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnalyticCreateInput>>;
+  disconnect?: InputMaybe<Array<AnalyticWhereUniqueInput>>;
+  set?: InputMaybe<Array<AnalyticWhereUniqueInput>>;
+};
 
 export type AnalyticUpdateArgs = {
-  data: AnalyticUpdateInput
-  where: AnalyticWhereUniqueInput
-}
+  data: AnalyticUpdateInput;
+  where: AnalyticWhereUniqueInput;
+};
 
 export type AnalyticUpdateInput = {
-  heading?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  stats?: InputMaybe<AnalyticsStatRelateToOneForUpdateInput>
-  subheading?: InputMaybe<Scalars["String"]["input"]>
-  summary?: InputMaybe<AnalyticsSummaryItemRelateToManyForUpdateInput>
-  tableHeadings?: InputMaybe<Array<Scalars["String"]["input"]>>
-}
+  heading?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  stats?: InputMaybe<AnalyticsStatRelateToOneForUpdateInput>;
+  subheading?: InputMaybe<Scalars['String']['input']>;
+  summary?: InputMaybe<AnalyticsSummaryItemRelateToManyForUpdateInput>;
+  tableHeadings?: InputMaybe<Array<Scalars['String']['input']>>;
+};
 
 export type AnalyticWhereInput = {
-  AND?: InputMaybe<Array<AnalyticWhereInput>>
-  NOT?: InputMaybe<Array<AnalyticWhereInput>>
-  OR?: InputMaybe<Array<AnalyticWhereInput>>
-  heading?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  stats?: InputMaybe<AnalyticsStatWhereInput>
-  subheading?: InputMaybe<StringFilter>
-  summary?: InputMaybe<AnalyticsSummaryItemManyRelationFilter>
-}
+  AND?: InputMaybe<Array<AnalyticWhereInput>>;
+  NOT?: InputMaybe<Array<AnalyticWhereInput>>;
+  OR?: InputMaybe<Array<AnalyticWhereInput>>;
+  heading?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  stats?: InputMaybe<AnalyticsStatWhereInput>;
+  subheading?: InputMaybe<StringFilter>;
+  summary?: InputMaybe<AnalyticsSummaryItemManyRelationFilter>;
+};
 
 export type AnalyticWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type AnalyticsStat = {
-  __typename?: "AnalyticsStat"
-  changePeriod?: Maybe<Scalars["String"]["output"]>
-  deploymentChange?: Maybe<Scalars["String"]["output"]>
-  deploymentChangePercent?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  totalDeployments?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'AnalyticsStat';
+  changePeriod?: Maybe<Scalars['String']['output']>;
+  deploymentChange?: Maybe<Scalars['String']['output']>;
+  deploymentChangePercent?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  totalDeployments?: Maybe<Scalars['String']['output']>;
+};
 
 export type AnalyticsStatCreateInput = {
-  changePeriod?: InputMaybe<Scalars["String"]["input"]>
-  deploymentChange?: InputMaybe<Scalars["String"]["input"]>
-  deploymentChangePercent?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  totalDeployments?: InputMaybe<Scalars["String"]["input"]>
-}
+  changePeriod?: InputMaybe<Scalars['String']['input']>;
+  deploymentChange?: InputMaybe<Scalars['String']['input']>;
+  deploymentChangePercent?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  totalDeployments?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AnalyticsStatOrderByInput = {
-  changePeriod?: InputMaybe<OrderDirection>
-  deploymentChange?: InputMaybe<OrderDirection>
-  deploymentChangePercent?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  totalDeployments?: InputMaybe<OrderDirection>
-}
+  changePeriod?: InputMaybe<OrderDirection>;
+  deploymentChange?: InputMaybe<OrderDirection>;
+  deploymentChangePercent?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  totalDeployments?: InputMaybe<OrderDirection>;
+};
 
 export type AnalyticsStatRelateToOneForCreateInput = {
-  connect?: InputMaybe<AnalyticsStatWhereUniqueInput>
-  create?: InputMaybe<AnalyticsStatCreateInput>
-}
+  connect?: InputMaybe<AnalyticsStatWhereUniqueInput>;
+  create?: InputMaybe<AnalyticsStatCreateInput>;
+};
 
 export type AnalyticsStatRelateToOneForUpdateInput = {
-  connect?: InputMaybe<AnalyticsStatWhereUniqueInput>
-  create?: InputMaybe<AnalyticsStatCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<AnalyticsStatWhereUniqueInput>;
+  create?: InputMaybe<AnalyticsStatCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type AnalyticsStatUpdateArgs = {
-  data: AnalyticsStatUpdateInput
-  where: AnalyticsStatWhereUniqueInput
-}
+  data: AnalyticsStatUpdateInput;
+  where: AnalyticsStatWhereUniqueInput;
+};
 
 export type AnalyticsStatUpdateInput = {
-  changePeriod?: InputMaybe<Scalars["String"]["input"]>
-  deploymentChange?: InputMaybe<Scalars["String"]["input"]>
-  deploymentChangePercent?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  totalDeployments?: InputMaybe<Scalars["String"]["input"]>
-}
+  changePeriod?: InputMaybe<Scalars['String']['input']>;
+  deploymentChange?: InputMaybe<Scalars['String']['input']>;
+  deploymentChangePercent?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  totalDeployments?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AnalyticsStatWhereInput = {
-  AND?: InputMaybe<Array<AnalyticsStatWhereInput>>
-  NOT?: InputMaybe<Array<AnalyticsStatWhereInput>>
-  OR?: InputMaybe<Array<AnalyticsStatWhereInput>>
-  changePeriod?: InputMaybe<StringFilter>
-  deploymentChange?: InputMaybe<StringFilter>
-  deploymentChangePercent?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  totalDeployments?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<AnalyticsStatWhereInput>>;
+  NOT?: InputMaybe<Array<AnalyticsStatWhereInput>>;
+  OR?: InputMaybe<Array<AnalyticsStatWhereInput>>;
+  changePeriod?: InputMaybe<StringFilter>;
+  deploymentChange?: InputMaybe<StringFilter>;
+  deploymentChangePercent?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  totalDeployments?: InputMaybe<StringFilter>;
+};
 
 export type AnalyticsStatWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type AnalyticsSummaryItem = {
-  __typename?: "AnalyticsSummaryItem"
-  bgColor?: Maybe<Scalars["String"]["output"]>
-  changeType?: Maybe<Scalars["String"]["output"]>
-  clientSatisfaction?: Maybe<Scalars["String"]["output"]>
-  deployments?: Maybe<Scalars["String"]["output"]>
-  efficiency?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  name?: Maybe<Scalars["String"]["output"]>
-  revenueGrowth?: Maybe<Scalars["String"]["output"]>
-  uptime?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'AnalyticsSummaryItem';
+  bgColor?: Maybe<Scalars['String']['output']>;
+  changeType?: Maybe<Scalars['String']['output']>;
+  clientSatisfaction?: Maybe<Scalars['String']['output']>;
+  deployments?: Maybe<Scalars['String']['output']>;
+  efficiency?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  revenueGrowth?: Maybe<Scalars['String']['output']>;
+  uptime?: Maybe<Scalars['String']['output']>;
+};
 
 export type AnalyticsSummaryItemCreateInput = {
-  bgColor?: InputMaybe<Scalars["String"]["input"]>
-  changeType?: InputMaybe<Scalars["String"]["input"]>
-  clientSatisfaction?: InputMaybe<Scalars["String"]["input"]>
-  deployments?: InputMaybe<Scalars["String"]["input"]>
-  efficiency?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  revenueGrowth?: InputMaybe<Scalars["String"]["input"]>
-  uptime?: InputMaybe<Scalars["String"]["input"]>
-}
+  bgColor?: InputMaybe<Scalars['String']['input']>;
+  changeType?: InputMaybe<Scalars['String']['input']>;
+  clientSatisfaction?: InputMaybe<Scalars['String']['input']>;
+  deployments?: InputMaybe<Scalars['String']['input']>;
+  efficiency?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  revenueGrowth?: InputMaybe<Scalars['String']['input']>;
+  uptime?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AnalyticsSummaryItemManyRelationFilter = {
-  every?: InputMaybe<AnalyticsSummaryItemWhereInput>
-  none?: InputMaybe<AnalyticsSummaryItemWhereInput>
-  some?: InputMaybe<AnalyticsSummaryItemWhereInput>
-}
+  every?: InputMaybe<AnalyticsSummaryItemWhereInput>;
+  none?: InputMaybe<AnalyticsSummaryItemWhereInput>;
+  some?: InputMaybe<AnalyticsSummaryItemWhereInput>;
+};
 
 export type AnalyticsSummaryItemOrderByInput = {
-  bgColor?: InputMaybe<OrderDirection>
-  changeType?: InputMaybe<OrderDirection>
-  clientSatisfaction?: InputMaybe<OrderDirection>
-  deployments?: InputMaybe<OrderDirection>
-  efficiency?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  name?: InputMaybe<OrderDirection>
-  revenueGrowth?: InputMaybe<OrderDirection>
-  uptime?: InputMaybe<OrderDirection>
-}
+  bgColor?: InputMaybe<OrderDirection>;
+  changeType?: InputMaybe<OrderDirection>;
+  clientSatisfaction?: InputMaybe<OrderDirection>;
+  deployments?: InputMaybe<OrderDirection>;
+  efficiency?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  revenueGrowth?: InputMaybe<OrderDirection>;
+  uptime?: InputMaybe<OrderDirection>;
+};
 
 export type AnalyticsSummaryItemRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>
-  create?: InputMaybe<Array<AnalyticsSummaryItemCreateInput>>
-}
+  connect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnalyticsSummaryItemCreateInput>>;
+};
 
 export type AnalyticsSummaryItemRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>
-  create?: InputMaybe<Array<AnalyticsSummaryItemCreateInput>>
-  disconnect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>
-  set?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>;
+  create?: InputMaybe<Array<AnalyticsSummaryItemCreateInput>>;
+  disconnect?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>;
+  set?: InputMaybe<Array<AnalyticsSummaryItemWhereUniqueInput>>;
+};
 
 export type AnalyticsSummaryItemUpdateArgs = {
-  data: AnalyticsSummaryItemUpdateInput
-  where: AnalyticsSummaryItemWhereUniqueInput
-}
+  data: AnalyticsSummaryItemUpdateInput;
+  where: AnalyticsSummaryItemWhereUniqueInput;
+};
 
 export type AnalyticsSummaryItemUpdateInput = {
-  bgColor?: InputMaybe<Scalars["String"]["input"]>
-  changeType?: InputMaybe<Scalars["String"]["input"]>
-  clientSatisfaction?: InputMaybe<Scalars["String"]["input"]>
-  deployments?: InputMaybe<Scalars["String"]["input"]>
-  efficiency?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  revenueGrowth?: InputMaybe<Scalars["String"]["input"]>
-  uptime?: InputMaybe<Scalars["String"]["input"]>
-}
+  bgColor?: InputMaybe<Scalars['String']['input']>;
+  changeType?: InputMaybe<Scalars['String']['input']>;
+  clientSatisfaction?: InputMaybe<Scalars['String']['input']>;
+  deployments?: InputMaybe<Scalars['String']['input']>;
+  efficiency?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  revenueGrowth?: InputMaybe<Scalars['String']['input']>;
+  uptime?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type AnalyticsSummaryItemWhereInput = {
-  AND?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>
-  NOT?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>
-  OR?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>
-  bgColor?: InputMaybe<StringFilter>
-  changeType?: InputMaybe<StringFilter>
-  clientSatisfaction?: InputMaybe<StringFilter>
-  deployments?: InputMaybe<StringFilter>
-  efficiency?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  name?: InputMaybe<StringFilter>
-  revenueGrowth?: InputMaybe<StringFilter>
-  uptime?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>;
+  NOT?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>;
+  OR?: InputMaybe<Array<AnalyticsSummaryItemWhereInput>>;
+  bgColor?: InputMaybe<StringFilter>;
+  changeType?: InputMaybe<StringFilter>;
+  clientSatisfaction?: InputMaybe<StringFilter>;
+  deployments?: InputMaybe<StringFilter>;
+  efficiency?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  revenueGrowth?: InputMaybe<StringFilter>;
+  uptime?: InputMaybe<StringFilter>;
+};
 
 export type AnalyticsSummaryItemWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Approach = {
-  __typename?: "Approach"
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  steps?: Maybe<Array<ApproachStep>>
-  stepsCount?: Maybe<Scalars["Int"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Approach';
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  steps?: Maybe<Array<ApproachStep>>;
+  stepsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type ApproachStepsArgs = {
-  cursor?: InputMaybe<ApproachStepWhereUniqueInput>
-  orderBy?: Array<ApproachStepOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ApproachStepWhereInput
-}
+  cursor?: InputMaybe<ApproachStepWhereUniqueInput>;
+  orderBy?: Array<ApproachStepOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ApproachStepWhereInput;
+};
+
 
 export type ApproachStepsCountArgs = {
-  where?: ApproachStepWhereInput
-}
+  where?: ApproachStepWhereInput;
+};
 
 export type ApproachCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  steps?: InputMaybe<ApproachStepRelateToManyForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  steps?: InputMaybe<ApproachStepRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type ApproachManyRelationFilter = {
-  every?: InputMaybe<ApproachWhereInput>
-  none?: InputMaybe<ApproachWhereInput>
-  some?: InputMaybe<ApproachWhereInput>
-}
+  every?: InputMaybe<ApproachWhereInput>;
+  none?: InputMaybe<ApproachWhereInput>;
+  some?: InputMaybe<ApproachWhereInput>;
+};
 
 export type ApproachOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type ApproachRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<ApproachWhereUniqueInput>>
-  create?: InputMaybe<Array<ApproachCreateInput>>
-}
+  connect?: InputMaybe<Array<ApproachWhereUniqueInput>>;
+  create?: InputMaybe<Array<ApproachCreateInput>>;
+};
 
 export type ApproachRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<ApproachWhereUniqueInput>>
-  create?: InputMaybe<Array<ApproachCreateInput>>
-  disconnect?: InputMaybe<Array<ApproachWhereUniqueInput>>
-  set?: InputMaybe<Array<ApproachWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<ApproachWhereUniqueInput>>;
+  create?: InputMaybe<Array<ApproachCreateInput>>;
+  disconnect?: InputMaybe<Array<ApproachWhereUniqueInput>>;
+  set?: InputMaybe<Array<ApproachWhereUniqueInput>>;
+};
 
 export type ApproachStep = {
-  __typename?: "ApproachStep"
-  activityTime?: Maybe<Scalars["String"]["output"]>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  stepId?: Maybe<Scalars["Int"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-  type?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'ApproachStep';
+  activityTime?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  stepId?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+};
 
 export type ApproachStepCreateInput = {
-  activityTime?: InputMaybe<Scalars["String"]["input"]>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  stepId?: InputMaybe<Scalars["Int"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-  type?: InputMaybe<Scalars["String"]["input"]>
-}
+  activityTime?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  stepId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type ApproachStepManyRelationFilter = {
-  every?: InputMaybe<ApproachStepWhereInput>
-  none?: InputMaybe<ApproachStepWhereInput>
-  some?: InputMaybe<ApproachStepWhereInput>
-}
+  every?: InputMaybe<ApproachStepWhereInput>;
+  none?: InputMaybe<ApproachStepWhereInput>;
+  some?: InputMaybe<ApproachStepWhereInput>;
+};
 
 export type ApproachStepOrderByInput = {
-  activityTime?: InputMaybe<OrderDirection>
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  stepId?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-  type?: InputMaybe<OrderDirection>
-}
+  activityTime?: InputMaybe<OrderDirection>;
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  stepId?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+  type?: InputMaybe<OrderDirection>;
+};
 
 export type ApproachStepRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>
-  create?: InputMaybe<Array<ApproachStepCreateInput>>
-}
+  connect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>;
+  create?: InputMaybe<Array<ApproachStepCreateInput>>;
+};
 
 export type ApproachStepRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>
-  create?: InputMaybe<Array<ApproachStepCreateInput>>
-  disconnect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>
-  set?: InputMaybe<Array<ApproachStepWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>;
+  create?: InputMaybe<Array<ApproachStepCreateInput>>;
+  disconnect?: InputMaybe<Array<ApproachStepWhereUniqueInput>>;
+  set?: InputMaybe<Array<ApproachStepWhereUniqueInput>>;
+};
 
 export type ApproachStepUpdateArgs = {
-  data: ApproachStepUpdateInput
-  where: ApproachStepWhereUniqueInput
-}
+  data: ApproachStepUpdateInput;
+  where: ApproachStepWhereUniqueInput;
+};
 
 export type ApproachStepUpdateInput = {
-  activityTime?: InputMaybe<Scalars["String"]["input"]>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  stepId?: InputMaybe<Scalars["Int"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-  type?: InputMaybe<Scalars["String"]["input"]>
-}
+  activityTime?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  stepId?: InputMaybe<Scalars['Int']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type ApproachStepWhereInput = {
-  AND?: InputMaybe<Array<ApproachStepWhereInput>>
-  NOT?: InputMaybe<Array<ApproachStepWhereInput>>
-  OR?: InputMaybe<Array<ApproachStepWhereInput>>
-  activityTime?: InputMaybe<StringFilter>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  stepId?: InputMaybe<IntFilter>
-  title?: InputMaybe<StringFilter>
-  type?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<ApproachStepWhereInput>>;
+  NOT?: InputMaybe<Array<ApproachStepWhereInput>>;
+  OR?: InputMaybe<Array<ApproachStepWhereInput>>;
+  activityTime?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  stepId?: InputMaybe<IntFilter>;
+  title?: InputMaybe<StringFilter>;
+  type?: InputMaybe<StringFilter>;
+};
 
 export type ApproachStepWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type ApproachUpdateArgs = {
-  data: ApproachUpdateInput
-  where: ApproachWhereUniqueInput
-}
+  data: ApproachUpdateInput;
+  where: ApproachWhereUniqueInput;
+};
 
 export type ApproachUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  steps?: InputMaybe<ApproachStepRelateToManyForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  steps?: InputMaybe<ApproachStepRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type ApproachWhereInput = {
-  AND?: InputMaybe<Array<ApproachWhereInput>>
-  NOT?: InputMaybe<Array<ApproachWhereInput>>
-  OR?: InputMaybe<Array<ApproachWhereInput>>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  steps?: InputMaybe<ApproachStepManyRelationFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<ApproachWhereInput>>;
+  NOT?: InputMaybe<Array<ApproachWhereInput>>;
+  OR?: InputMaybe<Array<ApproachWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  steps?: InputMaybe<ApproachStepManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type ApproachWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Benefit = {
-  __typename?: "Benefit"
-  description?: Maybe<Scalars["String"]["output"]>
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Benefit';
+  description?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type BenefitCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type BenefitManyRelationFilter = {
-  every?: InputMaybe<BenefitWhereInput>
-  none?: InputMaybe<BenefitWhereInput>
-  some?: InputMaybe<BenefitWhereInput>
-}
+  every?: InputMaybe<BenefitWhereInput>;
+  none?: InputMaybe<BenefitWhereInput>;
+  some?: InputMaybe<BenefitWhereInput>;
+};
 
 export type BenefitOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type BenefitRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<BenefitWhereUniqueInput>>
-  create?: InputMaybe<Array<BenefitCreateInput>>
-}
+  connect?: InputMaybe<Array<BenefitWhereUniqueInput>>;
+  create?: InputMaybe<Array<BenefitCreateInput>>;
+};
 
 export type BenefitRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<BenefitWhereUniqueInput>>
-  create?: InputMaybe<Array<BenefitCreateInput>>
-  disconnect?: InputMaybe<Array<BenefitWhereUniqueInput>>
-  set?: InputMaybe<Array<BenefitWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<BenefitWhereUniqueInput>>;
+  create?: InputMaybe<Array<BenefitCreateInput>>;
+  disconnect?: InputMaybe<Array<BenefitWhereUniqueInput>>;
+  set?: InputMaybe<Array<BenefitWhereUniqueInput>>;
+};
 
 export type BenefitSection = {
-  __typename?: "BenefitSection"
-  benefits?: Maybe<Array<Benefit>>
-  benefitsCount?: Maybe<Scalars["Int"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'BenefitSection';
+  benefits?: Maybe<Array<Benefit>>;
+  benefitsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type BenefitSectionBenefitsArgs = {
-  cursor?: InputMaybe<BenefitWhereUniqueInput>
-  orderBy?: Array<BenefitOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: BenefitWhereInput
-}
+  cursor?: InputMaybe<BenefitWhereUniqueInput>;
+  orderBy?: Array<BenefitOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitWhereInput;
+};
+
 
 export type BenefitSectionBenefitsCountArgs = {
-  where?: BenefitWhereInput
-}
+  where?: BenefitWhereInput;
+};
 
 export type BenefitSectionCreateInput = {
-  benefits?: InputMaybe<BenefitRelateToManyForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  benefits?: InputMaybe<BenefitRelateToManyForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type BenefitSectionManyRelationFilter = {
-  every?: InputMaybe<BenefitSectionWhereInput>
-  none?: InputMaybe<BenefitSectionWhereInput>
-  some?: InputMaybe<BenefitSectionWhereInput>
-}
+  every?: InputMaybe<BenefitSectionWhereInput>;
+  none?: InputMaybe<BenefitSectionWhereInput>;
+  some?: InputMaybe<BenefitSectionWhereInput>;
+};
 
 export type BenefitSectionOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type BenefitSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<BenefitSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<BenefitSectionCreateInput>>;
+};
 
 export type BenefitSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<BenefitSectionCreateInput>>
-  disconnect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<BenefitSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<BenefitSectionWhereUniqueInput>>;
+};
 
 export type BenefitSectionUpdateArgs = {
-  data: BenefitSectionUpdateInput
-  where: BenefitSectionWhereUniqueInput
-}
+  data: BenefitSectionUpdateInput;
+  where: BenefitSectionWhereUniqueInput;
+};
 
 export type BenefitSectionUpdateInput = {
-  benefits?: InputMaybe<BenefitRelateToManyForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  benefits?: InputMaybe<BenefitRelateToManyForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type BenefitSectionWhereInput = {
-  AND?: InputMaybe<Array<BenefitSectionWhereInput>>
-  NOT?: InputMaybe<Array<BenefitSectionWhereInput>>
-  OR?: InputMaybe<Array<BenefitSectionWhereInput>>
-  benefits?: InputMaybe<BenefitManyRelationFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  NOT?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  OR?: InputMaybe<Array<BenefitSectionWhereInput>>;
+  benefits?: InputMaybe<BenefitManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type BenefitSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type BenefitUpdateArgs = {
-  data: BenefitUpdateInput
-  where: BenefitWhereUniqueInput
-}
+  data: BenefitUpdateInput;
+  where: BenefitWhereUniqueInput;
+};
 
 export type BenefitUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type BenefitWhereInput = {
-  AND?: InputMaybe<Array<BenefitWhereInput>>
-  NOT?: InputMaybe<Array<BenefitWhereInput>>
-  OR?: InputMaybe<Array<BenefitWhereInput>>
-  description?: InputMaybe<StringFilter>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<BenefitWhereInput>>;
+  NOT?: InputMaybe<Array<BenefitWhereInput>>;
+  OR?: InputMaybe<Array<BenefitWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type BenefitWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type BooleanFilter = {
-  equals?: InputMaybe<Scalars["Boolean"]["input"]>
-  not?: InputMaybe<BooleanFilter>
-}
+  equals?: InputMaybe<Scalars['Boolean']['input']>;
+  not?: InputMaybe<BooleanFilter>;
+};
 
 export type Certification = {
-  __typename?: "Certification"
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  image?: Maybe<Image>
-  language?: Maybe<Language>
-  link?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Certification';
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  language?: Maybe<Language>;
+  link?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type CertificationCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  link?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CertificationManyRelationFilter = {
-  every?: InputMaybe<CertificationWhereInput>
-  none?: InputMaybe<CertificationWhereInput>
-  some?: InputMaybe<CertificationWhereInput>
-}
+  every?: InputMaybe<CertificationWhereInput>;
+  none?: InputMaybe<CertificationWhereInput>;
+  some?: InputMaybe<CertificationWhereInput>;
+};
 
 export type CertificationOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  link?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  link?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type CertificationRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<CertificationWhereUniqueInput>>
-  create?: InputMaybe<Array<CertificationCreateInput>>
-}
+  connect?: InputMaybe<Array<CertificationWhereUniqueInput>>;
+  create?: InputMaybe<Array<CertificationCreateInput>>;
+};
 
 export type CertificationRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<CertificationWhereUniqueInput>>
-  create?: InputMaybe<Array<CertificationCreateInput>>
-  disconnect?: InputMaybe<Array<CertificationWhereUniqueInput>>
-  set?: InputMaybe<Array<CertificationWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<CertificationWhereUniqueInput>>;
+  create?: InputMaybe<Array<CertificationCreateInput>>;
+  disconnect?: InputMaybe<Array<CertificationWhereUniqueInput>>;
+  set?: InputMaybe<Array<CertificationWhereUniqueInput>>;
+};
 
 export type CertificationSection = {
-  __typename?: "CertificationSection"
-  certifications?: Maybe<Array<Certification>>
-  certificationsCount?: Maybe<Scalars["Int"]["output"]>
-  cta?: Maybe<Cta>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'CertificationSection';
+  certifications?: Maybe<Array<Certification>>;
+  certificationsCount?: Maybe<Scalars['Int']['output']>;
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type CertificationSectionCertificationsArgs = {
-  cursor?: InputMaybe<CertificationWhereUniqueInput>
-  orderBy?: Array<CertificationOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CertificationWhereInput
-}
+  cursor?: InputMaybe<CertificationWhereUniqueInput>;
+  orderBy?: Array<CertificationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationWhereInput;
+};
+
 
 export type CertificationSectionCertificationsCountArgs = {
-  where?: CertificationWhereInput
-}
+  where?: CertificationWhereInput;
+};
 
 export type CertificationSectionCreateInput = {
-  certifications?: InputMaybe<CertificationRelateToManyForCreateInput>
-  cta?: InputMaybe<CtaRelateToOneForCreateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  certifications?: InputMaybe<CertificationRelateToManyForCreateInput>;
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CertificationSectionManyRelationFilter = {
-  every?: InputMaybe<CertificationSectionWhereInput>
-  none?: InputMaybe<CertificationSectionWhereInput>
-  some?: InputMaybe<CertificationSectionWhereInput>
-}
+  every?: InputMaybe<CertificationSectionWhereInput>;
+  none?: InputMaybe<CertificationSectionWhereInput>;
+  some?: InputMaybe<CertificationSectionWhereInput>;
+};
 
 export type CertificationSectionOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type CertificationSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<CertificationSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<CertificationSectionCreateInput>>;
+};
 
 export type CertificationSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<CertificationSectionCreateInput>>
-  disconnect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<CertificationSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<CertificationSectionWhereUniqueInput>>;
+};
 
 export type CertificationSectionUpdateArgs = {
-  data: CertificationSectionUpdateInput
-  where: CertificationSectionWhereUniqueInput
-}
+  data: CertificationSectionUpdateInput;
+  where: CertificationSectionWhereUniqueInput;
+};
 
 export type CertificationSectionUpdateInput = {
-  certifications?: InputMaybe<CertificationRelateToManyForUpdateInput>
-  cta?: InputMaybe<CtaRelateToOneForUpdateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  certifications?: InputMaybe<CertificationRelateToManyForUpdateInput>;
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CertificationSectionWhereInput = {
-  AND?: InputMaybe<Array<CertificationSectionWhereInput>>
-  NOT?: InputMaybe<Array<CertificationSectionWhereInput>>
-  OR?: InputMaybe<Array<CertificationSectionWhereInput>>
-  certifications?: InputMaybe<CertificationManyRelationFilter>
-  cta?: InputMaybe<CtaWhereInput>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  NOT?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  OR?: InputMaybe<Array<CertificationSectionWhereInput>>;
+  certifications?: InputMaybe<CertificationManyRelationFilter>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type CertificationSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type CertificationUpdateArgs = {
-  data: CertificationUpdateInput
-  where: CertificationWhereUniqueInput
-}
+  data: CertificationUpdateInput;
+  where: CertificationWhereUniqueInput;
+};
 
 export type CertificationUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  link?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  link?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CertificationWhereInput = {
-  AND?: InputMaybe<Array<CertificationWhereInput>>
-  NOT?: InputMaybe<Array<CertificationWhereInput>>
-  OR?: InputMaybe<Array<CertificationWhereInput>>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  image?: InputMaybe<ImageWhereInput>
-  language?: InputMaybe<LanguageWhereInput>
-  link?: InputMaybe<StringFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<CertificationWhereInput>>;
+  NOT?: InputMaybe<Array<CertificationWhereInput>>;
+  OR?: InputMaybe<Array<CertificationWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  language?: InputMaybe<LanguageWhereInput>;
+  link?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type CertificationWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Cta = {
-  __typename?: "Cta"
-  external?: Maybe<Scalars["Boolean"]["output"]>
-  href?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-  type?: Maybe<Type>
-}
+  __typename?: 'Cta';
+  external?: Maybe<Scalars['Boolean']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  type?: Maybe<Type>;
+};
 
 export type CtaCreateInput = {
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  type?: InputMaybe<TypeRelateToOneForCreateInput>
-}
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  type?: InputMaybe<TypeRelateToOneForCreateInput>;
+};
 
 export type CtaManyRelationFilter = {
-  every?: InputMaybe<CtaWhereInput>
-  none?: InputMaybe<CtaWhereInput>
-  some?: InputMaybe<CtaWhereInput>
-}
+  every?: InputMaybe<CtaWhereInput>;
+  none?: InputMaybe<CtaWhereInput>;
+  some?: InputMaybe<CtaWhereInput>;
+};
 
 export type CtaOrderByInput = {
-  external?: InputMaybe<OrderDirection>
-  href?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  external?: InputMaybe<OrderDirection>;
+  href?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type CtaRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<CtaWhereUniqueInput>>
-  create?: InputMaybe<Array<CtaCreateInput>>
-}
+  connect?: InputMaybe<Array<CtaWhereUniqueInput>>;
+  create?: InputMaybe<Array<CtaCreateInput>>;
+};
 
 export type CtaRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<CtaWhereUniqueInput>>
-  create?: InputMaybe<Array<CtaCreateInput>>
-  disconnect?: InputMaybe<Array<CtaWhereUniqueInput>>
-  set?: InputMaybe<Array<CtaWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<CtaWhereUniqueInput>>;
+  create?: InputMaybe<Array<CtaCreateInput>>;
+  disconnect?: InputMaybe<Array<CtaWhereUniqueInput>>;
+  set?: InputMaybe<Array<CtaWhereUniqueInput>>;
+};
 
 export type CtaRelateToOneForCreateInput = {
-  connect?: InputMaybe<CtaWhereUniqueInput>
-  create?: InputMaybe<CtaCreateInput>
-}
+  connect?: InputMaybe<CtaWhereUniqueInput>;
+  create?: InputMaybe<CtaCreateInput>;
+};
 
 export type CtaRelateToOneForUpdateInput = {
-  connect?: InputMaybe<CtaWhereUniqueInput>
-  create?: InputMaybe<CtaCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<CtaWhereUniqueInput>;
+  create?: InputMaybe<CtaCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type CtaSection = {
-  __typename?: "CtaSection"
-  background?: Maybe<Array<Image>>
-  backgroundCount?: Maybe<Scalars["Int"]["output"]>
-  ctas?: Maybe<Array<Cta>>
-  ctasCount?: Maybe<Scalars["Int"]["output"]>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'CtaSection';
+  background?: Maybe<Array<Image>>;
+  backgroundCount?: Maybe<Scalars['Int']['output']>;
+  ctas?: Maybe<Array<Cta>>;
+  ctasCount?: Maybe<Scalars['Int']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type CtaSectionBackgroundArgs = {
-  cursor?: InputMaybe<ImageWhereUniqueInput>
-  orderBy?: Array<ImageOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ImageWhereInput
-}
+  cursor?: InputMaybe<ImageWhereUniqueInput>;
+  orderBy?: Array<ImageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ImageWhereInput;
+};
+
 
 export type CtaSectionBackgroundCountArgs = {
-  where?: ImageWhereInput
-}
+  where?: ImageWhereInput;
+};
+
 
 export type CtaSectionCtasArgs = {
-  cursor?: InputMaybe<CtaWhereUniqueInput>
-  orderBy?: Array<CtaOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CtaWhereInput
-}
+  cursor?: InputMaybe<CtaWhereUniqueInput>;
+  orderBy?: Array<CtaOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CtaWhereInput;
+};
+
 
 export type CtaSectionCtasCountArgs = {
-  where?: CtaWhereInput
-}
+  where?: CtaWhereInput;
+};
 
 export type CtaSectionCreateInput = {
-  background?: InputMaybe<ImageRelateToManyForCreateInput>
-  ctas?: InputMaybe<CtaRelateToManyForCreateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  background?: InputMaybe<ImageRelateToManyForCreateInput>;
+  ctas?: InputMaybe<CtaRelateToManyForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CtaSectionManyRelationFilter = {
-  every?: InputMaybe<CtaSectionWhereInput>
-  none?: InputMaybe<CtaSectionWhereInput>
-  some?: InputMaybe<CtaSectionWhereInput>
-}
+  every?: InputMaybe<CtaSectionWhereInput>;
+  none?: InputMaybe<CtaSectionWhereInput>;
+  some?: InputMaybe<CtaSectionWhereInput>;
+};
 
 export type CtaSectionOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type CtaSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<CtaSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<CtaSectionCreateInput>>;
+};
 
 export type CtaSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<CtaSectionCreateInput>>
-  disconnect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<CtaSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<CtaSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<CtaSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<CtaSectionWhereUniqueInput>>;
+};
 
 export type CtaSectionUpdateArgs = {
-  data: CtaSectionUpdateInput
-  where: CtaSectionWhereUniqueInput
-}
+  data: CtaSectionUpdateInput;
+  where: CtaSectionWhereUniqueInput;
+};
 
 export type CtaSectionUpdateInput = {
-  background?: InputMaybe<ImageRelateToManyForUpdateInput>
-  ctas?: InputMaybe<CtaRelateToManyForUpdateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  background?: InputMaybe<ImageRelateToManyForUpdateInput>;
+  ctas?: InputMaybe<CtaRelateToManyForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type CtaSectionWhereInput = {
-  AND?: InputMaybe<Array<CtaSectionWhereInput>>
-  NOT?: InputMaybe<Array<CtaSectionWhereInput>>
-  OR?: InputMaybe<Array<CtaSectionWhereInput>>
-  background?: InputMaybe<ImageManyRelationFilter>
-  ctas?: InputMaybe<CtaManyRelationFilter>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<CtaSectionWhereInput>>;
+  NOT?: InputMaybe<Array<CtaSectionWhereInput>>;
+  OR?: InputMaybe<Array<CtaSectionWhereInput>>;
+  background?: InputMaybe<ImageManyRelationFilter>;
+  ctas?: InputMaybe<CtaManyRelationFilter>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type CtaSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type CtaUpdateArgs = {
-  data: CtaUpdateInput
-  where: CtaWhereUniqueInput
-}
+  data: CtaUpdateInput;
+  where: CtaWhereUniqueInput;
+};
 
 export type CtaUpdateInput = {
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  type?: InputMaybe<TypeRelateToOneForUpdateInput>
-}
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  type?: InputMaybe<TypeRelateToOneForUpdateInput>;
+};
 
 export type CtaWhereInput = {
-  AND?: InputMaybe<Array<CtaWhereInput>>
-  NOT?: InputMaybe<Array<CtaWhereInput>>
-  OR?: InputMaybe<Array<CtaWhereInput>>
-  external?: InputMaybe<BooleanFilter>
-  href?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  type?: InputMaybe<TypeWhereInput>
-}
+  AND?: InputMaybe<Array<CtaWhereInput>>;
+  NOT?: InputMaybe<Array<CtaWhereInput>>;
+  OR?: InputMaybe<Array<CtaWhereInput>>;
+  external?: InputMaybe<BooleanFilter>;
+  href?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  type?: InputMaybe<TypeWhereInput>;
+};
 
 export type CtaWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type DateTimeFilter = {
+  equals?: InputMaybe<Scalars['DateTime']['input']>;
+  gt?: InputMaybe<Scalars['DateTime']['input']>;
+  gte?: InputMaybe<Scalars['DateTime']['input']>;
+  in?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  lt?: InputMaybe<Scalars['DateTime']['input']>;
+  lte?: InputMaybe<Scalars['DateTime']['input']>;
+  not?: InputMaybe<DateTimeFilter>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+};
 
 export type DateTimeNullableFilter = {
-  equals?: InputMaybe<Scalars["DateTime"]["input"]>
-  gt?: InputMaybe<Scalars["DateTime"]["input"]>
-  gte?: InputMaybe<Scalars["DateTime"]["input"]>
-  in?: InputMaybe<Array<Scalars["DateTime"]["input"]>>
-  lt?: InputMaybe<Scalars["DateTime"]["input"]>
-  lte?: InputMaybe<Scalars["DateTime"]["input"]>
-  not?: InputMaybe<DateTimeNullableFilter>
-  notIn?: InputMaybe<Array<Scalars["DateTime"]["input"]>>
-}
+  equals?: InputMaybe<Scalars['DateTime']['input']>;
+  gt?: InputMaybe<Scalars['DateTime']['input']>;
+  gte?: InputMaybe<Scalars['DateTime']['input']>;
+  in?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+  lt?: InputMaybe<Scalars['DateTime']['input']>;
+  lte?: InputMaybe<Scalars['DateTime']['input']>;
+  not?: InputMaybe<DateTimeNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['DateTime']['input']>>;
+};
 
 export type Faq = {
-  __typename?: "Faq"
-  answer?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  question?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Faq';
+  answer?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  question?: Maybe<Scalars['String']['output']>;
+};
 
 export type FaqCreateInput = {
-  answer?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  question?: InputMaybe<Scalars["String"]["input"]>
-}
+  answer?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  question?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FaqManyRelationFilter = {
-  every?: InputMaybe<FaqWhereInput>
-  none?: InputMaybe<FaqWhereInput>
-  some?: InputMaybe<FaqWhereInput>
-}
+  every?: InputMaybe<FaqWhereInput>;
+  none?: InputMaybe<FaqWhereInput>;
+  some?: InputMaybe<FaqWhereInput>;
+};
 
 export type FaqOrderByInput = {
-  answer?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  question?: InputMaybe<OrderDirection>
-}
+  answer?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  question?: InputMaybe<OrderDirection>;
+};
 
 export type FaqRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FaqWhereUniqueInput>>
-  create?: InputMaybe<Array<FaqCreateInput>>
-}
+  connect?: InputMaybe<Array<FaqWhereUniqueInput>>;
+  create?: InputMaybe<Array<FaqCreateInput>>;
+};
 
 export type FaqRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FaqWhereUniqueInput>>
-  create?: InputMaybe<Array<FaqCreateInput>>
-  disconnect?: InputMaybe<Array<FaqWhereUniqueInput>>
-  set?: InputMaybe<Array<FaqWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<FaqWhereUniqueInput>>;
+  create?: InputMaybe<Array<FaqCreateInput>>;
+  disconnect?: InputMaybe<Array<FaqWhereUniqueInput>>;
+  set?: InputMaybe<Array<FaqWhereUniqueInput>>;
+};
 
 export type FaqSection = {
-  __typename?: "FaqSection"
-  description?: Maybe<Scalars["String"]["output"]>
-  faqs?: Maybe<Array<Faq>>
-  faqsCount?: Maybe<Scalars["Int"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'FaqSection';
+  description?: Maybe<Scalars['String']['output']>;
+  faqs?: Maybe<Array<Faq>>;
+  faqsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type FaqSectionFaqsArgs = {
-  cursor?: InputMaybe<FaqWhereUniqueInput>
-  orderBy?: Array<FaqOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FaqWhereInput
-}
+  cursor?: InputMaybe<FaqWhereUniqueInput>;
+  orderBy?: Array<FaqOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqWhereInput;
+};
+
 
 export type FaqSectionFaqsCountArgs = {
-  where?: FaqWhereInput
-}
+  where?: FaqWhereInput;
+};
 
 export type FaqSectionCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  faqs?: InputMaybe<FaqRelateToManyForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  faqs?: InputMaybe<FaqRelateToManyForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FaqSectionManyRelationFilter = {
-  every?: InputMaybe<FaqSectionWhereInput>
-  none?: InputMaybe<FaqSectionWhereInput>
-  some?: InputMaybe<FaqSectionWhereInput>
-}
+  every?: InputMaybe<FaqSectionWhereInput>;
+  none?: InputMaybe<FaqSectionWhereInput>;
+  some?: InputMaybe<FaqSectionWhereInput>;
+};
 
 export type FaqSectionOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type FaqSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<FaqSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FaqSectionCreateInput>>;
+};
 
 export type FaqSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<FaqSectionCreateInput>>
-  disconnect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<FaqSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FaqSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<FaqSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<FaqSectionWhereUniqueInput>>;
+};
 
 export type FaqSectionUpdateArgs = {
-  data: FaqSectionUpdateInput
-  where: FaqSectionWhereUniqueInput
-}
+  data: FaqSectionUpdateInput;
+  where: FaqSectionWhereUniqueInput;
+};
 
 export type FaqSectionUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  faqs?: InputMaybe<FaqRelateToManyForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  faqs?: InputMaybe<FaqRelateToManyForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FaqSectionWhereInput = {
-  AND?: InputMaybe<Array<FaqSectionWhereInput>>
-  NOT?: InputMaybe<Array<FaqSectionWhereInput>>
-  OR?: InputMaybe<Array<FaqSectionWhereInput>>
-  description?: InputMaybe<StringFilter>
-  faqs?: InputMaybe<FaqManyRelationFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<FaqSectionWhereInput>>;
+  NOT?: InputMaybe<Array<FaqSectionWhereInput>>;
+  OR?: InputMaybe<Array<FaqSectionWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  faqs?: InputMaybe<FaqManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type FaqSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type FaqUpdateArgs = {
-  data: FaqUpdateInput
-  where: FaqWhereUniqueInput
-}
+  data: FaqUpdateInput;
+  where: FaqWhereUniqueInput;
+};
 
 export type FaqUpdateInput = {
-  answer?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  question?: InputMaybe<Scalars["String"]["input"]>
-}
+  answer?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  question?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FaqWhereInput = {
-  AND?: InputMaybe<Array<FaqWhereInput>>
-  NOT?: InputMaybe<Array<FaqWhereInput>>
-  OR?: InputMaybe<Array<FaqWhereInput>>
-  answer?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  question?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<FaqWhereInput>>;
+  NOT?: InputMaybe<Array<FaqWhereInput>>;
+  OR?: InputMaybe<Array<FaqWhereInput>>;
+  answer?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  question?: InputMaybe<StringFilter>;
+};
 
 export type FaqWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Feature = {
-  __typename?: "Feature"
-  description?: Maybe<Scalars["String"]["output"]>
-  featureId?: Maybe<Scalars["Int"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  longDescription?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-  visualization?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Feature';
+  description?: Maybe<Scalars['String']['output']>;
+  featureId?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  longDescription?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  visualization?: Maybe<Scalars['String']['output']>;
+};
 
 export type FeatureCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  featureId?: InputMaybe<Scalars["Int"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  longDescription?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-  visualization?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  featureId?: InputMaybe<Scalars['Int']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  longDescription?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  visualization?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FeatureManyRelationFilter = {
-  every?: InputMaybe<FeatureWhereInput>
-  none?: InputMaybe<FeatureWhereInput>
-  some?: InputMaybe<FeatureWhereInput>
-}
+  every?: InputMaybe<FeatureWhereInput>;
+  none?: InputMaybe<FeatureWhereInput>;
+  some?: InputMaybe<FeatureWhereInput>;
+};
 
 export type FeatureOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  featureId?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  longDescription?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-  visualization?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  featureId?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  longDescription?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+  visualization?: InputMaybe<OrderDirection>;
+};
 
 export type FeatureRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FeatureWhereUniqueInput>>
-  create?: InputMaybe<Array<FeatureCreateInput>>
-}
+  connect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
+  create?: InputMaybe<Array<FeatureCreateInput>>;
+};
 
 export type FeatureRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FeatureWhereUniqueInput>>
-  create?: InputMaybe<Array<FeatureCreateInput>>
-  disconnect?: InputMaybe<Array<FeatureWhereUniqueInput>>
-  set?: InputMaybe<Array<FeatureWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
+  create?: InputMaybe<Array<FeatureCreateInput>>;
+  disconnect?: InputMaybe<Array<FeatureWhereUniqueInput>>;
+  set?: InputMaybe<Array<FeatureWhereUniqueInput>>;
+};
 
 export type FeatureUpdateArgs = {
-  data: FeatureUpdateInput
-  where: FeatureWhereUniqueInput
-}
+  data: FeatureUpdateInput;
+  where: FeatureWhereUniqueInput;
+};
 
 export type FeatureUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  featureId?: InputMaybe<Scalars["Int"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  longDescription?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-  visualization?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  featureId?: InputMaybe<Scalars['Int']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  longDescription?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  visualization?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FeatureWhereInput = {
-  AND?: InputMaybe<Array<FeatureWhereInput>>
-  NOT?: InputMaybe<Array<FeatureWhereInput>>
-  OR?: InputMaybe<Array<FeatureWhereInput>>
-  description?: InputMaybe<StringFilter>
-  featureId?: InputMaybe<IntFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  longDescription?: InputMaybe<StringFilter>
-  title?: InputMaybe<StringFilter>
-  visualization?: InputMaybe<StringNullableFilter>
-}
+  AND?: InputMaybe<Array<FeatureWhereInput>>;
+  NOT?: InputMaybe<Array<FeatureWhereInput>>;
+  OR?: InputMaybe<Array<FeatureWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  featureId?: InputMaybe<IntFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  longDescription?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  visualization?: InputMaybe<StringNullableFilter>;
+};
 
 export type FeatureWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type FloatNullableFilter = {
-  equals?: InputMaybe<Scalars["Float"]["input"]>
-  gt?: InputMaybe<Scalars["Float"]["input"]>
-  gte?: InputMaybe<Scalars["Float"]["input"]>
-  in?: InputMaybe<Array<Scalars["Float"]["input"]>>
-  lt?: InputMaybe<Scalars["Float"]["input"]>
-  lte?: InputMaybe<Scalars["Float"]["input"]>
-  not?: InputMaybe<FloatNullableFilter>
-  notIn?: InputMaybe<Array<Scalars["Float"]["input"]>>
-}
+  equals?: InputMaybe<Scalars['Float']['input']>;
+  gt?: InputMaybe<Scalars['Float']['input']>;
+  gte?: InputMaybe<Scalars['Float']['input']>;
+  in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  lt?: InputMaybe<Scalars['Float']['input']>;
+  lte?: InputMaybe<Scalars['Float']['input']>;
+  not?: InputMaybe<FloatNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
+};
 
 export type Footer = {
-  __typename?: "Footer"
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  sections?: Maybe<Array<FooterSection>>
-  sectionsCount?: Maybe<Scalars["Int"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Footer';
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  sections?: Maybe<Array<FooterSection>>;
+  sectionsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type FooterSectionsArgs = {
-  cursor?: InputMaybe<FooterSectionWhereUniqueInput>
-  orderBy?: Array<FooterSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FooterSectionWhereInput
-}
+  cursor?: InputMaybe<FooterSectionWhereUniqueInput>;
+  orderBy?: Array<FooterSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FooterSectionWhereInput;
+};
+
 
 export type FooterSectionsCountArgs = {
-  where?: FooterSectionWhereInput
-}
+  where?: FooterSectionWhereInput;
+};
 
 export type FooterCreateInput = {
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  sections?: InputMaybe<FooterSectionRelateToManyForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  sections?: InputMaybe<FooterSectionRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FooterManyRelationFilter = {
-  every?: InputMaybe<FooterWhereInput>
-  none?: InputMaybe<FooterWhereInput>
-  some?: InputMaybe<FooterWhereInput>
-}
+  every?: InputMaybe<FooterWhereInput>;
+  none?: InputMaybe<FooterWhereInput>;
+  some?: InputMaybe<FooterWhereInput>;
+};
 
 export type FooterOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type FooterRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FooterWhereUniqueInput>>
-  create?: InputMaybe<Array<FooterCreateInput>>
-}
+  connect?: InputMaybe<Array<FooterWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterCreateInput>>;
+};
 
 export type FooterRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FooterWhereUniqueInput>>
-  create?: InputMaybe<Array<FooterCreateInput>>
-  disconnect?: InputMaybe<Array<FooterWhereUniqueInput>>
-  set?: InputMaybe<Array<FooterWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<FooterWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterCreateInput>>;
+  disconnect?: InputMaybe<Array<FooterWhereUniqueInput>>;
+  set?: InputMaybe<Array<FooterWhereUniqueInput>>;
+};
 
 export type FooterSection = {
-  __typename?: "FooterSection"
-  id: Scalars["ID"]["output"]
-  items?: Maybe<Array<NavigationLink>>
-  itemsCount?: Maybe<Scalars["Int"]["output"]>
-  language?: Maybe<Language>
-  title?: Maybe<FooterSectionKey>
-}
+  __typename?: 'FooterSection';
+  displayLabel?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  items?: Maybe<Array<NavigationLink>>;
+  itemsCount?: Maybe<Scalars['Int']['output']>;
+  language?: Maybe<Language>;
+  title?: Maybe<FooterSectionKey>;
+};
+
 
 export type FooterSectionItemsArgs = {
-  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>
-  orderBy?: Array<NavigationLinkOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: NavigationLinkWhereInput
-}
+  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>;
+  orderBy?: Array<NavigationLinkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationLinkWhereInput;
+};
+
 
 export type FooterSectionItemsCountArgs = {
-  where?: NavigationLinkWhereInput
-}
+  where?: NavigationLinkWhereInput;
+};
 
 export type FooterSectionCreateInput = {
-  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<FooterSectionKeyRelateToOneForCreateInput>
-}
+  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<FooterSectionKeyRelateToOneForCreateInput>;
+};
 
 export type FooterSectionKey = {
-  __typename?: "FooterSectionKey"
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'FooterSectionKey';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+};
 
 export type FooterSectionKeyCreateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FooterSectionKeyOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type FooterSectionKeyRelateToOneForCreateInput = {
-  connect?: InputMaybe<FooterSectionKeyWhereUniqueInput>
-  create?: InputMaybe<FooterSectionKeyCreateInput>
-}
+  connect?: InputMaybe<FooterSectionKeyWhereUniqueInput>;
+  create?: InputMaybe<FooterSectionKeyCreateInput>;
+};
 
 export type FooterSectionKeyRelateToOneForUpdateInput = {
-  connect?: InputMaybe<FooterSectionKeyWhereUniqueInput>
-  create?: InputMaybe<FooterSectionKeyCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<FooterSectionKeyWhereUniqueInput>;
+  create?: InputMaybe<FooterSectionKeyCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type FooterSectionKeyUpdateArgs = {
-  data: FooterSectionKeyUpdateInput
-  where: FooterSectionKeyWhereUniqueInput
-}
+  data: FooterSectionKeyUpdateInput;
+  where: FooterSectionKeyWhereUniqueInput;
+};
 
 export type FooterSectionKeyUpdateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FooterSectionKeyWhereInput = {
-  AND?: InputMaybe<Array<FooterSectionKeyWhereInput>>
-  NOT?: InputMaybe<Array<FooterSectionKeyWhereInput>>
-  OR?: InputMaybe<Array<FooterSectionKeyWhereInput>>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringNullableFilter>
-}
+  AND?: InputMaybe<Array<FooterSectionKeyWhereInput>>;
+  NOT?: InputMaybe<Array<FooterSectionKeyWhereInput>>;
+  OR?: InputMaybe<Array<FooterSectionKeyWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringNullableFilter>;
+};
 
 export type FooterSectionKeyWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type FooterSectionManyRelationFilter = {
-  every?: InputMaybe<FooterSectionWhereInput>
-  none?: InputMaybe<FooterSectionWhereInput>
-  some?: InputMaybe<FooterSectionWhereInput>
-}
+  every?: InputMaybe<FooterSectionWhereInput>;
+  none?: InputMaybe<FooterSectionWhereInput>;
+  some?: InputMaybe<FooterSectionWhereInput>;
+};
 
 export type FooterSectionOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+};
 
 export type FooterSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<FooterSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterSectionCreateInput>>;
+};
 
 export type FooterSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<FooterSectionCreateInput>>
-  disconnect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<FooterSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<FooterSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<FooterSectionWhereUniqueInput>>;
+};
 
 export type FooterSectionUpdateArgs = {
-  data: FooterSectionUpdateInput
-  where: FooterSectionWhereUniqueInput
-}
+  data: FooterSectionUpdateInput;
+  where: FooterSectionWhereUniqueInput;
+};
 
 export type FooterSectionUpdateInput = {
-  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<FooterSectionKeyRelateToOneForUpdateInput>
-}
+  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<FooterSectionKeyRelateToOneForUpdateInput>;
+};
 
 export type FooterSectionWhereInput = {
-  AND?: InputMaybe<Array<FooterSectionWhereInput>>
-  NOT?: InputMaybe<Array<FooterSectionWhereInput>>
-  OR?: InputMaybe<Array<FooterSectionWhereInput>>
-  id?: InputMaybe<IdFilter>
-  items?: InputMaybe<NavigationLinkManyRelationFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<FooterSectionKeyWhereInput>
-}
+  AND?: InputMaybe<Array<FooterSectionWhereInput>>;
+  NOT?: InputMaybe<Array<FooterSectionWhereInput>>;
+  OR?: InputMaybe<Array<FooterSectionWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  items?: InputMaybe<NavigationLinkManyRelationFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<FooterSectionKeyWhereInput>;
+};
 
 export type FooterSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type FooterUpdateArgs = {
-  data: FooterUpdateInput
-  where: FooterWhereUniqueInput
-}
+  data: FooterUpdateInput;
+  where: FooterWhereUniqueInput;
+};
 
 export type FooterUpdateInput = {
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  sections?: InputMaybe<FooterSectionRelateToManyForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  sections?: InputMaybe<FooterSectionRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type FooterWhereInput = {
-  AND?: InputMaybe<Array<FooterWhereInput>>
-  NOT?: InputMaybe<Array<FooterWhereInput>>
-  OR?: InputMaybe<Array<FooterWhereInput>>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  sections?: InputMaybe<FooterSectionManyRelationFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<FooterWhereInput>>;
+  NOT?: InputMaybe<Array<FooterWhereInput>>;
+  OR?: InputMaybe<Array<FooterWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  sections?: InputMaybe<FooterSectionManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type FooterWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Hero = {
-  __typename?: "Hero"
-  banner?: Maybe<HeroBanner>
-  cta?: Maybe<Cta>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  subHeading?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Hero';
+  banner?: Maybe<HeroBanner>;
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  subHeading?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type HeroBanner = {
-  __typename?: "HeroBanner"
-  additional?: Maybe<HeroBannerAdditional>
-  external?: Maybe<Scalars["Boolean"]["output"]>
-  href?: Maybe<Scalars["String"]["output"]>
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-}
+  __typename?: 'HeroBanner';
+  additional?: Maybe<HeroBannerAdditional>;
+  external?: Maybe<Scalars['Boolean']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+};
 
 export type HeroBannerAdditional = {
-  __typename?: "HeroBannerAdditional"
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  text?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'HeroBannerAdditional';
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  text?: Maybe<Scalars['String']['output']>;
+};
 
 export type HeroBannerAdditionalCreateInput = {
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  text?: InputMaybe<Scalars["String"]["input"]>
-}
+  icon?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type HeroBannerAdditionalOrderByInput = {
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  text?: InputMaybe<OrderDirection>
-}
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  text?: InputMaybe<OrderDirection>;
+};
 
 export type HeroBannerAdditionalRelateToOneForCreateInput = {
-  connect?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>
-  create?: InputMaybe<HeroBannerAdditionalCreateInput>
-}
+  connect?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>;
+  create?: InputMaybe<HeroBannerAdditionalCreateInput>;
+};
 
 export type HeroBannerAdditionalRelateToOneForUpdateInput = {
-  connect?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>
-  create?: InputMaybe<HeroBannerAdditionalCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>;
+  create?: InputMaybe<HeroBannerAdditionalCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type HeroBannerAdditionalUpdateArgs = {
-  data: HeroBannerAdditionalUpdateInput
-  where: HeroBannerAdditionalWhereUniqueInput
-}
+  data: HeroBannerAdditionalUpdateInput;
+  where: HeroBannerAdditionalWhereUniqueInput;
+};
 
 export type HeroBannerAdditionalUpdateInput = {
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  text?: InputMaybe<Scalars["String"]["input"]>
-}
+  icon?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  text?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type HeroBannerAdditionalWhereInput = {
-  AND?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>
-  NOT?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>
-  OR?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  text?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>;
+  NOT?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>;
+  OR?: InputMaybe<Array<HeroBannerAdditionalWhereInput>>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  text?: InputMaybe<StringFilter>;
+};
 
 export type HeroBannerAdditionalWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type HeroBannerCreateInput = {
-  additional?: InputMaybe<HeroBannerAdditionalRelateToOneForCreateInput>
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-}
+  additional?: InputMaybe<HeroBannerAdditionalRelateToOneForCreateInput>;
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+};
 
 export type HeroBannerOrderByInput = {
-  external?: InputMaybe<OrderDirection>
-  href?: InputMaybe<OrderDirection>
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  external?: InputMaybe<OrderDirection>;
+  href?: InputMaybe<OrderDirection>;
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type HeroBannerRelateToOneForCreateInput = {
-  connect?: InputMaybe<HeroBannerWhereUniqueInput>
-  create?: InputMaybe<HeroBannerCreateInput>
-}
+  connect?: InputMaybe<HeroBannerWhereUniqueInput>;
+  create?: InputMaybe<HeroBannerCreateInput>;
+};
 
 export type HeroBannerRelateToOneForUpdateInput = {
-  connect?: InputMaybe<HeroBannerWhereUniqueInput>
-  create?: InputMaybe<HeroBannerCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<HeroBannerWhereUniqueInput>;
+  create?: InputMaybe<HeroBannerCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type HeroBannerUpdateArgs = {
-  data: HeroBannerUpdateInput
-  where: HeroBannerWhereUniqueInput
-}
+  data: HeroBannerUpdateInput;
+  where: HeroBannerWhereUniqueInput;
+};
 
 export type HeroBannerUpdateInput = {
-  additional?: InputMaybe<HeroBannerAdditionalRelateToOneForUpdateInput>
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-}
+  additional?: InputMaybe<HeroBannerAdditionalRelateToOneForUpdateInput>;
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+};
 
 export type HeroBannerWhereInput = {
-  AND?: InputMaybe<Array<HeroBannerWhereInput>>
-  NOT?: InputMaybe<Array<HeroBannerWhereInput>>
-  OR?: InputMaybe<Array<HeroBannerWhereInput>>
-  additional?: InputMaybe<HeroBannerAdditionalWhereInput>
-  external?: InputMaybe<BooleanFilter>
-  href?: InputMaybe<StringFilter>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-}
+  AND?: InputMaybe<Array<HeroBannerWhereInput>>;
+  NOT?: InputMaybe<Array<HeroBannerWhereInput>>;
+  OR?: InputMaybe<Array<HeroBannerWhereInput>>;
+  additional?: InputMaybe<HeroBannerAdditionalWhereInput>;
+  external?: InputMaybe<BooleanFilter>;
+  href?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+};
 
 export type HeroBannerWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type HeroCreateInput = {
-  banner?: InputMaybe<HeroBannerRelateToOneForCreateInput>
-  cta?: InputMaybe<CtaRelateToOneForCreateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  subHeading?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  banner?: InputMaybe<HeroBannerRelateToOneForCreateInput>;
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  subHeading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type HeroManyRelationFilter = {
-  every?: InputMaybe<HeroWhereInput>
-  none?: InputMaybe<HeroWhereInput>
-  some?: InputMaybe<HeroWhereInput>
-}
+  every?: InputMaybe<HeroWhereInput>;
+  none?: InputMaybe<HeroWhereInput>;
+  some?: InputMaybe<HeroWhereInput>;
+};
 
 export type HeroOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  subHeading?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  subHeading?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type HeroRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<HeroWhereUniqueInput>>
-  create?: InputMaybe<Array<HeroCreateInput>>
-}
+  connect?: InputMaybe<Array<HeroWhereUniqueInput>>;
+  create?: InputMaybe<Array<HeroCreateInput>>;
+};
 
 export type HeroRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<HeroWhereUniqueInput>>
-  create?: InputMaybe<Array<HeroCreateInput>>
-  disconnect?: InputMaybe<Array<HeroWhereUniqueInput>>
-  set?: InputMaybe<Array<HeroWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<HeroWhereUniqueInput>>;
+  create?: InputMaybe<Array<HeroCreateInput>>;
+  disconnect?: InputMaybe<Array<HeroWhereUniqueInput>>;
+  set?: InputMaybe<Array<HeroWhereUniqueInput>>;
+};
 
 export type HeroUpdateArgs = {
-  data: HeroUpdateInput
-  where: HeroWhereUniqueInput
-}
+  data: HeroUpdateInput;
+  where: HeroWhereUniqueInput;
+};
 
 export type HeroUpdateInput = {
-  banner?: InputMaybe<HeroBannerRelateToOneForUpdateInput>
-  cta?: InputMaybe<CtaRelateToOneForUpdateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  subHeading?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  banner?: InputMaybe<HeroBannerRelateToOneForUpdateInput>;
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  subHeading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type HeroWhereInput = {
-  AND?: InputMaybe<Array<HeroWhereInput>>
-  NOT?: InputMaybe<Array<HeroWhereInput>>
-  OR?: InputMaybe<Array<HeroWhereInput>>
-  banner?: InputMaybe<HeroBannerWhereInput>
-  cta?: InputMaybe<CtaWhereInput>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  subHeading?: InputMaybe<StringFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<HeroWhereInput>>;
+  NOT?: InputMaybe<Array<HeroWhereInput>>;
+  OR?: InputMaybe<Array<HeroWhereInput>>;
+  banner?: InputMaybe<HeroBannerWhereInput>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  subHeading?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type HeroWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type IdFilter = {
-  equals?: InputMaybe<Scalars["ID"]["input"]>
-  gt?: InputMaybe<Scalars["ID"]["input"]>
-  gte?: InputMaybe<Scalars["ID"]["input"]>
-  in?: InputMaybe<Array<Scalars["ID"]["input"]>>
-  lt?: InputMaybe<Scalars["ID"]["input"]>
-  lte?: InputMaybe<Scalars["ID"]["input"]>
-  not?: InputMaybe<IdFilter>
-  notIn?: InputMaybe<Array<Scalars["ID"]["input"]>>
-}
+  equals?: InputMaybe<Scalars['ID']['input']>;
+  gt?: InputMaybe<Scalars['ID']['input']>;
+  gte?: InputMaybe<Scalars['ID']['input']>;
+  in?: InputMaybe<Array<Scalars['ID']['input']>>;
+  lt?: InputMaybe<Scalars['ID']['input']>;
+  lte?: InputMaybe<Scalars['ID']['input']>;
+  not?: InputMaybe<IdFilter>;
+  notIn?: InputMaybe<Array<Scalars['ID']['input']>>;
+};
 
 export type Image = {
-  __typename?: "Image"
-  alt?: Maybe<Scalars["String"]["output"]>
-  fill?: Maybe<Scalars["Boolean"]["output"]>
-  height?: Maybe<Scalars["Int"]["output"]>
-  id: Scalars["ID"]["output"]
-  src?: Maybe<Scalars["String"]["output"]>
-  type?: Maybe<Type>
-  width?: Maybe<Scalars["Int"]["output"]>
-}
+  __typename?: 'Image';
+  alt?: Maybe<Scalars['String']['output']>;
+  fill?: Maybe<Scalars['Boolean']['output']>;
+  height?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  preview?: Maybe<Scalars['String']['output']>;
+  src?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Type>;
+  width?: Maybe<Scalars['Int']['output']>;
+};
 
 export type ImageCreateInput = {
-  alt?: InputMaybe<Scalars["String"]["input"]>
-  fill?: InputMaybe<Scalars["Boolean"]["input"]>
-  height?: InputMaybe<Scalars["Int"]["input"]>
-  src?: InputMaybe<Scalars["String"]["input"]>
-  type?: InputMaybe<TypeRelateToOneForCreateInput>
-  width?: InputMaybe<Scalars["Int"]["input"]>
-}
+  alt?: InputMaybe<Scalars['String']['input']>;
+  fill?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  src?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForCreateInput>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
 
 export type ImageManyRelationFilter = {
-  every?: InputMaybe<ImageWhereInput>
-  none?: InputMaybe<ImageWhereInput>
-  some?: InputMaybe<ImageWhereInput>
-}
+  every?: InputMaybe<ImageWhereInput>;
+  none?: InputMaybe<ImageWhereInput>;
+  some?: InputMaybe<ImageWhereInput>;
+};
 
 export type ImageOrderByInput = {
-  alt?: InputMaybe<OrderDirection>
-  fill?: InputMaybe<OrderDirection>
-  height?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  src?: InputMaybe<OrderDirection>
-  width?: InputMaybe<OrderDirection>
-}
+  alt?: InputMaybe<OrderDirection>;
+  fill?: InputMaybe<OrderDirection>;
+  height?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  src?: InputMaybe<OrderDirection>;
+  width?: InputMaybe<OrderDirection>;
+};
 
 export type ImageRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<ImageWhereUniqueInput>>
-  create?: InputMaybe<Array<ImageCreateInput>>
-}
+  connect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ImageCreateInput>>;
+};
 
 export type ImageRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<ImageWhereUniqueInput>>
-  create?: InputMaybe<Array<ImageCreateInput>>
-  disconnect?: InputMaybe<Array<ImageWhereUniqueInput>>
-  set?: InputMaybe<Array<ImageWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ImageCreateInput>>;
+  disconnect?: InputMaybe<Array<ImageWhereUniqueInput>>;
+  set?: InputMaybe<Array<ImageWhereUniqueInput>>;
+};
 
 export type ImageRelateToOneForCreateInput = {
-  connect?: InputMaybe<ImageWhereUniqueInput>
-  create?: InputMaybe<ImageCreateInput>
-}
+  connect?: InputMaybe<ImageWhereUniqueInput>;
+  create?: InputMaybe<ImageCreateInput>;
+};
 
 export type ImageRelateToOneForUpdateInput = {
-  connect?: InputMaybe<ImageWhereUniqueInput>
-  create?: InputMaybe<ImageCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<ImageWhereUniqueInput>;
+  create?: InputMaybe<ImageCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type ImageUpdateArgs = {
-  data: ImageUpdateInput
-  where: ImageWhereUniqueInput
-}
+  data: ImageUpdateInput;
+  where: ImageWhereUniqueInput;
+};
 
 export type ImageUpdateInput = {
-  alt?: InputMaybe<Scalars["String"]["input"]>
-  fill?: InputMaybe<Scalars["Boolean"]["input"]>
-  height?: InputMaybe<Scalars["Int"]["input"]>
-  src?: InputMaybe<Scalars["String"]["input"]>
-  type?: InputMaybe<TypeRelateToOneForUpdateInput>
-  width?: InputMaybe<Scalars["Int"]["input"]>
-}
+  alt?: InputMaybe<Scalars['String']['input']>;
+  fill?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  src?: InputMaybe<Scalars['String']['input']>;
+  type?: InputMaybe<TypeRelateToOneForUpdateInput>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+};
 
 export type ImageWhereInput = {
-  AND?: InputMaybe<Array<ImageWhereInput>>
-  NOT?: InputMaybe<Array<ImageWhereInput>>
-  OR?: InputMaybe<Array<ImageWhereInput>>
-  alt?: InputMaybe<StringFilter>
-  fill?: InputMaybe<BooleanFilter>
-  height?: InputMaybe<IntNullableFilter>
-  id?: InputMaybe<IdFilter>
-  src?: InputMaybe<StringFilter>
-  type?: InputMaybe<TypeWhereInput>
-  width?: InputMaybe<IntNullableFilter>
-}
+  AND?: InputMaybe<Array<ImageWhereInput>>;
+  NOT?: InputMaybe<Array<ImageWhereInput>>;
+  OR?: InputMaybe<Array<ImageWhereInput>>;
+  alt?: InputMaybe<StringFilter>;
+  fill?: InputMaybe<BooleanFilter>;
+  height?: InputMaybe<IntNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  src?: InputMaybe<StringFilter>;
+  type?: InputMaybe<TypeWhereInput>;
+  width?: InputMaybe<IntNullableFilter>;
+};
 
 export type ImageWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type IntFilter = {
-  equals?: InputMaybe<Scalars["Int"]["input"]>
-  gt?: InputMaybe<Scalars["Int"]["input"]>
-  gte?: InputMaybe<Scalars["Int"]["input"]>
-  in?: InputMaybe<Array<Scalars["Int"]["input"]>>
-  lt?: InputMaybe<Scalars["Int"]["input"]>
-  lte?: InputMaybe<Scalars["Int"]["input"]>
-  not?: InputMaybe<IntFilter>
-  notIn?: InputMaybe<Array<Scalars["Int"]["input"]>>
-}
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<IntFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
 
 export type IntNullableFilter = {
-  equals?: InputMaybe<Scalars["Int"]["input"]>
-  gt?: InputMaybe<Scalars["Int"]["input"]>
-  gte?: InputMaybe<Scalars["Int"]["input"]>
-  in?: InputMaybe<Array<Scalars["Int"]["input"]>>
-  lt?: InputMaybe<Scalars["Int"]["input"]>
-  lte?: InputMaybe<Scalars["Int"]["input"]>
-  not?: InputMaybe<IntNullableFilter>
-  notIn?: InputMaybe<Array<Scalars["Int"]["input"]>>
-}
+  equals?: InputMaybe<Scalars['Int']['input']>;
+  gt?: InputMaybe<Scalars['Int']['input']>;
+  gte?: InputMaybe<Scalars['Int']['input']>;
+  in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  lt?: InputMaybe<Scalars['Int']['input']>;
+  lte?: InputMaybe<Scalars['Int']['input']>;
+  not?: InputMaybe<IntNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
 
 export type KeystoneAdminMeta = {
-  __typename?: "KeystoneAdminMeta"
-  list?: Maybe<KeystoneAdminUiListMeta>
-  lists: Array<KeystoneAdminUiListMeta>
-}
+  __typename?: 'KeystoneAdminMeta';
+  list?: Maybe<KeystoneAdminUiListMeta>;
+  lists: Array<KeystoneAdminUiListMeta>;
+};
+
 
 export type KeystoneAdminMetaListArgs = {
-  key: Scalars["String"]["input"]
-}
+  key: Scalars['String']['input'];
+};
 
 export type KeystoneAdminUiFieldGroupMeta = {
-  __typename?: "KeystoneAdminUIFieldGroupMeta"
-  description?: Maybe<Scalars["String"]["output"]>
-  fields: Array<KeystoneAdminUiFieldMeta>
-  label: Scalars["String"]["output"]
-}
+  __typename?: 'KeystoneAdminUIFieldGroupMeta';
+  description?: Maybe<Scalars['String']['output']>;
+  fields: Array<KeystoneAdminUiFieldMeta>;
+  label: Scalars['String']['output'];
+};
 
 export type KeystoneAdminUiFieldMeta = {
-  __typename?: "KeystoneAdminUIFieldMeta"
-  createView: KeystoneAdminUiFieldMetaCreateView
-  customViewsIndex?: Maybe<Scalars["Int"]["output"]>
-  description?: Maybe<Scalars["String"]["output"]>
-  fieldMeta?: Maybe<Scalars["JSON"]["output"]>
-  isFilterable: Scalars["Boolean"]["output"]
-  isNonNull?: Maybe<Array<KeystoneAdminUiFieldMetaIsNonNull>>
-  isOrderable: Scalars["Boolean"]["output"]
-  itemView?: Maybe<KeystoneAdminUiFieldMetaItemView>
-  label: Scalars["String"]["output"]
-  listView: KeystoneAdminUiFieldMetaListView
-  path: Scalars["String"]["output"]
-  search?: Maybe<QueryMode>
-  viewsIndex: Scalars["Int"]["output"]
-}
+  __typename?: 'KeystoneAdminUIFieldMeta';
+  createView: KeystoneAdminUiFieldMetaCreateView;
+  customViewsIndex?: Maybe<Scalars['Int']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  fieldMeta?: Maybe<Scalars['JSON']['output']>;
+  isFilterable: Scalars['Boolean']['output'];
+  isNonNull?: Maybe<Array<KeystoneAdminUiFieldMetaIsNonNull>>;
+  isOrderable: Scalars['Boolean']['output'];
+  itemView?: Maybe<KeystoneAdminUiFieldMetaItemView>;
+  label: Scalars['String']['output'];
+  listView: KeystoneAdminUiFieldMetaListView;
+  path: Scalars['String']['output'];
+  search?: Maybe<QueryMode>;
+  viewsIndex: Scalars['Int']['output'];
+};
+
 
 export type KeystoneAdminUiFieldMetaItemViewArgs = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type KeystoneAdminUiFieldMetaCreateView = {
-  __typename?: "KeystoneAdminUIFieldMetaCreateView"
-  fieldMode: KeystoneAdminUiFieldMetaCreateViewFieldMode
-}
+  __typename?: 'KeystoneAdminUIFieldMetaCreateView';
+  fieldMode: KeystoneAdminUiFieldMetaCreateViewFieldMode;
+};
 
 export enum KeystoneAdminUiFieldMetaCreateViewFieldMode {
-  Edit = "edit",
-  Hidden = "hidden",
+  Edit = 'edit',
+  Hidden = 'hidden'
 }
 
 export enum KeystoneAdminUiFieldMetaIsNonNull {
-  Create = "create",
-  Read = "read",
-  Update = "update",
+  Create = 'create',
+  Read = 'read',
+  Update = 'update'
 }
 
 export type KeystoneAdminUiFieldMetaItemView = {
-  __typename?: "KeystoneAdminUIFieldMetaItemView"
-  fieldMode?: Maybe<KeystoneAdminUiFieldMetaItemViewFieldMode>
-  fieldPosition?: Maybe<KeystoneAdminUiFieldMetaItemViewFieldPosition>
-}
+  __typename?: 'KeystoneAdminUIFieldMetaItemView';
+  fieldMode?: Maybe<KeystoneAdminUiFieldMetaItemViewFieldMode>;
+  fieldPosition?: Maybe<KeystoneAdminUiFieldMetaItemViewFieldPosition>;
+};
 
 export enum KeystoneAdminUiFieldMetaItemViewFieldMode {
-  Edit = "edit",
-  Hidden = "hidden",
-  Read = "read",
+  Edit = 'edit',
+  Hidden = 'hidden',
+  Read = 'read'
 }
 
 export enum KeystoneAdminUiFieldMetaItemViewFieldPosition {
-  Form = "form",
-  Sidebar = "sidebar",
+  Form = 'form',
+  Sidebar = 'sidebar'
 }
 
 export type KeystoneAdminUiFieldMetaListView = {
-  __typename?: "KeystoneAdminUIFieldMetaListView"
-  fieldMode: KeystoneAdminUiFieldMetaListViewFieldMode
-}
+  __typename?: 'KeystoneAdminUIFieldMetaListView';
+  fieldMode: KeystoneAdminUiFieldMetaListViewFieldMode;
+};
 
 export enum KeystoneAdminUiFieldMetaListViewFieldMode {
-  Hidden = "hidden",
-  Read = "read",
+  Hidden = 'hidden',
+  Read = 'read'
 }
 
 export type KeystoneAdminUiGraphQl = {
-  __typename?: "KeystoneAdminUIGraphQL"
-  names: KeystoneAdminUiGraphQlNames
-}
+  __typename?: 'KeystoneAdminUIGraphQL';
+  names: KeystoneAdminUiGraphQlNames;
+};
 
 export type KeystoneAdminUiGraphQlNames = {
-  __typename?: "KeystoneAdminUIGraphQLNames"
-  createInputName: Scalars["String"]["output"]
-  createManyMutationName: Scalars["String"]["output"]
-  createMutationName: Scalars["String"]["output"]
-  deleteManyMutationName: Scalars["String"]["output"]
-  deleteMutationName: Scalars["String"]["output"]
-  itemQueryName: Scalars["String"]["output"]
-  listOrderName: Scalars["String"]["output"]
-  listQueryCountName: Scalars["String"]["output"]
-  listQueryName: Scalars["String"]["output"]
-  outputTypeName: Scalars["String"]["output"]
-  relateToManyForCreateInputName: Scalars["String"]["output"]
-  relateToManyForUpdateInputName: Scalars["String"]["output"]
-  relateToOneForCreateInputName: Scalars["String"]["output"]
-  relateToOneForUpdateInputName: Scalars["String"]["output"]
-  updateInputName: Scalars["String"]["output"]
-  updateManyInputName: Scalars["String"]["output"]
-  updateManyMutationName: Scalars["String"]["output"]
-  updateMutationName: Scalars["String"]["output"]
-  whereInputName: Scalars["String"]["output"]
-  whereUniqueInputName: Scalars["String"]["output"]
-}
+  __typename?: 'KeystoneAdminUIGraphQLNames';
+  createInputName: Scalars['String']['output'];
+  createManyMutationName: Scalars['String']['output'];
+  createMutationName: Scalars['String']['output'];
+  deleteManyMutationName: Scalars['String']['output'];
+  deleteMutationName: Scalars['String']['output'];
+  itemQueryName: Scalars['String']['output'];
+  listOrderName: Scalars['String']['output'];
+  listQueryCountName: Scalars['String']['output'];
+  listQueryName: Scalars['String']['output'];
+  outputTypeName: Scalars['String']['output'];
+  relateToManyForCreateInputName: Scalars['String']['output'];
+  relateToManyForUpdateInputName: Scalars['String']['output'];
+  relateToOneForCreateInputName: Scalars['String']['output'];
+  relateToOneForUpdateInputName: Scalars['String']['output'];
+  updateInputName: Scalars['String']['output'];
+  updateManyInputName: Scalars['String']['output'];
+  updateManyMutationName: Scalars['String']['output'];
+  updateMutationName: Scalars['String']['output'];
+  whereInputName: Scalars['String']['output'];
+  whereUniqueInputName: Scalars['String']['output'];
+};
 
 export type KeystoneAdminUiListMeta = {
-  __typename?: "KeystoneAdminUIListMeta"
-  description?: Maybe<Scalars["String"]["output"]>
-  fields: Array<KeystoneAdminUiFieldMeta>
-  graphql: KeystoneAdminUiGraphQl
-  groups: Array<KeystoneAdminUiFieldGroupMeta>
-  hideCreate: Scalars["Boolean"]["output"]
-  hideDelete: Scalars["Boolean"]["output"]
-  initialColumns: Array<Scalars["String"]["output"]>
-  initialSearchFields: Array<Scalars["String"]["output"]>
-  initialSort?: Maybe<KeystoneAdminUiSort>
-  isHidden: Scalars["Boolean"]["output"]
-  isSingleton: Scalars["Boolean"]["output"]
-  itemQueryName: Scalars["String"]["output"]
-  key: Scalars["String"]["output"]
-  label: Scalars["String"]["output"]
-  labelField: Scalars["String"]["output"]
-  listQueryName: Scalars["String"]["output"]
-  pageSize: Scalars["Int"]["output"]
-  path: Scalars["String"]["output"]
-  plural: Scalars["String"]["output"]
-  singular: Scalars["String"]["output"]
-}
+  __typename?: 'KeystoneAdminUIListMeta';
+  description?: Maybe<Scalars['String']['output']>;
+  fields: Array<KeystoneAdminUiFieldMeta>;
+  graphql: KeystoneAdminUiGraphQl;
+  groups: Array<KeystoneAdminUiFieldGroupMeta>;
+  hideCreate: Scalars['Boolean']['output'];
+  hideDelete: Scalars['Boolean']['output'];
+  initialColumns: Array<Scalars['String']['output']>;
+  initialSearchFields: Array<Scalars['String']['output']>;
+  initialSort?: Maybe<KeystoneAdminUiSort>;
+  isHidden: Scalars['Boolean']['output'];
+  isSingleton: Scalars['Boolean']['output'];
+  itemQueryName: Scalars['String']['output'];
+  key: Scalars['String']['output'];
+  label: Scalars['String']['output'];
+  labelField: Scalars['String']['output'];
+  listQueryName: Scalars['String']['output'];
+  pageSize: Scalars['Int']['output'];
+  path: Scalars['String']['output'];
+  plural: Scalars['String']['output'];
+  singular: Scalars['String']['output'];
+};
 
 export type KeystoneAdminUiSort = {
-  __typename?: "KeystoneAdminUISort"
-  direction: KeystoneAdminUiSortDirection
-  field: Scalars["String"]["output"]
-}
+  __typename?: 'KeystoneAdminUISort';
+  direction: KeystoneAdminUiSortDirection;
+  field: Scalars['String']['output'];
+};
 
 export enum KeystoneAdminUiSortDirection {
-  Asc = "ASC",
-  Desc = "DESC",
+  Asc = 'ASC',
+  Desc = 'DESC'
 }
 
 export type KeystoneMeta = {
-  __typename?: "KeystoneMeta"
-  adminMeta: KeystoneAdminMeta
-}
+  __typename?: 'KeystoneMeta';
+  adminMeta: KeystoneAdminMeta;
+};
 
 export type Language = {
-  __typename?: "Language"
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  value?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Language';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
+};
 
 export type LanguageCreateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-  value?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type LanguageOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-  value?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+  value?: InputMaybe<OrderDirection>;
+};
 
 export type LanguageRelateToOneForCreateInput = {
-  connect?: InputMaybe<LanguageWhereUniqueInput>
-  create?: InputMaybe<LanguageCreateInput>
-}
+  connect?: InputMaybe<LanguageWhereUniqueInput>;
+  create?: InputMaybe<LanguageCreateInput>;
+};
 
 export type LanguageRelateToOneForUpdateInput = {
-  connect?: InputMaybe<LanguageWhereUniqueInput>
-  create?: InputMaybe<LanguageCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<LanguageWhereUniqueInput>;
+  create?: InputMaybe<LanguageCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type LanguageUpdateArgs = {
-  data: LanguageUpdateInput
-  where: LanguageWhereUniqueInput
-}
+  data: LanguageUpdateInput;
+  where: LanguageWhereUniqueInput;
+};
 
 export type LanguageUpdateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-  value?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type LanguageWhereInput = {
-  AND?: InputMaybe<Array<LanguageWhereInput>>
-  NOT?: InputMaybe<Array<LanguageWhereInput>>
-  OR?: InputMaybe<Array<LanguageWhereInput>>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  value?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<LanguageWhereInput>>;
+  NOT?: InputMaybe<Array<LanguageWhereInput>>;
+  OR?: InputMaybe<Array<LanguageWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  value?: InputMaybe<StringFilter>;
+};
 
 export type LanguageWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type Map = {
-  __typename?: "Map"
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  subheading?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Map';
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  subheading?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type MapCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  subheading?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  subheading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type MapManyRelationFilter = {
-  every?: InputMaybe<MapWhereInput>
-  none?: InputMaybe<MapWhereInput>
-  some?: InputMaybe<MapWhereInput>
-}
+  every?: InputMaybe<MapWhereInput>;
+  none?: InputMaybe<MapWhereInput>;
+  some?: InputMaybe<MapWhereInput>;
+};
 
 export type MapOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  subheading?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  subheading?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type MapRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<MapWhereUniqueInput>>
-  create?: InputMaybe<Array<MapCreateInput>>
-}
+  connect?: InputMaybe<Array<MapWhereUniqueInput>>;
+  create?: InputMaybe<Array<MapCreateInput>>;
+};
 
 export type MapRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<MapWhereUniqueInput>>
-  create?: InputMaybe<Array<MapCreateInput>>
-  disconnect?: InputMaybe<Array<MapWhereUniqueInput>>
-  set?: InputMaybe<Array<MapWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<MapWhereUniqueInput>>;
+  create?: InputMaybe<Array<MapCreateInput>>;
+  disconnect?: InputMaybe<Array<MapWhereUniqueInput>>;
+  set?: InputMaybe<Array<MapWhereUniqueInput>>;
+};
 
 export type MapUpdateArgs = {
-  data: MapUpdateInput
-  where: MapWhereUniqueInput
-}
+  data: MapUpdateInput;
+  where: MapWhereUniqueInput;
+};
 
 export type MapUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  subheading?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  subheading?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type MapWhereInput = {
-  AND?: InputMaybe<Array<MapWhereInput>>
-  NOT?: InputMaybe<Array<MapWhereInput>>
-  OR?: InputMaybe<Array<MapWhereInput>>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  subheading?: InputMaybe<StringFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<MapWhereInput>>;
+  NOT?: InputMaybe<Array<MapWhereInput>>;
+  OR?: InputMaybe<Array<MapWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  subheading?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type MapWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Mutation = {
-  __typename?: "Mutation"
-  createAbout?: Maybe<About>
-  createAbouts?: Maybe<Array<Maybe<About>>>
-  createAnalytic?: Maybe<Analytic>
-  createAnalytics?: Maybe<Array<Maybe<Analytic>>>
-  createAnalyticsStat?: Maybe<AnalyticsStat>
-  createAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>
-  createAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>
-  createAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>
-  createApproach?: Maybe<Approach>
-  createApproachStep?: Maybe<ApproachStep>
-  createApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>
-  createApproaches?: Maybe<Array<Maybe<Approach>>>
-  createBenefit?: Maybe<Benefit>
-  createBenefitSection?: Maybe<BenefitSection>
-  createBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>
-  createBenefits?: Maybe<Array<Maybe<Benefit>>>
-  createCertification?: Maybe<Certification>
-  createCertificationSection?: Maybe<CertificationSection>
-  createCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>
-  createCertifications?: Maybe<Array<Maybe<Certification>>>
-  createCta?: Maybe<Cta>
-  createCtaSection?: Maybe<CtaSection>
-  createCtaSections?: Maybe<Array<Maybe<CtaSection>>>
-  createCtas?: Maybe<Array<Maybe<Cta>>>
-  createFaq?: Maybe<Faq>
-  createFaqSection?: Maybe<FaqSection>
-  createFaqSections?: Maybe<Array<Maybe<FaqSection>>>
-  createFaqs?: Maybe<Array<Maybe<Faq>>>
-  createFeature?: Maybe<Feature>
-  createFeatures?: Maybe<Array<Maybe<Feature>>>
-  createFooter?: Maybe<Footer>
-  createFooterSection?: Maybe<FooterSection>
-  createFooterSectionKey?: Maybe<FooterSectionKey>
-  createFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>
-  createFooterSections?: Maybe<Array<Maybe<FooterSection>>>
-  createFooters?: Maybe<Array<Maybe<Footer>>>
-  createHero?: Maybe<Hero>
-  createHeroBanner?: Maybe<HeroBanner>
-  createHeroBannerAdditional?: Maybe<HeroBannerAdditional>
-  createHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>
-  createHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>
-  createHeroes?: Maybe<Array<Maybe<Hero>>>
-  createImage?: Maybe<Image>
-  createImages?: Maybe<Array<Maybe<Image>>>
-  createLanguage?: Maybe<Language>
-  createLanguages?: Maybe<Array<Maybe<Language>>>
-  createMap?: Maybe<Map>
-  createMaps?: Maybe<Array<Maybe<Map>>>
-  createNavigation?: Maybe<Navigation>
-  createNavigationLink?: Maybe<NavigationLink>
-  createNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>
-  createNavigations?: Maybe<Array<Maybe<Navigation>>>
-  createPageContent?: Maybe<PageContent>
-  createPageContents?: Maybe<Array<Maybe<PageContent>>>
-  createSection?: Maybe<Section>
-  createSections?: Maybe<Array<Maybe<Section>>>
-  createTestimonialBadge?: Maybe<TestimonialBadge>
-  createTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>
-  createTestimonialItem?: Maybe<TestimonialItem>
-  createTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>
-  createTestimonialSection?: Maybe<TestimonialSection>
-  createTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>
-  createType?: Maybe<Type>
-  createTypes?: Maybe<Array<Maybe<Type>>>
-  createUser?: Maybe<User>
-  createUsers?: Maybe<Array<Maybe<User>>>
-  createValue?: Maybe<Value>
-  createValues?: Maybe<Array<Maybe<Value>>>
-  deleteAbout?: Maybe<About>
-  deleteAbouts?: Maybe<Array<Maybe<About>>>
-  deleteAnalytic?: Maybe<Analytic>
-  deleteAnalytics?: Maybe<Array<Maybe<Analytic>>>
-  deleteAnalyticsStat?: Maybe<AnalyticsStat>
-  deleteAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>
-  deleteAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>
-  deleteAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>
-  deleteApproach?: Maybe<Approach>
-  deleteApproachStep?: Maybe<ApproachStep>
-  deleteApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>
-  deleteApproaches?: Maybe<Array<Maybe<Approach>>>
-  deleteBenefit?: Maybe<Benefit>
-  deleteBenefitSection?: Maybe<BenefitSection>
-  deleteBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>
-  deleteBenefits?: Maybe<Array<Maybe<Benefit>>>
-  deleteCertification?: Maybe<Certification>
-  deleteCertificationSection?: Maybe<CertificationSection>
-  deleteCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>
-  deleteCertifications?: Maybe<Array<Maybe<Certification>>>
-  deleteCta?: Maybe<Cta>
-  deleteCtaSection?: Maybe<CtaSection>
-  deleteCtaSections?: Maybe<Array<Maybe<CtaSection>>>
-  deleteCtas?: Maybe<Array<Maybe<Cta>>>
-  deleteFaq?: Maybe<Faq>
-  deleteFaqSection?: Maybe<FaqSection>
-  deleteFaqSections?: Maybe<Array<Maybe<FaqSection>>>
-  deleteFaqs?: Maybe<Array<Maybe<Faq>>>
-  deleteFeature?: Maybe<Feature>
-  deleteFeatures?: Maybe<Array<Maybe<Feature>>>
-  deleteFooter?: Maybe<Footer>
-  deleteFooterSection?: Maybe<FooterSection>
-  deleteFooterSectionKey?: Maybe<FooterSectionKey>
-  deleteFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>
-  deleteFooterSections?: Maybe<Array<Maybe<FooterSection>>>
-  deleteFooters?: Maybe<Array<Maybe<Footer>>>
-  deleteHero?: Maybe<Hero>
-  deleteHeroBanner?: Maybe<HeroBanner>
-  deleteHeroBannerAdditional?: Maybe<HeroBannerAdditional>
-  deleteHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>
-  deleteHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>
-  deleteHeroes?: Maybe<Array<Maybe<Hero>>>
-  deleteImage?: Maybe<Image>
-  deleteImages?: Maybe<Array<Maybe<Image>>>
-  deleteLanguage?: Maybe<Language>
-  deleteLanguages?: Maybe<Array<Maybe<Language>>>
-  deleteMap?: Maybe<Map>
-  deleteMaps?: Maybe<Array<Maybe<Map>>>
-  deleteNavigation?: Maybe<Navigation>
-  deleteNavigationLink?: Maybe<NavigationLink>
-  deleteNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>
-  deleteNavigations?: Maybe<Array<Maybe<Navigation>>>
-  deletePageContent?: Maybe<PageContent>
-  deletePageContents?: Maybe<Array<Maybe<PageContent>>>
-  deleteSection?: Maybe<Section>
-  deleteSections?: Maybe<Array<Maybe<Section>>>
-  deleteTestimonialBadge?: Maybe<TestimonialBadge>
-  deleteTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>
-  deleteTestimonialItem?: Maybe<TestimonialItem>
-  deleteTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>
-  deleteTestimonialSection?: Maybe<TestimonialSection>
-  deleteTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>
-  deleteType?: Maybe<Type>
-  deleteTypes?: Maybe<Array<Maybe<Type>>>
-  deleteUser?: Maybe<User>
-  deleteUsers?: Maybe<Array<Maybe<User>>>
-  deleteValue?: Maybe<Value>
-  deleteValues?: Maybe<Array<Maybe<Value>>>
-  endSession: Scalars["Boolean"]["output"]
-  updateAbout?: Maybe<About>
-  updateAbouts?: Maybe<Array<Maybe<About>>>
-  updateAnalytic?: Maybe<Analytic>
-  updateAnalytics?: Maybe<Array<Maybe<Analytic>>>
-  updateAnalyticsStat?: Maybe<AnalyticsStat>
-  updateAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>
-  updateAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>
-  updateAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>
-  updateApproach?: Maybe<Approach>
-  updateApproachStep?: Maybe<ApproachStep>
-  updateApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>
-  updateApproaches?: Maybe<Array<Maybe<Approach>>>
-  updateBenefit?: Maybe<Benefit>
-  updateBenefitSection?: Maybe<BenefitSection>
-  updateBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>
-  updateBenefits?: Maybe<Array<Maybe<Benefit>>>
-  updateCertification?: Maybe<Certification>
-  updateCertificationSection?: Maybe<CertificationSection>
-  updateCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>
-  updateCertifications?: Maybe<Array<Maybe<Certification>>>
-  updateCta?: Maybe<Cta>
-  updateCtaSection?: Maybe<CtaSection>
-  updateCtaSections?: Maybe<Array<Maybe<CtaSection>>>
-  updateCtas?: Maybe<Array<Maybe<Cta>>>
-  updateFaq?: Maybe<Faq>
-  updateFaqSection?: Maybe<FaqSection>
-  updateFaqSections?: Maybe<Array<Maybe<FaqSection>>>
-  updateFaqs?: Maybe<Array<Maybe<Faq>>>
-  updateFeature?: Maybe<Feature>
-  updateFeatures?: Maybe<Array<Maybe<Feature>>>
-  updateFooter?: Maybe<Footer>
-  updateFooterSection?: Maybe<FooterSection>
-  updateFooterSectionKey?: Maybe<FooterSectionKey>
-  updateFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>
-  updateFooterSections?: Maybe<Array<Maybe<FooterSection>>>
-  updateFooters?: Maybe<Array<Maybe<Footer>>>
-  updateHero?: Maybe<Hero>
-  updateHeroBanner?: Maybe<HeroBanner>
-  updateHeroBannerAdditional?: Maybe<HeroBannerAdditional>
-  updateHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>
-  updateHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>
-  updateHeroes?: Maybe<Array<Maybe<Hero>>>
-  updateImage?: Maybe<Image>
-  updateImages?: Maybe<Array<Maybe<Image>>>
-  updateLanguage?: Maybe<Language>
-  updateLanguages?: Maybe<Array<Maybe<Language>>>
-  updateMap?: Maybe<Map>
-  updateMaps?: Maybe<Array<Maybe<Map>>>
-  updateNavigation?: Maybe<Navigation>
-  updateNavigationLink?: Maybe<NavigationLink>
-  updateNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>
-  updateNavigations?: Maybe<Array<Maybe<Navigation>>>
-  updatePageContent?: Maybe<PageContent>
-  updatePageContents?: Maybe<Array<Maybe<PageContent>>>
-  updateSection?: Maybe<Section>
-  updateSections?: Maybe<Array<Maybe<Section>>>
-  updateTestimonialBadge?: Maybe<TestimonialBadge>
-  updateTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>
-  updateTestimonialItem?: Maybe<TestimonialItem>
-  updateTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>
-  updateTestimonialSection?: Maybe<TestimonialSection>
-  updateTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>
-  updateType?: Maybe<Type>
-  updateTypes?: Maybe<Array<Maybe<Type>>>
-  updateUser?: Maybe<User>
-  updateUsers?: Maybe<Array<Maybe<User>>>
-  updateValue?: Maybe<Value>
-  updateValues?: Maybe<Array<Maybe<Value>>>
-}
+  __typename?: 'Mutation';
+  createAbout?: Maybe<About>;
+  createAbouts?: Maybe<Array<Maybe<About>>>;
+  createAnalytic?: Maybe<Analytic>;
+  createAnalytics?: Maybe<Array<Maybe<Analytic>>>;
+  createAnalyticsStat?: Maybe<AnalyticsStat>;
+  createAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>;
+  createAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>;
+  createAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>;
+  createApproach?: Maybe<Approach>;
+  createApproachStep?: Maybe<ApproachStep>;
+  createApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
+  createApproaches?: Maybe<Array<Maybe<Approach>>>;
+  createBenefit?: Maybe<Benefit>;
+  createBenefitSection?: Maybe<BenefitSection>;
+  createBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
+  createBenefits?: Maybe<Array<Maybe<Benefit>>>;
+  createCertification?: Maybe<Certification>;
+  createCertificationSection?: Maybe<CertificationSection>;
+  createCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
+  createCertifications?: Maybe<Array<Maybe<Certification>>>;
+  createCta?: Maybe<Cta>;
+  createCtaSection?: Maybe<CtaSection>;
+  createCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
+  createCtas?: Maybe<Array<Maybe<Cta>>>;
+  createFaq?: Maybe<Faq>;
+  createFaqSection?: Maybe<FaqSection>;
+  createFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
+  createFaqs?: Maybe<Array<Maybe<Faq>>>;
+  createFeature?: Maybe<Feature>;
+  createFeatures?: Maybe<Array<Maybe<Feature>>>;
+  createFooter?: Maybe<Footer>;
+  createFooterSection?: Maybe<FooterSection>;
+  createFooterSectionKey?: Maybe<FooterSectionKey>;
+  createFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>;
+  createFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
+  createFooters?: Maybe<Array<Maybe<Footer>>>;
+  createHero?: Maybe<Hero>;
+  createHeroBanner?: Maybe<HeroBanner>;
+  createHeroBannerAdditional?: Maybe<HeroBannerAdditional>;
+  createHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>;
+  createHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>;
+  createHeroes?: Maybe<Array<Maybe<Hero>>>;
+  createImage?: Maybe<Image>;
+  createImages?: Maybe<Array<Maybe<Image>>>;
+  createLanguage?: Maybe<Language>;
+  createLanguages?: Maybe<Array<Maybe<Language>>>;
+  createMap?: Maybe<Map>;
+  createMaps?: Maybe<Array<Maybe<Map>>>;
+  createNavigation?: Maybe<Navigation>;
+  createNavigationLink?: Maybe<NavigationLink>;
+  createNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>;
+  createNavigations?: Maybe<Array<Maybe<Navigation>>>;
+  createPageContent?: Maybe<PageContent>;
+  createPageContents?: Maybe<Array<Maybe<PageContent>>>;
+  createResume?: Maybe<Resume>;
+  createResumeAward?: Maybe<ResumeAward>;
+  createResumeAwards?: Maybe<Array<Maybe<ResumeAward>>>;
+  createResumeBasicInformation?: Maybe<ResumeBasicInformation>;
+  createResumeBasicInformations?: Maybe<Array<Maybe<ResumeBasicInformation>>>;
+  createResumeEducation?: Maybe<ResumeEducation>;
+  createResumeEducations?: Maybe<Array<Maybe<ResumeEducation>>>;
+  createResumeHighlight?: Maybe<ResumeHighlight>;
+  createResumeHighlights?: Maybe<Array<Maybe<ResumeHighlight>>>;
+  createResumeInterest?: Maybe<ResumeInterest>;
+  createResumeInterests?: Maybe<Array<Maybe<ResumeInterest>>>;
+  createResumeLanguage?: Maybe<ResumeLanguage>;
+  createResumeLanguages?: Maybe<Array<Maybe<ResumeLanguage>>>;
+  createResumeLocation?: Maybe<ResumeLocation>;
+  createResumeLocations?: Maybe<Array<Maybe<ResumeLocation>>>;
+  createResumeProfile?: Maybe<ResumeProfile>;
+  createResumeProfiles?: Maybe<Array<Maybe<ResumeProfile>>>;
+  createResumeProject?: Maybe<ResumeProject>;
+  createResumeProjects?: Maybe<Array<Maybe<ResumeProject>>>;
+  createResumePublication?: Maybe<ResumePublication>;
+  createResumePublications?: Maybe<Array<Maybe<ResumePublication>>>;
+  createResumeReference?: Maybe<ResumeReference>;
+  createResumeReferences?: Maybe<Array<Maybe<ResumeReference>>>;
+  createResumeSkill?: Maybe<ResumeSkill>;
+  createResumeSkills?: Maybe<Array<Maybe<ResumeSkill>>>;
+  createResumeVolunteer?: Maybe<ResumeVolunteer>;
+  createResumeVolunteers?: Maybe<Array<Maybe<ResumeVolunteer>>>;
+  createResumeWork?: Maybe<ResumeWork>;
+  createResumeWorks?: Maybe<Array<Maybe<ResumeWork>>>;
+  createResumes?: Maybe<Array<Maybe<Resume>>>;
+  createSection?: Maybe<Section>;
+  createSections?: Maybe<Array<Maybe<Section>>>;
+  createTestimonialBadge?: Maybe<TestimonialBadge>;
+  createTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
+  createTestimonialItem?: Maybe<TestimonialItem>;
+  createTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
+  createTestimonialSection?: Maybe<TestimonialSection>;
+  createTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  createType?: Maybe<Type>;
+  createTypes?: Maybe<Array<Maybe<Type>>>;
+  createUser?: Maybe<User>;
+  createUsers?: Maybe<Array<Maybe<User>>>;
+  createValue?: Maybe<Value>;
+  createValues?: Maybe<Array<Maybe<Value>>>;
+  deleteAbout?: Maybe<About>;
+  deleteAbouts?: Maybe<Array<Maybe<About>>>;
+  deleteAnalytic?: Maybe<Analytic>;
+  deleteAnalytics?: Maybe<Array<Maybe<Analytic>>>;
+  deleteAnalyticsStat?: Maybe<AnalyticsStat>;
+  deleteAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>;
+  deleteAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>;
+  deleteAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>;
+  deleteApproach?: Maybe<Approach>;
+  deleteApproachStep?: Maybe<ApproachStep>;
+  deleteApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
+  deleteApproaches?: Maybe<Array<Maybe<Approach>>>;
+  deleteBenefit?: Maybe<Benefit>;
+  deleteBenefitSection?: Maybe<BenefitSection>;
+  deleteBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
+  deleteBenefits?: Maybe<Array<Maybe<Benefit>>>;
+  deleteCertification?: Maybe<Certification>;
+  deleteCertificationSection?: Maybe<CertificationSection>;
+  deleteCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
+  deleteCertifications?: Maybe<Array<Maybe<Certification>>>;
+  deleteCta?: Maybe<Cta>;
+  deleteCtaSection?: Maybe<CtaSection>;
+  deleteCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
+  deleteCtas?: Maybe<Array<Maybe<Cta>>>;
+  deleteFaq?: Maybe<Faq>;
+  deleteFaqSection?: Maybe<FaqSection>;
+  deleteFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
+  deleteFaqs?: Maybe<Array<Maybe<Faq>>>;
+  deleteFeature?: Maybe<Feature>;
+  deleteFeatures?: Maybe<Array<Maybe<Feature>>>;
+  deleteFooter?: Maybe<Footer>;
+  deleteFooterSection?: Maybe<FooterSection>;
+  deleteFooterSectionKey?: Maybe<FooterSectionKey>;
+  deleteFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>;
+  deleteFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
+  deleteFooters?: Maybe<Array<Maybe<Footer>>>;
+  deleteHero?: Maybe<Hero>;
+  deleteHeroBanner?: Maybe<HeroBanner>;
+  deleteHeroBannerAdditional?: Maybe<HeroBannerAdditional>;
+  deleteHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>;
+  deleteHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>;
+  deleteHeroes?: Maybe<Array<Maybe<Hero>>>;
+  deleteImage?: Maybe<Image>;
+  deleteImages?: Maybe<Array<Maybe<Image>>>;
+  deleteLanguage?: Maybe<Language>;
+  deleteLanguages?: Maybe<Array<Maybe<Language>>>;
+  deleteMap?: Maybe<Map>;
+  deleteMaps?: Maybe<Array<Maybe<Map>>>;
+  deleteNavigation?: Maybe<Navigation>;
+  deleteNavigationLink?: Maybe<NavigationLink>;
+  deleteNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>;
+  deleteNavigations?: Maybe<Array<Maybe<Navigation>>>;
+  deletePageContent?: Maybe<PageContent>;
+  deletePageContents?: Maybe<Array<Maybe<PageContent>>>;
+  deleteResume?: Maybe<Resume>;
+  deleteResumeAward?: Maybe<ResumeAward>;
+  deleteResumeAwards?: Maybe<Array<Maybe<ResumeAward>>>;
+  deleteResumeBasicInformation?: Maybe<ResumeBasicInformation>;
+  deleteResumeBasicInformations?: Maybe<Array<Maybe<ResumeBasicInformation>>>;
+  deleteResumeEducation?: Maybe<ResumeEducation>;
+  deleteResumeEducations?: Maybe<Array<Maybe<ResumeEducation>>>;
+  deleteResumeHighlight?: Maybe<ResumeHighlight>;
+  deleteResumeHighlights?: Maybe<Array<Maybe<ResumeHighlight>>>;
+  deleteResumeInterest?: Maybe<ResumeInterest>;
+  deleteResumeInterests?: Maybe<Array<Maybe<ResumeInterest>>>;
+  deleteResumeLanguage?: Maybe<ResumeLanguage>;
+  deleteResumeLanguages?: Maybe<Array<Maybe<ResumeLanguage>>>;
+  deleteResumeLocation?: Maybe<ResumeLocation>;
+  deleteResumeLocations?: Maybe<Array<Maybe<ResumeLocation>>>;
+  deleteResumeProfile?: Maybe<ResumeProfile>;
+  deleteResumeProfiles?: Maybe<Array<Maybe<ResumeProfile>>>;
+  deleteResumeProject?: Maybe<ResumeProject>;
+  deleteResumeProjects?: Maybe<Array<Maybe<ResumeProject>>>;
+  deleteResumePublication?: Maybe<ResumePublication>;
+  deleteResumePublications?: Maybe<Array<Maybe<ResumePublication>>>;
+  deleteResumeReference?: Maybe<ResumeReference>;
+  deleteResumeReferences?: Maybe<Array<Maybe<ResumeReference>>>;
+  deleteResumeSkill?: Maybe<ResumeSkill>;
+  deleteResumeSkills?: Maybe<Array<Maybe<ResumeSkill>>>;
+  deleteResumeVolunteer?: Maybe<ResumeVolunteer>;
+  deleteResumeVolunteers?: Maybe<Array<Maybe<ResumeVolunteer>>>;
+  deleteResumeWork?: Maybe<ResumeWork>;
+  deleteResumeWorks?: Maybe<Array<Maybe<ResumeWork>>>;
+  deleteResumes?: Maybe<Array<Maybe<Resume>>>;
+  deleteSection?: Maybe<Section>;
+  deleteSections?: Maybe<Array<Maybe<Section>>>;
+  deleteTestimonialBadge?: Maybe<TestimonialBadge>;
+  deleteTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
+  deleteTestimonialItem?: Maybe<TestimonialItem>;
+  deleteTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
+  deleteTestimonialSection?: Maybe<TestimonialSection>;
+  deleteTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  deleteType?: Maybe<Type>;
+  deleteTypes?: Maybe<Array<Maybe<Type>>>;
+  deleteUser?: Maybe<User>;
+  deleteUsers?: Maybe<Array<Maybe<User>>>;
+  deleteValue?: Maybe<Value>;
+  deleteValues?: Maybe<Array<Maybe<Value>>>;
+  endSession: Scalars['Boolean']['output'];
+  updateAbout?: Maybe<About>;
+  updateAbouts?: Maybe<Array<Maybe<About>>>;
+  updateAnalytic?: Maybe<Analytic>;
+  updateAnalytics?: Maybe<Array<Maybe<Analytic>>>;
+  updateAnalyticsStat?: Maybe<AnalyticsStat>;
+  updateAnalyticsStats?: Maybe<Array<Maybe<AnalyticsStat>>>;
+  updateAnalyticsSummaryItem?: Maybe<AnalyticsSummaryItem>;
+  updateAnalyticsSummaryItems?: Maybe<Array<Maybe<AnalyticsSummaryItem>>>;
+  updateApproach?: Maybe<Approach>;
+  updateApproachStep?: Maybe<ApproachStep>;
+  updateApproachSteps?: Maybe<Array<Maybe<ApproachStep>>>;
+  updateApproaches?: Maybe<Array<Maybe<Approach>>>;
+  updateBenefit?: Maybe<Benefit>;
+  updateBenefitSection?: Maybe<BenefitSection>;
+  updateBenefitSections?: Maybe<Array<Maybe<BenefitSection>>>;
+  updateBenefits?: Maybe<Array<Maybe<Benefit>>>;
+  updateCertification?: Maybe<Certification>;
+  updateCertificationSection?: Maybe<CertificationSection>;
+  updateCertificationSections?: Maybe<Array<Maybe<CertificationSection>>>;
+  updateCertifications?: Maybe<Array<Maybe<Certification>>>;
+  updateCta?: Maybe<Cta>;
+  updateCtaSection?: Maybe<CtaSection>;
+  updateCtaSections?: Maybe<Array<Maybe<CtaSection>>>;
+  updateCtas?: Maybe<Array<Maybe<Cta>>>;
+  updateFaq?: Maybe<Faq>;
+  updateFaqSection?: Maybe<FaqSection>;
+  updateFaqSections?: Maybe<Array<Maybe<FaqSection>>>;
+  updateFaqs?: Maybe<Array<Maybe<Faq>>>;
+  updateFeature?: Maybe<Feature>;
+  updateFeatures?: Maybe<Array<Maybe<Feature>>>;
+  updateFooter?: Maybe<Footer>;
+  updateFooterSection?: Maybe<FooterSection>;
+  updateFooterSectionKey?: Maybe<FooterSectionKey>;
+  updateFooterSectionKeys?: Maybe<Array<Maybe<FooterSectionKey>>>;
+  updateFooterSections?: Maybe<Array<Maybe<FooterSection>>>;
+  updateFooters?: Maybe<Array<Maybe<Footer>>>;
+  updateHero?: Maybe<Hero>;
+  updateHeroBanner?: Maybe<HeroBanner>;
+  updateHeroBannerAdditional?: Maybe<HeroBannerAdditional>;
+  updateHeroBannerAdditionals?: Maybe<Array<Maybe<HeroBannerAdditional>>>;
+  updateHeroBanners?: Maybe<Array<Maybe<HeroBanner>>>;
+  updateHeroes?: Maybe<Array<Maybe<Hero>>>;
+  updateImage?: Maybe<Image>;
+  updateImages?: Maybe<Array<Maybe<Image>>>;
+  updateLanguage?: Maybe<Language>;
+  updateLanguages?: Maybe<Array<Maybe<Language>>>;
+  updateMap?: Maybe<Map>;
+  updateMaps?: Maybe<Array<Maybe<Map>>>;
+  updateNavigation?: Maybe<Navigation>;
+  updateNavigationLink?: Maybe<NavigationLink>;
+  updateNavigationLinks?: Maybe<Array<Maybe<NavigationLink>>>;
+  updateNavigations?: Maybe<Array<Maybe<Navigation>>>;
+  updatePageContent?: Maybe<PageContent>;
+  updatePageContents?: Maybe<Array<Maybe<PageContent>>>;
+  updateResume?: Maybe<Resume>;
+  updateResumeAward?: Maybe<ResumeAward>;
+  updateResumeAwards?: Maybe<Array<Maybe<ResumeAward>>>;
+  updateResumeBasicInformation?: Maybe<ResumeBasicInformation>;
+  updateResumeBasicInformations?: Maybe<Array<Maybe<ResumeBasicInformation>>>;
+  updateResumeEducation?: Maybe<ResumeEducation>;
+  updateResumeEducations?: Maybe<Array<Maybe<ResumeEducation>>>;
+  updateResumeHighlight?: Maybe<ResumeHighlight>;
+  updateResumeHighlights?: Maybe<Array<Maybe<ResumeHighlight>>>;
+  updateResumeInterest?: Maybe<ResumeInterest>;
+  updateResumeInterests?: Maybe<Array<Maybe<ResumeInterest>>>;
+  updateResumeLanguage?: Maybe<ResumeLanguage>;
+  updateResumeLanguages?: Maybe<Array<Maybe<ResumeLanguage>>>;
+  updateResumeLocation?: Maybe<ResumeLocation>;
+  updateResumeLocations?: Maybe<Array<Maybe<ResumeLocation>>>;
+  updateResumeProfile?: Maybe<ResumeProfile>;
+  updateResumeProfiles?: Maybe<Array<Maybe<ResumeProfile>>>;
+  updateResumeProject?: Maybe<ResumeProject>;
+  updateResumeProjects?: Maybe<Array<Maybe<ResumeProject>>>;
+  updateResumePublication?: Maybe<ResumePublication>;
+  updateResumePublications?: Maybe<Array<Maybe<ResumePublication>>>;
+  updateResumeReference?: Maybe<ResumeReference>;
+  updateResumeReferences?: Maybe<Array<Maybe<ResumeReference>>>;
+  updateResumeSkill?: Maybe<ResumeSkill>;
+  updateResumeSkills?: Maybe<Array<Maybe<ResumeSkill>>>;
+  updateResumeVolunteer?: Maybe<ResumeVolunteer>;
+  updateResumeVolunteers?: Maybe<Array<Maybe<ResumeVolunteer>>>;
+  updateResumeWork?: Maybe<ResumeWork>;
+  updateResumeWorks?: Maybe<Array<Maybe<ResumeWork>>>;
+  updateResumes?: Maybe<Array<Maybe<Resume>>>;
+  updateSection?: Maybe<Section>;
+  updateSections?: Maybe<Array<Maybe<Section>>>;
+  updateTestimonialBadge?: Maybe<TestimonialBadge>;
+  updateTestimonialBadges?: Maybe<Array<Maybe<TestimonialBadge>>>;
+  updateTestimonialItem?: Maybe<TestimonialItem>;
+  updateTestimonialItems?: Maybe<Array<Maybe<TestimonialItem>>>;
+  updateTestimonialSection?: Maybe<TestimonialSection>;
+  updateTestimonialSections?: Maybe<Array<Maybe<TestimonialSection>>>;
+  updateType?: Maybe<Type>;
+  updateTypes?: Maybe<Array<Maybe<Type>>>;
+  updateUser?: Maybe<User>;
+  updateUsers?: Maybe<Array<Maybe<User>>>;
+  updateValue?: Maybe<Value>;
+  updateValues?: Maybe<Array<Maybe<Value>>>;
+};
+
 
 export type MutationCreateAboutArgs = {
-  data: AboutCreateInput
-}
+  data: AboutCreateInput;
+};
+
 
 export type MutationCreateAboutsArgs = {
-  data: Array<AboutCreateInput>
-}
+  data: Array<AboutCreateInput>;
+};
+
 
 export type MutationCreateAnalyticArgs = {
-  data: AnalyticCreateInput
-}
+  data: AnalyticCreateInput;
+};
+
 
 export type MutationCreateAnalyticsArgs = {
-  data: Array<AnalyticCreateInput>
-}
+  data: Array<AnalyticCreateInput>;
+};
+
 
 export type MutationCreateAnalyticsStatArgs = {
-  data: AnalyticsStatCreateInput
-}
+  data: AnalyticsStatCreateInput;
+};
+
 
 export type MutationCreateAnalyticsStatsArgs = {
-  data: Array<AnalyticsStatCreateInput>
-}
+  data: Array<AnalyticsStatCreateInput>;
+};
+
 
 export type MutationCreateAnalyticsSummaryItemArgs = {
-  data: AnalyticsSummaryItemCreateInput
-}
+  data: AnalyticsSummaryItemCreateInput;
+};
+
 
 export type MutationCreateAnalyticsSummaryItemsArgs = {
-  data: Array<AnalyticsSummaryItemCreateInput>
-}
+  data: Array<AnalyticsSummaryItemCreateInput>;
+};
+
 
 export type MutationCreateApproachArgs = {
-  data: ApproachCreateInput
-}
+  data: ApproachCreateInput;
+};
+
 
 export type MutationCreateApproachStepArgs = {
-  data: ApproachStepCreateInput
-}
+  data: ApproachStepCreateInput;
+};
+
 
 export type MutationCreateApproachStepsArgs = {
-  data: Array<ApproachStepCreateInput>
-}
+  data: Array<ApproachStepCreateInput>;
+};
+
 
 export type MutationCreateApproachesArgs = {
-  data: Array<ApproachCreateInput>
-}
+  data: Array<ApproachCreateInput>;
+};
+
 
 export type MutationCreateBenefitArgs = {
-  data: BenefitCreateInput
-}
+  data: BenefitCreateInput;
+};
+
 
 export type MutationCreateBenefitSectionArgs = {
-  data: BenefitSectionCreateInput
-}
+  data: BenefitSectionCreateInput;
+};
+
 
 export type MutationCreateBenefitSectionsArgs = {
-  data: Array<BenefitSectionCreateInput>
-}
+  data: Array<BenefitSectionCreateInput>;
+};
+
 
 export type MutationCreateBenefitsArgs = {
-  data: Array<BenefitCreateInput>
-}
+  data: Array<BenefitCreateInput>;
+};
+
 
 export type MutationCreateCertificationArgs = {
-  data: CertificationCreateInput
-}
+  data: CertificationCreateInput;
+};
+
 
 export type MutationCreateCertificationSectionArgs = {
-  data: CertificationSectionCreateInput
-}
+  data: CertificationSectionCreateInput;
+};
+
 
 export type MutationCreateCertificationSectionsArgs = {
-  data: Array<CertificationSectionCreateInput>
-}
+  data: Array<CertificationSectionCreateInput>;
+};
+
 
 export type MutationCreateCertificationsArgs = {
-  data: Array<CertificationCreateInput>
-}
+  data: Array<CertificationCreateInput>;
+};
+
 
 export type MutationCreateCtaArgs = {
-  data: CtaCreateInput
-}
+  data: CtaCreateInput;
+};
+
 
 export type MutationCreateCtaSectionArgs = {
-  data: CtaSectionCreateInput
-}
+  data: CtaSectionCreateInput;
+};
+
 
 export type MutationCreateCtaSectionsArgs = {
-  data: Array<CtaSectionCreateInput>
-}
+  data: Array<CtaSectionCreateInput>;
+};
+
 
 export type MutationCreateCtasArgs = {
-  data: Array<CtaCreateInput>
-}
+  data: Array<CtaCreateInput>;
+};
+
 
 export type MutationCreateFaqArgs = {
-  data: FaqCreateInput
-}
+  data: FaqCreateInput;
+};
+
 
 export type MutationCreateFaqSectionArgs = {
-  data: FaqSectionCreateInput
-}
+  data: FaqSectionCreateInput;
+};
+
 
 export type MutationCreateFaqSectionsArgs = {
-  data: Array<FaqSectionCreateInput>
-}
+  data: Array<FaqSectionCreateInput>;
+};
+
 
 export type MutationCreateFaqsArgs = {
-  data: Array<FaqCreateInput>
-}
+  data: Array<FaqCreateInput>;
+};
+
 
 export type MutationCreateFeatureArgs = {
-  data: FeatureCreateInput
-}
+  data: FeatureCreateInput;
+};
+
 
 export type MutationCreateFeaturesArgs = {
-  data: Array<FeatureCreateInput>
-}
+  data: Array<FeatureCreateInput>;
+};
+
 
 export type MutationCreateFooterArgs = {
-  data: FooterCreateInput
-}
+  data: FooterCreateInput;
+};
+
 
 export type MutationCreateFooterSectionArgs = {
-  data: FooterSectionCreateInput
-}
+  data: FooterSectionCreateInput;
+};
+
 
 export type MutationCreateFooterSectionKeyArgs = {
-  data: FooterSectionKeyCreateInput
-}
+  data: FooterSectionKeyCreateInput;
+};
+
 
 export type MutationCreateFooterSectionKeysArgs = {
-  data: Array<FooterSectionKeyCreateInput>
-}
+  data: Array<FooterSectionKeyCreateInput>;
+};
+
 
 export type MutationCreateFooterSectionsArgs = {
-  data: Array<FooterSectionCreateInput>
-}
+  data: Array<FooterSectionCreateInput>;
+};
+
 
 export type MutationCreateFootersArgs = {
-  data: Array<FooterCreateInput>
-}
+  data: Array<FooterCreateInput>;
+};
+
 
 export type MutationCreateHeroArgs = {
-  data: HeroCreateInput
-}
+  data: HeroCreateInput;
+};
+
 
 export type MutationCreateHeroBannerArgs = {
-  data: HeroBannerCreateInput
-}
+  data: HeroBannerCreateInput;
+};
+
 
 export type MutationCreateHeroBannerAdditionalArgs = {
-  data: HeroBannerAdditionalCreateInput
-}
+  data: HeroBannerAdditionalCreateInput;
+};
+
 
 export type MutationCreateHeroBannerAdditionalsArgs = {
-  data: Array<HeroBannerAdditionalCreateInput>
-}
+  data: Array<HeroBannerAdditionalCreateInput>;
+};
+
 
 export type MutationCreateHeroBannersArgs = {
-  data: Array<HeroBannerCreateInput>
-}
+  data: Array<HeroBannerCreateInput>;
+};
+
 
 export type MutationCreateHeroesArgs = {
-  data: Array<HeroCreateInput>
-}
+  data: Array<HeroCreateInput>;
+};
+
 
 export type MutationCreateImageArgs = {
-  data: ImageCreateInput
-}
+  data: ImageCreateInput;
+};
+
 
 export type MutationCreateImagesArgs = {
-  data: Array<ImageCreateInput>
-}
+  data: Array<ImageCreateInput>;
+};
+
 
 export type MutationCreateLanguageArgs = {
-  data: LanguageCreateInput
-}
+  data: LanguageCreateInput;
+};
+
 
 export type MutationCreateLanguagesArgs = {
-  data: Array<LanguageCreateInput>
-}
+  data: Array<LanguageCreateInput>;
+};
+
 
 export type MutationCreateMapArgs = {
-  data: MapCreateInput
-}
+  data: MapCreateInput;
+};
+
 
 export type MutationCreateMapsArgs = {
-  data: Array<MapCreateInput>
-}
+  data: Array<MapCreateInput>;
+};
+
 
 export type MutationCreateNavigationArgs = {
-  data: NavigationCreateInput
-}
+  data: NavigationCreateInput;
+};
+
 
 export type MutationCreateNavigationLinkArgs = {
-  data: NavigationLinkCreateInput
-}
+  data: NavigationLinkCreateInput;
+};
+
 
 export type MutationCreateNavigationLinksArgs = {
-  data: Array<NavigationLinkCreateInput>
-}
+  data: Array<NavigationLinkCreateInput>;
+};
+
 
 export type MutationCreateNavigationsArgs = {
-  data: Array<NavigationCreateInput>
-}
+  data: Array<NavigationCreateInput>;
+};
+
 
 export type MutationCreatePageContentArgs = {
-  data: PageContentCreateInput
-}
+  data: PageContentCreateInput;
+};
+
 
 export type MutationCreatePageContentsArgs = {
-  data: Array<PageContentCreateInput>
-}
+  data: Array<PageContentCreateInput>;
+};
+
+
+export type MutationCreateResumeArgs = {
+  data: ResumeCreateInput;
+};
+
+
+export type MutationCreateResumeAwardArgs = {
+  data: ResumeAwardCreateInput;
+};
+
+
+export type MutationCreateResumeAwardsArgs = {
+  data: Array<ResumeAwardCreateInput>;
+};
+
+
+export type MutationCreateResumeBasicInformationArgs = {
+  data: ResumeBasicInformationCreateInput;
+};
+
+
+export type MutationCreateResumeBasicInformationsArgs = {
+  data: Array<ResumeBasicInformationCreateInput>;
+};
+
+
+export type MutationCreateResumeEducationArgs = {
+  data: ResumeEducationCreateInput;
+};
+
+
+export type MutationCreateResumeEducationsArgs = {
+  data: Array<ResumeEducationCreateInput>;
+};
+
+
+export type MutationCreateResumeHighlightArgs = {
+  data: ResumeHighlightCreateInput;
+};
+
+
+export type MutationCreateResumeHighlightsArgs = {
+  data: Array<ResumeHighlightCreateInput>;
+};
+
+
+export type MutationCreateResumeInterestArgs = {
+  data: ResumeInterestCreateInput;
+};
+
+
+export type MutationCreateResumeInterestsArgs = {
+  data: Array<ResumeInterestCreateInput>;
+};
+
+
+export type MutationCreateResumeLanguageArgs = {
+  data: ResumeLanguageCreateInput;
+};
+
+
+export type MutationCreateResumeLanguagesArgs = {
+  data: Array<ResumeLanguageCreateInput>;
+};
+
+
+export type MutationCreateResumeLocationArgs = {
+  data: ResumeLocationCreateInput;
+};
+
+
+export type MutationCreateResumeLocationsArgs = {
+  data: Array<ResumeLocationCreateInput>;
+};
+
+
+export type MutationCreateResumeProfileArgs = {
+  data: ResumeProfileCreateInput;
+};
+
+
+export type MutationCreateResumeProfilesArgs = {
+  data: Array<ResumeProfileCreateInput>;
+};
+
+
+export type MutationCreateResumeProjectArgs = {
+  data: ResumeProjectCreateInput;
+};
+
+
+export type MutationCreateResumeProjectsArgs = {
+  data: Array<ResumeProjectCreateInput>;
+};
+
+
+export type MutationCreateResumePublicationArgs = {
+  data: ResumePublicationCreateInput;
+};
+
+
+export type MutationCreateResumePublicationsArgs = {
+  data: Array<ResumePublicationCreateInput>;
+};
+
+
+export type MutationCreateResumeReferenceArgs = {
+  data: ResumeReferenceCreateInput;
+};
+
+
+export type MutationCreateResumeReferencesArgs = {
+  data: Array<ResumeReferenceCreateInput>;
+};
+
+
+export type MutationCreateResumeSkillArgs = {
+  data: ResumeSkillCreateInput;
+};
+
+
+export type MutationCreateResumeSkillsArgs = {
+  data: Array<ResumeSkillCreateInput>;
+};
+
+
+export type MutationCreateResumeVolunteerArgs = {
+  data: ResumeVolunteerCreateInput;
+};
+
+
+export type MutationCreateResumeVolunteersArgs = {
+  data: Array<ResumeVolunteerCreateInput>;
+};
+
+
+export type MutationCreateResumeWorkArgs = {
+  data: ResumeWorkCreateInput;
+};
+
+
+export type MutationCreateResumeWorksArgs = {
+  data: Array<ResumeWorkCreateInput>;
+};
+
+
+export type MutationCreateResumesArgs = {
+  data: Array<ResumeCreateInput>;
+};
+
 
 export type MutationCreateSectionArgs = {
-  data: SectionCreateInput
-}
+  data: SectionCreateInput;
+};
+
 
 export type MutationCreateSectionsArgs = {
-  data: Array<SectionCreateInput>
-}
+  data: Array<SectionCreateInput>;
+};
+
 
 export type MutationCreateTestimonialBadgeArgs = {
-  data: TestimonialBadgeCreateInput
-}
+  data: TestimonialBadgeCreateInput;
+};
+
 
 export type MutationCreateTestimonialBadgesArgs = {
-  data: Array<TestimonialBadgeCreateInput>
-}
+  data: Array<TestimonialBadgeCreateInput>;
+};
+
 
 export type MutationCreateTestimonialItemArgs = {
-  data: TestimonialItemCreateInput
-}
+  data: TestimonialItemCreateInput;
+};
+
 
 export type MutationCreateTestimonialItemsArgs = {
-  data: Array<TestimonialItemCreateInput>
-}
+  data: Array<TestimonialItemCreateInput>;
+};
+
 
 export type MutationCreateTestimonialSectionArgs = {
-  data: TestimonialSectionCreateInput
-}
+  data: TestimonialSectionCreateInput;
+};
+
 
 export type MutationCreateTestimonialSectionsArgs = {
-  data: Array<TestimonialSectionCreateInput>
-}
+  data: Array<TestimonialSectionCreateInput>;
+};
+
 
 export type MutationCreateTypeArgs = {
-  data: TypeCreateInput
-}
+  data: TypeCreateInput;
+};
+
 
 export type MutationCreateTypesArgs = {
-  data: Array<TypeCreateInput>
-}
+  data: Array<TypeCreateInput>;
+};
+
 
 export type MutationCreateUserArgs = {
-  data: UserCreateInput
-}
+  data: UserCreateInput;
+};
+
 
 export type MutationCreateUsersArgs = {
-  data: Array<UserCreateInput>
-}
+  data: Array<UserCreateInput>;
+};
+
 
 export type MutationCreateValueArgs = {
-  data: ValueCreateInput
-}
+  data: ValueCreateInput;
+};
+
 
 export type MutationCreateValuesArgs = {
-  data: Array<ValueCreateInput>
-}
+  data: Array<ValueCreateInput>;
+};
+
 
 export type MutationDeleteAboutArgs = {
-  where: AboutWhereUniqueInput
-}
+  where: AboutWhereUniqueInput;
+};
+
 
 export type MutationDeleteAboutsArgs = {
-  where: Array<AboutWhereUniqueInput>
-}
+  where: Array<AboutWhereUniqueInput>;
+};
+
 
 export type MutationDeleteAnalyticArgs = {
-  where: AnalyticWhereUniqueInput
-}
+  where: AnalyticWhereUniqueInput;
+};
+
 
 export type MutationDeleteAnalyticsArgs = {
-  where: Array<AnalyticWhereUniqueInput>
-}
+  where: Array<AnalyticWhereUniqueInput>;
+};
+
 
 export type MutationDeleteAnalyticsStatArgs = {
-  where: AnalyticsStatWhereUniqueInput
-}
+  where: AnalyticsStatWhereUniqueInput;
+};
+
 
 export type MutationDeleteAnalyticsStatsArgs = {
-  where: Array<AnalyticsStatWhereUniqueInput>
-}
+  where: Array<AnalyticsStatWhereUniqueInput>;
+};
+
 
 export type MutationDeleteAnalyticsSummaryItemArgs = {
-  where: AnalyticsSummaryItemWhereUniqueInput
-}
+  where: AnalyticsSummaryItemWhereUniqueInput;
+};
+
 
 export type MutationDeleteAnalyticsSummaryItemsArgs = {
-  where: Array<AnalyticsSummaryItemWhereUniqueInput>
-}
+  where: Array<AnalyticsSummaryItemWhereUniqueInput>;
+};
+
 
 export type MutationDeleteApproachArgs = {
-  where: ApproachWhereUniqueInput
-}
+  where: ApproachWhereUniqueInput;
+};
+
 
 export type MutationDeleteApproachStepArgs = {
-  where: ApproachStepWhereUniqueInput
-}
+  where: ApproachStepWhereUniqueInput;
+};
+
 
 export type MutationDeleteApproachStepsArgs = {
-  where: Array<ApproachStepWhereUniqueInput>
-}
+  where: Array<ApproachStepWhereUniqueInput>;
+};
+
 
 export type MutationDeleteApproachesArgs = {
-  where: Array<ApproachWhereUniqueInput>
-}
+  where: Array<ApproachWhereUniqueInput>;
+};
+
 
 export type MutationDeleteBenefitArgs = {
-  where: BenefitWhereUniqueInput
-}
+  where: BenefitWhereUniqueInput;
+};
+
 
 export type MutationDeleteBenefitSectionArgs = {
-  where: BenefitSectionWhereUniqueInput
-}
+  where: BenefitSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteBenefitSectionsArgs = {
-  where: Array<BenefitSectionWhereUniqueInput>
-}
+  where: Array<BenefitSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteBenefitsArgs = {
-  where: Array<BenefitWhereUniqueInput>
-}
+  where: Array<BenefitWhereUniqueInput>;
+};
+
 
 export type MutationDeleteCertificationArgs = {
-  where: CertificationWhereUniqueInput
-}
+  where: CertificationWhereUniqueInput;
+};
+
 
 export type MutationDeleteCertificationSectionArgs = {
-  where: CertificationSectionWhereUniqueInput
-}
+  where: CertificationSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteCertificationSectionsArgs = {
-  where: Array<CertificationSectionWhereUniqueInput>
-}
+  where: Array<CertificationSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteCertificationsArgs = {
-  where: Array<CertificationWhereUniqueInput>
-}
+  where: Array<CertificationWhereUniqueInput>;
+};
+
 
 export type MutationDeleteCtaArgs = {
-  where: CtaWhereUniqueInput
-}
+  where: CtaWhereUniqueInput;
+};
+
 
 export type MutationDeleteCtaSectionArgs = {
-  where: CtaSectionWhereUniqueInput
-}
+  where: CtaSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteCtaSectionsArgs = {
-  where: Array<CtaSectionWhereUniqueInput>
-}
+  where: Array<CtaSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteCtasArgs = {
-  where: Array<CtaWhereUniqueInput>
-}
+  where: Array<CtaWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFaqArgs = {
-  where: FaqWhereUniqueInput
-}
+  where: FaqWhereUniqueInput;
+};
+
 
 export type MutationDeleteFaqSectionArgs = {
-  where: FaqSectionWhereUniqueInput
-}
+  where: FaqSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteFaqSectionsArgs = {
-  where: Array<FaqSectionWhereUniqueInput>
-}
+  where: Array<FaqSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFaqsArgs = {
-  where: Array<FaqWhereUniqueInput>
-}
+  where: Array<FaqWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFeatureArgs = {
-  where: FeatureWhereUniqueInput
-}
+  where: FeatureWhereUniqueInput;
+};
+
 
 export type MutationDeleteFeaturesArgs = {
-  where: Array<FeatureWhereUniqueInput>
-}
+  where: Array<FeatureWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFooterArgs = {
-  where: FooterWhereUniqueInput
-}
+  where: FooterWhereUniqueInput;
+};
+
 
 export type MutationDeleteFooterSectionArgs = {
-  where: FooterSectionWhereUniqueInput
-}
+  where: FooterSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteFooterSectionKeyArgs = {
-  where: FooterSectionKeyWhereUniqueInput
-}
+  where: FooterSectionKeyWhereUniqueInput;
+};
+
 
 export type MutationDeleteFooterSectionKeysArgs = {
-  where: Array<FooterSectionKeyWhereUniqueInput>
-}
+  where: Array<FooterSectionKeyWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFooterSectionsArgs = {
-  where: Array<FooterSectionWhereUniqueInput>
-}
+  where: Array<FooterSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteFootersArgs = {
-  where: Array<FooterWhereUniqueInput>
-}
+  where: Array<FooterWhereUniqueInput>;
+};
+
 
 export type MutationDeleteHeroArgs = {
-  where: HeroWhereUniqueInput
-}
+  where: HeroWhereUniqueInput;
+};
+
 
 export type MutationDeleteHeroBannerArgs = {
-  where: HeroBannerWhereUniqueInput
-}
+  where: HeroBannerWhereUniqueInput;
+};
+
 
 export type MutationDeleteHeroBannerAdditionalArgs = {
-  where: HeroBannerAdditionalWhereUniqueInput
-}
+  where: HeroBannerAdditionalWhereUniqueInput;
+};
+
 
 export type MutationDeleteHeroBannerAdditionalsArgs = {
-  where: Array<HeroBannerAdditionalWhereUniqueInput>
-}
+  where: Array<HeroBannerAdditionalWhereUniqueInput>;
+};
+
 
 export type MutationDeleteHeroBannersArgs = {
-  where: Array<HeroBannerWhereUniqueInput>
-}
+  where: Array<HeroBannerWhereUniqueInput>;
+};
+
 
 export type MutationDeleteHeroesArgs = {
-  where: Array<HeroWhereUniqueInput>
-}
+  where: Array<HeroWhereUniqueInput>;
+};
+
 
 export type MutationDeleteImageArgs = {
-  where: ImageWhereUniqueInput
-}
+  where: ImageWhereUniqueInput;
+};
+
 
 export type MutationDeleteImagesArgs = {
-  where: Array<ImageWhereUniqueInput>
-}
+  where: Array<ImageWhereUniqueInput>;
+};
+
 
 export type MutationDeleteLanguageArgs = {
-  where: LanguageWhereUniqueInput
-}
+  where: LanguageWhereUniqueInput;
+};
+
 
 export type MutationDeleteLanguagesArgs = {
-  where: Array<LanguageWhereUniqueInput>
-}
+  where: Array<LanguageWhereUniqueInput>;
+};
+
 
 export type MutationDeleteMapArgs = {
-  where: MapWhereUniqueInput
-}
+  where: MapWhereUniqueInput;
+};
+
 
 export type MutationDeleteMapsArgs = {
-  where: Array<MapWhereUniqueInput>
-}
+  where: Array<MapWhereUniqueInput>;
+};
+
 
 export type MutationDeleteNavigationArgs = {
-  where: NavigationWhereUniqueInput
-}
+  where: NavigationWhereUniqueInput;
+};
+
 
 export type MutationDeleteNavigationLinkArgs = {
-  where: NavigationLinkWhereUniqueInput
-}
+  where: NavigationLinkWhereUniqueInput;
+};
+
 
 export type MutationDeleteNavigationLinksArgs = {
-  where: Array<NavigationLinkWhereUniqueInput>
-}
+  where: Array<NavigationLinkWhereUniqueInput>;
+};
+
 
 export type MutationDeleteNavigationsArgs = {
-  where: Array<NavigationWhereUniqueInput>
-}
+  where: Array<NavigationWhereUniqueInput>;
+};
+
 
 export type MutationDeletePageContentArgs = {
-  where: PageContentWhereUniqueInput
-}
+  where: PageContentWhereUniqueInput;
+};
+
 
 export type MutationDeletePageContentsArgs = {
-  where: Array<PageContentWhereUniqueInput>
-}
+  where: Array<PageContentWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeArgs = {
+  where: ResumeWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeAwardArgs = {
+  where: ResumeAwardWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeAwardsArgs = {
+  where: Array<ResumeAwardWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeBasicInformationArgs = {
+  where: ResumeBasicInformationWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeBasicInformationsArgs = {
+  where: Array<ResumeBasicInformationWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeEducationArgs = {
+  where: ResumeEducationWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeEducationsArgs = {
+  where: Array<ResumeEducationWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeHighlightArgs = {
+  where: ResumeHighlightWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeHighlightsArgs = {
+  where: Array<ResumeHighlightWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeInterestArgs = {
+  where: ResumeInterestWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeInterestsArgs = {
+  where: Array<ResumeInterestWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeLanguageArgs = {
+  where: ResumeLanguageWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeLanguagesArgs = {
+  where: Array<ResumeLanguageWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeLocationArgs = {
+  where: ResumeLocationWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeLocationsArgs = {
+  where: Array<ResumeLocationWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeProfileArgs = {
+  where: ResumeProfileWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeProfilesArgs = {
+  where: Array<ResumeProfileWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeProjectArgs = {
+  where: ResumeProjectWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeProjectsArgs = {
+  where: Array<ResumeProjectWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumePublicationArgs = {
+  where: ResumePublicationWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumePublicationsArgs = {
+  where: Array<ResumePublicationWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeReferenceArgs = {
+  where: ResumeReferenceWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeReferencesArgs = {
+  where: Array<ResumeReferenceWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeSkillArgs = {
+  where: ResumeSkillWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeSkillsArgs = {
+  where: Array<ResumeSkillWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeVolunteerArgs = {
+  where: ResumeVolunteerWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeVolunteersArgs = {
+  where: Array<ResumeVolunteerWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumeWorkArgs = {
+  where: ResumeWorkWhereUniqueInput;
+};
+
+
+export type MutationDeleteResumeWorksArgs = {
+  where: Array<ResumeWorkWhereUniqueInput>;
+};
+
+
+export type MutationDeleteResumesArgs = {
+  where: Array<ResumeWhereUniqueInput>;
+};
+
 
 export type MutationDeleteSectionArgs = {
-  where: SectionWhereUniqueInput
-}
+  where: SectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteSectionsArgs = {
-  where: Array<SectionWhereUniqueInput>
-}
+  where: Array<SectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteTestimonialBadgeArgs = {
-  where: TestimonialBadgeWhereUniqueInput
-}
+  where: TestimonialBadgeWhereUniqueInput;
+};
+
 
 export type MutationDeleteTestimonialBadgesArgs = {
-  where: Array<TestimonialBadgeWhereUniqueInput>
-}
+  where: Array<TestimonialBadgeWhereUniqueInput>;
+};
+
 
 export type MutationDeleteTestimonialItemArgs = {
-  where: TestimonialItemWhereUniqueInput
-}
+  where: TestimonialItemWhereUniqueInput;
+};
+
 
 export type MutationDeleteTestimonialItemsArgs = {
-  where: Array<TestimonialItemWhereUniqueInput>
-}
+  where: Array<TestimonialItemWhereUniqueInput>;
+};
+
 
 export type MutationDeleteTestimonialSectionArgs = {
-  where: TestimonialSectionWhereUniqueInput
-}
+  where: TestimonialSectionWhereUniqueInput;
+};
+
 
 export type MutationDeleteTestimonialSectionsArgs = {
-  where: Array<TestimonialSectionWhereUniqueInput>
-}
+  where: Array<TestimonialSectionWhereUniqueInput>;
+};
+
 
 export type MutationDeleteTypeArgs = {
-  where: TypeWhereUniqueInput
-}
+  where: TypeWhereUniqueInput;
+};
+
 
 export type MutationDeleteTypesArgs = {
-  where: Array<TypeWhereUniqueInput>
-}
+  where: Array<TypeWhereUniqueInput>;
+};
+
 
 export type MutationDeleteUserArgs = {
-  where: UserWhereUniqueInput
-}
+  where: UserWhereUniqueInput;
+};
+
 
 export type MutationDeleteUsersArgs = {
-  where: Array<UserWhereUniqueInput>
-}
+  where: Array<UserWhereUniqueInput>;
+};
+
 
 export type MutationDeleteValueArgs = {
-  where: ValueWhereUniqueInput
-}
+  where: ValueWhereUniqueInput;
+};
+
 
 export type MutationDeleteValuesArgs = {
-  where: Array<ValueWhereUniqueInput>
-}
+  where: Array<ValueWhereUniqueInput>;
+};
+
 
 export type MutationUpdateAboutArgs = {
-  data: AboutUpdateInput
-  where: AboutWhereUniqueInput
-}
+  data: AboutUpdateInput;
+  where: AboutWhereUniqueInput;
+};
+
 
 export type MutationUpdateAboutsArgs = {
-  data: Array<AboutUpdateArgs>
-}
+  data: Array<AboutUpdateArgs>;
+};
+
 
 export type MutationUpdateAnalyticArgs = {
-  data: AnalyticUpdateInput
-  where: AnalyticWhereUniqueInput
-}
+  data: AnalyticUpdateInput;
+  where: AnalyticWhereUniqueInput;
+};
+
 
 export type MutationUpdateAnalyticsArgs = {
-  data: Array<AnalyticUpdateArgs>
-}
+  data: Array<AnalyticUpdateArgs>;
+};
+
 
 export type MutationUpdateAnalyticsStatArgs = {
-  data: AnalyticsStatUpdateInput
-  where: AnalyticsStatWhereUniqueInput
-}
+  data: AnalyticsStatUpdateInput;
+  where: AnalyticsStatWhereUniqueInput;
+};
+
 
 export type MutationUpdateAnalyticsStatsArgs = {
-  data: Array<AnalyticsStatUpdateArgs>
-}
+  data: Array<AnalyticsStatUpdateArgs>;
+};
+
 
 export type MutationUpdateAnalyticsSummaryItemArgs = {
-  data: AnalyticsSummaryItemUpdateInput
-  where: AnalyticsSummaryItemWhereUniqueInput
-}
+  data: AnalyticsSummaryItemUpdateInput;
+  where: AnalyticsSummaryItemWhereUniqueInput;
+};
+
 
 export type MutationUpdateAnalyticsSummaryItemsArgs = {
-  data: Array<AnalyticsSummaryItemUpdateArgs>
-}
+  data: Array<AnalyticsSummaryItemUpdateArgs>;
+};
+
 
 export type MutationUpdateApproachArgs = {
-  data: ApproachUpdateInput
-  where: ApproachWhereUniqueInput
-}
+  data: ApproachUpdateInput;
+  where: ApproachWhereUniqueInput;
+};
+
 
 export type MutationUpdateApproachStepArgs = {
-  data: ApproachStepUpdateInput
-  where: ApproachStepWhereUniqueInput
-}
+  data: ApproachStepUpdateInput;
+  where: ApproachStepWhereUniqueInput;
+};
+
 
 export type MutationUpdateApproachStepsArgs = {
-  data: Array<ApproachStepUpdateArgs>
-}
+  data: Array<ApproachStepUpdateArgs>;
+};
+
 
 export type MutationUpdateApproachesArgs = {
-  data: Array<ApproachUpdateArgs>
-}
+  data: Array<ApproachUpdateArgs>;
+};
+
 
 export type MutationUpdateBenefitArgs = {
-  data: BenefitUpdateInput
-  where: BenefitWhereUniqueInput
-}
+  data: BenefitUpdateInput;
+  where: BenefitWhereUniqueInput;
+};
+
 
 export type MutationUpdateBenefitSectionArgs = {
-  data: BenefitSectionUpdateInput
-  where: BenefitSectionWhereUniqueInput
-}
+  data: BenefitSectionUpdateInput;
+  where: BenefitSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateBenefitSectionsArgs = {
-  data: Array<BenefitSectionUpdateArgs>
-}
+  data: Array<BenefitSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateBenefitsArgs = {
-  data: Array<BenefitUpdateArgs>
-}
+  data: Array<BenefitUpdateArgs>;
+};
+
 
 export type MutationUpdateCertificationArgs = {
-  data: CertificationUpdateInput
-  where: CertificationWhereUniqueInput
-}
+  data: CertificationUpdateInput;
+  where: CertificationWhereUniqueInput;
+};
+
 
 export type MutationUpdateCertificationSectionArgs = {
-  data: CertificationSectionUpdateInput
-  where: CertificationSectionWhereUniqueInput
-}
+  data: CertificationSectionUpdateInput;
+  where: CertificationSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateCertificationSectionsArgs = {
-  data: Array<CertificationSectionUpdateArgs>
-}
+  data: Array<CertificationSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateCertificationsArgs = {
-  data: Array<CertificationUpdateArgs>
-}
+  data: Array<CertificationUpdateArgs>;
+};
+
 
 export type MutationUpdateCtaArgs = {
-  data: CtaUpdateInput
-  where: CtaWhereUniqueInput
-}
+  data: CtaUpdateInput;
+  where: CtaWhereUniqueInput;
+};
+
 
 export type MutationUpdateCtaSectionArgs = {
-  data: CtaSectionUpdateInput
-  where: CtaSectionWhereUniqueInput
-}
+  data: CtaSectionUpdateInput;
+  where: CtaSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateCtaSectionsArgs = {
-  data: Array<CtaSectionUpdateArgs>
-}
+  data: Array<CtaSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateCtasArgs = {
-  data: Array<CtaUpdateArgs>
-}
+  data: Array<CtaUpdateArgs>;
+};
+
 
 export type MutationUpdateFaqArgs = {
-  data: FaqUpdateInput
-  where: FaqWhereUniqueInput
-}
+  data: FaqUpdateInput;
+  where: FaqWhereUniqueInput;
+};
+
 
 export type MutationUpdateFaqSectionArgs = {
-  data: FaqSectionUpdateInput
-  where: FaqSectionWhereUniqueInput
-}
+  data: FaqSectionUpdateInput;
+  where: FaqSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateFaqSectionsArgs = {
-  data: Array<FaqSectionUpdateArgs>
-}
+  data: Array<FaqSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateFaqsArgs = {
-  data: Array<FaqUpdateArgs>
-}
+  data: Array<FaqUpdateArgs>;
+};
+
 
 export type MutationUpdateFeatureArgs = {
-  data: FeatureUpdateInput
-  where: FeatureWhereUniqueInput
-}
+  data: FeatureUpdateInput;
+  where: FeatureWhereUniqueInput;
+};
+
 
 export type MutationUpdateFeaturesArgs = {
-  data: Array<FeatureUpdateArgs>
-}
+  data: Array<FeatureUpdateArgs>;
+};
+
 
 export type MutationUpdateFooterArgs = {
-  data: FooterUpdateInput
-  where: FooterWhereUniqueInput
-}
+  data: FooterUpdateInput;
+  where: FooterWhereUniqueInput;
+};
+
 
 export type MutationUpdateFooterSectionArgs = {
-  data: FooterSectionUpdateInput
-  where: FooterSectionWhereUniqueInput
-}
+  data: FooterSectionUpdateInput;
+  where: FooterSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateFooterSectionKeyArgs = {
-  data: FooterSectionKeyUpdateInput
-  where: FooterSectionKeyWhereUniqueInput
-}
+  data: FooterSectionKeyUpdateInput;
+  where: FooterSectionKeyWhereUniqueInput;
+};
+
 
 export type MutationUpdateFooterSectionKeysArgs = {
-  data: Array<FooterSectionKeyUpdateArgs>
-}
+  data: Array<FooterSectionKeyUpdateArgs>;
+};
+
 
 export type MutationUpdateFooterSectionsArgs = {
-  data: Array<FooterSectionUpdateArgs>
-}
+  data: Array<FooterSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateFootersArgs = {
-  data: Array<FooterUpdateArgs>
-}
+  data: Array<FooterUpdateArgs>;
+};
+
 
 export type MutationUpdateHeroArgs = {
-  data: HeroUpdateInput
-  where: HeroWhereUniqueInput
-}
+  data: HeroUpdateInput;
+  where: HeroWhereUniqueInput;
+};
+
 
 export type MutationUpdateHeroBannerArgs = {
-  data: HeroBannerUpdateInput
-  where: HeroBannerWhereUniqueInput
-}
+  data: HeroBannerUpdateInput;
+  where: HeroBannerWhereUniqueInput;
+};
+
 
 export type MutationUpdateHeroBannerAdditionalArgs = {
-  data: HeroBannerAdditionalUpdateInput
-  where: HeroBannerAdditionalWhereUniqueInput
-}
+  data: HeroBannerAdditionalUpdateInput;
+  where: HeroBannerAdditionalWhereUniqueInput;
+};
+
 
 export type MutationUpdateHeroBannerAdditionalsArgs = {
-  data: Array<HeroBannerAdditionalUpdateArgs>
-}
+  data: Array<HeroBannerAdditionalUpdateArgs>;
+};
+
 
 export type MutationUpdateHeroBannersArgs = {
-  data: Array<HeroBannerUpdateArgs>
-}
+  data: Array<HeroBannerUpdateArgs>;
+};
+
 
 export type MutationUpdateHeroesArgs = {
-  data: Array<HeroUpdateArgs>
-}
+  data: Array<HeroUpdateArgs>;
+};
+
 
 export type MutationUpdateImageArgs = {
-  data: ImageUpdateInput
-  where: ImageWhereUniqueInput
-}
+  data: ImageUpdateInput;
+  where: ImageWhereUniqueInput;
+};
+
 
 export type MutationUpdateImagesArgs = {
-  data: Array<ImageUpdateArgs>
-}
+  data: Array<ImageUpdateArgs>;
+};
+
 
 export type MutationUpdateLanguageArgs = {
-  data: LanguageUpdateInput
-  where: LanguageWhereUniqueInput
-}
+  data: LanguageUpdateInput;
+  where: LanguageWhereUniqueInput;
+};
+
 
 export type MutationUpdateLanguagesArgs = {
-  data: Array<LanguageUpdateArgs>
-}
+  data: Array<LanguageUpdateArgs>;
+};
+
 
 export type MutationUpdateMapArgs = {
-  data: MapUpdateInput
-  where: MapWhereUniqueInput
-}
+  data: MapUpdateInput;
+  where: MapWhereUniqueInput;
+};
+
 
 export type MutationUpdateMapsArgs = {
-  data: Array<MapUpdateArgs>
-}
+  data: Array<MapUpdateArgs>;
+};
+
 
 export type MutationUpdateNavigationArgs = {
-  data: NavigationUpdateInput
-  where: NavigationWhereUniqueInput
-}
+  data: NavigationUpdateInput;
+  where: NavigationWhereUniqueInput;
+};
+
 
 export type MutationUpdateNavigationLinkArgs = {
-  data: NavigationLinkUpdateInput
-  where: NavigationLinkWhereUniqueInput
-}
+  data: NavigationLinkUpdateInput;
+  where: NavigationLinkWhereUniqueInput;
+};
+
 
 export type MutationUpdateNavigationLinksArgs = {
-  data: Array<NavigationLinkUpdateArgs>
-}
+  data: Array<NavigationLinkUpdateArgs>;
+};
+
 
 export type MutationUpdateNavigationsArgs = {
-  data: Array<NavigationUpdateArgs>
-}
+  data: Array<NavigationUpdateArgs>;
+};
+
 
 export type MutationUpdatePageContentArgs = {
-  data: PageContentUpdateInput
-  where: PageContentWhereUniqueInput
-}
+  data: PageContentUpdateInput;
+  where: PageContentWhereUniqueInput;
+};
+
 
 export type MutationUpdatePageContentsArgs = {
-  data: Array<PageContentUpdateArgs>
-}
+  data: Array<PageContentUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeArgs = {
+  data: ResumeUpdateInput;
+  where: ResumeWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeAwardArgs = {
+  data: ResumeAwardUpdateInput;
+  where: ResumeAwardWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeAwardsArgs = {
+  data: Array<ResumeAwardUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeBasicInformationArgs = {
+  data: ResumeBasicInformationUpdateInput;
+  where: ResumeBasicInformationWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeBasicInformationsArgs = {
+  data: Array<ResumeBasicInformationUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeEducationArgs = {
+  data: ResumeEducationUpdateInput;
+  where: ResumeEducationWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeEducationsArgs = {
+  data: Array<ResumeEducationUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeHighlightArgs = {
+  data: ResumeHighlightUpdateInput;
+  where: ResumeHighlightWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeHighlightsArgs = {
+  data: Array<ResumeHighlightUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeInterestArgs = {
+  data: ResumeInterestUpdateInput;
+  where: ResumeInterestWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeInterestsArgs = {
+  data: Array<ResumeInterestUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeLanguageArgs = {
+  data: ResumeLanguageUpdateInput;
+  where: ResumeLanguageWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeLanguagesArgs = {
+  data: Array<ResumeLanguageUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeLocationArgs = {
+  data: ResumeLocationUpdateInput;
+  where: ResumeLocationWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeLocationsArgs = {
+  data: Array<ResumeLocationUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeProfileArgs = {
+  data: ResumeProfileUpdateInput;
+  where: ResumeProfileWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeProfilesArgs = {
+  data: Array<ResumeProfileUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeProjectArgs = {
+  data: ResumeProjectUpdateInput;
+  where: ResumeProjectWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeProjectsArgs = {
+  data: Array<ResumeProjectUpdateArgs>;
+};
+
+
+export type MutationUpdateResumePublicationArgs = {
+  data: ResumePublicationUpdateInput;
+  where: ResumePublicationWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumePublicationsArgs = {
+  data: Array<ResumePublicationUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeReferenceArgs = {
+  data: ResumeReferenceUpdateInput;
+  where: ResumeReferenceWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeReferencesArgs = {
+  data: Array<ResumeReferenceUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeSkillArgs = {
+  data: ResumeSkillUpdateInput;
+  where: ResumeSkillWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeSkillsArgs = {
+  data: Array<ResumeSkillUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeVolunteerArgs = {
+  data: ResumeVolunteerUpdateInput;
+  where: ResumeVolunteerWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeVolunteersArgs = {
+  data: Array<ResumeVolunteerUpdateArgs>;
+};
+
+
+export type MutationUpdateResumeWorkArgs = {
+  data: ResumeWorkUpdateInput;
+  where: ResumeWorkWhereUniqueInput;
+};
+
+
+export type MutationUpdateResumeWorksArgs = {
+  data: Array<ResumeWorkUpdateArgs>;
+};
+
+
+export type MutationUpdateResumesArgs = {
+  data: Array<ResumeUpdateArgs>;
+};
+
 
 export type MutationUpdateSectionArgs = {
-  data: SectionUpdateInput
-  where: SectionWhereUniqueInput
-}
+  data: SectionUpdateInput;
+  where: SectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateSectionsArgs = {
-  data: Array<SectionUpdateArgs>
-}
+  data: Array<SectionUpdateArgs>;
+};
+
 
 export type MutationUpdateTestimonialBadgeArgs = {
-  data: TestimonialBadgeUpdateInput
-  where: TestimonialBadgeWhereUniqueInput
-}
+  data: TestimonialBadgeUpdateInput;
+  where: TestimonialBadgeWhereUniqueInput;
+};
+
 
 export type MutationUpdateTestimonialBadgesArgs = {
-  data: Array<TestimonialBadgeUpdateArgs>
-}
+  data: Array<TestimonialBadgeUpdateArgs>;
+};
+
 
 export type MutationUpdateTestimonialItemArgs = {
-  data: TestimonialItemUpdateInput
-  where: TestimonialItemWhereUniqueInput
-}
+  data: TestimonialItemUpdateInput;
+  where: TestimonialItemWhereUniqueInput;
+};
+
 
 export type MutationUpdateTestimonialItemsArgs = {
-  data: Array<TestimonialItemUpdateArgs>
-}
+  data: Array<TestimonialItemUpdateArgs>;
+};
+
 
 export type MutationUpdateTestimonialSectionArgs = {
-  data: TestimonialSectionUpdateInput
-  where: TestimonialSectionWhereUniqueInput
-}
+  data: TestimonialSectionUpdateInput;
+  where: TestimonialSectionWhereUniqueInput;
+};
+
 
 export type MutationUpdateTestimonialSectionsArgs = {
-  data: Array<TestimonialSectionUpdateArgs>
-}
+  data: Array<TestimonialSectionUpdateArgs>;
+};
+
 
 export type MutationUpdateTypeArgs = {
-  data: TypeUpdateInput
-  where: TypeWhereUniqueInput
-}
+  data: TypeUpdateInput;
+  where: TypeWhereUniqueInput;
+};
+
 
 export type MutationUpdateTypesArgs = {
-  data: Array<TypeUpdateArgs>
-}
+  data: Array<TypeUpdateArgs>;
+};
+
 
 export type MutationUpdateUserArgs = {
-  data: UserUpdateInput
-  where: UserWhereUniqueInput
-}
+  data: UserUpdateInput;
+  where: UserWhereUniqueInput;
+};
+
 
 export type MutationUpdateUsersArgs = {
-  data: Array<UserUpdateArgs>
-}
+  data: Array<UserUpdateArgs>;
+};
+
 
 export type MutationUpdateValueArgs = {
-  data: ValueUpdateInput
-  where: ValueWhereUniqueInput
-}
+  data: ValueUpdateInput;
+  where: ValueWhereUniqueInput;
+};
+
 
 export type MutationUpdateValuesArgs = {
-  data: Array<ValueUpdateArgs>
-}
+  data: Array<ValueUpdateArgs>;
+};
 
 export type Navigation = {
-  __typename?: "Navigation"
-  cta?: Maybe<Cta>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  image?: Maybe<Image>
-  items?: Maybe<Array<NavigationLink>>
-  itemsCount?: Maybe<Scalars["Int"]["output"]>
-  language?: Maybe<Language>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Navigation';
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  items?: Maybe<Array<NavigationLink>>;
+  itemsCount?: Maybe<Scalars['Int']['output']>;
+  language?: Maybe<Language>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type NavigationItemsArgs = {
-  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>
-  orderBy?: Array<NavigationLinkOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: NavigationLinkWhereInput
-}
+  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>;
+  orderBy?: Array<NavigationLinkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationLinkWhereInput;
+};
+
 
 export type NavigationItemsCountArgs = {
-  where?: NavigationLinkWhereInput
-}
+  where?: NavigationLinkWhereInput;
+};
 
 export type NavigationCreateInput = {
-  cta?: InputMaybe<CtaRelateToOneForCreateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForCreateInput>
-  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  items?: InputMaybe<NavigationLinkRelateToManyForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type NavigationLink = {
-  __typename?: "NavigationLink"
-  external?: Maybe<Scalars["Boolean"]["output"]>
-  href?: Maybe<Scalars["String"]["output"]>
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-  sectionKey?: Maybe<FooterSectionKey>
-  type?: Maybe<Type>
-}
+  __typename?: 'NavigationLink';
+  external?: Maybe<Scalars['Boolean']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  sectionKey?: Maybe<FooterSectionKey>;
+  type?: Maybe<Type>;
+};
 
 export type NavigationLinkCreateInput = {
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  sectionKey?: InputMaybe<FooterSectionKeyRelateToOneForCreateInput>
-  type?: InputMaybe<TypeRelateToOneForCreateInput>
-}
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  sectionKey?: InputMaybe<FooterSectionKeyRelateToOneForCreateInput>;
+  type?: InputMaybe<TypeRelateToOneForCreateInput>;
+};
 
 export type NavigationLinkManyRelationFilter = {
-  every?: InputMaybe<NavigationLinkWhereInput>
-  none?: InputMaybe<NavigationLinkWhereInput>
-  some?: InputMaybe<NavigationLinkWhereInput>
-}
+  every?: InputMaybe<NavigationLinkWhereInput>;
+  none?: InputMaybe<NavigationLinkWhereInput>;
+  some?: InputMaybe<NavigationLinkWhereInput>;
+};
 
 export type NavigationLinkOrderByInput = {
-  external?: InputMaybe<OrderDirection>
-  href?: InputMaybe<OrderDirection>
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  external?: InputMaybe<OrderDirection>;
+  href?: InputMaybe<OrderDirection>;
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type NavigationLinkRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>
-  create?: InputMaybe<Array<NavigationLinkCreateInput>>
-}
+  connect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>;
+  create?: InputMaybe<Array<NavigationLinkCreateInput>>;
+};
 
 export type NavigationLinkRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>
-  create?: InputMaybe<Array<NavigationLinkCreateInput>>
-  disconnect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>
-  set?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>;
+  create?: InputMaybe<Array<NavigationLinkCreateInput>>;
+  disconnect?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>;
+  set?: InputMaybe<Array<NavigationLinkWhereUniqueInput>>;
+};
 
 export type NavigationLinkUpdateArgs = {
-  data: NavigationLinkUpdateInput
-  where: NavigationLinkWhereUniqueInput
-}
+  data: NavigationLinkUpdateInput;
+  where: NavigationLinkWhereUniqueInput;
+};
 
 export type NavigationLinkUpdateInput = {
-  external?: InputMaybe<Scalars["Boolean"]["input"]>
-  href?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  sectionKey?: InputMaybe<FooterSectionKeyRelateToOneForUpdateInput>
-  type?: InputMaybe<TypeRelateToOneForUpdateInput>
-}
+  external?: InputMaybe<Scalars['Boolean']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  sectionKey?: InputMaybe<FooterSectionKeyRelateToOneForUpdateInput>;
+  type?: InputMaybe<TypeRelateToOneForUpdateInput>;
+};
 
 export type NavigationLinkWhereInput = {
-  AND?: InputMaybe<Array<NavigationLinkWhereInput>>
-  NOT?: InputMaybe<Array<NavigationLinkWhereInput>>
-  OR?: InputMaybe<Array<NavigationLinkWhereInput>>
-  external?: InputMaybe<BooleanFilter>
-  href?: InputMaybe<StringFilter>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  sectionKey?: InputMaybe<FooterSectionKeyWhereInput>
-  type?: InputMaybe<TypeWhereInput>
-}
+  AND?: InputMaybe<Array<NavigationLinkWhereInput>>;
+  NOT?: InputMaybe<Array<NavigationLinkWhereInput>>;
+  OR?: InputMaybe<Array<NavigationLinkWhereInput>>;
+  external?: InputMaybe<BooleanFilter>;
+  href?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  sectionKey?: InputMaybe<FooterSectionKeyWhereInput>;
+  type?: InputMaybe<TypeWhereInput>;
+};
 
 export type NavigationLinkWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type NavigationManyRelationFilter = {
-  every?: InputMaybe<NavigationWhereInput>
-  none?: InputMaybe<NavigationWhereInput>
-  some?: InputMaybe<NavigationWhereInput>
-}
+  every?: InputMaybe<NavigationWhereInput>;
+  none?: InputMaybe<NavigationWhereInput>;
+  some?: InputMaybe<NavigationWhereInput>;
+};
 
 export type NavigationOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type NavigationRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<NavigationWhereUniqueInput>>
-  create?: InputMaybe<Array<NavigationCreateInput>>
-}
+  connect?: InputMaybe<Array<NavigationWhereUniqueInput>>;
+  create?: InputMaybe<Array<NavigationCreateInput>>;
+};
 
 export type NavigationRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<NavigationWhereUniqueInput>>
-  create?: InputMaybe<Array<NavigationCreateInput>>
-  disconnect?: InputMaybe<Array<NavigationWhereUniqueInput>>
-  set?: InputMaybe<Array<NavigationWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<NavigationWhereUniqueInput>>;
+  create?: InputMaybe<Array<NavigationCreateInput>>;
+  disconnect?: InputMaybe<Array<NavigationWhereUniqueInput>>;
+  set?: InputMaybe<Array<NavigationWhereUniqueInput>>;
+};
 
 export type NavigationUpdateArgs = {
-  data: NavigationUpdateInput
-  where: NavigationWhereUniqueInput
-}
+  data: NavigationUpdateInput;
+  where: NavigationWhereUniqueInput;
+};
 
 export type NavigationUpdateInput = {
-  cta?: InputMaybe<CtaRelateToOneForUpdateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForUpdateInput>
-  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  items?: InputMaybe<NavigationLinkRelateToManyForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type NavigationWhereInput = {
-  AND?: InputMaybe<Array<NavigationWhereInput>>
-  NOT?: InputMaybe<Array<NavigationWhereInput>>
-  OR?: InputMaybe<Array<NavigationWhereInput>>
-  cta?: InputMaybe<CtaWhereInput>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  image?: InputMaybe<ImageWhereInput>
-  items?: InputMaybe<NavigationLinkManyRelationFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<NavigationWhereInput>>;
+  NOT?: InputMaybe<Array<NavigationWhereInput>>;
+  OR?: InputMaybe<Array<NavigationWhereInput>>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  items?: InputMaybe<NavigationLinkManyRelationFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type NavigationWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type NestedStringFilter = {
-  contains?: InputMaybe<Scalars["String"]["input"]>
-  endsWith?: InputMaybe<Scalars["String"]["input"]>
-  equals?: InputMaybe<Scalars["String"]["input"]>
-  gt?: InputMaybe<Scalars["String"]["input"]>
-  gte?: InputMaybe<Scalars["String"]["input"]>
-  in?: InputMaybe<Array<Scalars["String"]["input"]>>
-  lt?: InputMaybe<Scalars["String"]["input"]>
-  lte?: InputMaybe<Scalars["String"]["input"]>
-  not?: InputMaybe<NestedStringFilter>
-  notIn?: InputMaybe<Array<Scalars["String"]["input"]>>
-  startsWith?: InputMaybe<Scalars["String"]["input"]>
-}
+  contains?: InputMaybe<Scalars['String']['input']>;
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  equals?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  not?: InputMaybe<NestedStringFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+};
 
 export enum OrderDirection {
-  Asc = "asc",
-  Desc = "desc",
+  Asc = 'asc',
+  Desc = 'desc'
 }
 
 export type PageContent = {
-  __typename?: "PageContent"
-  cta?: Maybe<Cta>
-  description?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  image?: Maybe<Image>
-  language?: Maybe<Language>
-  sections?: Maybe<Section>
-  slug?: Maybe<Scalars["String"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'PageContent';
+  cta?: Maybe<Cta>;
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  language?: Maybe<Language>;
+  sections?: Maybe<Section>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
 
 export type PageContentCreateInput = {
-  cta?: InputMaybe<CtaRelateToOneForCreateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  sections?: InputMaybe<SectionRelateToOneForCreateInput>
-  slug?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  cta?: InputMaybe<CtaRelateToOneForCreateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  sections?: InputMaybe<SectionRelateToOneForCreateInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type PageContentOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  slug?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  slug?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type PageContentUpdateArgs = {
-  data: PageContentUpdateInput
-  where: PageContentWhereUniqueInput
-}
+  data: PageContentUpdateInput;
+  where: PageContentWhereUniqueInput;
+};
 
 export type PageContentUpdateInput = {
-  cta?: InputMaybe<CtaRelateToOneForUpdateInput>
-  description?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  sections?: InputMaybe<SectionRelateToOneForUpdateInput>
-  slug?: InputMaybe<Scalars["String"]["input"]>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  cta?: InputMaybe<CtaRelateToOneForUpdateInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  sections?: InputMaybe<SectionRelateToOneForUpdateInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type PageContentWhereInput = {
-  AND?: InputMaybe<Array<PageContentWhereInput>>
-  NOT?: InputMaybe<Array<PageContentWhereInput>>
-  OR?: InputMaybe<Array<PageContentWhereInput>>
-  cta?: InputMaybe<CtaWhereInput>
-  description?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  image?: InputMaybe<ImageWhereInput>
-  language?: InputMaybe<LanguageWhereInput>
-  sections?: InputMaybe<SectionWhereInput>
-  slug?: InputMaybe<StringFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<PageContentWhereInput>>;
+  NOT?: InputMaybe<Array<PageContentWhereInput>>;
+  OR?: InputMaybe<Array<PageContentWhereInput>>;
+  cta?: InputMaybe<CtaWhereInput>;
+  description?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  language?: InputMaybe<LanguageWhereInput>;
+  sections?: InputMaybe<SectionWhereInput>;
+  slug?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type PageContentWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-  slug?: InputMaybe<Scalars["String"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type PasswordState = {
-  __typename?: "PasswordState"
-  isSet: Scalars["Boolean"]["output"]
-}
+  __typename?: 'PasswordState';
+  isSet: Scalars['Boolean']['output'];
+};
 
 export type Query = {
-  __typename?: "Query"
-  about?: Maybe<About>
-  abouts?: Maybe<Array<About>>
-  aboutsCount?: Maybe<Scalars["Int"]["output"]>
-  analytic?: Maybe<Analytic>
-  analytics?: Maybe<Array<Analytic>>
-  analyticsCount?: Maybe<Scalars["Int"]["output"]>
-  analyticsStat?: Maybe<AnalyticsStat>
-  analyticsStats?: Maybe<Array<AnalyticsStat>>
-  analyticsStatsCount?: Maybe<Scalars["Int"]["output"]>
-  analyticsSummaryItem?: Maybe<AnalyticsSummaryItem>
-  analyticsSummaryItems?: Maybe<Array<AnalyticsSummaryItem>>
-  analyticsSummaryItemsCount?: Maybe<Scalars["Int"]["output"]>
-  approach?: Maybe<Approach>
-  approachStep?: Maybe<ApproachStep>
-  approachSteps?: Maybe<Array<ApproachStep>>
-  approachStepsCount?: Maybe<Scalars["Int"]["output"]>
-  approaches?: Maybe<Array<Approach>>
-  approachesCount?: Maybe<Scalars["Int"]["output"]>
-  benefit?: Maybe<Benefit>
-  benefitSection?: Maybe<BenefitSection>
-  benefitSections?: Maybe<Array<BenefitSection>>
-  benefitSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  benefits?: Maybe<Array<Benefit>>
-  benefitsCount?: Maybe<Scalars["Int"]["output"]>
-  certification?: Maybe<Certification>
-  certificationSection?: Maybe<CertificationSection>
-  certificationSections?: Maybe<Array<CertificationSection>>
-  certificationSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  certifications?: Maybe<Array<Certification>>
-  certificationsCount?: Maybe<Scalars["Int"]["output"]>
-  cta?: Maybe<Cta>
-  ctaSection?: Maybe<CtaSection>
-  ctaSections?: Maybe<Array<CtaSection>>
-  ctaSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  ctas?: Maybe<Array<Cta>>
-  ctasCount?: Maybe<Scalars["Int"]["output"]>
-  faq?: Maybe<Faq>
-  faqSection?: Maybe<FaqSection>
-  faqSections?: Maybe<Array<FaqSection>>
-  faqSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  faqs?: Maybe<Array<Faq>>
-  faqsCount?: Maybe<Scalars["Int"]["output"]>
-  feature?: Maybe<Feature>
-  features?: Maybe<Array<Feature>>
-  featuresCount?: Maybe<Scalars["Int"]["output"]>
-  footer?: Maybe<Footer>
-  footerSection?: Maybe<FooterSection>
-  footerSectionKey?: Maybe<FooterSectionKey>
-  footerSectionKeys?: Maybe<Array<FooterSectionKey>>
-  footerSectionKeysCount?: Maybe<Scalars["Int"]["output"]>
-  footerSections?: Maybe<Array<FooterSection>>
-  footerSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  footers?: Maybe<Array<Footer>>
-  footersCount?: Maybe<Scalars["Int"]["output"]>
-  hero?: Maybe<Hero>
-  heroBanner?: Maybe<HeroBanner>
-  heroBannerAdditional?: Maybe<HeroBannerAdditional>
-  heroBannerAdditionals?: Maybe<Array<HeroBannerAdditional>>
-  heroBannerAdditionalsCount?: Maybe<Scalars["Int"]["output"]>
-  heroBanners?: Maybe<Array<HeroBanner>>
-  heroBannersCount?: Maybe<Scalars["Int"]["output"]>
-  heroes?: Maybe<Array<Hero>>
-  heroesCount?: Maybe<Scalars["Int"]["output"]>
-  image?: Maybe<Image>
-  images?: Maybe<Array<Image>>
-  imagesCount?: Maybe<Scalars["Int"]["output"]>
-  keystone: KeystoneMeta
-  language?: Maybe<Language>
-  languages?: Maybe<Array<Language>>
-  languagesCount?: Maybe<Scalars["Int"]["output"]>
-  map?: Maybe<Map>
-  maps?: Maybe<Array<Map>>
-  mapsCount?: Maybe<Scalars["Int"]["output"]>
-  navigation?: Maybe<Navigation>
-  navigationLink?: Maybe<NavigationLink>
-  navigationLinks?: Maybe<Array<NavigationLink>>
-  navigationLinksCount?: Maybe<Scalars["Int"]["output"]>
-  navigations?: Maybe<Array<Navigation>>
-  navigationsCount?: Maybe<Scalars["Int"]["output"]>
-  pageContent?: Maybe<PageContent>
-  pageContents?: Maybe<Array<PageContent>>
-  pageContentsCount?: Maybe<Scalars["Int"]["output"]>
-  section?: Maybe<Section>
-  sections?: Maybe<Array<Section>>
-  sectionsCount?: Maybe<Scalars["Int"]["output"]>
-  testimonialBadge?: Maybe<TestimonialBadge>
-  testimonialBadges?: Maybe<Array<TestimonialBadge>>
-  testimonialBadgesCount?: Maybe<Scalars["Int"]["output"]>
-  testimonialItem?: Maybe<TestimonialItem>
-  testimonialItems?: Maybe<Array<TestimonialItem>>
-  testimonialItemsCount?: Maybe<Scalars["Int"]["output"]>
-  testimonialSection?: Maybe<TestimonialSection>
-  testimonialSections?: Maybe<Array<TestimonialSection>>
-  testimonialSectionsCount?: Maybe<Scalars["Int"]["output"]>
-  type?: Maybe<Type>
-  types?: Maybe<Array<Type>>
-  typesCount?: Maybe<Scalars["Int"]["output"]>
-  user?: Maybe<User>
-  users?: Maybe<Array<User>>
-  usersCount?: Maybe<Scalars["Int"]["output"]>
-  value?: Maybe<Value>
-  values?: Maybe<Array<Value>>
-  valuesCount?: Maybe<Scalars["Int"]["output"]>
-}
+  __typename?: 'Query';
+  about?: Maybe<About>;
+  abouts?: Maybe<Array<About>>;
+  aboutsCount?: Maybe<Scalars['Int']['output']>;
+  analytic?: Maybe<Analytic>;
+  analytics?: Maybe<Array<Analytic>>;
+  analyticsCount?: Maybe<Scalars['Int']['output']>;
+  analyticsStat?: Maybe<AnalyticsStat>;
+  analyticsStats?: Maybe<Array<AnalyticsStat>>;
+  analyticsStatsCount?: Maybe<Scalars['Int']['output']>;
+  analyticsSummaryItem?: Maybe<AnalyticsSummaryItem>;
+  analyticsSummaryItems?: Maybe<Array<AnalyticsSummaryItem>>;
+  analyticsSummaryItemsCount?: Maybe<Scalars['Int']['output']>;
+  approach?: Maybe<Approach>;
+  approachStep?: Maybe<ApproachStep>;
+  approachSteps?: Maybe<Array<ApproachStep>>;
+  approachStepsCount?: Maybe<Scalars['Int']['output']>;
+  approaches?: Maybe<Array<Approach>>;
+  approachesCount?: Maybe<Scalars['Int']['output']>;
+  benefit?: Maybe<Benefit>;
+  benefitSection?: Maybe<BenefitSection>;
+  benefitSections?: Maybe<Array<BenefitSection>>;
+  benefitSectionsCount?: Maybe<Scalars['Int']['output']>;
+  benefits?: Maybe<Array<Benefit>>;
+  benefitsCount?: Maybe<Scalars['Int']['output']>;
+  certification?: Maybe<Certification>;
+  certificationSection?: Maybe<CertificationSection>;
+  certificationSections?: Maybe<Array<CertificationSection>>;
+  certificationSectionsCount?: Maybe<Scalars['Int']['output']>;
+  certifications?: Maybe<Array<Certification>>;
+  certificationsCount?: Maybe<Scalars['Int']['output']>;
+  cta?: Maybe<Cta>;
+  ctaSection?: Maybe<CtaSection>;
+  ctaSections?: Maybe<Array<CtaSection>>;
+  ctaSectionsCount?: Maybe<Scalars['Int']['output']>;
+  ctas?: Maybe<Array<Cta>>;
+  ctasCount?: Maybe<Scalars['Int']['output']>;
+  faq?: Maybe<Faq>;
+  faqSection?: Maybe<FaqSection>;
+  faqSections?: Maybe<Array<FaqSection>>;
+  faqSectionsCount?: Maybe<Scalars['Int']['output']>;
+  faqs?: Maybe<Array<Faq>>;
+  faqsCount?: Maybe<Scalars['Int']['output']>;
+  feature?: Maybe<Feature>;
+  features?: Maybe<Array<Feature>>;
+  featuresCount?: Maybe<Scalars['Int']['output']>;
+  footer?: Maybe<Footer>;
+  footerSection?: Maybe<FooterSection>;
+  footerSectionKey?: Maybe<FooterSectionKey>;
+  footerSectionKeys?: Maybe<Array<FooterSectionKey>>;
+  footerSectionKeysCount?: Maybe<Scalars['Int']['output']>;
+  footerSections?: Maybe<Array<FooterSection>>;
+  footerSectionsCount?: Maybe<Scalars['Int']['output']>;
+  footers?: Maybe<Array<Footer>>;
+  footersCount?: Maybe<Scalars['Int']['output']>;
+  hero?: Maybe<Hero>;
+  heroBanner?: Maybe<HeroBanner>;
+  heroBannerAdditional?: Maybe<HeroBannerAdditional>;
+  heroBannerAdditionals?: Maybe<Array<HeroBannerAdditional>>;
+  heroBannerAdditionalsCount?: Maybe<Scalars['Int']['output']>;
+  heroBanners?: Maybe<Array<HeroBanner>>;
+  heroBannersCount?: Maybe<Scalars['Int']['output']>;
+  heroes?: Maybe<Array<Hero>>;
+  heroesCount?: Maybe<Scalars['Int']['output']>;
+  image?: Maybe<Image>;
+  images?: Maybe<Array<Image>>;
+  imagesCount?: Maybe<Scalars['Int']['output']>;
+  keystone: KeystoneMeta;
+  language?: Maybe<Language>;
+  languages?: Maybe<Array<Language>>;
+  languagesCount?: Maybe<Scalars['Int']['output']>;
+  map?: Maybe<Map>;
+  maps?: Maybe<Array<Map>>;
+  mapsCount?: Maybe<Scalars['Int']['output']>;
+  navigation?: Maybe<Navigation>;
+  navigationLink?: Maybe<NavigationLink>;
+  navigationLinks?: Maybe<Array<NavigationLink>>;
+  navigationLinksCount?: Maybe<Scalars['Int']['output']>;
+  navigations?: Maybe<Array<Navigation>>;
+  navigationsCount?: Maybe<Scalars['Int']['output']>;
+  pageContent?: Maybe<PageContent>;
+  pageContents?: Maybe<Array<PageContent>>;
+  pageContentsCount?: Maybe<Scalars['Int']['output']>;
+  resume?: Maybe<Resume>;
+  resumeAward?: Maybe<ResumeAward>;
+  resumeAwards?: Maybe<Array<ResumeAward>>;
+  resumeAwardsCount?: Maybe<Scalars['Int']['output']>;
+  resumeBasicInformation?: Maybe<ResumeBasicInformation>;
+  resumeBasicInformations?: Maybe<Array<ResumeBasicInformation>>;
+  resumeBasicInformationsCount?: Maybe<Scalars['Int']['output']>;
+  resumeEducation?: Maybe<ResumeEducation>;
+  resumeEducations?: Maybe<Array<ResumeEducation>>;
+  resumeEducationsCount?: Maybe<Scalars['Int']['output']>;
+  resumeHighlight?: Maybe<ResumeHighlight>;
+  resumeHighlights?: Maybe<Array<ResumeHighlight>>;
+  resumeHighlightsCount?: Maybe<Scalars['Int']['output']>;
+  resumeInterest?: Maybe<ResumeInterest>;
+  resumeInterests?: Maybe<Array<ResumeInterest>>;
+  resumeInterestsCount?: Maybe<Scalars['Int']['output']>;
+  resumeLanguage?: Maybe<ResumeLanguage>;
+  resumeLanguages?: Maybe<Array<ResumeLanguage>>;
+  resumeLanguagesCount?: Maybe<Scalars['Int']['output']>;
+  resumeLocation?: Maybe<ResumeLocation>;
+  resumeLocations?: Maybe<Array<ResumeLocation>>;
+  resumeLocationsCount?: Maybe<Scalars['Int']['output']>;
+  resumeProfile?: Maybe<ResumeProfile>;
+  resumeProfiles?: Maybe<Array<ResumeProfile>>;
+  resumeProfilesCount?: Maybe<Scalars['Int']['output']>;
+  resumeProject?: Maybe<ResumeProject>;
+  resumeProjects?: Maybe<Array<ResumeProject>>;
+  resumeProjectsCount?: Maybe<Scalars['Int']['output']>;
+  resumePublication?: Maybe<ResumePublication>;
+  resumePublications?: Maybe<Array<ResumePublication>>;
+  resumePublicationsCount?: Maybe<Scalars['Int']['output']>;
+  resumeReference?: Maybe<ResumeReference>;
+  resumeReferences?: Maybe<Array<ResumeReference>>;
+  resumeReferencesCount?: Maybe<Scalars['Int']['output']>;
+  resumeSkill?: Maybe<ResumeSkill>;
+  resumeSkills?: Maybe<Array<ResumeSkill>>;
+  resumeSkillsCount?: Maybe<Scalars['Int']['output']>;
+  resumeVolunteer?: Maybe<ResumeVolunteer>;
+  resumeVolunteers?: Maybe<Array<ResumeVolunteer>>;
+  resumeVolunteersCount?: Maybe<Scalars['Int']['output']>;
+  resumeWork?: Maybe<ResumeWork>;
+  resumeWorks?: Maybe<Array<ResumeWork>>;
+  resumeWorksCount?: Maybe<Scalars['Int']['output']>;
+  resumes?: Maybe<Array<Resume>>;
+  resumesCount?: Maybe<Scalars['Int']['output']>;
+  section?: Maybe<Section>;
+  sections?: Maybe<Array<Section>>;
+  sectionsCount?: Maybe<Scalars['Int']['output']>;
+  testimonialBadge?: Maybe<TestimonialBadge>;
+  testimonialBadges?: Maybe<Array<TestimonialBadge>>;
+  testimonialBadgesCount?: Maybe<Scalars['Int']['output']>;
+  testimonialItem?: Maybe<TestimonialItem>;
+  testimonialItems?: Maybe<Array<TestimonialItem>>;
+  testimonialItemsCount?: Maybe<Scalars['Int']['output']>;
+  testimonialSection?: Maybe<TestimonialSection>;
+  testimonialSections?: Maybe<Array<TestimonialSection>>;
+  testimonialSectionsCount?: Maybe<Scalars['Int']['output']>;
+  type?: Maybe<Type>;
+  types?: Maybe<Array<Type>>;
+  typesCount?: Maybe<Scalars['Int']['output']>;
+  user?: Maybe<User>;
+  users?: Maybe<Array<User>>;
+  usersCount?: Maybe<Scalars['Int']['output']>;
+  value?: Maybe<Value>;
+  values?: Maybe<Array<Value>>;
+  valuesCount?: Maybe<Scalars['Int']['output']>;
+};
+
 
 export type QueryAboutArgs = {
-  where: AboutWhereUniqueInput
-}
+  where: AboutWhereUniqueInput;
+};
+
 
 export type QueryAboutsArgs = {
-  cursor?: InputMaybe<AboutWhereUniqueInput>
-  orderBy?: Array<AboutOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AboutWhereInput
-}
+  cursor?: InputMaybe<AboutWhereUniqueInput>;
+  orderBy?: Array<AboutOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AboutWhereInput;
+};
+
 
 export type QueryAboutsCountArgs = {
-  where?: AboutWhereInput
-}
+  where?: AboutWhereInput;
+};
+
 
 export type QueryAnalyticArgs = {
-  where: AnalyticWhereUniqueInput
-}
+  where: AnalyticWhereUniqueInput;
+};
+
 
 export type QueryAnalyticsArgs = {
-  cursor?: InputMaybe<AnalyticWhereUniqueInput>
-  orderBy?: Array<AnalyticOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AnalyticWhereInput
-}
+  cursor?: InputMaybe<AnalyticWhereUniqueInput>;
+  orderBy?: Array<AnalyticOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AnalyticWhereInput;
+};
+
 
 export type QueryAnalyticsCountArgs = {
-  where?: AnalyticWhereInput
-}
+  where?: AnalyticWhereInput;
+};
+
 
 export type QueryAnalyticsStatArgs = {
-  where: AnalyticsStatWhereUniqueInput
-}
+  where: AnalyticsStatWhereUniqueInput;
+};
+
 
 export type QueryAnalyticsStatsArgs = {
-  cursor?: InputMaybe<AnalyticsStatWhereUniqueInput>
-  orderBy?: Array<AnalyticsStatOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AnalyticsStatWhereInput
-}
+  cursor?: InputMaybe<AnalyticsStatWhereUniqueInput>;
+  orderBy?: Array<AnalyticsStatOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AnalyticsStatWhereInput;
+};
+
 
 export type QueryAnalyticsStatsCountArgs = {
-  where?: AnalyticsStatWhereInput
-}
+  where?: AnalyticsStatWhereInput;
+};
+
 
 export type QueryAnalyticsSummaryItemArgs = {
-  where: AnalyticsSummaryItemWhereUniqueInput
-}
+  where: AnalyticsSummaryItemWhereUniqueInput;
+};
+
 
 export type QueryAnalyticsSummaryItemsArgs = {
-  cursor?: InputMaybe<AnalyticsSummaryItemWhereUniqueInput>
-  orderBy?: Array<AnalyticsSummaryItemOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AnalyticsSummaryItemWhereInput
-}
+  cursor?: InputMaybe<AnalyticsSummaryItemWhereUniqueInput>;
+  orderBy?: Array<AnalyticsSummaryItemOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AnalyticsSummaryItemWhereInput;
+};
+
 
 export type QueryAnalyticsSummaryItemsCountArgs = {
-  where?: AnalyticsSummaryItemWhereInput
-}
+  where?: AnalyticsSummaryItemWhereInput;
+};
+
 
 export type QueryApproachArgs = {
-  where: ApproachWhereUniqueInput
-}
+  where: ApproachWhereUniqueInput;
+};
+
 
 export type QueryApproachStepArgs = {
-  where: ApproachStepWhereUniqueInput
-}
+  where: ApproachStepWhereUniqueInput;
+};
+
 
 export type QueryApproachStepsArgs = {
-  cursor?: InputMaybe<ApproachStepWhereUniqueInput>
-  orderBy?: Array<ApproachStepOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ApproachStepWhereInput
-}
+  cursor?: InputMaybe<ApproachStepWhereUniqueInput>;
+  orderBy?: Array<ApproachStepOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ApproachStepWhereInput;
+};
+
 
 export type QueryApproachStepsCountArgs = {
-  where?: ApproachStepWhereInput
-}
+  where?: ApproachStepWhereInput;
+};
+
 
 export type QueryApproachesArgs = {
-  cursor?: InputMaybe<ApproachWhereUniqueInput>
-  orderBy?: Array<ApproachOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ApproachWhereInput
-}
+  cursor?: InputMaybe<ApproachWhereUniqueInput>;
+  orderBy?: Array<ApproachOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ApproachWhereInput;
+};
+
 
 export type QueryApproachesCountArgs = {
-  where?: ApproachWhereInput
-}
+  where?: ApproachWhereInput;
+};
+
 
 export type QueryBenefitArgs = {
-  where: BenefitWhereUniqueInput
-}
+  where: BenefitWhereUniqueInput;
+};
+
 
 export type QueryBenefitSectionArgs = {
-  where: BenefitSectionWhereUniqueInput
-}
+  where: BenefitSectionWhereUniqueInput;
+};
+
 
 export type QueryBenefitSectionsArgs = {
-  cursor?: InputMaybe<BenefitSectionWhereUniqueInput>
-  orderBy?: Array<BenefitSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: BenefitSectionWhereInput
-}
+  cursor?: InputMaybe<BenefitSectionWhereUniqueInput>;
+  orderBy?: Array<BenefitSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitSectionWhereInput;
+};
+
 
 export type QueryBenefitSectionsCountArgs = {
-  where?: BenefitSectionWhereInput
-}
+  where?: BenefitSectionWhereInput;
+};
+
 
 export type QueryBenefitsArgs = {
-  cursor?: InputMaybe<BenefitWhereUniqueInput>
-  orderBy?: Array<BenefitOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: BenefitWhereInput
-}
+  cursor?: InputMaybe<BenefitWhereUniqueInput>;
+  orderBy?: Array<BenefitOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitWhereInput;
+};
+
 
 export type QueryBenefitsCountArgs = {
-  where?: BenefitWhereInput
-}
+  where?: BenefitWhereInput;
+};
+
 
 export type QueryCertificationArgs = {
-  where: CertificationWhereUniqueInput
-}
+  where: CertificationWhereUniqueInput;
+};
+
 
 export type QueryCertificationSectionArgs = {
-  where: CertificationSectionWhereUniqueInput
-}
+  where: CertificationSectionWhereUniqueInput;
+};
+
 
 export type QueryCertificationSectionsArgs = {
-  cursor?: InputMaybe<CertificationSectionWhereUniqueInput>
-  orderBy?: Array<CertificationSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CertificationSectionWhereInput
-}
+  cursor?: InputMaybe<CertificationSectionWhereUniqueInput>;
+  orderBy?: Array<CertificationSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationSectionWhereInput;
+};
+
 
 export type QueryCertificationSectionsCountArgs = {
-  where?: CertificationSectionWhereInput
-}
+  where?: CertificationSectionWhereInput;
+};
+
 
 export type QueryCertificationsArgs = {
-  cursor?: InputMaybe<CertificationWhereUniqueInput>
-  orderBy?: Array<CertificationOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CertificationWhereInput
-}
+  cursor?: InputMaybe<CertificationWhereUniqueInput>;
+  orderBy?: Array<CertificationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationWhereInput;
+};
+
 
 export type QueryCertificationsCountArgs = {
-  where?: CertificationWhereInput
-}
+  where?: CertificationWhereInput;
+};
+
 
 export type QueryCtaArgs = {
-  where: CtaWhereUniqueInput
-}
+  where: CtaWhereUniqueInput;
+};
+
 
 export type QueryCtaSectionArgs = {
-  where: CtaSectionWhereUniqueInput
-}
+  where: CtaSectionWhereUniqueInput;
+};
+
 
 export type QueryCtaSectionsArgs = {
-  cursor?: InputMaybe<CtaSectionWhereUniqueInput>
-  orderBy?: Array<CtaSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CtaSectionWhereInput
-}
+  cursor?: InputMaybe<CtaSectionWhereUniqueInput>;
+  orderBy?: Array<CtaSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CtaSectionWhereInput;
+};
+
 
 export type QueryCtaSectionsCountArgs = {
-  where?: CtaSectionWhereInput
-}
+  where?: CtaSectionWhereInput;
+};
+
 
 export type QueryCtasArgs = {
-  cursor?: InputMaybe<CtaWhereUniqueInput>
-  orderBy?: Array<CtaOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CtaWhereInput
-}
+  cursor?: InputMaybe<CtaWhereUniqueInput>;
+  orderBy?: Array<CtaOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CtaWhereInput;
+};
+
 
 export type QueryCtasCountArgs = {
-  where?: CtaWhereInput
-}
+  where?: CtaWhereInput;
+};
+
 
 export type QueryFaqArgs = {
-  where: FaqWhereUniqueInput
-}
+  where: FaqWhereUniqueInput;
+};
+
 
 export type QueryFaqSectionArgs = {
-  where: FaqSectionWhereUniqueInput
-}
+  where: FaqSectionWhereUniqueInput;
+};
+
 
 export type QueryFaqSectionsArgs = {
-  cursor?: InputMaybe<FaqSectionWhereUniqueInput>
-  orderBy?: Array<FaqSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FaqSectionWhereInput
-}
+  cursor?: InputMaybe<FaqSectionWhereUniqueInput>;
+  orderBy?: Array<FaqSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqSectionWhereInput;
+};
+
 
 export type QueryFaqSectionsCountArgs = {
-  where?: FaqSectionWhereInput
-}
+  where?: FaqSectionWhereInput;
+};
+
 
 export type QueryFaqsArgs = {
-  cursor?: InputMaybe<FaqWhereUniqueInput>
-  orderBy?: Array<FaqOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FaqWhereInput
-}
+  cursor?: InputMaybe<FaqWhereUniqueInput>;
+  orderBy?: Array<FaqOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqWhereInput;
+};
+
 
 export type QueryFaqsCountArgs = {
-  where?: FaqWhereInput
-}
+  where?: FaqWhereInput;
+};
+
 
 export type QueryFeatureArgs = {
-  where: FeatureWhereUniqueInput
-}
+  where: FeatureWhereUniqueInput;
+};
+
 
 export type QueryFeaturesArgs = {
-  cursor?: InputMaybe<FeatureWhereUniqueInput>
-  orderBy?: Array<FeatureOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FeatureWhereInput
-}
+  cursor?: InputMaybe<FeatureWhereUniqueInput>;
+  orderBy?: Array<FeatureOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FeatureWhereInput;
+};
+
 
 export type QueryFeaturesCountArgs = {
-  where?: FeatureWhereInput
-}
+  where?: FeatureWhereInput;
+};
+
 
 export type QueryFooterArgs = {
-  where: FooterWhereUniqueInput
-}
+  where: FooterWhereUniqueInput;
+};
+
 
 export type QueryFooterSectionArgs = {
-  where: FooterSectionWhereUniqueInput
-}
+  where: FooterSectionWhereUniqueInput;
+};
+
 
 export type QueryFooterSectionKeyArgs = {
-  where: FooterSectionKeyWhereUniqueInput
-}
+  where: FooterSectionKeyWhereUniqueInput;
+};
+
 
 export type QueryFooterSectionKeysArgs = {
-  cursor?: InputMaybe<FooterSectionKeyWhereUniqueInput>
-  orderBy?: Array<FooterSectionKeyOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FooterSectionKeyWhereInput
-}
+  cursor?: InputMaybe<FooterSectionKeyWhereUniqueInput>;
+  orderBy?: Array<FooterSectionKeyOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FooterSectionKeyWhereInput;
+};
+
 
 export type QueryFooterSectionKeysCountArgs = {
-  where?: FooterSectionKeyWhereInput
-}
+  where?: FooterSectionKeyWhereInput;
+};
+
 
 export type QueryFooterSectionsArgs = {
-  cursor?: InputMaybe<FooterSectionWhereUniqueInput>
-  orderBy?: Array<FooterSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FooterSectionWhereInput
-}
+  cursor?: InputMaybe<FooterSectionWhereUniqueInput>;
+  orderBy?: Array<FooterSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FooterSectionWhereInput;
+};
+
 
 export type QueryFooterSectionsCountArgs = {
-  where?: FooterSectionWhereInput
-}
+  where?: FooterSectionWhereInput;
+};
+
 
 export type QueryFootersArgs = {
-  cursor?: InputMaybe<FooterWhereUniqueInput>
-  orderBy?: Array<FooterOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FooterWhereInput
-}
+  cursor?: InputMaybe<FooterWhereUniqueInput>;
+  orderBy?: Array<FooterOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FooterWhereInput;
+};
+
 
 export type QueryFootersCountArgs = {
-  where?: FooterWhereInput
-}
+  where?: FooterWhereInput;
+};
+
 
 export type QueryHeroArgs = {
-  where: HeroWhereUniqueInput
-}
+  where: HeroWhereUniqueInput;
+};
+
 
 export type QueryHeroBannerArgs = {
-  where: HeroBannerWhereUniqueInput
-}
+  where: HeroBannerWhereUniqueInput;
+};
+
 
 export type QueryHeroBannerAdditionalArgs = {
-  where: HeroBannerAdditionalWhereUniqueInput
-}
+  where: HeroBannerAdditionalWhereUniqueInput;
+};
+
 
 export type QueryHeroBannerAdditionalsArgs = {
-  cursor?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>
-  orderBy?: Array<HeroBannerAdditionalOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: HeroBannerAdditionalWhereInput
-}
+  cursor?: InputMaybe<HeroBannerAdditionalWhereUniqueInput>;
+  orderBy?: Array<HeroBannerAdditionalOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: HeroBannerAdditionalWhereInput;
+};
+
 
 export type QueryHeroBannerAdditionalsCountArgs = {
-  where?: HeroBannerAdditionalWhereInput
-}
+  where?: HeroBannerAdditionalWhereInput;
+};
+
 
 export type QueryHeroBannersArgs = {
-  cursor?: InputMaybe<HeroBannerWhereUniqueInput>
-  orderBy?: Array<HeroBannerOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: HeroBannerWhereInput
-}
+  cursor?: InputMaybe<HeroBannerWhereUniqueInput>;
+  orderBy?: Array<HeroBannerOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: HeroBannerWhereInput;
+};
+
 
 export type QueryHeroBannersCountArgs = {
-  where?: HeroBannerWhereInput
-}
+  where?: HeroBannerWhereInput;
+};
+
 
 export type QueryHeroesArgs = {
-  cursor?: InputMaybe<HeroWhereUniqueInput>
-  orderBy?: Array<HeroOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: HeroWhereInput
-}
+  cursor?: InputMaybe<HeroWhereUniqueInput>;
+  orderBy?: Array<HeroOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: HeroWhereInput;
+};
+
 
 export type QueryHeroesCountArgs = {
-  where?: HeroWhereInput
-}
+  where?: HeroWhereInput;
+};
+
 
 export type QueryImageArgs = {
-  where: ImageWhereUniqueInput
-}
+  where: ImageWhereUniqueInput;
+};
+
 
 export type QueryImagesArgs = {
-  cursor?: InputMaybe<ImageWhereUniqueInput>
-  orderBy?: Array<ImageOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ImageWhereInput
-}
+  cursor?: InputMaybe<ImageWhereUniqueInput>;
+  orderBy?: Array<ImageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ImageWhereInput;
+};
+
 
 export type QueryImagesCountArgs = {
-  where?: ImageWhereInput
-}
+  where?: ImageWhereInput;
+};
+
 
 export type QueryLanguageArgs = {
-  where: LanguageWhereUniqueInput
-}
+  where: LanguageWhereUniqueInput;
+};
+
 
 export type QueryLanguagesArgs = {
-  cursor?: InputMaybe<LanguageWhereUniqueInput>
-  orderBy?: Array<LanguageOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: LanguageWhereInput
-}
+  cursor?: InputMaybe<LanguageWhereUniqueInput>;
+  orderBy?: Array<LanguageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: LanguageWhereInput;
+};
+
 
 export type QueryLanguagesCountArgs = {
-  where?: LanguageWhereInput
-}
+  where?: LanguageWhereInput;
+};
+
 
 export type QueryMapArgs = {
-  where: MapWhereUniqueInput
-}
+  where: MapWhereUniqueInput;
+};
+
 
 export type QueryMapsArgs = {
-  cursor?: InputMaybe<MapWhereUniqueInput>
-  orderBy?: Array<MapOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: MapWhereInput
-}
+  cursor?: InputMaybe<MapWhereUniqueInput>;
+  orderBy?: Array<MapOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: MapWhereInput;
+};
+
 
 export type QueryMapsCountArgs = {
-  where?: MapWhereInput
-}
+  where?: MapWhereInput;
+};
+
 
 export type QueryNavigationArgs = {
-  where: NavigationWhereUniqueInput
-}
+  where: NavigationWhereUniqueInput;
+};
+
 
 export type QueryNavigationLinkArgs = {
-  where: NavigationLinkWhereUniqueInput
-}
+  where: NavigationLinkWhereUniqueInput;
+};
+
 
 export type QueryNavigationLinksArgs = {
-  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>
-  orderBy?: Array<NavigationLinkOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: NavigationLinkWhereInput
-}
+  cursor?: InputMaybe<NavigationLinkWhereUniqueInput>;
+  orderBy?: Array<NavigationLinkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationLinkWhereInput;
+};
+
 
 export type QueryNavigationLinksCountArgs = {
-  where?: NavigationLinkWhereInput
-}
+  where?: NavigationLinkWhereInput;
+};
+
 
 export type QueryNavigationsArgs = {
-  cursor?: InputMaybe<NavigationWhereUniqueInput>
-  orderBy?: Array<NavigationOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: NavigationWhereInput
-}
+  cursor?: InputMaybe<NavigationWhereUniqueInput>;
+  orderBy?: Array<NavigationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationWhereInput;
+};
+
 
 export type QueryNavigationsCountArgs = {
-  where?: NavigationWhereInput
-}
+  where?: NavigationWhereInput;
+};
+
 
 export type QueryPageContentArgs = {
-  where: PageContentWhereUniqueInput
-}
+  where: PageContentWhereUniqueInput;
+};
+
 
 export type QueryPageContentsArgs = {
-  cursor?: InputMaybe<PageContentWhereUniqueInput>
-  orderBy?: Array<PageContentOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: PageContentWhereInput
-}
+  cursor?: InputMaybe<PageContentWhereUniqueInput>;
+  orderBy?: Array<PageContentOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: PageContentWhereInput;
+};
+
 
 export type QueryPageContentsCountArgs = {
-  where?: PageContentWhereInput
-}
+  where?: PageContentWhereInput;
+};
+
+
+export type QueryResumeArgs = {
+  where: ResumeWhereUniqueInput;
+};
+
+
+export type QueryResumeAwardArgs = {
+  where: ResumeAwardWhereUniqueInput;
+};
+
+
+export type QueryResumeAwardsArgs = {
+  cursor?: InputMaybe<ResumeAwardWhereUniqueInput>;
+  orderBy?: Array<ResumeAwardOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeAwardWhereInput;
+};
+
+
+export type QueryResumeAwardsCountArgs = {
+  where?: ResumeAwardWhereInput;
+};
+
+
+export type QueryResumeBasicInformationArgs = {
+  where: ResumeBasicInformationWhereUniqueInput;
+};
+
+
+export type QueryResumeBasicInformationsArgs = {
+  cursor?: InputMaybe<ResumeBasicInformationWhereUniqueInput>;
+  orderBy?: Array<ResumeBasicInformationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeBasicInformationWhereInput;
+};
+
+
+export type QueryResumeBasicInformationsCountArgs = {
+  where?: ResumeBasicInformationWhereInput;
+};
+
+
+export type QueryResumeEducationArgs = {
+  where: ResumeEducationWhereUniqueInput;
+};
+
+
+export type QueryResumeEducationsArgs = {
+  cursor?: InputMaybe<ResumeEducationWhereUniqueInput>;
+  orderBy?: Array<ResumeEducationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeEducationWhereInput;
+};
+
+
+export type QueryResumeEducationsCountArgs = {
+  where?: ResumeEducationWhereInput;
+};
+
+
+export type QueryResumeHighlightArgs = {
+  where: ResumeHighlightWhereUniqueInput;
+};
+
+
+export type QueryResumeHighlightsArgs = {
+  cursor?: InputMaybe<ResumeHighlightWhereUniqueInput>;
+  orderBy?: Array<ResumeHighlightOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeHighlightWhereInput;
+};
+
+
+export type QueryResumeHighlightsCountArgs = {
+  where?: ResumeHighlightWhereInput;
+};
+
+
+export type QueryResumeInterestArgs = {
+  where: ResumeInterestWhereUniqueInput;
+};
+
+
+export type QueryResumeInterestsArgs = {
+  cursor?: InputMaybe<ResumeInterestWhereUniqueInput>;
+  orderBy?: Array<ResumeInterestOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeInterestWhereInput;
+};
+
+
+export type QueryResumeInterestsCountArgs = {
+  where?: ResumeInterestWhereInput;
+};
+
+
+export type QueryResumeLanguageArgs = {
+  where: ResumeLanguageWhereUniqueInput;
+};
+
+
+export type QueryResumeLanguagesArgs = {
+  cursor?: InputMaybe<ResumeLanguageWhereUniqueInput>;
+  orderBy?: Array<ResumeLanguageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeLanguageWhereInput;
+};
+
+
+export type QueryResumeLanguagesCountArgs = {
+  where?: ResumeLanguageWhereInput;
+};
+
+
+export type QueryResumeLocationArgs = {
+  where: ResumeLocationWhereUniqueInput;
+};
+
+
+export type QueryResumeLocationsArgs = {
+  cursor?: InputMaybe<ResumeLocationWhereUniqueInput>;
+  orderBy?: Array<ResumeLocationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeLocationWhereInput;
+};
+
+
+export type QueryResumeLocationsCountArgs = {
+  where?: ResumeLocationWhereInput;
+};
+
+
+export type QueryResumeProfileArgs = {
+  where: ResumeProfileWhereUniqueInput;
+};
+
+
+export type QueryResumeProfilesArgs = {
+  cursor?: InputMaybe<ResumeProfileWhereUniqueInput>;
+  orderBy?: Array<ResumeProfileOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeProfileWhereInput;
+};
+
+
+export type QueryResumeProfilesCountArgs = {
+  where?: ResumeProfileWhereInput;
+};
+
+
+export type QueryResumeProjectArgs = {
+  where: ResumeProjectWhereUniqueInput;
+};
+
+
+export type QueryResumeProjectsArgs = {
+  cursor?: InputMaybe<ResumeProjectWhereUniqueInput>;
+  orderBy?: Array<ResumeProjectOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeProjectWhereInput;
+};
+
+
+export type QueryResumeProjectsCountArgs = {
+  where?: ResumeProjectWhereInput;
+};
+
+
+export type QueryResumePublicationArgs = {
+  where: ResumePublicationWhereUniqueInput;
+};
+
+
+export type QueryResumePublicationsArgs = {
+  cursor?: InputMaybe<ResumePublicationWhereUniqueInput>;
+  orderBy?: Array<ResumePublicationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumePublicationWhereInput;
+};
+
+
+export type QueryResumePublicationsCountArgs = {
+  where?: ResumePublicationWhereInput;
+};
+
+
+export type QueryResumeReferenceArgs = {
+  where: ResumeReferenceWhereUniqueInput;
+};
+
+
+export type QueryResumeReferencesArgs = {
+  cursor?: InputMaybe<ResumeReferenceWhereUniqueInput>;
+  orderBy?: Array<ResumeReferenceOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeReferenceWhereInput;
+};
+
+
+export type QueryResumeReferencesCountArgs = {
+  where?: ResumeReferenceWhereInput;
+};
+
+
+export type QueryResumeSkillArgs = {
+  where: ResumeSkillWhereUniqueInput;
+};
+
+
+export type QueryResumeSkillsArgs = {
+  cursor?: InputMaybe<ResumeSkillWhereUniqueInput>;
+  orderBy?: Array<ResumeSkillOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeSkillWhereInput;
+};
+
+
+export type QueryResumeSkillsCountArgs = {
+  where?: ResumeSkillWhereInput;
+};
+
+
+export type QueryResumeVolunteerArgs = {
+  where: ResumeVolunteerWhereUniqueInput;
+};
+
+
+export type QueryResumeVolunteersArgs = {
+  cursor?: InputMaybe<ResumeVolunteerWhereUniqueInput>;
+  orderBy?: Array<ResumeVolunteerOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeVolunteerWhereInput;
+};
+
+
+export type QueryResumeVolunteersCountArgs = {
+  where?: ResumeVolunteerWhereInput;
+};
+
+
+export type QueryResumeWorkArgs = {
+  where: ResumeWorkWhereUniqueInput;
+};
+
+
+export type QueryResumeWorksArgs = {
+  cursor?: InputMaybe<ResumeWorkWhereUniqueInput>;
+  orderBy?: Array<ResumeWorkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeWorkWhereInput;
+};
+
+
+export type QueryResumeWorksCountArgs = {
+  where?: ResumeWorkWhereInput;
+};
+
+
+export type QueryResumesArgs = {
+  cursor?: InputMaybe<ResumeWhereUniqueInput>;
+  orderBy?: Array<ResumeOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeWhereInput;
+};
+
+
+export type QueryResumesCountArgs = {
+  where?: ResumeWhereInput;
+};
+
 
 export type QuerySectionArgs = {
-  where: SectionWhereUniqueInput
-}
+  where: SectionWhereUniqueInput;
+};
+
 
 export type QuerySectionsArgs = {
-  cursor?: InputMaybe<SectionWhereUniqueInput>
-  orderBy?: Array<SectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: SectionWhereInput
-}
+  cursor?: InputMaybe<SectionWhereUniqueInput>;
+  orderBy?: Array<SectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: SectionWhereInput;
+};
+
 
 export type QuerySectionsCountArgs = {
-  where?: SectionWhereInput
-}
+  where?: SectionWhereInput;
+};
+
 
 export type QueryTestimonialBadgeArgs = {
-  where: TestimonialBadgeWhereUniqueInput
-}
+  where: TestimonialBadgeWhereUniqueInput;
+};
+
 
 export type QueryTestimonialBadgesArgs = {
-  cursor?: InputMaybe<TestimonialBadgeWhereUniqueInput>
-  orderBy?: Array<TestimonialBadgeOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TestimonialBadgeWhereInput
-}
+  cursor?: InputMaybe<TestimonialBadgeWhereUniqueInput>;
+  orderBy?: Array<TestimonialBadgeOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialBadgeWhereInput;
+};
+
 
 export type QueryTestimonialBadgesCountArgs = {
-  where?: TestimonialBadgeWhereInput
-}
+  where?: TestimonialBadgeWhereInput;
+};
+
 
 export type QueryTestimonialItemArgs = {
-  where: TestimonialItemWhereUniqueInput
-}
+  where: TestimonialItemWhereUniqueInput;
+};
+
 
 export type QueryTestimonialItemsArgs = {
-  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>
-  orderBy?: Array<TestimonialItemOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TestimonialItemWhereInput
-}
+  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>;
+  orderBy?: Array<TestimonialItemOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialItemWhereInput;
+};
+
 
 export type QueryTestimonialItemsCountArgs = {
-  where?: TestimonialItemWhereInput
-}
+  where?: TestimonialItemWhereInput;
+};
+
 
 export type QueryTestimonialSectionArgs = {
-  where: TestimonialSectionWhereUniqueInput
-}
+  where: TestimonialSectionWhereUniqueInput;
+};
+
 
 export type QueryTestimonialSectionsArgs = {
-  cursor?: InputMaybe<TestimonialSectionWhereUniqueInput>
-  orderBy?: Array<TestimonialSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TestimonialSectionWhereInput
-}
+  cursor?: InputMaybe<TestimonialSectionWhereUniqueInput>;
+  orderBy?: Array<TestimonialSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialSectionWhereInput;
+};
+
 
 export type QueryTestimonialSectionsCountArgs = {
-  where?: TestimonialSectionWhereInput
-}
+  where?: TestimonialSectionWhereInput;
+};
+
 
 export type QueryTypeArgs = {
-  where: TypeWhereUniqueInput
-}
+  where: TypeWhereUniqueInput;
+};
+
 
 export type QueryTypesArgs = {
-  cursor?: InputMaybe<TypeWhereUniqueInput>
-  orderBy?: Array<TypeOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TypeWhereInput
-}
+  cursor?: InputMaybe<TypeWhereUniqueInput>;
+  orderBy?: Array<TypeOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TypeWhereInput;
+};
+
 
 export type QueryTypesCountArgs = {
-  where?: TypeWhereInput
-}
+  where?: TypeWhereInput;
+};
+
 
 export type QueryUserArgs = {
-  where: UserWhereUniqueInput
-}
+  where: UserWhereUniqueInput;
+};
+
 
 export type QueryUsersArgs = {
-  cursor?: InputMaybe<UserWhereUniqueInput>
-  orderBy?: Array<UserOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: UserWhereInput
-}
+  cursor?: InputMaybe<UserWhereUniqueInput>;
+  orderBy?: Array<UserOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: UserWhereInput;
+};
+
 
 export type QueryUsersCountArgs = {
-  where?: UserWhereInput
-}
+  where?: UserWhereInput;
+};
+
 
 export type QueryValueArgs = {
-  where: ValueWhereUniqueInput
-}
+  where: ValueWhereUniqueInput;
+};
+
 
 export type QueryValuesArgs = {
-  cursor?: InputMaybe<ValueWhereUniqueInput>
-  orderBy?: Array<ValueOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ValueWhereInput
-}
+  cursor?: InputMaybe<ValueWhereUniqueInput>;
+  orderBy?: Array<ValueOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ValueWhereInput;
+};
+
 
 export type QueryValuesCountArgs = {
-  where?: ValueWhereInput
-}
+  where?: ValueWhereInput;
+};
 
 export enum QueryMode {
-  Default = "default",
-  Insensitive = "insensitive",
+  Default = 'default',
+  Insensitive = 'insensitive'
 }
+
+export type Resume = {
+  __typename?: 'Resume';
+  awards?: Maybe<Array<ResumeAward>>;
+  awardsCount?: Maybe<Scalars['Int']['output']>;
+  basicInformation?: Maybe<ResumeBasicInformation>;
+  certificates?: Maybe<Array<Certification>>;
+  certificatesCount?: Maybe<Scalars['Int']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  education?: Maybe<Array<ResumeEducation>>;
+  educationCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  interests?: Maybe<Array<ResumeInterest>>;
+  interestsCount?: Maybe<Scalars['Int']['output']>;
+  language?: Maybe<Language>;
+  projects?: Maybe<Array<ResumeProject>>;
+  projectsCount?: Maybe<Scalars['Int']['output']>;
+  publications?: Maybe<Array<ResumePublication>>;
+  publicationsCount?: Maybe<Scalars['Int']['output']>;
+  references?: Maybe<Array<ResumeReference>>;
+  referencesCount?: Maybe<Scalars['Int']['output']>;
+  resumeLanguages?: Maybe<Array<ResumeLanguage>>;
+  resumeLanguagesCount?: Maybe<Scalars['Int']['output']>;
+  skills?: Maybe<Array<ResumeSkill>>;
+  skillsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  volunteer?: Maybe<Array<ResumeVolunteer>>;
+  volunteerCount?: Maybe<Scalars['Int']['output']>;
+  work?: Maybe<Array<ResumeWork>>;
+  workCount?: Maybe<Scalars['Int']['output']>;
+};
+
+
+export type ResumeAwardsArgs = {
+  cursor?: InputMaybe<ResumeAwardWhereUniqueInput>;
+  orderBy?: Array<ResumeAwardOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeAwardWhereInput;
+};
+
+
+export type ResumeAwardsCountArgs = {
+  where?: ResumeAwardWhereInput;
+};
+
+
+export type ResumeCertificatesArgs = {
+  cursor?: InputMaybe<CertificationWhereUniqueInput>;
+  orderBy?: Array<CertificationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationWhereInput;
+};
+
+
+export type ResumeCertificatesCountArgs = {
+  where?: CertificationWhereInput;
+};
+
+
+export type ResumeEducationArgs = {
+  cursor?: InputMaybe<ResumeEducationWhereUniqueInput>;
+  orderBy?: Array<ResumeEducationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeEducationWhereInput;
+};
+
+
+export type ResumeEducationCountArgs = {
+  where?: ResumeEducationWhereInput;
+};
+
+
+export type ResumeInterestsArgs = {
+  cursor?: InputMaybe<ResumeInterestWhereUniqueInput>;
+  orderBy?: Array<ResumeInterestOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeInterestWhereInput;
+};
+
+
+export type ResumeInterestsCountArgs = {
+  where?: ResumeInterestWhereInput;
+};
+
+
+export type ResumeProjectsArgs = {
+  cursor?: InputMaybe<ResumeProjectWhereUniqueInput>;
+  orderBy?: Array<ResumeProjectOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeProjectWhereInput;
+};
+
+
+export type ResumeProjectsCountArgs = {
+  where?: ResumeProjectWhereInput;
+};
+
+
+export type ResumePublicationsArgs = {
+  cursor?: InputMaybe<ResumePublicationWhereUniqueInput>;
+  orderBy?: Array<ResumePublicationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumePublicationWhereInput;
+};
+
+
+export type ResumePublicationsCountArgs = {
+  where?: ResumePublicationWhereInput;
+};
+
+
+export type ResumeReferencesArgs = {
+  cursor?: InputMaybe<ResumeReferenceWhereUniqueInput>;
+  orderBy?: Array<ResumeReferenceOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeReferenceWhereInput;
+};
+
+
+export type ResumeReferencesCountArgs = {
+  where?: ResumeReferenceWhereInput;
+};
+
+
+export type ResumeResumeLanguagesArgs = {
+  cursor?: InputMaybe<ResumeLanguageWhereUniqueInput>;
+  orderBy?: Array<ResumeLanguageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeLanguageWhereInput;
+};
+
+
+export type ResumeResumeLanguagesCountArgs = {
+  where?: ResumeLanguageWhereInput;
+};
+
+
+export type ResumeSkillsArgs = {
+  cursor?: InputMaybe<ResumeSkillWhereUniqueInput>;
+  orderBy?: Array<ResumeSkillOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeSkillWhereInput;
+};
+
+
+export type ResumeSkillsCountArgs = {
+  where?: ResumeSkillWhereInput;
+};
+
+
+export type ResumeVolunteerArgs = {
+  cursor?: InputMaybe<ResumeVolunteerWhereUniqueInput>;
+  orderBy?: Array<ResumeVolunteerOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeVolunteerWhereInput;
+};
+
+
+export type ResumeVolunteerCountArgs = {
+  where?: ResumeVolunteerWhereInput;
+};
+
+
+export type ResumeWorkArgs = {
+  cursor?: InputMaybe<ResumeWorkWhereUniqueInput>;
+  orderBy?: Array<ResumeWorkOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeWorkWhereInput;
+};
+
+
+export type ResumeWorkCountArgs = {
+  where?: ResumeWorkWhereInput;
+};
+
+export type ResumeAward = {
+  __typename?: 'ResumeAward';
+  awarder?: Maybe<Scalars['String']['output']>;
+  date?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  summary?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeAwardCreateInput = {
+  awarder?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['DateTime']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeAwardManyRelationFilter = {
+  every?: InputMaybe<ResumeAwardWhereInput>;
+  none?: InputMaybe<ResumeAwardWhereInput>;
+  some?: InputMaybe<ResumeAwardWhereInput>;
+};
+
+export type ResumeAwardOrderByInput = {
+  awarder?: InputMaybe<OrderDirection>;
+  date?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  summary?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeAwardRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeAwardWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeAwardCreateInput>>;
+};
+
+export type ResumeAwardRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeAwardWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeAwardCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeAwardWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeAwardWhereUniqueInput>>;
+};
+
+export type ResumeAwardUpdateArgs = {
+  data: ResumeAwardUpdateInput;
+  where: ResumeAwardWhereUniqueInput;
+};
+
+export type ResumeAwardUpdateInput = {
+  awarder?: InputMaybe<Scalars['String']['input']>;
+  date?: InputMaybe<Scalars['DateTime']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeAwardWhereInput = {
+  AND?: InputMaybe<Array<ResumeAwardWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeAwardWhereInput>>;
+  OR?: InputMaybe<Array<ResumeAwardWhereInput>>;
+  awarder?: InputMaybe<StringFilter>;
+  date?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  summary?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeAwardWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeBasicInformation = {
+  __typename?: 'ResumeBasicInformation';
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  location?: Maybe<ResumeLocation>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  profiles?: Maybe<Array<ResumeProfile>>;
+  profilesCount?: Maybe<Scalars['Int']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ResumeBasicInformationProfilesArgs = {
+  cursor?: InputMaybe<ResumeProfileWhereUniqueInput>;
+  orderBy?: Array<ResumeProfileOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeProfileWhereInput;
+};
+
+
+export type ResumeBasicInformationProfilesCountArgs = {
+  where?: ResumeProfileWhereInput;
+};
+
+export type ResumeBasicInformationCreateInput = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  location?: InputMaybe<ResumeLocationRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  profiles?: InputMaybe<ResumeProfileRelateToManyForCreateInput>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeBasicInformationOrderByInput = {
+  email?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  phone?: InputMaybe<OrderDirection>;
+  summary?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeBasicInformationRelateToOneForCreateInput = {
+  connect?: InputMaybe<ResumeBasicInformationWhereUniqueInput>;
+  create?: InputMaybe<ResumeBasicInformationCreateInput>;
+};
+
+export type ResumeBasicInformationRelateToOneForUpdateInput = {
+  connect?: InputMaybe<ResumeBasicInformationWhereUniqueInput>;
+  create?: InputMaybe<ResumeBasicInformationCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ResumeBasicInformationUpdateArgs = {
+  data: ResumeBasicInformationUpdateInput;
+  where: ResumeBasicInformationWhereUniqueInput;
+};
+
+export type ResumeBasicInformationUpdateInput = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  location?: InputMaybe<ResumeLocationRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  profiles?: InputMaybe<ResumeProfileRelateToManyForUpdateInput>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeBasicInformationWhereInput = {
+  AND?: InputMaybe<Array<ResumeBasicInformationWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeBasicInformationWhereInput>>;
+  OR?: InputMaybe<Array<ResumeBasicInformationWhereInput>>;
+  email?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  location?: InputMaybe<ResumeLocationWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  profiles?: InputMaybe<ResumeProfileManyRelationFilter>;
+  summary?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeBasicInformationWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeCreateInput = {
+  awards?: InputMaybe<ResumeAwardRelateToManyForCreateInput>;
+  basicInformation?: InputMaybe<ResumeBasicInformationRelateToOneForCreateInput>;
+  certificates?: InputMaybe<CertificationRelateToManyForCreateInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  education?: InputMaybe<ResumeEducationRelateToManyForCreateInput>;
+  interests?: InputMaybe<ResumeInterestRelateToManyForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  projects?: InputMaybe<ResumeProjectRelateToManyForCreateInput>;
+  publications?: InputMaybe<ResumePublicationRelateToManyForCreateInput>;
+  references?: InputMaybe<ResumeReferenceRelateToManyForCreateInput>;
+  resumeLanguages?: InputMaybe<ResumeLanguageRelateToManyForCreateInput>;
+  skills?: InputMaybe<ResumeSkillRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  volunteer?: InputMaybe<ResumeVolunteerRelateToManyForCreateInput>;
+  work?: InputMaybe<ResumeWorkRelateToManyForCreateInput>;
+};
+
+export type ResumeEducation = {
+  __typename?: 'ResumeEducation';
+  area?: Maybe<Scalars['String']['output']>;
+  courses?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['DateTime']['output']>;
+  id: Scalars['ID']['output'];
+  institution?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  score?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['DateTime']['output']>;
+  studyType?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeEducationCreateInput = {
+  area?: InputMaybe<Scalars['String']['input']>;
+  courses?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  institution?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  score?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  studyType?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeEducationManyRelationFilter = {
+  every?: InputMaybe<ResumeEducationWhereInput>;
+  none?: InputMaybe<ResumeEducationWhereInput>;
+  some?: InputMaybe<ResumeEducationWhereInput>;
+};
+
+export type ResumeEducationOrderByInput = {
+  area?: InputMaybe<OrderDirection>;
+  courses?: InputMaybe<OrderDirection>;
+  endDate?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  institution?: InputMaybe<OrderDirection>;
+  score?: InputMaybe<OrderDirection>;
+  startDate?: InputMaybe<OrderDirection>;
+  studyType?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeEducationRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeEducationWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeEducationCreateInput>>;
+};
+
+export type ResumeEducationRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeEducationWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeEducationCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeEducationWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeEducationWhereUniqueInput>>;
+};
+
+export type ResumeEducationUpdateArgs = {
+  data: ResumeEducationUpdateInput;
+  where: ResumeEducationWhereUniqueInput;
+};
+
+export type ResumeEducationUpdateInput = {
+  area?: InputMaybe<Scalars['String']['input']>;
+  courses?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  institution?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  score?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  studyType?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeEducationWhereInput = {
+  AND?: InputMaybe<Array<ResumeEducationWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeEducationWhereInput>>;
+  OR?: InputMaybe<Array<ResumeEducationWhereInput>>;
+  area?: InputMaybe<StringFilter>;
+  courses?: InputMaybe<StringFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  institution?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  score?: InputMaybe<StringFilter>;
+  startDate?: InputMaybe<DateTimeNullableFilter>;
+  studyType?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeEducationWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeHighlight = {
+  __typename?: 'ResumeHighlight';
+  id: Scalars['ID']['output'];
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeHighlightCreateInput = {
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeHighlightManyRelationFilter = {
+  every?: InputMaybe<ResumeHighlightWhereInput>;
+  none?: InputMaybe<ResumeHighlightWhereInput>;
+  some?: InputMaybe<ResumeHighlightWhereInput>;
+};
+
+export type ResumeHighlightOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  value?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeHighlightRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeHighlightWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeHighlightCreateInput>>;
+};
+
+export type ResumeHighlightRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeHighlightWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeHighlightCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeHighlightWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeHighlightWhereUniqueInput>>;
+};
+
+export type ResumeHighlightUpdateArgs = {
+  data: ResumeHighlightUpdateInput;
+  where: ResumeHighlightWhereUniqueInput;
+};
+
+export type ResumeHighlightUpdateInput = {
+  value?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeHighlightWhereInput = {
+  AND?: InputMaybe<Array<ResumeHighlightWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeHighlightWhereInput>>;
+  OR?: InputMaybe<Array<ResumeHighlightWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  value?: InputMaybe<StringFilter>;
+};
+
+export type ResumeHighlightWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeInterest = {
+  __typename?: 'ResumeInterest';
+  id: Scalars['ID']['output'];
+  keywords?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeInterestCreateInput = {
+  keywords?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeInterestManyRelationFilter = {
+  every?: InputMaybe<ResumeInterestWhereInput>;
+  none?: InputMaybe<ResumeInterestWhereInput>;
+  some?: InputMaybe<ResumeInterestWhereInput>;
+};
+
+export type ResumeInterestOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  keywords?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeInterestRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeInterestWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeInterestCreateInput>>;
+};
+
+export type ResumeInterestRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeInterestWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeInterestCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeInterestWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeInterestWhereUniqueInput>>;
+};
+
+export type ResumeInterestUpdateArgs = {
+  data: ResumeInterestUpdateInput;
+  where: ResumeInterestWhereUniqueInput;
+};
+
+export type ResumeInterestUpdateInput = {
+  keywords?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeInterestWhereInput = {
+  AND?: InputMaybe<Array<ResumeInterestWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeInterestWhereInput>>;
+  OR?: InputMaybe<Array<ResumeInterestWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  keywords?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+};
+
+export type ResumeInterestWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeLanguage = {
+  __typename?: 'ResumeLanguage';
+  fluency?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Scalars['String']['output']>;
+  uiLanguage?: Maybe<Language>;
+};
+
+export type ResumeLanguageCreateInput = {
+  fluency?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<Scalars['String']['input']>;
+  uiLanguage?: InputMaybe<LanguageRelateToOneForCreateInput>;
+};
+
+export type ResumeLanguageManyRelationFilter = {
+  every?: InputMaybe<ResumeLanguageWhereInput>;
+  none?: InputMaybe<ResumeLanguageWhereInput>;
+  some?: InputMaybe<ResumeLanguageWhereInput>;
+};
+
+export type ResumeLanguageOrderByInput = {
+  fluency?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  language?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeLanguageRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeLanguageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeLanguageCreateInput>>;
+};
+
+export type ResumeLanguageRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeLanguageWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeLanguageCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeLanguageWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeLanguageWhereUniqueInput>>;
+};
+
+export type ResumeLanguageUpdateArgs = {
+  data: ResumeLanguageUpdateInput;
+  where: ResumeLanguageWhereUniqueInput;
+};
+
+export type ResumeLanguageUpdateInput = {
+  fluency?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<Scalars['String']['input']>;
+  uiLanguage?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+};
+
+export type ResumeLanguageWhereInput = {
+  AND?: InputMaybe<Array<ResumeLanguageWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeLanguageWhereInput>>;
+  OR?: InputMaybe<Array<ResumeLanguageWhereInput>>;
+  fluency?: InputMaybe<StringNullableFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<StringFilter>;
+  uiLanguage?: InputMaybe<LanguageWhereInput>;
+};
+
+export type ResumeLanguageWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeLocation = {
+  __typename?: 'ResumeLocation';
+  address?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  countryCode?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  region?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeLocationCreateInput = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  countryCode?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeLocationOrderByInput = {
+  address?: InputMaybe<OrderDirection>;
+  city?: InputMaybe<OrderDirection>;
+  countryCode?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  postalCode?: InputMaybe<OrderDirection>;
+  region?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeLocationRelateToOneForCreateInput = {
+  connect?: InputMaybe<ResumeLocationWhereUniqueInput>;
+  create?: InputMaybe<ResumeLocationCreateInput>;
+};
+
+export type ResumeLocationRelateToOneForUpdateInput = {
+  connect?: InputMaybe<ResumeLocationWhereUniqueInput>;
+  create?: InputMaybe<ResumeLocationCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ResumeLocationUpdateArgs = {
+  data: ResumeLocationUpdateInput;
+  where: ResumeLocationWhereUniqueInput;
+};
+
+export type ResumeLocationUpdateInput = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  countryCode?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  region?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeLocationWhereInput = {
+  AND?: InputMaybe<Array<ResumeLocationWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeLocationWhereInput>>;
+  OR?: InputMaybe<Array<ResumeLocationWhereInput>>;
+  address?: InputMaybe<StringFilter>;
+  city?: InputMaybe<StringFilter>;
+  countryCode?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  postalCode?: InputMaybe<StringFilter>;
+  region?: InputMaybe<StringFilter>;
+};
+
+export type ResumeLocationWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeOrderByInput = {
+  createdAt?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+  updatedAt?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeProfile = {
+  __typename?: 'ResumeProfile';
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  network?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  username?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeProfileCreateInput = {
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  network?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeProfileManyRelationFilter = {
+  every?: InputMaybe<ResumeProfileWhereInput>;
+  none?: InputMaybe<ResumeProfileWhereInput>;
+  some?: InputMaybe<ResumeProfileWhereInput>;
+};
+
+export type ResumeProfileOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  network?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+  username?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeProfileRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeProfileWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeProfileCreateInput>>;
+};
+
+export type ResumeProfileRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeProfileWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeProfileCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeProfileWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeProfileWhereUniqueInput>>;
+};
+
+export type ResumeProfileUpdateArgs = {
+  data: ResumeProfileUpdateInput;
+  where: ResumeProfileWhereUniqueInput;
+};
+
+export type ResumeProfileUpdateInput = {
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  network?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeProfileWhereInput = {
+  AND?: InputMaybe<Array<ResumeProfileWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeProfileWhereInput>>;
+  OR?: InputMaybe<Array<ResumeProfileWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  network?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  username?: InputMaybe<StringFilter>;
+};
+
+export type ResumeProfileWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeProject = {
+  __typename?: 'ResumeProject';
+  description?: Maybe<Scalars['String']['output']>;
+  endDate?: Maybe<Scalars['DateTime']['output']>;
+  highlights?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['DateTime']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeProjectCreateInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeProjectManyRelationFilter = {
+  every?: InputMaybe<ResumeProjectWhereInput>;
+  none?: InputMaybe<ResumeProjectWhereInput>;
+  some?: InputMaybe<ResumeProjectWhereInput>;
+};
+
+export type ResumeProjectOrderByInput = {
+  description?: InputMaybe<OrderDirection>;
+  endDate?: InputMaybe<OrderDirection>;
+  highlights?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  startDate?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeProjectRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeProjectWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeProjectCreateInput>>;
+};
+
+export type ResumeProjectRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeProjectWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeProjectCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeProjectWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeProjectWhereUniqueInput>>;
+};
+
+export type ResumeProjectUpdateArgs = {
+  data: ResumeProjectUpdateInput;
+  where: ResumeProjectWhereUniqueInput;
+};
+
+export type ResumeProjectUpdateInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeProjectWhereInput = {
+  AND?: InputMaybe<Array<ResumeProjectWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeProjectWhereInput>>;
+  OR?: InputMaybe<Array<ResumeProjectWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  highlights?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  startDate?: InputMaybe<DateTimeNullableFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeProjectWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumePublication = {
+  __typename?: 'ResumePublication';
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  publisher?: Maybe<Scalars['String']['output']>;
+  releaseDate?: Maybe<Scalars['DateTime']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumePublicationCreateInput = {
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publisher?: InputMaybe<Scalars['String']['input']>;
+  releaseDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumePublicationManyRelationFilter = {
+  every?: InputMaybe<ResumePublicationWhereInput>;
+  none?: InputMaybe<ResumePublicationWhereInput>;
+  some?: InputMaybe<ResumePublicationWhereInput>;
+};
+
+export type ResumePublicationOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  publisher?: InputMaybe<OrderDirection>;
+  releaseDate?: InputMaybe<OrderDirection>;
+  summary?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumePublicationRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumePublicationWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumePublicationCreateInput>>;
+};
+
+export type ResumePublicationRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumePublicationWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumePublicationCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumePublicationWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumePublicationWhereUniqueInput>>;
+};
+
+export type ResumePublicationUpdateArgs = {
+  data: ResumePublicationUpdateInput;
+  where: ResumePublicationWhereUniqueInput;
+};
+
+export type ResumePublicationUpdateInput = {
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publisher?: InputMaybe<Scalars['String']['input']>;
+  releaseDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumePublicationWhereInput = {
+  AND?: InputMaybe<Array<ResumePublicationWhereInput>>;
+  NOT?: InputMaybe<Array<ResumePublicationWhereInput>>;
+  OR?: InputMaybe<Array<ResumePublicationWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  publisher?: InputMaybe<StringFilter>;
+  releaseDate?: InputMaybe<DateTimeNullableFilter>;
+  summary?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumePublicationWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeReference = {
+  __typename?: 'ResumeReference';
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  reference?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeReferenceCreateInput = {
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  reference?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeReferenceManyRelationFilter = {
+  every?: InputMaybe<ResumeReferenceWhereInput>;
+  none?: InputMaybe<ResumeReferenceWhereInput>;
+  some?: InputMaybe<ResumeReferenceWhereInput>;
+};
+
+export type ResumeReferenceOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  reference?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeReferenceRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeReferenceWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeReferenceCreateInput>>;
+};
+
+export type ResumeReferenceRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeReferenceWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeReferenceCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeReferenceWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeReferenceWhereUniqueInput>>;
+};
+
+export type ResumeReferenceUpdateArgs = {
+  data: ResumeReferenceUpdateInput;
+  where: ResumeReferenceWhereUniqueInput;
+};
+
+export type ResumeReferenceUpdateInput = {
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  reference?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeReferenceWhereInput = {
+  AND?: InputMaybe<Array<ResumeReferenceWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeReferenceWhereInput>>;
+  OR?: InputMaybe<Array<ResumeReferenceWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  reference?: InputMaybe<StringFilter>;
+};
+
+export type ResumeReferenceWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeSkill = {
+  __typename?: 'ResumeSkill';
+  id: Scalars['ID']['output'];
+  keywords?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+  level?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeSkillCreateInput = {
+  keywords?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  level?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeSkillManyRelationFilter = {
+  every?: InputMaybe<ResumeSkillWhereInput>;
+  none?: InputMaybe<ResumeSkillWhereInput>;
+  some?: InputMaybe<ResumeSkillWhereInput>;
+};
+
+export type ResumeSkillOrderByInput = {
+  id?: InputMaybe<OrderDirection>;
+  keywords?: InputMaybe<OrderDirection>;
+  level?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeSkillRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeSkillWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeSkillCreateInput>>;
+};
+
+export type ResumeSkillRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeSkillWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeSkillCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeSkillWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeSkillWhereUniqueInput>>;
+};
+
+export type ResumeSkillUpdateArgs = {
+  data: ResumeSkillUpdateInput;
+  where: ResumeSkillWhereUniqueInput;
+};
+
+export type ResumeSkillUpdateInput = {
+  keywords?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  level?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeSkillWhereInput = {
+  AND?: InputMaybe<Array<ResumeSkillWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeSkillWhereInput>>;
+  OR?: InputMaybe<Array<ResumeSkillWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  keywords?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  level?: InputMaybe<StringNullableFilter>;
+  name?: InputMaybe<StringFilter>;
+};
+
+export type ResumeSkillWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeUpdateArgs = {
+  data: ResumeUpdateInput;
+  where: ResumeWhereUniqueInput;
+};
+
+export type ResumeUpdateInput = {
+  awards?: InputMaybe<ResumeAwardRelateToManyForUpdateInput>;
+  basicInformation?: InputMaybe<ResumeBasicInformationRelateToOneForUpdateInput>;
+  certificates?: InputMaybe<CertificationRelateToManyForUpdateInput>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  education?: InputMaybe<ResumeEducationRelateToManyForUpdateInput>;
+  interests?: InputMaybe<ResumeInterestRelateToManyForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  projects?: InputMaybe<ResumeProjectRelateToManyForUpdateInput>;
+  publications?: InputMaybe<ResumePublicationRelateToManyForUpdateInput>;
+  references?: InputMaybe<ResumeReferenceRelateToManyForUpdateInput>;
+  resumeLanguages?: InputMaybe<ResumeLanguageRelateToManyForUpdateInput>;
+  skills?: InputMaybe<ResumeSkillRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  volunteer?: InputMaybe<ResumeVolunteerRelateToManyForUpdateInput>;
+  work?: InputMaybe<ResumeWorkRelateToManyForUpdateInput>;
+};
+
+export type ResumeVolunteer = {
+  __typename?: 'ResumeVolunteer';
+  endDate?: Maybe<Scalars['DateTime']['output']>;
+  highlights?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  organization?: Maybe<Scalars['String']['output']>;
+  position?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['DateTime']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ResumeVolunteerCreateInput = {
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  organization?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeVolunteerManyRelationFilter = {
+  every?: InputMaybe<ResumeVolunteerWhereInput>;
+  none?: InputMaybe<ResumeVolunteerWhereInput>;
+  some?: InputMaybe<ResumeVolunteerWhereInput>;
+};
+
+export type ResumeVolunteerOrderByInput = {
+  endDate?: InputMaybe<OrderDirection>;
+  highlights?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  organization?: InputMaybe<OrderDirection>;
+  position?: InputMaybe<OrderDirection>;
+  startDate?: InputMaybe<OrderDirection>;
+  summary?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeVolunteerRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeVolunteerWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeVolunteerCreateInput>>;
+};
+
+export type ResumeVolunteerRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeVolunteerWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeVolunteerCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeVolunteerWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeVolunteerWhereUniqueInput>>;
+};
+
+export type ResumeVolunteerUpdateArgs = {
+  data: ResumeVolunteerUpdateInput;
+  where: ResumeVolunteerWhereUniqueInput;
+};
+
+export type ResumeVolunteerUpdateInput = {
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  organization?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeVolunteerWhereInput = {
+  AND?: InputMaybe<Array<ResumeVolunteerWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeVolunteerWhereInput>>;
+  OR?: InputMaybe<Array<ResumeVolunteerWhereInput>>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  highlights?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  organization?: InputMaybe<StringFilter>;
+  position?: InputMaybe<StringFilter>;
+  startDate?: InputMaybe<DateTimeNullableFilter>;
+  summary?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeVolunteerWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeWhereInput = {
+  AND?: InputMaybe<Array<ResumeWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeWhereInput>>;
+  OR?: InputMaybe<Array<ResumeWhereInput>>;
+  awards?: InputMaybe<ResumeAwardManyRelationFilter>;
+  basicInformation?: InputMaybe<ResumeBasicInformationWhereInput>;
+  certificates?: InputMaybe<CertificationManyRelationFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  education?: InputMaybe<ResumeEducationManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  interests?: InputMaybe<ResumeInterestManyRelationFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  projects?: InputMaybe<ResumeProjectManyRelationFilter>;
+  publications?: InputMaybe<ResumePublicationManyRelationFilter>;
+  references?: InputMaybe<ResumeReferenceManyRelationFilter>;
+  resumeLanguages?: InputMaybe<ResumeLanguageManyRelationFilter>;
+  skills?: InputMaybe<ResumeSkillManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+  updatedAt?: InputMaybe<DateTimeNullableFilter>;
+  volunteer?: InputMaybe<ResumeVolunteerManyRelationFilter>;
+  work?: InputMaybe<ResumeWorkManyRelationFilter>;
+};
+
+export type ResumeWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ResumeWork = {
+  __typename?: 'ResumeWork';
+  endDate?: Maybe<Scalars['DateTime']['output']>;
+  highlights?: Maybe<Array<ResumeHighlight>>;
+  highlightsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  position?: Maybe<Scalars['String']['output']>;
+  startDate?: Maybe<Scalars['DateTime']['output']>;
+  summary?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ResumeWorkHighlightsArgs = {
+  cursor?: InputMaybe<ResumeHighlightWhereUniqueInput>;
+  orderBy?: Array<ResumeHighlightOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ResumeHighlightWhereInput;
+};
+
+
+export type ResumeWorkHighlightsCountArgs = {
+  where?: ResumeHighlightWhereInput;
+};
+
+export type ResumeWorkCreateInput = {
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<ResumeHighlightRelateToManyForCreateInput>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeWorkManyRelationFilter = {
+  every?: InputMaybe<ResumeWorkWhereInput>;
+  none?: InputMaybe<ResumeWorkWhereInput>;
+  some?: InputMaybe<ResumeWorkWhereInput>;
+};
+
+export type ResumeWorkOrderByInput = {
+  endDate?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  position?: InputMaybe<OrderDirection>;
+  startDate?: InputMaybe<OrderDirection>;
+  summary?: InputMaybe<OrderDirection>;
+  url?: InputMaybe<OrderDirection>;
+};
+
+export type ResumeWorkRelateToManyForCreateInput = {
+  connect?: InputMaybe<Array<ResumeWorkWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeWorkCreateInput>>;
+};
+
+export type ResumeWorkRelateToManyForUpdateInput = {
+  connect?: InputMaybe<Array<ResumeWorkWhereUniqueInput>>;
+  create?: InputMaybe<Array<ResumeWorkCreateInput>>;
+  disconnect?: InputMaybe<Array<ResumeWorkWhereUniqueInput>>;
+  set?: InputMaybe<Array<ResumeWorkWhereUniqueInput>>;
+};
+
+export type ResumeWorkUpdateArgs = {
+  data: ResumeWorkUpdateInput;
+  where: ResumeWorkWhereUniqueInput;
+};
+
+export type ResumeWorkUpdateInput = {
+  endDate?: InputMaybe<Scalars['DateTime']['input']>;
+  highlights?: InputMaybe<ResumeHighlightRelateToManyForUpdateInput>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  position?: InputMaybe<Scalars['String']['input']>;
+  startDate?: InputMaybe<Scalars['DateTime']['input']>;
+  summary?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResumeWorkWhereInput = {
+  AND?: InputMaybe<Array<ResumeWorkWhereInput>>;
+  NOT?: InputMaybe<Array<ResumeWorkWhereInput>>;
+  OR?: InputMaybe<Array<ResumeWorkWhereInput>>;
+  endDate?: InputMaybe<DateTimeNullableFilter>;
+  highlights?: InputMaybe<ResumeHighlightManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  position?: InputMaybe<StringFilter>;
+  startDate?: InputMaybe<DateTimeFilter>;
+  summary?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ResumeWorkWhereUniqueInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Section = {
-  __typename?: "Section"
-  contentAbout?: Maybe<Array<About>>
-  contentAboutCount?: Maybe<Scalars["Int"]["output"]>
-  contentAnalytics?: Maybe<Array<Analytic>>
-  contentAnalyticsCount?: Maybe<Scalars["Int"]["output"]>
-  contentApproach?: Maybe<Array<Approach>>
-  contentApproachCount?: Maybe<Scalars["Int"]["output"]>
-  contentBenefits?: Maybe<Array<BenefitSection>>
-  contentBenefitsCount?: Maybe<Scalars["Int"]["output"]>
-  contentCertifications?: Maybe<Array<CertificationSection>>
-  contentCertificationsCount?: Maybe<Scalars["Int"]["output"]>
-  contentCta?: Maybe<Array<CtaSection>>
-  contentCtaCount?: Maybe<Scalars["Int"]["output"]>
-  contentFaqSection?: Maybe<Array<FaqSection>>
-  contentFaqSectionCount?: Maybe<Scalars["Int"]["output"]>
-  contentFeatures?: Maybe<Array<Feature>>
-  contentFeaturesCount?: Maybe<Scalars["Int"]["output"]>
-  contentFooter?: Maybe<Array<Footer>>
-  contentFooterCount?: Maybe<Scalars["Int"]["output"]>
-  contentHero?: Maybe<Array<Hero>>
-  contentHeroCount?: Maybe<Scalars["Int"]["output"]>
-  contentMap?: Maybe<Array<Map>>
-  contentMapCount?: Maybe<Scalars["Int"]["output"]>
-  contentNavigation?: Maybe<Array<Navigation>>
-  contentNavigationCount?: Maybe<Scalars["Int"]["output"]>
-  contentTestimonials?: Maybe<Array<TestimonialSection>>
-  contentTestimonialsCount?: Maybe<Scalars["Int"]["output"]>
-  id: Scalars["ID"]["output"]
-  type?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Section';
+  contentAbout?: Maybe<Array<About>>;
+  contentAboutCount?: Maybe<Scalars['Int']['output']>;
+  contentAnalytics?: Maybe<Array<Analytic>>;
+  contentAnalyticsCount?: Maybe<Scalars['Int']['output']>;
+  contentApproach?: Maybe<Array<Approach>>;
+  contentApproachCount?: Maybe<Scalars['Int']['output']>;
+  contentBenefits?: Maybe<Array<BenefitSection>>;
+  contentBenefitsCount?: Maybe<Scalars['Int']['output']>;
+  contentCertifications?: Maybe<Array<CertificationSection>>;
+  contentCertificationsCount?: Maybe<Scalars['Int']['output']>;
+  contentCta?: Maybe<Array<CtaSection>>;
+  contentCtaCount?: Maybe<Scalars['Int']['output']>;
+  contentFaqSection?: Maybe<Array<FaqSection>>;
+  contentFaqSectionCount?: Maybe<Scalars['Int']['output']>;
+  contentFeatures?: Maybe<Array<Feature>>;
+  contentFeaturesCount?: Maybe<Scalars['Int']['output']>;
+  contentFooter?: Maybe<Array<Footer>>;
+  contentFooterCount?: Maybe<Scalars['Int']['output']>;
+  contentHero?: Maybe<Array<Hero>>;
+  contentHeroCount?: Maybe<Scalars['Int']['output']>;
+  contentMap?: Maybe<Array<Map>>;
+  contentMapCount?: Maybe<Scalars['Int']['output']>;
+  contentNavigation?: Maybe<Array<Navigation>>;
+  contentNavigationCount?: Maybe<Scalars['Int']['output']>;
+  contentTestimonials?: Maybe<Array<TestimonialSection>>;
+  contentTestimonialsCount?: Maybe<Scalars['Int']['output']>;
+  id: Scalars['ID']['output'];
+  type?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type SectionContentAboutArgs = {
-  cursor?: InputMaybe<AboutWhereUniqueInput>
-  orderBy?: Array<AboutOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AboutWhereInput
-}
+  cursor?: InputMaybe<AboutWhereUniqueInput>;
+  orderBy?: Array<AboutOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AboutWhereInput;
+};
+
 
 export type SectionContentAboutCountArgs = {
-  where?: AboutWhereInput
-}
+  where?: AboutWhereInput;
+};
+
 
 export type SectionContentAnalyticsArgs = {
-  cursor?: InputMaybe<AnalyticWhereUniqueInput>
-  orderBy?: Array<AnalyticOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: AnalyticWhereInput
-}
+  cursor?: InputMaybe<AnalyticWhereUniqueInput>;
+  orderBy?: Array<AnalyticOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: AnalyticWhereInput;
+};
+
 
 export type SectionContentAnalyticsCountArgs = {
-  where?: AnalyticWhereInput
-}
+  where?: AnalyticWhereInput;
+};
+
 
 export type SectionContentApproachArgs = {
-  cursor?: InputMaybe<ApproachWhereUniqueInput>
-  orderBy?: Array<ApproachOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ApproachWhereInput
-}
+  cursor?: InputMaybe<ApproachWhereUniqueInput>;
+  orderBy?: Array<ApproachOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ApproachWhereInput;
+};
+
 
 export type SectionContentApproachCountArgs = {
-  where?: ApproachWhereInput
-}
+  where?: ApproachWhereInput;
+};
+
 
 export type SectionContentBenefitsArgs = {
-  cursor?: InputMaybe<BenefitSectionWhereUniqueInput>
-  orderBy?: Array<BenefitSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: BenefitSectionWhereInput
-}
+  cursor?: InputMaybe<BenefitSectionWhereUniqueInput>;
+  orderBy?: Array<BenefitSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: BenefitSectionWhereInput;
+};
+
 
 export type SectionContentBenefitsCountArgs = {
-  where?: BenefitSectionWhereInput
-}
+  where?: BenefitSectionWhereInput;
+};
+
 
 export type SectionContentCertificationsArgs = {
-  cursor?: InputMaybe<CertificationSectionWhereUniqueInput>
-  orderBy?: Array<CertificationSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CertificationSectionWhereInput
-}
+  cursor?: InputMaybe<CertificationSectionWhereUniqueInput>;
+  orderBy?: Array<CertificationSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CertificationSectionWhereInput;
+};
+
 
 export type SectionContentCertificationsCountArgs = {
-  where?: CertificationSectionWhereInput
-}
+  where?: CertificationSectionWhereInput;
+};
+
 
 export type SectionContentCtaArgs = {
-  cursor?: InputMaybe<CtaSectionWhereUniqueInput>
-  orderBy?: Array<CtaSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: CtaSectionWhereInput
-}
+  cursor?: InputMaybe<CtaSectionWhereUniqueInput>;
+  orderBy?: Array<CtaSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: CtaSectionWhereInput;
+};
+
 
 export type SectionContentCtaCountArgs = {
-  where?: CtaSectionWhereInput
-}
+  where?: CtaSectionWhereInput;
+};
+
 
 export type SectionContentFaqSectionArgs = {
-  cursor?: InputMaybe<FaqSectionWhereUniqueInput>
-  orderBy?: Array<FaqSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FaqSectionWhereInput
-}
+  cursor?: InputMaybe<FaqSectionWhereUniqueInput>;
+  orderBy?: Array<FaqSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FaqSectionWhereInput;
+};
+
 
 export type SectionContentFaqSectionCountArgs = {
-  where?: FaqSectionWhereInput
-}
+  where?: FaqSectionWhereInput;
+};
+
 
 export type SectionContentFeaturesArgs = {
-  cursor?: InputMaybe<FeatureWhereUniqueInput>
-  orderBy?: Array<FeatureOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FeatureWhereInput
-}
+  cursor?: InputMaybe<FeatureWhereUniqueInput>;
+  orderBy?: Array<FeatureOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FeatureWhereInput;
+};
+
 
 export type SectionContentFeaturesCountArgs = {
-  where?: FeatureWhereInput
-}
+  where?: FeatureWhereInput;
+};
+
 
 export type SectionContentFooterArgs = {
-  cursor?: InputMaybe<FooterWhereUniqueInput>
-  orderBy?: Array<FooterOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: FooterWhereInput
-}
+  cursor?: InputMaybe<FooterWhereUniqueInput>;
+  orderBy?: Array<FooterOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: FooterWhereInput;
+};
+
 
 export type SectionContentFooterCountArgs = {
-  where?: FooterWhereInput
-}
+  where?: FooterWhereInput;
+};
+
 
 export type SectionContentHeroArgs = {
-  cursor?: InputMaybe<HeroWhereUniqueInput>
-  orderBy?: Array<HeroOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: HeroWhereInput
-}
+  cursor?: InputMaybe<HeroWhereUniqueInput>;
+  orderBy?: Array<HeroOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: HeroWhereInput;
+};
+
 
 export type SectionContentHeroCountArgs = {
-  where?: HeroWhereInput
-}
+  where?: HeroWhereInput;
+};
+
 
 export type SectionContentMapArgs = {
-  cursor?: InputMaybe<MapWhereUniqueInput>
-  orderBy?: Array<MapOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: MapWhereInput
-}
+  cursor?: InputMaybe<MapWhereUniqueInput>;
+  orderBy?: Array<MapOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: MapWhereInput;
+};
+
 
 export type SectionContentMapCountArgs = {
-  where?: MapWhereInput
-}
+  where?: MapWhereInput;
+};
+
 
 export type SectionContentNavigationArgs = {
-  cursor?: InputMaybe<NavigationWhereUniqueInput>
-  orderBy?: Array<NavigationOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: NavigationWhereInput
-}
+  cursor?: InputMaybe<NavigationWhereUniqueInput>;
+  orderBy?: Array<NavigationOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: NavigationWhereInput;
+};
+
 
 export type SectionContentNavigationCountArgs = {
-  where?: NavigationWhereInput
-}
+  where?: NavigationWhereInput;
+};
+
 
 export type SectionContentTestimonialsArgs = {
-  cursor?: InputMaybe<TestimonialSectionWhereUniqueInput>
-  orderBy?: Array<TestimonialSectionOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TestimonialSectionWhereInput
-}
+  cursor?: InputMaybe<TestimonialSectionWhereUniqueInput>;
+  orderBy?: Array<TestimonialSectionOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialSectionWhereInput;
+};
+
 
 export type SectionContentTestimonialsCountArgs = {
-  where?: TestimonialSectionWhereInput
-}
+  where?: TestimonialSectionWhereInput;
+};
 
 export type SectionCreateInput = {
-  contentAbout?: InputMaybe<AboutRelateToManyForCreateInput>
-  contentAnalytics?: InputMaybe<AnalyticRelateToManyForCreateInput>
-  contentApproach?: InputMaybe<ApproachRelateToManyForCreateInput>
-  contentBenefits?: InputMaybe<BenefitSectionRelateToManyForCreateInput>
-  contentCertifications?: InputMaybe<CertificationSectionRelateToManyForCreateInput>
-  contentCta?: InputMaybe<CtaSectionRelateToManyForCreateInput>
-  contentFaqSection?: InputMaybe<FaqSectionRelateToManyForCreateInput>
-  contentFeatures?: InputMaybe<FeatureRelateToManyForCreateInput>
-  contentFooter?: InputMaybe<FooterRelateToManyForCreateInput>
-  contentHero?: InputMaybe<HeroRelateToManyForCreateInput>
-  contentMap?: InputMaybe<MapRelateToManyForCreateInput>
-  contentNavigation?: InputMaybe<NavigationRelateToManyForCreateInput>
-  contentTestimonials?: InputMaybe<TestimonialSectionRelateToManyForCreateInput>
-  type?: InputMaybe<Scalars["String"]["input"]>
-}
+  contentAbout?: InputMaybe<AboutRelateToManyForCreateInput>;
+  contentAnalytics?: InputMaybe<AnalyticRelateToManyForCreateInput>;
+  contentApproach?: InputMaybe<ApproachRelateToManyForCreateInput>;
+  contentBenefits?: InputMaybe<BenefitSectionRelateToManyForCreateInput>;
+  contentCertifications?: InputMaybe<CertificationSectionRelateToManyForCreateInput>;
+  contentCta?: InputMaybe<CtaSectionRelateToManyForCreateInput>;
+  contentFaqSection?: InputMaybe<FaqSectionRelateToManyForCreateInput>;
+  contentFeatures?: InputMaybe<FeatureRelateToManyForCreateInput>;
+  contentFooter?: InputMaybe<FooterRelateToManyForCreateInput>;
+  contentHero?: InputMaybe<HeroRelateToManyForCreateInput>;
+  contentMap?: InputMaybe<MapRelateToManyForCreateInput>;
+  contentNavigation?: InputMaybe<NavigationRelateToManyForCreateInput>;
+  contentTestimonials?: InputMaybe<TestimonialSectionRelateToManyForCreateInput>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type SectionOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  type?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  type?: InputMaybe<OrderDirection>;
+};
 
 export type SectionRelateToOneForCreateInput = {
-  connect?: InputMaybe<SectionWhereUniqueInput>
-  create?: InputMaybe<SectionCreateInput>
-}
+  connect?: InputMaybe<SectionWhereUniqueInput>;
+  create?: InputMaybe<SectionCreateInput>;
+};
 
 export type SectionRelateToOneForUpdateInput = {
-  connect?: InputMaybe<SectionWhereUniqueInput>
-  create?: InputMaybe<SectionCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<SectionWhereUniqueInput>;
+  create?: InputMaybe<SectionCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type SectionUpdateArgs = {
-  data: SectionUpdateInput
-  where: SectionWhereUniqueInput
-}
+  data: SectionUpdateInput;
+  where: SectionWhereUniqueInput;
+};
 
 export type SectionUpdateInput = {
-  contentAbout?: InputMaybe<AboutRelateToManyForUpdateInput>
-  contentAnalytics?: InputMaybe<AnalyticRelateToManyForUpdateInput>
-  contentApproach?: InputMaybe<ApproachRelateToManyForUpdateInput>
-  contentBenefits?: InputMaybe<BenefitSectionRelateToManyForUpdateInput>
-  contentCertifications?: InputMaybe<CertificationSectionRelateToManyForUpdateInput>
-  contentCta?: InputMaybe<CtaSectionRelateToManyForUpdateInput>
-  contentFaqSection?: InputMaybe<FaqSectionRelateToManyForUpdateInput>
-  contentFeatures?: InputMaybe<FeatureRelateToManyForUpdateInput>
-  contentFooter?: InputMaybe<FooterRelateToManyForUpdateInput>
-  contentHero?: InputMaybe<HeroRelateToManyForUpdateInput>
-  contentMap?: InputMaybe<MapRelateToManyForUpdateInput>
-  contentNavigation?: InputMaybe<NavigationRelateToManyForUpdateInput>
-  contentTestimonials?: InputMaybe<TestimonialSectionRelateToManyForUpdateInput>
-  type?: InputMaybe<Scalars["String"]["input"]>
-}
+  contentAbout?: InputMaybe<AboutRelateToManyForUpdateInput>;
+  contentAnalytics?: InputMaybe<AnalyticRelateToManyForUpdateInput>;
+  contentApproach?: InputMaybe<ApproachRelateToManyForUpdateInput>;
+  contentBenefits?: InputMaybe<BenefitSectionRelateToManyForUpdateInput>;
+  contentCertifications?: InputMaybe<CertificationSectionRelateToManyForUpdateInput>;
+  contentCta?: InputMaybe<CtaSectionRelateToManyForUpdateInput>;
+  contentFaqSection?: InputMaybe<FaqSectionRelateToManyForUpdateInput>;
+  contentFeatures?: InputMaybe<FeatureRelateToManyForUpdateInput>;
+  contentFooter?: InputMaybe<FooterRelateToManyForUpdateInput>;
+  contentHero?: InputMaybe<HeroRelateToManyForUpdateInput>;
+  contentMap?: InputMaybe<MapRelateToManyForUpdateInput>;
+  contentNavigation?: InputMaybe<NavigationRelateToManyForUpdateInput>;
+  contentTestimonials?: InputMaybe<TestimonialSectionRelateToManyForUpdateInput>;
+  type?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type SectionWhereInput = {
-  AND?: InputMaybe<Array<SectionWhereInput>>
-  NOT?: InputMaybe<Array<SectionWhereInput>>
-  OR?: InputMaybe<Array<SectionWhereInput>>
-  contentAbout?: InputMaybe<AboutManyRelationFilter>
-  contentAnalytics?: InputMaybe<AnalyticManyRelationFilter>
-  contentApproach?: InputMaybe<ApproachManyRelationFilter>
-  contentBenefits?: InputMaybe<BenefitSectionManyRelationFilter>
-  contentCertifications?: InputMaybe<CertificationSectionManyRelationFilter>
-  contentCta?: InputMaybe<CtaSectionManyRelationFilter>
-  contentFaqSection?: InputMaybe<FaqSectionManyRelationFilter>
-  contentFeatures?: InputMaybe<FeatureManyRelationFilter>
-  contentFooter?: InputMaybe<FooterManyRelationFilter>
-  contentHero?: InputMaybe<HeroManyRelationFilter>
-  contentMap?: InputMaybe<MapManyRelationFilter>
-  contentNavigation?: InputMaybe<NavigationManyRelationFilter>
-  contentTestimonials?: InputMaybe<TestimonialSectionManyRelationFilter>
-  id?: InputMaybe<IdFilter>
-  type?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<SectionWhereInput>>;
+  NOT?: InputMaybe<Array<SectionWhereInput>>;
+  OR?: InputMaybe<Array<SectionWhereInput>>;
+  contentAbout?: InputMaybe<AboutManyRelationFilter>;
+  contentAnalytics?: InputMaybe<AnalyticManyRelationFilter>;
+  contentApproach?: InputMaybe<ApproachManyRelationFilter>;
+  contentBenefits?: InputMaybe<BenefitSectionManyRelationFilter>;
+  contentCertifications?: InputMaybe<CertificationSectionManyRelationFilter>;
+  contentCta?: InputMaybe<CtaSectionManyRelationFilter>;
+  contentFaqSection?: InputMaybe<FaqSectionManyRelationFilter>;
+  contentFeatures?: InputMaybe<FeatureManyRelationFilter>;
+  contentFooter?: InputMaybe<FooterManyRelationFilter>;
+  contentHero?: InputMaybe<HeroManyRelationFilter>;
+  contentMap?: InputMaybe<MapManyRelationFilter>;
+  contentNavigation?: InputMaybe<NavigationManyRelationFilter>;
+  contentTestimonials?: InputMaybe<TestimonialSectionManyRelationFilter>;
+  id?: InputMaybe<IdFilter>;
+  type?: InputMaybe<StringFilter>;
+};
 
 export type SectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type StringFilter = {
-  contains?: InputMaybe<Scalars["String"]["input"]>
-  endsWith?: InputMaybe<Scalars["String"]["input"]>
-  equals?: InputMaybe<Scalars["String"]["input"]>
-  gt?: InputMaybe<Scalars["String"]["input"]>
-  gte?: InputMaybe<Scalars["String"]["input"]>
-  in?: InputMaybe<Array<Scalars["String"]["input"]>>
-  lt?: InputMaybe<Scalars["String"]["input"]>
-  lte?: InputMaybe<Scalars["String"]["input"]>
-  mode?: InputMaybe<QueryMode>
-  not?: InputMaybe<NestedStringFilter>
-  notIn?: InputMaybe<Array<Scalars["String"]["input"]>>
-  startsWith?: InputMaybe<Scalars["String"]["input"]>
-}
+  contains?: InputMaybe<Scalars['String']['input']>;
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  equals?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<QueryMode>;
+  not?: InputMaybe<NestedStringFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type StringNullableFilter = {
-  contains?: InputMaybe<Scalars["String"]["input"]>
-  endsWith?: InputMaybe<Scalars["String"]["input"]>
-  equals?: InputMaybe<Scalars["String"]["input"]>
-  gt?: InputMaybe<Scalars["String"]["input"]>
-  gte?: InputMaybe<Scalars["String"]["input"]>
-  in?: InputMaybe<Array<Scalars["String"]["input"]>>
-  lt?: InputMaybe<Scalars["String"]["input"]>
-  lte?: InputMaybe<Scalars["String"]["input"]>
-  mode?: InputMaybe<QueryMode>
-  not?: InputMaybe<StringNullableFilter>
-  notIn?: InputMaybe<Array<Scalars["String"]["input"]>>
-  startsWith?: InputMaybe<Scalars["String"]["input"]>
-}
+  contains?: InputMaybe<Scalars['String']['input']>;
+  endsWith?: InputMaybe<Scalars['String']['input']>;
+  equals?: InputMaybe<Scalars['String']['input']>;
+  gt?: InputMaybe<Scalars['String']['input']>;
+  gte?: InputMaybe<Scalars['String']['input']>;
+  in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lt?: InputMaybe<Scalars['String']['input']>;
+  lte?: InputMaybe<Scalars['String']['input']>;
+  mode?: InputMaybe<QueryMode>;
+  not?: InputMaybe<StringNullableFilter>;
+  notIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TestimonialBadge = {
-  __typename?: "TestimonialBadge"
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-}
+  __typename?: 'TestimonialBadge';
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+};
 
 export type TestimonialBadgeCreateInput = {
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-}
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+};
 
 export type TestimonialBadgeOrderByInput = {
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type TestimonialBadgeRelateToOneForCreateInput = {
-  connect?: InputMaybe<TestimonialBadgeWhereUniqueInput>
-  create?: InputMaybe<TestimonialBadgeCreateInput>
-}
+  connect?: InputMaybe<TestimonialBadgeWhereUniqueInput>;
+  create?: InputMaybe<TestimonialBadgeCreateInput>;
+};
 
 export type TestimonialBadgeRelateToOneForUpdateInput = {
-  connect?: InputMaybe<TestimonialBadgeWhereUniqueInput>
-  create?: InputMaybe<TestimonialBadgeCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<TestimonialBadgeWhereUniqueInput>;
+  create?: InputMaybe<TestimonialBadgeCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type TestimonialBadgeUpdateArgs = {
-  data: TestimonialBadgeUpdateInput
-  where: TestimonialBadgeWhereUniqueInput
-}
+  data: TestimonialBadgeUpdateInput;
+  where: TestimonialBadgeWhereUniqueInput;
+};
 
 export type TestimonialBadgeUpdateInput = {
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-}
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+};
 
 export type TestimonialBadgeWhereInput = {
-  AND?: InputMaybe<Array<TestimonialBadgeWhereInput>>
-  NOT?: InputMaybe<Array<TestimonialBadgeWhereInput>>
-  OR?: InputMaybe<Array<TestimonialBadgeWhereInput>>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-}
+  AND?: InputMaybe<Array<TestimonialBadgeWhereInput>>;
+  NOT?: InputMaybe<Array<TestimonialBadgeWhereInput>>;
+  OR?: InputMaybe<Array<TestimonialBadgeWhereInput>>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+};
 
 export type TestimonialBadgeWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type TestimonialItem = {
-  __typename?: "TestimonialItem"
-  badge?: Maybe<TestimonialBadge>
-  company?: Maybe<Scalars["String"]["output"]>
-  content?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  image?: Maybe<Image>
-  language?: Maybe<Language>
-  name?: Maybe<Scalars["String"]["output"]>
-  rating?: Maybe<Scalars["Float"]["output"]>
-  role?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'TestimonialItem';
+  badge?: Maybe<TestimonialBadge>;
+  company?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<Image>;
+  language?: Maybe<Language>;
+  name?: Maybe<Scalars['String']['output']>;
+  rating?: Maybe<Scalars['Float']['output']>;
+  role?: Maybe<Scalars['String']['output']>;
+};
 
 export type TestimonialItemCreateInput = {
-  badge?: InputMaybe<TestimonialBadgeRelateToOneForCreateInput>
-  company?: InputMaybe<Scalars["String"]["input"]>
-  content?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  rating?: InputMaybe<Scalars["Float"]["input"]>
-  role?: InputMaybe<Scalars["String"]["input"]>
-}
+  badge?: InputMaybe<TestimonialBadgeRelateToOneForCreateInput>;
+  company?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  rating?: InputMaybe<Scalars['Float']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TestimonialItemManyRelationFilter = {
-  every?: InputMaybe<TestimonialItemWhereInput>
-  none?: InputMaybe<TestimonialItemWhereInput>
-  some?: InputMaybe<TestimonialItemWhereInput>
-}
+  every?: InputMaybe<TestimonialItemWhereInput>;
+  none?: InputMaybe<TestimonialItemWhereInput>;
+  some?: InputMaybe<TestimonialItemWhereInput>;
+};
 
 export type TestimonialItemOrderByInput = {
-  company?: InputMaybe<OrderDirection>
-  content?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  name?: InputMaybe<OrderDirection>
-  rating?: InputMaybe<OrderDirection>
-  role?: InputMaybe<OrderDirection>
-}
+  company?: InputMaybe<OrderDirection>;
+  content?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  rating?: InputMaybe<OrderDirection>;
+  role?: InputMaybe<OrderDirection>;
+};
 
 export type TestimonialItemRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>
-  create?: InputMaybe<Array<TestimonialItemCreateInput>>
-}
+  connect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>;
+  create?: InputMaybe<Array<TestimonialItemCreateInput>>;
+};
 
 export type TestimonialItemRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>
-  create?: InputMaybe<Array<TestimonialItemCreateInput>>
-  disconnect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>
-  set?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>;
+  create?: InputMaybe<Array<TestimonialItemCreateInput>>;
+  disconnect?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>;
+  set?: InputMaybe<Array<TestimonialItemWhereUniqueInput>>;
+};
 
 export type TestimonialItemRelateToOneForCreateInput = {
-  connect?: InputMaybe<TestimonialItemWhereUniqueInput>
-  create?: InputMaybe<TestimonialItemCreateInput>
-}
+  connect?: InputMaybe<TestimonialItemWhereUniqueInput>;
+  create?: InputMaybe<TestimonialItemCreateInput>;
+};
 
 export type TestimonialItemRelateToOneForUpdateInput = {
-  connect?: InputMaybe<TestimonialItemWhereUniqueInput>
-  create?: InputMaybe<TestimonialItemCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<TestimonialItemWhereUniqueInput>;
+  create?: InputMaybe<TestimonialItemCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type TestimonialItemUpdateArgs = {
-  data: TestimonialItemUpdateInput
-  where: TestimonialItemWhereUniqueInput
-}
+  data: TestimonialItemUpdateInput;
+  where: TestimonialItemWhereUniqueInput;
+};
 
 export type TestimonialItemUpdateInput = {
-  badge?: InputMaybe<TestimonialBadgeRelateToOneForUpdateInput>
-  company?: InputMaybe<Scalars["String"]["input"]>
-  content?: InputMaybe<Scalars["String"]["input"]>
-  image?: InputMaybe<ImageRelateToOneForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  rating?: InputMaybe<Scalars["Float"]["input"]>
-  role?: InputMaybe<Scalars["String"]["input"]>
-}
+  badge?: InputMaybe<TestimonialBadgeRelateToOneForUpdateInput>;
+  company?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<ImageRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  rating?: InputMaybe<Scalars['Float']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TestimonialItemWhereInput = {
-  AND?: InputMaybe<Array<TestimonialItemWhereInput>>
-  NOT?: InputMaybe<Array<TestimonialItemWhereInput>>
-  OR?: InputMaybe<Array<TestimonialItemWhereInput>>
-  badge?: InputMaybe<TestimonialBadgeWhereInput>
-  company?: InputMaybe<StringFilter>
-  content?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  image?: InputMaybe<ImageWhereInput>
-  language?: InputMaybe<LanguageWhereInput>
-  name?: InputMaybe<StringFilter>
-  rating?: InputMaybe<FloatNullableFilter>
-  role?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<TestimonialItemWhereInput>>;
+  NOT?: InputMaybe<Array<TestimonialItemWhereInput>>;
+  OR?: InputMaybe<Array<TestimonialItemWhereInput>>;
+  badge?: InputMaybe<TestimonialBadgeWhereInput>;
+  company?: InputMaybe<StringFilter>;
+  content?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  image?: InputMaybe<ImageWhereInput>;
+  language?: InputMaybe<LanguageWhereInput>;
+  name?: InputMaybe<StringFilter>;
+  rating?: InputMaybe<FloatNullableFilter>;
+  role?: InputMaybe<StringFilter>;
+};
 
 export type TestimonialItemWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type TestimonialSection = {
-  __typename?: "TestimonialSection"
-  background?: Maybe<Array<Image>>
-  backgroundCount?: Maybe<Scalars["Int"]["output"]>
-  fallback?: Maybe<TestimonialItem>
-  id: Scalars["ID"]["output"]
-  language?: Maybe<Language>
-  testimonials?: Maybe<Array<TestimonialItem>>
-  testimonialsCount?: Maybe<Scalars["Int"]["output"]>
-  title?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'TestimonialSection';
+  background?: Maybe<Array<Image>>;
+  backgroundCount?: Maybe<Scalars['Int']['output']>;
+  fallback?: Maybe<TestimonialItem>;
+  id: Scalars['ID']['output'];
+  language?: Maybe<Language>;
+  testimonials?: Maybe<Array<TestimonialItem>>;
+  testimonialsCount?: Maybe<Scalars['Int']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
 
 export type TestimonialSectionBackgroundArgs = {
-  cursor?: InputMaybe<ImageWhereUniqueInput>
-  orderBy?: Array<ImageOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: ImageWhereInput
-}
+  cursor?: InputMaybe<ImageWhereUniqueInput>;
+  orderBy?: Array<ImageOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: ImageWhereInput;
+};
+
 
 export type TestimonialSectionBackgroundCountArgs = {
-  where?: ImageWhereInput
-}
+  where?: ImageWhereInput;
+};
+
 
 export type TestimonialSectionTestimonialsArgs = {
-  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>
-  orderBy?: Array<TestimonialItemOrderByInput>
-  skip?: Scalars["Int"]["input"]
-  take?: InputMaybe<Scalars["Int"]["input"]>
-  where?: TestimonialItemWhereInput
-}
+  cursor?: InputMaybe<TestimonialItemWhereUniqueInput>;
+  orderBy?: Array<TestimonialItemOrderByInput>;
+  skip?: Scalars['Int']['input'];
+  take?: InputMaybe<Scalars['Int']['input']>;
+  where?: TestimonialItemWhereInput;
+};
+
 
 export type TestimonialSectionTestimonialsCountArgs = {
-  where?: TestimonialItemWhereInput
-}
+  where?: TestimonialItemWhereInput;
+};
 
 export type TestimonialSectionCreateInput = {
-  background?: InputMaybe<ImageRelateToManyForCreateInput>
-  fallback?: InputMaybe<TestimonialItemRelateToOneForCreateInput>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-  testimonials?: InputMaybe<TestimonialItemRelateToManyForCreateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  background?: InputMaybe<ImageRelateToManyForCreateInput>;
+  fallback?: InputMaybe<TestimonialItemRelateToOneForCreateInput>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+  testimonials?: InputMaybe<TestimonialItemRelateToManyForCreateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TestimonialSectionManyRelationFilter = {
-  every?: InputMaybe<TestimonialSectionWhereInput>
-  none?: InputMaybe<TestimonialSectionWhereInput>
-  some?: InputMaybe<TestimonialSectionWhereInput>
-}
+  every?: InputMaybe<TestimonialSectionWhereInput>;
+  none?: InputMaybe<TestimonialSectionWhereInput>;
+  some?: InputMaybe<TestimonialSectionWhereInput>;
+};
 
 export type TestimonialSectionOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  title?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  title?: InputMaybe<OrderDirection>;
+};
 
 export type TestimonialSectionRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<TestimonialSectionCreateInput>>
-}
+  connect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<TestimonialSectionCreateInput>>;
+};
 
 export type TestimonialSectionRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>
-  create?: InputMaybe<Array<TestimonialSectionCreateInput>>
-  disconnect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>
-  set?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>;
+  create?: InputMaybe<Array<TestimonialSectionCreateInput>>;
+  disconnect?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>;
+  set?: InputMaybe<Array<TestimonialSectionWhereUniqueInput>>;
+};
 
 export type TestimonialSectionUpdateArgs = {
-  data: TestimonialSectionUpdateInput
-  where: TestimonialSectionWhereUniqueInput
-}
+  data: TestimonialSectionUpdateInput;
+  where: TestimonialSectionWhereUniqueInput;
+};
 
 export type TestimonialSectionUpdateInput = {
-  background?: InputMaybe<ImageRelateToManyForUpdateInput>
-  fallback?: InputMaybe<TestimonialItemRelateToOneForUpdateInput>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-  testimonials?: InputMaybe<TestimonialItemRelateToManyForUpdateInput>
-  title?: InputMaybe<Scalars["String"]["input"]>
-}
+  background?: InputMaybe<ImageRelateToManyForUpdateInput>;
+  fallback?: InputMaybe<TestimonialItemRelateToOneForUpdateInput>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+  testimonials?: InputMaybe<TestimonialItemRelateToManyForUpdateInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TestimonialSectionWhereInput = {
-  AND?: InputMaybe<Array<TestimonialSectionWhereInput>>
-  NOT?: InputMaybe<Array<TestimonialSectionWhereInput>>
-  OR?: InputMaybe<Array<TestimonialSectionWhereInput>>
-  background?: InputMaybe<ImageManyRelationFilter>
-  fallback?: InputMaybe<TestimonialItemWhereInput>
-  id?: InputMaybe<IdFilter>
-  language?: InputMaybe<LanguageWhereInput>
-  testimonials?: InputMaybe<TestimonialItemManyRelationFilter>
-  title?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<TestimonialSectionWhereInput>>;
+  NOT?: InputMaybe<Array<TestimonialSectionWhereInput>>;
+  OR?: InputMaybe<Array<TestimonialSectionWhereInput>>;
+  background?: InputMaybe<ImageManyRelationFilter>;
+  fallback?: InputMaybe<TestimonialItemWhereInput>;
+  id?: InputMaybe<IdFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+  testimonials?: InputMaybe<TestimonialItemManyRelationFilter>;
+  title?: InputMaybe<StringFilter>;
+};
 
 export type TestimonialSectionWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Type = {
-  __typename?: "Type"
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-}
+  __typename?: 'Type';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+};
 
 export type TypeCreateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TypeOrderByInput = {
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type TypeRelateToOneForCreateInput = {
-  connect?: InputMaybe<TypeWhereUniqueInput>
-  create?: InputMaybe<TypeCreateInput>
-}
+  connect?: InputMaybe<TypeWhereUniqueInput>;
+  create?: InputMaybe<TypeCreateInput>;
+};
 
 export type TypeRelateToOneForUpdateInput = {
-  connect?: InputMaybe<TypeWhereUniqueInput>
-  create?: InputMaybe<TypeCreateInput>
-  disconnect?: InputMaybe<Scalars["Boolean"]["input"]>
-}
+  connect?: InputMaybe<TypeWhereUniqueInput>;
+  create?: InputMaybe<TypeCreateInput>;
+  disconnect?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type TypeUpdateArgs = {
-  data: TypeUpdateInput
-  where: TypeWhereUniqueInput
-}
+  data: TypeUpdateInput;
+  where: TypeWhereUniqueInput;
+};
 
 export type TypeUpdateInput = {
-  label?: InputMaybe<Scalars["String"]["input"]>
-}
+  label?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type TypeWhereInput = {
-  AND?: InputMaybe<Array<TypeWhereInput>>
-  NOT?: InputMaybe<Array<TypeWhereInput>>
-  OR?: InputMaybe<Array<TypeWhereInput>>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringNullableFilter>
-}
+  AND?: InputMaybe<Array<TypeWhereInput>>;
+  NOT?: InputMaybe<Array<TypeWhereInput>>;
+  OR?: InputMaybe<Array<TypeWhereInput>>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringNullableFilter>;
+};
 
 export type TypeWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type User = {
-  __typename?: "User"
-  authId?: Maybe<Scalars["String"]["output"]>
-  createdAt?: Maybe<Scalars["DateTime"]["output"]>
-  email?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  name?: Maybe<Scalars["String"]["output"]>
-  password?: Maybe<PasswordState>
-}
+  __typename?: 'User';
+  authId?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  password?: Maybe<PasswordState>;
+  userGroup?: Maybe<Scalars['String']['output']>;
+};
 
 export type UserCreateInput = {
-  authId?: InputMaybe<Scalars["String"]["input"]>
-  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>
-  email?: InputMaybe<Scalars["String"]["input"]>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  password?: InputMaybe<Scalars["String"]["input"]>
-}
+  authId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  userGroup?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type UserOrderByInput = {
-  authId?: InputMaybe<OrderDirection>
-  createdAt?: InputMaybe<OrderDirection>
-  email?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  name?: InputMaybe<OrderDirection>
-}
+  authId?: InputMaybe<OrderDirection>;
+  createdAt?: InputMaybe<OrderDirection>;
+  email?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  name?: InputMaybe<OrderDirection>;
+  userGroup?: InputMaybe<OrderDirection>;
+};
 
 export type UserUpdateArgs = {
-  data: UserUpdateInput
-  where: UserWhereUniqueInput
-}
+  data: UserUpdateInput;
+  where: UserWhereUniqueInput;
+};
 
 export type UserUpdateInput = {
-  authId?: InputMaybe<Scalars["String"]["input"]>
-  createdAt?: InputMaybe<Scalars["DateTime"]["input"]>
-  email?: InputMaybe<Scalars["String"]["input"]>
-  name?: InputMaybe<Scalars["String"]["input"]>
-  password?: InputMaybe<Scalars["String"]["input"]>
-}
+  authId?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  userGroup?: InputMaybe<Scalars['String']['input']>;
+};
 
 export type UserWhereInput = {
-  AND?: InputMaybe<Array<UserWhereInput>>
-  NOT?: InputMaybe<Array<UserWhereInput>>
-  OR?: InputMaybe<Array<UserWhereInput>>
-  authId?: InputMaybe<StringFilter>
-  createdAt?: InputMaybe<DateTimeNullableFilter>
-  email?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  name?: InputMaybe<StringFilter>
-}
+  AND?: InputMaybe<Array<UserWhereInput>>;
+  NOT?: InputMaybe<Array<UserWhereInput>>;
+  OR?: InputMaybe<Array<UserWhereInput>>;
+  authId?: InputMaybe<StringFilter>;
+  createdAt?: InputMaybe<DateTimeNullableFilter>;
+  email?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  name?: InputMaybe<StringFilter>;
+  userGroup?: InputMaybe<StringFilter>;
+};
 
 export type UserWhereUniqueInput = {
-  authId?: InputMaybe<Scalars["String"]["input"]>
-  email?: InputMaybe<Scalars["String"]["input"]>
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  authId?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
 
 export type Value = {
-  __typename?: "Value"
-  description?: Maybe<Scalars["String"]["output"]>
-  icon?: Maybe<Scalars["String"]["output"]>
-  id: Scalars["ID"]["output"]
-  label?: Maybe<Scalars["String"]["output"]>
-  language?: Maybe<Language>
-}
+  __typename?: 'Value';
+  description?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<Language>;
+};
 
 export type ValueCreateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForCreateInput>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForCreateInput>;
+};
 
 export type ValueManyRelationFilter = {
-  every?: InputMaybe<ValueWhereInput>
-  none?: InputMaybe<ValueWhereInput>
-  some?: InputMaybe<ValueWhereInput>
-}
+  every?: InputMaybe<ValueWhereInput>;
+  none?: InputMaybe<ValueWhereInput>;
+  some?: InputMaybe<ValueWhereInput>;
+};
 
 export type ValueOrderByInput = {
-  description?: InputMaybe<OrderDirection>
-  icon?: InputMaybe<OrderDirection>
-  id?: InputMaybe<OrderDirection>
-  label?: InputMaybe<OrderDirection>
-}
+  description?: InputMaybe<OrderDirection>;
+  icon?: InputMaybe<OrderDirection>;
+  id?: InputMaybe<OrderDirection>;
+  label?: InputMaybe<OrderDirection>;
+};
 
 export type ValueRelateToManyForCreateInput = {
-  connect?: InputMaybe<Array<ValueWhereUniqueInput>>
-  create?: InputMaybe<Array<ValueCreateInput>>
-}
+  connect?: InputMaybe<Array<ValueWhereUniqueInput>>;
+  create?: InputMaybe<Array<ValueCreateInput>>;
+};
 
 export type ValueRelateToManyForUpdateInput = {
-  connect?: InputMaybe<Array<ValueWhereUniqueInput>>
-  create?: InputMaybe<Array<ValueCreateInput>>
-  disconnect?: InputMaybe<Array<ValueWhereUniqueInput>>
-  set?: InputMaybe<Array<ValueWhereUniqueInput>>
-}
+  connect?: InputMaybe<Array<ValueWhereUniqueInput>>;
+  create?: InputMaybe<Array<ValueCreateInput>>;
+  disconnect?: InputMaybe<Array<ValueWhereUniqueInput>>;
+  set?: InputMaybe<Array<ValueWhereUniqueInput>>;
+};
 
 export type ValueUpdateArgs = {
-  data: ValueUpdateInput
-  where: ValueWhereUniqueInput
-}
+  data: ValueUpdateInput;
+  where: ValueWhereUniqueInput;
+};
 
 export type ValueUpdateInput = {
-  description?: InputMaybe<Scalars["String"]["input"]>
-  icon?: InputMaybe<Scalars["String"]["input"]>
-  label?: InputMaybe<Scalars["String"]["input"]>
-  language?: InputMaybe<LanguageRelateToOneForUpdateInput>
-}
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  language?: InputMaybe<LanguageRelateToOneForUpdateInput>;
+};
 
 export type ValueWhereInput = {
-  AND?: InputMaybe<Array<ValueWhereInput>>
-  NOT?: InputMaybe<Array<ValueWhereInput>>
-  OR?: InputMaybe<Array<ValueWhereInput>>
-  description?: InputMaybe<StringFilter>
-  icon?: InputMaybe<StringFilter>
-  id?: InputMaybe<IdFilter>
-  label?: InputMaybe<StringFilter>
-  language?: InputMaybe<LanguageWhereInput>
-}
+  AND?: InputMaybe<Array<ValueWhereInput>>;
+  NOT?: InputMaybe<Array<ValueWhereInput>>;
+  OR?: InputMaybe<Array<ValueWhereInput>>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  id?: InputMaybe<IdFilter>;
+  label?: InputMaybe<StringFilter>;
+  language?: InputMaybe<LanguageWhereInput>;
+};
 
 export type ValueWhereUniqueInput = {
-  id?: InputMaybe<Scalars["ID"]["input"]>
-}
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
