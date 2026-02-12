@@ -121,7 +121,6 @@ export const LanguageProvider = ({
     isLoading,
     error,
   }
-
   return (
     <LanguageContext.Provider value={value}>
       {children}

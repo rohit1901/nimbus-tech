@@ -1018,7 +1018,7 @@ export const MockPageContent = {
                     {
                       id: "15",
                       label: "Privacy Policy",
-                      href: "#",
+                      href: "/privacy-policy",
                       external: false,
                       icon: "",
                       type: {
@@ -1038,7 +1038,7 @@ export const MockPageContent = {
                     {
                       id: "16",
                       label: "Terms of Service",
-                      href: "#",
+                      href: "/terms",
                       external: false,
                       icon: "",
                       type: {

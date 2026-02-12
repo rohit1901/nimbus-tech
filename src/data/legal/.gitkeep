@@ -1,0 +1,10 @@
+# Legal Content Fallback Files
+
+This directory contains markdown fallback files for legal pages.
+These files are generated from GraphQL content using:
+
+```bash
+npm run generate-fallbacks
+```
+
+See README.md for more information.
