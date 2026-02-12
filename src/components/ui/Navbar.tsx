@@ -107,7 +107,7 @@ export function NavBar() {
               height={50}
             />
           </Link>
-          <nav className="hidden sm:block md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:transform">
+          <nav className="hidden lg:block lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:transform">
             <div className="flex items-center gap-10 font-medium">
               {navigation?.items?.map((link) => (
                 <Link
@@ -124,7 +124,7 @@ export function NavBar() {
           </nav>
 
           {/* Desktop Right Actions */}
-          <div className="hidden items-center gap-4 sm:flex">
+          <div className="hidden items-center gap-4 lg:flex">
             <ThemeToggle />
             <LanguageToggle
               availableLanguages={availableLanguages}
@@ -134,7 +134,7 @@ export function NavBar() {
             />
             <Button
               variant={resolvedTheme === "dark" ? "primary" : "secondary"}
-              className="hidden h-10 font-semibold sm:block"
+              className="hidden h-10 font-semibold lg:block"
             >
               <Link href={navigation?.cta?.href ?? "#"}>
                 {navigation?.cta?.label ?? "Get started"}
@@ -143,7 +143,7 @@ export function NavBar() {
           </div>
 
           {/* Mobile Menu Button (Hamburger) */}
-          <div className="flex items-center gap-2 sm:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <ThemeToggle />
 
             <Button
@@ -175,7 +175,7 @@ export function NavBar() {
         {/* Mobile Navigation Dropdown */}
         <nav
           className={cx(
-            "mt-6 flex flex-col gap-6 text-lg text-gray-900 ease-in-out will-change-transform sm:hidden dark:text-gray-50",
+            "mt-6 flex flex-col gap-6 text-lg text-gray-900 ease-in-out will-change-transform lg:hidden dark:text-gray-50",
             open ? "" : "hidden",
           )}
         >
