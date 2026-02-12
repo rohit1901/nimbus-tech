@@ -34,7 +34,7 @@ export default async function TermsPage({ searchParams }: TermsPageProps) {
   const params = await searchParams
   const lang = (params.lang || "en-US") as "en-US" | "de-DE"
 
-  const content = getLegalContent("terms", lang)
+  const content = await getLegalContent("terms", lang)
 
   const labels = {
     "en-US": {

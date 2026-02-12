@@ -34,7 +34,7 @@ export default async function PrivacyPolicyPage({ searchParams }: PrivacyPolicyP
   const params = await searchParams
   const lang = (params.lang || "en-US") as "en-US" | "de-DE"
 
-  const content = getLegalContent("privacy", lang)
+  const content = await getLegalContent("privacy", lang)
 
   const labels = {
     "en-US": {

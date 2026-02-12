@@ -11,7 +11,8 @@
     "icons:generate": "tsx scripts/generateIcons.ts",
     "icons:watch": "tsx watch scripts/generateIcons.ts",
     "graphql:generate": "npx graphql-codegen --config graphql.codegen.yml",
-    "postinstall:dev": "cp .env.copy .env.dev && npm run graphql:generate"
+    "postinstall:dev": "cp .env.copy .env.dev && npm run graphql:generate",
+    "generate-fallbacks": "tsx scripts/generateFallbackFiles.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.0.9",
@@ -43,6 +44,7 @@
     "@types/node": "^22.19.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "dotenv": "^17.3.0",
     "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
     "graphql": "^16.12.0",
