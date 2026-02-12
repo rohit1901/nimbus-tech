@@ -35,6 +35,7 @@ import Image from "next/image"
 import { useTheme } from "next-themes"
 import LanguageToggle from "@/components/ui/LanguageToggle"
 import { ThemeToggle } from "@/components/ui/ThemeToggle"
+import { Maybe } from "@/app/graphql/types"
 
 /**
  * NavBar - Main navigation component with responsive design
@@ -83,6 +84,26 @@ export function NavBar() {
 
   const { resolvedTheme } = useTheme()
 
+  /**
+   * This function builds a link based on the provided path and external flag.
+   * Gracefully handles internal and external links along with protocol links.
+   * @param path - The path to build the link for.
+   * @param external - Whether the link is external or not.
+   * @returns The built link.
+   */
+  const buildLink = (path?: Maybe<string>, external = false) => {
+    if (!path) return "#"
+
+    // Check if the path uses a protocol (http://, https://, mailto:, tel:, etc.)
+    const hasProtocol = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(path)
+
+    // External links or protocol links: return as-is
+    if (external || hasProtocol) return path
+
+    // Internal links: ensure they start with / for Next.js routing
+    return path.startsWith("/") ? path : `/${path}`
+  }
+
   return (
     <header
       className={cx(
@@ -113,7 +134,7 @@ export function NavBar() {
                 <Link
                   key={link.label}
                   className="px-2 py-1 text-gray-900 transition-colors hover:text-orange-500 dark:text-gray-50 dark:hover:text-orange-400"
-                  href={link.href ?? "#"}
+                  href={buildLink(link.href, !!link.external)}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
                 >
@@ -182,7 +203,7 @@ export function NavBar() {
           <ul className="space-y-4 font-medium">
             {navigation?.items?.map((link) => (
               <li key={link.label} onClick={() => setOpen(false)}>
-                <Link href={link.href ?? "#"}>{link.label}</Link>
+                <Link href={buildLink(link.href, !!link.external)}>{link.label}</Link>
               </li>
             ))}
           </ul>
