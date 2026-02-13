@@ -9,9 +9,10 @@ This directory contains utility scripts for the Nimbus Tech project.
 1. [Development Setup](#development-setup) - Comprehensive development setup (runs all generation scripts)
 2. [Remixicon Map Generator](#remixicon-map-generator) - Generate icon map from @remixicon/react
 3. [Generate Page Files](#generate-page-files) - Generate markdown page content files from GraphQL (creates fallback files)
-4. [Export Resumes](#export-resumes) - Export resumes to JSON Resume format
-5. [Generate Resume Files](#generate-resume-files) - Generate HTML/PDF resumes from JSON Resume files
-6. [Fallback File Generator](#fallback-file-generator) - ~~DEPRECATED~~ Use Generate Page Files instead
+4. [Generate Mock Data](#generate-mock-data) - Generate mock page content TypeScript file from GraphQL API for development fallback
+5. [Export Resumes](#export-resumes) - Export resumes to JSON Resume format
+6. [Generate Resume Files](#generate-resume-files) - Generate HTML/PDF resumes from JSON Resume files
+7. [Fallback File Generator](#fallback-file-generator) - ~~DEPRECATED~~ Use Generate Page Files instead
 
 ---
 
@@ -640,6 +641,155 @@ node scripts/generatePageFiles.ts --output=staging/content
 - `src/lib/legal/getLegalContent.ts` - Runtime content fetching with fallback support
 - `scripts/exportResumes.ts` - Similar pattern for resume export
 - `scripts/generateFallbackFiles.ts.deprecated` - Old legacy approach (deprecated)
+
+---
+
+## Generate Mock Data
+
+**File:** `scripts/generateMockData.ts`
+
+### Purpose
+
+Fetches complete page content and language data from the GraphQL API and generates a TypeScript file with mock data. This file serves as a fallback when the GraphQL API is unavailable, ensuring the application can still render with realistic data during development.
+
+### Prerequisites
+
+- GraphQL API must be running and accessible
+- `NEXT_PUBLIC_GRAPHQL_URL` must be set in `.env`
+
+### Quick Start
+
+```bash
+npm run generate:mock-data
+```
+
+### What It Does
+
+1. Connects to your GraphQL API
+2. Fetches all page contents (home, about, etc.) with all sections
+3. Fetches all supported languages
+4. Generates a TypeScript file at `output/mock-data/mockPageContent.ts`
+5. Includes auto-generated header with timestamp and source information
+
+### Output
+
+**Location:** `output/mock-data/mockPageContent.ts`
+
+**Structure:**
+```typescript
+export const MockPageContent = {
+  data: {
+    pageContents: [
+      // Array of complete page objects with all sections
+    ]
+  }
+}
+
+export const MockLanguages = {
+  data: {
+    languages: [
+      { id: "1", label: "English", value: "en-US" },
+      { id: "2", label: "German", value: "de-DE" }
+    ]
+  }
+}
+```
+
+### Usage in Application
+
+The generated mock data is automatically imported in `src/queries/index.ts`:
+
+```typescript
+import { MockLanguages, MockPageContent } from "../../output/mock-data/mockPageContent"
+
+// Used as fallback when GraphQL API is unavailable
+export function usePageContents() {
+  const useMock = process.env.NEXT_PUBLIC_USE_MOCK === 'true'
+  
+  if (useMock) {
+    return {
+      data: { pageContents: MockPageContent.data.pageContents },
+      loading: false,
+      error: undefined,
+    }
+  }
+  // ... GraphQL query
+}
+```
+
+### When to Regenerate
+
+Run this script when:
+- GraphQL API schema changes
+- Page content is updated in the CMS
+- New sections are added to pages
+- Language data changes
+- After major content updates
+
+### Features
+
+- **Auto-generated**: File header includes generation timestamp and source URL
+- **Complete data**: Includes all page sections (hero, features, testimonials, etc.)
+- **Type-safe**: Generated as TypeScript for full type checking
+- **Development fallback**: Ensures site renders even when API is down
+- **Part of setup**: Automatically runs as part of `npm run setup:dev`
+
+### Example Output
+
+```bash
+🚀 Starting mock data generation...
+
+⚙️  Configuration:
+   GraphQL URL: http://localhost:3000/api/graphql
+   Output: /path/to/output/mock-data
+   File: mockPageContent.ts
+
+📡 Fetching page contents from GraphQL API...
+   ✓ Fetched 2 page(s)
+
+📡 Fetching languages from GraphQL API...
+   ✓ Fetched 2 language(s)
+
+📁 Created output directory: /path/to/output/mock-data
+
+🔄 Generating TypeScript file...
+   ✓ Saved to: /path/to/output/mock-data/mockPageContent.ts
+
+============================================================
+📊 Summary:
+   ✅ Pages: 2
+   ✅ Languages: 2
+   ✅ File size: 145.23 KB
+   📁 Output: /path/to/output/mock-data/mockPageContent.ts
+============================================================
+
+✨ Mock data generated successfully!
+
+💡 This file is now available for import in your application.
+```
+
+### Troubleshooting
+
+**Problem:** "GraphQL URL not configured"
+- **Solution:** Set `NEXT_PUBLIC_GRAPHQL_URL` in your `.env` file
+
+**Problem:** "GraphQL request failed"
+- **Solution:** Ensure the Next.js dev server is running (`npm run dev`)
+- **Solution:** Check that the GraphQL endpoint is accessible
+
+**Problem:** File is very large
+- **Solution:** This is normal - the file contains complete mock data for all pages
+- **Solution:** The file is only used as fallback and is tree-shaken in production builds
+
+**Problem:** Import errors after regeneration
+- **Solution:** Restart your dev server to pick up the new file
+- **Solution:** Clear Next.js cache: `rm -rf .next`
+
+### Related Documentation
+
+- [Development Setup](#development-setup) - Runs this script automatically
+- [Generate Page Files](#generate-page-files) - Generates markdown fallback files
+- Main [README](../README.md) - Environment configuration
 
 ---
 

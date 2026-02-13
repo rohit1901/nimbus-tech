@@ -94,6 +94,13 @@ const STEPS: SetupStep[] = [
     required: false,
     requiresGraphQL: false, // Depends on export:resumes but not directly on GraphQL
   },
+  {
+    name: 'Mock Data',
+    description: 'Generate mock page content from GraphQL API',
+    command: 'npm run generate:mock-data',
+    required: false,
+    requiresGraphQL: true,
+  },
 ];
 
 /**

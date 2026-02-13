@@ -13,6 +13,7 @@
     "icons:watch": "tsx watch scripts/generateIcons.ts",
     "graphql:generate": "npx graphql-codegen --config graphql.codegen.yml",
     "generate:page-files": "tsx scripts/generatePageFiles.ts",
+    "generate:mock-data": "tsx scripts/generateMockData.ts",
     "export:resumes": "tsx scripts/exportResumes.ts",
     "generate:resume-files": "tsx scripts/generateResumeFiles.ts"
   },

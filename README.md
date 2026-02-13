@@ -113,7 +113,7 @@ The application expects a GraphQL endpoint to be exposed via `NEXT_PUBLIC_GRAPHQ
 - Update `NEXT_PUBLIC_GRAPHQL_URL` to the URL of your Nimbus Tech GraphQL API
 - The Apollo client reads this variable at runtime to populate the site with live content
 
-If the API is unavailable, the application transparently falls back to the bundled mock data defined in `src/app/graphql/mockPageContent.ts`, ensuring the site still renders during development.
+If the API is unavailable, the application transparently falls back to the bundled mock data defined in `output/mock-data/mockPageContent.ts`, ensuring the site still renders during development.
 
 ## Available Scripts
 
@@ -139,6 +139,7 @@ If the API is unavailable, the application transparently falls back to the bundl
 - `npm run export:resumes` – Exports resume data from GraphQL API to JSON Resume format, organized by language.
 - `npm run generate:resume-files` – Generates professional HTML resumes from exported JSON files using resumed and themes.
 - `npm run generate:page-files` – Generates markdown page content files (legal pages, etc.) from GraphQL, organized by language in output directory. These files serve as fallbacks when GraphQL is unavailable.
+- `npm run generate:mock-data` – Generates mock page content TypeScript file from GraphQL API for development fallback. Output: `output/mock-data/mockPageContent.ts`.
 
 See `scripts/README.md` for detailed documentation on all utility scripts.
 
