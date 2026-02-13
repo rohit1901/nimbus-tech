@@ -893,7 +893,7 @@ export function useFooterSection() {
     // console.error(res.error)
     return {
       data: {
-        footers: [MockPageContent.data.pageContents[0].sections.contentFooter],
+        footers: [MockPageContent.data.pageContents[0].sections?.contentFooter],
       },
       loading: false,
       error: undefined,
