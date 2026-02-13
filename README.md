@@ -68,15 +68,22 @@ The website shares our story, highlights customer value, and provides clear path
   - `providers` – React context for language selection and CMS content.
 - `src/components` – Shared UI primitives, data visualisations, and themed sections.
 - `src/hooks` – Custom hooks, including data orchestration helpers.
-- `src/lib` – Apollo client configuration and shared utilities.
+- `src/lib` – Specialized library modules and shared utilities.
+  - `legal` – Page content utilities with GraphQL and file system fallback support.
+  - `resume` – Resume conversion utilities for JSON Resume format.
 - `public` – Static assets and icons served by Next.js.
-- `scripts` – Build-time utilities (for example, icon generation).
+- `scripts` – Build-time utilities (icon generation, resume export, page content generation).
+- `output` – Generated files organized by type and language.
+  - `resumes` – Exported JSON Resume files.
+  - `resume-files` – Generated HTML resume files.
+  - `page-content` – Generated markdown page content files.
 
 ## Prerequisites
 
 - Node.js 18.18 or newer (Next.js 15 requirement)
 - npm 9 or newer (bundled with recent Node.js releases)
 - Access to a Nimbus Tech GraphQL endpoint or willingness to use the shipped mock data
+- (Optional) For resume generation: `resumed` and a JSON Resume theme are included in devDependencies
 
 ## Quick Start
 
@@ -84,17 +91,25 @@ The website shares our story, highlights customer value, and provides clear path
 2. Change into the project directory: `cd nimbus-tech`
 3. Install dependencies: `npm install`
 4. Prepare environment variables (see [Environment Configuration](#environment-configuration))
-5. (Optional) Generate GraphQL types from your API: `npm run graphql:generate`
+5. **Run development setup:** `npm run setup:dev`
+   - Sets up environment file (`.env` from `.env.copy` if it doesn't exist)
+   - Generates GraphQL types
+   - Generates icon maps
+   - Creates fallback content files (if GraphQL API is available)
+   - Exports and generates resume files (if GraphQL API is available)
 6. Start the development server: `npm run dev`
 7. Visit `http://localhost:3000` in your browser
 
 The development server watches for file changes and automatically hot-reloads the application.
 
+**Note:** Step 5 (`npm run setup:dev`) is **required for first-time setup**. The script handles failures gracefully - if the GraphQL API is not accessible, it will skip those steps and you can run them individually later when the API is available.
+
 ## Environment Configuration
 
 The application expects a GraphQL endpoint to be exposed via `NEXT_PUBLIC_GRAPHQL_URL`.
 
-- Copy the template file: `cp .env.copy .env.local`
+- The setup script (`npm run setup:dev`) automatically creates `.env` from `.env.copy` if it doesn't exist
+- Alternatively, manually copy the template: `cp .env.copy .env`
 - Update `NEXT_PUBLIC_GRAPHQL_URL` to the URL of your Nimbus Tech GraphQL API
 - The Apollo client reads this variable at runtime to populate the site with live content
 
@@ -102,14 +117,30 @@ If the API is unavailable, the application transparently falls back to the bundl
 
 ## Available Scripts
 
+### Development & Build
+
 - `npm run dev` – Launches Next.js in development mode with hot reloading.
 - `npm run build` – Creates an optimised production build.
 - `npm run start` – Serves the production build (requires running `build` first).
 - `npm run lint` – Runs ESLint across the project.
 - `npm run format` – Formats `.ts` and `.tsx` files using Prettier.
+
+### Development Setup
+
+- `npm run setup:dev` – **Required for first-time setup.** Comprehensive development setup (runs all generation scripts).
+
+### Code Generation
+
 - `npm run graphql:generate` – Runs GraphQL Code Generator with the settings in `graphql.codegen.yml`.
 - `npm run icons:generate` / `npm run icons:watch` – Regenerates the icon sprite from the assets directory.
-- `npm run postinstall:dev` – Utility script that copies `.env.copy` to `.env.dev` and regenerates GraphQL types for local mocking.
+
+### Content Generation
+
+- `npm run export:resumes` – Exports resume data from GraphQL API to JSON Resume format, organized by language.
+- `npm run generate:resume-files` – Generates professional HTML resumes from exported JSON files using resumed and themes.
+- `npm run generate:page-files` – Generates markdown page content files (legal pages, etc.) from GraphQL, organized by language in output directory. These files serve as fallbacks when GraphQL is unavailable.
+
+See `scripts/README.md` for detailed documentation on all utility scripts.
 
 ## Data & Content Flow
 
@@ -119,12 +150,74 @@ If the API is unavailable, the application transparently falls back to the bundl
 4. Each UI section (`Hero`, `Features`, `Testimonials`, etc.) reads the translated content and renders modular React components.
 5. Sections use Radix primitives, motion animations, and custom layout utilities to deliver an interactive, accessible experience.
 
+## Content Export & Generation
+
+The project includes scripts for exporting and generating various content types from GraphQL:
+
+### Resume Export & Generation
+
+1. **Export Resumes** – Fetches resume data from GraphQL API and converts to JSON Resume format:
+   ```bash
+   npm run export:resumes
+   ```
+   - Outputs language-specific JSON files to `output/resumes/`
+   - Format: `{name}_{language}_resume.json`
+
+2. **Generate HTML Resumes** – Creates professional HTML resumes using resumed and themes:
+   ```bash
+   npm run generate:resume-files
+   ```
+   - Uses `jsonresume-theme-elegant` by default
+   - Outputs HTML files organized by language in `output/resume-files/`
+   - Supports custom themes via `--theme` parameter
+
+3. **Complete Workflow**:
+   ```bash
+   npm run export:resumes        # Export from GraphQL
+   npm run generate:resume-files # Generate HTML files
+   ```
+
+See `scripts/RESUME_GENERATION.md` for detailed resume documentation.
+
+### Page Content Generation
+
+**Generate Page Content Files** – Exports page content (legal pages, etc.) from GraphQL to markdown files:
+```bash
+npm run generate:page-files
+```
+- Outputs markdown files organized by language in `output/page-content/`
+- Supports custom pages via `--pages` parameter
+- Example: `node scripts/generatePageFiles.ts --pages=privacy-policy,impressum,about-us`
+
+**Note:** The generated files in `output/page-content/` are automatically used as fallbacks by the application when the GraphQL API is unavailable.
+
+See `scripts/README.md` for comprehensive documentation on all utility scripts.
+
 ## Deployment Notes
+
+### Production Builds
 
 - Production builds should be created with `npm run build` followed by `npm run start`.
 - Ensure the production environment defines `NEXT_PUBLIC_GRAPHQL_URL`.
 - A `Procfile` is included for platforms that recognise process definitions (for example, Railway or Heroku-style deployments).
 - Assets in `public` are bundled automatically; keep large media in a CDN for optimal performance.
+
+### Fallback Files for Production
+
+The application uses a fallback system for critical content when GraphQL is unavailable. **Before deploying to production:**
+
+1. **Generate fallback files:**
+   ```bash
+   npm run generate:page-files
+   ```
+
+2. **Ensure `output/page-content/` is deployed** with your application. The `.gitignore` is configured to allow these files.
+
+3. **Verify deployment** includes the fallback files at runtime.
+
+The fallback files are automatically used when the GraphQL API is down or unreachable, ensuring legal pages and other critical content remain accessible.
+
+**See `DEPLOYMENT_GUIDE.md` for comprehensive deployment strategies and platform-specific instructions.**
 
 ## Contributing
 

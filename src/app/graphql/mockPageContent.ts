@@ -349,8 +349,7 @@ export const MockPageContent = {
               cta: {
                 id: "3",
                 label: "Free consultation",
-                href:
-                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "2",
@@ -371,8 +370,7 @@ export const MockPageContent = {
                     "Advanced expertise in software architecture principles and practices.",
                   image: {
                     id: "1",
-                    src:
-                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
+                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
                     alt: "CPSA-A certification badge",
                     width: 200,
                     height: 200,
@@ -393,15 +391,13 @@ export const MockPageContent = {
                     "Fundamental knowledge of software architecture concepts and methodologies.",
                   image: {
                     id: "2",
-                    src:
-                      "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
+                    src: "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
                     alt: "CPSA-F certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
+                  link: "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
                   language: {
                     id: "1",
                     label: "English",
@@ -415,15 +411,13 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "3",
-                    src:
-                      "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
+                    src: "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
                     alt: "Apollo Graph Professional certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
+                  link: "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
                   language: {
                     id: "1",
                     label: "English",
@@ -437,15 +431,13 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "4",
-                    src:
-                      "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
+                    src: "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
                     alt: "Apollo Graph Associate certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
+                  link: "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
                   language: {
                     id: "1",
                     label: "English",
@@ -459,15 +451,13 @@ export const MockPageContent = {
                     "Expertise in Git version control and collaboration workflows.",
                   image: {
                     id: "5",
-                    src:
-                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
+                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
                     alt: "GitKraken Git certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC",
+                  link: "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC",
                   language: {
                     id: "1",
                     label: "English",
@@ -481,8 +471,7 @@ export const MockPageContent = {
                     "Demonstrates proficiency in developing and maintaining applications on AWS.",
                   image: {
                     id: "6",
-                    src:
-                      "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
+                    src: "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
                     alt: "AWS Certified Developer badge",
                     width: 200,
                     height: 200,
@@ -502,8 +491,7 @@ export const MockPageContent = {
                     "Demonstrates proficiency in architecting applications on AWS.",
                   image: {
                     id: "7",
-                    src:
-                      "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+                    src: "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
                     alt: "AWS Solutions Architect Associate badge",
                     width: 200,
                     height: 200,
@@ -791,8 +779,7 @@ export const MockPageContent = {
               cta: {
                 id: "6",
                 label: "Contact Us",
-                href:
-                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "5",
@@ -859,8 +846,7 @@ export const MockPageContent = {
                 {
                   id: "4",
                   label: "Contact",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   icon: "",
                   language: {
@@ -976,8 +962,7 @@ export const MockPageContent = {
                     {
                       id: "13",
                       label: "Contact",
-                      href:
-                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -997,8 +982,7 @@ export const MockPageContent = {
                     {
                       id: "14",
                       label: "Support",
-                      href:
-                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -1085,8 +1069,7 @@ export const MockPageContent = {
                 {
                   id: "1",
                   label: "Book a free 15-minute consultation",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -1101,8 +1084,7 @@ export const MockPageContent = {
                 {
                   id: "2",
                   label: "Request an AWS assessment",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -1119,8 +1101,7 @@ export const MockPageContent = {
               background: [
                 {
                   id: "8",
-                  src:
-                    "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
+                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
                   alt: "Farm with vehicles",
                   width: 1000,
                   height: 1000,
@@ -1227,8 +1208,7 @@ export const MockPageContent = {
               cta: {
                 id: "11",
                 label: "Kostenloses Erstgespräch",
-                href:
-                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "4",
@@ -1514,8 +1494,7 @@ export const MockPageContent = {
               cta: {
                 id: "9",
                 label: "Kostenloses Erstgespräch",
-                href:
-                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "2",
@@ -1536,8 +1515,7 @@ export const MockPageContent = {
                     "Advanced expertise in software architecture principles and practices.",
                   image: {
                     id: "1",
-                    src:
-                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
+                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/cpsa.a.png",
                     alt: "CPSA-A certification badge",
                     width: 200,
                     height: 200,
@@ -1558,15 +1536,13 @@ export const MockPageContent = {
                     "Fundamental knowledge of software architecture concepts and methodologies.",
                   image: {
                     id: "2",
-                    src:
-                      "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
+                    src: "https://app.skillsclub.com/participants/115738/credentials/217564-2301-CPSAFL-223971-EN.png?ngsw-bypass=true&v=1716371214&Expires=1837082997&Signature=duhUg5dapPCYABZlu903zk~WlmPt75Sap-7sFkFgk0Cxd51gSm7lf4XBuR4SM8fU5ephShR50oFamcrsxF23t9E5yuCjSYC0FL1Oeujv7z1BkujgoVK37pdYCYPPlfeW7DepRSYJeAlIYejTrjxq2gsHYHHpOpqBhekyMCVbJ0HPov6B0FNuQtJ9Jr8eH9kAyxwxuAV5AWtT3T5Xfhw33V6zVU55sGWvYEW5i70T24kEodo2FZgVVMOgWsJK4QgjhdlVzMAwVCKrOJshKA33CY48kdPe6DQy26PnbFIoV-j9k6124QIBwLC4X66Gw3R9pMpBLVn6ym3nppBozizmnw__&Key-Pair-Id=APKAJGVOLYFJFHV5FSSQ",
                     alt: "CPSA-F certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
+                  link: "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true",
                   language: {
                     id: "1",
                     label: "English",
@@ -1580,15 +1556,13 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "3",
-                    src:
-                      "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
+                    src: "https://res.cloudinary.com/apollographql/image/upload/v1654200365/odyssey/certifications/graph_professional_badge.svg",
                     alt: "Apollo Graph Professional certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
+                  link: "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a",
                   language: {
                     id: "1",
                     label: "English",
@@ -1602,15 +1576,13 @@ export const MockPageContent = {
                     "Certified skills in GraphQL development and Apollo client/server technologies.",
                   image: {
                     id: "4",
-                    src:
-                      "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
+                    src: "https://res.cloudinary.com/apollographql/image/upload/v1632844693/badge_sfsiin.svg",
                     alt: "Apollo Graph Associate certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
+                  link: "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067",
                   language: {
                     id: "1",
                     label: "English",
@@ -1624,15 +1596,13 @@ export const MockPageContent = {
                     "Expertise in Git version control and collaboration workflows.",
                   image: {
                     id: "5",
-                    src:
-                      "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
+                    src: "https://d1ljophloyhryl.cloudfront.net/assets/certifications/gitkraken.svg",
                     alt: "GitKraken Git certification badge",
                     width: 200,
                     height: 200,
                     fill: false,
                   },
-                  link:
-                    "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC",
+                  link: "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC",
                   language: {
                     id: "1",
                     label: "English",
@@ -1646,8 +1616,7 @@ export const MockPageContent = {
                     "Demonstrates proficiency in developing and maintaining applications on AWS.",
                   image: {
                     id: "6",
-                    src:
-                      "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
+                    src: "https://d1.awsstatic.com/certification/badges/AWS-Certified-Developer-Associate_badge_150x150.a8973e238efb2d1b0b24f5282e1ad87eb554e6ef.png",
                     alt: "AWS Certified Developer badge",
                     width: 200,
                     height: 200,
@@ -1667,8 +1636,7 @@ export const MockPageContent = {
                     "Demonstrates proficiency in architecting applications on AWS.",
                   image: {
                     id: "7",
-                    src:
-                      "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
+                    src: "https://images.credly.com/size/680x680/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png",
                     alt: "AWS Solutions Architect Associate badge",
                     width: 200,
                     height: 200,
@@ -1943,8 +1911,7 @@ export const MockPageContent = {
                 "Nimbus Tech ist ein auf AWS fokussiertes Cloud-Beratungs- und Software-Engineering-Unternehmen. Wir helfen KMU und Start-ups, skalierbare und sichere Systeme auf AWS zu entwerfen, zu migrieren und zu betreiben – ohne unnötige Komplexität.",
               image: {
                 id: "9",
-                src:
-                  "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg",
+                src: "https://d1ljophloyhryl.cloudfront.net/assets/nimbus.logo.svg",
                 alt: "Nimbus Tech Hero Image",
                 width: 1600,
                 height: 900,
@@ -1957,8 +1924,7 @@ export const MockPageContent = {
               cta: {
                 id: "12",
                 label: "Erstgespräch",
-                href:
-                  "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                 external: false,
                 type: {
                   id: "5",
@@ -2025,8 +1991,7 @@ export const MockPageContent = {
                 {
                   id: "8",
                   label: "Kontakt",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   icon: "",
                   language: {
@@ -2142,8 +2107,7 @@ export const MockPageContent = {
                     {
                       id: "25",
                       label: "Kontakt",
-                      href:
-                        "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                      href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                       external: false,
                       icon: "",
                       type: {
@@ -2230,8 +2194,7 @@ export const MockPageContent = {
                 {
                   id: "7",
                   label: "Kostenloses Erstgespräch buchen",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -2246,8 +2209,7 @@ export const MockPageContent = {
                 {
                   id: "8",
                   label: "AWS-Assessment anfragen",
-                  href:
-                    "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
+                  href: "mailto:r.khanduri@nimbus-tech.de,f.zeidler@nimbus-tech.de",
                   external: false,
                   type: {
                     id: "3",
@@ -2264,8 +2226,7 @@ export const MockPageContent = {
               background: [
                 {
                   id: "8",
-                  src:
-                    "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
+                  src: "https://d1ljophloyhryl.cloudfront.net/assets/images/farm-footer.webp",
                   alt: "Landschaft mit Fahrzeugen",
                   width: 1000,
                   height: 1000,
@@ -2312,7 +2273,7 @@ export const MockPageContent = {
       },
     ],
   },
-};
+}
 
 export const MockLanguages = {
   data: {

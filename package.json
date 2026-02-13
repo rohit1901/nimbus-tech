@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "setup:dev": "tsx scripts/setupDev.ts",
     "icons:generate": "tsx scripts/generateIcons.ts",
     "icons:watch": "tsx watch scripts/generateIcons.ts",
     "graphql:generate": "npx graphql-codegen --config graphql.codegen.yml",
-    "postinstall:dev": "cp .env.copy .env.dev && npm run graphql:generate",
-    "generate-fallbacks": "tsx scripts/generateFallbackFiles.ts"
+    "generate:page-files": "tsx scripts/generatePageFiles.ts",
+    "export:resumes": "tsx scripts/exportResumes.ts",
+    "generate:resume-files": "tsx scripts/generateResumeFiles.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.0.9",
@@ -25,6 +27,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "geist": "^1.4.2",
+    "graphql": "^16.12.0",
     "motion": "12.12.1",
     "next": "^16.1.6",
     "next-themes": "^0.4.6",
@@ -34,8 +37,7 @@
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.0",
     "tailwind-variants": "^1.0.0",
-    "typescript": "^5.8.3",
-    "graphql": "^16.12.0"
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.1.0",
@@ -49,8 +51,10 @@
     "dotenv": "^17.3.0",
     "eslint": "^9.26.0",
     "eslint-config-next": "15.3.2",
+    "jsonresume-theme-elegant": "^1.16.1",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "resumed": "^6.1.0",
     "tailwindcss": "^4.1.7",
     "tsx": "^4.21.0"
   }

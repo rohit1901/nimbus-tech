@@ -49,8 +49,8 @@ export default async function MyPage({ searchParams }) {
   const lang = (searchParams.lang || "en-US") as Language
   const slug = lang === "de-DE" ? "my-page-de" : "my-page"
   const fallback = lang === "de-DE" 
-    ? "src/data/my-page-de.md" 
-    : "src/data/my-page-en.md"
+    ? "output/page-content/de-DE/my-page-de.md" 
+    : "output/page-content/en-US/my-page.md"
   
   const content = await getPageContentWithFallback(slug, lang, fallback)
   
@@ -98,7 +98,7 @@ Fetches page content from GraphQL with optional file system fallback.
 const content = await getPageContentWithFallback(
   'privacy-policy',
   'en-US',
-  'src/data/legal/privacy-en.md'
+  'output/page-content/en-US/privacy-policy.md'
 )
 ```
 
@@ -157,8 +157,8 @@ export default async function CookiePage({ searchParams }) {
   
   const slug = lang === "de-DE" ? "cookie-policy-de" : "cookie-policy"
   const fallback = lang === "de-DE" 
-    ? "src/data/legal/cookies-de.md"
-    : "src/data/legal/cookies-en.md"
+    ? "output/page-content/de-DE/cookie-policy-de.md"
+    : "output/page-content/en-US/cookie-policy.md"
   
   const content = await getPageContentWithFallback(slug, lang, fallback)
   

@@ -10,7 +10,9 @@ type TermsPageProps = {
   searchParams: Promise<{ lang?: string }>
 }
 
-export async function generateMetadata({ searchParams }: TermsPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: TermsPageProps): Promise<Metadata> {
   const params = await searchParams
   const lang = params.lang || "en-US"
 
@@ -20,13 +22,16 @@ export async function generateMetadata({ searchParams }: TermsPageProps): Promis
   }
 
   const descriptions = {
-    "en-US": "Terms of Service for Nimbus Tech GmbH - Read our terms and conditions for using our cloud solutions and DevOps consulting services.",
-    "de-DE": "Allgemeine Geschäftsbedingungen der Nimbus Tech GmbH - Lesen Sie unsere Bedingungen für die Nutzung unserer Cloud-Lösungen und DevOps-Beratungsdienste.",
+    "en-US":
+      "Terms of Service for Nimbus Tech GmbH - Read our terms and conditions for using our cloud solutions and DevOps consulting services.",
+    "de-DE":
+      "Allgemeine Geschäftsbedingungen der Nimbus Tech GmbH - Lesen Sie unsere Bedingungen für die Nutzung unserer Cloud-Lösungen und DevOps-Beratungsdienste.",
   }
 
   return {
     title: titles[lang as keyof typeof titles] || titles["en-US"],
-    description: descriptions[lang as keyof typeof descriptions] || descriptions["en-US"],
+    description:
+      descriptions[lang as keyof typeof descriptions] || descriptions["en-US"],
   }
 }
 
@@ -53,41 +58,42 @@ export default async function TermsPage({ searchParams }: TermsPageProps) {
       <main className="relative min-h-screen bg-gray-50 dark:bg-gray-950">
         {/* Background decoration */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute left-1/2 top-0 h-150 w-150 -translate-x-1/2 rounded-full bg-orange-100/20 blur-3xl dark:bg-orange-900/10" />
+          <div className="absolute top-0 left-1/2 h-150 w-150 -translate-x-1/2 rounded-full bg-orange-100/20 blur-3xl dark:bg-orange-900/10" />
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
           {/* Header Section */}
           <div className="mb-12 border-b border-gray-200 pb-8 dark:border-gray-800">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 dark:bg-orange-900/20">
-              <svg className="h-4 w-4 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <svg
+                className="h-4 w-4 text-orange-600 dark:text-orange-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
               </svg>
               <span className="text-sm font-medium text-orange-600 dark:text-orange-400">
                 {currentLabels.lastUpdated}{" "}
-                {new Date().toLocaleDateString(lang === "de-DE" ? "de-DE" : "en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {new Date().toLocaleDateString(
+                  lang === "de-DE" ? "de-DE" : "en-US",
+                  {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  },
+                )}
               </span>
             </div>
           </div>
 
           {/* Content */}
-          <article className="prose prose-lg prose-gray max-w-none dark:prose-invert
-            prose-headings:scroll-mt-20 prose-headings:font-extrabold prose-headings:tracking-tight
-            prose-h1:text-5xl prose-h1:text-gray-950 prose-h1:dark:text-white prose-h1:mb-10 prose-h1:leading-tight
-            prose-h2:mt-16 prose-h2:mb-8 prose-h2:text-3xl prose-h2:text-gray-950 prose-h2:dark:text-white prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:dark:border-orange-900/50 prose-h2:pb-4
-            prose-h3:mt-10 prose-h3:mb-5 prose-h3:text-2xl prose-h3:text-gray-900 prose-h3:dark:text-gray-50 prose-h3:font-bold
-            prose-p:text-gray-700 prose-p:dark:text-gray-300 prose-p:leading-relaxed prose-p:mb-4
-            prose-strong:text-gray-900 prose-strong:dark:text-gray-50 prose-strong:font-semibold
-            prose-a:text-orange-600 prose-a:dark:text-orange-400 prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:decoration-2 hover:prose-a:underline-offset-2
-            prose-ul:my-6 prose-ul:text-gray-700 prose-ul:dark:text-gray-300
-            prose-li:my-2 prose-li:text-gray-700 prose-li:dark:text-gray-300 prose-li:leading-relaxed
-            marker:prose-li:text-orange-600 marker:prose-li:dark:text-orange-400
-            prose-hr:my-12 prose-hr:border-gray-200 prose-hr:dark:border-gray-800
-            mb-20">
+          <article className="prose prose-lg prose-gray dark:prose-invert prose-headings:scroll-mt-20 prose-headings:font-extrabold prose-headings:tracking-tight prose-h1:text-5xl prose-h1:text-gray-950 prose-h1:dark:text-white prose-h1:mb-10 prose-h1:leading-tight prose-h2:mt-16 prose-h2:mb-8 prose-h2:text-3xl prose-h2:text-gray-950 prose-h2:dark:text-white prose-h2:border-b-2 prose-h2:border-orange-200 prose-h2:dark:border-orange-900/50 prose-h2:pb-4 prose-h3:mt-10 prose-h3:mb-5 prose-h3:text-2xl prose-h3:text-gray-900 prose-h3:dark:text-gray-50 prose-h3:font-bold prose-p:text-gray-700 prose-p:dark:text-gray-300 prose-p:leading-relaxed prose-p:mb-4 prose-strong:text-gray-900 prose-strong:dark:text-gray-50 prose-strong:font-semibold prose-a:text-orange-600 prose-a:dark:text-orange-400 prose-a:no-underline prose-a:font-medium hover:prose-a:underline hover:prose-a:decoration-2 hover:prose-a:underline-offset-2 prose-ul:my-6 prose-ul:text-gray-700 prose-ul:dark:text-gray-300 prose-li:my-2 prose-li:text-gray-700 prose-li:dark:text-gray-300 prose-li:leading-relaxed marker:prose-li:text-orange-600 marker:prose-li:dark:text-orange-400 prose-hr:my-12 prose-hr:border-gray-200 prose-hr:dark:border-gray-800 mb-20 max-w-none">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
           </article>
 
@@ -97,7 +103,10 @@ export default async function TermsPage({ searchParams }: TermsPageProps) {
               {lang === "de-DE"
                 ? "Bei Fragen zu diesen Allgemeinen Geschäftsbedingungen kontaktieren Sie uns bitte unter "
                 : "If you have any questions about these Terms of Service, please contact us at "}
-              <a href="mailto:info@nimbus-tech.de" className="font-medium text-orange-600 hover:underline dark:text-orange-400">
+              <a
+                href="mailto:info@nimbus-tech.de"
+                className="font-medium text-orange-600 hover:underline dark:text-orange-400"
+              >
                 info@nimbus-tech.de
               </a>
             </p>

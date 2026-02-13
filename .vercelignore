@@ -1,0 +1,42 @@
+# .vercelignore
+# Vercel deployment configuration
+
+# DO NOT ignore output directory - contains runtime fallback files
+# !output/
+
+# Ignore development files
+.env.local
+.env.development
+.env*.local
+
+# Ignore build artifacts that will be regenerated
+.next/
+node_modules/
+
+# Ignore git files
+.git/
+.gitignore
+
+# Ignore documentation (optional)
+# docs/
+# *.md
+
+# Ignore test files (optional)
+# **/*.test.ts
+# **/*.spec.ts
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# IMPORTANT: output/ directory MUST be deployed
+# It contains generated fallback files used at runtime when GraphQL is unavailable
+# - output/page-content/ - Page content fallback files
+# - output/resumes/ - Resume JSON files (if needed)
+# - output/resume-files/ - Resume HTML files (if needed)
+
+# If you want to exclude some generated files but keep fallbacks:
+# !output/page-content/**

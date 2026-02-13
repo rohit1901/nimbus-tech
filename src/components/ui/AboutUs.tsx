@@ -5,12 +5,24 @@ import { StickerCard } from "@/components/ui/StickerCard"
 import Image from "next/image"
 import Link from "next/link"
 
-import React from "react";
-import clsx from "clsx";
+import React from "react"
+import clsx from "clsx"
 import { RemixIconComponent } from "@/components/RemixIconComponent"
+import { useResumes } from "@/queries/index"
 
 // Co-founders data
-const CO_FOUNDERS = [
+type FounderData = {
+  id: string
+  avatarUrl: string
+  name: string
+  title: string
+  status: string
+  github: string
+  linkedin: string
+  email: string
+}
+
+const CO_FOUNDERS: FounderData[] = [
   {
     id: "flori",
     avatarUrl: "https://d1ljophloyhryl.cloudfront.net/assets/images/flori.JPG",
@@ -31,19 +43,19 @@ const CO_FOUNDERS = [
     linkedin: "https://www.linkedin.com/in/rohit-khanduri-9098b84a/",
     email: "mailto:r.khanduri@nimbus-tech.de",
   },
-] as const;
+]
 
 type ProfileCardProps = {
-  avatarUrl: string;
-  name: string;
-  title: string;
-  handle?: string;
-  status?: string;
-  github?: string;
-  linkedin?: string;
-  email?: string;
-  className?: string;
-};
+  avatarUrl: string
+  name: string
+  title: string
+  handle?: string
+  status?: string
+  github?: string
+  linkedin?: string
+  email?: string
+  className?: string
+}
 
 // Compact mobile/tablet version - horizontal layout with social icons at bottom
 const CompactProfileCard: React.FC<ProfileCardProps> = ({
@@ -64,13 +76,13 @@ const CompactProfileCard: React.FC<ProfileCardProps> = ({
         "bg-gray-50 dark:bg-gray-950",
         "p-4 shadow-lg shadow-black/2.5 dark:shadow-slate-900/60",
         "text-gray-900 dark:text-slate-100",
-        className
+        className,
       )}
     >
       {/* Top section with avatar and info */}
       <div className="flex items-center gap-4">
         {/* Avatar - on the left */}
-        <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-100 dark:border-slate-700 dark:bg-slate-800">
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-100 dark:border-slate-700 dark:bg-slate-800">
           <Image
             src={avatarUrl}
             alt={name}
@@ -82,7 +94,7 @@ const CompactProfileCard: React.FC<ProfileCardProps> = ({
 
         {/* Info - Right of avatar */}
         <div className="flex flex-1 flex-col justify-center">
-          <h3 className="text-lg font-semibold leading-tight">{name}</h3>
+          <h3 className="text-lg leading-tight font-semibold">{name}</h3>
           <p className="text-sm text-gray-600 dark:text-slate-400">{title}</p>
           {status && (
             <span className="mt-1.5 flex items-center gap-1.5 text-xs text-gray-600 dark:text-slate-400">
@@ -94,7 +106,7 @@ const CompactProfileCard: React.FC<ProfileCardProps> = ({
       </div>
 
       {/* Divider */}
-      <div className="my-3 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-slate-700" />
+      <div className="my-3 h-px w-full bg-linear-to-r from-transparent via-gray-300 to-transparent dark:via-slate-700" />
 
       {/* Social Links - Bottom */}
       <div className="flex items-center justify-center gap-3">
@@ -140,8 +152,8 @@ const CompactProfileCard: React.FC<ProfileCardProps> = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 export const SimpleProfileCard: React.FC<ProfileCardProps> = ({
   avatarUrl,
@@ -162,7 +174,7 @@ export const SimpleProfileCard: React.FC<ProfileCardProps> = ({
         "bg-gray-50 dark:bg-gray-950",
         "p-6 shadow-xl shadow-black/2.5 dark:shadow-slate-900/60",
         "text-gray-900 dark:text-slate-100",
-        className
+        className,
       )}
     >
       {/* Avatar - Larger and at Top */}
@@ -178,7 +190,7 @@ export const SimpleProfileCard: React.FC<ProfileCardProps> = ({
         </div>
 
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-xl font-semibold leading-tight">{name}</h3>
+          <h3 className="text-xl leading-tight font-semibold">{name}</h3>
           <p className="text-sm text-gray-600 dark:text-slate-400">{title}</p>
           {(handle || status) && (
             <div className="mt-2 flex items-center gap-2 text-xs text-gray-600 dark:text-slate-400">
@@ -241,12 +253,67 @@ export const SimpleProfileCard: React.FC<ProfileCardProps> = ({
         )}
       </div>
     </div>
-  );
-};
-
+  )
+}
 
 function FounderIntro({ heading, intro }: { heading: string; intro: string }) {
-  const [leftFounder, rightFounder] = CO_FOUNDERS;
+  const { data: resumeData } = useResumes()
+
+  // Transform resume data to match CO_FOUNDERS structure with individual fallbacks
+  const founders = React.useMemo(() => {
+    const [florianFallback, rohitFallback] = CO_FOUNDERS
+
+    if (!resumeData?.resumes || resumeData.resumes.length === 0) {
+      return CO_FOUNDERS
+    }
+
+    // Find resumes for Florian and Rohit
+    const florianResume = resumeData.resumes.find((resume) =>
+      resume.basicInformation?.name?.toLowerCase().includes("florian"),
+    )
+    const rohitResume = resumeData.resumes.find((resume) =>
+      resume.basicInformation?.name?.toLowerCase().includes("rohit"),
+    )
+
+    const transformResume = (
+      resume: (typeof resumeData.resumes)[0] | undefined,
+      fallback: FounderData,
+    ): FounderData => {
+      if (!resume?.basicInformation) return fallback
+
+      const basicInfo = resume.basicInformation
+      const profiles = basicInfo?.profiles || []
+
+      // Find specific profile URLs
+      const githubProfile = profiles.find(
+        (p) => p.network?.toLowerCase() === "github",
+      )
+      const linkedinProfile = profiles.find(
+        (p) => p.network?.toLowerCase() === "linkedin",
+      )
+
+      return {
+        id: basicInfo?.name?.toLowerCase().split(" ")[0] || fallback.id,
+        avatarUrl:
+          basicInfo?.image?.preview ||
+          basicInfo?.image?.src ||
+          fallback.avatarUrl,
+        name: basicInfo?.name || fallback.name,
+        title: basicInfo?.label || fallback.title,
+        status: "Online",
+        github: githubProfile?.url || fallback.github,
+        linkedin: linkedinProfile?.url || fallback.linkedin,
+        email: basicInfo?.email ? `mailto:${basicInfo.email}` : fallback.email,
+      }
+    }
+
+    return [
+      transformResume(florianResume, florianFallback),
+      transformResume(rohitResume, rohitFallback),
+    ]
+  }, [resumeData])
+
+  const [leftFounder, rightFounder] = founders
 
   return (
     <div className="relative mb-20 w-full">
@@ -254,12 +321,10 @@ function FounderIntro({ heading, intro }: { heading: string; intro: string }) {
       <div className="mx-auto max-w-3xl px-4 lg:hidden">
         <div className="flex flex-col items-center justify-center px-4">
           <Heading title={heading} className="mb-6" />
-          <p className="text-center text-gray-600 dark:text-gray-50">
-            {intro}
-          </p>
+          <p className="text-center text-gray-600 dark:text-gray-50">{intro}</p>
         </div>
 
-        <div className="space-y-4 my-4">
+        <div className="my-4 space-y-4">
           <CompactProfileCard
             avatarUrl={leftFounder.avatarUrl}
             name={leftFounder.name}
@@ -298,7 +363,7 @@ function FounderIntro({ heading, intro }: { heading: string; intro: string }) {
 
         {/* Center Content */}
         <div className="flex flex-1 flex-col items-center justify-center self-center px-4 py-12 sm:px-8 lg:px-16">
-          <h2 className="mb-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl">
+          <h2 className="mb-6 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-50">
             {heading}
           </h2>
           <p className="max-w-3xl text-center text-lg leading-relaxed text-gray-700 dark:text-gray-300">

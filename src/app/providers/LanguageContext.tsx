@@ -53,7 +53,9 @@ export const LanguageProvider = ({
     error: pageContentsError,
   } = usePageContents()
   // TODO: Remove hardcoded Hindi option and handle other languages gracefully
-  const languages = languageData?.languages?.filter((lang) => lang?.value !== "en-IN")
+  const languages = languageData?.languages?.filter(
+    (lang) => lang?.value !== "en-IN",
+  )
 
   // Compute available languages
   const availableLanguages = useMemo(() => {

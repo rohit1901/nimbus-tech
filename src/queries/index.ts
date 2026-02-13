@@ -581,6 +581,299 @@ export const GET_LANGUAGES = gql`
   }
 `
 
+export const GET_RESUME_SHORT = gql`
+  query Resumes {
+    resumes {
+      basicInformation {
+        id
+        name
+        image {
+          id
+          src
+          alt
+          width
+          height
+          fill
+          type {
+            id
+            label
+          }
+          preview
+        }
+        email
+        profiles {
+          id
+          network
+          username
+          url
+        }
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`
+
+export const GET_RESUME = gql`
+  query Resumes {
+    resumes {
+      id
+      title
+      basicInformation {
+        id
+        name
+        label
+        image {
+          id
+          src
+          alt
+          width
+          height
+          fill
+          type {
+            id
+            label
+          }
+          preview
+        }
+        email
+        phone
+        url
+        summary
+        location {
+          id
+          address
+          postalCode
+          city
+          countryCode
+          region
+          language {
+            id
+            label
+            value
+          }
+        }
+        profiles {
+          id
+          network
+          username
+          url
+          language {
+            id
+            label
+            value
+          }
+        }
+        profilesCount
+        language {
+          id
+          label
+          value
+        }
+      }
+      work {
+        id
+        name
+        position
+        url
+        startDate
+        endDate
+        summary
+        highlights {
+          id
+          value
+        }
+        highlightsCount
+        image {
+          id
+          src
+          alt
+          width
+          height
+          fill
+          type {
+            id
+            label
+          }
+          preview
+        }
+        language {
+          id
+          label
+          value
+        }
+      }
+      workCount
+      volunteer {
+        id
+        organization
+        position
+        url
+        startDate
+        endDate
+        summary
+        highlights
+        language {
+          id
+          label
+          value
+        }
+      }
+      volunteerCount
+      education {
+        id
+        institution
+        url
+        area
+        studyType
+        startDate
+        endDate
+        score
+        courses
+        language {
+          id
+          label
+          value
+        }
+      }
+      educationCount
+      awards {
+        id
+        title
+        date
+        awarder
+        summary
+        url
+        language {
+          id
+          label
+          value
+        }
+      }
+      awardsCount
+      certificates {
+        id
+        title
+        description
+        image {
+          id
+          src
+          alt
+          width
+          height
+          fill
+          type {
+            id
+            label
+          }
+          preview
+        }
+        link
+        language {
+          id
+          label
+          value
+        }
+      }
+      certificatesCount
+      publications {
+        id
+        name
+        publisher
+        releaseDate
+        url
+        summary
+        language {
+          id
+          label
+          value
+        }
+      }
+      publicationsCount
+      skills {
+        id
+        name
+        level
+        keywords
+        language {
+          id
+          label
+          value
+        }
+      }
+      skillsCount
+      resumeLanguages {
+        id
+        language
+        fluency
+        uiLanguage {
+          id
+          label
+          value
+        }
+      }
+      resumeLanguagesCount
+      interests {
+        id
+        name
+        keywords
+        language {
+          id
+          label
+          value
+        }
+      }
+      interestsCount
+      references {
+        id
+        name
+        reference
+        language {
+          id
+          label
+          value
+        }
+      }
+      referencesCount
+      projects {
+        id
+        name
+        startDate
+        endDate
+        description
+        highlights
+        url
+        image {
+          id
+          src
+          alt
+          width
+          height
+          fill
+          type {
+            id
+            label
+          }
+          preview
+        }
+        language {
+          id
+          label
+          value
+        }
+      }
+      projectsCount
+      language {
+        id
+        label
+        value
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`
+
 export function usePageContents() {
   const res = useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
   if (res.error) {
@@ -619,5 +912,12 @@ export function useLanguage() {
       error: undefined,
     }
   }
+  return res
+}
+
+export function useResumes(kind: "short" | "full" = "short") {
+  const res = useQuery<Pick<Query, "resumes">>(
+    kind === "short" ? GET_RESUME_SHORT : GET_RESUME,
+  )
   return res
 }

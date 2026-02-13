@@ -21,12 +21,24 @@
  *   const content = await getPageContentWithFallback(
  *     'my-page-slug',
  *     lang,
- *     'src/data/my-page-en.md'  // optional fallback file
+ *     'output/page-content/en-US/my-page-slug.md'  // optional fallback file
  *   )
  *
  *   return <div>{content}</div>
  * }
  * ```
+ *
+ * ## Generating Fallback Files
+ *
+ * Use the `generate:page-files` script to create fallback markdown files from GraphQL:
+ *
+ * ```bash
+ * npm run generate:page-files
+ * # or for specific pages
+ * node scripts/generatePageFiles.ts --pages=privacy-policy,impressum,about-us
+ * ```
+ *
+ * Files are generated in `output/page-content/{language}/{slug}.md`
  *
  * ## Slug Naming Convention
  *
@@ -51,13 +63,13 @@
  * ```
  */
 
-import { readFileSync } from 'fs'
-import { join } from 'path'
-import client from '@/lib/apolloClient'
-import { gql } from '@apollo/client'
-import { Query } from '@/app/graphql/types'
+import { readFileSync } from "fs"
+import { join } from "path"
+import client from "@/lib/apolloClient"
+import { gql } from "@apollo/client"
+import { Query } from "@/app/graphql/types"
 
-export type Language = 'en-US' | 'de-DE'
+export type Language = "en-US" | "de-DE"
 
 const GET_PAGE_CONTENT = gql`
   query GetPageContent($slug: String!, $languageValue: String!) {
@@ -98,17 +110,17 @@ const GET_PAGE_CONTENT = gql`
  */
 export async function getPageContent(
   slug: string,
-  language: Language
+  language: Language,
 ): Promise<string | null> {
   try {
     // Fetch from GraphQL
-    const { data } = await client.query<Pick<Query, 'pageContents'>>({
+    const { data } = await client.query<Pick<Query, "pageContents">>({
       query: GET_PAGE_CONTENT,
       variables: {
         slug,
         languageValue: language,
       },
-      fetchPolicy: 'network-only',
+      fetchPolicy: "network-only",
     })
 
     const pageContent = data?.pageContents?.[0]
@@ -119,13 +131,13 @@ export async function getPageContent(
     }
 
     console.warn(
-      `No GraphQL content found for slug "${slug}" in language "${language}"`
+      `No GraphQL content found for slug "${slug}" in language "${language}"`,
     )
     return null
   } catch (error) {
     console.error(
       `Error fetching page content from GraphQL for slug "${slug}" in language "${language}":`,
-      error
+      error,
     )
     return null
   }
@@ -145,14 +157,14 @@ export async function getPageContent(
  * const content = await getPageContentWithFallback(
  *   'privacy-policy',
  *   'en-US',
- *   'src/data/legal/datenschutz-en.md'
+ *   'output/page-content/en-US/privacy-policy.md'
  * )
  * ```
  */
 export async function getPageContentWithFallback(
   slug: string,
   language: Language,
-  fallbackFilePath?: string
+  fallbackFilePath?: string,
 ): Promise<string> {
   // Try to fetch from GraphQL
   const content = await getPageContent(slug, language)
@@ -165,23 +177,19 @@ export async function getPageContentWithFallback(
   if (fallbackFilePath) {
     try {
       const filePath = join(process.cwd(), fallbackFilePath)
-      const fileContent = readFileSync(filePath, 'utf-8')
-      console.info(
-        `Loaded content from fallback file: ${fallbackFilePath}`
-      )
+      const fileContent = readFileSync(filePath, "utf-8")
+      console.info(`Loaded content from fallback file: ${fallbackFilePath}`)
       return fileContent
     } catch (error) {
-      console.error(
-        `Error reading fallback file "${fallbackFilePath}":`,
-        error
-      )
+      console.error(`Error reading fallback file "${fallbackFilePath}":`, error)
     }
   }
 
   // If all else fails, throw an error
   throw new Error(
-    `Could not find content for slug "${slug}" in language "${language}"${fallbackFilePath ? ` or in fallback file "${fallbackFilePath}"` : ''
-    }`
+    `Could not find content for slug "${slug}" in language "${language}"${
+      fallbackFilePath ? ` or in fallback file "${fallbackFilePath}"` : ""
+    }`,
   )
 }
 
@@ -189,7 +197,10 @@ export async function getPageContentWithFallback(
  * DEPRECATED: Use getPageContent or getPageContentWithFallback instead
  *
  * Legacy function for backward compatibility
- * Fetches legal content from GraphQL or falls back to local markdown files
+ * Fetches legal content from GraphQL or falls back to generated markdown files
+ *
+ * Note: Fallback files are generated using `npm run generate:page-files`
+ * and stored in `output/page-content/{language}/{slug}.md`
  *
  * @param document - The legal document type ('privacy' or 'terms')
  * @param language - The language code ('en-US' or 'de-DE')
@@ -198,28 +209,34 @@ export async function getPageContentWithFallback(
  * @deprecated This function uses hardcoded mappings. Use getPageContent() or getPageContentWithFallback() instead.
  */
 export async function getLegalContent(
-  document: 'privacy' | 'terms',
-  language: Language
+  document: "privacy" | "terms",
+  language: Language,
 ): Promise<string> {
-  const LEGACY_SLUG_MAP: Record<'privacy' | 'terms', Record<Language, string>> = {
+  const LEGACY_SLUG_MAP: Record<
+    "privacy" | "terms",
+    Record<Language, string>
+  > = {
     privacy: {
-      'en-US': 'privacy-policy',
-      'de-DE': 'privacy-policy-de',
+      "en-US": "privacy-policy",
+      "de-DE": "privacy-policy-de",
     },
     terms: {
-      'en-US': 'impressum',
-      'de-DE': 'impressum-de',
+      "en-US": "impressum",
+      "de-DE": "impressum-de",
     },
   }
 
-  const LEGACY_FILE_MAP: Record<'privacy' | 'terms', Record<Language, string>> = {
+  const LEGACY_FILE_MAP: Record<
+    "privacy" | "terms",
+    Record<Language, string>
+  > = {
     privacy: {
-      'en-US': 'src/data/legal/datenschutz-en.md',
-      'de-DE': 'src/data/legal/datenschutz-de.md',
+      "en-US": "output/page-content/en-US/privacy-policy.md",
+      "de-DE": "output/page-content/de-DE/privacy-policy-de.md",
     },
     terms: {
-      'en-US': 'src/data/legal/terms-en.md',
-      'de-DE': 'src/data/legal/agb-de.md',
+      "en-US": "output/page-content/en-US/impressum.md",
+      "de-DE": "output/page-content/de-DE/impressum-de.md",
     },
   }
 

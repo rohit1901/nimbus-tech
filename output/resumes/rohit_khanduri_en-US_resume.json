@@ -1,0 +1,338 @@
+{
+  "basics": {
+    "name": "Rohit Khanduri",
+    "label": "Software Architect",
+    "image": "https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG",
+    "email": "rohit.khanduri@hotmail.com",
+    "url": "https://www.rohit.khanduri.de",
+    "summary": "Software architect with more than a decade of experience designing and delivering microservice-based systems across banking, public sector, and loyalty programs. I cover the full software development lifecycle and work hands-on with cloud-native architectures, modern frontend stacks, and event-driven backends. My background includes leading international teams in Europe and Asia, operating in agile environments, and aligning architecture with business strategy. With a Master's degree in Applied Mathematics for Network and Data Science and a Bachelor's in Information Technology, I combine analytical thinking with pragmatic engineering.",
+    "location": {
+      "address": "Friedrichsdorf, Germany",
+      "city": "Friedrichsdorf",
+      "countryCode": "DE",
+      "region": "Hessen"
+    },
+    "profiles": [
+      {
+        "network": "Other",
+        "username": "rohitkhanduri",
+        "url": "https://rohitkhanduri.substack.com/"
+      },
+      {
+        "network": "GitHub",
+        "username": "rohit1901",
+        "url": "https://github.com/rohit1901"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "rohit-khanduri-9098b84a",
+        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Miles & More GmbH (Lufthansa Group)",
+      "position": "Manager IT",
+      "url": "https://www.miles-and-more.com/",
+      "startDate": "2025-02-28T23:00:00.000Z",
+      "summary": "IT Manager responsible for the architecture of the Miles & More Flutter mobile application and for leading an outsourced development team.",
+      "highlights": [
+        "Own the technical direction and architecture of the Miles & More mobile app",
+        "Lead and coordinate an outsourced development team",
+        "Align architecture decisions with product and design stakeholders",
+        "Oversee CI/CD pipelines and production readiness",
+        "Ensure GDPR compliance, security, and risk management for the app"
+      ]
+    },
+    {
+      "name": "adesso SE",
+      "position": "Software Architect",
+      "url": "https://www.adesso.de/",
+      "startDate": "2020-07-31T22:00:00.000Z",
+      "endDate": "2025-01-31T23:00:00.000Z",
+      "summary": "Software architect and consultant for large-scale banking and public-sector systems with microservice and micro-frontend architectures.",
+      "highlights": [
+        "Led architectural assessments of existing production systems and proposed improvements",
+        "Defined target architectures and technology roadmaps for 1–3 years",
+        "Acted as primary architectural contact for clients and internal teams",
+        "Introduced coding guidelines, review processes, and quality standards",
+        "Led frontend teams on React, Angular, and Flutter projects in regulated environments"
+      ]
+    },
+    {
+      "name": "Finatix GmbH",
+      "position": "Software Developer (Working Student)",
+      "url": "https://www.finatix.de/",
+      "startDate": "2019-08-31T22:00:00.000Z",
+      "endDate": "2020-06-30T22:00:00.000Z",
+      "summary": "Working student developer on a credit card dashboard and mobile app with payment services and fraud-related data science features.",
+      "highlights": [
+        "Implemented new frontend features for a credit card dashboard",
+        "Contributed to end-to-end functionality from backend to frontend",
+        "Worked on fraud identification use cases with data science tooling",
+        "Upgraded the Angular codebase and refreshed the UI design"
+      ]
+    },
+    {
+      "name": "Peak Performance Apps GmbH (Subsidiary of Appsfactory GmbH)",
+      "position": "Software Developer (Working Student)",
+      "url": "https://appsfactory.de/",
+      "startDate": "2019-04-30T22:00:00.000Z",
+      "endDate": "2019-07-31T22:00:00.000Z",
+      "summary": "Frontend developer for a survey and market research application delivered as both web and mobile app.",
+      "highlights": [
+        "Developed responsive web UIs with Vue.js and modern JavaScript tooling",
+        "Contributed to a hybrid web and mobile survey platform",
+        "Collaborated with designers and backend engineers on feature delivery"
+      ]
+    },
+    {
+      "name": "Appsfactory GmbH",
+      "position": "Software Developer (Working Student)",
+      "url": "https://appsfactory.de/",
+      "startDate": "2017-11-30T23:00:00.000Z",
+      "endDate": "2019-03-31T22:00:00.000Z",
+      "summary": "Full-stack developer for multiple client projects including React Native mobile apps and React-based web dashboards.",
+      "highlights": [
+        "Built features for a German shopping and rewards app with React Native",
+        "Developed web-based dashboards using React and Redux",
+        "Contributed to backend services with Node.js and Express",
+        "Participated in agile ceremonies and sprint planning"
+      ]
+    },
+    {
+      "name": "Iris Software Inc.",
+      "position": "Software Engineer",
+      "url": "https://www.irissoftware.com/",
+      "startDate": "2016-05-31T22:00:00.000Z",
+      "endDate": "2017-08-31T22:00:00.000Z",
+      "summary": "Software engineer on telecom provisioning systems and enterprise web applications.",
+      "highlights": [
+        "Developed Java-based backend systems for telecom service provisioning",
+        "Built Spring Boot microservices and RESTful APIs",
+        "Worked on Oracle database design and query optimization",
+        "Collaborated with cross-functional teams in a distributed environment",
+        "Contributed to testing frameworks with Selenium and JUnit",
+        "Delivered features in two-week sprints with automated CI/CD"
+      ]
+    },
+    {
+      "name": "Virtusa Corp.",
+      "position": "Senior Engineer",
+      "url": "https://www.virtusa.com/",
+      "startDate": "2014-07-31T22:00:00.000Z",
+      "endDate": "2016-04-30T22:00:00.000Z",
+      "summary": "Senior engineer focused on Java EE enterprise applications with Spring and Hibernate.",
+      "highlights": [
+        "Designed and implemented RESTful APIs with Spring MVC",
+        "Integrated Hibernate for ORM and database interactions",
+        "Mentored junior developers on best practices and design patterns"
+      ]
+    },
+    {
+      "name": "Genpact",
+      "position": "Module Lead",
+      "url": "https://www.genpact.com/",
+      "startDate": "2013-05-31T22:00:00.000Z",
+      "endDate": "2014-06-30T22:00:00.000Z",
+      "summary": "Module lead responsible for guiding a small team on web-based enterprise solutions.",
+      "highlights": [
+        "Led a team of 3–4 developers on Java-based enterprise modules",
+        "Coordinated sprint planning and code reviews"
+      ]
+    },
+    {
+      "name": "NEC",
+      "position": "Software Engineer",
+      "url": "https://www.nec.com/",
+      "startDate": "2012-06-30T22:00:00.000Z",
+      "endDate": "2013-04-30T22:00:00.000Z",
+      "summary": "Software engineer building Java-based backend systems for enterprise clients.",
+      "highlights": [
+        "Developed enterprise applications with Java and J2EE",
+        "Worked on database integration and backend logic"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Open Source Community",
+      "position": "Contributor",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2017-12-31T23:00:00.000Z",
+      "summary": "Active contributor to various open-source projects in the JavaScript and TypeScript ecosystem."
+    },
+    {
+      "organization": "Robinhood Army",
+      "position": "Volunteer",
+      "url": "https://robinhoodarmy.com/",
+      "startDate": "2014-12-31T23:00:00.000Z",
+      "endDate": "2018-06-30T22:00:00.000Z",
+      "summary": "Volunteered at Robinhood Army."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Hochschule Mittweida - University of Applied Sciences",
+      "url": "https://www.hs-mittweida.de/",
+      "area": "Applied Mathematics for Network and Data Science",
+      "studyType": "Master of Science",
+      "startDate": "2017-08-31T22:00:00.000Z",
+      "endDate": "2019-08-31T22:00:00.000Z"
+    },
+    {
+      "institution": "Uttar Pradesh Technical University",
+      "url": "https://www.aktu.ac.in/",
+      "area": "Information Technology",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2008-07-31T22:00:00.000Z",
+      "endDate": "2012-05-31T22:00:00.000Z"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Talent Pool",
+      "date": "2022-11-30T23:00:00.000Z",
+      "awarder": "Adesso SE",
+      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
+    },
+    {
+      "title": "Best Performer Award",
+      "date": "2015-11-30T23:00:00.000Z",
+      "awarder": "Virtusa Corp.",
+      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
+    },
+    {
+      "title": "Innovation Award",
+      "date": "2014-02-28T23:00:00.000Z",
+      "awarder": "Genpact",
+      "summary": "Awarded for innovative solution design that improved system efficiency by 30%."
+    },
+    {
+      "title": "Team Excellence Award",
+      "date": "2016-10-31T23:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Team recognition for delivering a complex telecom provisioning system ahead of schedule."
+    },
+    {
+      "title": "Academic Excellence Scholarship",
+      "date": "2017-08-31T22:00:00.000Z",
+      "awarder": "Université Paris-Saclay",
+      "summary": "Merit-based scholarship for outstanding academic performance in mathematics and computer science."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)"
+    },
+    {
+      "name": "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
+      "url": "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true"
+    },
+    {
+      "name": "Apollo Certified Graph Developer - Professional",
+      "url": "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a"
+    },
+    {
+      "name": "Apollo Certified Graph Developer - Associate",
+      "url": "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067"
+    },
+    {
+      "name": "Git Certified Specialist by GitKraken",
+      "url": "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230"
+    },
+    {
+      "name": "AWS Certified Developer - Associate"
+    },
+    {
+      "name": "AWS Certified Solutions Architect - Associate"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Fraud Detection using Machine Learning",
+      "publisher": "Hochschule Mittweida - University of Applied Sciences",
+      "releaseDate": "2023-05-31T22:00:00.000Z",
+      "url": "https://monami.hs-mittweida.de/frontdoor/index/index/year/2023/docId/13759",
+      "summary": "This paper presents a novel approach to fraud detection using machine learning techniques. We propose a hybrid model that combines supervised and unsupervised learning algorithms to identify fraudulent transactions with high accuracy. Our approach outperforms existing methods in terms of precision and recall."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Development",
+      "level": "Expert"
+    },
+    {
+      "name": "Backend Development",
+      "level": "Expert"
+    },
+    {
+      "name": "Mobile Development",
+      "level": "Advanced"
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "Advanced"
+    },
+    {
+      "name": "Architecture & Design",
+      "level": "Expert"
+    },
+    {
+      "name": "Databases",
+      "level": "Advanced"
+    },
+    {
+      "name": "Testing",
+      "level": "Advanced"
+    },
+    {
+      "name": "Methodologies",
+      "level": "Expert"
+    },
+    {
+      "name": "Data Science & Analytics",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Project Management",
+      "level": "Advanced"
+    },
+    {
+      "name": "Version Control",
+      "level": "Expert"
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "German",
+      "fluency": "Professional Working"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Native"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Open Source"
+    },
+    {
+      "name": "Technology Trends"
+    },
+    {
+      "name": "Mathematics"
+    },
+    {
+      "name": "Fitness & Wellness"
+    },
+    {
+      "name": "Reading"
+    }
+  ]
+}

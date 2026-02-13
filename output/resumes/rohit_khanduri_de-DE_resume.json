@@ -1,0 +1,365 @@
+{
+  "basics": {
+    "name": "Rohit Khanduri",
+    "label": "Softwarearchitekt",
+    "image": "https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG",
+    "email": "rohit.khanduri@hotmail.com",
+    "url": "https://www.rohit.khanduri.de",
+    "summary": "Softwarearchitekt mit über zehn Jahren Erfahrung in der Konzeption und Umsetzung von Microservice-basierten Systemen in den Bereichen Banking, öffentlicher Sektor und Kundenbindungsprogramme. Ich decke den gesamten Software-Entwicklungszyklus ab und arbeite praxisnah mit Cloud-nativen Architekturen, modernen Frontend-Stacks und event-getriebenen Backends. Mein Hintergrund umfasst die Leitung internationaler Teams in Europa und Asien, das Arbeiten in agilen Umgebungen und die Ausrichtung der Architektur an der Geschäftsstrategie. Mit einem Master-Abschluss in angewandter Mathematik für Netzwerk- und Datenwissenschaft und einem Bachelor in Informationstechnologie kombiniere ich analytisches Denken mit pragmatischer Entwicklung.",
+    "location": {
+      "address": "Friedrichsdorf, Deutschland",
+      "city": "Friedrichsdorf",
+      "countryCode": "DE",
+      "region": "Hessen"
+    },
+    "profiles": [
+      {
+        "network": "Other",
+        "username": "rohitkhanduri",
+        "url": "https://rohitkhanduri.substack.com/"
+      },
+      {
+        "network": "GitHub",
+        "username": "rohit1901",
+        "url": "https://github.com/rohit1901"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "rohit-khanduri-9098b84a",
+        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Miles & More GmbH (Lufthansa Group)",
+      "position": "Manager IT",
+      "url": "https://www.miles-and-more.com/",
+      "startDate": "2025-02-28T23:00:00.000Z",
+      "summary": "IT Manager responsible for the architecture of the Miles & More Flutter mobile application and for leading an outsourced development team.",
+      "highlights": [
+        "Own the technical direction and architecture of the Miles & More mobile app",
+        "Lead and coordinate an outsourced development team",
+        "Align architecture decisions with product and design stakeholders",
+        "Oversee CI/CD pipelines and production readiness",
+        "Ensure GDPR compliance, security, and risk management for the app"
+      ]
+    },
+    {
+      "name": "Iris Software Inc.",
+      "position": "Software Engineer",
+      "url": "https://www.irissoftware.com/",
+      "startDate": "2016-05-31T22:00:00.000Z",
+      "endDate": "2017-08-31T22:00:00.000Z",
+      "summary": "Software engineer on telecom provisioning systems and enterprise web applications.",
+      "highlights": [
+        "Developed Java-based backend systems for telecom service provisioning",
+        "Built Spring Boot microservices and RESTful APIs",
+        "Worked on Oracle database design and query optimization",
+        "Collaborated with cross-functional teams in a distributed environment",
+        "Contributed to testing frameworks with Selenium and JUnit",
+        "Delivered features in two-week sprints with automated CI/CD"
+      ]
+    },
+    {
+      "name": "Virtusa Corp.",
+      "position": "Senior Engineer",
+      "url": "https://www.virtusa.com/",
+      "startDate": "2014-07-31T22:00:00.000Z",
+      "endDate": "2016-04-30T22:00:00.000Z",
+      "summary": "Senior engineer focused on Java EE enterprise applications with Spring and Hibernate.",
+      "highlights": [
+        "Designed and implemented RESTful APIs with Spring MVC",
+        "Integrated Hibernate for ORM and database interactions",
+        "Mentored junior developers on best practices and design patterns"
+      ]
+    },
+    {
+      "name": "Genpact",
+      "position": "Module Lead",
+      "url": "https://www.genpact.com/",
+      "startDate": "2013-05-31T22:00:00.000Z",
+      "endDate": "2014-06-30T22:00:00.000Z",
+      "summary": "Module lead responsible for guiding a small team on web-based enterprise solutions.",
+      "highlights": [
+        "Led a team of 3–4 developers on Java-based enterprise modules",
+        "Coordinated sprint planning and code reviews"
+      ]
+    },
+    {
+      "name": "NEC",
+      "position": "Software Engineer",
+      "url": "https://www.nec.com/",
+      "startDate": "2012-06-30T22:00:00.000Z",
+      "endDate": "2013-04-30T22:00:00.000Z",
+      "summary": "Software engineer building Java-based backend systems for enterprise clients.",
+      "highlights": [
+        "Developed enterprise applications with Java and J2EE",
+        "Worked on database integration and backend logic"
+      ]
+    },
+    {
+      "name": "adesso SE",
+      "position": "Softwarearchitekt",
+      "url": "https://www.adesso.de/",
+      "startDate": "2020-07-31T22:00:00.000Z",
+      "endDate": "2025-01-31T23:00:00.000Z",
+      "summary": "Softwarearchitekt und Berater für große Banking- und Behördensysteme mit Microservice- und Micro-Frontend-Architekturen.",
+      "highlights": [
+        "Durchführung von Architektur-Assessments bestehender Produktionssysteme und Vorschläge für Verbesserungen",
+        "Definition von Zielarchitekturen und Technologie-Roadmaps für 1–3 Jahre",
+        "Hauptansprechpartner für Architektur gegenüber Kunden und internen Teams",
+        "Einführung von Coding-Richtlinien, Review-Prozessen und Qualitätsstandards",
+        "Leitung von Frontend-Teams bei React-, Angular- und Flutter-Projekten in regulierten Umgebungen"
+      ]
+    },
+    {
+      "name": "Finatix GmbH",
+      "position": "Software Developer (Werkstudent)",
+      "url": "https://www.finatix.de/",
+      "startDate": "2019-08-31T22:00:00.000Z",
+      "endDate": "2020-06-30T22:00:00.000Z",
+      "summary": "Werkstudent als Entwickler an einem Kreditkarten-Dashboard und einer Mobile-App mit Zahlungsdiensten und Betrugs-bezogenen Data-Science-Features.",
+      "highlights": [
+        "Implementierung neuer Frontend-Features für ein Kreditkarten-Dashboard",
+        "Beitrag zu End-to-End-Funktionalität von Backend bis Frontend",
+        "Arbeit an Betrugserkennungs-Use-Cases mit Data-Science-Tools",
+        "Upgrade der Angular-Codebasis und Auffrischung des UI-Designs"
+      ]
+    },
+    {
+      "name": "Peak Performance Apps GmbH (Tochtergesellschaft der Appsfactory GmbH)",
+      "position": "Software Developer (Werkstudent)",
+      "url": "https://appsfactory.de/",
+      "startDate": "2019-04-30T22:00:00.000Z",
+      "endDate": "2019-07-31T22:00:00.000Z",
+      "summary": "Frontend-Entwickler für eine Umfrage- und Marktforschungsanwendung, die sowohl als Web- als auch als Mobile-App bereitgestellt wurde.",
+      "highlights": [
+        "Entwicklung responsiver Web-UIs mit Vue.js und modernen JavaScript-Tools",
+        "Beitrag zu einer hybriden Web- und Mobile-Umfrageplattform",
+        "Zusammenarbeit mit Designern und Backend-Entwicklern bei der Feature-Auslieferung"
+      ]
+    },
+    {
+      "name": "Appsfactory GmbH",
+      "position": "Software Developer (Werkstudent)",
+      "url": "https://appsfactory.de/",
+      "startDate": "2017-11-30T23:00:00.000Z",
+      "endDate": "2019-03-31T22:00:00.000Z",
+      "summary": "Full-Stack-Entwickler für mehrere Kundenprojekte, darunter React-Native-Mobile-Apps und React-basierte Web-Dashboards.",
+      "highlights": [
+        "Entwicklung von Features für eine deutsche Shopping- und Rewards-App mit React Native",
+        "Erstellung webbasierter Dashboards mit React und Redux",
+        "Beitrag zu Backend-Services mit Node.js und Express",
+        "Teilnahme an agilen Zeremonien und Sprint-Planung"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Robinhood Army",
+      "position": "Volunteer",
+      "url": "https://robinhoodarmy.com/",
+      "startDate": "2014-12-31T23:00:00.000Z",
+      "endDate": "2018-06-30T22:00:00.000Z",
+      "summary": "Volunteered at Robinhood Army."
+    },
+    {
+      "organization": "Open-Source-Community",
+      "position": "Mitwirkender",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2017-12-31T23:00:00.000Z",
+      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
+    },
+    {
+      "organization": "Robinhood Army",
+      "position": "Freiwilliger",
+      "url": "https://robinhoodarmy.com/",
+      "startDate": "2014-12-31T23:00:00.000Z",
+      "endDate": "2018-06-30T22:00:00.000Z",
+      "summary": "Freiwillige Tätigkeit bei Robinhood Army."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Hochschule Mittweida - University of Applied Sciences",
+      "url": "https://www.hs-mittweida.de/",
+      "area": "Applied Mathematics for Network and Data Science",
+      "studyType": "Master of Science",
+      "startDate": "2017-08-31T22:00:00.000Z",
+      "endDate": "2019-08-31T22:00:00.000Z"
+    },
+    {
+      "institution": "Uttar Pradesh Technical University",
+      "url": "https://www.aktu.ac.in/",
+      "area": "Information Technology",
+      "studyType": "Bachelor of Technology",
+      "startDate": "2008-07-31T22:00:00.000Z",
+      "endDate": "2012-05-31T22:00:00.000Z"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Talent Pool",
+      "date": "2022-11-30T23:00:00.000Z",
+      "awarder": "Adesso SE",
+      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
+    },
+    {
+      "title": "Best Performer Award",
+      "date": "2015-11-30T23:00:00.000Z",
+      "awarder": "Virtusa Corp.",
+      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
+    },
+    {
+      "title": "Team Excellence Award",
+      "date": "2016-10-31T23:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Team recognition for delivering a complex telecom provisioning system ahead of schedule."
+    },
+    {
+      "title": "Innovationspreis",
+      "date": "2014-02-28T23:00:00.000Z",
+      "awarder": "Genpact",
+      "summary": "Ausgezeichnet für innovatives Lösungsdesign, das die Systemeffizienz um 30% verbesserte."
+    },
+    {
+      "title": "Stipendium für akademische Exzellenz",
+      "date": "2017-08-31T22:00:00.000Z",
+      "awarder": "Université Paris-Saclay",
+      "summary": "Leistungsbasiertes Stipendium für herausragende akademische Leistungen in Mathematik und Informatik."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)"
+    },
+    {
+      "name": "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
+      "url": "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true"
+    },
+    {
+      "name": "Apollo Certified Graph Developer - Professional",
+      "url": "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a"
+    },
+    {
+      "name": "Apollo Certified Graph Developer - Associate",
+      "url": "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067"
+    },
+    {
+      "name": "Git Certified Specialist by GitKraken",
+      "url": "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230"
+    },
+    {
+      "name": "AWS Certified Developer - Associate",
+      "url": "https://www.aws.training/certification/aws-certified-developer-associate"
+    },
+    {
+      "name": "AWS Certified Solutions Architect - Associate"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Betrugserkennung mit maschinellem Lernen",
+      "publisher": "Hochschule Mittweida - University of Applied Sciences",
+      "releaseDate": "2023-05-31T22:00:00.000Z",
+      "url": "https://monami.hs-mittweida.de/frontdoor/index/index/year/2023/docId/13759",
+      "summary": "Diese Arbeit präsentiert einen neuartigen Ansatz zur Betrugserkennung unter Verwendung von Techniken des maschinellen Lernens. Wir schlagen ein Hybridmodell vor, das überwachte und unüberwachte Lernalgorithmen kombiniert, um betrügerische Transaktionen mit hoher Genauigkeit zu identifizieren. Unser Ansatz übertrifft bestehende Methoden in Bezug auf Präzision und Recall."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Cloud & DevOps",
+      "level": "Advanced"
+    },
+    {
+      "name": "Testing",
+      "level": "Advanced"
+    },
+    {
+      "name": "Data Science & Analytics",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Frontend-Entwicklung",
+      "level": "Expert"
+    },
+    {
+      "name": "Backend-Entwicklung",
+      "level": "Expert"
+    },
+    {
+      "name": "Mobile-Entwicklung",
+      "level": "Advanced"
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "Advanced"
+    },
+    {
+      "name": "Architektur & Design",
+      "level": "Expert"
+    },
+    {
+      "name": "Datenbanken",
+      "level": "Advanced"
+    },
+    {
+      "name": "Testing",
+      "level": "Advanced"
+    },
+    {
+      "name": "Methoden",
+      "level": "Expert"
+    },
+    {
+      "name": "Data Science & Analytics",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Projektmanagement",
+      "level": "Advanced"
+    },
+    {
+      "name": "Versionskontrolle",
+      "level": "Expert"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Hindi",
+      "fluency": "Native"
+    },
+    {
+      "language": "Englisch",
+      "fluency": "Native"
+    },
+    {
+      "language": "Deutsch",
+      "fluency": "Professional Working"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Open Source"
+    },
+    {
+      "name": "Fitness & Wellness"
+    },
+    {
+      "name": "Open Source"
+    },
+    {
+      "name": "Technologie-Trends"
+    },
+    {
+      "name": "Mathematik"
+    },
+    {
+      "name": "Fitness & Wellness"
+    },
+    {
+      "name": "Lesen"
+    }
+  ]
+}

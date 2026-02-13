@@ -9,7 +9,13 @@ import { RemixIconComponent } from "@/components/RemixIconComponent"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import LanguageToggle from "@/components/ui/LanguageToggle"
-import { FooterSection, Image, Language, Maybe, NavigationLink } from "@/app/graphql/types"
+import {
+  FooterSection,
+  Image,
+  Language,
+  Maybe,
+  NavigationLink,
+} from "@/app/graphql/types"
 
 // Constants
 export const CURRENT_YEAR = new Date().getFullYear()
@@ -200,7 +206,9 @@ const FooterLinks = ({ sections }: FooterLinksProps) => {
 
   const gridClass = clsx(
     "grid w-full grid-cols-1 gap-10 text-center",
-    "sm:grid-cols-2 sm:text-left", `lg:grid-cols-${sections.length}`, `xl:grid-cols-${sections.length}`
+    "sm:grid-cols-2 sm:text-left",
+    `lg:grid-cols-${sections.length}`,
+    `xl:grid-cols-${sections.length}`,
   )
 
   return (
@@ -210,7 +218,7 @@ const FooterLinks = ({ sections }: FooterLinksProps) => {
           <FooterLinksSection key={section.id} section={section} />
         ))}
       </div>
-    </div >
+    </div>
   )
 }
 

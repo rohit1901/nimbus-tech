@@ -128,7 +128,7 @@ export function NavBar() {
               height={50}
             />
           </Link>
-          <nav className="hidden lg:block lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:transform">
+          <nav className="hidden lg:absolute lg:top-1/2 lg:left-1/2 lg:block lg:-translate-x-1/2 lg:-translate-y-1/2 lg:transform">
             <div className="flex items-center gap-10 font-medium">
               {navigation?.items?.map((link) => (
                 <Link
@@ -203,7 +203,9 @@ export function NavBar() {
           <ul className="space-y-4 font-medium">
             {navigation?.items?.map((link) => (
               <li key={link.label} onClick={() => setOpen(false)}>
-                <Link href={buildLink(link.href, !!link.external)}>{link.label}</Link>
+                <Link href={buildLink(link.href, !!link.external)}>
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
