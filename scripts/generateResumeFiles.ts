@@ -137,6 +137,50 @@ async function checkTheme(theme: string): Promise<boolean> {
 }
 
 /**
+ * Remove profile pictures from HTML
+ */
+function removeProfilePictures(html: string): string {
+  // Add CSS to hide profile pictures
+  const hideProfilePicCSS = `
+.profile-pic {
+  display: none !important;
+}
+@media (max-width: 992px) {
+  .profile-pic {
+    display: none !important;
+  }
+}
+@media print {
+  .profile-pic {
+    display: none !important;
+  }
+}
+</style>`
+
+  // Replace the closing </style> tag with our custom CSS
+  html = html.replace('</style>', hideProfilePicCSS)
+
+  return html
+}
+
+/**
+ * Fix relative URLs to use CDN (unpkg.com)
+ */
+function fixRelativeUrls(html: string): string {
+  // Fix font URLs for icomoon fonts
+  html = html.replace(/url\('fonts\//g, "url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/")
+
+  // Fix protocol-relative URLs (//unpkg.com) to use https
+  html = html.replace(/url\("\/\/unpkg\.com/g, 'url("https://unpkg.com')
+
+  // Fix any other relative asset URLs that might be present
+  html = html.replace(/src="fonts\//g, 'src="https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/')
+  html = html.replace(/href="fonts\//g, 'href="https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/')
+
+  return html
+}
+
+/**
  * Generate HTML from JSON Resume using resumed
  */
 async function generateHTML(
@@ -147,7 +191,11 @@ async function generateHTML(
   try {
     // Import the theme dynamically
     const theme = await import(themeName)
-    const html = await resumed.render(resumeData, theme)
+    let html = await resumed.render(resumeData, theme)
+
+    // Post-process: Fix relative URLs and remove profile pictures
+    html = fixRelativeUrls(html)
+    html = removeProfilePictures(html)
 
     writeFileSync(outputPath, html, "utf-8")
     console.log(`   ✓ HTML: ${outputPath}`)

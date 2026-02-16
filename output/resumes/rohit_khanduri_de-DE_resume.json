@@ -7,21 +7,21 @@
     "url": "https://www.rohit.khanduri.de",
     "summary": "Softwarearchitekt mit über zehn Jahren Erfahrung in der Konzeption und Umsetzung von Microservice-basierten Systemen in den Bereichen Banking, öffentlicher Sektor und Kundenbindungsprogramme. Ich decke den gesamten Software-Entwicklungszyklus ab und arbeite praxisnah mit Cloud-nativen Architekturen, modernen Frontend-Stacks und event-getriebenen Backends. Mein Hintergrund umfasst die Leitung internationaler Teams in Europa und Asien, das Arbeiten in agilen Umgebungen und die Ausrichtung der Architektur an der Geschäftsstrategie. Mit einem Master-Abschluss in angewandter Mathematik für Netzwerk- und Datenwissenschaft und einem Bachelor in Informationstechnologie kombiniere ich analytisches Denken mit pragmatischer Entwicklung.",
     "location": {
-      "address": "Friedrichsdorf, Deutschland",
-      "city": "Friedrichsdorf",
+      "address": "Frankfurt, Hessen, Deutschland",
+      "city": "Frankfurt",
       "countryCode": "DE",
       "region": "Hessen"
     },
     "profiles": [
       {
-        "network": "Other",
-        "username": "rohitkhanduri",
-        "url": "https://rohitkhanduri.substack.com/"
-      },
-      {
         "network": "GitHub",
         "username": "rohit1901",
         "url": "https://github.com/rohit1901"
+      },
+      {
+        "network": "Other",
+        "username": "rohitkhanduri",
+        "url": "https://rohitkhanduri.substack.com/"
       },
       {
         "network": "LinkedIn",
@@ -165,19 +165,19 @@
       "summary": "Volunteered at Robinhood Army."
     },
     {
-      "organization": "Open-Source-Community",
-      "position": "Mitwirkender",
-      "url": "https://github.com/rohit1901",
-      "startDate": "2017-12-31T23:00:00.000Z",
-      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
-    },
-    {
       "organization": "Robinhood Army",
       "position": "Freiwilliger",
       "url": "https://robinhoodarmy.com/",
       "startDate": "2014-12-31T23:00:00.000Z",
       "endDate": "2018-06-30T22:00:00.000Z",
       "summary": "Freiwillige Tätigkeit bei Robinhood Army."
+    },
+    {
+      "organization": "Open-Source-Community",
+      "position": "Mitwirkender",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2017-12-31T23:00:00.000Z",
+      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
     }
   ],
   "education": [
@@ -187,15 +187,15 @@
       "area": "Applied Mathematics for Network and Data Science",
       "studyType": "Master of Science",
       "startDate": "2017-08-31T22:00:00.000Z",
-      "endDate": "2019-08-31T22:00:00.000Z"
+      "endDate": "2022-08-31T22:00:00.000Z"
     },
     {
       "institution": "Uttar Pradesh Technical University",
       "url": "https://www.aktu.ac.in/",
       "area": "Information Technology",
       "studyType": "Bachelor of Technology",
-      "startDate": "2008-07-31T22:00:00.000Z",
-      "endDate": "2012-05-31T22:00:00.000Z"
+      "startDate": "2007-07-31T22:00:00.000Z",
+      "endDate": "2011-05-31T22:00:00.000Z"
     }
   ],
   "awards": [
@@ -273,12 +273,8 @@
       "level": "Advanced"
     },
     {
-      "name": "Testing",
-      "level": "Advanced"
-    },
-    {
-      "name": "Data Science & Analytics",
-      "level": "Intermediate"
+      "name": "Web3 & Blockchain",
+      "level": "Beginner"
     },
     {
       "name": "Frontend-Entwicklung",
@@ -289,40 +285,44 @@
       "level": "Expert"
     },
     {
-      "name": "Mobile-Entwicklung",
-      "level": "Advanced"
-    },
-    {
       "name": "Cloud & DevOps",
       "level": "Advanced"
     },
     {
-      "name": "Architektur & Design",
-      "level": "Expert"
-    },
-    {
-      "name": "Datenbanken",
+      "name": "Datenbank & Datenverwaltung",
       "level": "Advanced"
     },
     {
-      "name": "Testing",
-      "level": "Advanced"
-    },
-    {
-      "name": "Methoden",
+      "name": "Architektur & Systemdesign",
       "level": "Expert"
     },
     {
-      "name": "Data Science & Analytics",
+      "name": "Testing & Qualitätssicherung",
+      "level": "Advanced"
+    },
+    {
+      "name": "KI & Machine Learning",
       "level": "Intermediate"
     },
     {
-      "name": "Projektmanagement",
+      "name": "Mobile Entwicklung",
       "level": "Advanced"
     },
     {
-      "name": "Versionskontrolle",
+      "name": "Entwicklertools & Praktiken",
       "level": "Expert"
+    },
+    {
+      "name": "Web3 & Blockchain",
+      "level": "Beginner"
+    },
+    {
+      "name": "Agile & Projektmanagement",
+      "level": "Expert"
+    },
+    {
+      "name": "Sicherheit & Compliance",
+      "level": "Advanced"
     }
   ],
   "languages": [
@@ -360,6 +360,48 @@
     },
     {
       "name": "Lesen"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Enterprise KI-gestützte Kundensupport-Plattform",
+      "startDate": "2069-06-30T22:00:00.000Z",
+      "description": "Leitete die Entwicklung einer skalierbaren KI-gestützten Kundensupport-Plattform für Millionen von Nutzern mit Integration mehrerer KI-Modelle und Echtzeit-Kommunikationsfähigkeiten."
+    },
+    {
+      "name": "Retail Analytics & Bestandsverwaltungssystem",
+      "startDate": "2071-05-31T22:00:00.000Z",
+      "endDate": "2080-06-30T22:00:00.000Z",
+      "description": "Entwicklung einer umfassenden Analytics- und Bestandsverwaltungsplattform für großflächige Einzelhandelsoperationen mit Echtzeit-Einblicken und automatisierter Bestandsoptimierung."
+    },
+    {
+      "name": "Multi-Tenant SaaS-Plattform für Gesundheitswesen",
+      "startDate": "2074-04-30T22:00:00.000Z",
+      "endDate": "2070-05-31T22:00:00.000Z",
+      "description": "Architektur und Aufbau einer HIPAA-konformen Multi-Tenant SaaS-Plattform für Gesundheitsdienstleister mit sicherer Patientendatenverwaltung und Telegesundheitsfunktionen."
+    },
+    {
+      "name": "Mobile-First E-Commerce-Plattform",
+      "startDate": "2077-03-31T22:00:00.000Z",
+      "endDate": "2073-04-30T22:00:00.000Z",
+      "description": "Leitete die Entwicklung einer Mobile-First E-Commerce-Plattform mit erweiterten Funktionen wie AR-Produktvorschau, personalisierten Empfehlungen und nahtlosem Checkout-Erlebnis."
+    },
+    {
+      "name": "Echtzeit-Kollaborationstool",
+      "startDate": "2069-03-31T22:00:00.000Z",
+      "endDate": "2076-03-31T22:00:00.000Z",
+      "description": "Entwicklung einer Echtzeit-Kollaborations-Workspace-Anwendung, die Teams ermöglicht, gemeinsam an Dokumenten, Whiteboards und Projekten mit Live-Updates zu arbeiten."
+    },
+    {
+      "name": "Headless CMS mit Multi-Sprach-Unterstützung",
+      "startDate": "2074-06-30T22:00:00.000Z",
+      "description": "Aufbau eines modernen Headless CMS mit Keystone.js mit erweiterten Funktionen wie Multi-Sprach-Unterstützung, benutzerdefinierten Feldtypen und GraphQL-API."
+    },
+    {
+      "name": "Verteiltes Task-Scheduler & Job-Queue-System",
+      "startDate": "2076-02-29T23:00:00.000Z",
+      "endDate": "2080-02-29T23:00:00.000Z",
+      "description": "Design und Implementierung eines verteilten Task-Scheduling-Systems für die Verarbeitung von Millionen von Hintergrund-Jobs mit Zuverlässigkeit und Fehlertoleranz."
     }
   ]
 }

@@ -3,25 +3,25 @@
     "name": "Rohit Khanduri",
     "label": "Software Architect",
     "image": "https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG",
-    "email": "rohit.khanduri@hotmail.com",
-    "url": "https://www.rohit.khanduri.de",
-    "summary": "Software architect with more than a decade of experience designing and delivering microservice-based systems across banking, public sector, and loyalty programs. I cover the full software development lifecycle and work hands-on with cloud-native architectures, modern frontend stacks, and event-driven backends. My background includes leading international teams in Europe and Asia, operating in agile environments, and aligning architecture with business strategy. With a Master's degree in Applied Mathematics for Network and Data Science and a Bachelor's in Information Technology, I combine analytical thinking with pragmatic engineering.",
+    "email": "rohit.khanduri@example.com",
+    "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/",
+    "summary": "I'm a seasoned Software Architect with over a decade of expertise in Software Development, System Design, and Team Leadership. Specializing in building scalable, high-performance applications using modern technologies including Node.js, React, TypeScript, GraphQL, and cloud platforms. Passionate about solving complex problems, mentoring teams, and driving innovation through best practices in software architecture and design patterns.",
     "location": {
-      "address": "Friedrichsdorf, Germany",
-      "city": "Friedrichsdorf",
+      "address": "Frankfurt, Hesse, Germany",
+      "city": "Frankfurt",
       "countryCode": "DE",
       "region": "Hessen"
     },
     "profiles": [
       {
-        "network": "Other",
-        "username": "rohitkhanduri",
-        "url": "https://rohitkhanduri.substack.com/"
-      },
-      {
         "network": "GitHub",
         "username": "rohit1901",
         "url": "https://github.com/rohit1901"
+      },
+      {
+        "network": "Other",
+        "username": "rohitkhanduri",
+        "url": "https://rohitkhanduri.substack.com/"
       },
       {
         "network": "LinkedIn",
@@ -170,6 +170,14 @@
       "startDate": "2014-12-31T23:00:00.000Z",
       "endDate": "2018-06-30T22:00:00.000Z",
       "summary": "Volunteered at Robinhood Army."
+    },
+    {
+      "organization": "Robinhood Army",
+      "position": "Freiwilliger",
+      "url": "https://robinhoodarmy.com/",
+      "startDate": "2014-12-31T23:00:00.000Z",
+      "endDate": "2018-06-30T22:00:00.000Z",
+      "summary": "Freiwillige Tätigkeit bei Robinhood Army."
     }
   ],
   "education": [
@@ -179,15 +187,15 @@
       "area": "Applied Mathematics for Network and Data Science",
       "studyType": "Master of Science",
       "startDate": "2017-08-31T22:00:00.000Z",
-      "endDate": "2019-08-31T22:00:00.000Z"
+      "endDate": "2022-08-31T22:00:00.000Z"
     },
     {
       "institution": "Uttar Pradesh Technical University",
       "url": "https://www.aktu.ac.in/",
       "area": "Information Technology",
       "studyType": "Bachelor of Technology",
-      "startDate": "2008-07-31T22:00:00.000Z",
-      "endDate": "2012-05-31T22:00:00.000Z"
+      "startDate": "2007-07-31T22:00:00.000Z",
+      "endDate": "2011-05-31T22:00:00.000Z"
     }
   ],
   "awards": [
@@ -268,7 +276,43 @@
       "level": "Expert"
     },
     {
+      "name": "Cloud & DevOps",
+      "level": "Advanced"
+    },
+    {
+      "name": "Database & Data Management",
+      "level": "Advanced"
+    },
+    {
+      "name": "Architecture & System Design",
+      "level": "Expert"
+    },
+    {
+      "name": "Testing & Quality Assurance",
+      "level": "Advanced"
+    },
+    {
+      "name": "AI & Machine Learning",
+      "level": "Intermediate"
+    },
+    {
       "name": "Mobile Development",
+      "level": "Advanced"
+    },
+    {
+      "name": "Developer Tools & Practices",
+      "level": "Expert"
+    },
+    {
+      "name": "Web3 & Blockchain",
+      "level": "Beginner"
+    },
+    {
+      "name": "Agile & Project Management",
+      "level": "Expert"
+    },
+    {
+      "name": "Security & Compliance",
       "level": "Advanced"
     },
     {
@@ -276,32 +320,8 @@
       "level": "Advanced"
     },
     {
-      "name": "Architecture & Design",
-      "level": "Expert"
-    },
-    {
-      "name": "Databases",
-      "level": "Advanced"
-    },
-    {
-      "name": "Testing",
-      "level": "Advanced"
-    },
-    {
-      "name": "Methodologies",
-      "level": "Expert"
-    },
-    {
-      "name": "Data Science & Analytics",
-      "level": "Intermediate"
-    },
-    {
-      "name": "Project Management",
-      "level": "Advanced"
-    },
-    {
-      "name": "Version Control",
-      "level": "Expert"
+      "name": "Web3 & Blockchain",
+      "level": "Beginner"
     }
   ],
   "languages": [
@@ -333,6 +353,54 @@
     },
     {
       "name": "Reading"
+    },
+    {
+      "name": "Open Source"
+    },
+    {
+      "name": "Fitness & Wellness"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Enterprise AI-Powered Customer Support Platform",
+      "startDate": "2069-06-30T22:00:00.000Z",
+      "description": "Led the development of a scalable AI-powered customer support platform serving millions of users, integrating multiple AI models and real-time communication capabilities."
+    },
+    {
+      "name": "Retail Analytics & Inventory Management System",
+      "startDate": "2071-05-31T22:00:00.000Z",
+      "endDate": "2080-06-30T22:00:00.000Z",
+      "description": "Developed a comprehensive analytics and inventory management platform for large-scale retail operations, enabling real-time insights and automated inventory optimization."
+    },
+    {
+      "name": "Multi-Tenant SaaS Platform for Healthcare",
+      "startDate": "2074-04-30T22:00:00.000Z",
+      "endDate": "2070-05-31T22:00:00.000Z",
+      "description": "Architected and built a HIPAA-compliant multi-tenant SaaS platform for healthcare providers, enabling secure patient data management and telehealth capabilities."
+    },
+    {
+      "name": "Mobile-First E-commerce Platform",
+      "startDate": "2077-03-31T22:00:00.000Z",
+      "endDate": "2073-04-30T22:00:00.000Z",
+      "description": "Led development of a mobile-first e-commerce platform with advanced features including AR product preview, personalized recommendations, and seamless checkout experience."
+    },
+    {
+      "name": "Real-Time Collaboration Tool",
+      "startDate": "2069-03-31T22:00:00.000Z",
+      "endDate": "2076-03-31T22:00:00.000Z",
+      "description": "Developed a real-time collaborative workspace application enabling teams to work together on documents, whiteboards, and projects with live updates."
+    },
+    {
+      "name": "Headless CMS with Multi-Language Support",
+      "startDate": "2074-06-30T22:00:00.000Z",
+      "description": "Built a modern headless CMS using Keystone.js with advanced features including multi-language support, custom field types, and GraphQL API."
+    },
+    {
+      "name": "Distributed Task Scheduler & Job Queue System",
+      "startDate": "2076-02-29T23:00:00.000Z",
+      "endDate": "2080-02-29T23:00:00.000Z",
+      "description": "Designed and implemented a distributed task scheduling system for processing millions of background jobs with reliability and fault tolerance."
     }
   ]
 }
