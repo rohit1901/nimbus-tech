@@ -187,8 +187,7 @@ export async function getPageContentWithFallback(
 
   // If all else fails, throw an error
   throw new Error(
-    `Could not find content for slug "${slug}" in language "${language}"${
-      fallbackFilePath ? ` or in fallback file "${fallbackFilePath}"` : ""
+    `Could not find content for slug "${slug}" in language "${language}"${fallbackFilePath ? ` or in fallback file "${fallbackFilePath}"` : ""
     }`,
   )
 }
@@ -221,8 +220,8 @@ export async function getLegalContent(
       "de-DE": "privacy-policy-de",
     },
     terms: {
-      "en-US": "impressum",
-      "de-DE": "impressum-de",
+      "en-US": "terms",
+      "de-DE": "terms-de",
     },
   }
 
@@ -235,8 +234,8 @@ export async function getLegalContent(
       "de-DE": "output/page-content/de-DE/privacy-policy-de.md",
     },
     terms: {
-      "en-US": "output/page-content/en-US/impressum.md",
-      "de-DE": "output/page-content/de-DE/impressum-de.md",
+      "en-US": "output/page-content/en-US/terms.md",
+      "de-DE": "output/page-content/de-DE/terms-de.md",
     },
   }
 

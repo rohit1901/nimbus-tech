@@ -73,8 +73,16 @@ export function ContentGuard({ children }: ContentGuardProps) {
     return <LoadingState variant="default" centered />
   }
 
-  if (error || !activeContent) {
+  if (error) {
+    return <ErrorState message={`Error loading content: ${error}`} />
+  }
+
+  if (!activeContent) {
     return <ErrorState message="Content not available" />
+  }
+
+  if (!activeContent.sections) {
+    return <ErrorState message="Page sections not available" />
   }
 
   return <>{children}</>

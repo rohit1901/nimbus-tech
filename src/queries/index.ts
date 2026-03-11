@@ -877,7 +877,6 @@ export const GET_RESUME = gql`
 export function usePageContents() {
   const res = useQuery<Pick<Query, "pageContents">>(GET_PAGE_CONTENTS)
   if (res.error) {
-    // console.error(res.error)
     return {
       data: { pageContents: MockPageContent.data.pageContents },
       loading: false,
@@ -905,7 +904,6 @@ export function useFooterSection() {
 export function useLanguage() {
   const res = useQuery<Pick<Query, "languages">>(GET_LANGUAGES)
   if (res.error) {
-    // console.error(res.error)
     return {
       data: { languages: MockLanguages.data.languages },
       loading: false,

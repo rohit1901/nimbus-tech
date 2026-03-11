@@ -28,7 +28,9 @@ export const Main = () => {
     currentLanguage?.value ?? "en-US",
   )
 
-  if (!activeContent) return null
+  if (!activeContent) {
+    return null
+  }
 
   return (
     <main className="relative mx-auto flex flex-col">
