@@ -44,19 +44,14 @@ export const Main = () => {
       </div>
 
       {content.features && (
-        <Section className="mt-52">
-          <Features features={content.features} />
-        </Section>
-      )}
-
-      {content.testimonials && (
         <>
-          <Section className="mt-32">
-            <Testimonials testimonial={content.testimonials} />
+          <Section className="mt-52">
+            <Features features={content.features} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
+
 
       {content.map && (
         <>
@@ -67,6 +62,14 @@ export const Main = () => {
         </>
       )}
 
+      {content.about && content.approach && (
+        <>
+          <Section>
+            <AboutUs about={content.about} approaches={content.approach} />
+          </Section>
+          <FeatureDivider className="my-16 max-w-6xl" />
+        </>
+      )}
       {content.certifications && (
         <>
           <Section>
@@ -94,15 +97,15 @@ export const Main = () => {
         </>
       )}
 
-      {content.about && content.approach && (
+
+      {content.testimonials && (
         <>
-          <Section>
-            <AboutUs about={content.about} approaches={content.approach} />
+          <Section className="mt-32">
+            <Testimonials testimonial={content.testimonials} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
       )}
-
       {content.cta && (
         <Section className="mt-10 mb-40">
           <CallToAction cta={content.cta} />

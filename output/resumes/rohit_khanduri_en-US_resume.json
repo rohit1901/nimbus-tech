@@ -3,7 +3,7 @@
     "name": "Rohit Khanduri",
     "label": "Software Architect",
     "image": "https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG",
-    "email": "rohit.khanduri@example.com",
+    "email": "rohit.khanduri@hotmail.com",
     "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/",
     "summary": "I'm a seasoned Software Architect with over a decade of expertise in Software Development, System Design, and Team Leadership. Specializing in building scalable, high-performance applications using modern technologies including Node.js, React, TypeScript, GraphQL, and cloud platforms. Passionate about solving complex problems, mentoring teams, and driving innovation through best practices in software architecture and design patterns.",
     "location": {
@@ -14,6 +14,11 @@
     },
     "profiles": [
       {
+        "network": "LinkedIn",
+        "username": "rohit-khanduri-9098b84a",
+        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
+      },
+      {
         "network": "GitHub",
         "username": "rohit1901",
         "url": "https://github.com/rohit1901"
@@ -22,11 +27,6 @@
         "network": "Other",
         "username": "rohitkhanduri",
         "url": "https://rohitkhanduri.substack.com/"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "rohit-khanduri-9098b84a",
-        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
       }
     ]
   },
@@ -170,14 +170,6 @@
       "startDate": "2014-12-31T23:00:00.000Z",
       "endDate": "2018-06-30T22:00:00.000Z",
       "summary": "Volunteered at Robinhood Army."
-    },
-    {
-      "organization": "Robinhood Army",
-      "position": "Freiwilliger",
-      "url": "https://robinhoodarmy.com/",
-      "startDate": "2014-12-31T23:00:00.000Z",
-      "endDate": "2018-06-30T22:00:00.000Z",
-      "summary": "Freiwillige Tätigkeit bei Robinhood Army."
     }
   ],
   "education": [
@@ -314,14 +306,6 @@
     {
       "name": "Security & Compliance",
       "level": "Advanced"
-    },
-    {
-      "name": "Cloud & DevOps",
-      "level": "Advanced"
-    },
-    {
-      "name": "Web3 & Blockchain",
-      "level": "Beginner"
     }
   ],
   "languages": [
@@ -353,12 +337,6 @@
     },
     {
       "name": "Reading"
-    },
-    {
-      "name": "Open Source"
-    },
-    {
-      "name": "Fitness & Wellness"
     }
   ],
   "projects": [

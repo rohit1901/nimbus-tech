@@ -14,6 +14,11 @@
     },
     "profiles": [
       {
+        "network": "LinkedIn",
+        "username": "rohit-khanduri-9098b84a",
+        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
+      },
+      {
         "network": "GitHub",
         "username": "rohit1901",
         "url": "https://github.com/rohit1901"
@@ -22,11 +27,6 @@
         "network": "Other",
         "username": "rohitkhanduri",
         "url": "https://rohitkhanduri.substack.com/"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "rohit-khanduri-9098b84a",
-        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
       }
     ]
   },
@@ -165,19 +165,19 @@
       "summary": "Volunteered at Robinhood Army."
     },
     {
+      "organization": "Open-Source-Community",
+      "position": "Mitwirkender",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2017-12-31T23:00:00.000Z",
+      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
+    },
+    {
       "organization": "Robinhood Army",
       "position": "Freiwilliger",
       "url": "https://robinhoodarmy.com/",
       "startDate": "2014-12-31T23:00:00.000Z",
       "endDate": "2018-06-30T22:00:00.000Z",
       "summary": "Freiwillige Tätigkeit bei Robinhood Army."
-    },
-    {
-      "organization": "Open-Source-Community",
-      "position": "Mitwirkender",
-      "url": "https://github.com/rohit1901",
-      "startDate": "2017-12-31T23:00:00.000Z",
-      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
     }
   ],
   "education": [

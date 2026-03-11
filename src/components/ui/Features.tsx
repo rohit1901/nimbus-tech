@@ -435,7 +435,7 @@ export default function Features({ features }: { features?: Feature[] }) {
     >
       <VerticalLines />
 
-      {features.map((feature) => (
+      {[...features].sort((a, b) => (a.featureId ?? 0) - (b.featureId ?? 0)).map((feature) => (
         <div
           className="grid grid-cols-1 gap-12 md:grid-cols-4 md:gap-0"
           key={feature.title}
