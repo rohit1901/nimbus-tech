@@ -8,8 +8,8 @@ const TestimonialOrFallback = ({
   testimonial: TestimonialItem
 }) => {
   return (
-    <div className="mb-16" key={testimonial.name}>
-      <span className="mt-4 block text-base text-gray-900/70">
+    <div className="mb-16 rounded-lg p-6 transition-all duration-700 group-hover:bg-white/40" key={testimonial.name}>
+      <span className="mt-4 block text-base font-semibold text-gray-900">
         {testimonial.content}
       </span>
 
@@ -25,10 +25,10 @@ const TestimonialOrFallback = ({
           </Badge>
         )}
         <div>
-          <div className="text-base font-medium text-gray-900">
+          <div className="text-base font-bold text-gray-900">
             {testimonial.name}
           </div>
-          <div className="text-sm text-[#C33621]/80">
+          <div className="text-sm text-[#C33621]/80 font-bold">
             {testimonial.role}{" "}
             {testimonial.company && `at ${testimonial.company}`}
           </div>
@@ -75,7 +75,7 @@ export default function Testimonials({
   }
   const testimonialsToShow = getTestimonials(testimonials, fallback)
   return (
-    <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
+    <section className="group relative mx-auto w-full max-w-6xl overflow-hidden rounded-xl shadow-2xl shadow-[#366A79]/70">
       {background?.map((bg) => (
         <div
           key={bg.id}
