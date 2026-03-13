@@ -119,43 +119,48 @@ export default function Map({ mapContent }: { mapContent?: Maybe<MapType> }) {
 
         <MapFeaturePin
           className="absolute -top-3 left-[130px]"
-          icon={RiCodeBoxLine}
-          label="Custom Software"
-          pingColor="ring-orange-500/50"
-          animationDelay="3.5s"
-        />
-        <MapFeaturePin
-          className="absolute top-[73px] left-[243px]"
           icon={RiCloudLine}
-          label="Cloud & DevOps"
+          label="Cloud‑native AWS"
           pingColor="ring-blue-400/50"
           animationDelay="2.5s"
-          labelClass="-right-[1rem]"
         />
+
         <MapFeaturePin
-          className="absolute top-32 right-[300px]"
-          icon={RiReactjsLine}
-          label="Frontend"
+          className="absolute top-[73px] left-[243px]"
+          icon={RiStackLine}
+          label="Multi‑account"
           pingColor="ring-cyan-400/50"
           animationDelay="3.5s"
-          labelClass="-right-[3.7rem]"
+          labelClass="-right-[2.5rem]"
         />
+
+        <MapFeaturePin
+          className="absolute top-32 right-[300px]"
+          icon={RiCodeBoxLine}
+          label="Infrastructure as Code"
+          pingColor="ring-emerald-400/50"
+          animationDelay="4s"
+          labelClass="-right-[4.5rem]"
+        />
+
         <MapFeaturePin
           className="absolute top-20 right-[390px]"
           icon={RiBarChart2Line}
+          label="Cost Optimization"
+          pingColor="ring-orange-500/50"
+          animationDelay="3s"
+          labelClass="-right-[4.5rem]"
         />
-        <MapFeaturePin
-          className="absolute top-12 right-[430px]"
-          icon={RiStackLine}
-          label="Tech Stack"
-          labelClass="-right-7"
-        />
+
         <MapFeaturePin
           className="absolute top-9 right-56"
           icon={RiTeamLine}
-          label="Team"
+          label="AWS Partnership"
           iconClass="z-10"
+          pingColor="ring-purple-400/50"
+          animationDelay="4.5s"
         />
+
       </div>
     </section>
   )

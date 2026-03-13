@@ -19,83 +19,37 @@
         "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
       },
       {
-        "network": "GitHub",
-        "username": "rohit1901",
-        "url": "https://github.com/rohit1901"
-      },
-      {
         "network": "Other",
         "username": "rohitkhanduri",
         "url": "https://rohitkhanduri.substack.com/"
+      },
+      {
+        "network": "GitHub",
+        "username": "rohit1901",
+        "url": "https://github.com/rohit1901"
       }
     ]
   },
   "work": [
-    {
-      "name": "Miles & More GmbH (Lufthansa Group)",
-      "position": "Manager IT",
-      "url": "https://www.miles-and-more.com/",
-      "startDate": "2025-02-28T23:00:00.000Z",
-      "summary": "IT Manager responsible for the architecture of the Miles & More Flutter mobile application and for leading an outsourced development team.",
-      "highlights": [
-        "Own the technical direction and architecture of the Miles & More mobile app",
-        "Lead and coordinate an outsourced development team",
-        "Align architecture decisions with product and design stakeholders",
-        "Oversee CI/CD pipelines and production readiness",
-        "Ensure GDPR compliance, security, and risk management for the app"
-      ]
-    },
-    {
-      "name": "Iris Software Inc.",
-      "position": "Software Engineer",
-      "url": "https://www.irissoftware.com/",
-      "startDate": "2016-05-31T22:00:00.000Z",
-      "endDate": "2017-08-31T22:00:00.000Z",
-      "summary": "Software engineer on telecom provisioning systems and enterprise web applications.",
-      "highlights": [
-        "Developed Java-based backend systems for telecom service provisioning",
-        "Built Spring Boot microservices and RESTful APIs",
-        "Worked on Oracle database design and query optimization",
-        "Collaborated with cross-functional teams in a distributed environment",
-        "Contributed to testing frameworks with Selenium and JUnit",
-        "Delivered features in two-week sprints with automated CI/CD"
-      ]
-    },
-    {
-      "name": "Virtusa Corp.",
-      "position": "Senior Engineer",
-      "url": "https://www.virtusa.com/",
-      "startDate": "2014-07-31T22:00:00.000Z",
-      "endDate": "2016-04-30T22:00:00.000Z",
-      "summary": "Senior engineer focused on Java EE enterprise applications with Spring and Hibernate.",
-      "highlights": [
-        "Designed and implemented RESTful APIs with Spring MVC",
-        "Integrated Hibernate for ORM and database interactions",
-        "Mentored junior developers on best practices and design patterns"
-      ]
-    },
-    {
-      "name": "Genpact",
-      "position": "Module Lead",
-      "url": "https://www.genpact.com/",
-      "startDate": "2013-05-31T22:00:00.000Z",
-      "endDate": "2014-06-30T22:00:00.000Z",
-      "summary": "Module lead responsible for guiding a small team on web-based enterprise solutions.",
-      "highlights": [
-        "Led a team of 3–4 developers on Java-based enterprise modules",
-        "Coordinated sprint planning and code reviews"
-      ]
-    },
     {
       "name": "NEC",
       "position": "Software Engineer",
       "url": "https://www.nec.com/",
       "startDate": "2012-06-30T22:00:00.000Z",
       "endDate": "2013-04-30T22:00:00.000Z",
-      "summary": "Software engineer building Java-based backend systems for enterprise clients.",
+      "summary": "Software engineer building Java-based backend components for enterprise clients.",
       "highlights": [
-        "Developed enterprise applications with Java and J2EE",
-        "Worked on database integration and backend logic"
+        "Implemented backend features and integrations on Java/J2EE stacks ✌🏻 Worked closely with senior engineers on performance and reliability improvements"
+      ]
+    },
+    {
+      "name": "Miles & More GmbH (Lufthansa Group)",
+      "position": "Manager IT",
+      "url": "https://www.miles-and-more.com/",
+      "startDate": "2025-02-28T23:00:00.000Z",
+      "summary": "IT-Manager verantwortlich für die Architektur der Miles & More Flutter-Mobile-App und für die Leitung eines ausgelagerten Entwicklungsteams.",
+      "highlights": [
+        "Verantwortung für die technische Ausrichtung und Architektur der Miles & More Mobile-App ✌🏻 Leitung und Koordination eines ausgelagerten Entwicklungsteams ✌🏻 Abstimmung von Architekturentscheidungen mit Produkt- und Design-Stakeholdern ✌🏻 Überwachung von CI/CD-Pipelines und Produktionsreife ✌🏻 Sicherstellung von DSGVO-Konformität, Sicherheit und Risikomanagement für die App"
       ]
     },
     {
@@ -106,11 +60,7 @@
       "endDate": "2025-01-31T23:00:00.000Z",
       "summary": "Softwarearchitekt und Berater für große Banking- und Behördensysteme mit Microservice- und Micro-Frontend-Architekturen.",
       "highlights": [
-        "Durchführung von Architektur-Assessments bestehender Produktionssysteme und Vorschläge für Verbesserungen",
-        "Definition von Zielarchitekturen und Technologie-Roadmaps für 1–3 Jahre",
-        "Hauptansprechpartner für Architektur gegenüber Kunden und internen Teams",
-        "Einführung von Coding-Richtlinien, Review-Prozessen und Qualitätsstandards",
-        "Leitung von Frontend-Teams bei React-, Angular- und Flutter-Projekten in regulierten Umgebungen"
+        "Durchführung von Architektur-Assessments bestehender Produktionssysteme und Vorschläge für Verbesserungen ✌🏻 Definition von Zielarchitekturen und Technologie-Roadmaps für 1–3 Jahre ✌🏻 Hauptansprechpartner für Architektur gegenüber Kunden und internen Teams ✌🏻 Einführung von Coding-Richtlinien, Review-Prozessen und Qualitätsstandards ✌🏻 Leitung von Frontend-Teams bei React-, Angular- und Flutter-Projekten in regulierten Umgebungen"
       ]
     },
     {
@@ -121,10 +71,7 @@
       "endDate": "2020-06-30T22:00:00.000Z",
       "summary": "Werkstudent als Entwickler an einem Kreditkarten-Dashboard und einer Mobile-App mit Zahlungsdiensten und Betrugs-bezogenen Data-Science-Features.",
       "highlights": [
-        "Implementierung neuer Frontend-Features für ein Kreditkarten-Dashboard",
-        "Beitrag zu End-to-End-Funktionalität von Backend bis Frontend",
-        "Arbeit an Betrugserkennungs-Use-Cases mit Data-Science-Tools",
-        "Upgrade der Angular-Codebasis und Auffrischung des UI-Designs"
+        "Implementierung neuer Frontend-Features für ein Kreditkarten-Dashboard ✌🏻 Beitrag zu End-to-End-Funktionalität von Backend bis Frontend ✌🏻 Arbeit an Betrugserkennungs-Use-Cases mit Data-Science-Tools ✌🏻 Upgrade der Angular-Codebasis und Auffrischung des UI-Designs"
       ]
     },
     {
@@ -135,9 +82,7 @@
       "endDate": "2019-07-31T22:00:00.000Z",
       "summary": "Frontend-Entwickler für eine Umfrage- und Marktforschungsanwendung, die sowohl als Web- als auch als Mobile-App bereitgestellt wurde.",
       "highlights": [
-        "Entwicklung responsiver Web-UIs mit Vue.js und modernen JavaScript-Tools",
-        "Beitrag zu einer hybriden Web- und Mobile-Umfrageplattform",
-        "Zusammenarbeit mit Designern und Backend-Entwicklern bei der Feature-Auslieferung"
+        "Entwicklung responsiver Web-UIs mit Vue.js und modernen JavaScript-Tools ✌🏻 Beitrag zu einer hybriden Web- und Mobile-Umfrageplattform ✌🏻 Zusammenarbeit mit Designern und Backend-Entwicklern bei der Feature-Auslieferung"
       ]
     },
     {
@@ -148,10 +93,40 @@
       "endDate": "2019-03-31T22:00:00.000Z",
       "summary": "Full-Stack-Entwickler für mehrere Kundenprojekte, darunter React-Native-Mobile-Apps und React-basierte Web-Dashboards.",
       "highlights": [
-        "Entwicklung von Features für eine deutsche Shopping- und Rewards-App mit React Native",
-        "Erstellung webbasierter Dashboards mit React und Redux",
-        "Beitrag zu Backend-Services mit Node.js und Express",
-        "Teilnahme an agilen Zeremonien und Sprint-Planung"
+        "Entwicklung von Features für eine deutsche Shopping- und Rewards-App mit React Native ✌🏻 Erstellung webbasierter Dashboards mit React und Redux ✌🏻 Beitrag zu Backend-Services mit Node.js und Express ✌🏻 Teilnahme an agilen Zeremonien und Sprint-Planung"
+      ]
+    },
+    {
+      "name": "Iris Software Inc.",
+      "position": "Software Engineer",
+      "url": "https://www.irissoftware.com/",
+      "startDate": "2016-05-31T22:00:00.000Z",
+      "endDate": "2017-08-31T22:00:00.000Z",
+      "summary": "Software-Engineer an Telekommunikations-Provisionierungssystemen und Unternehmens-Webanwendungen.",
+      "highlights": [
+        "Entwicklung Java-basierter Backend-Systeme für Telekommunikationsdienst-Provisionierung ✌🏻 Aufbau von Spring-Boot-Microservices und RESTful-APIs ✌🏻 Arbeit an Oracle-Datenbank-Design und Query-Optimierung ✌🏻 Zusammenarbeit mit funktionsübergreifenden Teams in einer verteilten Umgebung ✌🏻 Beitrag zu Test-Frameworks mit Selenium und JUnit ✌🏻 Auslieferung von Features in zweiwöchigen Sprints mit automatisierter CI/CD"
+      ]
+    },
+    {
+      "name": "Virtusa Corp.",
+      "position": "Senior Engineer",
+      "url": "https://www.virtusa.com/",
+      "startDate": "2014-07-31T22:00:00.000Z",
+      "endDate": "2016-04-30T22:00:00.000Z",
+      "summary": "Senior-Engineer mit Fokus auf Java-EE-Unternehmensanwendungen mit Spring und Hibernate.",
+      "highlights": [
+        "Design und Implementierung von RESTful-APIs mit Spring MVC ✌🏻 Integration von Hibernate für ORM und Datenbankinteraktionen ✌🏻 Mentoring von Junior-Entwicklern zu Best Practices und Design-Patterns"
+      ]
+    },
+    {
+      "name": "Genpact",
+      "position": "Module Lead",
+      "url": "https://www.genpact.com/",
+      "startDate": "2013-05-31T22:00:00.000Z",
+      "endDate": "2014-06-30T22:00:00.000Z",
+      "summary": "Modulleiter verantwortlich für die Führung eines kleinen Teams an webbasierten Unternehmenslösungen.",
+      "highlights": [
+        "Leitung eines Teams von 3–4 Entwicklern bei Java-basierten Unternehmensmodulen ✌🏻 Koordination von Sprint-Planung und Code-Reviews"
       ]
     }
   ],
@@ -165,19 +140,19 @@
       "summary": "Volunteered at Robinhood Army."
     },
     {
-      "organization": "Open-Source-Community",
-      "position": "Mitwirkender",
-      "url": "https://github.com/rohit1901",
-      "startDate": "2017-12-31T23:00:00.000Z",
-      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
-    },
-    {
       "organization": "Robinhood Army",
       "position": "Freiwilliger",
       "url": "https://robinhoodarmy.com/",
       "startDate": "2014-12-31T23:00:00.000Z",
       "endDate": "2018-06-30T22:00:00.000Z",
       "summary": "Freiwillige Tätigkeit bei Robinhood Army."
+    },
+    {
+      "organization": "Open-Source-Community",
+      "position": "Mitwirkender",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2017-12-31T23:00:00.000Z",
+      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
     }
   ],
   "education": [
@@ -202,26 +177,26 @@
     {
       "title": "Talent Pool",
       "date": "2022-11-30T23:00:00.000Z",
-      "awarder": "Adesso SE",
-      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
+      "awarder": "adesso SE",
+      "summary": "Selected for adesso's distinguished top talent program, recognized for exceptional work performance and strong work ethics, offering unique opportunities for networking and professional growth within the company."
     },
     {
       "title": "Best Performer Award",
       "date": "2015-11-30T23:00:00.000Z",
       "awarder": "Virtusa Corp.",
-      "summary": "Recognized for exceptional performance and delivery of critical project milestones."
-    },
-    {
-      "title": "Team Excellence Award",
-      "date": "2016-10-31T23:00:00.000Z",
-      "awarder": "Iris Software Inc.",
-      "summary": "Team recognition for delivering a complex telecom provisioning system ahead of schedule."
+      "summary": "Auszeichnung für außergewöhnliche Leistung und Lieferung kritischer Projektmeilensteine."
     },
     {
       "title": "Innovationspreis",
       "date": "2014-02-28T23:00:00.000Z",
       "awarder": "Genpact",
       "summary": "Ausgezeichnet für innovatives Lösungsdesign, das die Systemeffizienz um 30% verbesserte."
+    },
+    {
+      "title": "Team Excellence Award",
+      "date": "2016-10-31T23:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Team-Anerkennung für die vorzeitige Auslieferung eines komplexen Telekommunikations-Provisionierungssystems."
     },
     {
       "title": "Stipendium für akademische Exzellenz",
@@ -268,14 +243,6 @@
     }
   ],
   "skills": [
-    {
-      "name": "Cloud & DevOps",
-      "level": "Advanced"
-    },
-    {
-      "name": "Web3 & Blockchain",
-      "level": "Beginner"
-    },
     {
       "name": "Frontend-Entwicklung",
       "level": "Expert"
