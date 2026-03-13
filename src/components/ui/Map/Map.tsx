@@ -6,7 +6,6 @@ import {
   RiBarChart2Line,
   RiCloudLine,
   RiCodeBoxLine,
-  RiReactjsLine,
   RiStackLine,
   RiTeamLine,
 } from "@remixicon/react"

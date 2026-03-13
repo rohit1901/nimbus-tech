@@ -1,208 +1,175 @@
 {
   "basics": {
     "name": "Rohit Khanduri",
-    "label": "Softwarearchitekt",
+    "label": "AWS Cloud- und Softwarearchitekt",
     "image": "https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG",
-    "email": "rohit.khanduri@hotmail.com",
-    "url": "https://www.rohit.khanduri.de",
-    "summary": "Softwarearchitekt mit über zehn Jahren Erfahrung in der Konzeption und Umsetzung von Microservice-basierten Systemen in den Bereichen Banking, öffentlicher Sektor und Kundenbindungsprogramme. Ich decke den gesamten Software-Entwicklungszyklus ab und arbeite praxisnah mit Cloud-nativen Architekturen, modernen Frontend-Stacks und event-getriebenen Backends. Mein Hintergrund umfasst die Leitung internationaler Teams in Europa und Asien, das Arbeiten in agilen Umgebungen und die Ausrichtung der Architektur an der Geschäftsstrategie. Mit einem Master-Abschluss in angewandter Mathematik für Netzwerk- und Datenwissenschaft und einem Bachelor in Informationstechnologie kombiniere ich analytisches Denken mit pragmatischer Entwicklung.",
+    "email": "r.khanduri@nimbus-tech.de",
+    "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/",
+    "summary": "Ich bin ein auf AWS fokussierter Cloud-Architekt und Softwareingenieur mit über 14 Jahren Erfahrung in der Konzeption und Implementierung sicherer, skalierbarer Cloud-Systeme. Ich spezialisiere mich auf AWS-Well-Architected-Architekturen, Infrastructure as Code und cloud-native Anwendungsentwicklung mit Node.js, React, TypeScript und modernen DevOps-Praktiken. Ich unterstütze kleine, mittelständische und Enterprise-Unternehmen bei der Planung und Umsetzung sicherer Cloud-Transformationen auf AWS – von den ersten Migrationsschritten bis hin zu ausgereiften Multi-Account-Umgebungen. Meine Stärke liegt in der Kombination aus Hands-on-Engineering und klarer Kommunikation, sodass Stakeholder technische Trade-offs verstehen, während Teams schnell und zuverlässig Software ausliefern.",
     "location": {
       "address": "Frankfurt, Hessen, Deutschland",
       "city": "Frankfurt",
       "countryCode": "DE",
       "region": "Hessen"
-    },
-    "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "rohit-khanduri-9098b84a",
-        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
-      },
-      {
-        "network": "Other",
-        "username": "rohitkhanduri",
-        "url": "https://rohitkhanduri.substack.com/"
-      },
-      {
-        "network": "GitHub",
-        "username": "rohit1901",
-        "url": "https://github.com/rohit1901"
-      }
-    ]
+    }
   },
   "work": [
     {
-      "name": "NEC",
-      "position": "Software Engineer",
-      "url": "https://www.nec.com/",
-      "startDate": "2012-06-30T22:00:00.000Z",
-      "endDate": "2013-04-30T22:00:00.000Z",
-      "summary": "Software engineer building Java-based backend components for enterprise clients.",
-      "highlights": [
-        "Implemented backend features and integrations on Java/J2EE stacks ✌🏻 Worked closely with senior engineers on performance and reliability improvements"
-      ]
-    },
-    {
       "name": "Miles & More GmbH (Lufthansa Group)",
-      "position": "Manager IT",
+      "position": "Manager IT / Lead Architect – Mobile Platform",
       "url": "https://www.miles-and-more.com/",
-      "startDate": "2025-02-28T23:00:00.000Z",
-      "summary": "IT-Manager verantwortlich für die Architektur der Miles & More Flutter-Mobile-App und für die Leitung eines ausgelagerten Entwicklungsteams.",
+      "startDate": "2025-03-01T00:00:00.000Z",
+      "summary": "Lead Architect für die Miles & More Mobile Platform, verantwortlich für technische Ausrichtung, Plattformarchitektur, KI-getriebene Verbesserungen sowie die sichere und zuverlässige Bereitstellung der Flutter-Apps, die von Millionen Kunden der Lufthansa Group genutzt werden.",
       "highlights": [
-        "Verantwortung für die technische Ausrichtung und Architektur der Miles & More Mobile-App ✌🏻 Leitung und Koordination eines ausgelagerten Entwicklungsteams ✌🏻 Abstimmung von Architekturentscheidungen mit Produkt- und Design-Stakeholdern ✌🏻 Überwachung von CI/CD-Pipelines und Produktionsreife ✌🏻 Sicherstellung von DSGVO-Konformität, Sicherheit und Risikomanagement für die App"
+        "Definition und Verantwortung der Zielarchitektur sowie der technischen Roadmap für die Miles & More Mobile Apps",
+        "Führung und Koordination eines Multi-Vendor-Outsourcing-Entwicklungsteams mit klaren Engineering-Standards",
+        "Abstimmung von Architekturentscheidungen mit Stakeholdern aus Produkt, Design, Sicherheit und Compliance",
+        "Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness inklusive Observability und Incident-Prozessen",
+        "Vorantreiben der KI-Adoption durch AI Proof of Concepts (PoCs), Evaluierung von KI-Tools, Automatisierung von Workflows mit LLM-basierten Lösungen und Konzeption eines In-App-LLM-Chatbots gemeinsam mit Fachbereichen"
       ]
     },
     {
       "name": "adesso SE",
-      "position": "Softwarearchitekt",
+      "position": "Softwarearchitekt – AWS & Enterprise-Systeme",
       "url": "https://www.adesso.de/",
-      "startDate": "2020-07-31T22:00:00.000Z",
-      "endDate": "2025-01-31T23:00:00.000Z",
-      "summary": "Softwarearchitekt und Berater für große Banking- und Behördensysteme mit Microservice- und Micro-Frontend-Architekturen.",
+      "startDate": "2020-08-01T00:00:00.000Z",
+      "endDate": "2025-02-01T00:00:00.000Z",
+      "summary": "Softwarearchitekt und Berater für großskalige Systeme im Banken- und Public-Sector-Umfeld, mit Fokus auf cloud-gehostete (AWS) Microservice- und Micro-Frontend-Architekturen in regulierten Umgebungen.",
       "highlights": [
-        "Durchführung von Architektur-Assessments bestehender Produktionssysteme und Vorschläge für Verbesserungen ✌🏻 Definition von Zielarchitekturen und Technologie-Roadmaps für 1–3 Jahre ✌🏻 Hauptansprechpartner für Architektur gegenüber Kunden und internen Teams ✌🏻 Einführung von Coding-Richtlinien, Review-Prozessen und Qualitätsstandards ✌🏻 Leitung von Frontend-Teams bei React-, Angular- und Flutter-Projekten in regulierten Umgebungen"
+        "Durchführung architektonischer Assessments und AWS-Readiness-Reviews bestehender Produktivsysteme und Ableitung pragmatischer Modernisierungsschritte",
+        "Definition von Zielarchitekturen und 1–3-Jahres-Technologieroadmaps für AWS-basierte Plattformen in Abstimmung mit Geschäfts- und Compliance-Anforderungen",
+        "Hauptansprechpartner für Architekturthemen gegenüber Kunden-Stakeholdern und internen Teams, Übersetzung von Business-Zielen in technische Entscheidungen",
+        "Einführung von Coding-Guidelines, Review-Prozessen und Qualitätsstandards zur Verbesserung von Zuverlässigkeit und Liefergeschwindigkeit über Teams hinweg",
+        "Leitung von Frontend- und Plattformteams (React, Angular, Flutter) in sicherheits- und compliancekritischen Projekten im Banken- und öffentlichen Sektor"
       ]
     },
     {
-      "name": "Finatix GmbH",
-      "position": "Software Developer (Werkstudent)",
-      "url": "https://www.finatix.de/",
-      "startDate": "2019-08-31T22:00:00.000Z",
-      "endDate": "2020-06-30T22:00:00.000Z",
-      "summary": "Werkstudent als Entwickler an einem Kreditkarten-Dashboard und einer Mobile-App mit Zahlungsdiensten und Betrugs-bezogenen Data-Science-Features.",
+      "name": "Finatix GmbH / Peak Performance Apps GmbH / Appsfactory GmbH",
+      "position": "Softwareentwickler (Werkstudent)",
+      "startDate": "2017-12-01T00:00:00.000Z",
+      "endDate": "2020-07-01T00:00:00.000Z",
+      "summary": "Werkstudententätigkeit in FinTech-, Marktforschungs- und Consumer-Apps-Projekten, Entwicklung von Web- und Mobile-Frontends sowie Mitarbeit an Full-Stack- und frühen AWS-basierten Workloads.",
       "highlights": [
-        "Implementierung neuer Frontend-Features für ein Kreditkarten-Dashboard ✌🏻 Beitrag zu End-to-End-Funktionalität von Backend bis Frontend ✌🏻 Arbeit an Betrugserkennungs-Use-Cases mit Data-Science-Tools ✌🏻 Upgrade der Angular-Codebasis und Auffrischung des UI-Designs"
-      ]
-    },
-    {
-      "name": "Peak Performance Apps GmbH (Tochtergesellschaft der Appsfactory GmbH)",
-      "position": "Software Developer (Werkstudent)",
-      "url": "https://appsfactory.de/",
-      "startDate": "2019-04-30T22:00:00.000Z",
-      "endDate": "2019-07-31T22:00:00.000Z",
-      "summary": "Frontend-Entwickler für eine Umfrage- und Marktforschungsanwendung, die sowohl als Web- als auch als Mobile-App bereitgestellt wurde.",
-      "highlights": [
-        "Entwicklung responsiver Web-UIs mit Vue.js und modernen JavaScript-Tools ✌🏻 Beitrag zu einer hybriden Web- und Mobile-Umfrageplattform ✌🏻 Zusammenarbeit mit Designern und Backend-Entwicklern bei der Feature-Auslieferung"
-      ]
-    },
-    {
-      "name": "Appsfactory GmbH",
-      "position": "Software Developer (Werkstudent)",
-      "url": "https://appsfactory.de/",
-      "startDate": "2017-11-30T23:00:00.000Z",
-      "endDate": "2019-03-31T22:00:00.000Z",
-      "summary": "Full-Stack-Entwickler für mehrere Kundenprojekte, darunter React-Native-Mobile-Apps und React-basierte Web-Dashboards.",
-      "highlights": [
-        "Entwicklung von Features für eine deutsche Shopping- und Rewards-App mit React Native ✌🏻 Erstellung webbasierter Dashboards mit React und Redux ✌🏻 Beitrag zu Backend-Services mit Node.js und Express ✌🏻 Teilnahme an agilen Zeremonien und Sprint-Planung"
+        "Implementierung von Features für Finanz-Dashboards, Umfrageplattformen und Consumer-Mobile-Apps mit React, Vue.js, Angular und React Native",
+        "Zusammenarbeit mit Backend-Teams an Node.js- und Java-Services und Unterstützung bei der Integration von APIs in Cloud-Umgebungen (inkl. früher AWS-Setups)",
+        "Mitarbeit an Fraud-Detection- und datengetriebenen Features gemeinsam mit Data-Science-Teams mit Fokus auf Datenqualität und Performance",
+        "Beitrag zur Modernisierung bestehender Codebasen und UI-Designs sowie praktische Erfahrung mit agiler Lieferung, Code Reviews und CI/CD-Pipelines"
       ]
     },
     {
       "name": "Iris Software Inc.",
-      "position": "Software Engineer",
+      "position": "Tech Lead / Software Engineer",
       "url": "https://www.irissoftware.com/",
-      "startDate": "2016-05-31T22:00:00.000Z",
-      "endDate": "2017-08-31T22:00:00.000Z",
-      "summary": "Software-Engineer an Telekommunikations-Provisionierungssystemen und Unternehmens-Webanwendungen.",
+      "startDate": "2016-06-01T00:00:00.000Z",
+      "endDate": "2017-09-01T00:00:00.000Z",
+      "summary": "Tech Lead für Telekom-Provisionierung und Enterprise-Websysteme, Führung eines kleinen Teams für Java-basierte Services und Integrationen.",
       "highlights": [
-        "Entwicklung Java-basierter Backend-Systeme für Telekommunikationsdienst-Provisionierung ✌🏻 Aufbau von Spring-Boot-Microservices und RESTful-APIs ✌🏻 Arbeit an Oracle-Datenbank-Design und Query-Optimierung ✌🏻 Zusammenarbeit mit funktionsübergreifenden Teams in einer verteilten Umgebung ✌🏻 Beitrag zu Test-Frameworks mit Selenium und JUnit ✌🏻 Auslieferung von Features in zweiwöchigen Sprints mit automatisierter CI/CD"
+        "Leitung eines Teams zur Entwicklung von Spring-Boot-Microservices und REST-APIs für Telekom-Provisionierungsprozesse",
+        "Koordination von Design, Code Reviews und Release-Readiness in einem kleinen, cross-funktionalen Team"
       ]
     },
     {
       "name": "Virtusa Corp.",
-      "position": "Senior Engineer",
+      "position": "Tech Lead / Senior Engineer",
       "url": "https://www.virtusa.com/",
-      "startDate": "2014-07-31T22:00:00.000Z",
-      "endDate": "2016-04-30T22:00:00.000Z",
-      "summary": "Senior-Engineer mit Fokus auf Java-EE-Unternehmensanwendungen mit Spring und Hibernate.",
+      "startDate": "2014-08-01T00:00:00.000Z",
+      "endDate": "2016-05-01T00:00:00.000Z",
+      "summary": "Tech Lead für Java-EE-Anwendungen mit Spring und Hibernate, verantwortlich für zentrale Module und Mentoring von Junior Engineers.",
       "highlights": [
-        "Design und Implementierung von RESTful-APIs mit Spring MVC ✌🏻 Integration von Hibernate für ORM und Datenbankinteraktionen ✌🏻 Mentoring von Junior-Entwicklern zu Best Practices und Design-Patterns"
+        "Verantwortung für Design und Implementierung zentraler REST-APIs und Integrationen auf Basis von Spring/Hibernate",
+        "Mentoring von Juniorentwicklern sowie Etablierung von Coding-Standards und Design-Patterns"
       ]
     },
     {
       "name": "Genpact",
-      "position": "Module Lead",
+      "position": "Software Engineer",
       "url": "https://www.genpact.com/",
-      "startDate": "2013-05-31T22:00:00.000Z",
-      "endDate": "2014-06-30T22:00:00.000Z",
-      "summary": "Modulleiter verantwortlich für die Führung eines kleinen Teams an webbasierten Unternehmenslösungen.",
+      "startDate": "2013-06-01T00:00:00.000Z",
+      "endDate": "2014-07-01T00:00:00.000Z",
+      "summary": "Softwareentwickler für Calypso- und Java-basierte Enterprise-Anwendungen im Finanzbereich.",
       "highlights": [
-        "Leitung eines Teams von 3–4 Entwicklern bei Java-basierten Unternehmensmodulen ✌🏻 Koordination von Sprint-Planung und Code-Reviews"
+        "Implementierung und Anpassung von Calypso-Komponenten und Java-Backends",
+        "Enge Zusammenarbeit mit Senior Engineers und Business-Analysten bei Anforderungen und Produktionssupport"
+      ]
+    },
+    {
+      "name": "NEC",
+      "position": "Software Engineer",
+      "url": "https://www.nec.com/",
+      "startDate": "2012-07-01T00:00:00.000Z",
+      "endDate": "2013-05-01T00:00:00.000Z",
+      "summary": "Softwareentwickler für Java-basierte Backend-Komponenten für Enterprise-Kunden.",
+      "highlights": [
+        "Implementierung von Backend-Funktionalitäten und Integrationen auf Java/J2EE-Stacks",
+        "Enge Zusammenarbeit mit Senior Engineers zur Verbesserung von Performance und Zuverlässigkeit"
       ]
     }
   ],
   "volunteer": [
     {
-      "organization": "Robinhood Army",
-      "position": "Volunteer",
-      "url": "https://robinhoodarmy.com/",
-      "startDate": "2014-12-31T23:00:00.000Z",
-      "endDate": "2018-06-30T22:00:00.000Z",
-      "summary": "Volunteered at Robinhood Army."
+      "organization": "Open Source Community & persönliche KI-Projekte",
+      "position": "Builder & Contributor",
+      "url": "https://github.com/rohit1901",
+      "startDate": "2018-01-01T00:00:00.000Z",
+      "summary": "Aktive Arbeit an und Experimentieren mit KI/LLM-Tooling, Open-Source-Bibliotheken und Developer-Infrastruktur mit Fokus auf lokale KI-Adoption, LLM-Integration und KI-gestützte Plattformentwicklung."
     },
     {
       "organization": "Robinhood Army",
       "position": "Freiwilliger",
       "url": "https://robinhoodarmy.com/",
-      "startDate": "2014-12-31T23:00:00.000Z",
-      "endDate": "2018-06-30T22:00:00.000Z",
-      "summary": "Freiwillige Tätigkeit bei Robinhood Army."
-    },
-    {
-      "organization": "Open-Source-Community",
-      "position": "Mitwirkender",
-      "url": "https://github.com/rohit1901",
-      "startDate": "2017-12-31T23:00:00.000Z",
-      "summary": "Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem."
+      "startDate": "2015-01-01T00:00:00.000Z",
+      "endDate": "2018-07-01T00:00:00.000Z",
+      "summary": "Ehrenamtlicher Einsatz bei der Robinhood Army."
     }
   ],
   "education": [
     {
       "institution": "Hochschule Mittweida - University of Applied Sciences",
       "url": "https://www.hs-mittweida.de/",
-      "area": "Applied Mathematics for Network and Data Science",
+      "area": "Angewandte Mathematik für Netzwerk- und Data Science",
       "studyType": "Master of Science",
-      "startDate": "2017-08-31T22:00:00.000Z",
-      "endDate": "2022-08-31T22:00:00.000Z"
+      "startDate": "2017-09-01T00:00:00.000Z",
+      "endDate": "2022-09-01T00:00:00.000Z"
     },
     {
       "institution": "Uttar Pradesh Technical University",
       "url": "https://www.aktu.ac.in/",
-      "area": "Information Technology",
+      "area": "Informationstechnologie",
       "studyType": "Bachelor of Technology",
-      "startDate": "2007-07-31T22:00:00.000Z",
-      "endDate": "2011-05-31T22:00:00.000Z"
+      "startDate": "2007-08-01T00:00:00.000Z",
+      "endDate": "2011-06-01T00:00:00.000Z"
     }
   ],
   "awards": [
     {
-      "title": "Talent Pool",
-      "date": "2022-11-30T23:00:00.000Z",
-      "awarder": "adesso SE",
-      "summary": "Selected for adesso's distinguished top talent program, recognized for exceptional work performance and strong work ethics, offering unique opportunities for networking and professional growth within the company."
-    },
-    {
-      "title": "Best Performer Award",
-      "date": "2015-11-30T23:00:00.000Z",
-      "awarder": "Virtusa Corp.",
-      "summary": "Auszeichnung für außergewöhnliche Leistung und Lieferung kritischer Projektmeilensteine."
-    },
-    {
-      "title": "Innovationspreis",
-      "date": "2014-02-28T23:00:00.000Z",
-      "awarder": "Genpact",
-      "summary": "Ausgezeichnet für innovatives Lösungsdesign, das die Systemeffizienz um 30% verbesserte."
-    },
-    {
-      "title": "Team Excellence Award",
-      "date": "2016-10-31T23:00:00.000Z",
+      "title": "Round of Applause",
+      "date": "2017-07-01T00:00:00.000Z",
       "awarder": "Iris Software Inc.",
-      "summary": "Team-Anerkennung für die vorzeitige Auslieferung eines komplexen Telekommunikations-Provisionierungssystems."
+      "summary": "Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben."
     },
     {
-      "title": "Stipendium für akademische Exzellenz",
-      "date": "2017-08-31T22:00:00.000Z",
-      "awarder": "Université Paris-Saclay",
-      "summary": "Leistungsbasiertes Stipendium für herausragende akademische Leistungen in Mathematik und Informatik."
+      "title": "Top Talent",
+      "date": "2015-08-01T00:00:00.000Z",
+      "awarder": "Polaris Financial Services (assoziiert mit Virtusa)",
+      "summary": "Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
+    },
+    {
+      "title": "Talent Pool",
+      "date": "2022-12-01T00:00:00.000Z",
+      "awarder": "adesso SE",
+      "summary": "Auswahl für das exklusive Top-Talent-Programm von adesso, ausgezeichnet für herausragende Arbeitsleistung und hohe Arbeitsethik, mit besonderen Möglichkeiten zum Networking und zur fachlichen Weiterentwicklung im Unternehmen."
+    },
+    {
+      "title": "First Runner-up – Innovation Challenge Hackathon #2",
+      "date": "2017-11-01T00:00:00.000Z",
+      "awarder": "Hochschule Mittweida",
+      "summary": "Konzeption und Entwicklung einer Android-App als Einzelentwickler für das Team „EASY“ innerhalb von 48 Stunden; ausgezeichnet mit dem zweiten Platz und einem Preisgeld von 100 €."
+    },
+    {
+      "title": "Certificate of Appreciation",
+      "date": "2017-07-01T00:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Auszeichnung für Mitarbeiter, die außergewöhnliche Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
     }
   ],
   "certificates": [
@@ -235,28 +202,28 @@
   ],
   "publications": [
     {
-      "name": "Betrugserkennung mit maschinellem Lernen",
+      "name": "Fraud Detection using Machine Learning",
       "publisher": "Hochschule Mittweida - University of Applied Sciences",
-      "releaseDate": "2023-05-31T22:00:00.000Z",
+      "releaseDate": "2023-06-01T00:00:00.000Z",
       "url": "https://monami.hs-mittweida.de/frontdoor/index/index/year/2023/docId/13759",
-      "summary": "Diese Arbeit präsentiert einen neuartigen Ansatz zur Betrugserkennung unter Verwendung von Techniken des maschinellen Lernens. Wir schlagen ein Hybridmodell vor, das überwachte und unüberwachte Lernalgorithmen kombiniert, um betrügerische Transaktionen mit hoher Genauigkeit zu identifizieren. Unser Ansatz übertrifft bestehende Methoden in Bezug auf Präzision und Recall."
+      "summary": "Diese Arbeit präsentiert einen neuartigen Ansatz zur Betrugserkennung mit Machine-Learning-Verfahren. Es wird ein hybrides Modell vorgestellt, das überwachte und unüberwachte Lernalgorithmen kombiniert, um betrügerische Transaktionen mit hoher Genauigkeit zu identifizieren. Der Ansatz übertrifft bestehende Methoden hinsichtlich Präzision und Recall."
     }
   ],
   "skills": [
     {
-      "name": "Frontend-Entwicklung",
+      "name": "AWS Cloud-Architektur & Infrastruktur",
       "level": "Expert"
     },
     {
-      "name": "Backend-Entwicklung",
+      "name": "KI, ML & LLM-Integration",
+      "level": "Intermediate"
+    },
+    {
+      "name": "DevOps, CI/CD & Automatisierung",
       "level": "Expert"
     },
     {
-      "name": "Cloud & DevOps",
-      "level": "Advanced"
-    },
-    {
-      "name": "Datenbank & Datenverwaltung",
+      "name": "Cloud-Sicherheit & Compliance",
       "level": "Advanced"
     },
     {
@@ -264,46 +231,38 @@
       "level": "Expert"
     },
     {
-      "name": "Testing & Qualitätssicherung",
+      "name": "Backend-Entwicklung",
       "level": "Advanced"
-    },
-    {
-      "name": "KI & Machine Learning",
-      "level": "Intermediate"
     },
     {
       "name": "Mobile Entwicklung",
-      "level": "Advanced"
+      "level": "Intermediate"
     },
     {
-      "name": "Entwicklertools & Praktiken",
+      "name": "Datenbanken & Datenmanagement",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Testing & Qualitätssicherung",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Agile & technische Führung",
       "level": "Expert"
-    },
-    {
-      "name": "Web3 & Blockchain",
-      "level": "Beginner"
-    },
-    {
-      "name": "Agile & Projektmanagement",
-      "level": "Expert"
-    },
-    {
-      "name": "Sicherheit & Compliance",
-      "level": "Advanced"
     }
   ],
   "languages": [
     {
-      "language": "Hindi",
-      "fluency": "Native"
-    },
-    {
       "language": "Englisch",
-      "fluency": "Native"
+      "fluency": "Muttersprache"
     },
     {
       "language": "Deutsch",
-      "fluency": "Professional Working"
+      "fluency": "Professionelle Berufspraxis"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Muttersprache"
     }
   ],
   "interests": [
@@ -311,13 +270,7 @@
       "name": "Open Source"
     },
     {
-      "name": "Fitness & Wellness"
-    },
-    {
-      "name": "Open Source"
-    },
-    {
-      "name": "Technologie-Trends"
+      "name": "Technologietrends"
     },
     {
       "name": "Mathematik"
@@ -331,44 +284,39 @@
   ],
   "projects": [
     {
-      "name": "Enterprise KI-gestützte Kundensupport-Plattform",
-      "startDate": "2069-06-30T22:00:00.000Z",
-      "description": "Leitete die Entwicklung einer skalierbaren KI-gestützten Kundensupport-Plattform für Millionen von Nutzern mit Integration mehrerer KI-Modelle und Echtzeit-Kommunikationsfähigkeiten."
+      "name": "Miles & More Mobile Platform – Architektur & KI-Transformation",
+      "startDate": "2025-03-01T00:00:00.000Z",
+      "description": "Lead Architect für die Miles & More Flutter-Mobile-App, die von Millionen Loyalty-Kunden der Lufthansa Group genutzt wird. Verantwortlich für Plattformarchitektur, Koordination eines Multi-Vendor-Teams, CI/CD, Compliance und das Vorantreiben der KI-Adoption im Mobile-Produkt."
     },
     {
-      "name": "Retail Analytics & Bestandsverwaltungssystem",
-      "startDate": "2071-05-31T22:00:00.000Z",
-      "endDate": "2080-06-30T22:00:00.000Z",
-      "description": "Entwicklung einer umfassenden Analytics- und Bestandsverwaltungsplattform für großflächige Einzelhandelsoperationen mit Echtzeit-Einblicken und automatisierter Bestandsoptimierung."
+      "name": "AWS Cloud-Architektur & Migration – Banken & öffentlicher Sektor",
+      "startDate": "2020-08-01T00:00:00.000Z",
+      "endDate": "2025-02-01T00:00:00.000Z",
+      "description": "Leitung von Cloud-Architektur- und AWS-Migrationsinitiativen für eine große deutsche Bank und einen Bundesbehördenkunden bei adesso SE, inklusive Lift-&-Shift-Migrationen und Greenfield-AWS-Plattformaufbauten für großskalige Microservice- und Micro-Frontend-Systeme in regulierten Umgebungen."
     },
     {
-      "name": "Multi-Tenant SaaS-Plattform für Gesundheitswesen",
-      "startDate": "2074-04-30T22:00:00.000Z",
-      "endDate": "2070-05-31T22:00:00.000Z",
-      "description": "Architektur und Aufbau einer HIPAA-konformen Multi-Tenant SaaS-Plattform für Gesundheitsdienstleister mit sicherer Patientendatenverwaltung und Telegesundheitsfunktionen."
+      "name": "Skywink – Open-Source, datenschutzfreundliche KI-Chat-Plattform",
+      "startDate": "2025-08-01T00:00:00.000Z",
+      "description": "Gründer und Lead Engineer von Skywink, einer Open-Source-KI-Chat-Plattform von Nimbus Tech, die Nutzern und Unternehmen volle Kontrolle über ihre KI-Unterhaltungen gibt – lokal mit Ollama für vollständige Privatsphäre oder mit angebundenen Cloud-AI-Providern ohne Vendor Lock-in.",
+      "url": "https://skywink.nimbus-tech.de"
     },
     {
-      "name": "Mobile-First E-Commerce-Plattform",
-      "startDate": "2077-03-31T22:00:00.000Z",
-      "endDate": "2073-04-30T22:00:00.000Z",
-      "description": "Leitete die Entwicklung einer Mobile-First E-Commerce-Plattform mit erweiterten Funktionen wie AR-Produktvorschau, personalisierten Empfehlungen und nahtlosem Checkout-Erlebnis."
+      "name": "Telekom- & Banking-Service-Provisioning-Plattform",
+      "startDate": "2016-06-01T00:00:00.000Z",
+      "endDate": "2017-09-01T00:00:00.000Z",
+      "description": "Tech Lead einer Java-basierten Service-Provisioning-Plattform für einen Banking- und Telekomkunden bei Iris Software Inc., verantwortlich für Backend-Microservices, REST-API-Design und Team-Delivery."
     },
     {
-      "name": "Echtzeit-Kollaborationstool",
-      "startDate": "2069-03-31T22:00:00.000Z",
-      "endDate": "2076-03-31T22:00:00.000Z",
-      "description": "Entwicklung einer Echtzeit-Kollaborations-Workspace-Anwendung, die Teams ermöglicht, gemeinsam an Dokumenten, Whiteboards und Projekten mit Live-Updates zu arbeiten."
+      "name": "Modernisierung von Enterprise-Banking-Anwendungen",
+      "startDate": "2014-08-01T00:00:00.000Z",
+      "endDate": "2016-05-01T00:00:00.000Z",
+      "description": "Tech Lead bei Virtusa Corp. für die Modernisierung einer Legacy-Java-EE-Banking-Anwendung für einen Enterprise-Finanzkunden, Migration zu einer geschichteten Spring-MVC- und Hibernate-Architektur."
     },
     {
-      "name": "Headless CMS mit Multi-Sprach-Unterstützung",
-      "startDate": "2074-06-30T22:00:00.000Z",
-      "description": "Aufbau eines modernen Headless CMS mit Keystone.js mit erweiterten Funktionen wie Multi-Sprach-Unterstützung, benutzerdefinierten Feldtypen und GraphQL-API."
-    },
-    {
-      "name": "Verteiltes Task-Scheduler & Job-Queue-System",
-      "startDate": "2076-02-29T23:00:00.000Z",
-      "endDate": "2080-02-29T23:00:00.000Z",
-      "description": "Design und Implementierung eines verteilten Task-Scheduling-Systems für die Verarbeitung von Millionen von Hintergrund-Jobs mit Zuverlässigkeit und Fehlertoleranz."
+      "name": "Calypso-basierte Kapitalmarkt- & Reportingsysteme",
+      "startDate": "2013-06-01T00:00:00.000Z",
+      "endDate": "2014-07-01T00:00:00.000Z",
+      "description": "Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting."
     }
   ]
 }

@@ -1,1006 +1,79 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Rohit Khanduri</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/><style>@font-face {
-  font-family: 'icomoon';
-  src:  url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?z1lat9');
-  src:  url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?z1lat9#iefix') format('embedded-opentype'),
-    url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.ttf?z1lat9') format('truetype'),
-    url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.woff?z1lat9') format('woff'),
-    url('https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.svg?z1lat9#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+<!doctype html>
+<html lang="en-gb">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Rohit Khanduri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./override.css">
+    <style>
+      /* Variables (light) */
+:root {
+  --color-text: #40484f; --color-text-secondary: #606d76; --color-text-muted: #757575;
+  --color-heading: #202931; --color-accent: #ff6d1f;
+  --color-link: #0095ff; --color-link-hover: #0c65a5;
+  --color-background: var(--color-section-title-bg); --color-background-alt: #f1f8ff;
+  --color-border: #ccc; --color-border-light: #ddd;
+  --color-keyword-text: #2c5777; --color-keyword-bg: #dfeaf1; --color-keyword-border: #dfeaf1;
+  --color-reference-border: #ff6d1f;
+  --color-bar-beginner: #eb5f51; --color-bar-intermediate: #ffdf1f;
+  --color-bar-advanced: #5cb85c; --color-bar-master: #59c596;
+  --color-section-title-bg: #fff;
+  --font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-gitlab .path1:before {
-  content: "\e906";
-  color: rgb(252, 109, 38);
-}
-.icon-gitlab .path2:before {
-  content: "\e907";
-  margin-left: -1em;
-  color: rgb(226, 67, 41);
-}
-.icon-gitlab .path3:before {
-  content: "\e908";
-  margin-left: -1em;
-  color: rgb(252, 109, 38);
-}
-.icon-gitlab .path4:before {
-  content: "\e909";
-  margin-left: -1em;
-  color: rgb(252, 163, 38);
-}
-.icon-gitlab .path5:before {
-  content: "\e90a";
-  margin-left: -1em;
-  color: rgb(226, 67, 41);
-}
-.icon-gitlab .path6:before {
-  content: "\e90b";
-  margin-left: -1em;
-  color: rgb(252, 109, 38);
-}
-.icon-gitlab .path7:before {
-  content: "\e90c";
-  margin-left: -1em;
-  color: rgb(252, 163, 38);
-}
-.icon-gitlab .path8:before {
-  content: "\e90d";
-  margin-left: -1em;
-  color: rgb(226, 67, 41);
-}
-.icon-meetup .path1:before {
-  content: "\e901";
-  color: rgb(255, 255, 255);
-}
-.icon-meetup .path2:before {
-  content: "\e902";
-  margin-left: -1.5em;
-  color: rgb(240, 1, 1);
-}
-.icon-meetup .path3:before {
-  content: "\e903";
-  margin-left: -1.5em;
-  color: rgb(3, 3, 3);
-}
-.icon-blogger:before {
-  content: "\e900";
-}
-.icon-exercism:before {
-  content: "\e601";
-}
-.icon-telegram:before {
-  content: "\e904";
-}
-.icon-flickr:before {
-  content: "\f16e";
-}
-.icon-medium:before {
-  content: "\f23a";
-}
-.icon-heart:before {
-  content: "\f004";
-}
-.icon-book:before {
-  content: "\f02d";
-}
-.icon-linkedin:before {
-  content: "\f08c";
-}
-.icon-twitter:before {
-  content: "\f099";
-}
-.icon-github:before {
-  content: "\f09b";
-}
-.icon-link:before {
-  content: "\f0c1";
-}
-.icon-bars:before {
-  content: "\f0c9";
-}
-.icon-pinterest:before {
-  content: "\f0d2";
-}
-.icon-googleplus:before {
-  content: "\f0d5";
-}
-.icon-circle:before {
-  content: "\f111";
-}
-.icon-code:before {
-  content: "\f121";
-}
-.icon-youtube:before {
-  content: "\f167";
-}
-.icon-stackoverflow:before {
-  content: "\f16c";
-}
-.icon-bitbucket:before {
-  content: "\f171";
-}
-.icon-tumblr:before {
-  content: "\f173";
-}
-.icon-dribbble:before {
-  content: "\f17d";
-}
-.icon-skype:before {
-  content: "\f17e";
-}
-.icon-foursquare:before {
-  content: "\f180";
-}
-.icon-gittip:before {
-  content: "\f184";
-}
-.icon-gratipay:before {
-  content: "\f184";
-}
-.icon-stackexchange:before {
-  content: "\f18d";
-}
-.icon-vimeo:before {
-  content: "\f194";
-}
-.icon-graduation-cap:before {
-  content: "\f19d";
-}
-.icon-language:before {
-  content: "\f1ab";
-}
-.icon-child:before {
-  content: "\f1ae";
-}
-.icon-behance:before {
-  content: "\f1b5";
-}
-.icon-spotify:before {
-  content: "\f1bc";
-}
-.icon-soundcloud:before {
-  content: "\f1be";
-}
-.icon-codepen:before {
-  content: "\f1cb";
-}
-.icon-hackernews:before {
-  content: "\f1d4";
-}
-.icon-lastfm:before {
-  content: "\f202";
-}
-.icon-angellist:before {
-  content: "\f209";
-}
-.icon-facebook:before {
-  content: "\f230";
-}
-.icon-instagram:before {
-  content: "\e905";
-}
-.icon-trophy:before {
-  content: "\e605";
-}
-.icon-office:before {
-  content: "\e606";
-}
-.icon-clock:before {
-  content: "\e60a";
-}
-.icon-reddit:before {
-  content: "\e609";
-}
-.icon-profile:before {
-  content: "\e600";
-}
-.icon-tools:before {
-  content: "\e034";
-}
-.icon-location:before {
-  content: "\e602";
-}
-.icon-mail:before {
-  content: "\e603";
-}
-.icon-phone:before {
-  content: "\e03f";
-}
-.icon-newspaper:before {
-  content: "\e607";
-}
-.icon-chevron-down:before {
-  content: "\e60c";
-}
-.icon-chevron-up:before {
-  content: "\e60d";
-}
-.icon-dots-three-horizontal:before {
-  content: "\e60b";
-}
-.icon-thumbs-up:before {
-  content: "\e604";
-}
-.icon-board:before {
-  content: "\e608";
+/* Variables (dark) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #d4d4d8; --color-text-secondary: #a1a1aa; --color-text-muted: #9ca3af;
+    --color-heading: #e4e4e7; --color-accent: #fb923c;
+    --color-link: #60a5fa; --color-link-hover: #93c5fd;
+    --color-background: #18181b; --color-background-alt: #27272a;
+    --color-border: #3f3f46; --color-border-light: #3f3f46;
+    --color-keyword-text: #93c5fd; --color-keyword-bg: #1e3a5f; --color-keyword-border: #1e3a5f;
+    --color-reference-border: #fb923c;
+    --color-bar-beginner: #ef4444; --color-bar-intermediate: #eab308;
+    --color-bar-advanced: #22c55e; --color-bar-master: #34d399;
+    --color-section-title-bg: #18181b;
+    --font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  }
 }
 
-.relative {
-  position: relative;
-}
-.clear-margin {
-  margin: 0;
-}
-.space-top {
-  margin-top: 10px;
-}
-.space-right {
-  margin-right: 10px;
-}
-.space-bottom {
-  margin-bottom: 10px;
-}
-.mr-5 {
-  margin-right: 5px;
-}
-.mr-10 {
-  margin-right: 10px;
-}
-.ml-5 {
-  margin-left: 5px;
-}
-.labels {
-  line-height: 2;
-}
-.label-keyword {
-  display: inline-block;
-  background: #7eb0db;
-  color: white;
-  font-size: 0.9em;
-  padding: 5px;
-  border: 1px solid #357ebd;
-  margin-right: 5px;
-}
-.label-keyword:last-child {
-  margin-right: 0;
-}
-.label-keyword p {
-  margin: 0;
-}
-.label-keyword a {
-  color: white;
-}
-.label-keyword a:hover {
-  text-decoration: none;
-}
-.link-disguise {
-  color: inherit;
-}
-.link-disguise:hover {
-  color: inherit;
-}
-.clear-margin {
-  margin: 0;
-}
-@media (max-width: 992px) {
-  .clear-margin-sm {
-    margin-bottom: 0;
-  }
-}
-.fs-lg {
-  font-size: 1.33333333em;
-  line-height: 0.75em;
-  vertical-align: -15%;
-}
-.fs-2x {
-  font-size: 2em;
-}
-.fs-3x {
-  font-size: 3em;
-}
-.fs-4x {
-  font-size: 4em;
-}
-.btn-circle-sm {
-  width: 28px;
-  height: 28px;
-  line-height: 28px;
-  border-radius: 50%;
-  text-align: center;
-  padding: 0;
-  outline: none !important;
-}
-/* the version when the icon file is last updated */
-@font-face {
-  font-family: 'jst-elegant';
-  src: url("https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?f218wo");
-  src: url("https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'), url("https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.ttf?f218wo") format('truetype'), url("https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.woff?f218wo") format('woff'), url("https://unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.svg?f218wo#icomoon") format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-[class^="icon-"],
-[class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'jst-elegant' !important;
-}
-body {
-  font-family: 'Lato';
-  background: #f0f0f0;
-  color: #333;
-}
-.main {
-  padding: 5px;
-}
-.card {
-  background: white;
-  border: 1px solid #e6e6e6;
-  border-radius: 3px;
-  min-height: 300px;
-  padding: 10px 0;
-}
-.card-nested {
-  min-height: 0;
-  border-width: 1px 0 0 0;
-}
-.card-nested:before,
-.card-nested:after {
-  content: " ";
-  display: table;
-}
-.card-nested:after {
-  clear: both;
-}
-@media (max-width: 480px) {
-  .card-nested {
-    padding: 5px 0;
-  }
-}
-.background-card {
-  padding: 10px 20px;
-}
-.card-wrapper {
-  padding: 5px;
-}
-@media (max-width: 992px) {
-  .card-wrapper {
-    float: none !important;
-  }
-}
-.background-details .detail {
-  display: table;
-}
-.background-details .detail .icon {
-  min-width: 45px;
-  max-width: 45px;
-  text-align: center;
-}
-.background-details .detail .info {
-  width: 100%;
-}
-.background-details .detail .title,
-.background-details .detail .icon {
-  color: #707070;
-}
-.background-details .detail .mobile-title {
-  display: none;
-}
-@media (max-width: 480px) {
-  .background-details .detail .mobile-title {
-    display: inline-block;
-    margin-left: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    vertical-align: middle;
-  }
-}
-.background-details .detail .icon,
-.background-details .detail .info {
-  display: table-cell;
-  padding: 0 10px;
-}
-@media (max-width: 480px) {
-  .background-details .detail {
-    display: block;
-  }
-  .background-details .detail .icon {
-    max-width: inherit;
-    min-width: inherit;
-    text-align: left;
-  }
-  .background-details .detail .icon,
-  .background-details .detail .info {
-    display: block;
-    padding: 10px 0;
-  }
-  .background-details .detail .title {
-    display: none;
-  }
-}
-.info .content.has-sidebar {
-  width: 80%;
-  box-sizing: border-box;
-  float: left;
-  padding: 0 10px;
-  border-right: 1px solid #cdcdcd;
-}
-@media (max-width: 992px) {
-  .info .content.has-sidebar {
-    width: 100%;
-    border-right: 0;
-  }
-}
-@media (max-width: 480px) {
-  .info .content.has-sidebar {
-    padding: 0 2px;
-  }
-}
-.info .sidebar {
-  margin-left: 80%;
-  box-sizing: border-box;
-  padding: 10px;
-}
-@media (max-width: 480px) {
-  ul {
-    padding-left: 25px;
-  }
-}
-.current-event {
-  font-size: 8px;
-  color: #5ACE24;
-  position: absolute;
-  right: 100%;
-  top: 4px;
-  left: -10px;
-}
-.mop-wrapper > p:last-child {
-  margin: 0;
-}
-/*
-    Credits: http://codyhouse.co/demo/smart-fixed-navigation/index.html
-*/
-.floating-nav-trigger {
-  width: 50px;
-  height: 50px;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-  -webkit-transition: background-color 0.5s ease;
-  -o-transition: background-color 0.5s ease;
-  transition: background-color 0.5s ease;
-  display: block;
-  border-radius: 50%;
-  text-align: center;
-  background-color: white;
-  font-size: 1.5em;
-  color: #357ebd;
-  z-index: 100;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  text-decoration: none !important;
-}
-.floating-nav-trigger > [class^="icon-"],
-.floating-nav-trigger [class*=" icon-"],
-.floating-nav-trigger > .close-icon {
-  line-height: 50px;
-}
-.floating-nav-trigger .close-icon {
-  display: none;
-}
-.floating-nav-trigger:hover {
-  color: #1f496e;
-  background-color: #e6e6e6;
-}
-.floating-nav-trigger.is-open {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.floating-nav-trigger.is-open .close-icon {
-  display: inherit;
-}
-.floating-nav-trigger.is-open .icon-bars {
-  display: none;
-}
-.floating-nav-trigger.is-open:hover {
-  background-color: white;
-}
-.floating-nav {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
-  transform: scale(0);
-  -webkit-transform-origin: 100% 100%;
-  -moz-transform-origin: 100% 100%;
-  -ms-transform-origin: 100% 100%;
-  transform-origin: 100% 100%;
-  -webkit-transition: transform 0.3s, visibility 0s 0.3s;
-  -o-transition: transform 0.3s, visibility 0s 0.3s;
-  transition: transform 0.3s, visibility 0s 0.3s;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-  position: fixed;
-  z-index: 50;
-  right: 10px;
-  bottom: 10px;
-  background-color: white;
-  width: 90%;
-  max-width: 400px;
-  visibility: hidden;
-  overflow: hidden;
-}
-.floating-nav ul {
-  font-size: 1.2em;
-  margin: 0;
-}
-.floating-nav ul li {
-  border-bottom: 1px solid #eff2f6;
-}
-.floating-nav ul li a {
-  padding: 20px;
-  text-decoration: none;
-  color: #357ebd;
-  display: block;
-}
-.floating-nav ul li a:hover {
-  color: #1f496e;
-}
-.floating-nav ul li:last-child {
-  border-bottom: 0;
-}
-.floating-nav.is-visible {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: transform 0.3s, visibility 0s 0s;
-  -o-transition: transform 0.3s, visibility 0s 0s;
-  transition: transform 0.3s, visibility 0s 0s;
-  visibility: visible;
-}
-@media (max-width: 992px) {
-  .profile-card-wrapper {
-    position: relative;
-  }
-}
-.profile-card-wrapper .profile-card {
-  padding: 10px;
-}
-.profile-pic {
-  padding: 20px 0;
-}
-@media (max-width: 992px) {
-  .profile-pic {
-    padding: 10px 0;
-  }
-}
-.profile-pic img {
-  width: 100px;
-  height: 100px;
-}
-@media (max-width: 992px) {
-  .name {
-    margin-top: 10px;
-  }
-}
-@media (max-width: 768px) {
-  .contact-details {
-    text-align: center;
-  }
-}
-.contact-details .detail {
-  display: table;
-  padding: 10px 0;
-}
-.contact-details .detail .icon {
-  padding: 0 10px;
-  color: #707070;
-}
-@media (max-width: 992px) {
-  .contact-details .detail .icon {
-    padding: 0 5px 0 0;
-  }
-}
-.contact-details .detail .info {
-  font-size: 0.8em;
-}
-.contact-details .detail .icon,
-.contact-details .detail .info {
-  display: table-cell;
-  vertical-align: middle;
-}
-@media (max-width: 768px) {
-  .contact-details .detail {
-    position: relative;
-    float: left;
-    width: 100%;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-@media (max-width: 992px) {
-  .contact-details .detail {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding: 10px;
-  }
-  .contact-details .detail .icon,
-  .contact-details .detail .info {
-    display: inline-block;
-  }
-}
-@media (max-width: 992px) and (min-width: 768px) {
-  .contact-details .detail {
-    float: left;
-    width: 25%;
-  }
-}
-.social-links {
-  line-height: 2.5;
-}
-.social-link {
-  margin-left: 5px;
-  min-width: 35px;
-  display: inline-block;
-}
-.social-link:first-child {
-  margin-left: 0;
-}
-.social-link:hover {
-  text-decoration: none;
-}
-.link-github {
-  color: #454545;
-}
-.link-github:hover,
-.link-github:focus {
-  text-decoration: none;
-  color: #2b2b2b;
-}
-.link-twitter {
-  color: #33ccff;
-}
-.link-twitter:hover,
-.link-twitter:focus {
-  text-decoration: none;
-  color: #00bfff;
-}
-.link-blog {
-  color: #f36f24;
-}
-.link-blog:hover,
-.link-blog:focus {
-  text-decoration: none;
-  color: #d8560c;
-}
-.link-linkedin {
-  color: #007bb6;
-}
-.link-linkedin:hover,
-.link-linkedin:focus {
-  text-decoration: none;
-  color: #005983;
-}
-.link-skype {
-  color: #12A5F4;
-}
-.link-skype:hover,
-.link-skype:focus {
-  text-decoration: none;
-  color: #0986ca;
-}
-.link-instagram {
-  color: #e4405f;
-}
-.link-instagram:hover,
-.link-instagram:focus {
-  text-decoration: none;
-  color: #d31e40;
-}
-.link-stackoverflow {
-  color: #8e8e92;
-}
-.link-stackoverflow:hover,
-.link-stackoverflow:focus {
-  text-decoration: none;
-  color: #747479;
-}
-.link-stackexchange {
-  color: #62b0df;
-}
-.link-stackexchange:hover,
-.link-stackexchange:focus {
-  text-decoration: none;
-  color: #389bd6;
-}
-.link-lastfm {
-  color: #d12127;
-}
-.link-lastfm:hover,
-.link-lastfm:focus {
-  text-decoration: none;
-  color: #a51a1f;
-}
-.link-soundcloud {
-  color: #e8822d;
-}
-.link-soundcloud:hover,
-.link-soundcloud:focus {
-  text-decoration: none;
-  color: #cc6916;
-}
-.link-googleplus {
-  color: #dd4b39;
-}
-.link-googleplus:hover,
-.link-googleplus:focus {
-  text-decoration: none;
-  color: #c23321;
-}
-.link-youtube {
-  color: #dd4b39;
-}
-.link-youtube:hover,
-.link-youtube:focus {
-  text-decoration: none;
-  color: #c23321;
-}
-.link-pinterest {
-  color: #bd091f;
-}
-.link-pinterest:hover,
-.link-pinterest:focus {
-  text-decoration: none;
-  color: #8c0717;
-}
-.link-gratipay {
-  color: #630;
-}
-.link-gratipay:hover,
-.link-gratipay:focus {
-  text-decoration: none;
-  color: #331a00;
-}
-.link-vimeo {
-  color: #17b3e8;
-}
-.link-vimeo:hover,
-.link-vimeo:focus {
-  text-decoration: none;
-  color: #128fba;
-}
-.link-behance {
-  color: #2c98cf;
-}
-.link-behance:hover,
-.link-behance:focus {
-  text-decoration: none;
-  color: #2379a5;
-}
-.link-codepen {
-  color: #1c1c1c;
-}
-.link-codepen:hover,
-.link-codepen:focus {
-  text-decoration: none;
-  color: #020202;
-}
-.link-foursquare {
-  color: #fa4778;
-}
-.link-foursquare:hover,
-.link-foursquare:focus {
-  text-decoration: none;
-  color: #f91554;
-}
-.link-reddit {
-  color: #545454;
-}
-.link-reddit:hover,
-.link-reddit:focus {
-  text-decoration: none;
-  color: #3b3b3b;
-}
-.link-spotify {
-  color: #acd200;
-}
-.link-spotify:hover,
-.link-spotify:focus {
-  text-decoration: none;
-  color: #829f00;
-}
-.link-tumblr {
-  color: #2d4661;
-}
-.link-tumblr:hover,
-.link-tumblr:focus {
-  text-decoration: none;
-  color: #1d2d3e;
-}
-.link-dribbble {
-  color: #ce366f;
-}
-.link-dribbble:hover,
-.link-dribbble:focus {
-  text-decoration: none;
-  color: #a82959;
-}
-.link-facebook {
-  color: #4b6daa;
-}
-.link-facebook:hover,
-.link-facebook:focus {
-  text-decoration: none;
-  color: #3b5687;
-}
-.link-angellist {
-  color: black;
-}
-.link-angellist:hover,
-.link-angellist:focus {
-  text-decoration: none;
-  color: #000000;
-}
-.link-bitbucket {
-  color: #205081;
-}
-.link-bitbucket:hover,
-.link-bitbucket:focus {
-  text-decoration: none;
-  color: #163758;
-}
-.link-hackernews {
-  color: #ff6600;
-}
-.link-hackernews:hover,
-.link-hackernews:focus {
-  text-decoration: none;
-  color: #cc5200;
-}
-.link-exercism {
-  color: #d81d4e;
-}
-.link-exercism:hover,
-.link-exercism:focus {
-  text-decoration: none;
-  color: #ab173e;
-}
-.link-blogger {
-  color: #FF9234;
-}
-.link-blogger:hover,
-.link-blogger:focus {
-  text-decoration: none;
-  color: #ff7701;
-}
-.link-medium {
-  color: #00AB6C;
-}
-.link-medium:hover,
-.link-medium:focus {
-  text-decoration: none;
-  color: #00784c;
-}
-.link-flickr {
-  color: black;
-}
-.link-flickr:hover,
-.link-flickr:focus {
-  text-decoration: none;
-  color: #000000;
-}
-.link-telegram {
-  color: #3BABDD;
-}
-.link-telegram:hover,
-.link-telegram:focus {
-  text-decoration: none;
-  color: #2291c3;
-}
-.card-skills {
-  position: relative;
-}
-.skill-level {
-  border-radius: 3px;
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 0;
-  width: 10px;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-}
-.skill-level .skill-progress {
-  position: absolute;
-  border-radius: 3px;
-  bottom: 0;
-  width: 100%;
-  -webkit-transition: height 1s ease;
-}
-.skill-level .skill-progress.beginner {
-  height: 50%;
-  background: #e74c3c;
-}
-.skill-level .skill-progress.intermediate {
-  height: 70%;
-  background: #f1c40f;
-}
-.skill-level .skill-progress.advanced {
-  height: 80%;
-  background: #428bca;
-}
-.skill-level .skill-progress.master {
-  height: 95%;
-  background: #5cb85c;
-}
-.skill-info {
-  margin-left: 15px;
-}
-@media (max-width: 480px) {
-  .skill-info {
-    margin-left: 20px;
-  }
-}
-@media (max-width: 768px) {
-  .quote {
-    font-size: inherit;
-  }
-}
-.icon-meetup .path2:before {
-  margin-left: 0;
-}
+/* Minimal reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+
+/* Base typography */
+body, html { font-family: var(--font-family); font-size: 13px; color: var(--color-text); background-color: var(--color-background); font-weight: 400; line-height: 1.46153846; text-align: left; }
+p { display: block; }
+a { color: var(--color-link); text-decoration: none; }
+a:hover { color: var(--color-link-hover); text-decoration: underline; }
+li { list-style-type: square; list-style-position: outside; margin-left: 1.3em; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.67rem; }
+h3 { font-size: 1.27rem; }
+em { color: var(--color-text-muted); }
+strong { font-weight: 700; }
+
+/* Accessibility */
+.skip-to-content { position: absolute; left: -9999px; top: 0; z-index: 999; padding: 0.5em 1em; background: var(--color-accent); color: #fff; font-weight: 600; text-decoration: none; }
+.skip-to-content:focus { left: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 2px; }
+
+/* Print */
 @media print {
-  a[href]:after {
-    content: none !important;
-  }
-  .profile-card {
-    text-align: center;
-  }
-  .profile-pic {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .profile-pic img {
-    border-radius: 0;
-  }
-  .name-and-profession {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 15px;
-  }
-  .contact-details .detail {
-    position: relative;
-    float: left;
-    width: 25%;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding: 0;
-  }
-  .floating-nav,
-  .floating-nav-trigger {
-    display: none;
-  }
-  .pagebreak {
-    page-break-before: always;
-  }
+  @page { margin: 1cm 1.4cm; }
+  body { line-height: 1.25; }
+  ul { margin-top: 0.4em; }
+  ul, li { padding: 0; }
 }
 
+@media screen and (min-width: 1025px) { li { margin-left: 1.5em; } }
+
+    
 .profile-pic {
   display: none !important;
 }
@@ -1014,76 +87,101 @@ body {
     display: none !important;
   }
 }
-</style></head><body itemscope="itemscope" itemtype="http://schema.org/Person"><div class="container-fluid"><div class="row main clearfix"><a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i class="icon-bars"></i><span class="close-icon">&times;</span></a><nav class="floating-nav js-floating-nav"><ul class="list-unstyled"><li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li><li><a href="#work-experience"><i class="mr-10 icon-office"></i>Work Experience</a></li><li><a href="#projects-experience"><i class="mr-10 icon-code"></i>Projects Experience</a></li><li><a href="#skills"><i class="mr-10 icon-tools"></i>Skills</a></li><li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li><li><a href="#certificates"><i class="mr-10 icon-profile"></i>Certificates</a></li><li><a href="#awards"><i class="mr-10 icon-trophy"></i>Awards</a></li><li><a href="#volunteer-work"><i class="mr-10 icon-child"></i>Volunteer Work</a></li><li><a href="#publications"><i class="mr-10 icon-newspaper"></i>Publications</a></li><li><a href="#interests"><i class="mr-10 icon-heart"></i>Interests</a></li></ul></nav><section class="col-md-3 card-wrapper profile-card-wrapper affix"><div class="card profile-card"><span class="profile-pic-container"><div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100" alt="Rohit Khanduri" src="https://s.gravatar.com/avatar/e414f1f8bdc16dd3cd005e3f37617848?s=100&amp;r=pg&amp;d=mm" itemprop="image"/></div><div class="name-and-profession text-center"><h3 itemprop="name"><b>Rohit Khanduri</b></h3><h5 class="text-muted" itemprop="jobTitle">Softwarearchitekt</h5></div></span><hr/><div class="contact-details clearfix"><div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">Frankfurt, Hessen, Deutschland, Frankfurt, Hessen, DE</span></div><div class="detail"><span class="icon"><i class="icon fs-lg icon-mail"></i></span><span class="info"><a class="link-disguise" href="mailto:rohit.khanduri@hotmail.com" itemprop="email">rohit.khanduri@hotmail.com</a></span></div><div class="detail"><span class="icon" title="Languages I speak"><i class="icon fs-lg icon-language"></i></span><span class="info">Hindi, Englisch, Deutsch</span></div></div><hr/><div class="social-links text-center"><div><a class="fs-2x social-link link-linkedin icon-linkedin" href="https://www.linkedin.com/in/rohit-khanduri-9098b84a/" target="_blank" data-toggle="tooltip" title="Rohit Khanduri on LinkedIn"></a><a class="fs-2x social-link link-other icon-other" href="https://rohitkhanduri.substack.com/" target="_blank" data-toggle="tooltip" title="Rohit Khanduri on Other"></a><a class="fs-2x social-link link-github icon-github" href="https://github.com/rohit1901" target="_blank" data-toggle="tooltip" title="Rohit Khanduri on GitHub"></a></div></div></div></section><section class="col-md-9 card-wrapper pull-right"><div class="card background-card"><h4 class="text-uppercase">Background</h4><hr/><div class="background-details"><div class="detail" id="about"><div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div><div class="info"><h4 class="title text-uppercase">About</h4><div class="card card-nested"><div class="content mop-wrapper" itemprop="description"><p>Softwarearchitekt mit über zehn Jahren Erfahrung in der Konzeption und Umsetzung von Microservice-basierten Systemen in den Bereichen Banking, öffentlicher Sektor und Kundenbindungsprogramme. Ich decke den gesamten Software-Entwicklungszyklus ab und arbeite praxisnah mit Cloud-nativen Architekturen, modernen Frontend-Stacks und event-getriebenen Backends. Mein Hintergrund umfasst die Leitung internationaler Teams in Europa und Asien, das Arbeiten in agilen Umgebungen und die Ausrichtung der Architektur an der Geschäftsstrategie. Mit einem Master-Abschluss in angewandter Mathematik für Netzwerk- und Datenwissenschaft und einem Bachelor in Informationstechnologie kombiniere ich analytisches Denken mit pragmatischer Entwicklung.</p>
-</div></div></div></div><div class="detail" id="work-experience"><div class="icon"><i class="fs-lg icon-office"></i><span class="mobile-title">Work Experience</span></div><div class="info"><h4 class="title text-uppercase">Work Experience</h4><ul class="list-unstyled clear-margin"><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Software Engineer</strong>,&nbsp;<a href="https://www.nec.com/" target="_blank">NEC</a></p><p class="text-muted"><small><span class="space-right">Jun, 2012 - Apr, 2013</span><span><i class="icon-clock mr-5"></i>10 months</span></small></p><div class="mop-wrapper space-bottom"><p>Software engineer building Java-based backend components for enterprise clients.</p>
-</div><ul><li class="mop-wrapper"><p>Implemented backend features and integrations on Java/J2EE stacks ✌🏻 Worked closely with senior engineers on performance and reliability improvements</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><strong>Manager IT</strong>,&nbsp;<a href="https://www.miles-and-more.com/" target="_blank">Miles &amp; More GmbH (Lufthansa Group)</a></p><p class="text-muted"><small><span class="space-right">Feb, 2025 - Present</span></small></p><div class="mop-wrapper space-bottom"><p>IT-Manager verantwortlich für die Architektur der Miles &amp; More Flutter-Mobile-App und für die Leitung eines ausgelagerten Entwicklungsteams.</p>
-</div><ul><li class="mop-wrapper"><p>Verantwortung für die technische Ausrichtung und Architektur der Miles &amp; More Mobile-App ✌🏻 Leitung und Koordination eines ausgelagerten Entwicklungsteams ✌🏻 Abstimmung von Architekturentscheidungen mit Produkt- und Design-Stakeholdern ✌🏻 Überwachung von CI/CD-Pipelines und Produktionsreife ✌🏻 Sicherstellung von DSGVO-Konformität, Sicherheit und Risikomanagement für die App</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Softwarearchitekt</strong>,&nbsp;<a href="https://www.adesso.de/" target="_blank">adesso SE</a></p><p class="text-muted"><small><span class="space-right">Jul, 2020 - Jan, 2025</span><span><i class="icon-clock mr-5"></i>4 years 6 months</span></small></p><div class="mop-wrapper space-bottom"><p>Softwarearchitekt und Berater für große Banking- und Behördensysteme mit Microservice- und Micro-Frontend-Architekturen.</p>
-</div><ul><li class="mop-wrapper"><p>Durchführung von Architektur-Assessments bestehender Produktionssysteme und Vorschläge für Verbesserungen ✌🏻 Definition von Zielarchitekturen und Technologie-Roadmaps für 1–3 Jahre ✌🏻 Hauptansprechpartner für Architektur gegenüber Kunden und internen Teams ✌🏻 Einführung von Coding-Richtlinien, Review-Prozessen und Qualitätsstandards ✌🏻 Leitung von Frontend-Teams bei React-, Angular- und Flutter-Projekten in regulierten Umgebungen</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Software Developer (Werkstudent)</strong>,&nbsp;<a href="https://www.finatix.de/" target="_blank">Finatix GmbH</a></p><p class="text-muted"><small><span class="space-right">Aug, 2019 - Jun, 2020</span><span><i class="icon-clock mr-5"></i>10 months</span></small></p><div class="mop-wrapper space-bottom"><p>Werkstudent als Entwickler an einem Kreditkarten-Dashboard und einer Mobile-App mit Zahlungsdiensten und Betrugs-bezogenen Data-Science-Features.</p>
-</div><ul><li class="mop-wrapper"><p>Implementierung neuer Frontend-Features für ein Kreditkarten-Dashboard ✌🏻 Beitrag zu End-to-End-Funktionalität von Backend bis Frontend ✌🏻 Arbeit an Betrugserkennungs-Use-Cases mit Data-Science-Tools ✌🏻 Upgrade der Angular-Codebasis und Auffrischung des UI-Designs</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Software Developer (Werkstudent)</strong>,&nbsp;<a href="https://appsfactory.de/" target="_blank">Peak Performance Apps GmbH (Tochtergesellschaft der Appsfactory GmbH)</a></p><p class="text-muted"><small><span class="space-right">Apr, 2019 - Jul, 2019</span><span><i class="icon-clock mr-5"></i>3 months</span></small></p><div class="mop-wrapper space-bottom"><p>Frontend-Entwickler für eine Umfrage- und Marktforschungsanwendung, die sowohl als Web- als auch als Mobile-App bereitgestellt wurde.</p>
-</div><ul><li class="mop-wrapper"><p>Entwicklung responsiver Web-UIs mit Vue.js und modernen JavaScript-Tools ✌🏻 Beitrag zu einer hybriden Web- und Mobile-Umfrageplattform ✌🏻 Zusammenarbeit mit Designern und Backend-Entwicklern bei der Feature-Auslieferung</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Software Developer (Werkstudent)</strong>,&nbsp;<a href="https://appsfactory.de/" target="_blank">Appsfactory GmbH</a></p><p class="text-muted"><small><span class="space-right">Nov, 2017 - Mar, 2019</span><span><i class="icon-clock mr-5"></i>1 year 4 months</span></small></p><div class="mop-wrapper space-bottom"><p>Full-Stack-Entwickler für mehrere Kundenprojekte, darunter React-Native-Mobile-Apps und React-basierte Web-Dashboards.</p>
-</div><ul><li class="mop-wrapper"><p>Entwicklung von Features für eine deutsche Shopping- und Rewards-App mit React Native ✌🏻 Erstellung webbasierter Dashboards mit React und Redux ✌🏻 Beitrag zu Backend-Services mit Node.js und Express ✌🏻 Teilnahme an agilen Zeremonien und Sprint-Planung</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Software Engineer</strong>,&nbsp;<a href="https://www.irissoftware.com/" target="_blank">Iris Software Inc.</a></p><p class="text-muted"><small><span class="space-right">May, 2016 - Aug, 2017</span><span><i class="icon-clock mr-5"></i>1 year 3 months</span></small></p><div class="mop-wrapper space-bottom"><p>Software-Engineer an Telekommunikations-Provisionierungssystemen und Unternehmens-Webanwendungen.</p>
-</div><ul><li class="mop-wrapper"><p>Entwicklung Java-basierter Backend-Systeme für Telekommunikationsdienst-Provisionierung ✌🏻 Aufbau von Spring-Boot-Microservices und RESTful-APIs ✌🏻 Arbeit an Oracle-Datenbank-Design und Query-Optimierung ✌🏻 Zusammenarbeit mit funktionsübergreifenden Teams in einer verteilten Umgebung ✌🏻 Beitrag zu Test-Frameworks mit Selenium und JUnit ✌🏻 Auslieferung von Features in zweiwöchigen Sprints mit automatisierter CI/CD</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Senior Engineer</strong>,&nbsp;<a href="https://www.virtusa.com/" target="_blank">Virtusa Corp.</a></p><p class="text-muted"><small><span class="space-right">Jul, 2014 - Apr, 2016</span><span><i class="icon-clock mr-5"></i>1 year 9 months</span></small></p><div class="mop-wrapper space-bottom"><p>Senior-Engineer mit Fokus auf Java-EE-Unternehmensanwendungen mit Spring und Hibernate.</p>
-</div><ul><li class="mop-wrapper"><p>Design und Implementierung von RESTful-APIs mit Spring MVC ✌🏻 Integration von Hibernate für ORM und Datenbankinteraktionen ✌🏻 Mentoring von Junior-Entwicklern zu Best Practices und Design-Patterns</p>
-</li></ul></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Module Lead</strong>,&nbsp;<a href="https://www.genpact.com/" target="_blank">Genpact</a></p><p class="text-muted"><small><span class="space-right">May, 2013 - Jun, 2014</span><span><i class="icon-clock mr-5"></i>1 year 1 month</span></small></p><div class="mop-wrapper space-bottom"><p>Modulleiter verantwortlich für die Führung eines kleinen Teams an webbasierten Unternehmenslösungen.</p>
-</div><ul><li class="mop-wrapper"><p>Leitung eines Teams von 3–4 Entwicklern bei Java-basierten Unternehmensmodulen ✌🏻 Koordination von Sprint-Planung und Code-Reviews</p>
-</li></ul></div></li></ul></div></div><div class="detail" id="projects-experience"><div class="icon"><i class="fs-lg icon-code"></i><span class="mobile-title">Projects Experience</span></div><div class="info"><h4 class="title text-uppercase">Projects Experience</h4><ul class="list-unstyled clear-margin"><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><strong>Enterprise KI-gestützte Kundensupport-Plattform</strong></p><p class="text-muted"><small><span class="space-right">Jun, 2069 - Present</span></small></p><div class="mop-wrapper space-bottom"><p>Leitete die Entwicklung einer skalierbaren KI-gestützten Kundensupport-Plattform für Millionen von Nutzern mit Integration mehrerer KI-Modelle und Echtzeit-Kommunikationsfähigkeiten.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Retail Analytics &amp; Bestandsverwaltungssystem</strong></p><p class="text-muted"><small><span class="space-right">May, 2071 - Jun, 2080</span><span><i class="icon-clock mr-5"></i>9 years 1 month</span></small></p><div class="mop-wrapper space-bottom"><p>Entwicklung einer umfassenden Analytics- und Bestandsverwaltungsplattform für großflächige Einzelhandelsoperationen mit Echtzeit-Einblicken und automatisierter Bestandsoptimierung.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Multi-Tenant SaaS-Plattform für Gesundheitswesen</strong></p><p class="text-muted"><small><span class="space-right">Apr, 2074 - May, 2070</span><span><i class="icon-clock mr-5"></i>3 years 10 months</span></small></p><div class="mop-wrapper space-bottom"><p>Architektur und Aufbau einer HIPAA-konformen Multi-Tenant SaaS-Plattform für Gesundheitsdienstleister mit sicherer Patientendatenverwaltung und Telegesundheitsfunktionen.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Mobile-First E-Commerce-Plattform</strong></p><p class="text-muted"><small><span class="space-right">Mar, 2077 - Apr, 2073</span><span><i class="icon-clock mr-5"></i>3 years 10 months</span></small></p><div class="mop-wrapper space-bottom"><p>Leitete die Entwicklung einer Mobile-First E-Commerce-Plattform mit erweiterten Funktionen wie AR-Produktvorschau, personalisierten Empfehlungen und nahtlosem Checkout-Erlebnis.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Echtzeit-Kollaborationstool</strong></p><p class="text-muted"><small><span class="space-right">Mar, 2069 - Mar, 2076</span><span><i class="icon-clock mr-5"></i>7 years</span></small></p><div class="mop-wrapper space-bottom"><p>Entwicklung einer Echtzeit-Kollaborations-Workspace-Anwendung, die Teams ermöglicht, gemeinsam an Dokumenten, Whiteboards und Projekten mit Live-Updates zu arbeiten.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><strong>Headless CMS mit Multi-Sprach-Unterstützung</strong></p><p class="text-muted"><small><span class="space-right">Jun, 2074 - Present</span></small></p><div class="mop-wrapper space-bottom"><p>Aufbau eines modernen Headless CMS mit Keystone.js mit erweiterten Funktionen wie Multi-Sprach-Unterstützung, benutzerdefinierten Feldtypen und GraphQL-API.</p>
-</div></div></li><li class="card card-nested clearfix"><div class="content"><p class="clear-margin relative"><strong>Verteiltes Task-Scheduler &amp; Job-Queue-System</strong></p><p class="text-muted"><small><span class="space-right">Feb, 2076 - Feb, 2080</span><span><i class="icon-clock mr-5"></i>4 years</span></small></p><div class="mop-wrapper space-bottom"><p>Design und Implementierung eines verteilten Task-Scheduling-Systems für die Verarbeitung von Millionen von Hintergrund-Jobs mit Zuverlässigkeit und Fehlertoleranz.</p>
-</div></div></li></ul></div></div><div class="detail" id="skills"><div class="icon"><i class="fs-lg icon-tools"></i><span class="mobile-title">Skills</span></div><div class="info"><h4 class="title text-uppercase">Skills</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested card-skills"><div class="skill-info"><strong>Frontend-Entwicklung</strong></div></li><li class="card card-nested card-skills"><div class="skill-info"><strong>Backend-Entwicklung</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Advanced" data-placement="left"><div class="skill-progress advanced"></div></div><div class="skill-info"><strong>Cloud &amp; DevOps</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Advanced" data-placement="left"><div class="skill-progress advanced"></div></div><div class="skill-info"><strong>Datenbank &amp; Datenverwaltung</strong></div></li><li class="card card-nested card-skills"><div class="skill-info"><strong>Architektur &amp; Systemdesign</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Advanced" data-placement="left"><div class="skill-progress advanced"></div></div><div class="skill-info"><strong>Testing &amp; Qualitätssicherung</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Intermediate" data-placement="left"><div class="skill-progress intermediate"></div></div><div class="skill-info"><strong>KI &amp; Machine Learning</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Advanced" data-placement="left"><div class="skill-progress advanced"></div></div><div class="skill-info"><strong>Mobile Entwicklung</strong></div></li><li class="card card-nested card-skills"><div class="skill-info"><strong>Entwicklertools &amp; Praktiken</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Beginner" data-placement="left"><div class="skill-progress beginner"></div></div><div class="skill-info"><strong>Web3 &amp; Blockchain</strong></div></li><li class="card card-nested card-skills"><div class="skill-info"><strong>Agile &amp; Projektmanagement</strong></div></li><li class="card card-nested card-skills"><div class="skill-level" data-toggle="tooltip" title="Advanced" data-placement="left"><div class="skill-progress advanced"></div></div><div class="skill-info"><strong>Sicherheit &amp; Compliance</strong></div></li></ul></div></div></div><div class="detail" id="education"><div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span></div><div class="info"><h4 class="title text-uppercase">Education</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><div class="content"><p class="clear-margin relative"><strong>Applied Mathematics for Network and Data Science, Master of Science,&nbsp;</strong>Hochschule Mittweida - University of Applied Sciences</p><p class="text-muted clear-margin"><small>Aug, 2017 - Aug, 2022</small></p><i></i></div></li><li class="card card-nested"><div class="content"><p class="clear-margin relative"><strong>Information Technology, Bachelor of Technology,&nbsp;</strong>Uttar Pradesh Technical University</p><p class="text-muted clear-margin"><small>Jul, 2007 - May, 2011</small></p><i></i></div></li></ul></div></div></div><div class="detail" id="certificates"><div class="icon"><i class="fs-lg icon-profile"></i><span class="mobile-title">Certificates</span></div><div class="info"><h4 class="title text-uppercase">Certificates</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong>iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A), </strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong><a href="https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&amp;badge=true" target="_blank">iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)</a>,&nbsp;</strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong><a href="https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a" target="_blank">Apollo Certified Graph Developer - Professional</a>,&nbsp;</strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong><a href="https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067" target="_blank">Apollo Certified Graph Developer - Associate</a>,&nbsp;</strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong><a href="https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&amp;signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230" target="_blank">Git Certified Specialist by GitKraken</a>,&nbsp;</strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong><a href="https://www.aws.training/certification/aws-certified-developer-associate" target="_blank">AWS Certified Developer - Associate</a>,&nbsp;</strong></p><p class="text-muted"><small>Issued on: </small></p></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="certificate"><strong>AWS Certified Solutions Architect - Associate, </strong></p><p class="text-muted"><small>Issued on: </small></p></div></li></ul></div></div></div><div class="detail" id="awards"><div class="icon"><i class="fs-lg icon-trophy"></i><span class="mobile-title">Awards</span></div><div class="info"><h4 class="title text-uppercase">Awards</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="award"><strong>Talent Pool </strong>,&nbsp;adesso SE</p><p class="text-muted"><small>Awarded on: Nov 30, 2022</small></p><div class="mop-wrapper"><p>Selected for adesso's distinguished top talent program, recognized for exceptional work performance and strong work ethics, offering unique opportunities for networking and professional growth within the company.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="award"><strong>Best Performer Award </strong>,&nbsp;Virtusa Corp.</p><p class="text-muted"><small>Awarded on: Nov 30, 2015</small></p><div class="mop-wrapper"><p>Auszeichnung für außergewöhnliche Leistung und Lieferung kritischer Projektmeilensteine.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="award"><strong>Innovationspreis </strong>,&nbsp;Genpact</p><p class="text-muted"><small>Awarded on: Feb 28, 2014</small></p><div class="mop-wrapper"><p>Ausgezeichnet für innovatives Lösungsdesign, das die Systemeffizienz um 30% verbesserte.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="award"><strong>Team Excellence Award </strong>,&nbsp;Iris Software Inc.</p><p class="text-muted"><small>Awarded on: Oct 31, 2016</small></p><div class="mop-wrapper"><p>Team-Anerkennung für die vorzeitige Auslieferung eines komplexen Telekommunikations-Provisionierungssystems.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin" itemprop="award"><strong>Stipendium für akademische Exzellenz </strong>,&nbsp;Université Paris-Saclay</p><p class="text-muted"><small>Awarded on: Aug 31, 2017</small></p><div class="mop-wrapper"><p>Leistungsbasiertes Stipendium für herausragende akademische Leistungen in Mathematik und Informatik.</p>
-</div></div></li></ul></div></div></div><div class="detail" id="volunteer-work"><div class="icon"><i class="fs-lg icon-child"></i><span class="mobile-title">Volunteer Work</span></div><div class="info"><h4 class="title text-uppercase">Volunteer Work</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><div class="content"><p class="clear-margin relative"><strong>Volunteer, </strong>Robinhood Army</p><p class="text-muted"><small>Dec, 2014 - Jun, 2018</small></p><div class="mop-wrapper"><p>Volunteered at Robinhood Army.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin relative"><strong>Freiwilliger, </strong>Robinhood Army</p><p class="text-muted"><small>Dec, 2014 - Jun, 2018</small></p><div class="mop-wrapper"><p>Freiwillige Tätigkeit bei Robinhood Army.</p>
-</div></div></li><li class="card card-nested"><div class="content"><p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Volunteering" data-placement="left"></i><strong>Mitwirkender, </strong>Open-Source-Community</p><p class="text-muted"><small>Dec, 2017 - Present</small></p><div class="mop-wrapper"><p>Aktiver Mitwirkender an verschiedenen Open-Source-Projekten im JavaScript- und TypeScript-Ökosystem.</p>
-</div></div></li></ul></div></div></div><div class="detail" id="publications"><div class="icon"><i class="fs-lg icon-newspaper"></i><span class="mobile-title">Publications</span></div><div class="info"><h4 class="title text-uppercase">Publications</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><div class="content"><p class="clear-margin"><strong><a href="https://monami.hs-mittweida.de/frontdoor/index/index/year/2023/docId/13759" target="_blank">Betrugserkennung mit maschinellem Lernen</a>&nbsp;,&nbsp;</strong>Hochschule Mittweida - University of Applied Sciences</p><p class="text-muted"><small>Published on: May 31, 2023</small></p><div class="mop-wrapper"><p>Diese Arbeit präsentiert einen neuartigen Ansatz zur Betrugserkennung unter Verwendung von Techniken des maschinellen Lernens. Wir schlagen ein Hybridmodell vor, das überwachte und unüberwachte Lernalgorithmen kombiniert, um betrügerische Transaktionen mit hoher Genauigkeit zu identifizieren. Unser Ansatz übertrifft bestehende Methoden in Bezug auf Präzision und Recall.</p>
-</div></div></li></ul></div></div></div><div class="detail" id="interests"><div class="icon"><i class="fs-lg icon-heart"></i><span class="mobile-title">Interests</span></div><div class="info"><h4 class="title text-uppercase">Interests</h4><div class="content"><ul class="list-unstyled clear-margin"><li class="card card-nested"><p><strong>Open Source</strong></p></li><li class="card card-nested"><p><strong>Fitness &amp; Wellness</strong></p></li><li class="card card-nested"><p><strong>Open Source</strong></p></li><li class="card card-nested"><p><strong>Technologie-Trends</strong></p></li><li class="card card-nested"><p><strong>Mathematik</strong></p></li><li class="card card-nested"><p><strong>Fitness &amp; Wellness</strong></p></li><li class="card card-nested"><p><strong>Lesen</strong></p></li></ul></div></div></div></div></div></section></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script><script>$(function () {
-  var toggleFloatingMenu = function() {
-    $( '.js-floating-nav' ).toggleClass( 'is-visible' );
-    $( '.js-floating-nav-trigger' ).toggleClass( 'is-open' );
-  };
+</style>
+    <style id="svelte-rssu9l">.resume.svelte-rssu9l {padding:1.5rem;}
 
-  $( ".background-card" ).css( "min-height", window.screen.availHeight + "px" );
-  $( "[data-toggle=tooltip]" ).tooltip();
-  $( '.js-floating-nav-trigger' ).on( 'click', function(e) {
-    e.preventDefault();
-    toggleFloatingMenu();
-  });
-  $( '.js-floating-nav a' ).on( 'click', toggleFloatingMenu );
+  @media print {.resume.svelte-rssu9l {margin:0.1em;padding:0.1em;-ms-word-wrap:break-word;word-wrap:break-word;line-height:1.25;}
+  }
 
-  $("#remaining-profiles").on('show.bs.collapse', function() {
-    $( '.js-profiles-collapse > i' )
-      .removeClass( 'icon-chevron-down' )
-      .addClass( 'icon-chevron-up' );
-  });
+  @media screen and (max-width: 601px) {.resume.svelte-rssu9l {width:100%;padding:1rem;box-sizing:border-box;}
+  }
 
-  $("#remaining-profiles").on('hidden.bs.collapse', function() {
-    $( '.js-profiles-collapse > i' )
-      .removeClass( 'icon-chevron-up' )
-      .addClass( 'icon-chevron-down' );
-  });
-});
-</script><script>WebFontConfig = {
-  google: { families: [ 'Lato:300,400,700:latin' ] }
-};
-(function() {
-  var wf = document.createElement('script');
-  wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-  wf.type = 'text/javascript';
-  wf.async = 'true';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(wf, s);
-})();</script></body></html>
+  @media screen and (min-width: 602px) {.resume.svelte-rssu9l {width:80%;margin:0 auto;}
+  }
+
+  @media screen and (min-width: 1025px) {.resume.svelte-rssu9l {width:820px;margin:2rem auto;}
+  }</style><style id="svelte-10f9ycp">.header.svelte-10f9ycp {margin-bottom:1rem;}.name.svelte-10f9ycp {font-size:2.8rem;font-weight:100;line-height:100%;}.label.svelte-10f9ycp {color:var(--color-heading);font-size:1.47rem;font-weight:300;}.image.svelte-10f9ycp {width:11em;float:right;border-radius:4px;}.profiles.svelte-10f9ycp {display:flex;flex-flow:row wrap;justify-content:flex-start;}.main-summary.svelte-10f9ycp {background:var(--color-background-alt);padding:1.2em 1em;}
+
+  /* p margin reset handled by summary wrapper */
+
+  @media print {.profiles.svelte-10f9ycp a:not(.hide-href-print)::after {content:" (" attr(href) ") ";}.profiles.svelte-10f9ycp .item {padding:0;}.main-summary.svelte-10f9ycp {padding:0;background:transparent;}
+  }
+
+  @media screen and (max-width: 601px) {.header.svelte-10f9ycp .profiles:where(.svelte-10f9ycp), .header.svelte-10f9ycp .contact {flex-wrap:wrap;}.name.svelte-10f9ycp {font-size:2rem;}.label.svelte-10f9ycp {font-size:1.2rem;}.image.svelte-10f9ycp {float:none;display:block;margin:0 auto 1rem;width:8em;}
+  }</style><style id="svelte-121pvxs">.contact.svelte-121pvxs {display:flex;flex-flow:row wrap;justify-content:flex-start;margin-top:0.5rem;}.contact-item.svelte-121pvxs {margin-right:1.2em;line-height:1.5;}.icon.svelte-121pvxs {margin-right:0.25em;}</style><style id="svelte-1lncexq">.section.svelte-1lncexq {margin-bottom:1rem;}header.svelte-1lncexq {position:relative;}header.svelte-1lncexq::after {position:absolute;left:0;top:0.7em;height:1px;background:var(--color-border);content:"";width:100%;z-index:-100;display:block;}
+
+  @media print {.section.svelte-1lncexq {margin:0.8rem 0;padding:0;}header.svelte-1lncexq {padding-bottom:0.15rem;}.location {padding-bottom:0.15rem;}.section.svelte-1lncexq > section > section {border-bottom:1px solid #fdfdfd;margin:.5em 0;}.section.svelte-1lncexq > section > section:last-of-type {margin:0;}
+  }
+
+  @media print {.item-count.svelte-1lncexq {display:none;}
+  }.section-title.svelte-1lncexq {display:inline-block;background:var(--color-section-title-bg);padding:0 1em 0.3em 0;color:var(--color-accent);text-transform:uppercase;font-weight:600;border:none;font-size:0.9rem;}</style><style id="svelte-18p2gu6">.skills-grid.svelte-18p2gu6 {display:flex;flex-flow:row wrap;justify-content:flex-start;}.skill-item.svelte-18p2gu6 {width:16em;padding:0 0.5em 0.5em 0;border-bottom:none;}.name.svelte-18p2gu6 {font-weight:600;}
+
+  @media print {.skills-grid.svelte-18p2gu6 .skill-item:where(.svelte-18p2gu6) {display:flex;flex-direction:column;margin:0.3rem 0;padding:0;}
+  }
+
+  @media screen and (max-width: 601px) {.skills-grid.svelte-18p2gu6 {flex-direction:column;}.skill-item.svelte-18p2gu6 {width:100%;padding-right:0;}
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 601px) {.skills-grid.svelte-18p2gu6 {flex-direction:row;flex-wrap:wrap;}.skill-item.svelte-18p2gu6 {width:48%;padding-right:2%;}
+  }</style><style id="svelte-10tjtrd">.level.svelte-10tjtrd {margin-bottom:0.5em;}.level.svelte-10tjtrd em:where(.svelte-10tjtrd) {padding-left:0.2em;}.level.svelte-10tjtrd .bar:where(.svelte-10tjtrd) {border:1px solid var(--color-border-light);display:block;width:10em;height:5px;position:relative;}.level.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after {position:absolute;content:" ";top:0;left:0;background:black;height:5px;}.level.beginner.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after {background:var(--color-bar-beginner);width:2.5em;}.level.intermediate.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after {background:var(--color-bar-intermediate);width:5em;}.level.advanced.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after,
+  .level.fluent.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after {background:var(--color-bar-advanced);width:7.5em;}.level.master.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after,
+  .level.expert.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after,
+  .level.native.speaker.svelte-10tjtrd .bar:where(.svelte-10tjtrd)::after {background:var(--color-bar-master);width:10em;}
+
+  @media print {.level.svelte-10tjtrd {margin:0.1rem 0;font-weight:400;}.level.svelte-10tjtrd em:where(.svelte-10tjtrd) {font-style:normal;padding:0.1em 0;}.level.svelte-10tjtrd .bar:where(.svelte-10tjtrd) {display:none;}
+  }</style><style id="svelte-1615qzb">ul.svelte-1615qzb {margin:0.5em 0;}li.svelte-1615qzb {display:inline-block;margin:2px 2px 2px 0;padding:4px 5px 5px;font-size:0.9rem;line-height:1;color:var(--color-keyword-text);background-color:var(--color-keyword-bg);border:0 solid var(--color-keyword-border);white-space:nowrap;}li.svelte-1615qzb:hover {background:var(--color-keyword-bg);}
+
+  @media print {li.svelte-1615qzb {margin:0;padding:0;font-size:0.8rem;background:transparent;}li.svelte-1615qzb::after {padding:0 0 0 0.1rem;content:", ";}li.svelte-1615qzb:last-of-type::after {content:"";}.skills-grid li.svelte-1615qzb::after {content:", ";}.skills-grid li.svelte-1615qzb:last-of-type::after {content:"";}ul.svelte-1615qzb::before {font-size:0.8rem;font-weight:600;}ul.keywords.svelte-1615qzb::before {content:"Skills: ";font-size:1rem;}.skills-grid ul.svelte-1615qzb::before {content:none;}ul.courses.svelte-1615qzb::before {content:"Major courses: ";font-size:1rem;}li.svelte-1615qzb {font-size:1rem;line-height:inherit;}.skills-grid .keywords.svelte-1615qzb {font-size:0.9rem;margin:0;}
+  }</style><style id="svelte-g3qng">.timeline-item.svelte-g3qng {margin-top:0.7em;}.timeline-item.svelte-g3qng:first-of-type {margin-top:0;}.position.svelte-g3qng,
+  .company.svelte-g3qng,
+  .organization.svelte-g3qng,
+  .institution.svelte-g3qng,
+  .date.svelte-g3qng,
+  .area.svelte-g3qng,
+  .studyType.svelte-g3qng,
+  .title.svelte-g3qng,
+  .awarder.svelte-g3qng,
+  .publisher.svelte-g3qng,
+  .issuer.svelte-g3qng {display:inline;}.position.svelte-g3qng,
+  .studyType.svelte-g3qng,
+  .area.svelte-g3qng,
+  .title.svelte-g3qng {font-weight:600;}.company.svelte-g3qng::before,
+  .institution.svelte-g3qng::before,
+  .organization.svelte-g3qng::before,
+  .awarder.svelte-g3qng::before {content:"at ";}.company.svelte-g3qng,
+  .institution.svelte-g3qng,
+  .organization.svelte-g3qng,
+  .awarder.svelte-g3qng {color:var(--color-text-secondary);font-weight:400;}header.svelte-g3qng .date:where(.svelte-g3qng) {display:block;font-size:1rem;padding:0.1em 0;color:var(--color-heading);font-weight:600;}.item.svelte-g3qng {overflow:hidden;}
+
+  /* p margin handled via inline styles in paragraphSplit */.clear.svelte-g3qng::after {content:"";display:table;clear:both;}.location.svelte-g3qng {margin-right:0.5em;color:var(--color-text-secondary);font-weight:700;}header.svelte-g3qng {font-size:1.38rem;position:relative;}.header-left.svelte-g3qng .position:where(.svelte-g3qng) + .company:where(.svelte-g3qng)::before,
+  .header-left.svelte-g3qng .position:where(.svelte-g3qng) + .institution:where(.svelte-g3qng)::before,
+  .header-left.svelte-g3qng .position:where(.svelte-g3qng) + .organization:where(.svelte-g3qng)::before,
+  .header-left.svelte-g3qng .position:where(.svelte-g3qng) + .awarder:where(.svelte-g3qng)::before {content:"at ";}
+
+  @media print {.company.svelte-g3qng a:where(.svelte-g3qng) {color:#40484f;}.company.svelte-g3qng::before,
+    .institution.svelte-g3qng::before,
+    .organization.svelte-g3qng::before,
+    .awarder.svelte-g3qng::before {content:"at ";}.section p {margin:0;padding:0;}.fa-location-dot:before {padding-left:0.1em;}
+  }
+
+  @media screen and (max-width: 601px) {header.svelte-g3qng .date:where(.svelte-g3qng) {display:block;float:none;font-size:0.9rem;margin-top:0.2em;}.section > section.svelte-g3qng > header:where(.svelte-g3qng) {font-size:1.15rem;}
+  }
+
+  @media screen and (min-width: 602px) {header.svelte-g3qng .date:where(.svelte-g3qng) {float:right;font-weight:600;color:var(--color-heading);}
+  }
+
+  @media screen and (min-width: 1025px) {header.svelte-g3qng .date:where(.svelte-g3qng) {padding:0.2em;}.section > section.svelte-g3qng > header:where(.svelte-g3qng) .space-left:where(.svelte-g3qng) {opacity:1;cursor:pointer;}.section > section.svelte-g3qng:not(.main-summary) {margin-left:1.67rem;}.company.svelte-g3qng::before, .institution.svelte-g3qng::before, .organization.svelte-g3qng::before, .awarder.svelte-g3qng::before {content:"| ";}.header-left.svelte-g3qng {float:left;width:70%;word-break:normal;}.display.svelte-g3qng {display:none;}.display.svelte-g3qng:not(.none) {display:block;}
+  }</style><style id="svelte-hqrtpf">
+  @media print {.highlights.svelte-hqrtpf {margin:0.5em 0 0 0;}.highlights.svelte-hqrtpf > li:where(.svelte-hqrtpf) > p {margin-bottom:0.3em;}
+  }</style><style id="svelte-rbv6q6">.gpa.svelte-rbv6q6 {clear:both;padding-bottom:0.5em;}</style><style id="svelte-2dygc7">.languages-grid.svelte-2dygc7 {display:flex;flex-flow:row wrap;justify-content:flex-start;}.language-item.svelte-2dygc7 {width:15em;padding:0 0.5em 0.5em 0;border-bottom:none;}.language.svelte-2dygc7 {font-weight:600;}.display.svelte-2dygc7 {display:block;opacity:1 !important;}
+
+  @media screen and (max-width: 601px) {.languages-grid.svelte-2dygc7 {flex-direction:column;}.language-item.svelte-2dygc7 {width:100%;padding-right:0;}
+  }</style><style id="svelte-1bnc9h3">.interests-grid.svelte-1bnc9h3 {display:flex;flex-flow:row wrap;justify-content:flex-start;}.interest-item.svelte-1bnc9h3 {width:15em;padding:0 0.5em 0.5em 0;border-bottom:none;}
+
+  @media screen and (max-width: 601px) {.interests-grid.svelte-1bnc9h3 {flex-direction:column;}.interest-item.svelte-1bnc9h3 {width:100%;padding-right:0;}
+  }</style><style id="svelte-1y7ope6">.reference-item.svelte-1y7ope6 {padding-left:0.5em;margin-bottom:1em;border-left:5px solid var(--color-reference-border);}.name.svelte-1y7ope6 {font-weight:600;}</style>
+  </head>
+  <body>
+    <a class="skip-to-content" href="#resume">Skip to content</a> <main id="resume" class="resume svelte-rssu9l"><header class="header clear svelte-10f9ycp"><img class="image svelte-10f9ycp" src="https://d1ljophloyhryl.cloudfront.net/assets/images/rohit.JPG" alt="Rohit Khanduri"/> <div class="middle"><h1 class="name svelte-10f9ycp">Rohit Khanduri</h1> <h2 class="label svelte-10f9ycp">AWS Cloud- und Softwarearchitekt</h2></div> <span class="location"><span>Frankfurt, Hessen, Deutschland,</span> <!--[!--> <span>Frankfurt,</span> <span>Hessen</span> <span>(DE)</span></span> <!--[!--><!----> <div class="contact svelte-121pvxs"><div class="contact-item svelte-121pvxs"><span class="fa-regular fa-envelope icon svelte-121pvxs"></span> <a class="hide-href-print" href="mailto:r.khanduri@nimbus-tech.de">r.khanduri@nimbus-tech.de</a></div> <!--[!--> <!--[!--></div><!----> <!--[!--></header> <section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Summary<!--[!--></h2></header> <section class="main-summary svelte-10f9ycp"><div><!----><p style="margin:0">Ich bin ein auf AWS fokussierter Cloud-Architekt und Softwareingenieur mit über 14 Jahren Erfahrung in der Konzeption und Implementierung sicherer, skalierbarer Cloud-Systeme. Ich spezialisiere mich auf AWS-Well-Architected-Architekturen, Infrastructure as Code und cloud-native Anwendungsentwicklung mit Node.js, React, TypeScript und modernen DevOps-Praktiken. Ich unterstütze kleine, mittelständische und Enterprise-Unternehmen bei der Planung und Umsetzung sicherer Cloud-Transformationen auf AWS – von den ersten Migrationsschritten bis hin zu ausgereiften Multi-Account-Umgebungen. Meine Stärke liegt in der Kombination aus Hands-on-Engineering und klarer Kommunikation, sodass Stakeholder technische Trade-offs verstehen, während Teams schnell und zuverlässig Software ausliefern.</p><!----><!----></div></section><!----></section><!--[1--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Skills<!--[!--></h2></header> <section class="skills-grid svelte-18p2gu6"><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">AWS Cloud-Architektur &amp; Infrastruktur</h3> <div class="level master svelte-10tjtrd" role="meter" aria-label="AWS Cloud-Architektur &amp; Infrastruktur level: Expert" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Expert</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">KI, ML &amp; LLM-Integration</h3> <div class="level intermediate svelte-10tjtrd" role="meter" aria-label="KI, ML &amp; LLM-Integration level: Intermediate" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><em class="svelte-10tjtrd">Intermediate</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">DevOps, CI/CD &amp; Automatisierung</h3> <div class="level master svelte-10tjtrd" role="meter" aria-label="DevOps, CI/CD &amp; Automatisierung level: Expert" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Expert</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Cloud-Sicherheit &amp; Compliance</h3> <div class="level advanced svelte-10tjtrd" role="meter" aria-label="Cloud-Sicherheit &amp; Compliance level: Advanced" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><em class="svelte-10tjtrd">Advanced</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Architektur &amp; Systemdesign</h3> <div class="level master svelte-10tjtrd" role="meter" aria-label="Architektur &amp; Systemdesign level: Expert" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Expert</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Backend-Entwicklung</h3> <div class="level advanced svelte-10tjtrd" role="meter" aria-label="Backend-Entwicklung level: Advanced" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><em class="svelte-10tjtrd">Advanced</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Mobile Entwicklung</h3> <div class="level intermediate svelte-10tjtrd" role="meter" aria-label="Mobile Entwicklung level: Intermediate" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><em class="svelte-10tjtrd">Intermediate</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Datenbanken &amp; Datenmanagement</h3> <div class="level intermediate svelte-10tjtrd" role="meter" aria-label="Datenbanken &amp; Datenmanagement level: Intermediate" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><em class="svelte-10tjtrd">Intermediate</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Testing &amp; Qualitätssicherung</h3> <div class="level intermediate svelte-10tjtrd" role="meter" aria-label="Testing &amp; Qualitätssicherung level: Intermediate" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><em class="svelte-10tjtrd">Intermediate</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div><div class="skill-item svelte-18p2gu6"><h3 class="name svelte-18p2gu6">Agile &amp; technische Führung</h3> <div class="level master svelte-10tjtrd" role="meter" aria-label="Agile &amp; technische Führung level: Expert" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Expert</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div> <!--[!--><!----></div></section><!----></section><!--[2--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Work Experience<span class="item-count svelte-1lncexq">(7)</span></h2></header> <section id="work"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Mar 2025</span> <!--[!--><span class="endDate">- Current</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Manager IT / Lead Architect – Mobile Platform</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.miles-and-more.com/" class="svelte-g3qng">Miles &amp; More GmbH (Lufthansa Group)</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Lead Architect für die Miles &amp; More Mobile Platform, verantwortlich für technische Ausrichtung, Plattformarchitektur, KI-getriebene Verbesserungen sowie die sichere und zuverlässige Bereitstellung der Flutter-Apps, die von Millionen Kunden der Lufthansa Group genutzt werden.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Definition und Verantwortung der Zielarchitektur sowie der technischen Roadmap für die Miles &amp; More Mobile Apps</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Führung und Koordination eines Multi-Vendor-Outsourcing-Entwicklungsteams mit klaren Engineering-Standards</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Abstimmung von Architekturentscheidungen mit Stakeholdern aus Produkt, Design, Sicherheit und Compliance</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness inklusive Observability und Incident-Prozessen</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Vorantreiben der KI-Adoption durch AI Proof of Concepts (PoCs), Evaluierung von KI-Tools, Automatisierung von Workflows mit LLM-basierten Lösungen und Konzeption eines In-App-LLM-Chatbots gemeinsam mit Fachbereichen</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2020</span> <span class="endDate">- Feb 2025</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Softwarearchitekt – AWS &amp; Enterprise-Systeme</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.adesso.de/" class="svelte-g3qng">adesso SE</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Softwarearchitekt und Berater für großskalige Systeme im Banken- und Public-Sector-Umfeld, mit Fokus auf cloud-gehostete (AWS) Microservice- und Micro-Frontend-Architekturen in regulierten Umgebungen.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Durchführung architektonischer Assessments und AWS-Readiness-Reviews bestehender Produktivsysteme und Ableitung pragmatischer Modernisierungsschritte</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Definition von Zielarchitekturen und 1–3-Jahres-Technologieroadmaps für AWS-basierte Plattformen in Abstimmung mit Geschäfts- und Compliance-Anforderungen</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Hauptansprechpartner für Architekturthemen gegenüber Kunden-Stakeholdern und internen Teams, Übersetzung von Business-Zielen in technische Entscheidungen</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Einführung von Coding-Guidelines, Review-Prozessen und Qualitätsstandards zur Verbesserung von Zuverlässigkeit und Liefergeschwindigkeit über Teams hinweg</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Leitung von Frontend- und Plattformteams (React, Angular, Flutter) in sicherheits- und compliancekritischen Projekten im Banken- und öffentlichen Sektor</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Dec 2017</span> <span class="endDate">- Jul 2020</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Softwareentwickler (Werkstudent)</div> <div class="company svelte-g3qng"><!--[!-->Finatix GmbH / Peak Performance Apps GmbH / Appsfactory GmbH</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Werkstudententätigkeit in FinTech-, Marktforschungs- und Consumer-Apps-Projekten, Entwicklung von Web- und Mobile-Frontends sowie Mitarbeit an Full-Stack- und frühen AWS-basierten Workloads.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Implementierung von Features für Finanz-Dashboards, Umfrageplattformen und Consumer-Mobile-Apps mit React, Vue.js, Angular und React Native</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Zusammenarbeit mit Backend-Teams an Node.js- und Java-Services und Unterstützung bei der Integration von APIs in Cloud-Umgebungen (inkl. früher AWS-Setups)</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Mitarbeit an Fraud-Detection- und datengetriebenen Features gemeinsam mit Data-Science-Teams mit Fokus auf Datenqualität und Performance</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Beitrag zur Modernisierung bestehender Codebasen und UI-Designs sowie praktische Erfahrung mit agiler Lieferung, Code Reviews und CI/CD-Pipelines</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jun 2016</span> <span class="endDate">- Sept 2017</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Tech Lead / Software Engineer</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.irissoftware.com/" class="svelte-g3qng">Iris Software Inc.</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Tech Lead für Telekom-Provisionierung und Enterprise-Websysteme, Führung eines kleinen Teams für Java-basierte Services und Integrationen.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Leitung eines Teams zur Entwicklung von Spring-Boot-Microservices und REST-APIs für Telekom-Provisionierungsprozesse</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Koordination von Design, Code Reviews und Release-Readiness in einem kleinen, cross-funktionalen Team</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2014</span> <span class="endDate">- May 2016</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Tech Lead / Senior Engineer</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.virtusa.com/" class="svelte-g3qng">Virtusa Corp.</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Tech Lead für Java-EE-Anwendungen mit Spring und Hibernate, verantwortlich für zentrale Module und Mentoring von Junior Engineers.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Verantwortung für Design und Implementierung zentraler REST-APIs und Integrationen auf Basis von Spring/Hibernate</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Mentoring von Juniorentwicklern sowie Etablierung von Coding-Standards und Design-Patterns</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jun 2013</span> <span class="endDate">- Jul 2014</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Software Engineer</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.genpact.com/" class="svelte-g3qng">Genpact</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Softwareentwickler für Calypso- und Java-basierte Enterprise-Anwendungen im Finanzbereich.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Implementierung und Anpassung von Calypso-Komponenten und Java-Backends</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Enge Zusammenarbeit mit Senior Engineers und Business-Analysten bei Anforderungen und Produktionssupport</p><!----><!----></li></ul><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jul 2012</span> <span class="endDate">- May 2013</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Software Engineer</div> <div class="company svelte-g3qng"><a target="_blank" href="https://www.nec.com/" class="svelte-g3qng">NEC</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Softwareentwickler für Java-basierte Backend-Komponenten für Enterprise-Kunden.</p><!----><!----></div> <ul class="highlights svelte-hqrtpf"><li class="svelte-hqrtpf"><!----><p style="margin:0">Implementierung von Backend-Funktionalitäten und Integrationen auf Java/J2EE-Stacks</p><!----><!----></li><li class="svelte-hqrtpf"><!----><p style="margin:0">Enge Zusammenarbeit mit Senior Engineers zur Verbesserung von Performance und Zuverlässigkeit</p><!----><!----></li></ul><!----></div></section></section><!----></section><!--[3--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Projects<span class="item-count svelte-1lncexq">(6)</span></h2></header> <section id="projects"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Mar 2025</span> <!--[!--><span class="endDate">- Current</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Miles &amp; More Mobile Platform – Architektur &amp; KI-Transformation</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Lead Architect für die Miles &amp; More Flutter-Mobile-App, die von Millionen Loyalty-Kunden der Lufthansa Group genutzt wird. Verantwortlich für Plattformarchitektur, Koordination eines Multi-Vendor-Teams, CI/CD, Compliance und das Vorantreiben der KI-Adoption im Mobile-Produkt.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2020</span> <span class="endDate">- Feb 2025</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">AWS Cloud-Architektur &amp; Migration – Banken &amp; öffentlicher Sektor</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Leitung von Cloud-Architektur- und AWS-Migrationsinitiativen für eine große deutsche Bank und einen Bundesbehördenkunden bei adesso SE, inklusive Lift-&amp;-Shift-Migrationen und Greenfield-AWS-Plattformaufbauten für großskalige Microservice- und Micro-Frontend-Systeme in regulierten Umgebungen.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2025</span> <!--[!--><span class="endDate">- Current</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Skywink – Open-Source, datenschutzfreundliche KI-Chat-Plattform</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="website"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://skywink.nimbus-tech.de">https://skywink.nimbus-tech.de</a></span><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Gründer und Lead Engineer von Skywink, einer Open-Source-KI-Chat-Plattform von Nimbus Tech, die Nutzern und Unternehmen volle Kontrolle über ihre KI-Unterhaltungen gibt – lokal mit Ollama für vollständige Privatsphäre oder mit angebundenen Cloud-AI-Providern ohne Vendor Lock-in.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jun 2016</span> <span class="endDate">- Sept 2017</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Telekom- &amp; Banking-Service-Provisioning-Plattform</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Tech Lead einer Java-basierten Service-Provisioning-Plattform für einen Banking- und Telekomkunden bei Iris Software Inc., verantwortlich für Backend-Microservices, REST-API-Design und Team-Delivery.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2014</span> <span class="endDate">- May 2016</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Modernisierung von Enterprise-Banking-Anwendungen</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Tech Lead bei Virtusa Corp. für die Modernisierung einer Legacy-Java-EE-Banking-Anwendung für einen Enterprise-Finanzkunden, Migration zu einer geschichteten Spring-MVC- und Hibernate-Architektur.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jun 2013</span> <span class="endDate">- Jul 2014</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Calypso-basierte Kapitalmarkt- &amp; Reportingsysteme</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting.</p><!----><!----></div> <!--[!--><!----></div></section></section><!----></section><!--[4--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Volunteer<span class="item-count svelte-1lncexq">(2)</span></h2></header> <section id="volunteer"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jan 2018</span> <!--[!--><span class="endDate">- Current</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Builder &amp; Contributor</div> <div class="organization svelte-g3qng"><a target="_blank" href="https://github.com/rohit1901" class="svelte-g3qng">Open Source Community &amp; persönliche KI-Projekte</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Aktive Arbeit an und Experimentieren mit KI/LLM-Tooling, Open-Source-Bibliotheken und Developer-Infrastruktur mit Fokus auf lokale KI-Adoption, LLM-Integration und KI-gestützte Plattformentwicklung.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Jan 2015</span> <span class="endDate">- Jul 2018</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Freiwilliger</div> <div class="organization svelte-g3qng"><a target="_blank" href="https://robinhoodarmy.com/" class="svelte-g3qng">Robinhood Army</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Ehrenamtlicher Einsatz bei der Robinhood Army.</p><!----><!----></div> <!--[!--><!----></div></section></section><!----></section><!--[5--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Education<span class="item-count svelte-1lncexq">(2)</span></h2></header> <section id="education"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Sept 2017</span> <span class="endDate">- Sept 2022</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Master of Science Angewandte Mathematik für Netzwerk- und Data Science</div> <div class="institution svelte-g3qng"><a target="_blank" href="https://www.hs-mittweida.de/" class="svelte-g3qng">Hochschule Mittweida - University of Applied Sciences</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <!--[!--><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><div class="date"><span class="startDate">Aug 2007</span> <span class="endDate">- Jun 2011</span></div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Bachelor of Technology Informationstechnologie</div> <div class="institution svelte-g3qng"><a target="_blank" href="https://www.aktu.ac.in/" class="svelte-g3qng">Uttar Pradesh Technical University</a></div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <!--[!--><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section></section><!----></section><!--[6--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Awards<span class="item-count svelte-1lncexq">(5)</span></h2></header> <section id="awards"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Jul 2017</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Round of Applause</div> <div class="awarder svelte-g3qng"><!--[!-->Iris Software Inc.</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Aug 2015</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Top Talent</div> <div class="awarder svelte-g3qng"><!--[!-->Polaris Financial Services (assoziiert mit Virtusa)</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Dec 2022</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Talent Pool</div> <div class="awarder svelte-g3qng"><!--[!-->adesso SE</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Auswahl für das exklusive Top-Talent-Programm von adesso, ausgezeichnet für herausragende Arbeitsleistung und hohe Arbeitsethik, mit besonderen Möglichkeiten zum Networking und zur fachlichen Weiterentwicklung im Unternehmen.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Nov 2017</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">First Runner-up – Innovation Challenge Hackathon #2</div> <div class="awarder svelte-g3qng"><!--[!-->Hochschule Mittweida</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Konzeption und Entwicklung einer Android-App als Einzelentwickler für das Team „EASY“ innerhalb von 48 Stunden; ausgezeichnet mit dem zweiten Platz und einem Preisgeld von 100 €.</p><!----><!----></div> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Jul 2017</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Certificate of Appreciation</div> <div class="awarder svelte-g3qng"><!--[!-->Iris Software Inc.</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Auszeichnung für Mitarbeiter, die außergewöhnliche Leistungen erbracht und besonderes Kundenfeedback erhalten haben.</p><!----><!----></div> <!--[!--><!----></div></section></section><!----></section><!--[7--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Certificates<span class="item-count svelte-1lncexq">(7)</span></h2></header> <section id="certificates"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="url"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&amp;badge=true">https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&amp;badge=true</a></span><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Apollo Certified Graph Developer - Professional</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="url"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a">https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a</a></span><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Apollo Certified Graph Developer - Associate</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="url"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067">https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067</a></span><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Git Certified Specialist by GitKraken</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="url"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&amp;signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230">https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&amp;signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230</a></span><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">AWS Certified Developer - Associate</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <span class="url"><span class="fa-solid fa-up-right-from-square"></span> <a target="_blank" href="https://www.aws.training/certification/aws-certified-developer-associate">https://www.aws.training/certification/aws-certified-developer-associate</a></span><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[!--> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">AWS Certified Solutions Architect - Associate</div> <!--[!--></div></header> <!--[!--> <!--[!--><!----> <!--[!--><!----> <div class="item svelte-g3qng"><!--[!--> <!--[!--><!----></div></section></section><!----></section><!--[8--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Publications<span class="item-count svelte-1lncexq">(1)</span></h2></header> <section id="publications"><section class="timeline-item svelte-g3qng"><header class="clear svelte-g3qng"><!--[1--><div class="date svelte-g3qng">Jun 2023</div> <div class="header-left svelte-g3qng"><div class="position svelte-g3qng">Fraud Detection using Machine Learning</div> <div class="publisher svelte-g3qng"><!--[!-->in Hochschule Mittweida - University of Applied Sciences</div></div></header> <!--[!--> <!--[!--><!----> <!--[!--> <div class="item svelte-g3qng"><div class="summary"><!----><p style="margin:0">Diese Arbeit präsentiert einen neuartigen Ansatz zur Betrugserkennung mit Machine-Learning-Verfahren. Es wird ein hybrides Modell vorgestellt, das überwachte und unüberwachte Lernalgorithmen kombiniert, um betrügerische Transaktionen mit hoher Genauigkeit zu identifizieren. Der Ansatz übertrifft bestehende Methoden hinsichtlich Präzision und Recall.</p><!----><!----></div> <!--[!--><!----></div></section></section><!----></section><!--[9--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Languages<span class="item-count svelte-1lncexq">(3)</span></h2></header> <section class="languages-grid svelte-2dygc7"><div class="language-entry display svelte-2dygc7"><h3 class="language svelte-2dygc7">Englisch</h3> <div class="language-item svelte-2dygc7"><div class="level master svelte-10tjtrd" role="meter" aria-label="Muttersprache" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Muttersprache</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div></div></div><div class="language-entry display svelte-2dygc7"><h3 class="language svelte-2dygc7">Deutsch</h3> <div class="language-item svelte-2dygc7"><div class="level professionelle berufspraxis svelte-10tjtrd" role="meter" aria-label="Professionelle Berufspraxis" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Professionelle Berufspraxis</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div></div></div><div class="language-entry display svelte-2dygc7"><h3 class="language svelte-2dygc7">Hindi</h3> <div class="language-item svelte-2dygc7"><div class="level master svelte-10tjtrd" role="meter" aria-label="Muttersprache" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><em class="svelte-10tjtrd">Muttersprache</em> <div class="bar svelte-10tjtrd" aria-hidden="true"></div></div></div></div></section><!----></section><!--[10--><section class="section svelte-1lncexq"><header class="svelte-1lncexq"><h2 class="section-title svelte-1lncexq">Interests<span class="item-count svelte-1lncexq">(5)</span></h2></header> <section class="interests-grid svelte-1bnc9h3"><div class="interest-item svelte-1bnc9h3"><h3 class="name">Open Source</h3> <!--[!--><!----> <!--[!--></div><div class="interest-item svelte-1bnc9h3"><h3 class="name">Technologietrends</h3> <!--[!--><!----> <!--[!--></div><div class="interest-item svelte-1bnc9h3"><h3 class="name">Mathematik</h3> <!--[!--><!----> <!--[!--></div><div class="interest-item svelte-1bnc9h3"><h3 class="name">Fitness &amp; Wellness</h3> <!--[!--><!----> <!--[!--></div><div class="interest-item svelte-1bnc9h3"><h3 class="name">Lesen</h3> <!--[!--><!----> <!--[!--></div></section><!----></section><!--[11--><!--[!--></main>
+  </body>
+</html>

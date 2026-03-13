@@ -250,6 +250,32 @@ interface JSONResumeSchema {
 }
 
 /**
+ * Normalize date to valid ISO format
+ * Handles corrupted dates and ensures year is within reasonable range
+ */
+function normalizeDate(dateString: string | null | undefined): string | undefined {
+  if (!dateString) return undefined
+
+  try {
+    const date = new Date(dateString)
+    const year = date.getFullYear()
+
+    // Check if year is unreasonable (before 1900 or after current year + 10)
+    const currentYear = new Date().getFullYear()
+    if (year < 1900 || year > currentYear + 10) {
+      console.warn(`   ⚠️  Invalid year detected: ${year}, skipping date`)
+      return undefined
+    }
+
+    // Return ISO string
+    return date.toISOString()
+  } catch (error) {
+    console.warn(`   ⚠️  Invalid date format: ${dateString}`)
+    return undefined
+  }
+}
+
+/**
  * Converts GraphQL Resume to JSON Resume format
  */
 function convertToJSONResume(resume: any): JSONResumeSchema {
@@ -279,13 +305,15 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
       }
     }
 
-    // Convert profiles
+    // Convert profiles - only add if there are actual profiles
     if (basic.profiles && basic.profiles.length > 0) {
-      jsonResume.basics.profiles = basic.profiles.map((profile: any) => ({
-        network: profile.network || undefined,
-        username: profile.username || undefined,
-        url: profile.url || undefined,
-      }))
+      jsonResume.basics.profiles = basic.profiles
+        .map((profile: any) => ({
+          network: profile.network || undefined,
+          username: profile.username || undefined,
+          url: profile.url || undefined,
+        }))
+        .filter((p: any) => p.network || p.username || p.url)
     }
   }
 
@@ -295,8 +323,8 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
       name: job.name || undefined,
       position: job.position || undefined,
       url: job.url || undefined,
-      startDate: job.startDate || undefined,
-      endDate: job.endDate || undefined,
+      startDate: normalizeDate(job.startDate),
+      endDate: normalizeDate(job.endDate),
       summary: job.summary || undefined,
       highlights:
         job.highlights && job.highlights.length > 0
@@ -311,8 +339,8 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
       organization: vol.organization || undefined,
       position: vol.position || undefined,
       url: vol.url || undefined,
-      startDate: vol.startDate || undefined,
-      endDate: vol.endDate || undefined,
+      startDate: normalizeDate(vol.startDate),
+      endDate: normalizeDate(vol.endDate),
       summary: vol.summary || undefined,
       highlights:
         vol.highlights && Array.isArray(vol.highlights)
@@ -328,8 +356,8 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
       url: edu.url || undefined,
       area: edu.area || undefined,
       studyType: edu.studyType || undefined,
-      startDate: edu.startDate || undefined,
-      endDate: edu.endDate || undefined,
+      startDate: normalizeDate(edu.startDate),
+      endDate: normalizeDate(edu.endDate),
       score: edu.score || undefined,
       courses:
         edu.courses && Array.isArray(edu.courses)
@@ -342,7 +370,7 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
   if (resume.awards && resume.awards.length > 0) {
     jsonResume.awards = resume.awards.map((award: any) => ({
       title: award.title || undefined,
-      date: award.date || undefined,
+      date: normalizeDate(award.date),
       awarder: award.awarder || undefined,
       summary: award.summary || undefined,
     }))
@@ -363,7 +391,7 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
     jsonResume.publications = resume.publications.map((pub: any) => ({
       name: pub.name || undefined,
       publisher: pub.publisher || undefined,
-      releaseDate: pub.releaseDate || undefined,
+      releaseDate: normalizeDate(pub.releaseDate),
       url: pub.url || undefined,
       summary: pub.summary || undefined,
     }))
@@ -412,8 +440,8 @@ function convertToJSONResume(resume: any): JSONResumeSchema {
   if (resume.projects && resume.projects.length > 0) {
     jsonResume.projects = resume.projects.map((project: any) => ({
       name: project.name || undefined,
-      startDate: project.startDate || undefined,
-      endDate: project.endDate || undefined,
+      startDate: normalizeDate(project.startDate),
+      endDate: normalizeDate(project.endDate),
       description: project.description || undefined,
       highlights:
         project.highlights && Array.isArray(project.highlights)

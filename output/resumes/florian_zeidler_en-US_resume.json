@@ -11,38 +11,18 @@
       "city": "Leipzig",
       "countryCode": "DE",
       "region": "Saxony"
-    },
-    "profiles": [
-      {
-        "network": "GitHub",
-        "username": "Lunev1",
-        "url": "https://github.com/Lunev1"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "florian-zeidler-945b3a242",
-        "url": "https://www.linkedin.com/in/florian-zeidler-945b3a242/"
-      },
-      {
-        "network": "LinkedIn",
-        "username": "rohit-khanduri-9098b84a",
-        "url": "https://www.linkedin.com/in/rohit-khanduri-9098b84a/"
-      },
-      {
-        "network": "GitHub",
-        "username": "rohit1901",
-        "url": "https://github.com/rohit1901"
-      }
-    ]
+    }
   },
   "work": [
     {
       "name": "Finatix GmbH",
       "position": "Cloud Developer / Solutions Architect / DevOps Engineer",
-      "startDate": "2019-06-30T22:00:00.000Z",
+      "startDate": "2019-07-01T00:00:00.000Z",
       "summary": "Cloud Engineer and Solutions Architect for cloud environments.",
       "highlights": [
-        "Worked on projects with a focus on backend and cloud development ✌🏻 Tech lead for AWS cloud architecture ✌🏻 Implemented standardized processes for the development team and supported their deployment workflows"
+        "Worked on projects with a focus on backend and cloud development",
+        "Tech lead for AWS cloud architecture",
+        "Implemented standardized processes for the development team and supported their deployment workflows"
       ]
     }
   ],
@@ -52,38 +32,19 @@
       "url": "https://www.uni-leipzig.de/",
       "area": "Business and Computer Science",
       "studyType": "Master of Science",
-      "startDate": "2015-09-30T22:00:00.000Z",
-      "endDate": "2021-10-31T23:00:00.000Z"
+      "startDate": "2015-10-01T00:00:00.000Z",
+      "endDate": "2021-11-01T00:00:00.000Z"
     },
     {
       "institution": "Universität Leipzig",
       "url": "https://www.uni-leipzig.de/",
       "area": "Business and Computer Science",
       "studyType": "Bachelor of Science",
-      "startDate": "2010-09-30T22:00:00.000Z",
-      "endDate": "2015-09-30T22:00:00.000Z"
+      "startDate": "2010-10-01T00:00:00.000Z",
+      "endDate": "2015-10-01T00:00:00.000Z"
     }
   ],
   "certificates": [
-    {
-      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)"
-    },
-    {
-      "name": "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
-      "url": "https://app.skillsclub.com/credential/28340-f57d08ae92c30e28a0c2850516e8fec9616ac7473feba42e7c4a2e62585c44c0?locale=en&badge=true"
-    },
-    {
-      "name": "Apollo Certified Graph Developer - Professional",
-      "url": "https://www.apollographql.com/tutorials/certifications/d5356f71-0760-4701-ae67-8b56c425c89a"
-    },
-    {
-      "name": "Apollo Certified Graph Developer - Associate",
-      "url": "https://www.apollographql.com/tutorials/certifications/3ad7e4dd-4b29-46f2-8e65-6e5706e0c067"
-    },
-    {
-      "name": "Git Certified Specialist by GitKraken",
-      "url": "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230"
-    },
     {
       "name": "AWS Certified Developer - Associate"
     },
@@ -93,70 +54,63 @@
   ],
   "skills": [
     {
-      "name": "Architecture & System Design",
+      "name": "Backend Development",
       "level": "Expert"
     },
     {
-      "name": "Backend Development",
+      "name": "Cloud & DevOps",
       "level": "Advanced"
     },
     {
       "name": "Database & Data Management",
-      "level": "Intermediate"
-    },
-    {
-      "name": "Testing & Quality Assurance",
-      "level": "Intermediate"
-    },
-    {
-      "name": "Cloud & DevOps",
       "level": "Advanced"
     },
     {
-      "name": "Cloud & DevOps",
+      "name": "Architecture & System Design",
+      "level": "Expert"
+    },
+    {
+      "name": "Testing & Quality Assurance",
       "level": "Advanced"
     }
   ],
   "languages": [
     {
-      "language": "English",
+      "language": "German",
       "fluency": "Native"
     },
     {
-      "language": "German",
+      "language": "English",
       "fluency": "Professional Working"
     }
   ],
   "interests": [
     {
+      "name": "Business and People Management"
+    },
+    {
       "name": "Technology Trends"
     },
     {
       "name": "Fitness & Wellness"
-    },
-    {
-      "name": "Fitness & Wellness"
-    },
-    {
-      "name": "Business and People Management"
     }
   ],
   "projects": [
     {
       "name": "Development of a scalable cloud data platform for financial data",
-      "startDate": "2078-04-30T22:00:00.000Z",
+      "startDate": "2021-10-01T00:00:00.000Z",
       "description": "Architecture and Development of a multi-account scalable cloud data platform for financial data."
     },
     {
       "name": "Platform for credit cards and payment processing",
-      "startDate": "2075-02-28T23:00:00.000Z",
-      "endDate": "2077-03-31T22:00:00.000Z",
+      "startDate": "2019-07-01T00:00:00.000Z",
+      "endDate": "2020-09-01T00:00:00.000Z",
       "description": "Architected and developed a multi-tenant platform for prepaid credit cards."
     },
     {
       "name": "Development of support tools for the analysis of financial data",
-      "startDate": "2070-10-31T23:00:00.000Z",
-      "endDate": "2075-12-31T23:00:00.000Z",
+      "startDate": "2015-03-01T00:00:00.000Z",
+      "endDate": "2017-08-01T00:00:00.000Z",
       "description": "Development of a solution for the automated collection, processing, and storage of customer transactional data (ETL process). Development of a data schema for the long-term archiving of tax data and provision of data via internal company servers."
     }
   ]
