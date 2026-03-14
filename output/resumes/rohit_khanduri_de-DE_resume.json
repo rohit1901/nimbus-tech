@@ -142,18 +142,6 @@
   ],
   "awards": [
     {
-      "title": "Round of Applause",
-      "date": "2017-07-01T00:00:00.000Z",
-      "awarder": "Iris Software Inc.",
-      "summary": "Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben."
-    },
-    {
-      "title": "Top Talent",
-      "date": "2015-08-01T00:00:00.000Z",
-      "awarder": "Polaris Financial Services (assoziiert mit Virtusa)",
-      "summary": "Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
-    },
-    {
       "title": "Talent Pool",
       "date": "2022-12-01T00:00:00.000Z",
       "awarder": "adesso SE",
@@ -170,6 +158,18 @@
       "date": "2017-07-01T00:00:00.000Z",
       "awarder": "Iris Software Inc.",
       "summary": "Auszeichnung für Mitarbeiter, die außergewöhnliche Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
+    },
+    {
+      "title": "Round of Applause",
+      "date": "2017-07-01T00:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben."
+    },
+    {
+      "title": "Top Talent",
+      "date": "2015-08-01T00:00:00.000Z",
+      "awarder": "Polaris Financial Services (assoziiert mit Virtusa)",
+      "summary": "Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
     }
   ],
   "certificates": [
@@ -284,6 +284,12 @@
   ],
   "projects": [
     {
+      "name": "Calypso-basierte Kapitalmarkt- & Reportingsysteme",
+      "startDate": "2013-06-01T00:00:00.000Z",
+      "endDate": "2014-07-01T00:00:00.000Z",
+      "description": "Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting."
+    },
+    {
       "name": "Miles & More Mobile Platform – Architektur & KI-Transformation",
       "startDate": "2025-03-01T00:00:00.000Z",
       "description": "Lead Architect für die Miles & More Flutter-Mobile-App, die von Millionen Loyalty-Kunden der Lufthansa Group genutzt wird. Verantwortlich für Plattformarchitektur, Koordination eines Multi-Vendor-Teams, CI/CD, Compliance und das Vorantreiben der KI-Adoption im Mobile-Produkt."
@@ -311,12 +317,6 @@
       "startDate": "2014-08-01T00:00:00.000Z",
       "endDate": "2016-05-01T00:00:00.000Z",
       "description": "Tech Lead bei Virtusa Corp. für die Modernisierung einer Legacy-Java-EE-Banking-Anwendung für einen Enterprise-Finanzkunden, Migration zu einer geschichteten Spring-MVC- und Hibernate-Architektur."
-    },
-    {
-      "name": "Calypso-basierte Kapitalmarkt- & Reportingsysteme",
-      "startDate": "2013-06-01T00:00:00.000Z",
-      "endDate": "2014-07-01T00:00:00.000Z",
-      "description": "Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting."
     }
   ]
 }
