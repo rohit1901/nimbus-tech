@@ -30,7 +30,7 @@ interface Config {
 
 const DEFAULT_CONFIG: Config = {
   outputDir: join(process.cwd(), "output", "page-content"),
-  pages: ["privacy-policy", "impressum"], // Default pages to export
+  pages: ["privacy-policy", "terms"], // Default pages to export
 }
 
 // Page configuration type

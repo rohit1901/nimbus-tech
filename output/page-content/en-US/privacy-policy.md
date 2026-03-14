@@ -3,13 +3,13 @@
 **1. Controller**
 
 The controller within the meaning of the General Data Protection Regulation (GDPR) is:
-[Company name]
-[Address]
-Phone: [phone number]
-E-mail: [privacy e-mail or general e-mail]
-Web: [domain]
+Nimbus Tech GmbH
+Franz-Flemming-Str. 74, 04179 Leipzig, Germany
+Phone: 015565411734
+E-mail: r.khanduri@nimbus-tech.de
+Web: https://www.nimbus-tech.de
 
-[Optional:] Data protection officer: [name/contact, if required].
+Data protection officer: Rohit Khanduri, r.khanduri@nimbus-tech.de
 
 ***
 
@@ -35,18 +35,17 @@ When you access our website, certain data is automatically processed and stored 
 - Browser type and version
 - Operating system.
 
-Processing is necessary for technical delivery of the website, IT security and administrative purposes (Art. 6(1)(f) GDPR). Log data is deleted after [e.g. 7–30 days], unless longer storage is necessary for security reasons.
+Processing is necessary for technical delivery of the website, IT security and administrative purposes (Art. 6(1)(f) GDPR). Log data is deleted after 7 days, unless longer storage is necessary for security reasons.
 
 ***
 
-**4. Hosting and cloud services (e.g. AWS)**
+**4. Hosting and cloud services**
 
-Our website is hosted by [hosting provider, e.g. Amazon Web Services EMEA SARL]. This may involve processing of personal data on servers located in the EU and, where configured, in third countries.
+Our website is hosted by Vercel, Inc.. This may involve processing of personal data on servers located in the EU and, where configured, in third countries.
 
 We have concluded a data processing agreement with the provider pursuant to Art. 28 GDPR.
 Processing is based on our legitimate interests in a secure and efficient provision of our online services (Art. 6(1)(f) GDPR).
 
-[If third-country transfers (e.g. US) occur:]
 Where data is transferred to a third country, this is based on appropriate safeguards pursuant to Art. 46 GDPR (e.g. EU Standard Contractual Clauses). Nevertheless, there may be an increased risk of access by authorities without effective legal remedies being available to you.
 
 ***
@@ -59,11 +58,11 @@ The legal basis is Art. 6(1)(b) GDPR (contract / pre-contractual measures) or Ar
 
 ***
 
-**6. Online appointment booking (optional, e.g. Calendly)**
+**6. Online appointment booking**
 
 If you book an appointment with us via an integrated scheduling tool (e.g. Calendly), the data you enter will be processed for the purpose of arranging and managing the appointment.
 
-- Service provider: [name, address, link to provider’s privacy policy]
+- Service provider: Cal.com
 - Legal basis: Art. 6(1)(b) GDPR (contract / pre-contractual measures).
 A data processing agreement pursuant to Art. 28 GDPR has been concluded.
 If the provider transfers data to a third country (e.g. US), this is based on appropriate safeguards (e.g. EU Standard Contractual Clauses).
@@ -119,5 +118,5 @@ If the provision of data is required for concluding or performing a contract or 
 
 **12. Updates**
 
-This privacy policy is currently valid and was last updated on [insert date].
+This privacy policy is currently valid and was last updated on 14.03.2026.
 Due to further development of our website or changes in legal requirements, it may become necessary to amend this privacy policy.

@@ -2,36 +2,31 @@
 
 **Angaben gemäß § 5 DDG**
 
-[Unternehmensname]
-[Rechtsform, z.B. GmbH / UG (haftungsbeschränkt) / Einzelunternehmen]
-[Straße und Hausnummer]
-[PLZ und Ort]
-[Land]
+Nimbus Tech GmbH
+GmbH
+Franz-Flemming-Str. 74, 04179 Leipzig
+Deutschland
 
 **Kontakt**
 
-Telefon: [Telefonnummer]
-E-Mail: [E-Mail-Adresse]
-Web: [Domain-Name, z.B. www.meine-domain.de]
+Telefon: 015565411734
+E-mail: r.khanduri@nimbus-tech.de
+Web: https://www.nimbus-tech.de
 
 **Vertreten durch**
 
-[Name des/der Geschäftsführer(s) oder vertretungsberechtigten Person(en)]
+Florian Zeidler, Rohit Khanduri
 
 **Registereintrag**
 
 Eintragung im Handelsregister.
-Registergericht: [Amtsgericht / Registergericht]
-Registernummer: [HRB / HRA-Nummer]
+Registergericht: Amtsgericht Leipzig
+Registernummer: HRB 44436
 
 **Umsatzsteuer-ID**
 
 Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
-[USt-IdNr.]
-
-[Optional, falls einschlägig:]
-**Berufsrechtliche Angaben**
-[Zuständige Kammer, Berufsbezeichnung, Staat der Verleihung, berufsrechtliche Regelungen mit Fundstellen]
+DE456583148
 
 **EU-Streitschlichtung**
 
@@ -44,7 +39,6 @@ Unsere E-Mail-Adresse finden Sie oben im Impressum.
 
 Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
 
-[Optionaler Haftungshinweis:]
 **Haftung für Inhalte und Links**
 
 Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Inhalte.
