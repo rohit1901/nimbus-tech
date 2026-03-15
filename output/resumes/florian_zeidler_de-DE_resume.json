@@ -50,7 +50,8 @@
       "url": "https://www.aws.training/certification/aws-certified-developer-associate"
     },
     {
-      "name": "AWS Certified Solutions Architect - Associate"
+      "name": "AWS Certified Solutions Architect - Associate",
+      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url"
     }
   ],
   "skills": [
@@ -98,12 +99,6 @@
   ],
   "projects": [
     {
-      "name": "Entwicklung von Support-Tools für die Analyse von Finanzdaten",
-      "startDate": "2015-03-01T00:00:00.000Z",
-      "endDate": "2017-08-01T00:00:00.000Z",
-      "description": "Entwicklung einer Lösung zur automatisierten Erfassung, Verarbeitung und Speicherung von Kundentransaktionsdaten (ETL-Prozess). Entwicklung eines Datenschemas für die Langzeitarchivierung von Steuerdaten und Bereitstellung der Daten über unternehmensinterne Server."
-    },
-    {
       "name": "Entwicklung einer skalierbaren Cloud-Datenplattform für Finanzdaten",
       "startDate": "2020-10-01T00:00:00.000Z",
       "description": "Architektur und Entwicklung einer skalierbaren Multi-Account Cloud-Datenplattform für Finanzdaten."
@@ -113,6 +108,12 @@
       "startDate": "2019-07-01T00:00:00.000Z",
       "endDate": "2020-09-01T00:00:00.000Z",
       "description": "Architektur und Entwicklung einer mandantenfähigen Plattform für Prepaid-Kreditkarten."
+    },
+    {
+      "name": "Entwicklung von Support-Tools für die Analyse von Finanzdaten",
+      "startDate": "2015-03-01T00:00:00.000Z",
+      "endDate": "2017-08-01T00:00:00.000Z",
+      "description": "Entwicklung einer Lösung zur automatisierten Erfassung, Verarbeitung und Speicherung von Kundentransaktionsdaten (ETL-Prozess). Entwicklung eines Datenschemas für die Langzeitarchivierung von Steuerdaten und Bereitstellung der Daten über unternehmensinterne Server."
     }
   ]
 }

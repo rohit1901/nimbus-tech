@@ -174,7 +174,8 @@
   ],
   "certificates": [
     {
-      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)"
+      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)",
+      "url": "https://d1ljophloyhryl.cloudfront.net/assets/certifications/2402-CPSAAL-003-EN.pdf"
     },
     {
       "name": "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
@@ -190,13 +191,11 @@
     },
     {
       "name": "Git Certified Specialist by GitKraken",
-      "url": "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230"
+      "url": "https://d1ljophloyhryl.cloudfront.net/assets/certifications/foundations.git.kraken.2022.10.11.pdf"
     },
     {
-      "name": "AWS Certified Developer - Associate"
-    },
-    {
-      "name": "AWS Certified Solutions Architect - Associate"
+      "name": "AWS Certified Solutions Architect - Associate",
+      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url"
     }
   ],
   "publications": [
@@ -218,12 +217,12 @@
       "level": "Intermediate"
     },
     {
-      "name": "DevOps, CI/CD & Automation",
-      "level": "Expert"
-    },
-    {
       "name": "Cloud Security & Compliance",
       "level": "Advanced"
+    },
+    {
+      "name": "DevOps, CI/CD & Automation",
+      "level": "Expert"
     },
     {
       "name": "Architecture & System Design",
@@ -294,6 +293,12 @@
       "description": "Led cloud architecture and AWS migration initiatives for a major German bank and a federal public-sector client at adesso SE, covering both lift & shift migrations and greenfield AWS platform builds for large-scale microservice and micro-frontend systems in regulated environments."
     },
     {
+      "name": "Enterprise Banking Application Modernization",
+      "startDate": "2014-08-01T00:00:00.000Z",
+      "endDate": "2016-05-01T00:00:00.000Z",
+      "description": "Tech Lead at Virtusa Corp. on the modernization of a legacy Java EE banking application for an enterprise financial client, migrating to a layered Spring MVC and Hibernate architecture."
+    },
+    {
       "name": "Skywink – Open-Source Privacy-First AI Chat Platform",
       "startDate": "2025-08-01T00:00:00.000Z",
       "description": "Founder and lead engineer of Skywink, an open-source AI chat platform built by Nimbus Tech that gives users and enterprises full control over their AI conversations – run locally with Ollama for complete privacy or connect to cloud AI providers with no vendor lock-in.",
@@ -304,12 +309,6 @@
       "startDate": "2016-06-01T00:00:00.000Z",
       "endDate": "2017-09-01T00:00:00.000Z",
       "description": "Tech Lead on a Java-based service provisioning platform for a banking and telecom client at Iris Software Inc., responsible for backend microservices, REST API design, and team delivery."
-    },
-    {
-      "name": "Enterprise Banking Application Modernization",
-      "startDate": "2014-08-01T00:00:00.000Z",
-      "endDate": "2016-05-01T00:00:00.000Z",
-      "description": "Tech Lead at Virtusa Corp. on the modernization of a legacy Java EE banking application for an enterprise financial client, migrating to a layered Spring MVC and Hibernate architecture."
     },
     {
       "name": "Calypso-Based Capital Markets & Reporting System",

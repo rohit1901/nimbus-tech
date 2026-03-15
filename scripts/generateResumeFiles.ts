@@ -36,7 +36,7 @@ interface Config {
 const DEFAULT_CONFIG: Config = {
   inputDir: join(process.cwd(), "output", "resumes"),
   outputDir: join(process.cwd(), "output", "resume-files"),
-  theme: "jsonresume-theme-even",
+  theme: "jsonresume-theme-stackoverflow",
 }
 
 /**

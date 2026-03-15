@@ -142,6 +142,18 @@
   ],
   "awards": [
     {
+      "title": "Round of Applause",
+      "date": "2017-07-01T00:00:00.000Z",
+      "awarder": "Iris Software Inc.",
+      "summary": "Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben."
+    },
+    {
+      "title": "Top Talent",
+      "date": "2015-08-01T00:00:00.000Z",
+      "awarder": "Polaris Financial Services (assoziiert mit Virtusa)",
+      "summary": "Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
+    },
+    {
       "title": "Talent Pool",
       "date": "2022-12-01T00:00:00.000Z",
       "awarder": "adesso SE",
@@ -158,23 +170,12 @@
       "date": "2017-07-01T00:00:00.000Z",
       "awarder": "Iris Software Inc.",
       "summary": "Auszeichnung für Mitarbeiter, die außergewöhnliche Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
-    },
-    {
-      "title": "Round of Applause",
-      "date": "2017-07-01T00:00:00.000Z",
-      "awarder": "Iris Software Inc.",
-      "summary": "Auszeichnung für Mitarbeiter, die in einem bestimmten Monat außergewöhnlich gute Leistungen erbracht haben."
-    },
-    {
-      "title": "Top Talent",
-      "date": "2015-08-01T00:00:00.000Z",
-      "awarder": "Polaris Financial Services (assoziiert mit Virtusa)",
-      "summary": "Top-Talent-Auszeichnung für Mitarbeiter, die außergewöhnlich gute Leistungen erbracht und besonderes Kundenfeedback erhalten haben."
     }
   ],
   "certificates": [
     {
-      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)"
+      "name": "iSAQB® Certified Professional for Software Architecture - Advanced Level (CPSA-A)",
+      "url": "https://d1ljophloyhryl.cloudfront.net/assets/certifications/2402-CPSAAL-003-EN.pdf"
     },
     {
       "name": "iSAQB® Certified Professional for Software Architecture - Foundation Level (CPSA-F)",
@@ -190,14 +191,11 @@
     },
     {
       "name": "Git Certified Specialist by GitKraken",
-      "url": "https://cdn.filestackcontent.com/dq8NILlGROaJpp4bxYlC?policy=eyJjYWxsIjpbInJlYWQiXSwiZXhwaXJ5IjoxNzUwNjg3MzIwLCJwYXRoIjoiLyJ9&signature=3180d99a6f24a049042e2341f449f4e35a12688f261859fa6dfd88cac212d230"
+      "url": "https://d1ljophloyhryl.cloudfront.net/assets/certifications/foundations.git.kraken.2022.10.11.pdf"
     },
     {
-      "name": "AWS Certified Developer - Associate",
-      "url": "https://www.aws.training/certification/aws-certified-developer-associate"
-    },
-    {
-      "name": "AWS Certified Solutions Architect - Associate"
+      "name": "AWS Certified Solutions Architect - Associate",
+      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url"
     }
   ],
   "publications": [
@@ -235,6 +233,10 @@
       "level": "Advanced"
     },
     {
+      "name": "Agile & technische Führung",
+      "level": "Expert"
+    },
+    {
       "name": "Mobile Entwicklung",
       "level": "Intermediate"
     },
@@ -245,10 +247,6 @@
     {
       "name": "Testing & Qualitätssicherung",
       "level": "Intermediate"
-    },
-    {
-      "name": "Agile & technische Führung",
-      "level": "Expert"
     }
   ],
   "languages": [
@@ -284,23 +282,6 @@
   ],
   "projects": [
     {
-      "name": "Calypso-basierte Kapitalmarkt- & Reportingsysteme",
-      "startDate": "2013-06-01T00:00:00.000Z",
-      "endDate": "2014-07-01T00:00:00.000Z",
-      "description": "Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting."
-    },
-    {
-      "name": "Miles & More Mobile Platform – Architektur & KI-Transformation",
-      "startDate": "2025-03-01T00:00:00.000Z",
-      "description": "Lead Architect für die Miles & More Flutter-Mobile-App, die von Millionen Loyalty-Kunden der Lufthansa Group genutzt wird. Verantwortlich für Plattformarchitektur, Koordination eines Multi-Vendor-Teams, CI/CD, Compliance und das Vorantreiben der KI-Adoption im Mobile-Produkt."
-    },
-    {
-      "name": "AWS Cloud-Architektur & Migration – Banken & öffentlicher Sektor",
-      "startDate": "2020-08-01T00:00:00.000Z",
-      "endDate": "2025-02-01T00:00:00.000Z",
-      "description": "Leitung von Cloud-Architektur- und AWS-Migrationsinitiativen für eine große deutsche Bank und einen Bundesbehördenkunden bei adesso SE, inklusive Lift-&-Shift-Migrationen und Greenfield-AWS-Plattformaufbauten für großskalige Microservice- und Micro-Frontend-Systeme in regulierten Umgebungen."
-    },
-    {
       "name": "Skywink – Open-Source, datenschutzfreundliche KI-Chat-Plattform",
       "startDate": "2025-08-01T00:00:00.000Z",
       "description": "Gründer und Lead Engineer von Skywink, einer Open-Source-KI-Chat-Plattform von Nimbus Tech, die Nutzern und Unternehmen volle Kontrolle über ihre KI-Unterhaltungen gibt – lokal mit Ollama für vollständige Privatsphäre oder mit angebundenen Cloud-AI-Providern ohne Vendor Lock-in.",
@@ -317,6 +298,23 @@
       "startDate": "2014-08-01T00:00:00.000Z",
       "endDate": "2016-05-01T00:00:00.000Z",
       "description": "Tech Lead bei Virtusa Corp. für die Modernisierung einer Legacy-Java-EE-Banking-Anwendung für einen Enterprise-Finanzkunden, Migration zu einer geschichteten Spring-MVC- und Hibernate-Architektur."
+    },
+    {
+      "name": "Calypso-basierte Kapitalmarkt- & Reportingsysteme",
+      "startDate": "2013-06-01T00:00:00.000Z",
+      "endDate": "2014-07-01T00:00:00.000Z",
+      "description": "Softwareentwickler bei Genpact auf einer Calypso-basierten Kapitalmarktplattform für einen Bankkunden, mit Fokus auf Trade-Lifecycle-Management, Positionsführung und Finanzreporting."
+    },
+    {
+      "name": "AWS Cloud-Architektur & Migration – Banken & öffentlicher Sektor",
+      "startDate": "2020-08-01T00:00:00.000Z",
+      "endDate": "2025-02-01T00:00:00.000Z",
+      "description": "Leitung von Cloud-Architektur- und AWS-Migrationsinitiativen für eine große deutsche Bank und einen Bundesbehördenkunden bei adesso SE, inklusive Lift-&-Shift-Migrationen und Greenfield-AWS-Plattformaufbauten für großskalige Microservice- und Micro-Frontend-Systeme in regulierten Umgebungen."
+    },
+    {
+      "name": "Miles & More Mobile Platform – Architektur & KI-Transformation",
+      "startDate": "2025-03-01T00:00:00.000Z",
+      "description": "Lead Architect für die Miles & More Flutter-Mobile-App, die von Millionen Loyalty-Kunden der Lufthansa Group genutzt wird. Verantwortlich für Plattformarchitektur, Koordination eines Multi-Vendor-Teams, CI/CD, Compliance und das Vorantreiben der KI-Adoption im Mobile-Produkt."
     }
   ]
 }
