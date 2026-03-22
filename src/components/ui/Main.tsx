@@ -4,12 +4,12 @@ import FaqSection from "@/components/ui/FAQ"
 import FeatureDivider from "@/components/ui/FeatureDivider"
 import Features from "@/components/ui/Features"
 import Hero from "@/components/ui/Hero"
-import Map from "@/components/ui/Map/Map"
 import OurCertifications from "@/components/ui/OurCertifications"
 import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
+import { Globe } from "./Globe/Globe"
 
 // Wrapper component for consistent section padding
 const Section = ({
@@ -56,7 +56,7 @@ export const Main = () => {
       {content.map && (
         <>
           <Section>
-            <Map mapContent={content.map} />
+            <Globe mapContent={content.map} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>
