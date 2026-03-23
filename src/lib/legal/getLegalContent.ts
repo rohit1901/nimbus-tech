@@ -176,7 +176,7 @@ export async function getPageContentWithFallback(
   // If no content found and fallback file is provided, try to read from file
   if (fallbackFilePath) {
     try {
-      const filePath = join(process.cwd(), fallbackFilePath)
+      const filePath = join(/*turbopackIgnore: true*/ process.cwd(), fallbackFilePath)
       const fileContent = readFileSync(filePath, "utf-8")
       console.info(`Loaded content from fallback file: ${fallbackFilePath}`)
       return fileContent

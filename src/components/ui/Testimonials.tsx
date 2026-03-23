@@ -8,8 +8,8 @@ const TestimonialOrFallback = ({
   testimonial: TestimonialItem
 }) => {
   return (
-    <div className="mb-16 rounded-lg p-6 transition-all duration-700 group-hover:bg-white/40" key={testimonial.name}>
-      <span className="mt-4 block text-base font-semibold text-gray-900">
+    <div className="mb-16 rounded-lg" key={testimonial.name}>
+      <span className="mt-4 block text-base text-gray-900">
         {testimonial.content}
       </span>
 
@@ -24,11 +24,11 @@ const TestimonialOrFallback = ({
             />
           </Badge>
         )}
-        <div>
-          <div className="text-base font-bold text-gray-900">
+        <div className="inline-block rounded-lg bg-gradient-to-br from-orange-50 to-amber-50 px-4 py-3 shadow-sm ring-1 ring-orange-100 opacity-80">
+          <div className="text-base font-semibold text-gray-900">
             {testimonial.name}
           </div>
-          <div className="text-sm text-[#C33621]/80 font-bold">
+          <div className="text-sm font-semibold text-orange-600">
             {testimonial.role}{" "}
             {testimonial.company && `at ${testimonial.company}`}
           </div>
@@ -96,7 +96,7 @@ export default function Testimonials({
           />
         </div>
       ))}
-      <div className="relative z-20 mb-20 p-8 sm:p-14 lg:p-24">
+      <div className="relative z-20 p-8 sm:p-14 lg:p-24">
         <div className="relative max-w-2xl text-xl leading-relaxed tracking-tight text-gray-900 md:text-2xl lg:text-3xl">
           <span className="block font-semibold text-gray-900">
             {testimonial.title}

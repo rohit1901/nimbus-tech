@@ -6,6 +6,7 @@ import { useMotionValue, useSpring } from "motion/react"
 
 import { cx as cn } from "@/lib/utils"
 import { Map, Maybe } from "@/app/graphql/types"
+
 const MapBorder = ({ position = "left" }: { position?: "left" | "right" }) => (
   <div className={`absolute ${position}-0 z-10 h-full backdrop-blur-[2px]`}>
     <svg
@@ -39,33 +40,37 @@ const MapBorder = ({ position = "left" }: { position?: "left" | "right" }) => (
     </svg>
   </div>
 )
+
 const MOVEMENT_DAMPING = 1400
+
+// Base marker data with their original sizes (as mutable arrays for Cobe compatibility)
+const BASE_MARKERS: Array<{ location: [number, number]; size: number }> = [
+  { location: [14.5995, 120.9842], size: 0.03 },
+  { location: [19.076, 72.8777], size: 0.1 },
+  { location: [23.8103, 90.4125], size: 0.05 },
+  { location: [30.0444, 31.2357], size: 0.07 },
+  { location: [39.9042, 116.4074], size: 0.08 },
+  { location: [-23.5505, -46.6333], size: 0.1 },
+  { location: [19.4326, -99.1332], size: 0.1 },
+  { location: [40.7128, -74.006], size: 0.1 },
+  { location: [34.6937, 135.5022], size: 0.05 },
+  { location: [41.0082, 28.9784], size: 0.06 },
+]
 
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
   height: 800,
   devicePixelRatio: 2,
-  phi: 0,
-  theta: 0.3,
+  phi: 4.5,
+  theta: 0.5,
   dark: 1,
   diffuse: 0.4,
   mapSamples: 16000,
   mapBrightness: 1.2,
   baseColor: [1, 1, 1],
-  markerColor: [251 / 255, 100 / 255, 21 / 255],
+  markerColor: [255 / 255, 200 / 255, 160 / 255],
   glowColor: [1, 1, 1],
-  markers: [
-    { location: [14.5995, 120.9842], size: 0.03 },
-    { location: [19.076, 72.8777], size: 0.1 },
-    { location: [23.8103, 90.4125], size: 0.05 },
-    { location: [30.0444, 31.2357], size: 0.07 },
-    { location: [39.9042, 116.4074], size: 0.08 },
-    { location: [-23.5505, -46.6333], size: 0.1 },
-    { location: [19.4326, -99.1332], size: 0.1 },
-    { location: [40.7128, -74.006], size: 0.1 },
-    { location: [34.6937, 135.5022], size: 0.05 },
-    { location: [41.0082, 28.9784], size: 0.06 },
-  ],
+  markers: BASE_MARKERS.map(m => ({ ...m })),
 }
 
 export function Globe({
@@ -82,6 +87,11 @@ export function Globe({
   const widthRef = useRef(0)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
+  const isHovering = useRef(false)
+
+  // Track animated marker sizes for smooth transitions
+  const markerSizesRef = useRef<number[]>(BASE_MARKERS.map(m => m.size))
+  const targetMarkerSizesRef = useRef<number[]>(BASE_MARKERS.map(m => m.size))
 
   const r = useMotionValue(0)
   const rs = useSpring(r, {
@@ -124,12 +134,31 @@ export function Globe({
     })
 
     const animate = () => {
-      if (!pointerInteracting.current) phiRef.current += 0.001
+      // Only rotate when hovering and not dragging
+      if (!pointerInteracting.current && isHovering.current) {
+        phiRef.current += 0.001
+      }
+
+      // Smoothly interpolate marker sizes with ease-out
+      // This creates a fluid animation instead of jerky transitions
+      markerSizesRef.current = markerSizesRef.current.map((currentSize, i) => {
+        const targetSize = targetMarkerSizesRef.current[i]
+        const diff = targetSize - currentSize
+        // Apply smooth easing to the transition (10% interpolation per frame)
+        return currentSize + diff * 0.1
+      })
+
+      // Create markers with smoothly animated sizes
+      const animatedMarkers = BASE_MARKERS.map((marker, i) => ({
+        location: marker.location,
+        size: markerSizesRef.current[i],
+      }))
 
       globe.update({
         phi: phiRef.current + rs.get(),
         width: widthRef.current * 2,
         height: widthRef.current * 2,
+        markers: animatedMarkers,
       })
 
       animationFrameId = requestAnimationFrame(animate)
@@ -184,6 +213,12 @@ export function Globe({
           }}
           onPointerUp={() => updatePointerInteraction(null)}
           onPointerOut={() => updatePointerInteraction(null)}
+          onMouseEnter={() => {
+            isHovering.current = true
+          }}
+          onMouseLeave={() => {
+            isHovering.current = false
+          }}
           onMouseMove={(e) => updateMovement(e.clientX)}
           onTouchMove={(e) =>
             e.touches[0] && updateMovement(e.touches[0].clientX)
