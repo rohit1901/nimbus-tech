@@ -3,8 +3,8 @@
 import * as React from "react"
 
 import { Feature, Map, Maybe } from "@/app/graphql/types"
-import { DottedMap } from "@/components/ui/Globe/DottedMap"
-import type { Marker } from "@/components/ui/Globe/DottedMap"
+import { DottedMap } from "@/components/ui/Map/DottedMap"
+import type { Marker } from "@/components/ui/Map/DottedMap"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
 import { HyperText } from "@/components/HyperText"
 

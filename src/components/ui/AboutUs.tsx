@@ -75,7 +75,7 @@ const CompactProfileCard: React.FC<ProfileCardProps> = ({
         "border-gray-200 dark:border-slate-800",
         "bg-gray-50 dark:bg-gray-950",
         "p-4 shadow-lg shadow-black/2.5 dark:shadow-slate-900/60",
-        "text-gray-900 dark:text-slate-100",
+        "text-gray-900 dark:text-slate-100 md:mx-4 my-4",
         className,
       )}
     >
@@ -324,7 +324,7 @@ function FounderIntro({ heading, intro }: { heading: string; intro: string }) {
           <p className="text-center text-gray-600 dark:text-gray-50">{intro}</p>
         </div>
 
-        <div className="my-4 space-y-4">
+        <div className="md:flex md:flex-row md:justify-between">
           <CompactProfileCard
             avatarUrl={leftFounder.avatarUrl}
             name={leftFounder.name}
