@@ -9,7 +9,7 @@ import Testimonials from "@/components/ui/Testimonials"
 import WhyNimbusTech from "@/components/ui/WhyNimbusTech"
 import { useSectionContent } from "@/hooks/useSectionContent"
 import { useLanguageContext } from "@/app/providers/LanguageContext"
-import { Globe } from "./Globe/Globe"
+import { GlobalDatabase } from "@/components/ui/Globe/GlobalDatabase"
 
 // Wrapper component for consistent section padding
 const Section = ({
@@ -56,7 +56,7 @@ export const Main = () => {
       {content.map && (
         <>
           <Section>
-            <Globe mapContent={content.map} />
+            <GlobalDatabase mapContent={content.map} />
           </Section>
           <FeatureDivider className="my-16 max-w-6xl" />
         </>

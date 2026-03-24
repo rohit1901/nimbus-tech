@@ -93,7 +93,7 @@ const FeatureTextBlock = ({
     <div className="col-span-2 my-auto px-2">
       <h2 className="relative text-lg font-semibold tracking-tight text-orange-500 dark:text-orange-400">
         {title}
-        <div className="absolute top-1 -left-[8px] h-5 w-[3px] rounded-r-sm bg-orange-500 dark:bg-orange-400" />
+        <div className="absolute top-1 -left-2 h-5 w-0.75 rounded-r-sm bg-orange-500 dark:bg-orange-400" />
       </h2>
       {children}
     </div>
@@ -104,7 +104,7 @@ const OrbitFeatureVisualization = () => {
   return (
     <div className="relative col-span-2 flex items-center justify-center overflow-hidden">
       <PatternBackground />
-      <div className="pointer-events-none h-[26rem] p-10 select-none">
+      <div className="pointer-events-none h-104 p-10 select-none">
         <div className="relative flex flex-col items-center justify-center">
           <Orbit
             durationSeconds={40}
