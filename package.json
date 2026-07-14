@@ -63,6 +63,7 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "resumed": "^6.1.0",
     "tailwindcss": "^4.2.2",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "yaml": "^2.9.0"
   }
 }

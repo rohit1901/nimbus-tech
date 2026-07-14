@@ -847,7 +847,7 @@ npm run test:export:resumes
 | `--id <id>`                   | Only export the given resume id (repeatable)                                                      | –                              |
 | `--language <code>`           | Only export resumes whose `language.value` matches (repeatable, case-insensitive)                 | –                              |
 | `--name <fragment>`           | Case-insensitive substring match on `basics.name`                                                 | –                              |
-| `--format json\|yaml`         | Output format (YAML requires `npm i -D yaml`)                                                     | `json`                         |
+| `--format json\|yaml`         | Output format                                                                                     | `json`                         |
 | `--filename <template>`       | Filename template. Placeholders: `{name}`, `{lang}`, `{id}`, `{ext}`                              | `{name}_{lang}_resume.{ext}`   |
 | `--pretty` / `--no-pretty`    | Pretty-print JSON output                                                                          | pretty                         |
 | `--concurrency <n>`           | Max concurrent file writes                                                                        | `8`                            |
@@ -916,7 +916,7 @@ npm run export:resumes -- --id clr123abc
 # Preview what would happen, verbosely
 npm run export:resumes -- --dry-run --verbose
 
-# YAML output (requires `npm i -D yaml`)
+# YAML output
 npm run export:resumes -- --format yaml --out output/resumes-yaml
 
 # Custom filename template
@@ -984,7 +984,7 @@ See [Generate Resume Files](#generate-resume-files) for the built-in HTML pipeli
 | `GraphQL URL not provided`                             | Set `NEXT_PUBLIC_GRAPHQL_URL` in `.env` or pass `--url`                                          |
 | `GraphQL request failed: HTTP 401/403`                 | Set `GRAPHQL_AUTH_TOKEN` in the environment                                                      |
 | `GraphQL returned errors: …`                           | The endpoint returned a `errors[]` array — the message identifies the failing field / operation |
-| `--format yaml requires the "yaml" package`            | `npm install --save-dev yaml`                                                                    |
+| `failed to load the "yaml" package: …`                 | The `yaml` devDependency is missing — reinstall with `pnpm install`                              |
 | Filename shows `unknown` for the language              | Ensure each resume in the CMS has a `language.value` set                                          |
 | Two resumes collide on filename                        | The exporter appends the short id automatically — no action needed                                |
 
