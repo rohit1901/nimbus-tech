@@ -155,6 +155,69 @@ describe("convertToJSONResume", () => {
     ])
   })
 
+  it("sorts work entries in reverse-chronological order (current role first)", () => {
+    const result = convertToJSONResume({
+      ...baseResume,
+      work: [
+        {
+          name: "Middle",
+          position: "Engineer",
+          startDate: "2018-01-01T00:00:00.000Z",
+          endDate: "2020-12-31T00:00:00.000Z",
+        },
+        {
+          name: "Oldest",
+          position: "Engineer",
+          startDate: "2015-01-01T00:00:00.000Z",
+          endDate: "2017-12-31T00:00:00.000Z",
+        },
+        {
+          name: "Current",
+          position: "Engineer",
+          startDate: "2023-03-01T00:00:00.000Z",
+          endDate: null,
+        },
+        {
+          name: "Recent",
+          position: "Engineer",
+          startDate: "2021-01-01T00:00:00.000Z",
+          endDate: "2023-02-28T00:00:00.000Z",
+        },
+      ],
+    })
+    assert.deepEqual(
+      result.work?.map((w) => w.name),
+      ["Current", "Recent", "Middle", "Oldest"],
+    )
+  })
+
+  it("sorts projects in reverse-chronological order (ongoing first)", () => {
+    const result = convertToJSONResume({
+      ...baseResume,
+      projects: [
+        {
+          name: "Old Project",
+          startDate: "2016-01-01T00:00:00.000Z",
+          endDate: "2018-06-30T00:00:00.000Z",
+        },
+        {
+          name: "Ongoing Project",
+          startDate: "2024-01-01T00:00:00.000Z",
+          endDate: null,
+        },
+        {
+          name: "Recent Project",
+          startDate: "2022-03-01T00:00:00.000Z",
+          endDate: "2023-12-31T00:00:00.000Z",
+        },
+      ],
+    })
+    assert.deepEqual(
+      result.projects?.map((p) => p.name),
+      ["Ongoing Project", "Recent Project", "Old Project"],
+    )
+  })
+
   it("splits string highlights/courses/keywords into arrays", () => {
     const result = convertToJSONResume({
       ...baseResume,

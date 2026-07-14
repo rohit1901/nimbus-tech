@@ -47,6 +47,26 @@ export function normalizeDate(
 }
 
 /**
+ * Comparator for JSON Resume entries with `startDate` and/or `endDate` in
+ * ISO `YYYY-MM-DD` form. Sorts reverse-chronologically:
+ *   1. Entries with no `endDate` (current / ongoing) come first.
+ *   2. Then by `endDate` descending.
+ *   3. Ties are broken by `startDate` descending.
+ *   4. Missing `startDate` sinks to the bottom of its tier.
+ *
+ * Relies on ISO date strings sorting lexicographically. Do not use for
+ * unnormalised or non-ISO dates.
+ */
+export function byReverseChronological<
+  T extends { startDate?: string; endDate?: string },
+>(a: T, b: T): number {
+  const aEnd = a.endDate ?? "9999-99-99"
+  const bEnd = b.endDate ?? "9999-99-99"
+  if (aEnd !== bEnd) return bEnd.localeCompare(aEnd)
+  return (b.startDate ?? "").localeCompare(a.startDate ?? "")
+}
+
+/**
  * Character used in the CMS to separate list items inside a single
  * text field (e.g. project highlights). Kept as a constant so it's
  * easy to grep for and change.
@@ -202,22 +222,24 @@ export function convertToJSONResume(
 
   // work -------------------------------------------------------------------
   if (resume.work && resume.work.length > 0) {
-    jsonResume.work = resume.work.map((job) =>
-      compact({
-        name: str(job.name),
-        position: str(job.position),
-        url: str(job.url),
-        startDate: normalizeDate(job.startDate, { onInvalid }),
-        endDate: normalizeDate(job.endDate, { onInvalid }),
-        summary: str(job.summary),
-        highlights:
-          job.highlights && job.highlights.length > 0
-            ? job.highlights
-                .map((h) => str(h.value))
-                .filter((v): v is string => Boolean(v))
-            : undefined,
-      }),
-    )
+    jsonResume.work = resume.work
+      .map((job) =>
+        compact({
+          name: str(job.name),
+          position: str(job.position),
+          url: str(job.url),
+          startDate: normalizeDate(job.startDate, { onInvalid }),
+          endDate: normalizeDate(job.endDate, { onInvalid }),
+          summary: str(job.summary),
+          highlights:
+            job.highlights && job.highlights.length > 0
+              ? job.highlights
+                  .map((h) => str(h.value))
+                  .filter((v): v is string => Boolean(v))
+              : undefined,
+        }),
+      )
+      .sort(byReverseChronological)
   }
 
   // volunteer --------------------------------------------------------------
@@ -333,16 +355,18 @@ export function convertToJSONResume(
 
   // projects ---------------------------------------------------------------
   if (resume.projects && resume.projects.length > 0) {
-    jsonResume.projects = resume.projects.map((project) =>
-      compact({
-        name: str(project.name),
-        startDate: normalizeDate(project.startDate, { onInvalid }),
-        endDate: normalizeDate(project.endDate, { onInvalid }),
-        description: str(project.description),
-        highlights: split(project.highlights),
-        url: str(project.url),
-      }),
-    )
+    jsonResume.projects = resume.projects
+      .map((project) =>
+        compact({
+          name: str(project.name),
+          startDate: normalizeDate(project.startDate, { onInvalid }),
+          endDate: normalizeDate(project.endDate, { onInvalid }),
+          description: str(project.description),
+          highlights: split(project.highlights),
+          url: str(project.url),
+        }),
+      )
+      .sort(byReverseChronological)
   }
 
   return jsonResume
