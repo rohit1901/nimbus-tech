@@ -49,7 +49,9 @@ import {
 // CLI parsing
 // ---------------------------------------------------------------------------
 
-const DEFAULT_THEME = "jsonresume-theme-stackoverflow"
+// developer-mono ships broken package `exports` for the bare import;
+// the `/dist` subpath resolves the compiled CJS build that actually works.
+const DEFAULT_THEME = "jsonresume-theme-developer-mono/dist"
 const KNOWN_THEME_PREFIXES = ["jsonresume-theme-", "@jsonresume/"]
 
 function printHelp(): void {

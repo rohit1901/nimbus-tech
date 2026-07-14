@@ -56,6 +56,7 @@
     "dotenv": "^17.3.1",
     "eslint": "^9.39.4",
     "eslint-config-next": "15.3.2",
+    "jsonresume-theme-developer-mono": "^0.2.3",
     "jsonresume-theme-elegant": "^1.16.1",
     "jsonresume-theme-even": "^0.26.1",
     "jsonresume-theme-stackoverflow": "^3.1.1",

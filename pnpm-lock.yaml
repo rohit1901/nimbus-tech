@@ -46,7 +46,7 @@ importers:
         version: 16.13.1
       motion:
         specifier: 12.12.1
-        version: 12.12.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        version: 12.12.1(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next:
         specifier: ^16.2.1
         version: 16.2.1(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -111,6 +111,9 @@ importers:
       eslint-config-next:
         specifier: 15.3.2
         version: 15.3.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
+      jsonresume-theme-developer-mono:
+        specifier: ^0.2.3
+        version: 0.2.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       jsonresume-theme-elegant:
         specifier: ^1.16.1
         version: 1.16.1
@@ -258,6 +261,12 @@ packages:
 
   '@emnapi/wasi-threads@1.2.0':
     resolution: {integrity: sha512-N10dEJNSsUx41Z6pZsXU8FjPjpBEplgH24sfkmITrBED1/U2Esum9F3lfLrMjKHHjmi557zQn7kR9R+XWXu5Rg==}
+
+  '@emotion/is-prop-valid@1.4.0':
+    resolution: {integrity: sha512-QgD4fyscGcbbKwJmqNvUMSE02OsHUa+lAWKdEUIJKgqe5IwRSKd7+KhibEWdaKwgjLj0DRSHA9biAIqGBk05lw==}
+
+  '@emotion/memoize@0.9.0':
+    resolution: {integrity: sha512-30FAj7/EoJ5mwVPOWhAyCX+FPfMDrVecJAM+Iw9NRoSl4BBAQeqj4cApHHUXOVvIPgLVDsCFoz/hGD+5QQD1GQ==}
 
   '@envelop/core@5.5.1':
     resolution: {integrity: sha512-3DQg8sFskDo386TkL5j12jyRAdip/8yzK3x7YGbZBgobZ4aKXrvDU0GppU0SnmrpQnNaiTUsxBs9LKkwQ/eyvw==}
@@ -1048,9 +1057,21 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@jsonresume/core@0.3.1':
+    resolution: {integrity: sha512-qf2nLo6z5WCYkP4Gz4//E9C6LXrWCttxOiotzRl/Y0llWNWcwqK6up1WAknFRG6Mh5glHr+LSnzynI+tLi4H1w==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+
   '@jsonresume/schema@1.2.1':
     resolution: {integrity: sha512-kcst3WFNz+ACZnazWSHgI8hiooSuBH/j+TdduJ6LqMEoE+Kni1wDbrINkAzTR72D+gc1GEG4I/HRTqoa5dMJiA==}
     engines: {node: '>=20'}
+
+  '@jsonresume/types@0.2.1':
+    resolution: {integrity: sha512-Z+d4EUbpybCMsYaR0aJsbbqqwX6jSfn88WantnduwWs9Bx5zGaef7l1jWWFoALE25/XPvqLqIQNgO4twv6S8KQ==}
+
+  '@jsonresume/utils@0.2.1':
+    resolution: {integrity: sha512-+mICrA8sluwDRXK1ORRxsR7xFxvgF7R++e+6M0J0THqIso3cdUnjk2AW8dZ9DcWbRYAbGvby2LGEoGusIoXx2g==}
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -3086,6 +3107,12 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  jsonresume-theme-developer-mono@0.2.3:
+    resolution: {integrity: sha512-jFKMGQigeXU5n5gSb6vsEkwt+RR0tXHXHQcnj4V9BPFgmbgowKyPRJQTr4GdpwSmhtV2UPYIssG+BP7DQyaxMQ==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+
   jsonresume-theme-elegant@1.16.1:
     resolution: {integrity: sha512-UHKZx+AoE/zGnsZBgV60b+kP5s7euzLp1wDfOItWCt90iwzXuiY++BETTsaRlQHt4nrKbb5GvjXHkE02xovS1w==}
 
@@ -4196,6 +4223,22 @@ packages:
   style-to-object@1.0.14:
     resolution: {integrity: sha512-LIN7rULI0jBscWQYaSswptyderlarFkjQ+t79nzty8tcIAceVomEVlLzH5VP4Cmsv6MtKhs7qaAiwlcp+Mgaxw==}
 
+  styled-components@6.4.3:
+    resolution: {integrity: sha512-wYXrhu+JmDjZ1Tv7O0OopGTfztbzun43Pjjhh2H+xc0h5A09dwpZ5FJbrifJDcL8g5TA9btpWOX2+iSRuJTExw==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      css-to-react-native: '>= 3.2.0'
+      react: '>= 16.8.0'
+      react-dom: '>= 16.8.0'
+      react-native: '>= 0.68.0'
+    peerDependenciesMeta:
+      css-to-react-native:
+        optional: true
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+
   styled-jsx@5.1.6:
     resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
     engines: {node: '>= 12.0.0'}
@@ -4208,6 +4251,9 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+
+  stylis@4.3.6:
+    resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
 
   supports-color@7.2.0:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
@@ -4734,6 +4780,12 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
+
+  '@emotion/is-prop-valid@1.4.0':
+    dependencies:
+      '@emotion/memoize': 0.9.0
+
+  '@emotion/memoize@0.9.0': {}
 
   '@envelop/core@5.5.1':
     dependencies:
@@ -5553,9 +5605,24 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@jsonresume/core@0.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@jsonresume/types': 0.2.1
+      '@jsonresume/utils': 0.2.1
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      styled-components: 6.4.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+    transitivePeerDependencies:
+      - css-to-react-native
+      - react-native
+
   '@jsonresume/schema@1.2.1':
     dependencies:
       jsonschema: 1.5.0
+
+  '@jsonresume/types@0.2.1': {}
+
+  '@jsonresume/utils@0.2.1': {}
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
@@ -7238,12 +7305,13 @@ snapshots:
     dependencies:
       fetch-blob: 3.2.0
 
-  framer-motion@12.38.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  framer-motion@12.38.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
       motion-dom: 12.38.0
       motion-utils: 12.36.0
       tslib: 2.8.1
     optionalDependencies:
+      '@emotion/is-prop-valid': 1.4.0
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
@@ -7703,6 +7771,16 @@ snapshots:
       minimist: 1.2.8
 
   json5@2.2.3: {}
+
+  jsonresume-theme-developer-mono@0.2.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      '@jsonresume/core': 0.3.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      styled-components: 6.4.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+    transitivePeerDependencies:
+      - css-to-react-native
+      - react-native
 
   jsonresume-theme-elegant@1.16.1:
     dependencies:
@@ -8297,11 +8375,12 @@ snapshots:
 
   motion-utils@12.36.0: {}
 
-  motion@12.12.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+  motion@12.12.1(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:
-      framer-motion: 12.38.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      framer-motion: 12.38.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       tslib: 2.8.1
     optionalDependencies:
+      '@emotion/is-prop-valid': 1.4.0
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
@@ -9099,12 +9178,23 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
+  styled-components@6.4.3(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
+    dependencies:
+      '@emotion/is-prop-valid': 1.4.0
+      csstype: 3.2.3
+      react: 19.2.4
+      stylis: 4.3.6
+    optionalDependencies:
+      react-dom: 19.2.4(react@19.2.4)
+
   styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.4):
     dependencies:
       client-only: 0.0.1
       react: 19.2.4
     optionalDependencies:
       '@babel/core': 7.29.0
+
+  stylis@4.3.6: {}
 
   supports-color@7.2.0:
     dependencies:
