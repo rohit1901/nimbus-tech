@@ -51,7 +51,7 @@ function ResumeExportButton() {
 
 ### In Server-Side Scripts
 
-See `scripts/exportResumes.ts` for an example of using the conversion logic in Node.js scripts.
+See `scripts/exportResumes/` for an example of using the conversion logic in Node.js scripts.
 
 ## API Reference
 
@@ -155,7 +155,7 @@ The module functionality remains unchanged; only the location has been updated.
 
 ## Related Documentation
 
-- **Export Script:** `scripts/exportResumes.ts` - Server-side resume export
+- **Export Script:** `scripts/exportResumes/` - Server-side resume export
 - **Scripts Documentation:** `scripts/README.md` - Complete scripts reference
 - **Resume Generation:** `scripts/RESUME_GENERATION.md` - Resume generation guide
 - **JSON Resume Standard:** https://jsonresume.org/schema - Official specification

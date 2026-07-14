@@ -17,7 +17,7 @@
     {
       "name": "Finatix GmbH",
       "position": "Cloud Developer / Solutions Architect / DevOps Engineer",
-      "startDate": "2019-07-01T00:00:00.000Z",
+      "startDate": "2019-07-01",
       "summary": "Cloud Engineer and Solutions Architect for cloud environments.",
       "highlights": [
         "Worked on projects with a focus on backend and cloud development",
@@ -32,47 +32,165 @@
       "url": "https://www.uni-leipzig.de/",
       "area": "Business and Computer Science",
       "studyType": "Master of Science",
-      "startDate": "2015-10-01T00:00:00.000Z",
-      "endDate": "2021-11-01T00:00:00.000Z"
+      "startDate": "2015-10-01",
+      "endDate": "2021-11-01"
     },
     {
       "institution": "Universität Leipzig",
       "url": "https://www.uni-leipzig.de/",
       "area": "Business and Computer Science",
       "studyType": "Bachelor of Science",
-      "startDate": "2010-10-01T00:00:00.000Z",
-      "endDate": "2015-10-01T00:00:00.000Z"
+      "startDate": "2010-10-01",
+      "endDate": "2015-10-01"
     }
   ],
   "certificates": [
     {
-      "name": "AWS Certified Developer - Associate"
+      "name": "AWS Certified Developer - Associate",
+      "summary": "Demonstrates proficiency in developing and maintaining applications on AWS."
     },
     {
       "name": "AWS Certified Solutions Architect - Associate",
-      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url"
+      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url",
+      "summary": "Demonstrates proficiency in architecting applications on AWS."
     }
   ],
   "skills": [
     {
       "name": "Backend Development",
-      "level": "Expert"
+      "level": "Expert",
+      "keywords": [
+        "Node.js",
+        "GraphQL",
+        "REST APIs",
+        "gRPC",
+        "WebSockets",
+        "Message Queues",
+        "RabbitMQ",
+        "Apache Kafka",
+        "Authentication (JWT",
+        "OAuth2",
+        "SAML)",
+        "API Design",
+        "Rate Limiting",
+        "Caching Strategies",
+        "open-api"
+      ]
     },
     {
       "name": "Cloud & DevOps",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "AWS (EC2",
+        "ECS",
+        "EKS",
+        "Lambda",
+        "S3",
+        "CloudFront",
+        "RDS",
+        "DynamoDB",
+        "SQS",
+        "SNS",
+        "API Gateway",
+        "CloudWatch)",
+        "Azure",
+        "Google Cloud Platform",
+        "Docker",
+        "Kubernetes",
+        "Helm",
+        "ArgoCD",
+        "CI/CD Pipelines",
+        "GitHub Actions",
+        "GitLab CI",
+        "Jenkins",
+        "CircleCI",
+        "Terraform",
+        "Infrastructure as Code",
+        "Ansible",
+        "Nginx",
+        "Load Balancing",
+        "Auto Scaling",
+        "Monitoring (Prometheus",
+        "Grafana",
+        "Datadog",
+        "New Relic)",
+        "Logging (ELK Stack",
+        "CloudWatch Logs)",
+        "CDN Configuration"
+      ]
     },
     {
       "name": "Database & Data Management",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "MySQL",
+        "Redis",
+        "DynamoDB",
+        "Elasticsearch",
+        "Database Design",
+        "Query Optimization",
+        "Indexing Strategies",
+        "Replication",
+        "Sharding",
+        "Database Migration",
+        "Data Modeling",
+        "NoSQL vs SQL",
+        "ACID Transactions",
+        "CAP Theorem",
+        "Database Security",
+        "Backup and Recovery"
+      ]
     },
     {
       "name": "Architecture & System Design",
-      "level": "Expert"
+      "level": "Expert",
+      "keywords": [
+        "Microservices Architecture",
+        "Event-Driven Architecture",
+        "Domain-Driven Design (DDD)",
+        "CQRS",
+        "Event Sourcing",
+        "API Gateway Pattern",
+        "Clean Architecture",
+        "Hexagonal Architecture",
+        "SOLID Principles",
+        "Design Patterns (Factory",
+        "Strategy",
+        "Observer",
+        "Singleton)",
+        "High Availability",
+        "Fault Tolerance",
+        "Circuit Breaker Pattern",
+        "Saga Pattern",
+        "Distributed Systems",
+        "Scalability",
+        "Performance Optimization",
+        "Security Best Practices",
+        "Load Balancing Strategies"
+      ]
     },
     {
       "name": "Testing & Quality Assurance",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "Jest",
+        "Testing Library",
+        "Cypress",
+        "Selenium",
+        "Test-Driven Development (TDD)",
+        "Behavior-Driven Development (BDD)",
+        "Unit Testing",
+        "Integration Testing",
+        "End-to-End Testing",
+        "Performance Testing",
+        "Load Testing",
+        "Code Coverage",
+        "Contract Testing (Pact)",
+        "API Testing (Postman",
+        "Insomnia)"
+      ]
     }
   ],
   "languages": [
@@ -87,32 +205,63 @@
   ],
   "interests": [
     {
-      "name": "Business and People Management"
+      "name": "Business and People Management",
+      "keywords": [
+        "Advancing business models",
+        "new work environments",
+        "agile frameworks at scale",
+        "the evolution of HR and AI"
+      ]
     },
     {
-      "name": "Technology Trends"
+      "name": "Technology Trends",
+      "keywords": [
+        "AI/ML advancements",
+        "Cloud-native technologies",
+        "Web3 and blockchain",
+        "Serverless"
+      ]
     },
     {
-      "name": "Fitness & Wellness"
+      "name": "Fitness & Wellness",
+      "keywords": [
+        "Running",
+        "Yoga",
+        "healthy nutrition"
+      ]
     }
   ],
   "projects": [
     {
       "name": "Development of a scalable cloud data platform for financial data",
-      "startDate": "2021-10-01T00:00:00.000Z",
-      "description": "Architecture and Development of a multi-account scalable cloud data platform for financial data."
+      "startDate": "2021-10-01",
+      "description": "Architecture and Development of a multi-account scalable cloud data platform for financial data.",
+      "highlights": [
+        "Built, deployed, and operated a multi-microservice application on Kubernetes and AWS ECS on Fargate",
+        "Configured and integrated the Datadog observability SaaS platform and implemented comprehensive logging, alerting, and incident management processes for the application layer",
+        "Architected high-performance processing of millions of financial transaction records with a sub-second response time requirement",
+        "Led development of proof of concepts for new components"
+      ]
     },
     {
       "name": "Platform for credit cards and payment processing",
-      "startDate": "2019-07-01T00:00:00.000Z",
-      "endDate": "2020-09-01T00:00:00.000Z",
-      "description": "Architected and developed a multi-tenant platform for prepaid credit cards."
+      "startDate": "2019-07-01",
+      "endDate": "2020-09-01",
+      "description": "Architected and developed a multi-tenant platform for prepaid credit cards.",
+      "highlights": [
+        "Designed multi-tenant architecture with migration from a legacy monolithic application, with a focus on supporting hundreds of credit card tenants and millions of users",
+        "Designed and implemented a cloud environment for dedicated load tests and simulation of user behavior",
+        "Integration of a compliance and fraud detection service in accordance with legal requirements"
+      ]
     },
     {
       "name": "Development of support tools for the analysis of financial data",
-      "startDate": "2015-03-01T00:00:00.000Z",
-      "endDate": "2017-08-01T00:00:00.000Z",
-      "description": "Development of a solution for the automated collection, processing, and storage of customer transactional data (ETL process). Development of a data schema for the long-term archiving of tax data and provision of data via internal company servers."
+      "startDate": "2015-03-01",
+      "endDate": "2017-08-01",
+      "description": "Development of a solution for the automated collection, processing, and storage of customer transactional data (ETL process). Development of a data schema for the long-term archiving of tax data and provision of data via internal company servers.",
+      "highlights": [
+        "Reduced data collection and provisioning time from 10 minutes (manual Excel processing) to seconds. Approximately 98% of structured data could be processed with the new solution."
+      ]
     }
   ]
 }

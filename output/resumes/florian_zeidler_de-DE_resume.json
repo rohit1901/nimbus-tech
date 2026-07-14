@@ -17,7 +17,7 @@
     {
       "name": "Finatix GmbH",
       "position": "Cloud Developer / Solutions Architect / DevOps Engineer",
-      "startDate": "2019-07-01T00:00:00.000Z",
+      "startDate": "2019-07-01",
       "summary": "Cloud Engineer und Solutions Architect für Cloud-Umgebungen.",
       "highlights": [
         "Arbeit an Projekten mit Fokus auf Backend- und Cloud-Entwicklung",
@@ -32,88 +32,237 @@
       "url": "https://www.uni-leipzig.de/",
       "area": "Wirtschaftsinformatik",
       "studyType": "Master of Science",
-      "startDate": "2015-10-01T00:00:00.000Z",
-      "endDate": "2021-11-01T00:00:00.000Z"
+      "startDate": "2015-10-01",
+      "endDate": "2021-11-01"
     },
     {
       "institution": "Universität Leipzig",
       "url": "https://www.uni-leipzig.de/",
       "area": "Wirtschaftsinformatik",
       "studyType": "Bachelor of Science",
-      "startDate": "2010-10-01T00:00:00.000Z",
-      "endDate": "2015-10-01T00:00:00.000Z"
+      "startDate": "2010-10-01",
+      "endDate": "2015-10-01"
     }
   ],
   "certificates": [
     {
       "name": "AWS Certified Developer - Associate",
-      "url": "https://www.aws.training/certification/aws-certified-developer-associate"
+      "url": "https://www.aws.training/certification/aws-certified-developer-associate",
+      "summary": "Zeigt Fachwissen in der Entwicklung und Wartung von Anwendungen auf AWS."
     },
     {
       "name": "AWS Certified Solutions Architect - Associate",
-      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url"
+      "url": "https://www.credly.com/badges/6d371de7-680e-4230-9b42-fc593fc4a87e/public_url",
+      "summary": "Zeigt Fachwissen in der Architektur von Anwendungen auf AWS."
     }
   ],
   "skills": [
     {
       "name": "Backend-Entwicklung",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "Node.js",
+        "GraphQL",
+        "REST APIs",
+        "gRPC",
+        "WebSockets",
+        "Message Queues",
+        "RabbitMQ",
+        "Apache Kafka",
+        "Authentication (JWT",
+        "OAuth2",
+        "SAML)",
+        "API Design",
+        "Rate Limiting",
+        "Caching Strategies",
+        "open-api"
+      ]
     },
     {
       "name": "Cloud & DevOps",
-      "level": "Expert"
+      "level": "Expert",
+      "keywords": [
+        "AWS (EC2",
+        "ECS",
+        "EKS",
+        "Lambda",
+        "S3",
+        "CloudFront",
+        "RDS",
+        "DynamoDB",
+        "SQS",
+        "SNS",
+        "API Gateway",
+        "CloudWatch)",
+        "Azure",
+        "Google Cloud Platform",
+        "Docker",
+        "Kubernetes",
+        "Helm",
+        "ArgoCD",
+        "CI/CD Pipelines",
+        "GitHub Actions",
+        "GitLab CI",
+        "Jenkins",
+        "CircleCI",
+        "Terraform",
+        "Infrastructure as Code",
+        "Ansible",
+        "Nginx",
+        "Load Balancing",
+        "Auto Scaling",
+        "Monitoring (Prometheus",
+        "Grafana",
+        "Datadog",
+        "New Relic)",
+        "Logging (ELK Stack",
+        "CloudWatch Logs)",
+        "CDN Configuration"
+      ]
     },
     {
       "name": "Datenbank- & Datenmanagement",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "MySQL",
+        "Redis",
+        "DynamoDB",
+        "Elasticsearch",
+        "Database Design",
+        "Query Optimization",
+        "Indexing Strategies",
+        "Replication",
+        "Sharding",
+        "Database Migration",
+        "Data Modeling",
+        "NoSQL vs SQL",
+        "ACID Transactions",
+        "CAP Theorem",
+        "Database Security",
+        "Backup and Recovery"
+      ]
     },
     {
       "name": "Architektur & Systemdesign",
-      "level": "Expert"
+      "level": "Expert",
+      "keywords": [
+        "Microservices Architecture",
+        "Event-Driven Architecture",
+        "Domain-Driven Design (DDD)",
+        "CQRS",
+        "Event Sourcing",
+        "API Gateway Pattern",
+        "Clean Architecture",
+        "Hexagonal Architecture",
+        "SOLID Principles",
+        "Design Patterns (Factory",
+        "Strategy",
+        "Observer",
+        "Singleton)",
+        "High Availability",
+        "Fault Tolerance",
+        "Circuit Breaker Pattern",
+        "Saga Pattern",
+        "Distributed Systems",
+        "Scalability",
+        "Performance Optimization",
+        "Security Best Practices",
+        "Load Balancing Strategies"
+      ]
     },
     {
       "name": "Testing & Qualitätssicherung",
-      "level": "Advanced"
+      "level": "Advanced",
+      "keywords": [
+        "Jest",
+        "Testing Library",
+        "Cypress",
+        "Selenium",
+        "Test-Driven Development (TDD)",
+        "Behavior-Driven Development (BDD)",
+        "Unit Testing",
+        "Integration Testing",
+        "End-to-End Testing",
+        "Performance Testing",
+        "Load Testing",
+        "Code Coverage",
+        "Contract Testing (Pact)",
+        "API Testing (Postman",
+        "Insomnia)"
+      ]
     }
   ],
   "languages": [
     {
       "language": "Deutsch",
-      "fluency": "Muttersprache"
+      "fluency": "Native"
     },
     {
       "language": "Englisch",
-      "fluency": "verhandlungssicher"
+      "fluency": "Full Professional"
     }
   ],
   "interests": [
     {
-      "name": "Unternehmensführung und Personalmanagement"
+      "name": "Unternehmensführung und Personalmanagement",
+      "keywords": [
+        "Weiterentwicklung von Geschäftsmodellen",
+        "new work",
+        "agile Frameworks at scale",
+        "moderne HR und KI"
+      ]
     },
     {
-      "name": "Technologietrends"
+      "name": "Technologietrends",
+      "keywords": [
+        "Entwicklung in KI/ML",
+        "Cloud-native Technologien",
+        "Web3 und Blockchain",
+        "Serverless"
+      ]
     },
     {
-      "name": "Fitness & Wellness"
+      "name": "Fitness & Wellness",
+      "keywords": [
+        "Kraftsport",
+        "Yoga",
+        "gesunde Ernährung"
+      ]
     }
   ],
   "projects": [
     {
       "name": "Entwicklung einer skalierbaren Cloud-Datenplattform für Finanzdaten",
-      "startDate": "2020-10-01T00:00:00.000Z",
-      "description": "Architektur und Entwicklung einer skalierbaren Multi-Account Cloud-Datenplattform für Finanzdaten."
+      "startDate": "2020-10-01",
+      "description": "Architektur und Entwicklung einer skalierbaren Multi-Account Cloud-Datenplattform für Finanzdaten.",
+      "highlights": [
+        "Aufbau, Bereitstellung und Betrieb einer Multi-Microservice-Anwendung in Kubernetes (AWS EKS) und später in AWS ECS auf Fargate",
+        "Konfiguration und Integration der Datadog Observability SaaS-Plattform sowie Implementierung umfassender Logging-, Alerting- und Incident-Management-Prozesse für die Anwendungsebene",
+        "Architektur für die Hochleistungsverarbeitung von Millionen von Finanztransaktionsdatensätzen mit der Anforderung im Sekundenbereich zu verarbeiten",
+        "Leitung der Entwicklung von Proof of Concepts für neue Komponenten"
+      ]
     },
     {
       "name": "Plattform für Kreditkarten und Zahlungsabwicklung",
-      "startDate": "2019-07-01T00:00:00.000Z",
-      "endDate": "2020-09-01T00:00:00.000Z",
-      "description": "Architektur und Entwicklung einer mandantenfähigen Plattform für Prepaid-Kreditkarten."
+      "startDate": "2019-07-01",
+      "endDate": "2020-09-01",
+      "description": "Architektur und Entwicklung einer mandantenfähigen Plattform für Prepaid-Kreditkarten.",
+      "highlights": [
+        "Entwurf einer mandantenfähigen Architektur mit Migration von einer bestehenden monolithischen Anwendung, mit Fokus auf die Unterstützung von hunderten Kreditkarten-Mandanten und potenziell Millionen von Nutzern",
+        "Konzeption und Implementierung einer Cloud-Umgebung für dedizierte Lasttests und Simulation von Nutzerverhalten",
+        "Integration eines Services zur Compliance- und Betrugserkennung gemäß den gesetzlichen Vorgaben"
+      ]
     },
     {
       "name": "Entwicklung von Support-Tools für die Analyse von Finanzdaten",
-      "startDate": "2015-03-01T00:00:00.000Z",
-      "endDate": "2017-08-01T00:00:00.000Z",
-      "description": "Entwicklung einer Lösung zur automatisierten Erfassung, Verarbeitung und Speicherung von Kundentransaktionsdaten (ETL-Prozess). Entwicklung eines Datenschemas für die Langzeitarchivierung von Steuerdaten und Bereitstellung der Daten über unternehmensinterne Server."
+      "startDate": "2015-03-01",
+      "endDate": "2017-08-01",
+      "description": "Entwicklung einer Lösung zur automatisierten Erfassung, Verarbeitung und Speicherung von Kundentransaktionsdaten (ETL-Prozess). Entwicklung eines Datenschemas für die Langzeitarchivierung von Steuerdaten und Bereitstellung der Daten über unternehmensinterne Server.",
+      "highlights": [
+        "Reduzierung der Zeit für Datenerfassung und -bereitstellung von 10 Minuten (manuelle Excel-Verarbeitung) zu wenigen Sekunden. Etwa 98 % der strukturierten Daten konnten mit der neuen Lösung verarbeitet werden."
+      ]
     }
   ]
 }

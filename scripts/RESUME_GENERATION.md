@@ -1,268 +1,236 @@
-# Resume Generation with Resumed
+# Resume Generation
 
-Complete guide for generating beautiful HTML resumes using resumed and JSON Resume themes.
+End-to-end guide for exporting resume data from the GraphQL CMS and rendering it as HTML using [`resumed`](https://github.com/rbardini/resumed) and [JSON Resume themes](https://jsonresume.org/themes/).
+
+For the full CLI reference for each script, see [`scripts/README.md`](./README.md).
 
 ## 🚀 Quick Start
 
 ```bash
-# Step 1: Export resumes from GraphQL
+# 1. Export resume data from GraphQL → JSON Resume files
 npm run export:resumes
 
-# Step 2: Generate HTML files
+# 2. Render each JSON file to HTML
 npm run generate:resume-files
 
-# Done! Open the files in output/resume-files/
+# 3. Open the result
+open output/resume-files/en-US/rohit_khanduri.html
 ```
 
-## 📋 Overview
-
-This project uses:
-- **resumed** - Professional resume renderer
-- **JSON Resume** - Standard resume schema
-- **jsonresume-theme-elegant** - Default professional theme
+Both commands accept `--help` for the full option list.
 
 ## 📂 Output Structure
 
 ```
 output/
-├── resumes/                          # JSON Resume files
+├── resumes/                          # JSON Resume files (step 1)
 │   ├── rohit_khanduri_en-US_resume.json
-│   └── rohit_khanduri_de-DE_resume.json
-└── resume-files/                     # HTML resume files
+│   ├── rohit_khanduri_de-DE_resume.json
+│   ├── florian_zeidler_en-US_resume.json
+│   └── florian_zeidler_de-DE_resume.json
+└── resume-files/                     # HTML files (step 2)
     ├── en-US/
-    │   └── rohit_khanduri.html
+    │   ├── rohit_khanduri.html
+    │   └── florian_zeidler.html
     └── de-DE/
-        └── rohit_khanduri.html
+        ├── rohit_khanduri.html
+        └── florian_zeidler.html
 ```
 
-## 🎨 Using Different Themes
+Use `--flat` on step 2 to skip the per-language subdirectory.
 
-### Install Additional Themes
+## 🧱 Script Layout
+
+Both scripts live in their own folders and share the same layered design (types → converters/rendering → CLI + orchestration):
+
+```
+scripts/
+├── exportResumes/
+│   ├── index.ts       # CLI + orchestration
+│   ├── query.ts       # GraphQL query + native fetch client
+│   ├── convert.ts     # JSON Resume conversion + date/list helpers
+│   ├── types.ts
+│   ├── convert.test.ts
+│   └── index.test.ts
+└── generateResumeFiles/
+    ├── index.ts       # CLI + orchestration
+    ├── render.ts      # resumed loader + HTML post-processors
+    ├── discover.ts    # file discovery + filename parsing
+    ├── types.ts
+    ├── discover.test.ts
+    └── render.test.ts
+```
+
+Run tests with:
 
 ```bash
-# Clean and modern
-npm install --save-dev jsonresume-theme-even
-
-# Tech-focused
-npm install --save-dev jsonresume-theme-stackoverflow
-
-# Minimalist
-npm install --save-dev jsonresume-theme-kendall
-
-# Compact
-npm install --save-dev jsonresume-theme-short
-
-# Browse more: https://jsonresume.org/themes/
+npm run test:export:resumes
+npm run test:generate:resume-files
 ```
 
-### Use a Theme
+## ⚙️ Common Flags
+
+| Purpose                        | Export flag                                    | Generate flag                                  |
+| ------------------------------ | ---------------------------------------------- | ---------------------------------------------- |
+| Filter by language             | `--language en-US` (repeatable)                | `--language en-US` (repeatable)                |
+| Filter by name substring       | `--name rohit`                                 | `--name rohit`                                 |
+| Filter by resume id            | `--id <cuid>` (repeatable)                     | n/a                                            |
+| Dry run                        | `--dry-run`                                    | `--dry-run`                                    |
+| Concurrency                    | `--concurrency 8` (default 8)                  | `--concurrency 4` (default 4)                  |
+| Output directory               | `--out <dir>` (default `output/resumes`)       | `--output <dir>` (default `output/resume-files`) |
+| List separator                 | `--list-separator <str>` (default `✌🏻`)      | `--list-separator <str>` (default `✌🏻`)      |
+| Verbosity                      | `--quiet` / `--verbose`                        | `--quiet` / `--verbose`                        |
+
+Extras:
+
+- **Export** — `--format json|yaml`, `--filename <template>`, `--pretty` / `--no-pretty`, `--url`, `GRAPHQL_AUTH_TOKEN` env var.
+- **Generate** — `--theme <name>`, `--file <path>` (repeatable, bypasses `--input`), `--flat`, `--no-strip-profile-pic`, `--rewrite-elegant-fonts` / `--no-rewrite-elegant-fonts`.
+
+## 📄 Custom Input Files
+
+By default the generator scans `output/resumes/` (the exporter's output). To render a JSON Resume file from anywhere else, pass one or more `--file <path>` flags:
 
 ```bash
-# Use specific theme
-node scripts/generateResumeFiles.ts --theme=even
+# Single custom file
+npm run generate:resume-files -- --file ./ada_lovelace_en-US_resume.json
 
-# Or with npm
-npm run generate:resume-files -- --theme=stackoverflow
+# Multiple, filtered
+npm run generate:resume-files -- \
+  --file ./ada_en-US_resume.json \
+  --file ./bob_de-DE_resume.json \
+  --language en-US
 ```
 
-### Compare Themes
+Rules:
+- `--input` is ignored when `--file` is provided.
+- Filename parsing (`{name}_{lang}_resume.json`) is reused, so well-named files land in the correct language subfolder. Files without a parseable language code (e.g. `my_resume.json`) go to `unknown/` — use `--flat` if that's awkward.
+- `--language` and `--name` filters still apply.
+- The JSON must be a top-level object; arrays / primitives are rejected with a clear error before the theme is invoked.
+
+## 🎨 Themes
+
+Bare theme names are auto-prefixed with `jsonresume-theme-`:
 
 ```bash
-# Generate with multiple themes
-node scripts/generateResumeFiles.ts --theme=elegant --output=output/elegant
-node scripts/generateResumeFiles.ts --theme=even --output=output/even
-node scripts/generateResumeFiles.ts --theme=stackoverflow --output=output/stackoverflow
-
-# Compare and choose your favorite!
+npm run generate:resume-files -- --theme stackoverflow   # default
+npm run generate:resume-files -- --theme even
+npm run generate:resume-files -- --theme elegant
 ```
+
+Preinstalled: `stackoverflow`, `even`, `elegant`. Install more with `npm i -D jsonresume-theme-<name>` and browse the catalogue at https://jsonresume.org/themes/.
+
+### Compare themes side-by-side
+
+```bash
+for t in stackoverflow even elegant; do
+  npm run generate:resume-files -- --theme $t --output output/resume-files-$t
+done
+```
+
+### About the elegant theme
+
+- Elegant references `fonts/…` and protocol-relative `//unpkg.com` URLs. The generator automatically rewrites those to pinned `https://unpkg.com` URLs when `--theme elegant` is used (disable with `--no-rewrite-elegant-fonts`).
+- Some resume shapes trigger an upstream error inside the theme (`Cannot read properties of undefined (reading 'slice')`). If you hit this, try another theme.
+
+## 🖼️ Profile Pictures
+
+The renderer injects CSS to hide `.profile-pic` elements by default (useful for PDFs). Opt out with `--no-strip-profile-pic`.
 
 ## 📄 Converting to PDF
 
-### Option 1: Browser Print (Recommended)
+PDF is intentionally not built in. Pick whichever workflow fits your setup:
+
+### Option 1 — Browser Print (recommended)
 
 ```bash
-# Open HTML file
 open output/resume-files/en-US/rohit_khanduri.html
-
-# Use browser: File → Print → Save as PDF
+# then File → Print → Save as PDF
 ```
 
-### Option 2: wkhtmltopdf
+### Option 2 — wkhtmltopdf
 
 ```bash
-# Install
-brew install wkhtmltopdf  # macOS
-apt-get install wkhtmltopdf  # Ubuntu/Debian
+brew install wkhtmltopdf                 # macOS
+sudo apt-get install wkhtmltopdf         # Debian/Ubuntu
 
-# Convert
 wkhtmltopdf \
   output/resume-files/en-US/rohit_khanduri.html \
   output/resume-files/en-US/rohit_khanduri.pdf
 ```
 
-### Option 3: Puppeteer
+### Option 3 — Puppeteer
 
 ```bash
-npm install puppeteer
-
-node -e "
-const puppeteer = require('puppeteer');
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto('file://${PWD}/output/resume-files/en-US/rohit_khanduri.html', { 
-    waitUntil: 'networkidle0' 
-  });
-  await page.pdf({ 
-    path: 'resume.pdf', 
-    format: 'A4',
-    printBackground: true 
-  });
-  await browser.close();
-})();
-"
+npm install --save-dev puppeteer
 ```
 
-## ⚙️ Configuration
+```js
+// scripts/htmlToPdf.mjs
+import puppeteer from "puppeteer"
+import { pathToFileURL } from "node:url"
+import { resolve } from "node:path"
 
-### Default Settings
+const input = resolve(process.argv[2])
+const output = resolve(process.argv[3])
 
-- **Theme:** `jsonresume-theme-elegant`
-- **Input:** `output/resumes/`
-- **Output:** `output/resume-files/`
-
-### Custom Settings
+const browser = await puppeteer.launch()
+const page = await browser.newPage()
+await page.goto(pathToFileURL(input).href, { waitUntil: "networkidle0" })
+await page.pdf({ path: output, format: "A4", printBackground: true })
+await browser.close()
+```
 
 ```bash
-# Custom input directory
-node scripts/generateResumeFiles.ts --input=custom/resumes
-
-# Custom output directory
-node scripts/generateResumeFiles.ts --output=custom/output
-
-# Custom theme
-node scripts/generateResumeFiles.ts --theme=kendall
-
-# Combine options
-node scripts/generateResumeFiles.ts \
-  --theme=even \
-  --input=custom/resumes \
-  --output=custom/output
+node scripts/htmlToPdf.mjs \
+  output/resume-files/en-US/rohit_khanduri.html \
+  output/resume-files/en-US/rohit_khanduri.pdf
 ```
 
-## 🌍 Multi-Language Support
+## 🌍 Multi-Language Behaviour
 
-The script automatically:
-- Detects language from filenames (`{name}_{language}_resume.json`)
-- Creates language-specific directories (`en-US/`, `de-DE/`)
-- Organizes output for easy distribution
+- The exporter uses `Language.value` (e.g. `en-US`, `de-DE`) in the filename via `{lang}`.
+- The generator parses that filename back to derive the language subdirectory.
+- If a resume has no `language.value`, the language falls back to `unknown`.
 
-Example:
-```
-rohit_khanduri_en-US_resume.json → output/resume-files/en-US/rohit_khanduri.html
-rohit_khanduri_de-DE_resume.json → output/resume-files/de-DE/rohit_khanduri.html
-```
+## ✅ Data Correctness (as of the current exporter)
 
-## ✅ Features
-
-- ✅ **Professional Themes** - 50+ community designs
-- ✅ **Responsive** - Mobile-friendly layouts
-- ✅ **Print-Optimized** - Perfect for PDFs
-- ✅ **Standards Compliant** - JSON Resume schema
-- ✅ **Easy Theme Switching** - One command
-- ✅ **Multi-Language** - Auto-organized
-- ✅ **No Lock-in** - Standard format
+- Dates are emitted as `YYYY-MM-DD` (JSON Resume convention). Corrupt or out-of-range dates are dropped with a warning in `--verbose`.
+- `skills.keywords`, `interests.keywords`, `volunteer.highlights`, `education.courses`, and `projects.highlights` are stored as single strings in the CMS but exposed as **arrays** in the JSON output. Split priority: `✌🏻` (explicit CMS marker) → newlines → `,` / `;`. Commas are last so they aren't mistaken for delimiters inside sentences. The marker itself is configurable via `--list-separator <str>` (CLI) or `RESUME_LIST_SEPARATOR=<str>` (env) on **both** scripts — handy if the CMS uses a different bullet character.
+- `awards.url` is preserved.
+- `certificates` map to `{ name, url, summary }` only — the CMS schema exposes no `date` / `issuer`, so those keys are omitted rather than emitted as `undefined`.
+- Filename collisions get an `-<shortId>` suffix; Unicode names (`Jörg`, `李明`) are preserved.
 
 ## 🔧 Troubleshooting
 
-### No resumes found
+| Symptom                                              | Fix                                                                         |
+| ---------------------------------------------------- | --------------------------------------------------------------------------- |
+| `GraphQL URL not provided`                           | Set `NEXT_PUBLIC_GRAPHQL_URL` in `.env` or pass `--url`                     |
+| `GraphQL request failed: HTTP 401/403`               | Set `GRAPHQL_AUTH_TOKEN` in the environment                                 |
+| `--format yaml requires the "yaml" package`          | `npm install --save-dev yaml`                                               |
+| `Input directory does not exist: …`                  | Run `npm run export:resumes` first                                          |
+| `Theme "…" is not installed`                         | `npm install --save-dev <theme-name>` or drop the `jsonresume-theme-` prefix |
+| `invalid JSON: …`                                    | Re-run `npm run export:resumes` to regenerate the input                     |
+| Elegant theme icons are boxes / broken fonts         | Ensure `--rewrite-elegant-fonts` is enabled (default when theme = elegant)  |
 
-```
-⚠️ No resume files found
-```
+## 📚 References
 
-**Solution:** Run `npm run export:resumes` first
-
-### Theme not found
-
-```
-❌ Theme not found: jsonresume-theme-elegant
-```
-
-**Solution:** Install the theme: `npm install --save-dev jsonresume-theme-elegant`
-
-### GraphQL connection error
-
-For exporting resumes, ensure:
-- GraphQL API is running
-- `NEXT_PUBLIC_GRAPHQL_URL` is set in `.env`
-- `NEXT_PUBLIC_USE_MOCK=false` in `.env`
-
-## 📚 Documentation
-
-- **Scripts README:** `scripts/README.md` - Detailed documentation for all scripts
-- **Export Resumes:** `scripts/exportResumes.ts` - Export implementation
-- **Generate Files:** `scripts/generateResumeFiles.ts` - HTML generation
-- **JSON Resume:** https://jsonresume.org/schema - Official schema
-- **Themes:** https://jsonresume.org/themes/ - Browse available themes
-- **Resumed:** https://github.com/rbardini/resumed - Renderer documentation
-
-## 💡 Tips
-
-1. **Theme Selection:** Try multiple themes and choose your favorite
-2. **PDF Quality:** Browser print usually gives best results
-3. **Customization:** Each theme has its own style and layout
-4. **Updates:** Re-run after GraphQL data changes
-5. **Version Control:** Consider committing generated files for backup
+- [`scripts/README.md`](./README.md) — full CLI reference for every script
+- [JSON Resume schema](https://jsonresume.org/schema)
+- [JSON Resume themes](https://jsonresume.org/themes/)
+- [`resumed`](https://github.com/rbardini/resumed) — the renderer
+- `src/lib/resume/resumeConverter.ts` — browser-side counterpart of the exporter (used by the download button in the UI)
 
 ## 🎯 Complete Workflow
 
 ```bash
-# 1. Export from GraphQL
-npm run export:resumes
-# → Creates JSON files in output/resumes/
+# 1. Export from GraphQL (with any filters you want)
+npm run export:resumes -- --language en-US
 
-# 2. Generate HTML
-npm run generate:resume-files
-# → Creates HTML files in output/resume-files/
+# 2. Render HTML with your chosen theme
+npm run generate:resume-files -- --theme even --language en-US
 
-# 3. View in browser
+# 3. View
 open output/resume-files/en-US/rohit_khanduri.html
 
-# 4. Print to PDF
-# Use browser's Print → Save as PDF
-
-# 5. Distribute
-# Share HTML or PDF files as needed
+# 4. Print → Save as PDF, or use one of the PDF options above
 ```
-
-## 📦 Dependencies
-
-All resume-related dependencies are in `devDependencies`:
-
-- **resumed** (^6.1.0) - Resume renderer
-- **jsonresume-theme-elegant** (^1.16.1) - Default theme
-
-Install with: `npm install`
-
-## 🌟 What Gets Exported
-
-All JSON Resume sections are included:
-
-- ✅ **Basics** - Name, email, phone, location, profiles, summary
-- ✅ **Work Experience** - Positions, companies, dates, highlights
-- ✅ **Projects** - Descriptions, technologies, achievements
-- ✅ **Education** - Degrees, institutions, courses
-- ✅ **Skills** - Technologies, proficiency levels, keywords
-- ✅ **Volunteer** - Community contributions
-- ✅ **Awards & Certificates** - Recognition and credentials
-- ✅ **Publications** - Articles and papers
-- ✅ **Languages** - Spoken languages and fluency
-- ✅ **Interests** - Hobbies and areas of interest
-- ✅ **References** - Professional references
-
----
-
-**Generated resumes are professional, responsive, and ready to use!** 🎉
-
-For more details, see `scripts/README.md` for comprehensive documentation on all available scripts.
