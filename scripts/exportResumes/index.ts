@@ -45,6 +45,14 @@ import {
   pickListSeparator,
   resolveSeparatorRegex,
 } from "../lib/listSeparator"
+import {
+  c,
+  createLogger,
+  formatBytes,
+  formatDuration,
+  sym,
+  type StructuredLogger,
+} from "../lib/logger"
 
 loadEnv()
 
@@ -309,28 +317,9 @@ interface ExportSummary {
   files: string[]
 }
 
-interface Logger {
-  info: (msg: string) => void
-  warn: (msg: string) => void
-  error: (msg: string) => void
-  verbose: (msg: string) => void
-}
-
-function makeLogger(opts: Pick<CliOptions, "quiet" | "verbose">): Logger {
-  return {
-    info: (msg) => {
-      if (!opts.quiet) process.stdout.write(msg + "\n")
-    },
-    warn: (msg) => process.stderr.write(msg + "\n"),
-    error: (msg) => process.stderr.write(msg + "\n"),
-    verbose: (msg) => {
-      if (opts.verbose && !opts.quiet) process.stdout.write(msg + "\n")
-    },
-  }
-}
-
 export async function runExport(cli: CliOptions): Promise<ExportSummary> {
-  const log = makeLogger(cli)
+  const started = Date.now()
+  const log: StructuredLogger = createLogger(cli)
 
   const graphqlUrl = cli.url ?? process.env.NEXT_PUBLIC_GRAPHQL_URL
   if (!graphqlUrl) {
@@ -339,15 +328,48 @@ export async function runExport(cli: CliOptions): Promise<ExportSummary> {
     )
   }
 
-  log.info(`🚀 Exporting resumes from ${graphqlUrl}`)
+  const outputDir = resolve(process.cwd(), cli.out)
 
+  log.banner(
+    "📦 Export Resumes",
+    "GraphQL → JSON Resume files",
+  )
+
+  log.section("Config")
+  const filters: string[] = []
+  if (cli.ids.length > 0) filters.push(`id=${cli.ids.join(",")}`)
+  if (cli.languages.length > 0)
+    filters.push(`language=${cli.languages.join(",")}`)
+  if (cli.name) filters.push(`name=${cli.name}`)
+  log.kv([
+    ["GraphQL URL", graphqlUrl],
+    ["Output dir", outputDir],
+    ["Format", `${cli.format}${cli.format === "json" && !cli.pretty ? " (compact)" : cli.format === "json" ? " (pretty)" : ""}`],
+    ["Filename", cli.filename],
+    ["Concurrency", String(cli.concurrency)],
+    ["Filters", filters.length > 0 ? filters.join(", ") : c.dim("(none)")],
+    ["Dry run", cli.dryRun ? c.magenta("yes") : c.dim("no")],
+  ])
+
+  log.section("Fetch")
+  log.step(`Contacting GraphQL endpoint…`)
   const authToken = process.env.GRAPHQL_AUTH_TOKEN
   const allResumes = await fetchResumes({ url: graphqlUrl, authToken })
-  log.info(`📥 Received ${allResumes.length} resume(s) from GraphQL`)
+  log.ok(`Received ${c.bold(String(allResumes.length))} resume(s) from GraphQL`)
 
   const resumes = filterResumes(allResumes, cli)
   if (resumes.length === 0) {
-    log.info("⚠️  No resumes matched the given filters.")
+    log.warn("No resumes matched the given filters.")
+    log.summary(
+      "Summary",
+      [
+        ["Discovered", allResumes.length],
+        ["Written", 0],
+        ["Skipped", allResumes.length],
+        ["Failed", 0],
+      ],
+      `Duration: ${formatDuration(Date.now() - started)}`,
+    )
     return {
       total: allResumes.length,
       written: 0,
@@ -359,11 +381,10 @@ export async function runExport(cli: CliOptions): Promise<ExportSummary> {
   }
   if (resumes.length !== allResumes.length) {
     log.info(
-      `🔎 Filter matched ${resumes.length}/${allResumes.length} resume(s)`,
+      `Filter matched ${c.bold(String(resumes.length))}/${allResumes.length} resume(s)`,
     )
   }
 
-  const outputDir = resolve(process.cwd(), cli.out)
   if (!cli.dryRun) {
     await mkdir(outputDir, { recursive: true })
   }
@@ -392,25 +413,28 @@ export async function runExport(cli: CliOptions): Promise<ExportSummary> {
     })
     const filename = uniqueFilename(rendered, claimedFilenames, resume.id)
     claimedFilenames.add(filename)
-    return { resume, displayName, filename }
+    return { resume, displayName, langValue, filename }
   })
 
   // Resolve once up-front so a bad --list-separator fails before any I/O.
   const listSeparator = resolveSeparatorRegex(cli.listSeparator)
   if (cli.listSeparator) {
     log.verbose(
-      `   list-separator=${JSON.stringify(cli.listSeparator)} (override)`,
+      `list-separator=${JSON.stringify(cli.listSeparator)} (override)`,
     )
   }
 
+  log.section(cli.dryRun ? "Convert (dry-run)" : "Export")
+
   await runWithConcurrency(plan, cli.concurrency, async (item) => {
-    const { resume, displayName, filename } = item
+    const { resume, displayName, langValue, filename } = item
     const filepath = join(outputDir, filename)
+    const label = `${displayName} ${c.dim(`(${langValue})`)}`
 
     let warningCount = 0
     const onWarn = (msg: string) => {
       warningCount += 1
-      log.verbose(`   ⚠️  [${displayName}] ${msg}`)
+      log.verbose(`[${displayName}] ${msg}`)
     }
 
     try {
@@ -427,31 +451,39 @@ export async function runExport(cli: CliOptions): Promise<ExportSummary> {
       if (!jsonResume.work?.length) validationIssues.push("no work experience")
       if (!jsonResume.education?.length) validationIssues.push("no education")
       for (const issue of validationIssues) {
-        log.verbose(`   ⚠️  [${displayName}] ${issue}`)
+        log.verbose(`[${displayName}] ${issue}`)
       }
       summary.warnings += warningCount + validationIssues.length
 
+      const size = c.dim(`(${formatBytes(Buffer.byteLength(content))})`)
       if (cli.dryRun) {
-        log.info(
-          `🔎 [dry-run] ${displayName} → ${filename} (${content.length} bytes)`,
+        log.raw(
+          `  ${sym.dryRun} ${label} ${sym.arrow} ${c.cyan(filename)} ${size}`,
         )
       } else {
         await writeFile(filepath, content, "utf-8")
-        log.info(`✓ ${displayName} → ${filename}`)
+        log.raw(
+          `  ${sym.ok} ${label} ${sym.arrow} ${c.cyan(filename)} ${size}`,
+        )
         summary.files.push(filepath)
       }
       summary.written += 1
     } catch (err) {
       summary.failed += 1
       const message = err instanceof Error ? err.message : String(err)
-      log.error(`✗ Failed to export ${displayName}: ${message}`)
+      log.fail(`${label}: ${message}`)
     }
   })
 
-  log.info(
-    `\n✨ Done. written=${summary.written} failed=${summary.failed} ` +
-      `warnings=${summary.warnings} output=${outputDir}` +
-      (cli.dryRun ? " (dry-run: no files written)" : ""),
+  log.summary(
+    "Summary",
+    [
+      ["Written", summary.written],
+      ["Failed", summary.failed],
+      ["Warnings", summary.warnings],
+      ["Output", outputDir],
+    ],
+    `Duration: ${formatDuration(Date.now() - started)}${cli.dryRun ? "  ·  dry-run (no files written)" : ""}`,
   )
   return summary
 }
@@ -462,7 +494,7 @@ async function main(): Promise<void> {
     cli = parseCliOptions(process.argv.slice(2))
   } catch (err) {
     process.stderr.write(
-      `❌ ${err instanceof Error ? err.message : String(err)}\n`,
+      `${sym.fail} ${err instanceof Error ? err.message : String(err)}\n`,
     )
     printHelp()
     process.exit(2)
@@ -476,7 +508,7 @@ async function main(): Promise<void> {
     }
   } catch (err) {
     process.stderr.write(
-      `❌ ${err instanceof Error ? err.message : String(err)}\n`,
+      `${sym.fail} ${err instanceof Error ? err.message : String(err)}\n`,
     )
     process.exit(1)
   }

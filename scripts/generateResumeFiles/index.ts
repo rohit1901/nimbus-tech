@@ -36,6 +36,14 @@ import {
   pickListSeparator,
   resolveSeparatorRegex,
 } from "../lib/listSeparator"
+import {
+  c,
+  createLogger,
+  formatBytes,
+  formatDuration,
+  sym,
+  type StructuredLogger,
+} from "../lib/logger"
 
 // ---------------------------------------------------------------------------
 // CLI parsing
@@ -177,53 +185,81 @@ interface RunSummary {
   written: string[]
 }
 
-interface Logger {
-  info: (msg: string) => void
-  warn: (msg: string) => void
-  error: (msg: string) => void
-  verbose: (msg: string) => void
-}
-
-function makeLogger(cfg: Pick<RunConfig, "quiet" | "verbose">): Logger {
-  return {
-    info: (msg) => {
-      if (!cfg.quiet) process.stdout.write(msg + "\n")
-    },
-    warn: (msg) => process.stderr.write(msg + "\n"),
-    error: (msg) => process.stderr.write(msg + "\n"),
-    verbose: (msg) => {
-      if (cfg.verbose && !cfg.quiet) process.stdout.write(msg + "\n")
-    },
-  }
-}
-
 export async function runGenerate(cfg: RunConfig): Promise<RunSummary> {
-  const log = makeLogger(cfg)
-  log.info(`🚀 Generating resumes with theme: ${cfg.theme}`)
-  if (cfg.files.length > 0) {
-    log.verbose(`   input=<explicit --file, ${cfg.files.length} path(s)>`)
-  } else {
-    log.verbose(`   input=${cfg.inputDir}`)
-  }
-  log.verbose(`   output=${cfg.outputDir}`)
+  const started = Date.now()
+  const log: StructuredLogger = createLogger(cfg)
 
+  const outputRoot = resolve(process.cwd(), cfg.outputDir)
+  const inputLabel =
+    cfg.files.length > 0
+      ? `<explicit --file, ${cfg.files.length} path(s)>`
+      : cfg.inputDir
+
+  log.banner(
+    "🎨 Generate Resume Files",
+    "JSON Resume → themed HTML",
+  )
+
+  log.section("Config")
+  const filters: string[] = []
+  if (cfg.languages.length > 0)
+    filters.push(`language=${cfg.languages.join(",")}`)
+  if (cfg.name) filters.push(`name=${cfg.name}`)
+  log.kv([
+    ["Input", inputLabel],
+    ["Output dir", outputRoot],
+    ["Theme", cfg.theme],
+    ["Concurrency", String(cfg.concurrency)],
+    ["Layout", cfg.flat ? "flat" : "by language"],
+    ["Filters", filters.length > 0 ? filters.join(", ") : c.dim("(none)")],
+    ["Strip profile pic", cfg.stripProfilePic ? c.green("yes") : c.dim("no")],
+    [
+      "Rewrite elegant fonts",
+      cfg.rewriteElegantFonts === "auto"
+        ? c.dim("auto")
+        : cfg.rewriteElegantFonts
+          ? c.green("yes")
+          : c.dim("no"),
+    ],
+    ["Dry run", cfg.dryRun ? c.magenta("yes") : c.dim("no")],
+  ])
+
+  log.section("Discover")
   const allFiles =
     cfg.files.length > 0
       ? await resolveExplicitFiles(cfg.files)
       : await discoverResumeFiles({ inputDir: cfg.inputDir })
+  log.ok(`Found ${c.bold(String(allFiles.length))} JSON resume file(s)`)
+
   const files = filterResumeFiles(allFiles, {
     languages: cfg.languages,
     name: cfg.name,
   })
 
   if (allFiles.length === 0) {
-    const where =
-      cfg.files.length > 0 ? "the given --file list" : cfg.inputDir
-    log.info(`⚠️  No JSON resume files found in ${where}.`)
+    log.warn(`No JSON resume files found in ${inputLabel}.`)
+    log.summary(
+      "Summary",
+      [
+        ["Discovered", 0],
+        ["Rendered", 0],
+        ["Failed", 0],
+      ],
+      `Duration: ${formatDuration(Date.now() - started)}`,
+    )
     return { discovered: 0, rendered: 0, failed: 0, written: [] }
   }
   if (files.length === 0) {
-    log.info(`⚠️  No files matched the given filters.`)
+    log.warn(`No files matched the given filters.`)
+    log.summary(
+      "Summary",
+      [
+        ["Discovered", allFiles.length],
+        ["Rendered", 0],
+        ["Failed", 0],
+      ],
+      `Duration: ${formatDuration(Date.now() - started)}`,
+    )
     return {
       discovered: allFiles.length,
       rendered: 0,
@@ -232,15 +268,18 @@ export async function runGenerate(cfg: RunConfig): Promise<RunSummary> {
     }
   }
   if (files.length !== allFiles.length) {
-    log.info(`🔎 Filter matched ${files.length}/${allFiles.length} file(s)`)
+    log.info(
+      `Filter matched ${c.bold(String(files.length))}/${allFiles.length} file(s)`,
+    )
   }
 
-  // Load renderer + theme once, up front.
+  log.section("Prepare")
+  log.step(`Loading resumed + ${c.cyan(cfg.theme)}…`)
   const [render, theme] = await Promise.all([
     loadResumed(),
     loadTheme(cfg.theme),
   ])
-  log.info(`✓ Loaded resumed + ${cfg.theme}`)
+  log.ok(`Loaded resumed + ${c.cyan(cfg.theme)}`)
 
   // Decide post-processors up front.
   const postProcess: Array<(html: string) => string> = []
@@ -250,8 +289,10 @@ export async function runGenerate(cfg: RunConfig): Promise<RunSummary> {
       cfg.theme === "jsonresume-theme-elegant")
   if (shouldRewriteFonts) postProcess.push((h) => rewriteElegantThemeFonts(h))
   if (cfg.stripProfilePic) postProcess.push(stripProfilePictures)
+  log.verbose(
+    `post-processors: ${postProcess.length > 0 ? postProcess.length : "none"}`,
+  )
 
-  const outputRoot = resolve(process.cwd(), cfg.outputDir)
   if (!cfg.dryRun) await mkdir(outputRoot, { recursive: true })
 
   // Ensure per-language subdirectories exist up front (idempotent, cheap).
@@ -276,37 +317,48 @@ export async function runGenerate(cfg: RunConfig): Promise<RunSummary> {
   const listSeparator = resolveSeparatorRegex(cfg.listSeparator)
   if (cfg.listSeparator) {
     log.verbose(
-      `   list-separator=${JSON.stringify(cfg.listSeparator)} (override)`,
+      `list-separator=${JSON.stringify(cfg.listSeparator)} (override)`,
     )
   }
 
+  log.section(cfg.dryRun ? "Render (dry-run)" : "Render")
+
   await runWithConcurrency(files, cfg.concurrency, async (file) => {
+    const label = `${file.basename} ${c.dim(`(${file.language})`)}`
     try {
       const outPath = destinationFor(file, outputRoot, cfg.flat)
       const resume = await readResumeJson(file, listSeparator)
       const html = await renderResume(resume, { render, theme, postProcess })
+      const size = c.dim(`(${formatBytes(Buffer.byteLength(html))})`)
 
       if (cfg.dryRun) {
-        log.info(
-          `🔎 [dry-run] ${file.basename} → ${outPath} (${html.length} bytes)`,
+        log.raw(
+          `  ${sym.dryRun} ${label} ${sym.arrow} ${c.cyan(outPath)} ${size}`,
         )
       } else {
         await writeFile(outPath, html, "utf-8")
-        log.info(`✓ ${file.basename} → ${outPath}`)
+        log.raw(
+          `  ${sym.ok} ${label} ${sym.arrow} ${c.cyan(outPath)} ${size}`,
+        )
         summary.written.push(outPath)
       }
       summary.rendered += 1
     } catch (err) {
       summary.failed += 1
       const message = err instanceof Error ? err.message : String(err)
-      log.error(`✗ ${file.basename}: ${message}`)
+      log.fail(`${label}: ${message}`)
     }
   })
 
-  log.info(
-    `\n✨ Done. rendered=${summary.rendered} failed=${summary.failed} ` +
-      `output=${outputRoot}` +
-      (cfg.dryRun ? " (dry-run: no files written)" : ""),
+  log.summary(
+    "Summary",
+    [
+      ["Discovered", summary.discovered],
+      ["Rendered", summary.rendered],
+      ["Failed", summary.failed],
+      ["Output", outputRoot],
+    ],
+    `Duration: ${formatDuration(Date.now() - started)}${cfg.dryRun ? "  ·  dry-run (no files written)" : ""}`,
   )
   return summary
 }
@@ -358,7 +410,7 @@ async function main(): Promise<void> {
     cfg = parseCliOptions(process.argv.slice(2))
   } catch (err) {
     process.stderr.write(
-      `❌ ${err instanceof Error ? err.message : String(err)}\n`,
+      `${sym.fail} ${err instanceof Error ? err.message : String(err)}\n`,
     )
     printHelp()
     process.exit(2)
@@ -375,7 +427,7 @@ async function main(): Promise<void> {
     }
   } catch (err) {
     process.stderr.write(
-      `❌ ${err instanceof Error ? err.message : String(err)}\n`,
+      `${sym.fail} ${err instanceof Error ? err.message : String(err)}\n`,
     )
     process.exit(1)
   }
