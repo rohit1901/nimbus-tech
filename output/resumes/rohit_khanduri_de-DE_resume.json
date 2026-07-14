@@ -21,11 +21,11 @@
       "startDate": "2025-03-01",
       "summary": "Lead Architect für die kommerzielle Miles & More Mobile-Plattform und die Customer-Communication-Architektur, verantwortlich für technische Ausrichtung, Plattformarchitektur, KI-getriebene Verbesserungen sowie die sichere und zuverlässige Bereitstellung Flutter-basierter und AWS-gestützter Services für Millionen von Lufthansa Group Kunden.",
       "highlights": [
-        "Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness mit Jenkins, Azure DevOps und Fastlane inklusive Crash-Monitoring und Observability über Firebase Crashlytics",
-        "Verantwortung für die Weiterentwicklung der AWS-SES-Architektur für tägliche Kundenkommunikation im großen Maßstab, unterstützt durch CloudWatch, KMS, DynamoDB und IAM, mit starkem Fokus auf Zuverlässigkeit, Sicherheit und DSGVO-konformen Betrieb",
         "Definition und Verantwortung der Zielarchitektur sowie der technischen Roadmap für die kommerzielle Miles & More Produktiv-App über Flutter, native Mobile-Integrationen, REST- und GraphQL-APIs, BFF-Patterns, Apigee API Gateway und eine über OpenShift betriebene Microservice-Landschaft hinweg",
         "Führung und Koordination eines Multi-Vendor-Outsourcing-Setups mit Architecture Governance, Coding-Standards, Review-Gates und ADRs zur Sicherstellung konsistenter Engineering-Qualität über mehrere Teams hinweg",
         "Abstimmung von Architekturentscheidungen mit Stakeholdern aus Produkt, Design, Security, Compliance und Enterprise Architecture zur Erstellung skalierbarer Solution-Architekturen für kundenorientierte Mobile- und Kommunikationsservices",
+        "Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness mit Jenkins, Azure DevOps und Fastlane inklusive Crash-Monitoring und Observability über Firebase Crashlytics",
+        "Verantwortung für die Weiterentwicklung der AWS-SES-Architektur für tägliche Kundenkommunikation im großen Maßstab, unterstützt durch CloudWatch, KMS, DynamoDB und IAM, mit starkem Fokus auf Zuverlässigkeit, Sicherheit und DSGVO-konformen Betrieb",
         "Vorantreiben der KI-Adoption durch PoCs und den Aufbau praxisnaher KI-Fähigkeiten wie eines Hybrid-RAG-basierten internen Wissensassistenten, Engineering-Copilots, Prompt-Evaluation-Workflows, Elastic-basierter Dokumentensuche, Chatbot-Lösungen mit auf Azure gehosteten Modellen über OpenWebUI sowie Workflow-Automatisierung mit n8n"
       ]
     },
@@ -464,16 +464,16 @@
   ],
   "languages": [
     {
+      "language": "Englisch",
+      "fluency": "Muttersprache"
+    },
+    {
       "language": "Deutsch",
-      "fluency": "Full Professional"
+      "fluency": "verhandlungssicher"
     },
     {
       "language": "Hindi",
-      "fluency": "Native"
-    },
-    {
-      "language": "Englisch",
-      "fluency": "Native"
+      "fluency": "Muttersprache"
     }
   ],
   "interests": [

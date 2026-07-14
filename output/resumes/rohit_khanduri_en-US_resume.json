@@ -21,8 +21,8 @@
       "startDate": "2025-03-01",
       "summary": "Lead architect for the Miles & More commercial mobile platform and customer communication architecture, responsible for technical direction, platform architecture, AI-driven improvements, and secure, reliable delivery of Flutter-based and AWS-backed services used by millions of Lufthansa Group customers.",
       "highlights": [
-        "Lead and coordinate a multi-vendor, outsourced development setup with architecture governance, coding standards, review gates, and ADRs to ensure consistent engineering quality across teams",
         "Define and own the target architecture and technical roadmap for the Miles & More commercial mobile app across Flutter, native mobile integrations, REST and GraphQL APIs, BFF patterns, Apigee API Gateway, and an OpenShift-managed microservice landscape",
+        "Lead and coordinate a multi-vendor, outsourced development setup with architecture governance, coding standards, review gates, and ADRs to ensure consistent engineering quality across teams",
         "Align architecture decisions with product, design, security, compliance, and Enterprise Architecture stakeholders to create scalable solution architectures for customer-facing mobile and communication services",
         "Oversee CI/CD pipelines, release management, and production readiness using Jenkins, Azure DevOps, and Fastlane, including crash monitoring and observability through Firebase Crashlytics",
         "Own and evolve the AWS SES architecture for daily large-scale customer communication, supported by CloudWatch, KMS, DynamoDB, and IAM, with strong focus on reliability, security, and GDPR-aligned operations",
@@ -464,16 +464,16 @@
   ],
   "languages": [
     {
-      "language": "Hindi",
-      "fluency": "Native"
-    },
-    {
       "language": "English",
       "fluency": "Native"
     },
     {
       "language": "German",
       "fluency": "Professional Working"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Native"
     }
   ],
   "interests": [
