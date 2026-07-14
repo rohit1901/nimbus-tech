@@ -242,9 +242,15 @@ async function serialize(
     return pretty ? JSON.stringify(data, null, 2) : JSON.stringify(data)
   }
   // YAML: loaded lazily so the dep is only required when actually used.
-  let yaml: typeof import("yaml")
+  // The type annotation is intentionally untyped (`unknown` → duck-typed)
+  // so this file type-checks even when the optional `yaml` package is not
+  // installed (e.g. in CI or Vercel builds that don't need YAML output).
+  let yaml: { stringify: (value: unknown) => string }
   try {
-    yaml = await import("yaml")
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yaml = (await import("yaml" as any)) as {
+      stringify: (value: unknown) => string
+    }
   } catch {
     throw new Error(
       `--format yaml requires the "yaml" package. Install it with:\n` +
