@@ -15,27 +15,18 @@
   },
   "work": [
     {
-      "name": "Genpact",
-      "position": "Software Engineer",
-      "url": "https://www.genpact.com/",
-      "startDate": "2013-06-01",
-      "endDate": "2014-07-01",
-      "summary": "Softwareentwickler für Calypso- und Java-basierte Enterprise-Anwendungen im Finanzbereich.",
+      "name": "Miles & More GmbH (Lufthansa Group)",
+      "position": "Manager IT / Lead Architect – Mobile Platform",
+      "url": "https://www.miles-and-more.com/",
+      "startDate": "2025-03-01",
+      "summary": "Lead Architect für die kommerzielle Miles & More Mobile-Plattform und die Customer-Communication-Architektur, verantwortlich für technische Ausrichtung, Plattformarchitektur, KI-getriebene Verbesserungen sowie die sichere und zuverlässige Bereitstellung Flutter-basierter und AWS-gestützter Services für Millionen von Lufthansa Group Kunden.",
       "highlights": [
-        "Implementierung und Anpassung von Calypso-Komponenten und Java-Backends",
-        "Enge Zusammenarbeit mit Senior Engineers und Business-Analysten bei Anforderungen und Produktionssupport"
-      ]
-    },
-    {
-      "name": "NEC",
-      "position": "Software Engineer",
-      "url": "https://www.nec.com/",
-      "startDate": "2012-07-01",
-      "endDate": "2013-05-01",
-      "summary": "Softwareentwickler für Java-basierte Backend-Komponenten für Enterprise-Kunden.",
-      "highlights": [
-        "Implementierung von Backend-Funktionalitäten und Integrationen auf Java/J2EE-Stacks",
-        "Enge Zusammenarbeit mit Senior Engineers zur Verbesserung von Performance und Zuverlässigkeit"
+        "Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness mit Jenkins, Azure DevOps und Fastlane inklusive Crash-Monitoring und Observability über Firebase Crashlytics",
+        "Verantwortung für die Weiterentwicklung der AWS-SES-Architektur für tägliche Kundenkommunikation im großen Maßstab, unterstützt durch CloudWatch, KMS, DynamoDB und IAM, mit starkem Fokus auf Zuverlässigkeit, Sicherheit und DSGVO-konformen Betrieb",
+        "Definition und Verantwortung der Zielarchitektur sowie der technischen Roadmap für die kommerzielle Miles & More Produktiv-App über Flutter, native Mobile-Integrationen, REST- und GraphQL-APIs, BFF-Patterns, Apigee API Gateway und eine über OpenShift betriebene Microservice-Landschaft hinweg",
+        "Führung und Koordination eines Multi-Vendor-Outsourcing-Setups mit Architecture Governance, Coding-Standards, Review-Gates und ADRs zur Sicherstellung konsistenter Engineering-Qualität über mehrere Teams hinweg",
+        "Abstimmung von Architekturentscheidungen mit Stakeholdern aus Produkt, Design, Security, Compliance und Enterprise Architecture zur Erstellung skalierbarer Solution-Architekturen für kundenorientierte Mobile- und Kommunikationsservices",
+        "Vorantreiben der KI-Adoption durch PoCs und den Aufbau praxisnaher KI-Fähigkeiten wie eines Hybrid-RAG-basierten internen Wissensassistenten, Engineering-Copilots, Prompt-Evaluation-Workflows, Elastic-basierter Dokumentensuche, Chatbot-Lösungen mit auf Azure gehosteten Modellen über OpenWebUI sowie Workflow-Automatisierung mit n8n"
       ]
     },
     {
@@ -91,18 +82,27 @@
       ]
     },
     {
-      "name": "Miles & More GmbH (Lufthansa Group)",
-      "position": "Manager IT / Lead Architect – Mobile Platform",
-      "url": "https://www.miles-and-more.com/",
-      "startDate": "2025-03-01",
-      "summary": "Lead Architect für die kommerzielle Miles & More Mobile-Plattform und die Customer-Communication-Architektur, verantwortlich für technische Ausrichtung, Plattformarchitektur, KI-getriebene Verbesserungen sowie die sichere und zuverlässige Bereitstellung Flutter-basierter und AWS-gestützter Services für Millionen von Lufthansa Group Kunden.",
+      "name": "Genpact",
+      "position": "Software Engineer",
+      "url": "https://www.genpact.com/",
+      "startDate": "2013-06-01",
+      "endDate": "2014-07-01",
+      "summary": "Softwareentwickler für Calypso- und Java-basierte Enterprise-Anwendungen im Finanzbereich.",
       "highlights": [
-        "Verantwortung für CI/CD-Pipelines, Release-Management und Production Readiness mit Jenkins, Azure DevOps und Fastlane inklusive Crash-Monitoring und Observability über Firebase Crashlytics",
-        "Verantwortung für die Weiterentwicklung der AWS-SES-Architektur für tägliche Kundenkommunikation im großen Maßstab, unterstützt durch CloudWatch, KMS, DynamoDB und IAM, mit starkem Fokus auf Zuverlässigkeit, Sicherheit und DSGVO-konformen Betrieb",
-        "Definition und Verantwortung der Zielarchitektur sowie der technischen Roadmap für die kommerzielle Miles & More Produktiv-App über Flutter, native Mobile-Integrationen, REST- und GraphQL-APIs, BFF-Patterns, Apigee API Gateway und eine über OpenShift betriebene Microservice-Landschaft hinweg",
-        "Führung und Koordination eines Multi-Vendor-Outsourcing-Setups mit Architecture Governance, Coding-Standards, Review-Gates und ADRs zur Sicherstellung konsistenter Engineering-Qualität über mehrere Teams hinweg",
-        "Abstimmung von Architekturentscheidungen mit Stakeholdern aus Produkt, Design, Security, Compliance und Enterprise Architecture zur Erstellung skalierbarer Solution-Architekturen für kundenorientierte Mobile- und Kommunikationsservices",
-        "Vorantreiben der KI-Adoption durch PoCs und den Aufbau praxisnaher KI-Fähigkeiten wie eines Hybrid-RAG-basierten internen Wissensassistenten, Engineering-Copilots, Prompt-Evaluation-Workflows, Elastic-basierter Dokumentensuche, Chatbot-Lösungen mit auf Azure gehosteten Modellen über OpenWebUI sowie Workflow-Automatisierung mit n8n"
+        "Implementierung und Anpassung von Calypso-Komponenten und Java-Backends",
+        "Enge Zusammenarbeit mit Senior Engineers und Business-Analysten bei Anforderungen und Produktionssupport"
+      ]
+    },
+    {
+      "name": "NEC",
+      "position": "Software Engineer",
+      "url": "https://www.nec.com/",
+      "startDate": "2012-07-01",
+      "endDate": "2013-05-01",
+      "summary": "Softwareentwickler für Java-basierte Backend-Komponenten für Enterprise-Kunden.",
+      "highlights": [
+        "Implementierung von Backend-Funktionalitäten und Integrationen auf Java/J2EE-Stacks",
+        "Enge Zusammenarbeit mit Senior Engineers zur Verbesserung von Performance und Zuverlässigkeit"
       ]
     }
   ],
@@ -521,6 +521,20 @@
   ],
   "projects": [
     {
+      "name": "Skywink – Open-Source, datenschutzfreundliche KI-Chat-Plattform",
+      "startDate": "2025-08-01",
+      "description": "Gründer und Lead Engineer von Skywink, einer Open-Source-KI-Chat-Plattform von Nimbus Tech, die Nutzern und Unternehmen volle Kontrolle über ihre KI-Unterhaltungen gibt – lokal mit Ollama für vollständige Privatsphäre oder mit angebundenen Cloud-AI-Providern ohne Vendor Lock-in.",
+      "highlights": [
+        "Architektur einer Full-Stack-KI-Chat-Plattform mit Next.js 16, React 19, TypeScript, PostgreSQL und Prisma ORM, Deployment auf Northflank mit Docker-Multi-Stage-Builds und produktionsreifem CI/CD",
+        "Implementierung einer einheitlichen AI-Provider-Abstraktion mit dem Vercel AI SDK für Ollama (lokal), OpenAI, Mistral AI und OpenRouter – nahtloser Providerwechsel mit nutzereigenen API-Schlüsseln",
+        "Aufbau sicherer API-Key-Speicherung mit AES-256- und RSA-Verschlüsselung, CSRF-Schutz, Rate Limiting und rollenbasierter Zugriffskontrolle für Enterprise-taugliche Sicherheit",
+        "Konzeption eines Gastmodus mit localStorage-Persistenz, IP-basiertem Rate Limiting und automatischer Bereinigung für Zero-Signup-Onboarding",
+        "Einsatz von RAG- und Prompt-Engineering-Patterns und Integration gestreamter KI-Antworten mit Echtzeit-Rendering, konfigurierbaren Generierungsparametern und Konversations-Export",
+        "Architektur für horizontale Skalierung mit zustandslosen APIs, Connection Pooling, Edge-kompatiblem Deployment und CDN-fähigen statischen Assets"
+      ],
+      "url": "https://skywink.nimbus-tech.de"
+    },
+    {
       "name": "Miles & More Mobile Platform – Architektur & KI-Transformation",
       "startDate": "2025-03-01",
       "description": "Lead Architect für die kommerzielle Miles & More Mobile-Plattform und die Customer-Communication-Architektur, verantwortlich für Zielarchitektur, technische Roadmap, KI-getriebene Weiterentwicklung der Plattform sowie produktionsreife Bereitstellung über Flutter-basierte Mobile-Anwendungen, OpenShift-betriebene Microservices und AWS-gestützte Kommunikationsservices für Millionen von Lufthansa Group Kunden.",
@@ -547,20 +561,6 @@
         "Durchführung von AWS Well-Architected Reviews und Architekturbewertungen bestehender Produktivsysteme mit pragmatischen Modernisierungsempfehlungen",
         "Einführung von Infrastructure as Code (Terraform, AWS CDK) und CI/CD-Pipelines zur Standardisierung von Deployments und Sicherung von Engineering-Qualität"
       ]
-    },
-    {
-      "name": "Skywink – Open-Source, datenschutzfreundliche KI-Chat-Plattform",
-      "startDate": "2025-08-01",
-      "description": "Gründer und Lead Engineer von Skywink, einer Open-Source-KI-Chat-Plattform von Nimbus Tech, die Nutzern und Unternehmen volle Kontrolle über ihre KI-Unterhaltungen gibt – lokal mit Ollama für vollständige Privatsphäre oder mit angebundenen Cloud-AI-Providern ohne Vendor Lock-in.",
-      "highlights": [
-        "Architektur einer Full-Stack-KI-Chat-Plattform mit Next.js 16, React 19, TypeScript, PostgreSQL und Prisma ORM, Deployment auf Northflank mit Docker-Multi-Stage-Builds und produktionsreifem CI/CD",
-        "Implementierung einer einheitlichen AI-Provider-Abstraktion mit dem Vercel AI SDK für Ollama (lokal), OpenAI, Mistral AI und OpenRouter – nahtloser Providerwechsel mit nutzereigenen API-Schlüsseln",
-        "Aufbau sicherer API-Key-Speicherung mit AES-256- und RSA-Verschlüsselung, CSRF-Schutz, Rate Limiting und rollenbasierter Zugriffskontrolle für Enterprise-taugliche Sicherheit",
-        "Konzeption eines Gastmodus mit localStorage-Persistenz, IP-basiertem Rate Limiting und automatischer Bereinigung für Zero-Signup-Onboarding",
-        "Einsatz von RAG- und Prompt-Engineering-Patterns und Integration gestreamter KI-Antworten mit Echtzeit-Rendering, konfigurierbaren Generierungsparametern und Konversations-Export",
-        "Architektur für horizontale Skalierung mit zustandslosen APIs, Connection Pooling, Edge-kompatiblem Deployment und CDN-fähigen statischen Assets"
-      ],
-      "url": "https://skywink.nimbus-tech.de"
     },
     {
       "name": "Telekom- & Banking-Service-Provisioning-Plattform",

@@ -15,39 +15,18 @@
   },
   "work": [
     {
-      "name": "Virtusa Corp.",
-      "position": "Tech Lead / Senior Engineer",
-      "url": "https://www.virtusa.com/",
-      "startDate": "2014-08-01",
-      "endDate": "2016-05-01",
-      "summary": "Tech lead on Java EE applications using Spring and Hibernate, responsible for key modules and mentoring junior engineers.",
+      "name": "Miles & More GmbH (Lufthansa Group)",
+      "position": "Manager IT / Lead Architect – Mobile Platform",
+      "url": "https://www.miles-and-more.com/",
+      "startDate": "2025-03-01",
+      "summary": "Lead architect for the Miles & More commercial mobile platform and customer communication architecture, responsible for technical direction, platform architecture, AI-driven improvements, and secure, reliable delivery of Flutter-based and AWS-backed services used by millions of Lufthansa Group customers.",
       "highlights": [
-        "Owned design and implementation of core REST APIs and integrations on Spring/Hibernate",
-        "Mentored junior developers and guided coding standards and design patterns"
-      ]
-    },
-    {
-      "name": "Genpact",
-      "position": "Software Engineer",
-      "url": "https://www.genpact.com/",
-      "startDate": "2013-06-01",
-      "endDate": "2014-07-01",
-      "summary": "Software engineer working on Calypso and Java-based enterprise applications in the financial domain.",
-      "highlights": [
-        "Implemented and customized Calypso components and Java backend services",
-        "Collaborated with senior engineers and business analysts on requirements and production issues"
-      ]
-    },
-    {
-      "name": "NEC",
-      "position": "Software Engineer",
-      "url": "https://www.nec.com/",
-      "startDate": "2012-07-01",
-      "endDate": "2013-05-01",
-      "summary": "Software engineer building Java-based backend components for enterprise clients.",
-      "highlights": [
-        "Implemented backend features and integrations on Java/J2EE stacks",
-        "Worked closely with senior engineers on performance and reliability improvements"
+        "Lead and coordinate a multi-vendor, outsourced development setup with architecture governance, coding standards, review gates, and ADRs to ensure consistent engineering quality across teams",
+        "Define and own the target architecture and technical roadmap for the Miles & More commercial mobile app across Flutter, native mobile integrations, REST and GraphQL APIs, BFF patterns, Apigee API Gateway, and an OpenShift-managed microservice landscape",
+        "Align architecture decisions with product, design, security, compliance, and Enterprise Architecture stakeholders to create scalable solution architectures for customer-facing mobile and communication services",
+        "Oversee CI/CD pipelines, release management, and production readiness using Jenkins, Azure DevOps, and Fastlane, including crash monitoring and observability through Firebase Crashlytics",
+        "Own and evolve the AWS SES architecture for daily large-scale customer communication, supported by CloudWatch, KMS, DynamoDB, and IAM, with strong focus on reliability, security, and GDPR-aligned operations",
+        "Drive AI adoption by running PoCs and building practical AI capabilities such as a Hybrid RAG-based internal knowledge assistant, engineering copilots, prompt evaluation workflows, Elastic-powered document search, chatbot solutions using models hosted on Azure with OpenWebUI, and workflow automation with n8n"
       ]
     },
     {
@@ -91,18 +70,39 @@
       ]
     },
     {
-      "name": "Miles & More GmbH (Lufthansa Group)",
-      "position": "Manager IT / Lead Architect – Mobile Platform",
-      "url": "https://www.miles-and-more.com/",
-      "startDate": "2025-03-01",
-      "summary": "Lead architect for the Miles & More commercial mobile platform and customer communication architecture, responsible for technical direction, platform architecture, AI-driven improvements, and secure, reliable delivery of Flutter-based and AWS-backed services used by millions of Lufthansa Group customers.",
+      "name": "Virtusa Corp.",
+      "position": "Tech Lead / Senior Engineer",
+      "url": "https://www.virtusa.com/",
+      "startDate": "2014-08-01",
+      "endDate": "2016-05-01",
+      "summary": "Tech lead on Java EE applications using Spring and Hibernate, responsible for key modules and mentoring junior engineers.",
       "highlights": [
-        "Lead and coordinate a multi-vendor, outsourced development setup with architecture governance, coding standards, review gates, and ADRs to ensure consistent engineering quality across teams",
-        "Define and own the target architecture and technical roadmap for the Miles & More commercial mobile app across Flutter, native mobile integrations, REST and GraphQL APIs, BFF patterns, Apigee API Gateway, and an OpenShift-managed microservice landscape",
-        "Align architecture decisions with product, design, security, compliance, and Enterprise Architecture stakeholders to create scalable solution architectures for customer-facing mobile and communication services",
-        "Oversee CI/CD pipelines, release management, and production readiness using Jenkins, Azure DevOps, and Fastlane, including crash monitoring and observability through Firebase Crashlytics",
-        "Own and evolve the AWS SES architecture for daily large-scale customer communication, supported by CloudWatch, KMS, DynamoDB, and IAM, with strong focus on reliability, security, and GDPR-aligned operations",
-        "Drive AI adoption by running PoCs and building practical AI capabilities such as a Hybrid RAG-based internal knowledge assistant, engineering copilots, prompt evaluation workflows, Elastic-powered document search, chatbot solutions using models hosted on Azure with OpenWebUI, and workflow automation with n8n"
+        "Owned design and implementation of core REST APIs and integrations on Spring/Hibernate",
+        "Mentored junior developers and guided coding standards and design patterns"
+      ]
+    },
+    {
+      "name": "Genpact",
+      "position": "Software Engineer",
+      "url": "https://www.genpact.com/",
+      "startDate": "2013-06-01",
+      "endDate": "2014-07-01",
+      "summary": "Software engineer working on Calypso and Java-based enterprise applications in the financial domain.",
+      "highlights": [
+        "Implemented and customized Calypso components and Java backend services",
+        "Collaborated with senior engineers and business analysts on requirements and production issues"
+      ]
+    },
+    {
+      "name": "NEC",
+      "position": "Software Engineer",
+      "url": "https://www.nec.com/",
+      "startDate": "2012-07-01",
+      "endDate": "2013-05-01",
+      "summary": "Software engineer building Java-based backend components for enterprise clients.",
+      "highlights": [
+        "Implemented backend features and integrations on Java/J2EE stacks",
+        "Worked closely with senior engineers on performance and reliability improvements"
       ]
     }
   ],
@@ -521,6 +521,20 @@
   ],
   "projects": [
     {
+      "name": "Skywink – Open-Source Privacy-First AI Chat Platform",
+      "startDate": "2025-08-01",
+      "description": "Founder and lead engineer of Skywink, an open-source AI chat platform built by Nimbus Tech that gives users and enterprises full control over their AI conversations – run locally with Ollama for complete privacy or connect to cloud AI providers with no vendor lock-in.",
+      "highlights": [
+        "Architected a full-stack AI chat platform using Next.js 16, React 19, TypeScript, PostgreSQL, and Prisma ORM, deployed on Northflank with Docker multi-stage builds and production-ready CI/CD",
+        "Implemented a unified AI provider abstraction using the Vercel AI SDK supporting Ollama (local), OpenAI, Mistral AI, and OpenRouter – allowing seamless provider switching with user-owned API keys",
+        "Built secure API key storage with AES-256 and RSA encryption, CSRF protection, rate limiting, and role-based access control for an enterprise-ready security posture",
+        "Designed a guest mode with localStorage persistence, IP-based rate limiting, and auto-cleanup – enabling zero-signup onboarding for new users",
+        "Applied RAG and prompt engineering patterns and integrated streaming AI responses with real-time rendering, custom generation parameter controls, and conversation export",
+        "Structured the platform for horizontal scalability with stateless APIs, connection pooling, edge-compatible deployment, and CDN-ready static assets"
+      ],
+      "url": "https://skywink.nimbus-tech.de"
+    },
+    {
       "name": "Miles & More Mobile Platform – Architecture & AI Transformation",
       "startDate": "2025-03-01",
       "description": "Lead architect for the Miles & More commercial mobile platform and customer communication architecture, responsible for end-to-end target architecture, technical roadmap, AI-driven platform evolution, and production-grade delivery across Flutter-based mobile applications, OpenShift-managed microservices, and AWS-backed communication services used by millions of Lufthansa Group customers.",
@@ -547,20 +561,6 @@
         "Conducted AWS Well-Architected Reviews and architectural assessments of existing production systems, proposing pragmatic modernization steps",
         "Introduced Infrastructure as Code (Terraform, AWS CDK) and CI/CD pipelines to standardize deployments and enforce engineering quality across teams"
       ]
-    },
-    {
-      "name": "Skywink – Open-Source Privacy-First AI Chat Platform",
-      "startDate": "2025-08-01",
-      "description": "Founder and lead engineer of Skywink, an open-source AI chat platform built by Nimbus Tech that gives users and enterprises full control over their AI conversations – run locally with Ollama for complete privacy or connect to cloud AI providers with no vendor lock-in.",
-      "highlights": [
-        "Architected a full-stack AI chat platform using Next.js 16, React 19, TypeScript, PostgreSQL, and Prisma ORM, deployed on Northflank with Docker multi-stage builds and production-ready CI/CD",
-        "Implemented a unified AI provider abstraction using the Vercel AI SDK supporting Ollama (local), OpenAI, Mistral AI, and OpenRouter – allowing seamless provider switching with user-owned API keys",
-        "Built secure API key storage with AES-256 and RSA encryption, CSRF protection, rate limiting, and role-based access control for an enterprise-ready security posture",
-        "Designed a guest mode with localStorage persistence, IP-based rate limiting, and auto-cleanup – enabling zero-signup onboarding for new users",
-        "Applied RAG and prompt engineering patterns and integrated streaming AI responses with real-time rendering, custom generation parameter controls, and conversation export",
-        "Structured the platform for horizontal scalability with stateless APIs, connection pooling, edge-compatible deployment, and CDN-ready static assets"
-      ],
-      "url": "https://skywink.nimbus-tech.de"
     },
     {
       "name": "Telecom & Banking Service Provisioning Platform",
